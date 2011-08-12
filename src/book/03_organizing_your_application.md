@@ -1,0 +1,19 @@
+
+Organizing your application
+===========================
+
+project
+
+src
+--- main
+    --- scala
+    |   |_ Web.scala
+    |_ webapp
+        |_ WEB-INF
+            |- scalate
+            |   |- layouts
+            |   |   |_ default.jade
+            |   |- templates
+            |       |_ main.jade
+            |__ web.xml
+

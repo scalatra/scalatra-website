@@ -1,0 +1,15 @@
+-@ val title: String
+-@ val body: String
+-@ val headExtra: String
+
+!!!
+%html<
+  %head
+    %title= title
+    %link(rel="stylesheet" type="text/css" href={uri("/css/scalatra.css")})
+    != headExtra
+  %body<
+    #navigation
+      = include("/_navigation.ssp.md")
+    #content<
+      != body
