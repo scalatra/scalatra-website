@@ -65,12 +65,12 @@ Filters define two methods available, `before` and `after` which both accept a
 block to yield corresponding the request and optionally take a URL pattern to
 match to the request.
 
-### beforeAll
+### before
 
-The `beforeAll` method will let you pass a block to be evaluated **beforeAll** _each_
+The `before` method will let you pass a block to be evaluated **before** _each_
 and_every_ route gets processed.
 
-    beforeAll {
+    before() {
       MyDb.connect
     }
 
@@ -82,12 +82,12 @@ and_every_ route gets processed.
 In this example, we've set up a `before` filter to connect using a contrived
 `MyDB` module.
 
-### afterAll
+### after
 
-The `afterAll` method lets you pass a block to be evaluated **afterAll** _each_ and
+The `after` method lets you pass a block to be evaluated **after** _each_ and
 _every_ route gets processed.
 
-    afterAll{
+    after() {
       MyDB.disconnect
     }
 
@@ -100,10 +100,11 @@ Filters optionally take a pattern to be matched against the requested URI
 during processing. Here's a quick example you could use to run a contrived
 `authenticate!` method before accessing any "admin" type requests.
 
-    beforeSome("/admin/*") {
+    before("/admin/*") {
       basicAuth
     }
-    afterSome("/admin/*") {
+
+    after("/admin/*") {
       user.logout
     }
 
