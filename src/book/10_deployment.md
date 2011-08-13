@@ -19,16 +19,16 @@ Copy "this piece of code":http://bit.ly/92NWdu into your sbt project definition 
 
 <pre><code>
 class JettyScalatraProject(info: ProjectInfo) extends DefaultProject(info) with AssemblyProject {
-  override def mainClass = Some("com.example.JettyLauncher")   # point this to your entry object
-  val jettytester = "org.mortbay.jetty" % "jetty-servlet-tester" % "6.1.22" % "provided->default"
-  val scalatest = "org.scalatest" % "scalatest" % "1.0" % "provided->default"
+  override def mainClass = Some("com.example.JettyLauncher")   # point this to your entry object
+  val jettytester = "org.mortbay.jetty" % "jetty-servlet-tester" % "6.1.22" % "provided->default"
+  val scalatest = "org.scalatest" % "scalatest" % "1.0" % "provided->default"
 }
 </code></pre>
 
 Then launch sbt or reload it if it is already running. This should give you a new sbt command called "assembly". Try that in the sbt interactive prompt and it should produce a ****-assembly-**.jar file in your sbt /target/scala-2.7.7 folder. All dependencies (like scala-library.jar) are included in this jar file and you can run it directly, e.g.
 
 <pre><code>
-java -jar  ***-assembly-**.jar
+java -jar ***-assembly-**.jar
 </code></pre>
 
 h2. Launch Scalatra as a servlet
@@ -36,19 +36,19 @@ h2. Launch Scalatra as a servlet
 ScalatraServlet is an HttpServlet, we just need some glue code to launch an embedded Jetty server with this Servlet. 
 
 <pre><code>
-package com.example   // remember this package in the sbt project definition
+package com.example  // remember this package in the sbt project definition
 import org.mortbay.jetty.Server
 import org.mortbay.jetty.servlet.{Context, ServletHolder}
-import org.scalatra.TemplateExample  // this is the example Scalatra servlet
+import org.scalatra.TemplateExample // this is the example Scalatra servlet
 
-object JettyLauncher {  // this is my entry object as specified in sbt project definition
-   def main(args: Array[String]) {
-     val server = new Server(8080)
-     val root   = new Context(server, "/", Context.SESSIONS)
-     root.addServlet(new ServletHolder(new TemplateExample), "/*")
-     server.start()
-     server.join()
-   }
+object JettyLauncher { // this is my entry object as specified in sbt project definition
+  def main(args: Array[String]) {
+    val server = new Server(8080)
+    val root   = new Context(server, "/", Context.SESSIONS)
+    root.addServlet(new ServletHolder(new TemplateExample), "/*")
+    server.start()
+    server.join()
+  }
 }
 </code></pre>
 

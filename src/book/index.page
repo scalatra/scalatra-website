@@ -16,6 +16,9 @@ link{:type => "text/css",
 link{:type => "text/css",
                 :rel => "stylesheet",
                 :href  => "/css/book.css"}
+				link{:type => "text/css",
+				                :rel => "stylesheet",
+				                :href  => "/css/pygmentize.css"}
 --- name:content pipeline:ssp
 
 
@@ -62,4 +65,5 @@ $("h1, h2, h3").each(function(i) {
       ));
      
       SyntaxHighlighter.all();
+
 </script>
