@@ -11,6 +11,10 @@ class ScalatraWebsite(info: ProjectInfo) extends DefaultWebProject(info)
       val jettyVersion = "7.2.2.v20101205"
       val slf4jVersion = "1.6.1"
       val scalateVersion = "1.5.1"
+//	override def jettyWebappPath = "./target/scala_2.9.0-1/webapp"
+	val p = path("target") / "scala_2.9.0-1" / "sitegen"
+override def jettyWebappPath = p  
+override def scanDirectories = Nil
 
       override val jettyPort = 8081
       val scalatePage = "org.fusesource.scalate" % "scalate-page" % "1.5.1"
