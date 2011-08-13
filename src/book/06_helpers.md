@@ -29,6 +29,14 @@ Once you have the `ScalateSupport` trait applied you can call
 		  }
 	    }
 
+### Scalate error page
+
+Mixing in ScalateSupport enables the Scalate error page for any uncaught
+exceptions.  This page renders the template source with the error highlighted.
+To disable this behavior, override `isScalateErrorPageEnabled`:
+
+    override def isScalatePageEnabled = false
+
 Scentry + Authentication
 ------------------------
 
