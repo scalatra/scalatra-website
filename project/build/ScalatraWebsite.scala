@@ -7,24 +7,30 @@ import org.fusesource.scalate.sbt._
 class ScalatraWebsite(info: ProjectInfo) extends DefaultWebProject(info) 
     with SiteGenWebProject {
 
-    val jettyGroupId = "org.eclipse.jetty"
-      val jettyVersion = "7.2.2.v20101205"
-      val slf4jVersion = "1.6.1"
-      val scalateVersion = "1.5.1"
-//	override def jettyWebappPath = "./target/scala_2.9.0-1/webapp"
-	val p = path("target") / "scala_2.9.0-1" / "sitegen"
-override def jettyWebappPath = p  
-override def scanDirectories = Nil
+  // defined versions
+  val jettyGroupId = "org.eclipse.jetty"
+  val jettyVersion = "7.2.2.v20101205"
+  val slf4jVersion = "1.6.1"
+  val scalateVersion = "1.5.1"
+  val description = "Runs www.scalatra.org"
+  def projectUrl = "http://www.scalatra.org/"
 
-      override val jettyPort = 8081
-      val scalatePage = "org.fusesource.scalate" % "scalate-page" % "1.5.1"
-      val jetty7 = jettyGroupId % "jetty-webapp" % jettyVersion % "test"
-      val logback = "org.slf4j" % "slf4j-nop" % slf4jVersion % "runtime"
-      val markdown = "org.fusesource.scalamd" % "scalamd" % "1.5" % "runtime"
-      val description = "Runs www.scalatra.org"
+    // jetty overrides
+  val p = path("target") / "scala_2.9.0-1" / "sitegen"
+  override def jettyWebappPath = p  
+  override def scanDirectories = Nil
+  override val jettyPort = 8081
 
+  // required packages
+  val scalatePage = "org.fusesource.scalate" % "scalate-page" % "1.5.1"
+  val jetty7 = jettyGroupId % "jetty-webapp" % jettyVersion % "test"
+  val logback = "org.slf4j" % "slf4j-nop" % slf4jVersion % "runtime"
+  val markdown = "org.fusesource.scalamd" % "scalamd" % "1.5" % "runtime"
+
+  // site generator
   override lazy val generateSite = super.generateSiteAction
   
+  // repos
   val fuseSourceSnapshots = "FuseSource Snapshot Repository" at "http://repo.fusesource.com/nexus/content/repositories/snapshots"
   val scalaToolsSnapshots = "Scala-Tools Maven2 Snapshots Repository" at "http://scala-tools.org/repo-snapshots"
   
@@ -37,7 +43,7 @@ override def scanDirectories = Nil
         </license>
       </licenses>
 
-    def developers = 
+  def developers = 
       <developers>
           <developer>
             <id>riffraff</id>
@@ -71,6 +77,5 @@ override def scanDirectories = Nil
           </developer>
         </developers>
 
-    def projectUrl = "http://www.scalatra.org/"
 
  }

@@ -13,7 +13,12 @@ link{:type => "text/css",
 link{:type => "text/css",
         :rel => "stylesheet",
         :href  => "/js/sh/styles/shCoreDefault.css"}
+link{:type => "text/css",
+                :rel => "stylesheet",
+                :href  => "/css/book.css"}
 --- name:content pipeline:ssp
+
+
 
 ${include("/book/00_toc.md")}
 ${include("/book/01_introduction.md")}

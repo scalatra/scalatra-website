@@ -1,6 +1,9 @@
 ---
-title: FAQ
---- name:headExtra
+title: Scalatra - FAQ
+--- name:headExtra pipeline:jade
+link{:type => "text/css",
+                :rel => "stylesheet",
+                :href  => "/css/book.css"}
 --- name:content pipeline:jade,markdown
 h1 FAQ
 

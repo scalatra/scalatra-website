@@ -6,7 +6,9 @@ Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for 
 
 In a shell, run the following:
 
-    ./sbt
+    $ ./sbt
     > update
+    > jetty-run
     > ~generate-site
+    [http://127.0.0.1:8081](http://127.0.0.1:8081)
 

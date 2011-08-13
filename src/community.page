@@ -1,6 +1,9 @@
 ---
 title: Scalatra - Community
---- name:headExtra
+--- name:headExtra pipeline:jade
+link{:type => "text/css",
+                :rel => "stylesheet",
+                :href  => "/css/book.css"}
 --- name:content
 # Community
 

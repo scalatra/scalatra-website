@@ -1,76 +1,79 @@
 ---
-title: Sinatra
---- name:headExtra
---- name:content
-# Scalatra      
+title: Scalatra a tiny Sinatra-like web framework for Scala
+--- name:headExtra pipeline:jade
+link{:type => "text/css",
+                :rel => "stylesheet",
+                :href  => "/css/book.css"}
+--- name:content pipeline:markdown
 
+# Scalatra
 
   Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for [Scala](http://www.scala-lang.org/).
   
-  ## Quick start
+## Quick start
 
-  ### Git clone Quick Start  (SBT 0.7.x)
+### Git clone Quick Start  (SBT 0.7.x)
 
-    1. Clone this repository:
+  1. Clone this repository:
 
-        git clone git://github.com/scalatra/scalatra-sbt-prototype.git my-app
+      git clone git://github.com/scalatra/scalatra-sbt-prototype.git my-app
 
-    2. Change directory into your clone:
+  2. Change directory into your clone:
 
-        cd my-app
+      cd my-app
 
-    3. Launch [SBT](http://code.google.com/p/simple-build-tool).
+  3. Launch [SBT](http://code.google.com/p/simple-build-tool).
 
-        ./sbt
+      ./sbt
 
-    4. At SBT prompt, fetch the dependencies.  Do this the first time and also whenever you change the project definition.
+  4. At SBT prompt, fetch the dependencies.  Do this the first time and also whenever you change the project definition.
 
-        update
+      update
 
-    5. Run Jetty
+  5. Run Jetty
 
-           > jetty-run
-           > ~prepare-webapp
+         > jetty-run
+         > ~prepare-webapp
 
-    6. Go to http://localhost:8080/.
+  6. Go to http://localhost:8080/.
 
-    7. Happy hacking!
+  7. Happy hacking!
 
-  ### Giter8 Quick start (SBT 0.10.x)
+### Giter8 Quick start (SBT 0.10.x)
 
-    1. [Giter8](https://github.com/n8han/giter8) the Scalatra template
+  1. [Giter8](https://github.com/n8han/giter8) the Scalatra template
 
-           $ ~/bin/g8 scalatra/scalatra-sbt
+         $ ~/bin/g8 scalatra/scalatra-sbt
 
-    4. Change directory into your clone.
+  4. Change directory into your clone.
 
-           $ cd my-app
+         $ cd my-app
 
-    5. Launch [SBT](https://github.com/harrah/xsbt).
+  5. Launch [SBT](https://github.com/harrah/xsbt).
 
-           $ sbt
+         $ sbt
 
-    6. Start Jetty, enabling continuous compilation and reloading.
+  6. Start Jetty, enabling continuous compilation and reloading.
 
-           > jetty-run
-           > ~prepare-webapp
+         > jetty-run
+         > ~prepare-webapp
 
-    7. Browse to http://localhost:8080/.
+  7. Browse to http://localhost:8080/.
 
-    8. Happy hacking!
+  8. Happy hacking!
 
-  ## Community
+## Community
 
-  ### Mailing list
+### Mailing list
 
-  The [scalatra-user](http://groups.google.com/group/scalatra-user) mailing list is open to anybody.  It is the best place to ask questions, so everybody can see the answer.
+The [scalatra-user](http://groups.google.com/group/scalatra-user) mailing list is open to anybody.  It is the best place to ask questions, so everybody can see the answer.
 
-  ### IRC channel
+### IRC channel
 
-  For those topics that are easier to discuss in real time, or just to hang out with some fun people, join us at the #scalatra channel on irc.freenode.org.
+For those topics that are easier to discuss in real time, or just to hang out with some fun people, join us at the #scalatra channel on irc.freenode.org.
 
 
-  Documentation
-  ---------------
-  
-  Try reading the [Book](/book/).
+Documentation
+---------------
+
+Try reading the [Book](/book/).
