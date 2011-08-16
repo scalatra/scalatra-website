@@ -1,8 +1,12 @@
 # Scalatra project
 
-Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for [Scala](http://www.scala-lang.org/).
+This is the home of The [Scalatra](http://github.com/scalatra/scalatra/) Book.
 
-## Usage
+## Current snapshot
+
+The latest version of the book is published to http://test.scalatra.org/2.0.0/book.
+
+## Running the book yourself
 
 In a shell, run the following:
 
