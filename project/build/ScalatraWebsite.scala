@@ -27,6 +27,7 @@ class ScalatraWebsite(info: ProjectInfo) extends DefaultWebProject(info)
   val logback = "org.slf4j" % "slf4j-nop" % slf4jVersion % "runtime"
   val markdown = "org.fusesource.scalamd" % "scalamd" % "1.5" % "runtime"
 
+
   // site generator
   override lazy val generateSite = super.generateSiteAction
   

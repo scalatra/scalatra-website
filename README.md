@@ -14,5 +14,6 @@ In a shell, run the following:
     > update
     > jetty-run
     > ~generate-site
-    [http://127.0.0.1:8081](http://127.0.0.1:8081)
+
+Review changes at [http://127.0.0.1:8081](http://127.0.0.1:8081)
 

@@ -1,0 +1,28 @@
+---
+title: Scalatra - Built With
+--- name:headExtra pipeline:jade
+link{:type => "text/css",
+                :rel => "stylesheet",
+                :href  => "/css/book.css"}
+--- name:content
+# Built With Scalatra
+
+## Production Systems
+
+### LinkedIn Signal
+
+[LinkedIn Signal](http://sna-projects.com/blog/2010/10/linkedin-signal-a-look-under-the-hood/) is using it in their backend.
+
+### Chacha
+
+[ChaCha](http://www.chacha.com/) is using it in multiple internal applications.
+
+## Open Source Projects
+
+### Bowler Framework
+
+[Bowler](http://bowlerframework.org) is a RESTful, multi-channel ready web framework in Scala with a functional flavour, built on top of Scalatra and Scalate, with Lift-JSON doing the heavy JSON lifting. The project is built with Simple Build Tool ("sbt")- we intend to further add custom sbt processors in the future to automate boilerplate tasks.
+
+### Fink
+
+[Fink](https://github.com/dozed/fink) is a Scalatra based CMS.
