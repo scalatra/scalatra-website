@@ -1,5 +1,6 @@
-- [Home](${uri("/")})
-- [Book](${uri("/book")})
+*- [Home](${uri("/")})
+- [Book](${uri("/stable/book")})
 - [Community](${uri("/community.html")})
 - [Source](${uri("http://github.com/scalatra")})
 - [Built With](${uri("/built-with.html")})
+- [API](${uri("/stable/api")})
