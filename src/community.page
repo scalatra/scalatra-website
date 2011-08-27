@@ -7,6 +7,10 @@ link{:type => "text/css",
 --- name:content
 # Community
 
+## Twitter
+
+[@scalatra](http://twitter.com/#!/scalatra)
+
 ## Mailing list
 
 The [*scalatra-user*](http://groups.google.com/group/scalatra-user) Google Group is an open forum.  It is the preferred channel for discussion so future users can learn from the archive.  Support requests, suggestions, project announcements, and all other commentary related to Scalatra are welcome here.

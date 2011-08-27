@@ -1,8 +1,5 @@
-#content
-  { padding: 0 2em; }
-
-#content
-  { color: #222;
+.wrapper {
+  color: #222;
     background: #fafafa;
     font-size: 80%;
     min-width: 300px;
@@ -11,7 +8,15 @@
     margin: auto;
     max-width: 800px;
     border: 1px solid #d5d8db; 
-    border-top: none; border-bottom: none; }
+    border-top: none; border-bottom: none;
+}
+
+#content
+  { padding: 0 2em; }
+
+#content
+  {  
+  }
 
 #content h1,
 #content h2,

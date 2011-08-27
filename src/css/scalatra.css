@@ -30,10 +30,43 @@
 #navigation ul { display: block; margin:0; padding:0; }
 #navigation li { list-style-type: none; display: inline; margin:0 5px 0 5px;}
 
+#overview {
+
+}
 
 img {
 	border: none;
 /*
 	padding-right:2em
 */
+}
+
+
+.wrapper {
+  color: #222;
+    background: #fafafa;
+    font-size: 80%;
+    min-width: 300px;
+    font-family: 'Lucida Grande', Verdana, sans-serif;
+    padding: 1em 2em;
+    margin: auto;
+    max-width: 800px;
+    border: 1px solid #d5d8db; 
+    border-top: none; 
+}
+
+.wrapper {
+  box-shadow:10px 10px 20px #000000;
+}
+
+div.logo img {
+  padding: 5px;
+  padding-top: 20px;
+}
+div.logo h1 {
+  display: inline;
+  font-size: 5em;
+  font-family: 'georgia', 'bitstream vera serif', serif;
+  margin: 0;
+  padding: 0;
 }

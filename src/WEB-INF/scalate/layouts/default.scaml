@@ -5,13 +5,16 @@
 !!!
 %html<
   %head
-    %title= title
+    5title= title
     %link(rel="stylesheet" type="text/css" href={uri("/css/scalatra.css")})
     != headExtra
   %body<
-    #navigation
+    %div#navigation
       = include("/_navigation.ssp.md")
-    #content<
-      != body
-      
+    %div.wrapper
+      %div#overview
+        = include("/_logo.ssp.md")
+      %div#content<
+        != body
+        
     = include("/_google_analytics.page")
