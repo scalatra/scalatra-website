@@ -17,6 +17,10 @@ link{:type => "text/css",
 
 [ChaCha](http://www.chacha.com/) is using it in multiple internal applications.
 
+### The Guardian
+
+Scalatra is used in a number of systems that help power [The Guardian](http:///www.guardian.co.uk/), for instance the [music artist pages](http://www.guardian.co.uk/info/developer-blog/2011/jun/23/internet).
+
 ## Open Source Projects
 
 ### Bowler Framework
