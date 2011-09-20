@@ -49,6 +49,53 @@ The [scalatra-user](http://groups.google.com/group/scalatra-user) mailing list i
 
 For those topics that are easier to discuss in real time, or just to hang out with some fun people, join us at the #scalatra channel on irc.freenode.org.
 
+Versions
+--------
+
+<table>
+  <thead>
+    <tr>
+      <th>Scalatra Version</th>
+      <th>Status</th>
+      <th>Source</th>
+      <th>Scala versions</th>
+      <th>Servlet</th>
+      <th>Netty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2.0.0</td>
+      <td>Stable</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/master">master</td></td>
+      <td>
+        <ul>
+          <li>2.9.1</li>
+          <li>2.9.0-1</li>
+          <li>2.9.0</li>
+          <li>2.8.1</li>
+        </ul>
+      </td>
+      <td>2.5</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>2.1.0-SNAPSHOT</td>
+      <td>Development</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/develop">develop</td>
+      <td>
+        <ul>
+          <li>2.9.1</li>
+          <li>2.9.0-1</li>
+          <li>2.9.0</li>
+          <li>2.8.1</li>
+        </ul>
+      </td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+
 Documentation
 ---------------
 
