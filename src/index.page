@@ -32,8 +32,8 @@ link{:type => "text/css",
 
   4. Start Jetty, enabling continuous compilation and reloading.
 
-         > jetty-run
-         > ~ prepare-webapp
+         > container:start
+         > ~ compile
 
   5. Browse to http://localhost:8080/.
 
