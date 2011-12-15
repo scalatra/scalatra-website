@@ -691,11 +691,14 @@ a { color: #008080; font-weight: bold; text-decoration: none; }
 
 	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 	@media only screen and (max-width: 479px) {
-    .navbar ul li {
+        .navbar ul li {
           float: none;
         }
         .wrapper { 
           padding-top: 240px
+        }
+        #content table {
+          font-size: 0.6em;
         }
     }
 
