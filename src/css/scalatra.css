@@ -607,6 +607,8 @@ a { color: #008080; font-weight: bold; text-decoration: none; }
   font-size:13px;
   text-decoration: none; }
 
+.navbar ul li a:hover { color: #fff; }
+
 .navbar ul li:first-child a {
   background: url(/images/logo-s.png) no-repeat 0px 5px;
   width: 120px;
@@ -688,8 +690,14 @@ a { color: #008080; font-weight: bold; text-decoration: none; }
     }
 
 	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-	@media only screen and (max-width: 479px) {}
-
+	@media only screen and (max-width: 479px) {
+    .navbar ul li {
+          float: none;
+        }
+        .wrapper { 
+          padding-top: 240px
+        }
+    }
 
 /* #Font-Face
 ================================================== */
