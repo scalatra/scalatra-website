@@ -6,9 +6,6 @@ link{:type => "text/css",
                 :href  => "/css/book.css"}
 --- name:content pipeline:markdown
 
-# Scalatra
-
-  Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for [Scala](http://www.scala-lang.org/).
   
 ## Quick start
 
@@ -35,7 +32,7 @@ link{:type => "text/css",
          > container:start
          > ~ compile
 
-  5. Browse to http://localhost:8080/.
+  5. Browse to [http://localhost:8080/](http://localhost:8080/).
 
   6. Happy hacking!
 
