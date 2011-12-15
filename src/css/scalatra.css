@@ -618,7 +618,6 @@ a { color: #008080; font-weight: bold; text-decoration: none; }
   font-weight: bold; }
 
 .wrapper {
-  min-width: 940px;
   padding-top: 40px; }
 
 .logo {
@@ -642,7 +641,7 @@ a { color: #008080; font-weight: bold; text-decoration: none; }
 #content ol { list-style: none; margin: 0; }
 
 #content table { 
-  width: 940px; /* Requires reset for smaller screens */
+  width: 100%; /* Requires reset for smaller screens */
   text-align: left; }
 
 #content table thead { 
@@ -679,7 +678,14 @@ a { color: #008080; font-weight: bold; text-decoration: none; }
 	@media only screen and (max-width: 767px) {}
 
 	/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
-	@media only screen and (min-width: 480px) and (max-width: 767px) {}
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+        .navbar ul li {
+          float: none;
+        }
+        .wrapper { 
+          padding-top: 240px
+        }
+    }
 
 	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 	@media only screen and (max-width: 479px) {}
