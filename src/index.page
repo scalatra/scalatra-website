@@ -6,9 +6,6 @@ link{:type => "text/css",
                 :href  => "/css/book.css"}
 --- name:content pipeline:markdown
 
-# Scalatra
-
-  Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for [Scala](http://www.scala-lang.org/).
   
 ## Quick start
 
@@ -35,7 +32,7 @@ link{:type => "text/css",
          > container:start
          > ~ compile
 
-  5. Browse to http://localhost:8080/.
+  5. Browse to [http://localhost:8080/](http://localhost:8080/).
 
   6. Happy hacking!
 
@@ -47,7 +44,8 @@ The [scalatra-user](http://groups.google.com/group/scalatra-user) mailing list i
 
 ### IRC channel
 
-For those topics that are easier to discuss in real time, or just to hang out with some fun people, join us at the #scalatra channel on irc.freenode.org.
+For those topics that are easier to discuss in real time, or just to hang out
+with some fun people, join us at the [#scalatra](http://webchat.freenode.net/?channels=scalatra) channel on irc.freenode.org.
 
 Versions
 --------
