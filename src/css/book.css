@@ -3,6 +3,7 @@ body code
     font-family: Courier, monospace;
     font-size: 95%; }
 
+li code,
 p code { color: #008080; }
 
 body pre  
@@ -15,6 +16,7 @@ body pre
     -o-border-radius: 3px;
     -ms-border-radius: 3px;
     margin-bottom: 15px;
+    color: #CCC;
     background: #333; }
  
 /* TOC */
