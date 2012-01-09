@@ -2,6 +2,9 @@ body code
   { color: #eee; 
     font-family: Courier, monospace;
     font-size: 95%; }
+
+p code { color: #008080; }
+
 body pre  
   { white-space: pre-wrap; white-space: -moz-pre-wrap !important;
     padding: 1em;
