@@ -6,6 +6,12 @@ body code
 li code,
 p code { color: #008080; }
 
+#book #content h1,
+#book #content h2,
+#book #content h3 
+  { padding-top: 45px;
+    margin-bottom:20px; }
+
 body pre  
   { white-space: pre-wrap; white-space: -moz-pre-wrap !important;
     padding: 1em;
