@@ -58,7 +58,7 @@ Versions
       <th>Source</th>
       <th>Scala versions</th>
       <th>Servlet</th>
-      <th>Netty</th>
+      <!--<th>Netty</th>-->
     </tr>
   </thead>
   <tbody>
@@ -75,7 +75,6 @@ Versions
         </ul>
       </td>
       <td>2.5</td>
-      <td>N/A</td>
     </tr>
     <tr>
       <td>2.0.3-SNAPSHOT</td>
@@ -91,7 +90,6 @@ Versions
         </ul>
       </td>
       <td>2.5</td>
-      <td>N/A</td>
     </tr>
     <tr>
       <td>2.1.0-SNAPSHOT</td>
