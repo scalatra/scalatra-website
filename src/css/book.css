@@ -8,6 +8,10 @@ li code,
 p code { color: #008080; }
 */
 
+ul.scala-versions li { display: inline; }
+ul.scala-versions li:after { content: ", "; }
+ul.scala-versions li:last:after { content: ""; }
+
 #book #content h1,
 #book #content h2,
 #book #content h3 
