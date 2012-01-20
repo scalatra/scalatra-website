@@ -3,8 +3,10 @@ body code
     font-family: Courier, monospace;
     font-size: 95%; }
 
+/* -- causing nasty teal-on-gray on website.
 li code,
 p code { color: #008080; }
+*/
 
 #book #content h1,
 #book #content h2,
