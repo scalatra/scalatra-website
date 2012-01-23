@@ -63,7 +63,7 @@ Versions
   </thead>
   <tbody>
     <tr>
-      <td>2.0.2</td>
+      <td>2.0.3</td>
       <td>Stable</td>
       <td><a href="http://github.com/scalatra/scalatra/tree/master">master</td></td>
       <td>
@@ -77,7 +77,7 @@ Versions
       <td>2.5</td>
     </tr>
     <tr>
-      <td>2.0.3-SNAPSHOT</td>
+      <td>2.0.4-SNAPSHOT</td>
       <td>Testing</td>
       <td><a href="http://github.com/scalatra/scalatra/tree/support/2.0.x">support/2.0.x</td></td>
       <td>
