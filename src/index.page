@@ -106,6 +106,17 @@ Versions
       </td>
       <td>3.0</td>
     </tr>
+    <tr>
+      <td>netty</td>
+      <td>Experimental</td>
+      <td><a href="http://github.com/scalatra/scalatra-netty/tree/master">master</td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.9.1</li>
+        </ul>
+      </td>
+      <td>N/A</td>
+    </tr>
   </tbody>
 </table>
 
