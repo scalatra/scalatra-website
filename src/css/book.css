@@ -1,6 +1,5 @@
 body code
-  { color: #eee; 
-    font-family: Courier, monospace;
+  { font-family: Courier, monospace;
     font-size: 95%; }
 
 /* -- causing nasty teal-on-gray on website.
