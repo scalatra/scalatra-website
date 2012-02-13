@@ -58,7 +58,7 @@ Versions
       <th>Source</th>
       <th>Scala versions</th>
       <th>Servlet</th>
-      <!--<th>Netty</th>-->
+      <th>Netty</th>
     </tr>
   </thead>
   <tbody>
@@ -75,6 +75,7 @@ Versions
         </ul>
       </td>
       <td>2.5</td>
+      <td>N/A</td>
     </tr>
     <tr>
       <td>2.0.4-SNAPSHOT</td>
@@ -90,6 +91,7 @@ Versions
         </ul>
       </td>
       <td>2.5</td>
+      <td>N/A</td>
     </tr>
     <tr>
       <td>2.1.0-SNAPSHOT</td>
@@ -105,17 +107,21 @@ Versions
         </ul>
       </td>
       <td>3.0</td>
+      <td>N/A</td>
     </tr>
     <tr>
-      <td>netty</td>
+      <td>3.0.0-SNAPSHOT</td>
       <td>Experimental</td>
-      <td><a href="http://github.com/scalatra/scalatra-netty/tree/master">master</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/netty">netty</td>
       <td>
         <ul class="scala-versions">
           <li>2.9.1</li>
+          <li>2.9.0-1</li>
+          <li>2.9.0</li>
         </ul>
       </td>
-      <td>N/A</td>
+      <td>3.0</td>
+      <td>3.3.1</td>
     </tr>
   </tbody>
 </table>
