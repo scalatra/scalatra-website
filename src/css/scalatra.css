@@ -564,7 +564,7 @@ body * { font-family: 'Helvetica', 'Arial', sans-serif; }
 
 a { color: #008080; font-weight: bold; text-decoration: none; }
 
-.navbar ul li:first-child a {
+.navbar ul.nav > li:first-child a {
   background: url(/images/logo-s.png) no-repeat 0px 5px;
   width: 120px;
   text-indent: -999em; }
