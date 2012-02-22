@@ -1,5 +1,0 @@
-<div class="logo">
-  <img src="/images/logo-x.png" alt="Scalatra logo" border="0" />
-  <p>A tiny <a href="http://sinatrarb.com/" class="grey">Sinatra</a>-like web framework
-  for <a href="http://www.scala-lang.org/">Scala</a>.</p>
-</div>
