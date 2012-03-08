@@ -6,6 +6,20 @@ link{:type => "text/css",
                 :href  => "/css/book.css"}
 --- name:content pipeline:markdown
 
+## Hello from Scalatra!
+
+{pygmentize:: scala}
+package com.example.app
+import org.scalatra._
+
+class HelloFilter extends ScalatraFilter {
+
+  get("/hello/:name") {
+    Hello, {params("name")}
+  }
+}
+{pygmentize}
+
   
 ## Quick start
 
