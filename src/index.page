@@ -6,7 +6,7 @@ link{:type => "text/css",
                 :href  => "/css/book.css"}
 --- name:content pipeline:markdown
 
-## Hello from Scalatra!
+## Hello from Scalatra
 
 {pygmentize:: scala}
 package com.example.app
