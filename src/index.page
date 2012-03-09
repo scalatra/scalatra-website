@@ -10,10 +10,10 @@ link{:type => "text/css",
 
 {pygmentize:: scala}
 package com.example.app
+
 import org.scalatra._
 
-class HelloFilter extends ScalatraFilter {
-
+class HelloFilter extends ScalatraServlet {
   get("/hello/:name") {
     Hello, {params("name")}
   }
