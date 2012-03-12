@@ -77,14 +77,14 @@ Versions
   </thead>
   <tbody>
     <tr>
-      <td>2.0.3</td>
+      <td>2.0.4</td>
       <td>Stable</td>
       <td><a href="http://github.com/scalatra/scalatra/tree/master">master</td></td>
       <td>
         <ul class="scala-versions">
           <li>2.9.1</li>
           <li>2.9.0-1</li>
-          <li>2.9.0</li>
+          <li>2.8.2</li>
           <li>2.8.1</li>
         </ul>
       </td>
@@ -92,7 +92,7 @@ Versions
       <td>N/A</td>
     </tr>
     <tr>
-      <td>2.0.4-SNAPSHOT</td>
+      <td>2.0.5-SNAPSHOT</td>
       <td>Testing</td>
       <td><a href="http://github.com/scalatra/scalatra/tree/support/2.0.x">support/2.0.x</td></td>
       <td>
