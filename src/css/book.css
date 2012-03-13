@@ -35,3 +35,7 @@ body pre
 .maruku_toc ul ul { font-weight: normal; padding: 0em 0 0.5em 1em; }
 .maruku_toc ul ul ul { font-weight: normal; padding: 0em 0 0.25em 0.5em; }
 .maruku_toc ul ul ul ul { font-weight: normal; padding: 0em 0 0.1em 0.25em; }
+
+.toc-anchor {
+  position:relative; top: -50px;
+}
