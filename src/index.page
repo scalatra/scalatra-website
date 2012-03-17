@@ -127,10 +127,7 @@ Versions
       <td><a href="http://github.com/scalatra/scalatra/tree/develop">develop</td>
       <td>
         <ul class="scala-versions">
-          <li>2.9.1</li>
-          <li>2.9.0-1</li>
-          <li>2.8.2</li>
-          <li>2.8.1</li>
+          <li>2.9.x</li>
         </ul>
       </td>
       <td>3.0</td>
