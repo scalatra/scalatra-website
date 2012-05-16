@@ -25,6 +25,10 @@ Scalatra is used in a number of systems that help power [The Guardian](http:///w
 
 [Gov.UK](http://www.gov.uk) is using Scalatra for its internal API system. [source](http://radar.oreilly.com/2012/01/with-govuk-british-government.html)
 
+### IGN
+
+[IGN](http://www.ign.com) is using Scalatra for its backend services.
+
 ## Open Source Projects
 
 ### Bowler Framework
