@@ -34,6 +34,7 @@ class ScalatraWebsite(info: ProjectInfo) extends DefaultWebProject(info)
   // repos
   val fuseSourceSnapshots = "FuseSource Snapshot Repository" at "http://repo.fusesource.com/nexus/content/repositories/snapshots"
   val scalaToolsSnapshots = "Scala-Tools Maven2 Snapshots Repository" at "http://scala-tools.org/repo-snapshots"
+  val scalatools = "scalatools" at "http://scala-tools.org/repo-releases"
   
   def licenses =
       <licenses>
