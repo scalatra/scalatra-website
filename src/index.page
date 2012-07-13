@@ -15,7 +15,7 @@ import org.scalatra._
 
 class HelloFilter extends ScalatraServlet {
   get("/hello/:name") {
-    Hello, {params("name")}
+    <h1>Hello, {params("name")}</h1>
   }
 }
 {pygmentize}
