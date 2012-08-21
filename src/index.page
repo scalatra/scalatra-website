@@ -107,9 +107,9 @@ Versions
       <td>N/A</td>
     </tr>
     <tr>
-      <td>2.1.0.M2</td>
-      <td>Milestone</td>
-      <td><a href="http://github.com/scalatra/scalatra/tree/2.1.0.M2">2.0.1.M2</td></td>
+      <td>2.1.0</td>
+      <td>Stable</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/support/2.1.x">2.0.1.M2</td></td>
       <td>
         <ul class="scala-versions">
           <li>2.9.x</li>
@@ -119,7 +119,7 @@ Versions
       <td>N/A</td>
     </tr>
     <tr>
-      <td>2.1.0-SNAPSHOT</td>
+      <td>2.2.0-SNAPSHOT</td>
       <td>Development</td>
       <td><a href="http://github.com/scalatra/scalatra/tree/develop">develop</td>
       <td>
@@ -128,7 +128,7 @@ Versions
         </ul>
       </td>
       <td>3.0</td>
-      <td>3.3.x</td>
+      <td>N/A</td>
     </tr>
   </tbody>
 </table>
