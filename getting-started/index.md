@@ -12,8 +12,6 @@ It combines the power of the JVM with the beauty and brevity of
 [Scala](http://scala-lang.org), allowing you to build high-performance web APIs
 which may be asynchronous or realtime.
 
-### Getting started
-
 You will need to install a few things before you can get started, but first,
 here's a very simple Scalatra app:
 
