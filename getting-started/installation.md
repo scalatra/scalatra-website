@@ -35,28 +35,37 @@ It's the recommended way of getting started with Scalatra.
 
 To install conscript, issue this command in your terminal:
 
-{pygmentize:: }
-curl https://raw.github.com/n8han/conscript/master/setup.sh | sh
-{pygmentize}
+{% highlight bash %}
+
+  curl https://raw.github.com/n8han/conscript/master/setup.sh | sh
+
+{% endhighlight %}
 
 This will create a _bin_ folder in your home directory.  Put that on your
 path, by adding the following to your shell's profile (e.g. ~/.bash_profile):
 
-{pygmentize:: }
-PATH=$PATH:~/bin
-export path
-{pygmentize}
+{% highlight bash %}
+
+  PATH=$PATH:~/bin
+  export path
+
+{% endhighlight %}
 
 Make sure you reload your shell:
 
-{pygmentize:: }
-source ~/.bash_profile
-{pygmentize}
+{% highlight bash %}
+
+  source ~/.bash_profile
+
+{% endhighlight %}
+
 
 Now you can use conscript to install Giter8:
-{pygmentize:: }
-cs n8han/giter8
-{pygmentize}
+{% highlight bash %}
+
+  cs n8han/giter8
+
+{% endhighlight %}
 
 That's it! You've now got everything you need.
 
@@ -64,22 +73,26 @@ That's it! You've now got everything you need.
 
 Now that all of the dependencies are out of the way, you can generate a project. Run:
 
-{pygmentize:: }
-g8 scalatra/scalatra-sbt
-{pygmentize}
+{% highlight bash %}
+
+  g8 scalatra/scalatra-sbt
+
+{% endhighlight %}
 
 This will check out a pre-built application skeleton for you (from Github),
 and ask you some questions about your application:
 
-{pygmentize::}
-$ g8 scalatra/scalatra-sbt
-> organization [com.example]:
-> package [com.example.app]:
-> name [scalatra-sbt-prototype]:
-> servlet_name [MyScalatraServlet]:
-> scala_version [2.9.1]:
-> version [0.1.0-SNAPSHOT]:
-{pygmentize}
+{% highlight bash %}
+
+  $ g8 scalatra/scalatra-sbt
+  > organization [com.example]:
+  > package [com.example.app]:
+  > name [scalatra-sbt-prototype]:
+  > servlet_name [MyScalatraServlet]:
+  > scala_version [2.9.1]:
+  > version [0.1.0-SNAPSHOT]:
+
+{% endhighlight %}
 
 `organization`: Used for publishing.  Should be the reverse of a domain
 name you control.  If you don't own a domain, `com.github.username` is a
@@ -121,8 +134,10 @@ syntax for restarting includes adding `~` in front of the command you want to
 re-execute.  To recompile and reload your application automatically with
 xsbt-web-plugin 0.2.10, run the following:
 
-{pygmentize::}
-$ sbt
-> container:start
-> ~ ;copy-resources;aux-compile
-{pygmentize}
+{% highlight bash %}
+
+  $ sbt
+  > container:start
+  > ~ ;copy-resources;aux-compile
+
+{% endhighlight %}
