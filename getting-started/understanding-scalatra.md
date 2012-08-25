@@ -47,25 +47,23 @@ of wiring your app together: the Scalatra bootstrap file.
 
 You can set your web.xml file up like this:
 
-{pygmentize:: xml}
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-      version="3.0">
-    <listener>
-      <listener-class>org.scalatra.servlet.ScalatraListener</listener-class>
-    </listener>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <web-app xmlns="http://java.sun.com/xml/ns/javaee"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+          version="3.0">
+        <listener>
+          <listener-class>org.scalatra.servlet.ScalatraListener</listener-class>
+        </listener>
 
-    <servlet-mapping>
-      <servlet-name>default</servlet-name>
-      <url-pattern>/img/*</url-pattern>
-      <url-pattern>/css/*</url-pattern>
-      <url-pattern>/js/*</url-pattern>
-      <url-pattern>/assets/*</url-pattern>
-    </servlet-mapping>
-</web-app>
-{pygmentize}
+        <servlet-mapping>
+          <servlet-name>default</servlet-name>
+          <url-pattern>/img/*</url-pattern>
+          <url-pattern>/css/*</url-pattern>
+          <url-pattern>/js/*</url-pattern>
+          <url-pattern>/assets/*</url-pattern>
+        </servlet-mapping>
+    </web-app>
 
 Note that there are no servlet-names, servlet classes, etc. It's all handled
 dynamically by the ScalatraListener class.
@@ -73,24 +71,24 @@ dynamically by the ScalatraListener class.
 You can then place a file called Scalatra.scala in your `src/main/scala`
 directory. The simplest version of this file might look like:
 
-{pygmentize:: scala}
-import org.scalatra.LifeCycle
-import javax.servlet.ServletContext
-import org.yourdomain.projectname._
 
-class Scalatra extends LifeCycle {
+    import org.scalatra.LifeCycle
+    import javax.servlet.ServletContext
+    import org.yourdomain.projectname._
 
-  override def init(context: ServletContext) {
+    class Scalatra extends LifeCycle {
 
-    // set init params like this:
-    org.scalatra.cors.allowedOrigins = "http://example.com:8080 http://foo.example.com"
+      override def init(context: ServletContext) {
 
-    // mount servlets like this:
-    context mount (new ArticlesServlet, "/articles/*")
-    context mount (new UsersServlet, "/users/*")
-  }
-}
-{pygmentize}
+        // set init params like this:
+        org.scalatra.cors.allowedOrigins = "http://example.com:8080 http://foo.example.com"
+
+        // mount servlets like this:
+        context mount (new ArticlesServlet, "/articles/*")
+        context mount (new UsersServlet, "/users/*")
+      }
+    }
+
 
 This Scalatra class allows you to mount either servlets or filters (or both)
 into your application, and define path patterns that they'll respond to.
@@ -182,35 +180,35 @@ so that `sbt` can download them for you and build your Scalatra project.
 
 Here's an example Scalatra sbt file:
 
-{pygmentize:: scala}
-organization := "org.example"
 
-name := "yourapp"
+    organization := "org.example"
 
-version := "0.1.0-SNAPSHOT"
+    name := "yourapp"
 
-scalaVersion := "2.9.1"
+    version := "0.1.0-SNAPSHOT"
 
-seq(webSettings :_*)
+    scalaVersion := "2.9.1"
 
-classpathTypes ~= (_ + "orbit")
+    seq(webSettings :_*)
 
-libraryDependencies ++= Seq(
-  "org.scalatra" % "scalatra" % "2.1.0",
-  "org.scalatra" % "scalatra-scalate" % "2.1.0",
-  "org.scalatra" % "scalatra-specs2" % "2.1.0" % "test",
-  "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-  "org.eclipse.jetty"        % "jetty-webapp"           % "8.1.5.v20120716"     % "container",
-  "org.eclipse.jetty"        % "test-jetty-servlet"     % "8.1.5.v20120716"     % "test",
-  "org.eclipse.jetty.orbit"  % "javax.servlet"          % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+    classpathTypes ~= (_ + "orbit")
 
-)
+    libraryDependencies ++= Seq(
+      "org.scalatra" % "scalatra" % "2.1.0",
+      "org.scalatra" % "scalatra-scalate" % "2.1.0",
+      "org.scalatra" % "scalatra-specs2" % "2.1.0" % "test",
+      "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
+      "org.eclipse.jetty"        % "jetty-webapp"           % "8.1.5.v20120716"     % "container",
+      "org.eclipse.jetty"        % "test-jetty-servlet"     % "8.1.5.v20120716"     % "test",
+      "org.eclipse.jetty.orbit"  % "javax.servlet"          % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 
-resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
-{pygmentize}
+    )
 
-If your project depends on any additional libraries, you may add any other
-dependencies you wish into the `libraryDependencies` section.
+    resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
+
+
+If your project depends on any additional libraries, you can add them to the
+`libraryDependencies` section.
 
 The default dependencies are:
 
