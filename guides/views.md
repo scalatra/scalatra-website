@@ -78,14 +78,16 @@ Scalate can be called directly, using the
 `templateEngine.layout("templateName")` method, like this:
 
 {% highlight scala %}
-get("/") {
-  templateEngine.layout("index.ssp")
-  // renders webapp/index.ssp
-  // OR look in a sub-directory
 
-  templateEngine.layout("/dogs/index.ssp")
-  // would instead render webapp/dogs/index.ssp
-}
+  get("/") {
+    templateEngine.layout("index.ssp")
+    // renders webapp/index.ssp
+    // OR look in a sub-directory
+
+    templateEngine.layout("/dogs/index.ssp")
+    // would instead render webapp/dogs/index.ssp
+  }
+
 {% endhighlight %}
 
 When using Scalate directly, Scalatra will look for your template files
@@ -98,13 +100,15 @@ other views (where `xx` is a Scalate template suffix type). If you're using
 `SSP`, your `webapp/layout/default.ssp` would look something like this:
 
 {% highlight html %}
-<%@ var yield: String %>
-<html>
-  <head>..</head>
-  <body>
-    <%= yield %>
-  </body>
-</html>
+
+  <%@ var yield: String %>
+  <html>
+    <head>..</head>
+    <body>
+      <%= yield %>
+    </body>
+  </html>
+
 {% endhighlight %}
 
 ## ScalateSupport helpers
@@ -115,11 +119,13 @@ are a bit more "magic" than calling Scalate directly.
 Basic usage:
 
 {% highlight scala %}
-def get("/") {
-  contentType="text/html"
 
-  layoutTemplate("/WEB-INF/views/index.ssp")
-}
+  def get("/") {
+    contentType="text/html"
+
+    layoutTemplate("/WEB-INF/views/index.ssp")
+  }
+
 {% endhighlight %}
 
 When using `layoutTemplate`, you *must* prefix your view paths with a relative
@@ -128,11 +134,13 @@ When using `layoutTemplate`, you *must* prefix your view paths with a relative
 
 Rendering with a different layout:
 {% highlight scala %}
-def get("/") {
-  contentType="text/html"
 
-  layoutTemplate("/WEB-INF/views/index.ssp", "layout" -> "/WEB-INF/layouts/app.ssp")
-}
+  def get("/") {
+    contentType="text/html"
+
+    layoutTemplate("/WEB-INF/views/index.ssp", "layout" -> "/WEB-INF/layouts/app.ssp")
+  }
+
 {% endhighlight %}
 
 Each possible kind of Scalate template (mustache, scaml, jade, ssp) has a
@@ -141,11 +149,13 @@ suffix, and without the `WEB-INF/views` part of the path. The above example can 
 written as:
 
 {% highlight scala %}
-def get("/") {
-  contentType="text/html"
 
-  ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp")
-}
+  def get("/") {
+    contentType="text/html"
+
+    ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp")
+  }
+
 {% endhighlight %}
 
 When using the scalate helper methods, it is not required to having a leading
@@ -250,34 +260,38 @@ You may need to render some other page when Scalatra can't find a route.
 Using Scalate directly:
 
 {% highlight scala %}
-class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
-  notFound {
-    // If no route matches, then try to render a Scaml template
-    val templateBase = requestPath match {
-      case s if s.endsWith("/") => s + "index"
-      case s => s
-    }
-    val templatePath = "/WEB-INF/scalate/templates/" + templateBase + ".scaml"
-    servletContext.getResource(templatePath) match {
-      case url: URL =>
-        contentType = "text/html"
-        templateEngine.layout(templatePath)
-      case _ =>
-        filterChain.doFilter(request, response)
+
+  class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
+    notFound {
+      // If no route matches, then try to render a Scaml template
+      val templateBase = requestPath match {
+        case s if s.endsWith("/") => s + "index"
+        case s => s
+      }
+      val templatePath = "/WEB-INF/scalate/templates/" + templateBase + ".scaml"
+      servletContext.getResource(templatePath) match {
+        case url: URL =>
+          contentType = "text/html"
+          templateEngine.layout(templatePath)
+        case _ =>
+          filterChain.doFilter(request, response)
+      }
     }
   }
-}
+
 {% endhighlight %}
 
 Or more simply, using the Scalate helpers:
 
 {% highlight scala %}
-notFound {
-  findTemplate(requestPath) map { path =>
-    contentType = "text/html"
-    layoutTemplate(path)
-  } orElse serveStaticResource() getOrElse resourceNotFound()
-}
+
+  notFound {
+    findTemplate(requestPath) map { path =>
+      contentType = "text/html"
+      layoutTemplate(path)
+    } orElse serveStaticResource() getOrElse resourceNotFound()
+  }
+
 {% endhighlight %}
 
 ## Further reading
