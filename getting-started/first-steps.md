@@ -54,7 +54,7 @@ The Scalatra code base contains [examples][examples] which you can easily run
 yourself. This is a great way to dissect some running code for common tasks,
 including:
 
-[examples]: https://github.com/scalatra/scalatra/tree/develop/example/src/main
+[examples]: https://github.com/scalatra/scalatra/tree/develop/example/src/main/scala/org/scalatra
 
 * parameters
 * form submission
