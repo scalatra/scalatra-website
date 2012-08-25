@@ -7,6 +7,8 @@ title: Scalatra | Your First Scalatra App
   <h1>First Steps With Scalatra</h1>
 </div>
 
+## Hello, World!
+
 Scalatra is installed, how about making your first application?  Source files
 go into `src/main/scala/com/example/app` (substitute your package for
 `com/example/app`).  Open
@@ -45,8 +47,7 @@ you can see, Scalatra doesn't force you to setup much infrastructure: a
 request to a URL evaluates some Scala code and returns some text in response.
 Whatever the block returns is sent back to the browser.
 
-Scalatra Examples
-=================
+## Scalatra Examples
 
 The easiest way to learn a new web framework is to see example code in action.
 
