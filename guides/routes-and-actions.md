@@ -31,8 +31,9 @@ In Scalatra, a route is an HTTP method paired with a URL matching pattern.
 
 ## Route order
 
-The first matching route is invoked.  Routes are matched from the bottom up.
-<span class="label label-warning">Watch out!</span> _This is the opposite of Sinatra._
+The first matching route is invoked. Routes are matched from the *bottom up*.
+
+<span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
@@ -166,8 +167,7 @@ is then rendered to the response according to the following rules.
 <dt>ActionResult</dt>
 <dd>Sets status, body and headers. After importing
 <code>org.scalatra.ActionResult._</code>, you can return 200 OK, 404 Not Found
-and other responses by referencing them by their descriptions. See the
-ActionResult code (below) for an example.
+and other responses by referencing them by their descriptions. See the <span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span> code (below) for an example.
 </dd>
 </dl>
 <dl class="dl-horizontal">
@@ -189,8 +189,8 @@ response's writer.</dd>
 This behavior may be customized for these or other return types by overriding
 `renderResponse`.
 
+<span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span>
 {% highlight scala %}
-    // ActionResult example
     get("/file/:id") {
       fileService.find(params("id")) match {
         case Some(file) => Ok(file)
@@ -205,13 +205,16 @@ This behavior may be customized for these or other return types by overriding
 Incoming HTTP request parameters become available to your actions through
 two methods: `multiParams` and `params`.
 
-`multiParams` are a result of merging the standard request params (query
+<dl class="dl-horizontal">
+<dt>multiParams</dt>
+<dd>a result of merging the standard request params (query
 string or post params) with the route parameters extracted from the route
 matchers of the current route. The default value for an unknown param is the
-empty sequence. Keys return `Seq`s of values.
-
-`params` are a special, simplified view of `multiParams`, containing only the
-head element for any known param, and returning the values as Strings.
+empty sequence. Keys return <code>Seq</code>uences of values.</dd>
+<dt>params</dt>
+<dd>a special, simplified view of <code>multiParams</code>, containing only the
+head element for any known param, and returning the values as Strings.</dd>
+</dl>
 
 ### A params example
 
@@ -223,7 +226,7 @@ As an example, let's hit a URL with a GET like this:
 
 {% endhighlight %}
 
-(note that there are two "foo" keys in there)
+<span class="label label-info"><i class="icon-flag icon-white"></i> Look closely: </span> there are two "foo" keys in there.
 
 Assuming there's a matching route at `/articles/:id`, we get the following
 results inside the action:
