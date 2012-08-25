@@ -45,10 +45,11 @@ and mobile applications.
 * It's a perfect server-side counterpart to in-browser client development
 frameworks such as [backbone.js](http://backbonejs.org/),
 [ember.js](http://emberjs.com) or [angular.js](http://angularjs.org).
-* It's a simple, fun, and practical way to learn [Scala](http://www.scala-lang.org),
-a new programming language with advanced features.
-* It will help you use all available cores of that new 16-core server.
-It also gives you easy access to Scala's new concurrency-management constructs:
+* It's a simple, fun, and practical way to learn
+[Scala](http://www.scala-lang.org), a new programming language with advanced
+features.
+* It will help you use all available cores of that new 16-core server. It
+also gives you easy access to Scala's new concurrency-management constructs:
 Akka Actors.
 
 [linkedin]: http://www.linkedin.com
