@@ -7,7 +7,7 @@ title: Scalatra Guides | Configuration & deployment
   <h1>Configuration & deployment</h1>
 </div>
 
-## Configuration
+## Configuring your application
 
 The environment is defined by:
 
@@ -37,14 +37,14 @@ route matches.
 
 [console]: http://scalate.fusesource.org/documentation/console.html
 
-## Configuring your app using the Scalatra bootstrap file
+### Configuring your app using the Scalatra bootstrap file
 
 The Scalatra bootstrap file, new in Scalatra 2.1.x, is the recommended way
 of configuring your application. It allows you to easily mount different
 servlets, set application parameters, and run initialization code for your
 app, without touching much in the way of XML.
 
-If you've started your project in Scalatra 2.1.x, using the giter8 template,
+If you've just started a new project in Scalatra 2.1.x, using the giter8 template,
 all of this will already be set up for you. However, if you're upgrading from
 2.0.x, or you just want to understand what's going on, read on.
 
@@ -83,13 +83,22 @@ The XML which allows you to do this is as follows:
 
 {% endhighlight %}
 
-Note that there are no servlet-names, servlet classes, etc. That stuff's all
-handled dynamically by that ScalatraListener class, which will supply our actual
+<span class="badge badge-success"><i class="icon-thumbs-up icon-white"></i></span>
+If you starter your project in an older version of Scalatra, and want to start using the new Scalatra bootstrap configuration style, drop that XML into your web.xml and you're
+all set.
+
+Note that there are no servlet-names, servlet classes, etc. That's all
+handled dynamically by the `ScalatraListener` class, which will supply our actual
 configuration to the underlying servlet container.
 
+This closes the XML portion of our broadcast.
+
 Note that there is also a file called Scalatra.scala in your `src/main/scala`
-directory. The simplest version of this file, which gets generated when you
-make a new project using the giter8 template, looks like this:
+directory. This is the Scalatra bootstrap config file, and it's where you should
+do most of your app configuration work.
+
+The simplest version of this file, which gets generated when you
+make a new project using the giter8 template, looks something like this:
 
 {% highlight scala %}
 
@@ -101,52 +110,125 @@ make a new project using the giter8 template, looks like this:
 
       override def init(context: ServletContext) {
 
-        // set init params like this:
-        org.scalatra.cors.allowedOrigins = "http://example.com:8080 http://foo.example.com"
-
         // mount servlets like this:
         context mount (new ArticlesServlet, "/articles/*")
+
+        // set init params like this:
+        // org.scalatra.cors.allowedOrigins = "http://example.com"
       }
     }
 
 {% endhighlight %}
 
-### Mounting multiple servlets (or filters)
+#### Mounting multiple servlets (or filters)
 
 If you've got more than one servlet or filter in your application, you'll
 need to mount them.
 
-This Scalatra class allows you to mount either servlets or filters (or both)
-into your application, and define path patterns that they'll respond to.
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+If you're coming from a dynamic language, such as PHP, Ruby, Python, or Perl,
+you may be shocked to find that servlet-based applications, including Scalatra,
+are unable to dynamically require and use controller classes. You'll need to
+explicitly tell your application about a new `ScalatraServlet` or `ScalatraFilter`
+whenever you add one.
+</div>
 
-### Setting init params
+The Scalatra bootstrap config class allows you to mount servlets or
+filters (or both) into your application, and define URL path patterns that
+they'll respond to.
+
+{% highlight scala %}
+
+  override def init(context: ServletContext) {
+
+    // mount a first servlet like this:
+    context mount (new ArticlesServlet, "/articles/*")
+
+    // mount a second servlet like this:
+    context mount (new CommentsServlet, "/comments/*")
+
+  }
+
+{% endhighlight %}
+
+#### Setting init params
+
+You can also set init params in the Scalatra bootstrap file. For instance, you
+can set the `org.scalatra.environment` init parameter to set the application
+environment:
+
+{% highlight scala %}
+
+  override def init(context: ServletContext) {
+
+    // mount a first servlet like this:
+    context mount (new ArticlesServlet, "/articles/*")
+
+    // Let's set the environment
+    org.scalatra.environment = "production"
+
+  }
+
+{% endhighlight %}
 
 The Scalatra bootstrap file is also a good place to put things like database
-initialization code, which need to be set up once in your application.
+initialization code, which need to be set up once in your application. You can
+mix in whatever traits you want, and run any Scala code you want from inside
+the `init` method:
 
-## Configuring your app using web.xml
+{% highlight scala %}
 
+  import org.scalatra.LifeCycle
+  import javax.servlet.ServletContext
+
+  // Import the trait:
+  import com.yourdomain.yourapp.DatabaseInit
+
+  // Mixing in the trait:
+  class Scalatra extends LifeCycle with DatabaseInit {
+
+    override def init(context: ServletContext) {
+
+      // call a method that comes from inside our DatabaseInit trait:
+      configureDb()
+
+      // Mount our servlets as normal:
+      context mount (new Articles, "/articles/*")
+      context mount (new Users, "/users/*")
+    }
+  }
+
+{% endhighlight %}
+
+### Configuring your app using web.xml
+
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 If you're an old Java hand, you'll be quite comfortable mounting servlets
-through the `web.xml` file in traditional servlet style, so you may not want
+through the web.xml file in traditional servlet style, so you may not want
 to use the Scalatra bootstrap file.
+</div>
 
-### Mounting multiple servlets (or filters)
-
-
-
-### Setting init params
-
-{pygmentize:: xml}
-<servlet>
-  <init-param>
-    <param-name>org.scalatra.environment</param-name>
-    <param-value>development</param-value>
-  </init-param>
-</servlet>
-{pygmentize}
+#### Mounting multiple servlets (or filters)
 
 
-## Logging
+
+#### Setting init params
+
+{% highlight xml %}
+
+  <servlet>
+    <init-param>
+      <param-name>org.scalatra.environment</param-name>
+      <param-value>development</param-value>
+    </init-param>
+  </servlet>
+
+{% endhighlight %}
+
+
+### Logging
 
 By default, Scalatra uses [Logback][logback] for logging.
 
@@ -161,17 +243,17 @@ In your servlet or filter class:
 
 {% highlight scala %}
 
-import org.slf4j.{Logger, LoggerFactory}
+  import org.slf4j.{Logger, LoggerFactory}
 
-class YourServlet extends ScalatraServlet {
+  class YourServlet extends ScalatraServlet {
 
-  val logger =  LoggerFactory.getLogger(getClass)
+    val logger =  LoggerFactory.getLogger(getClass)
 
-  def get("/") {
-    logger.info("foo")
-    // whatever else you want to put in the body of the action
+    def get("/") {
+      logger.info("foo")
+      // whatever else you want to put in the body of the action
+    }
   }
-}
 
 {% endhighlight %}
 
