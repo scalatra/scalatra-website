@@ -36,7 +36,7 @@ The recommended way of structuring a Scalatra project is as follows:
              |_ web.xml
 
 
-### Mounting multiple servlets (or filters)
+## Mounting multiple servlets (or filters)
 
 If you've got more than one servlet or filter in your application, you'll
 need to mount them. If you're an old Java hand, you'll be quite comfortable
@@ -98,7 +98,7 @@ It's also a good place to put things like database initialization code, which
 need to be set up once in your application.
 
 
-### Serving Static Files
+## Serving Static Files
 
 Static files can be served out of the `webapp` folder, which acts as the ROOT
 directory. As with any servlet based application, the contents of this directory
@@ -131,7 +131,7 @@ In this application, the only publicly accessible files will be at
 protected by the web application container.
 
 
-### ScalatraServlet vs. ScalatraFilter
+## ScalatraServlet vs. ScalatraFilter
 
 There are two base classes you can inherit from in order to make a
 Scalatra application: `ScalatraServlet` and `ScalatraFilter`.
@@ -160,19 +160,18 @@ the WAR's context path. `ScalatraServlet` matches routes relative to the
 servlet path. This allows you to mount multiple servlets in different namespaces
 in the same WAR.
 
-#### Use ScalatraFilter if:
+### Use ScalatraFilter if:
 
 * You are migrating a legacy application inside the same URL space
 * You want to serve static content from the WAR rather than a
   dedicated web server
 
-#### Use ScalatraServlet if:
+### Use ScalatraServlet if:
 
 * You want to match routes with a prefix deeper than the context path.
 
 
-Understanding Scalatra's SBT Dependencies
-=========================================
+## Understanding Scalatra's SBT Dependencies
 
 Scalatra uses Scala's [Simple Build Tool][sbt-site], or `sbt`, as a build system.
 
