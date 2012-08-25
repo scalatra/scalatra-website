@@ -9,7 +9,8 @@ title: Scalatra guides | Routes and actions
 
 In Scalatra, a route is an HTTP method paired with a URL matching pattern.
 
-{pygmentize:: scala}
+{% highlight scala %}
+
     get("/") {
       // show something
     }
@@ -25,8 +26,8 @@ In Scalatra, a route is an HTTP method paired with a URL matching pattern.
     delete("/") {
       // delete something
     }
-{pygmentize}
 
+{% endhighlight %}
 
 ## Route order
 
@@ -38,20 +39,23 @@ from the bottom up, routes can be overridden in child classes.
 
 Route patterns may include named parameters:
 
-{pygmentize:: scala}
+{% highlight scala %}
+
     get("/hello/:name") {
       // Matches "GET /hello/foo" and "GET /hello/bar"
       // params("name") is "foo" or "bar"
       <p>Hello, {params("name")}</p>
     }
-{pygmentize}
+
+{% endhighlight %}
 
 ## Wildcards
 
 Route patterns may also include wildcard parameters, accessible through the
 `splat` key.
 
-{pygmentize:: scala}
+{% highlight scala %}
+
     get("/say/*/to/*") {
       // Matches "GET /say/hello/to/world"
       multiParams("splat") // == Seq("hello", "world")
@@ -61,19 +65,21 @@ Route patterns may also include wildcard parameters, accessible through the
       // Matches "GET /download/path/to/file.xml"
       multiParams("splat") // == Seq("path/to/file", "xml")
     }
-{pygmentize}
+
+{% endhighlight %}
 
 ## Regular expressions
 
 The route matcher may also be a regular expression.  Capture groups are
 accessible through the `captures` key.
 
-{pygmentize:: scala}
+{% highlight scala %}
+
     get("""^\/f(.*)/b(.*)""".r) {
       // Matches "GET /foo/bar"
       multiParams("captures") // == Seq("oo", "ar")
     }
-{pygmentize}
+{% endhighlight %}
 
 ## Rails-like pattern matching
 
@@ -82,7 +88,8 @@ but not identical, syntax, based on Rack::Mount's Strexp.  The path pattern
 parser is resolved implicitly, and may be overridden if you prefer an
 alternate syntax:
 
-{pygmentize:: scala}
+{% highlight scala %}
+
     import org.scalatra._
 
     class RailsLikeRouting extends ScalatraFilter {
@@ -91,7 +98,7 @@ alternate syntax:
 
       get("/:file(.:ext)") { // matched Rails-style }
     }
-{pygmentize}
+{% endhighlight %}
 
 ## Path patterns in the REPL
 
@@ -119,7 +126,8 @@ Alternatively, you may use the `RailsPathPatternParser` in place of the
 Routes may include conditions.  A condition is any expression that returns
 Boolean.  Conditions are evaluated by-name each time the route matcher runs.
 
-{pygmentize:: scala}
+{% highlight scala %}
+
     get("/foo") {
       // Matches "GET /foo"
     }
@@ -127,24 +135,26 @@ Boolean.  Conditions are evaluated by-name each time the route matcher runs.
     get("/foo", request.getRemoteHost == "127.0.0.1") {
       // Overrides "GET /foo" for local users
     }
-{pygmentize}
+{% endhighlight %}
 
 Multiple conditions can be chained together.  A route must match all
 conditions:
 
-{pygmentize:: scala}
+{% highlight scala %}
+
     get("/foo", request.getRemoteHost == "127.0.0.1", request.getRemoteUser == "admin") {
       // Only matches if you're the admin, and you're localhost
     }
-{pygmentize}
+{% endhighlight %}
 
 No path pattern is necessary.  A route may consist of solely a condition:
 
-{pygmentize:: scala}
+{% highlight scala %}
+
     get(isMaintenanceMode) {
       <h1>Go away!</h1>
     }
-{pygmentize}
+{% endhighlight %}
 
 ## Actions
 
@@ -155,14 +165,15 @@ is then rendered to the response according to the following rules:
 `org.scalatra.ActionResult._`, you can return 200 OK, 404 Not Found
 and other responses by referencing them by their descriptions:
 
-{pygmentize:: scala}
+{% highlight scala %}
+
     get("/file/:id") {
       fileService.find(params("id")) match {
         case Some(file) => Ok(file)
         case None       => NotFound("Sorry, the file could not be found")
      }
    }
-{pygmentize}
+{% endhighlight %}
 
 
 `Array[Byte]` - If no content-type is set, it is set to `application/octet-stream`.
@@ -198,15 +209,19 @@ head element for any known param, and returning the values as Strings.
 
 As an example, let's hit a URL with a GET like this:
 
-{pygmentize::}
+{% highlight html %}
+
   /articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo
-{pygmentize}
+
+{% endhighlight %}
+
 (note that there are two "foo" keys in there)
 
 Assuming there's a matching route at `/articles/:id`, we get the following
 results inside the action:
 
-{pygmentize:: scala}
+{% highlight scala %}
+
   get("/articles/:id") {
     params("id") // => "52"
     params("foo") // => "uno" (discarding the second "foo" parameter value)
@@ -217,7 +232,8 @@ results inside the action:
     multiParams("foo") // => Seq("uno", "anotherfoo")
     multiParams("unknown") // => an empty Seq
   }
-{pygmentize}
+
+{% endhighlight %}
 
 ### params.getOrElse
 
@@ -227,13 +243,15 @@ Let's say you wanted to require an :author name param, and set a :page value
 to 1 by default. If you don't receive an :author, you want to stop execution.
 You could do it like this:
 
-{pygmentize:: scala}
-get("/articles-by/:author/:page") {
-  val author:String = params.getOrElse("author", halt(400))
-  val page:Int = params.getOrElse("page", "1").toInt
-  // now do stuff with your params
-}
-{pygmentize}
+{% highlight scala %}
+
+  get("/articles-by/:author/:page") {
+    val author:String = params.getOrElse("author", halt(400))
+    val page:Int = params.getOrElse("page", "1").toInt
+    // now do stuff with your params
+  }
+
+{% endhighlight %}
 
 ## Enabling support for PUT and DELETE requests
 
@@ -251,15 +269,17 @@ Scalatra will look for these conventions on incoming requests and transform
 the request method automatically if you add the `MethodOverride` trait into your
 servlet or filter:
 
-{pygmentize:: scala}
-class MyFilter extends ScalatraFilter with MethodOverride {
+{% highlight scala %}
 
-  // POST to "/foo/bar" with params "id=2" and "_method=put" will hit this route:
-  put("/foo/bar/:id") {
-    // update your resource here
+  class MyFilter extends ScalatraFilter with MethodOverride {
+
+    // POST to "/foo/bar" with params "id=2" and "_method=put" will hit this route:
+    put("/foo/bar/:id") {
+      // update your resource here
+    }
   }
-}
-{pygmentize}
+
+{% endhighlight %}
 
 
 ## Request filters
@@ -276,17 +296,19 @@ block to yield. Filters optionally take a URL pattern to match to the request.
 The `before` method will let you pass a block to be evaluated **before** _each_
 and _every_ route gets processed.
 
-{pygmentize:: scala}
-before() {
-  MyDb.connect
-  contentType="text/html"
-}
+{% highlight scala %}
 
-get("/") {
-  val list = MyDb.findAll()
-  templateEngine.layout("index.ssp", list)
-}
-{pygmentize}
+  before() {
+    MyDb.connect
+    contentType="text/html"
+  }
+
+  get("/") {
+    val list = MyDb.findAll()
+    templateEngine.layout("index.ssp", list)
+  }
+
+{% endhighlight %}
 
 In this example, we've set up a `before` filter to connect using a contrived
 `MyDb` module, and set the `contentType` for all requests to `text/html`.
@@ -296,11 +318,13 @@ In this example, we've set up a `before` filter to connect using a contrived
 The `after` method lets you pass a block to be evaluated **after** _each_ and
 _every_ route gets processed.
 
-{pygmentize:: scala}
-after() {
-  MyDb.disconnect
-}
-{pygmentize}
+{% highlight scala %}
+
+  after() {
+    MyDb.disconnect
+  }
+
+{% endhighlight %}
 
 As you can see from this example, we're asking the `MyDB` module to
 disconnect after the request has been processed.
@@ -311,15 +335,17 @@ Filters optionally take a pattern to be matched against the requested URI
 during processing. Here's a quick example you could use to run a contrived
 `authenticate!` method before accessing any "admin" type requests.
 
-{pygmentize:: scala}
-before("/admin/*") {
-  basicAuth
-}
+{% highlight scala %}
 
-after("/admin/*") {
-  user.logout
-}
-{pygmentize}
+  before("/admin/*") {
+    basicAuth
+  }
+
+  after("/admin/*") {
+    user.logout
+  }
+
+{% endhighlight %}
 
 
 ## Processing order
@@ -343,11 +369,13 @@ routines.
 
 There is a handler for redirection:
 
-{pygmentize:: scala}
-get("/"){
-  redirect("/someplace/else")
-}
-{pygmentize}
+{% highlight scala %}
+
+  get("/"){
+    redirect("/someplace/else")
+  }
+
+{% endhighlight %}
 
 This will return a redirect response, with HTTP status 302, pointing to
 `/someplace/else`.
@@ -358,42 +386,47 @@ want to catch it in an action.
 Although there's no built-in handler for permanent redirects, if you'd like to
 do a 301 permanent redirect, you can do something like this:
 
-{pygmentize:: scala}
+{% highlight scala %}
 halt(status = 301, headers = Map("Location" -> "http://example.org/"))
-{pygmentize}
+{% endhighlight %}
 
 ### Halting
 
 To immediately stop a request within a filter or route:
 
-{pygmentize:: scala}
+{% highlight scala %}
+
 halt()
-{pygmentize}
+{% endhighlight %}
 
 You can also specify the [HTTP status][statuses]:
 
 [statuses]: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 
-{pygmentize:: scala}
+{% highlight scala %}
+
 halt(403)
-{pygmentize}
+{% endhighlight %}
 
 Or the status and the body:
 
-{pygmentize:: scala}
+{% highlight scala %}
+
 halt(403, <h1>Go away!</h1>)
-{pygmentize}
+{% endhighlight %}
 
 Or even the HTTP status reason and headers.  For more complex invocations, it
 is recommended to use named arguments:
 
-{pygmentize:: scala}
-halt(status = 403,
-     reason = "Forbidden",
-     headers = Map("X-Your-Mother-Was-A" -> "hamster",
-                   "X-And-Your-Father-Smelt-Of" -> "Elderberries"),
-     body = <h1>Go away or I shall taunt you a second time!</h1>)
-{pygmentize}
+{% highlight scala %}
+
+  halt(status = 403,
+       reason = "Forbidden",
+       headers = Map("X-Your-Mother-Was-A" -> "hamster",
+                     "X-And-Your-Father-Smelt-Of" -> "Elderberries"),
+       body = <h1>Go away or I shall taunt you a second time!</h1>)
+
+{% endhighlight %}
 
 The `reason` argument is ignored unless `status` is not null.  If you don't pass
 arguments for `status`, `reason`, or `body`, those parts of the response will
@@ -407,35 +440,39 @@ to catch it in an action.
 A route can punt processing to the next matching route using `pass()`.  Remember,
 unlike Sinatra, routes are matched from the bottom up.
 
-{pygmentize:: scala}
-get("/guess/*") {
-  "You missed!"
-}
+{% highlight scala %}
 
-get("/guess/:who") {
-  params("who") match {
-    case "Frank" => "You got me!"
-    case _ => pass()
+  get("/guess/*") {
+    "You missed!"
   }
-}
-{pygmentize}
+
+  get("/guess/:who") {
+    params("who") match {
+      case "Frank" => "You got me!"
+      case _ => pass()
+    }
+  }
+
+{% endhighlight %}
 
 The route block is immediately exited and control continues with the next
 matching route.  If no matching route is found, the `notFound` handler is
 invoked.
 
-### `notFound`
+### notFound
 
 The `notFound` handler allows you to execute code when there is no matching
 route for the current request's URL.
 
 The default behavior is:
 
-{pygmentize:: scala}
-notFound {
-  <h1>Not found. Bummer.</h1>
-}
-{pygmentize}
+{% highlight scala %}
+
+  notFound {
+    <h1>Not found. Bummer.</h1>
+  }
+
+{% endhighlight %}
 
 What happens next differs slightly based on whether you've set your application
 up using ScalatraServlet or ScalatraFilter.

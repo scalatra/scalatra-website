@@ -22,7 +22,7 @@ logging dependency in your `build.sbt` file:
 
 In your servlet or filter class:
 
-{% highlight %}
+{% highlight scala %}
 
 import org.slf4j.{Logger, LoggerFactory}
 
@@ -36,7 +36,7 @@ class YourServlet extends ScalatraServlet {
   }
 }
 
-{% highlight %}
+{% endhighlight %}
 
 This will get you basic logging support. There are some additional logging
 libraries you might want to investigate: [slf4s][slf4s] and
