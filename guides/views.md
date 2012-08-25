@@ -16,16 +16,20 @@ Scalatra can render views in three main ways.
 ## Inline HTML
 
 The simplest method of rendering a view is by using inline HTML:
-{pygmentize:: scala}
-def get("/") {
-  contentType="text/html"
 
-  <html>
-  <head><title>Test</title></head>
-  <body>Test Body for {uri("/")}</body>
-  </html>
-}
-{pygmentize}
+{% highlight scala %}
+
+  def get("/") {
+    contentType="text/html"
+
+    <html>
+    <head><title>Test</title></head>
+    <body>Test Body for {uri("/")}</body>
+    </html>
+  }
+
+{% endhighlight %}
+
 
 Note the use of the curly braces on the `{uri("/")}` part of the inlined view.
 This tells Scalatra to render Scala code.
@@ -59,18 +63,21 @@ by default look in the `views` directory in your application root.
 
 There are two ways to use Scalate. Both of them require you to extend your
 servlet with `ScalateSupport`:
-{pygmentize:: scala}
-class YourServlet extends ScalatraServlet with ScalateSupport {
-  // your class here
-}
-{pygmentize}
+
+{% highlight scala %}
+
+  class YourServlet extends ScalatraServlet with ScalateSupport {
+    // your class here
+  }
+
+{% endhighlight %}
 
 ## Using Scalate directly
 
 Scalate can be called directly, using the
 `templateEngine.layout("templateName")` method, like this:
 
-{pygmentize:: scala}
+{% highlight scala %}
 get("/") {
   templateEngine.layout("index.ssp")
   // renders webapp/index.ssp
@@ -79,7 +86,7 @@ get("/") {
   templateEngine.layout("/dogs/index.ssp")
   // would instead render webapp/dogs/index.ssp
 }
-{pygmentize}
+{% endhighlight %}
 
 When using Scalate directly, Scalatra will look for your template files
 in the `webapp` folder of your application (which is found under `src/main/`
@@ -90,7 +97,7 @@ looks for a `webapp/layout/default.xx` template file to render before loading an
 other views (where `xx` is a Scalate template suffix type). If you're using
 `SSP`, your `webapp/layout/default.ssp` would look something like this:
 
-{pygmentize:: html}
+{% highlight html %}
 <%@ var yield: String %>
 <html>
   <head>..</head>
@@ -98,7 +105,7 @@ other views (where `xx` is a Scalate template suffix type). If you're using
     <%= yield %>
   </body>
 </html>
-{pygmentize}
+{% endhighlight %}
 
 ## ScalateSupport helpers
 
@@ -106,39 +113,40 @@ The second way of using Scalate is to use Scalatra's ScalateSupport helpers, whi
 are a bit more "magic" than calling Scalate directly.
 
 Basic usage:
-{pygmentize:: scala}
+
+{% highlight scala %}
 def get("/") {
   contentType="text/html"
 
   layoutTemplate("/WEB-INF/views/index.ssp")
 }
-{pygmentize}
+{% endhighlight %}
 
 When using `layoutTemplate`, you *must* prefix your view paths with a relative
 `/` character. So, `layoutTemplate("/WEB-INF/views/foo.ssp")` is good,
 `layoutTemplate("WEB-INF/views/foo.ssp)` will fail.
 
 Rendering with a different layout:
-{pygmentize:: scala}
+{% highlight scala %}
 def get("/") {
   contentType="text/html"
 
   layoutTemplate("/WEB-INF/views/index.ssp", "layout" -> "/WEB-INF/layouts/app.ssp")
 }
-{pygmentize}
+{% endhighlight %}
 
 Each possible kind of Scalate template (mustache, scaml, jade, ssp) has a
 corresponding helper which can be used to find the template file, without a
 suffix, and without the `WEB-INF/views` part of the path. The above example can be
 written as:
 
-{pygmentize:: scala}
+{% highlight scala %}
 def get("/") {
   contentType="text/html"
 
   ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp")
 }
-{pygmentize}
+{% endhighlight %}
 
 When using the scalate helper methods, it is not required to having a leading
 `/`, so `ssp("index")` would work just as well as `ssp("/index")`.
@@ -148,23 +156,28 @@ When using the scalate helper methods, it is not required to having a leading
 Parameters may be passed to your templates using a Seq(String, Any) after the
 path to the template file. The simplest example might look like this:
 
-{pygmentize:: scala}
-def get("/") {
-  contentType="text/html"
+{% highlight scala %}
 
-  layoutTemplate("/WEB-INF/views/index.ssp", "foo" -> "uno", "bar" -> "dos")
-}
-{pygmentize}
+  def get("/") {
+    contentType="text/html"
+
+    layoutTemplate("/WEB-INF/views/index.ssp", "foo" -> "uno", "bar" -> "dos")
+  }
+
+{% endhighlight %}
 
 Putting it all together, in a scaml example (alternatively use mustache, ssp,
 or jade):
-{pygmentize:: scala}
-def get("/") {
-  contentType="text/html"
 
-  scaml("/index", "layout" -> "WEB-INF/layouts/app.scaml", "foo" -> "uno", "bar" -> "dos")
-}
-{pygmentize}
+{% highlight scala %}
+
+  def get("/") {
+    contentType="text/html"
+
+    scaml("/index", "layout" -> "WEB-INF/layouts/app.scaml", "foo" -> "uno", "bar" -> "dos")
+  }
+
+{% endhighlight %}
 
 ## Layouts
 
@@ -175,13 +188,15 @@ action.
 If you want, you can set off your `layout` parameter from the others, perhaps
 by doing something like this (in jade this time):
 
-{pygmentize:: scala}
-def get("/") {
-  contentType="text/html"
+{% highlight scala %}
 
-  jade("/index",("layout" -> "WEB-INF/layouts/app.jade"), "foo" -> "uno", "bar" -> "dos")
-}
-{pygmentize}
+  def get("/") {
+    contentType="text/html"
+
+    jade("/index",("layout" -> "WEB-INF/layouts/app.jade"), "foo" -> "uno", "bar" -> "dos")
+  }
+
+{% endhighlight %}
 
 ### Setting a default layout
 
@@ -194,31 +209,35 @@ response will render within the default layout.
 To disable a layout for certain templates, Scalate accepts an empty `layout`
 attribute:
 
-{pygmentize:: scala}
-def get("/") {
-  // This template will render without a layout.
-  jade("/index", "layout" -> "", "foo" -> "uno", "bar" -> "dos")
-}
-{pygmentize}
+{% highlight scala %}
+
+  def get("/") {
+    // This template will render without a layout.
+    jade("/index", "layout" -> "", "foo" -> "uno", "bar" -> "dos")
+  }
+
+{% endhighlight %}
 
 Your layout file itself might look something like this:
 
-{pygmentize:: html}
-<%@ var body: String %>
-<%@ var title: String = "Some Default Title" %>
-<html>
-<head>
-  <title>${title}</title>
-</head>
-<body>
-  <p>layout header goes here...</p>
+{% highlight html %}
 
-  ${unescape(body)}
+  <%@ var body: String %>
+  <%@ var title: String = "Some Default Title" %>
+  <html>
+  <head>
+    <title>${title}</title>
+  </head>
+  <body>
+    <p>layout header goes here...</p>
 
-  <p>layout footer goes here...</p>
-</body>
-</html>
-{pygmentize}
+    ${unescape(body)}
+
+    <p>layout footer goes here...</p>
+  </body>
+  </html>
+
+{% endhighlight %}
 
 In this layout, the template output for the current action will be inserted
 at the `${unescape(body)}` directive.
@@ -230,7 +249,7 @@ You may need to render some other page when Scalatra can't find a route.
 
 Using Scalate directly:
 
-{pygmentize:: scala}
+{% highlight scala %}
 class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
   notFound {
     // If no route matches, then try to render a Scaml template
@@ -248,18 +267,18 @@ class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
     }
   }
 }
-{pygmentize}
+{% endhighlight %}
 
 Or more simply, using the Scalate helpers:
 
-{pygmentize:: scala}
+{% highlight scala %}
 notFound {
   findTemplate(requestPath) map { path =>
     contentType = "text/html"
     layoutTemplate(path)
   } orElse serveStaticResource() getOrElse resourceNotFound()
 }
-{pygmentize}
+{% endhighlight %}
 
 ## Further reading
 
