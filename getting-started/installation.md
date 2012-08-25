@@ -159,17 +159,14 @@ container will provide this at deployment time.
 [specs2]: https://github.com/etorreborre/specs2
 [qos-ch]: http://logback.qos.ch/
 
-### Building
+## Building
 
 Scala is a compiled language, so you need to build your Scalatra project.
 
 Enter your application's top-level directory and type `sbt`, and the
 application will build.
 
-Running in Development
-======================
-
-### Automatic Code Reloading
+## Automatic Code Reloading
 
 Restarting an application manually after every code change is both slow and
 painful. It can easily be avoided by using a tool for automatic code reloading.
