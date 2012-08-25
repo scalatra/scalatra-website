@@ -76,19 +76,23 @@ protected by the web application container.
 There are two base classes you can inherit from in order to make a
 Scalatra application: `ScalatraServlet` and `ScalatraFilter`.
 
-{pygmentize:: scala}
-class YourServlet extends ScalatraServlet with ScalateSupport {
-  // your class here
-}
-{pygmentize}
+{% highlight scala %}
+
+  class YourServlet extends ScalatraServlet with ScalateSupport {
+    // your class here
+  }
+
+{% endhighlight %}
 
 vs.
 
-{pygmentize:: scala}
-class YourFilter extends ScalatraFilter with ScalateSupport {
-  // your class here
-}
-{pygmentize}
+{% highlight scala %}
+
+  class YourFilter extends ScalatraFilter with ScalateSupport {
+    // your class here
+  }
+
+{% endhighlight %}
 
 The main difference is the default behavior when a route is not found.
 A `ScalatraFilter` will delegate to the next filter or servlet in the chain (as
@@ -122,6 +126,7 @@ so that `sbt` can download them for you and build your Scalatra project.
 
 Here's an example Scalatra sbt file:
 
+{% highlight scala %}
 
     organization := "org.example"
 
@@ -148,6 +153,7 @@ Here's an example Scalatra sbt file:
 
     resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
 
+{% endhighlight %}
 
 If your project depends on any additional libraries, you can add them to the
 `libraryDependencies` section.
