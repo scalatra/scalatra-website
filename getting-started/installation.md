@@ -103,16 +103,6 @@ doubt, use the default.
 `version`: The version number of your project.  This is entirely up to you,
 but we like [Semantic Versioning](http://semver.org/).
 
-### Installation using `git clone`
-
-For those who prefer not to install giter8, an equivalent prototype project is
-maintained on GitHub:
-
-{pygmentize::}
-$ git clone http://github.com/scalatra/scalatra-sbt-prototype.git
-{pygmentize}
-
-You will need to manually update organization, name, and version in `build.sbt`.
 
 ### Understanding SBT Dependencies
 
