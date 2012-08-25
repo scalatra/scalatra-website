@@ -8,8 +8,10 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
     <div class="span4">
       <img src="assets/img/logo-x.png" class="img-rounded">
     </div>
-    <div class="span8">
-      <p>Scalatra is one of a new breed of simple, accessible, scalable web frameworks. It combines the power of the JVM with the beauty and brevity of Scala, allowing you to build high-performance web APIs which may be asynchronous or realtime.</p>
+    <div class="span6">
+      <p>Scalatra is a simple, accessible, scalable web framework. It combines
+        the power of the JVM with the beauty and brevity of Scala, helping you
+        quickly build high-performance web sites and APIs.</p>
     </div>
   </div>
 </div>
