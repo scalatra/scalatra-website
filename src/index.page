@@ -20,7 +20,7 @@ class HelloFilter extends ScalatraFilter {
 }
 {pygmentize}
 
-  
+
 ## Quick start
 
 ### Giter8 Quick start (SBT 0.10.x)
