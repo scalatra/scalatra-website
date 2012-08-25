@@ -52,12 +52,9 @@ win for complex log messages involving expensive `toString`s or many
 concatenations.
 
 
-
 ## Production Deployment
 
-
 ### As a War to Jetty/Tomcat/Etc
-
 
     $ sbt package
     $ mv target/example-1.0.war target/example.war
