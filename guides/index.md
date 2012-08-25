@@ -3,6 +3,10 @@ layout: default
 title: Scalatra Guides | Index
 ---
 
+<div class="page-header">
+<h1>Scalatra Guides</h1>
+</div>
+
 The following guides are available:
 
  * [Routes and Actions](routes-and-actions.html)

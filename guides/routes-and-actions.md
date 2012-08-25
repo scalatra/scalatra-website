@@ -3,8 +3,9 @@ layout: default
 title: Scalatra Guides | Routes and Actions
 ---
 
-Routes and Actions
-================
+<div class="page-header">
+<h1>Routes &amp; Actions</h1>
+</div>
 
 In Scalatra, a route is an HTTP method paired with a URL matching pattern.
 

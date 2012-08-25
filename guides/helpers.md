@@ -3,8 +3,9 @@ layout: default
 title: Scalatra Guides | Helpers
 ---
 
-Helpers
-=======
+<div class="page-header">
+<h1>Helpers</h1>
+</div>
 
 Helpers exist as traits in Scalatra that can applied to your base class.
 

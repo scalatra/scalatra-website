@@ -3,8 +3,9 @@ layout: default
 title: Scalatra Guides | Testing
 ---
 
-Testing
-=======
+<div class="page-header">
+<h1>Testing</h1>
+</div>
 
 Scalatra includes a test framework for writing the unit tests for your Scalatra
 application.  The framework lets you send requests to your app and examine the

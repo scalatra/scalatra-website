@@ -3,9 +3,9 @@ layout: default
 title: Scalatra Guides | Views
 ---
 
-
-Views
-=====
+<div class="page-header">
+<h1>Views</h1>
+</div>
 
 Scalatra can render views in three main ways.
 

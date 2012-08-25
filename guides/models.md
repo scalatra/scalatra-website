@@ -3,8 +3,9 @@ layout: default
 title: Scalatra Guides | Models
 ---
 
-Models
-======
+<div class="page-header">
+<h1>Models</h1>
+</div>
 
 While Scalatra does not provide a library for models, you are free to use (or not use)
 any sort of data model you please. Here are some commonly used libraries:
