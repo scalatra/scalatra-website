@@ -53,7 +53,6 @@ RESTful APIs.
 [ign]: http://www.ign.com
 [govuk]: http://www.gov.uk
 
-
  * [Installation](installation.html)
  * [First Steps](first-steps.html)
  * [Understanding A Scalatra Project](understanding-scalatra.html)
