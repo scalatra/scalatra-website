@@ -18,18 +18,18 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
   <div class="span4">
     <h2>Getting started</h2>
     <p>Scalatra is one of a new breed of simple, accessible, scalable web frameworks. </p>
-    <p><a href="getting-started.html" class="btn">Set it up »</a></p>
+    <p><a href="getting-started" class="btn btn-primary">Go »</a></p>
   </div>
   <div class="span4">
     <h2>Guides</h2>
     <p>It combines the power of the JVM with the beauty and brevity of Scala, allowing you to build high-performance web APIs which may be asynchronous or realtime.</p>
-    <p><a href="guides.html" class="btn">Overview »</a></p>
+    <p><a href="guides" class="btn btn-primary">Go »</a></p>
   </div>
   <div class="span4">
     <h2>Community</h2>
     <p>It helps you to quickly build high-performance, scalable HTTP APIs for web
 and mobile applications.</p>
-    <p><a href="community.html" class="btn">Get involved »</a></p>
+    <p><a href="community" class="btn btn-primary">Go »</a></p>
   </div>
 </div>
 
