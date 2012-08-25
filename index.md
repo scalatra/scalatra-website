@@ -9,9 +9,9 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
       <img src="assets/img/logo-x.png" class="img-rounded">
     </div>
     <div class="span6">
-      <p>Scalatra is a simple, accessible, scalable web framework. It combines
-        the power of the JVM with the beauty and brevity of Scala, helping you
-        quickly build high-performance web sites and APIs.</p>
+      <p>Scalatra is a simple, accessible web micro-framework.</p>
+      <p> It combines the power of the JVM with the beauty and brevity of Scala,
+          helping you quickly build high-performance web sites and APIs.</p>
     </div>
   </div>
 </div>
@@ -37,14 +37,14 @@ and mobile applications.</p>
 
 ### Why would you want to use Scalatra?
 
+* It's been proven in production - [LinkedIn][linkedin], the
+[Guardian newspaper][guardian], games website [IGN][ign], and the
+[UK government][govuk] all rely on it.
 * It helps you to quickly build high-performance, scalable HTTP APIs for web
 and mobile applications.
 * It's a perfect server-side counterpart to in-browser client development
 frameworks such as [backbone.js](http://backbonejs.org/),
 [ember.js](http://emberjs.com) or [angular.js](http://angularjs.org).
-* It's been proven in production - [LinkedIn][linkedin], the
-[Guardian newspaper][guardian], games website [IGN][ign], and the
-[UK government][govuk] all rely on it.
 * It's a simple, fun, and practical way to learn [Scala](http://www.scala-lang.org),
 a new programming language with advanced features.
 * It will help you use all available cores of that new 16-core server.
