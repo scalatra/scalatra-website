@@ -5,39 +5,31 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
 
 <div class="hero-unit">
   <div class="row">
-    <div class="span3">
-      <h1>Scalatra</h1>
-      <p>A tiny, Sinatra-like web framework for Scala</p>
-        <p>
-        <a class="btn btn-primary btn-large">
-        Learn more...
-        </a>
-      </p>
+    <div class="span4">
+      <img src="assets/img/logo-x.png" class="img-rounded">
     </div>
-    <div class="span9">
-
+    <div class="span8">
+      <p>Scalatra is one of a new breed of simple, accessible, scalable web frameworks. It combines the power of the JVM with the beauty and brevity of Scala, allowing you to build high-performance web APIs which may be asynchronous or realtime.</p>
     </div>
   </div>
 </div>
 
-Scalatra is one of a new breed of simple, accessible, scalable web frameworks.
-It combines the power of the JVM with the beauty and brevity of
-[Scala](http://scala-lang.org), allowing you to build high-performance web
-APIs which may be asynchronous or realtime.
-
 <div class="row">
   <div class="span4">
-    <h2>Get ready</h2>
+    <h2>Getting started</h2>
     <p>Scalatra is one of a new breed of simple, accessible, scalable web frameworks. </p>
+    <p><a href="getting-started.html" class="btn">Set it up »</a></p>
   </div>
   <div class="span4">
     <h2>Guides</h2>
     <p>It combines the power of the JVM with the beauty and brevity of Scala, allowing you to build high-performance web APIs which may be asynchronous or realtime.</p>
+    <p><a href="guides.html" class="btn">Overview »</a></p>
   </div>
   <div class="span4">
     <h2>Community</h2>
     <p>It helps you to quickly build high-performance, scalable HTTP APIs for web
 and mobile applications.</p>
+    <p><a href="community.html" class="btn">Get involved »</a></p>
   </div>
 </div>
 
@@ -56,12 +48,6 @@ frameworks such as [backbone.js](http://backbonejs.org/),
 [guardian]: http://www.guardian.co.uk
 [ign]: http://www.ign.com
 [govuk]: http://www.gov.uk
-
-It links to:
-
- * [Getting started](getting-started)
- * [Guides](guides)
- * [Community](community)
 
 ## Versions
 
