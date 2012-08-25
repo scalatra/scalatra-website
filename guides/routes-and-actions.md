@@ -28,13 +28,13 @@ In Scalatra, a route is an HTTP method paired with a URL matching pattern.
 {pygmentize}
 
 
-### Route order
+## Route order
 
 The first matching route is invoked.  Routes are matched from the bottom up.  _This is the opposite of Sinatra._
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
-### Named parameters
+## Named parameters
 
 Route patterns may include named parameters:
 
@@ -46,7 +46,7 @@ Route patterns may include named parameters:
     }
 {pygmentize}
 
-### Wildcards
+## Wildcards
 
 Route patterns may also include wildcard parameters, accessible through the
 `splat` key.
@@ -63,7 +63,7 @@ Route patterns may also include wildcard parameters, accessible through the
     }
 {pygmentize}
 
-### Regular expressions
+## Regular expressions
 
 The route matcher may also be a regular expression.  Capture groups are
 accessible through the `captures` key.
@@ -75,7 +75,7 @@ accessible through the `captures` key.
     }
 {pygmentize}
 
-### Rails-like pattern matching
+## Rails-like pattern matching
 
 By default, route patterns parsing is based on Sinatra.  Rails has a similar,
 but not identical, syntax, based on Rack::Mount's Strexp.  The path pattern
@@ -93,7 +93,7 @@ alternate syntax:
     }
 {pygmentize}
 
-### Path patterns in the REPL
+## Path patterns in the REPL
 
 If you want to experiment with path patterns, it's very easy in the [REPL][repl].
 
@@ -114,7 +114,7 @@ Alternatively, you may use the `RailsPathPatternParser` in place of the
 
 [repl]: http://www.scala-lang.org/node/2097
 
-### Conditions
+## Conditions
 
 Routes may include conditions.  A condition is any expression that returns
 Boolean.  Conditions are evaluated by-name each time the route matcher runs.
@@ -146,7 +146,7 @@ No path pattern is necessary.  A route may consist of solely a condition:
     }
 {pygmentize}
 
-### Actions
+## Actions
 
 Each route is followed by an action.  An Action may return any value, which
 is then rendered to the response according to the following rules:
@@ -181,7 +181,7 @@ response's writer.
 This behavior may be customized for these or other return types by overriding
 `renderResponse`.
 
-### Parameter handling
+## Parameter handling
 
 Incoming HTTP request parameters become available to your actions through
 two methods: `multiParams` and `params`.
@@ -194,7 +194,7 @@ empty sequence. Keys return `Seq`s of values.
 `params` are a special, simplified view of `multiParams`, containing only the
 head element for any known param, and returning the values as Strings.
 
-#### A params example
+### A params example
 
 As an example, let's hit a URL with a GET like this:
 
@@ -219,7 +219,7 @@ results inside the action:
   }
 {pygmentize}
 
-#### params.getOrElse
+### params.getOrElse
 
 You can set defaults for parameter values easily by using `params.getOrElse`.
 
@@ -235,7 +235,7 @@ get("/articles-by/:author/:page") {
 }
 {pygmentize}
 
-### Enabling Support for PUT and DELETE requests
+## Enabling Support for PUT and DELETE requests
 
 Scalatra supports all of the HTTP verbs: `GET` and `POST`, which are supported by
 browser clients, but also `PUT` and `DELETE`, which are not.
@@ -262,7 +262,7 @@ class MyFilter extends ScalatraFilter with MethodOverride {
 {pygmentize}
 
 
-### Request Filters
+## Request Filters
 
 Scalatra offers a way for you too hook into the request chain of your
 application via filters.
@@ -271,7 +271,7 @@ Filters define two methods, `before` and `after` which both accept a
 block to yield. Filters optionally take a URL pattern to match to the request.
 
 
-#### before
+### before
 
 The `before` method will let you pass a block to be evaluated **before** _each_
 and _every_ route gets processed.
@@ -291,7 +291,7 @@ get("/") {
 In this example, we've set up a `before` filter to connect using a contrived
 `MyDb` module, and set the `contentType` for all requests to `text/html`.
 
-#### after
+### after
 
 The `after` method lets you pass a block to be evaluated **after** _each_ and
 _every_ route gets processed.
@@ -305,7 +305,7 @@ after() {
 As you can see from this example, we're asking the `MyDB` module to
 disconnect after the request has been processed.
 
-### Pattern Matching
+## Pattern Matching
 
 Filters optionally take a pattern to be matched against the requested URI
 during processing. Here's a quick example you could use to run a contrived
@@ -322,7 +322,7 @@ after("/admin/*") {
 {pygmentize}
 
 
-### Processing order
+## Processing order
 
 Route actions, errors and filters run in the following order:
 
@@ -334,12 +334,12 @@ Route actions, errors and filters run in the following order:
 5. The response is rendered.
 
 
-### Handlers
+## Handlers
 
 Handlers are top-level methods available in Scalatra to take care of common HTTP
 routines.
 
-#### Redirects
+### Redirects
 
 There is a handler for redirection:
 
@@ -362,7 +362,7 @@ do a 301 permanent redirect, you can do something like this:
 halt(status = 301, headers = Map("Location" -> "http://example.org/"))
 {pygmentize}
 
-#### Halting
+### Halting
 
 To immediately stop a request within a filter or route:
 
@@ -402,7 +402,7 @@ be left unchanged.
 _Caution:_ `halt` is implemented as a HaltException.  You probably don't want
 to catch it in an action.
 
-#### Passing
+### Passing
 
 A route can punt processing to the next matching route using `pass()`.  Remember,
 unlike Sinatra, routes are matched from the bottom up.
@@ -424,7 +424,7 @@ The route block is immediately exited and control continues with the next
 matching route.  If no matching route is found, the `notFound` handler is
 invoked.
 
-#### `notFound`
+### `notFound`
 
 The `notFound` handler allows you to execute code when there is no matching
 route for the current request's URL.

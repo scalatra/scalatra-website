@@ -13,7 +13,7 @@ Scalatra can render views in three main ways.
 1. Using Scalate directly
 1. Using ScalateSupport helpers, with a bit more "magic"
 
-### Inline HTML
+## Inline HTML
 
 The simplest method of rendering a view is by using inline HTML:
 {pygmentize:: scala}
@@ -30,7 +30,7 @@ def get("/") {
 Note the use of the curly braces on the `{uri("/")}` part of the inlined view.
 This tells Scalatra to render Scala code.
 
-### Scalate
+## Scalate
 
 Scalatra can use the incredibly powerful templating engine,
 [Scalate][scalate]. It is designed to be a thin interface for frameworks
@@ -65,7 +65,7 @@ class YourServlet extends ScalatraServlet with ScalateSupport {
 }
 {pygmentize}
 
-### Using Scalate directly
+## Using Scalate directly
 
 Scalate can be called directly, using the
 `templateEngine.layout("templateName")` method, like this:
@@ -100,7 +100,7 @@ other views (where `xx` is a Scalate template suffix type). If you're using
 </html>
 {pygmentize}
 
-### ScalateSupport helpers
+## ScalateSupport helpers
 
 The second way of using Scalate is to use Scalatra's ScalateSupport helpers, which
 are a bit more "magic" than calling Scalate directly.
@@ -143,7 +143,7 @@ def get("/") {
 When using the scalate helper methods, it is not required to having a leading
 `/`, so `ssp("index")` would work just as well as `ssp("/index")`.
 
-### Passing parameters to templates
+## Passing parameters to templates
 
 Parameters may be passed to your templates using a Seq(String, Any) after the
 path to the template file. The simplest example might look like this:
@@ -166,7 +166,7 @@ def get("/") {
 }
 {pygmentize}
 
-### Layouts
+## Layouts
 
 The `layout` key is somewhat special, as it's used by scalate to identify the
 layout file, which wraps a standard layout around the output for the current
@@ -183,7 +183,7 @@ def get("/") {
 }
 {pygmentize}
 
-#### Default layouts
+### Setting a Default Layout
 
 Scalatra sets a default layout at `WEB-INF/layouts/default.xx` (where xx
 is one of the scalate template types). If you are using ssp, for instance, and
@@ -224,7 +224,7 @@ In this layout, the template output for the current action will be inserted
 at the `${unescape(body)}` directive.
 
 
-### Rendering a 404 page using the `notFound` handler
+## Rendering a 404 page using the `notFound` handler
 
 You may need to render some other page when Scalatra can't find a route.
 
@@ -261,7 +261,7 @@ notFound {
 }
 {pygmentize}
 
-### Further reading
+## Further reading
 
 For more information on Scalate, please refer to the [Scalate User's guide][sug].
 It has advice about layouts, partials, how to DRY up layout code, making Scalate
