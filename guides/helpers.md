@@ -12,7 +12,7 @@ Helpers exist as traits in Scalatra that can applied to your base class.
 [scalate]: http://scalate.fusesource.org
 [views]: http://www.scalatra.org/stable/book/#Views
 
-### HttpServletRequest
+## HttpServletRequest
 
 The request is available through the `request` variable.  The request is
 implicitly extended with the following methods:
@@ -22,14 +22,14 @@ implicitly extended with the following methods:
 3. `cookies` and `multiCookies`: a Map view of the request's cookies
 4. Implements `scala.collection.mutable.Map` backed by request attributes
 
-### HttpServletResponse
+## HttpServletResponse
 
 The response is available through the `response` variable. If you override
 the Scalatra handling and write directly to the response object
 (Ex: response.getOutputStream), then your action should return Unit() to
 prevent a conflict with multiple writes.
 
-### HttpSession
+## HttpSession
 
 Scalatra has session handling built into the framework by default. There are
 no modules or traits that you need to include.
@@ -63,13 +63,13 @@ The default session in Scalatra is cookie-based, but the cookie is used only
 as a session identifier (session data is stored server-side). If you are
 building out a shared-nothing architecture, this is something to be aware of.
 
-### ServletContext
+## ServletContext
 
 The servlet context is available through the `servletContext` variable.  The
 servlet context implicitly implements `scala.collection.mutable.Map` backed
 by servlet context attributes.
 
-### Configuration
+## Configuration
 
 The environment is defined by:
 
@@ -109,7 +109,7 @@ route matches.
 
 [console]: http://scalate.fusesource.org/documentation/console.html
 
-### Scalate error page
+## Scalate error page
 
 Mixing in ScalateSupport enables the Scalate error page for any uncaught
 exceptions.  This page renders the template source with the error highlighted.
@@ -119,7 +119,7 @@ To disable this behavior, override `isScalateErrorPageEnabled`:
 override def isScalatePageEnabled = false
 {pygmentize}
 
-### Scentry + Authentication
+## Scentry + Authentication
 
 Scentry is a user submitted authentication scheme. Combined
 `ScentrySupport` and `BasicAuthSupport` traits allow you to quickly tie a
@@ -138,7 +138,7 @@ can be found
 "org.scalatra" % "scalatra-auth" % "2.1.0"
 {pygmentize}
 
-### Flash Map
+## Flash Map
 
 Flash support, allowing you to store information across requests and expire
 it immediately after a redirect, is included within Scalatra by default.
@@ -189,7 +189,7 @@ next request unless explicitly kept.
 Please note: extending your ScalatraServlet with `FlashMapSupport` triggers
 a session, which is why it's an optional mixin.
 
-### File Upload
+## File Upload
 
 File upload support is included within Scalatra by default by leveraging
 the Servlet 3.0 API's built-in support for `multipart/form-data` requests.
@@ -273,7 +273,7 @@ override def isSizeConstraintException(e: Exception) = e match {
 }
 {pygmentize}
 
-### Anti-XML integration
+## Anti-XML integration
 
 Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
@@ -305,13 +305,13 @@ get("/") {
 }
 {pygmentize}
 
-### URL Support and Reverse Routes
+## URL Support and Reverse Routes
 
 UrlSupport provides two instances that provide you with relative URLs.
 `UrlSupport.url` will return a string that can be used in your output or a
 redirect statement.
 
-#### Page relative url:
+### Page relative url:
 {pygmentize:: scala}
 get("/"){
   // This will redirect to http://<host>/page-relative
@@ -319,7 +319,7 @@ get("/"){
 }
 {pygmentize}
 
-#### Context relative url:
+### Context relative url:
 {pygmentize:: scala}
 get("/"){
   // This will redirect to http://<host>/<context>/context-relative
@@ -327,7 +327,7 @@ get("/"){
 }
 {pygmentize}
 
-#### Mapped params:
+### Mapped params:
 {pygmentize:: scala}
 get("/") {
   // This will redirect to http://<host>/<context>/en-to-es?one=uno&two=dos
@@ -335,7 +335,7 @@ get("/") {
 }
 {pygmentize}
 
-#### Reverse routes:
+### Reverse routes:
 
 It is possible to save your routes as variables so that they have convenient
 handles:
@@ -364,7 +364,7 @@ right in your templates:
   url(viewUser, "id" -> 1)
 {pygmentize}
 
-### AkkaSupport
+## AkkaSupport
 
 Akka is a toolkit and runtime for building highly concurrent, distributed, and
 fault tolerant event-driven applications on the JVM. Scalatra allows you to
@@ -398,7 +398,7 @@ class MyAppServlet extends ScalatraServlet with AkkaSupport {
 [akka]: http://akka.io/
 
 
-### CorsSupport
+## CorsSupport
 
 Scalatra allows you to mix in the `CorsSupport` trait if you need to do
 [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
