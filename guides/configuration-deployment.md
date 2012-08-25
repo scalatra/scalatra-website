@@ -3,9 +3,13 @@ layout: default
 title: Scalatra Guides | Configuration and Deployment
 ---
 
+<div class="page-header">
+<h1>Configuration &amp; Deployment</h1>
+</div>
 
-Logging
-=======
+
+
+## Logging
 
 By default, Scalatra uses [Logback][logback] for logging.
 
@@ -18,7 +22,7 @@ logging dependency in your `build.sbt` file:
 
 In your servlet or filter class:
 
-{pygmentize:: scala}
+{% highlight %}
 
 import org.slf4j.{Logger, LoggerFactory}
 
@@ -32,7 +36,7 @@ class YourServlet extends ScalatraServlet {
   }
 }
 
-{pygmentize}
+{% highlight %}
 
 This will get you basic logging support. There are some additional logging
 libraries you might want to investigate: [slf4s][slf4s] and
@@ -49,8 +53,8 @@ concatenations.
 
 
 
-Production Deployment
-=====================
+## Production Deployment
+
 
 ### As a War to Jetty/Tomcat/Etc
 
@@ -225,7 +229,7 @@ object JettyLauncher {
 }
 {pygmentize}
 
-### Including Scala Compiler
+### Including the Scala Compiler
 
 If you need the Scala compiler included within a WAR file add the declaration
 below to your SBT build file.
