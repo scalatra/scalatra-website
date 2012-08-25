@@ -9,35 +9,13 @@ title: Scalatra Guides | Configuration & deployment
 
 ## Configuring your application
 
-The environment is defined by:
-
-1. The `org.scalatra.environment` system property.
-2. The `org.scalatra.environment` init parameter.
-
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-The default is `development`.
-
-You can set the application's environment in the following ways:
-
-1. As a system property: this is most commonly set with a `-D` option on the
-command line: `java -Dorg.scalatra.environment=development`
-2. As an init-param in the Scalatra Bootstrap file.
-3. As an init-param in web.xml.
-
-If the environment starts with "dev", then `isDevelopmentMode` returns true.
-
-In development mode, a few things happen.
-
-1. In a ScalatraServlet, the notFound handler is enhanced so that it dumps the
-effective request path and the list of routes it tried to match. This does not
-happen in a ScalatraFilter, which just delegates to the filterChain when no
-route matches.
-2. Meaningful error pages are enabled (e.g. on 404s, 500s).
-3. The [Scalate console][console] is enabled.
+As you develop, test, and get your application ready for final deployment,
+you'll need to configure your application: its environment, its settings,
+initial configurations when it starts up, and the software it depends on.
 
 [console]: http://scalate.fusesource.org/documentation/console.html
 
-### Configuring your app using the Scalatra bootstrap file
+### Configuring your app's settings using the Scalatra bootstrap file
 
 The Scalatra bootstrap file, new in Scalatra 2.1.x, is the recommended way
 of configuring your application. It allows you to easily mount different
@@ -84,7 +62,7 @@ The XML which allows you to do this is as follows:
 {% endhighlight %}
 
 <span class="badge badge-success"><i class="icon-thumbs-up icon-white"></i></span>
-If you starter your project in an older version of Scalatra, and want to start using the new Scalatra bootstrap configuration style, drop that XML into your web.xml and you're
+If you started your project in an older version of Scalatra, and want to start using the new Scalatra bootstrap configuration style, drop that XML into your web.xml and you're
 all set.
 
 Note that there are no servlet-names, servlet classes, etc. That's all
@@ -172,6 +150,8 @@ environment:
 
 {% endhighlight %}
 
+#### Running code at application start
+
 The Scalatra bootstrap file is also a good place to put things like database
 initialization code, which need to be set up once in your application. You can
 mix in whatever traits you want, and run any Scala code you want from inside
@@ -210,15 +190,44 @@ through the web.xml file in traditional servlet style, so you may not want
 to use the Scalatra bootstrap file.
 </div>
 
-#### Mounting multiple servlets (or filters)
+#### Mounting multiple servlets (or filters) using web.xml
 
+You can see an example of mounting multiple servlets in the Scalatra 2.0.x
+examples
+[web.xml](https://github.com/scalatra/scalatra/blob/support/2.0.x/example/src/main/webapp/WEB-INF/web.xml
+)
+file.
 
+An extract from that file looks like this:
 
-#### Setting init params
+{% highlight xml %}
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE web-app
+  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+  "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+  <web-app>
+    <servlet>
+      <servlet-name>BasicAuthExample</servlet-name>
+      <servlet-class>org.scalatra.BasicAuthExample</servlet-class>
+    </servlet>
+    <servlet>
+      <servlet-name>TemplateExample</servlet-name>
+      <servlet-class>org.scalatra.TemplateExample</servlet-class>
+    </servlet>
+  </web-app>
+
+{% endhighlight %}
+
+#### Setting init params using web.xml
+
+You can set init params for your servlets in the normal manner:
 
 {% highlight xml %}
 
   <servlet>
+    <servlet-name>BasicAuthExample</servlet-name>
+    <servlet-class>org.scalatra.BasicAuthExample</servlet-class>
     <init-param>
       <param-name>org.scalatra.environment</param-name>
       <param-value>development</param-value>
@@ -227,6 +236,33 @@ to use the Scalatra bootstrap file.
 
 {% endhighlight %}
 
+### Application environments
+
+The application environment is defined by:
+
+1. The `org.scalatra.environment` system property.
+2. The `org.scalatra.environment` init parameter.
+
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+The default is `development`.
+
+You can set the application's environment in the following ways:
+
+1. The preferred method: as an init-param in the Scalatra Bootstrap file.
+2. As an init-param in web.xml.
+3. As a system property: this is most commonly set with a `-D` option on the
+command line: `java -Dorg.scalatra.environment=development`
+
+If the environment starts with "dev", then `isDevelopmentMode` returns true.
+
+In development mode, a few things happen.
+
+ * In a ScalatraServlet, the notFound handler is enhanced so that it dumps the
+effective request path and the list of routes it tried to match. This does not
+happen in a ScalatraFilter, which just delegates to the filterChain when no
+route matches.
+ * Meaningful error pages are enabled (e.g. on 404s, 500s).
+ * The [Scalate console][console] is enabled.
 
 ### Logging
 
@@ -273,91 +309,116 @@ concatenations.
 
 ## Production deployment
 
-### As a war file to Jetty/Tomcat/Etc
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+If you're coming from a non-Java background, you may find the subject of
+servlet containers and JVM deployments to be unnecessarily frightening. Don't
+despair. Despite all the mystery which surrounds them, servlet deployments are
+extremely simple. You will be surprised at how easy it is!
+</div>
 
-    $ sbt package
-    $ mv target/example-1.0.war target/example.war
-    $ scp target/example.war user@example.com:/usr/share/jetty/webapp
+### As a war file
 
+The simplest way to deploy your Scalatra application is as a Web ARchive (WAR)
+file. With any luck, your app can be up and running in a production configuration
+about 5 minutes from now.
 
-### As a single jar
+From the command line, execute the following:
 
-Thanks to Riobard for this
-[post](http://groups.google.com/group/scalatra-user/msg/7df47d814f12a45f) to
-the mailing list.
+    $ sbt
 
-#### Extend sbt project definition:
+Now you're in the sbt console. Package your application by typing `package`:
 
-Copy [this piece of code](http://bit.ly/92NWdu)
-(Note the link doesn't work anymore !) into your sbt project definition
-(/project/build/src/your project.scala) and extend your project with the
-AssemblyProject, so you should have something like this:
+    > package
+    [info] Compiling 6 Scala sources to /path/to/your/project/target/scala-2.9.1/classes...
+    [info] Packaging /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ...
+    [info] Done packaging.
 
-** SBT 0.7.X **
+This will generate a WAR file for you, and tell you where it went. A WAR file
+is basically a zip file which contains your entire application, including all
+of its compiled Scala code, and associated assets such as images, javascript,
+stylesheets.
 
-{% highlight scala %}
+#### Jelastic
 
-class JettyScalatraProject(info: ProjectInfo) extends DefaultProject(info) with AssemblyProject {
-    override def mainClass = Some("com.example.JettyLauncher") #point this to your entry object
-  val jettytester = "org.mortbay.jetty" % "jetty-servlet-tester" % "6.1.22" % "provided->default"
-  val scalatest = "org.scalatest" % "scalatest" % "1.0" % "provided->default"
-}
+Now that you've got the war file, you need to put it in on an application server.
+One easy way to do this is to put it up onto [Jelastic](http://jelastic.com/),
+a Java Platform as a Service provider.
 
-{% endhighlight %}
+This is the simplest option, if you want to get something running and put
+it up on the public-facing internet. Sign up for the (free) service, upload
+your WAR file, and you're finished.
 
-** SBT 0.11.x **
+#### Your own servlet container
 
-Create a runner for Jetty.
+Another option is to run your own servlet container - there are certainly
+[lots to choose from](http://en.wikipedia.org/wiki/Web_container).
 
-{% highlight scala %}
+Let's try [Tomcat](http://tomcat.apache.org), with a local installation.
 
-  import org.eclipse.jetty.server._
-  import org.eclipse.jetty.servlet.ServletContextHandler
-  import org.eclipse.jetty.webapp.WebAppContext
-  object JettyLauncher {
-    def main(args: Array[String]) {
-      val Array(path, port) = args
-      val server = new Server(port.toInt)
-      val context = new
-  ServletContextHandler(ServletContextHandler.SESSIONS)
-      server.setHandler(context)
-      val web = new WebAppContext(path, "/")
-      server.setHandler(web)
-      server.start()
-      server.join()
-    }
-  }
+<div class="alert alert-info">
+<p><span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+What follows is <strong>not</strong> a best-practice guide for configuring Tomcat.
+It's aimed at people who are new to servlet containers, and want to see their
+application working. Servlet container configuration can be as potentially complex
+as other web servers, such as Apache or Nginx, and it's up to you to understand
+the performance and security implications of what you're doing. We recommend
+that you read the docs on your chosen servlet container before exposing yourself
+to the public internet.</p>
 
-{% endhighlight %}
+<p>Having said all that, the basic case is extremely easy, as you'll see in a moment.</p>
+</div>
 
-Include the "webapp" directory in the assembly Jar.
+First download and extract tomcat:
 
-{% highlight scala %}
+    $ wget http://mirror.lividpenguin.com/pub/apache/tomcat/tomcat-7/v7.0.29/bin/apache-tomcat-7.0.29.tar.gz
+    $ mv apache-tomcat-7.0.29.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
+    $ tar -xvzf ~/Desktop/tomcat.tar.gz
 
-  resourceGenerators in Compile <+= (resourceManaged, baseDirectory) map { (managedBase, base) =>
-    val webappBase = base / "src" / "main" / "webapp"
-    for {
-      (from, to) <- webappBase ** "*" x rebase(webappBase, managedBase / "main" / "webapp")
-    } yield {
-      Sync.copy(from, to)
-      to
-    }
-  }
+Ok, Tomcat is now installed.
 
-{% endhighlight %}
+    $ ~/Desktop/tomcat/bin/startup.sh
 
+Now it should be started. Test this by browsing to
+[http://localhost:8080/](http://localhost:8080/)
 
-Then launch sbt or reload it if it is already running. This should give you a
-new sbt command called "assembly". Try that in the sbt interactive prompt and
-it should produce a ****-assembly-**.jar file in your sbt /target/scala-2.7.7
-folder. All dependencies (like scala-library.jar) are included in this jar
-file and you can run it directly, e.g.
+Now deploy your application. Dropping a war file into Tomcat's `webapp` folder
+causes it to be extracted, or "exploded". Tomcat will initialize your application
+on the first request.
 
-{% highlight bash %}
+    $ mv /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/yourapp.war
 
-  java -jar ***-assembly-**.jar
+Browse to [http://localhost:8080/yourapp/](http://localhost:8080/yourapp/)
 
-{% endhighlight %}
+It's alive! Or it should be.
+
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+Keep in mind that we've assumed your application has a route defined at the
+path "/".
+</div>
+
+Paths inside the servlet container will be root-relative, so if you've
+got your servlets mounted like this in your Scalatra bootstrap file:
+
+    // mount servlets like this:
+    context mount (new ArticlesServlet, "/articles/*")
+
+you would need to go to [http://localhost:8080/yourapp/articles/](http://localhost:8080/yourapp/articles/)
+
+If you've hardcoded any paths in your application, you may see your app working,
+but the stylesheets and internal links may not be working correctly.
+
+If that's the case, it's time for a bit of a trick. You can move Tomcat's
+ROOT application to another spot, and put your app at the ROOT.
+
+    $ mv ~/Desktop/tomcat/webapps/ROOT ~/Desktop/tomcat/webapps/ORIGINAL_ROOT
+    $ mv /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/ROOT.war
+
+<span class="badge badge-warning"><i class="icon-flag icon-white"></i></span>
+Tomcat paths are case-sensitive. Make sure you copy your app to `ROOT.war`.
+
+Your app should now be running at [http://localhost:8080/](http://localhost:8080/)
 
 ### Launching Scalatra as a servlet
 
