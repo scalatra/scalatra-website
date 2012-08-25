@@ -31,7 +31,8 @@ In Scalatra, a route is an HTTP method paired with a URL matching pattern.
 
 ## Route order
 
-The first matching route is invoked.  Routes are matched from the bottom up.  _This is the opposite of Sinatra._
+The first matching route is invoked.  Routes are matched from the bottom up.
+<span class="label label-warning">Watch out!</span> _This is the opposite of Sinatra._
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
@@ -159,38 +160,45 @@ No path pattern is necessary.  A route may consist of solely a condition:
 ## Actions
 
 Each route is followed by an action.  An Action may return any value, which
-is then rendered to the response according to the following rules:
+is then rendered to the response according to the following rules.
 
-`ActionResult` - Sets status, body and headers. After importing
-`org.scalatra.ActionResult._`, you can return 200 OK, 404 Not Found
-and other responses by referencing them by their descriptions:
+<dl class="dl-horizontal">
+<dt>ActionResult</dt>
+<dd>Sets status, body and headers. After importing
+<code>org.scalatra.ActionResult._</code>, you can return 200 OK, 404 Not Found
+and other responses by referencing them by their descriptions. See the
+ActionResult code (below) for an example.
+</dd>
+</dl>
+<dl class="dl-horizontal">
+<dt>Array[Byte]</dt>
+<dd>If no content-type is set, it is set to <code>application/octet-stream</code>.
+The byte array is written to the response's output stream.</dd>
+<dt>NodeSeq</dt>
+<dd>If no content-type is set, it is set to <code>text/html</code>.  The node
+sequence is converted to a string and written to the response's writer.</dd>
+<dt>Unit</dt>
+<dd>This signifies that the action has rendered the entire response, and
+no further action is taken.</dd>
+<dt>Any</dt>
+<dd> For any other value, if the content type is not set, it is set to
+<code>text/plain</code>.  The value is converted to a string and written to the
+response's writer.</dd>
+</dl>
+
+This behavior may be customized for these or other return types by overriding
+`renderResponse`.
 
 {% highlight scala %}
-
+    // ActionResult example
     get("/file/:id") {
       fileService.find(params("id")) match {
         case Some(file) => Ok(file)
         case None       => NotFound("Sorry, the file could not be found")
+       }
      }
-   }
 {% endhighlight %}
 
-
-`Array[Byte]` - If no content-type is set, it is set to `application/octet-stream`.
-The byte array is written to the response's output stream.
-
-`NodeSeq` - If no content-type is set, it is set to `text/html`.  The node
-sequence is converted to a string and written to the response's writer.
-
-`Unit` - This signifies that the action has rendered the entire response, and
-no further action is taken.
-
-`Any` - For any other value, if the content type is not set, it is set to
-`text/plain`.  The value is converted to a string and written to the
-response's writer.
-
-This behavior may be customized for these or other return types by overriding
-`renderResponse`.
 
 ## Parameter handling
 
