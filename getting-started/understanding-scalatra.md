@@ -7,6 +7,8 @@ title: Scalatra | The anatomy of a Scalatra app
   <h1>The anatomy of a Scalatra app</h1>
 </div>
 
+## Project structure
+
 The recommended way of structuring a Scalatra project is as follows:
 
     project
@@ -34,7 +36,6 @@ The recommended way of structuring a Scalatra project is as follows:
              |  |_ default.jade
              |
              |_ web.xml
-
 
 ## Mounting multiple servlets (or filters)
 
@@ -96,7 +97,6 @@ into your application, and define path patterns that they'll respond to.
 
 It's also a good place to put things like database initialization code, which
 need to be set up once in your application.
-
 
 ## Serving static files
 
