@@ -12,7 +12,7 @@ Helpers exist as traits in Scalatra that can applied to your base class.
 [scalate]: http://scalate.fusesource.org
 [views]: http://www.scalatra.org/stable/book/#Views
 
-## HttpServletRequest
+## Request
 
 The request is available through the `request` variable.  The request is
 implicitly extended with the following methods:
@@ -22,14 +22,14 @@ implicitly extended with the following methods:
 3. `cookies` and `multiCookies`: a Map view of the request's cookies
 4. Implements `scala.collection.mutable.Map` backed by request attributes
 
-## HttpServletResponse
+## Response
 
 The response is available through the `response` variable. If you override
 the Scalatra handling and write directly to the response object
 (Ex: response.getOutputStream), then your action should return Unit() to
 prevent a conflict with multiple writes.
 
-## HttpSession
+## Session handling
 
 Scalatra has session handling built into the framework by default. There are
 no modules or traits that you need to include.
