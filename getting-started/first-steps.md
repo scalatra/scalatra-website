@@ -15,32 +15,36 @@ go into `src/main/scala/com/example/app` (substitute your package for
 `src/main/scala/com/example/app/MyScalatraServlet.scala`, or whatever you named
 your servlet when you generated your project with g8:
 
-{pygmentize:: scala}
-package com.example.app
+{% highlight scala %}
 
-import org.scalatra._
-import scalate.ScalateSupport
+  package com.example.app
 
-class MyScalatraServlet extends ScalatraServlet with ScalateSupport {
+  import org.scalatra._
+  import scalate.ScalateSupport
 
-  get("/") {
-    <html>
-      <body>
-        <h1>Hello, world!</h1>
-        Say <a href="hello-scalate">hello to Scalate</a>.
-      </body>
-    </html>
+  class MyScalatraServlet extends ScalatraServlet with ScalateSupport {
+
+    get("/") {
+      <html>
+        <body>
+          <h1>Hello, world!</h1>
+          Say <a href="hello-scalate">hello to Scalate</a>.
+        </body>
+      </html>
+    }
   }
-}
-{pygmentize}
+
+{% endhighlight %}
 
 If you haven't already done so, from your project root, you can run the project
 with:
 
-{pygmentize::}
-$ sbt
-> container:start
-{pygmentize}
+{% highlight bash %}
+
+  $ sbt
+  > container:start
+
+{% endhighlight %}
 
 The application starts on [http://localhost:8080](http://localhost:8080).  As
 you can see, Scalatra doesn't force you to setup much infrastructure: a

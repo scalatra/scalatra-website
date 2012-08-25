@@ -15,16 +15,18 @@ which may be asynchronous or realtime.
 You will need to install a few things before you can get started, but first,
 here's a very simple Scalatra app:
 
-{pygmentize:: scala}
-package com.example.app
-import org.scalatra._
+{% highlight scala %}
 
-class HelloWorldApp extends ScalatraFilter {
-  get("/") {
-    "Hello world!"
+  package com.example.app
+  import org.scalatra._
+
+  class HelloWorldApp extends ScalatraFilter {
+    get("/") {
+      "Hello world!"
+    }
   }
-}
-{pygmentize}
+
+{% endhighlight %}
 
 Notice a few things about it:
 
