@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Scalatra | Getting Started
+title: Scalatra | Getting started
 ---
 
 <div class="page-header">
-  <h1>Getting Started</h1>
+  <h1>Getting started</h1>
 </div>
 
 Scalatra is one of a new breed of simple, accessible, scalable web frameworks.

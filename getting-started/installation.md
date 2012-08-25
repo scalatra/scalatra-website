@@ -60,7 +60,7 @@ cs n8han/giter8
 
 That's it! You've now got everything you need.
 
-## Generating a Scalatra project
+## Generate a Scalatra project
 
 Now that all of the dependencies are out of the way, you can generate a project. Run:
 
@@ -110,7 +110,7 @@ Scala is a compiled language, so you need to build your Scalatra project.
 Enter your application's top-level directory and type `sbt`, and the
 application will build.
 
-## Automatic Code Reloading
+## Automatic code reloading
 
 Restarting an application manually after every code change is both slow and
 painful. It can easily be avoided by using a tool for automatic code reloading.

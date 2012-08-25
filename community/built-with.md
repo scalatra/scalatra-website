@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Scalatra | Built With Scalatra
+title: Scalatra | Built with Scalatra
 ---
 
 <div class="page-header">
-  <h1>Production Systems Built With Scalatra</h1>
+  <h1>Production systems built with Scalatra</h1>
 </div>
 
 ## Companies
@@ -27,9 +27,9 @@ Scalatra is used in a number of systems that help power [The Guardian](http:///w
 
 [Gov.UK](http://www.gov.uk) is using Scalatra for its internal API system. [source](http://radar.oreilly.com/2012/01/with-govuk-british-government.html)
 
-## Open Source Projects
+## Open source projects
 
-### Bowler Framework
+### Bowler framework
 
 [Bowler](http://bowlerframework.org) is a RESTful, multi-channel ready web framework in Scala with a functional flavour, built on top of Scalatra and Scalate, with Lift-JSON doing the heavy JSON lifting. The project is built with Simple Build Tool ("sbt")- we intend to further add custom sbt processors in the future to automate boilerplate tasks.
 
@@ -38,7 +38,7 @@ Scalatra is used in a number of systems that help power [The Guardian](http:///w
 [Fink](https://github.com/dozed/fink) is a Scalatra based CMS.
 
 
-### scalatra-toys
+### Scalatra toys
 
 [scalatra-toys](https://github.com/m20o/scalatra-toys) adds parameter binding
 and command validation support to Scalatra 2.0.x.

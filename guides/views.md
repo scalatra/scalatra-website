@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra Guides | Views
+title: Scalatra guides | Views
 ---
 
 <div class="page-header">
@@ -183,7 +183,7 @@ def get("/") {
 }
 {pygmentize}
 
-### Setting a Default Layout
+### Setting a default layout
 
 Scalatra sets a default layout at `WEB-INF/layouts/default.xx` (where xx
 is one of the scalate template types). If you are using ssp, for instance, and

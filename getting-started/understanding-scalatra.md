@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Scalatra | The Anatomy of a Scalatra Application
+title: Scalatra | The anatomy of a Scalatra app
 ---
 
 <div class="page-header">
-  <h1>The Anatomy of a Scalatra App</h1>
+  <h1>The anatomy of a Scalatra app</h1>
 </div>
 
 The recommended way of structuring a Scalatra project is as follows:
@@ -98,7 +98,7 @@ It's also a good place to put things like database initialization code, which
 need to be set up once in your application.
 
 
-## Serving Static Files
+## Serving static files
 
 Static files can be served out of the `webapp` folder, which acts as the ROOT
 directory. As with any servlet based application, the contents of this directory
@@ -171,7 +171,7 @@ in the same WAR.
 * You want to match routes with a prefix deeper than the context path.
 
 
-## Understanding Scalatra's SBT Dependencies
+## Understanding Scalatra's SBT dependencies
 
 Scalatra uses Scala's [Simple Build Tool][sbt-site], or `sbt`, as a build system.
 

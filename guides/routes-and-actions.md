@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Scalatra Guides | Routes and Actions
+title: Scalatra guides | Routes and actions
 ---
 
 <div class="page-header">
-  <h1>Routes &amp; Actions</h1>
+  <h1>Routes &amp; actions</h1>
 </div>
 
 In Scalatra, a route is an HTTP method paired with a URL matching pattern.
@@ -235,7 +235,7 @@ get("/articles-by/:author/:page") {
 }
 {pygmentize}
 
-## Enabling Support for PUT and DELETE requests
+## Enabling support for PUT and DELETE requests
 
 Scalatra supports all of the HTTP verbs: `GET` and `POST`, which are supported by
 browser clients, but also `PUT` and `DELETE`, which are not.
@@ -262,7 +262,7 @@ class MyFilter extends ScalatraFilter with MethodOverride {
 {pygmentize}
 
 
-## Request Filters
+## Request filters
 
 Scalatra offers a way for you too hook into the request chain of your
 application via filters.
@@ -305,7 +305,7 @@ after() {
 As you can see from this example, we're asking the `MyDB` module to
 disconnect after the request has been processed.
 
-## Pattern Matching
+## Pattern matching
 
 Filters optionally take a pattern to be matched against the requested URI
 during processing. Here's a quick example you could use to run a contrived

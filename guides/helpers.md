@@ -119,7 +119,7 @@ To disable this behavior, override `isScalateErrorPageEnabled`:
 override def isScalatePageEnabled = false
 {pygmentize}
 
-## Scentry + Authentication
+## Scentry + authentication
 
 Scentry is a user submitted authentication scheme. Combined
 `ScentrySupport` and `BasicAuthSupport` traits allow you to quickly tie a
@@ -138,7 +138,7 @@ can be found
 "org.scalatra" % "scalatra-auth" % "2.1.0"
 {pygmentize}
 
-## Flash Map
+## Flash map
 
 Flash support, allowing you to store information across requests and expire
 it immediately after a redirect, is included within Scalatra by default.
@@ -189,7 +189,7 @@ next request unless explicitly kept.
 Please note: extending your ScalatraServlet with `FlashMapSupport` triggers
 a session, which is why it's an optional mixin.
 
-## File Upload
+## Uploading files
 
 File upload support is included within Scalatra by default by leveraging
 the Servlet 3.0 API's built-in support for `multipart/form-data` requests.
@@ -305,7 +305,7 @@ get("/") {
 }
 {pygmentize}
 
-## URL Support and Reverse Routes
+## URL support and reverse routes
 
 UrlSupport provides two instances that provide you with relative URLs.
 `UrlSupport.url` will return a string that can be used in your output or a
@@ -398,7 +398,7 @@ class MyAppServlet extends ScalatraServlet with AkkaSupport {
 [akka]: http://akka.io/
 
 
-## CorsSupport
+## Cross origin resource sharing
 
 Scalatra allows you to mix in the `CorsSupport` trait if you need to do
 [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).

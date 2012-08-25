@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra Guides | Testing
+title: Scalatra guides | Testing
 ---
 
 <div class="page-header">
@@ -157,7 +157,7 @@ Create an instance of `org.scalatra.test.ScalatraTests`.  Be sure to call
 `start()` and `stop()` before and after your test suite.
 
 
-### Maven Repository
+### Maven repository
 
 To make usage of Scalatra as a dependency convenient, Maven hosting is now
 available courtesy of

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Scalatra Guides | Configuration and Deployment
+title: Scalatra Guides | Configuration &amp; deployment
 ---
 
 <div class="page-header">
-  <h1>Configuration &amp; Deployment</h1>
+  <h1>Configuration &amp; deployment</h1>
 </div>
 
 
@@ -52,22 +52,22 @@ win for complex log messages involving expensive `toString`s or many
 concatenations.
 
 
-## Production Deployment
+## Production deployment
 
-### As a War to Jetty/Tomcat/Etc
+### As a war file to Jetty/Tomcat/Etc
 
     $ sbt package
     $ mv target/example-1.0.war target/example.war
     $ scp target/example.war user@example.com:/usr/share/jetty/webapp
 
 
-### As a Single Jar
+### As a single jar
 
 Thanks to Riobard for this
 [post](http://groups.google.com/group/scalatra-user/msg/7df47d814f12a45f) to
 the mailing list.
 
-### Extend sbt project definition:
+#### Extend sbt project definition:
 
 Copy [this piece of code](http://bit.ly/92NWdu)
 (Note the link doesn't work anymore !) into your sbt project definition
@@ -128,7 +128,7 @@ file and you can run it directly, e.g.
 java -jar ***-assembly-**.jar
 {pygmentize}
 
-### Launch Scalatra as a servlet
+### Launching Scalatra as a servlet
 
 ScalatraServlet is an HttpServlet, we just need some glue code to launch an
 embedded Jetty server with this Servlet.
@@ -162,7 +162,7 @@ and see it will launch the embedded Jetty at port 8080 with the example
 Scalatra project running. On my machine (OS X 10.6 with JVM 1.6) this setup
 costs 38MB memory.
 
-### Scalatra on Heroku
+### Heroku
 
 This is pretty easy to get up and running. The only thing you really need to do
 is start Jetty directly, and add a script to execute this. You don't want to
@@ -226,7 +226,7 @@ object JettyLauncher {
 }
 {pygmentize}
 
-### Including the Scala Compiler
+### Including the Scala compiler
 
 If you need the Scala compiler included within a WAR file add the declaration
 below to your SBT build file.

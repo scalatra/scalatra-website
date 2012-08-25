@@ -4,7 +4,7 @@ title: Scalatra Guides | Index
 ---
 
 <div class="page-header">
-  <h1>Scalatra Guides</h1>
+  <h1>Scalatra guides</h1>
 </div>
 
 The following guides are available:

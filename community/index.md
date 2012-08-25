@@ -4,7 +4,7 @@ title: Scalatra | Community
 ---
 
 <div class="page-header">
-  <h1>The Scalatra Community</h1>
+  <h1>The Scalatra community</h1>
 </div>
 
 Quite a few high-profile companies have incorporated Scalatra as part of their
@@ -15,7 +15,7 @@ production systems. You can see the ones we know about on our
 
 [@scalatra](http://twitter.com/#!/scalatra)
 
-## Google Group
+## Google group
 
 The [*scalatra-user*](http://groups.google.com/group/scalatra-user) Google Group
 is an open forum.  It is the preferred channel for discussion so future users
@@ -33,8 +33,7 @@ Development takes place through our [GitHub](http://github.com/scalatra/scalatra
 
 ## Contributing to Scalatra
 
-
-### There are plenty of ways to [contribute to Scalatra][contributing].
+There are plenty of ways to [contribute to Scalatra][contributing].
 
 Join us on IRC [(#scalatra at irc.freenode.net)][freenode] if you need help
 with anything.
