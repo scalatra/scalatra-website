@@ -4,7 +4,10 @@ title: Scalatra | Your first scalatra app
 ---
 
 <div class="page-header">
-  <h1>First steps with Scalatra</h1>
+  <h1>
+    First steps
+    <small>with Scalatra</small>
+  </h1>
 </div>
 
 ## Hello world
