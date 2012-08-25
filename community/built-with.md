@@ -7,6 +7,8 @@ title: Scalatra | Built With Scalatra
   <h1>Production Systems Built With Scalatra</h1>
 </div>
 
+## Companies
+
 The following systems are known to incorporate Scalatra in their architecture:
 
 ### LinkedIn Signal
