@@ -46,10 +46,14 @@ with:
 
 {% endhighlight %}
 
-The application starts on [http://localhost:8080](http://localhost:8080).  As
-you can see, Scalatra doesn't force you to setup much infrastructure: a
+The application starts on [http://localhost:8080](http://localhost:8080).
+
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+As you can see, Scalatra doesn't force you to setup much infrastructure: a
 request to a URL evaluates some Scala code and returns some text in response.
 Whatever the block returns is sent back to the browser.
+</div>
 
 ## Scalatra examples
 
@@ -80,7 +84,8 @@ To run the code, do the following:
     > project scalatra-example
     > container:start
 
-You should then get a website with examples running at http://localhost:8080/
+You should then get a website with examples running at
+[http://localhost:8080/](http://localhost:8080/)
 (make sure you're not already running your own project on that port!).
 
 Example code can be found in the ```example/src/main/scala/org/scalatra/```
