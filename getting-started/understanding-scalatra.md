@@ -214,25 +214,22 @@ dependencies you wish into the `libraryDependencies` section.
 
 The default dependencies are:
 
-`scalatra`: This is the core Scalatra module, and is required to run the framework.
-
-`scalatra-scalate`: This integrates with [Scalate](http://scalate.fusesource.org),
-a template engine supporting multiple template formats.  This is optional, but
-highly recommended for any app requiring templating.
-
-`scalatra-specs2`: This integrates the [Specs2][specs2] testing libraries.
-
-`logback-classic`: Basic logging functionality, courtesy of [Logback][qos-ch].
-
-`jetty-webapp`: This is the embedded servlet container used by the web plugin.
-Your application should be portable to any servlet container supporting at least
-the 2.5 specification.
-
-`servlet-api`: Required for building your app.  It is placed in the `provided`
-configuration so that it is not bundled with your application.  Your servlet
-container will provide this at deployment time.
-
-[specs2]: https://github.com/etorreborre/specs2
-[qos-ch]: http://logback.qos.ch/
-
-
+<dl class="dl-horizontal">
+  <dt>scalatra</dt>
+  <dd>This is the core Scalatra module, and is required to run the framework.</dd>
+  <dt>scalatra-scalate</dt>
+  <dd>This integrates with <a href="http://scalate.fusesource.org">Scalate</a>,
+  a template engine supporting multiple template formats. Scalate is optional, but
+  highly recommended for any app requiring templating.</dd>
+  <dt>scalatra-specs2</dt>
+  <dd>This integrates the <a href="https://github.com/etorreborre/specs2">Specs2</a>
+      testing libraries.</dd>
+  <dt>logback-classic</dt>
+  <dd>Basic logging functionality, courtesy of <a href="http://logback.qos.ch/">Logback</a>.</dd>
+  <dt>jetty-webapp</dt>
+  <dd>This is the embedded servlet container used by the web plugin. Your application should be portable to any servlet container supporting at least the 2.5 specification.</dd>
+  <dt>servlet-api</dt>
+  <dd>Required for building your app.  It is placed in the `provided`
+  configuration so that it is not bundled with your application.  Your servlet
+  container will provide this at deployment time.</dd>
+</dl>
