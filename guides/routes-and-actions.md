@@ -226,7 +226,8 @@ As an example, let's hit a URL with a GET like this:
 
 {% endhighlight %}
 
-<span class="label label-info"><i class="icon-flag icon-white"></i> Look closely: </span> there are two "foo" keys in there.
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+Look closely: there are two "foo" keys in there.
 
 Assuming there's a matching route at `/articles/:id`, we get the following
 results inside the action:
