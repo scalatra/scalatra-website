@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Scalatra Guides | Testing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Scalatra</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/getting-started">Getting started</a></li>
+              <li><a href="/guides">Guides</a></li>
+              <li><a href="/news">News</a></li>
+              <li><a href="/community">Community</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h1>Testing</h1>
+
+<p>Scalatra includes a test framework for writing the unit tests for your Scalatra
+application.  The framework lets you send requests to your app and examine the
+response.  All HTTP verbs are supported, as well as request parameters and
+session tracking.</p>
+
+<h3>Integrations</h3>
+
+<p>scalatra-test can be used with the test framework of your choosing.  A basic
+example from each supported framework is shown below.  You may mix and match if
+transitioning from one framework to another; sbt will find and run them all by
+default.</p>
+
+<h3><a href="http://scalatest.org/">ScalaTest</a></h3>
+
+<h4>Dependency</h4>
+
+<pre><code>"org.scalatra" %% "scalatra-scalatest" % "2.1.0" % "test"
+</code></pre>
+
+<h4>Example</h4>
+
+<p>Extend ScalatraSuite with your preferred Suite implementation.  You get
+ShouldMatchers and MustMatchers for free.</p>
+
+<p>{pygmentize:: scala}
+import org.scalatra.test.scalatest._</p>
+
+<p>class MyScalatraServletTests extends ScalatraSuite with FunSuite {
+  // <code>MyScalatraServlet</code> is your app which extends ScalatraServlet
+  addServlet(classOf[MyScalatraServlet], "/*")</p>
+
+<p>  test("simple get") {</p>
+
+<pre><code>get("/path/to/something") {
+  status should equal (200)
+  body should include ("hi!")
+}
+</code></pre>
+
+<p>  }
+}
+{pygmentize}</p>
+
+<p>Convenience traits are provided for many Suite implementations:</p>
+
+<ul>
+<li>ScalatraSpec</li>
+<li>ScalatraFlatSpec</li>
+<li>ScalatraFreeSpec</li>
+<li>ScalatraWordSpec</li>
+<li>ScalatraFunSuite</li>
+<li>ScalatraFeatureSpec</li>
+<li>ScalatraJUnit3Suite</li>
+<li>ScalatraJUnitSuite (JUnit 4)</li>
+<li>ScalatraTestNGSuite</li>
+</ul>
+
+
+<h3><a href="http://etorreborre.github.com/specs2/">Specs2</a></h3>
+
+<h4>Dependency</h4>
+
+<pre><code>"org.scalatra" %% "scalatra-specs2" % "2.1.0" % "test"
+</code></pre>
+
+<h4>Example</h4>
+
+<p>Specs2 supports two basic styles: Unit and Acceptance.  Both are supported
+by scalatra-test.</p>
+
+<h4>Unit testing</h4>
+
+<p>From the <a href="http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html">Specs2 QuickStart</a>:</p>
+
+<blockquote><p>unit specifications where the specification text is interleaved with the
+specification code. It is generally used to specify a single class.</p></blockquote>
+
+<p>{pygmentize:: scala }
+import org.scalatra.test.specs2._</p>
+
+<p>class HelloWorldMutableServletSpec extends MutableScalatraSpec {
+  addServlet(classOf[HelloWorldServlet], "/*")</p>
+
+<p>  "GET / on HelloWorldServlet" should {</p>
+
+<pre><code>"return status 200" in {
+  get("/") {
+    status must_== 200
+  }
+}
+</code></pre>
+
+<p>  }
+}
+{pygmentize}</p>
+
+<h4>Acceptance testing</h4>
+
+<p>From the <a href="http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html">Specs2 QuickStart</a>:</p>
+
+<blockquote><p>acceptance specifications where all the specification text stands as one and
+the implementation code is elsewhere.  It is generally used for acceptance or
+integration scenarios</p></blockquote>
+
+<p>{pygmentize:: scala }
+import org.scalatra.test.specs2._</p>
+
+<p>class HelloWorldServletSpec extends ScalatraSpec { def is =
+  "GET / on HelloWorldServlet"                     ^</p>
+
+<pre><code>"return status 200"                            ! getRoot200^
+                                               end
+</code></pre>
+
+<p>  addServlet(classOf[HelloWorldServlet], "/*")</p>
+
+<p>  def getRoot200 = get("/") {</p>
+
+<pre><code>status must_== 200
+</code></pre>
+
+<p>  }
+}
+{pygmentize}</p>
+
+<h3><a href="http://code.google.com/p/specs/">Specs</a></h3>
+
+<p>Specs is now in maintenance mode.  The author recommends that new projects
+begin with Specs2.</p>
+
+<h4>Dependency</h4>
+
+<pre><code>"org.scalatra" %% "scalatra-specs" % "2.1.0" % "test"
+</code></pre>
+
+<h4>Example</h4>
+
+<p>{pygmentize:: scala}
+import org.scalatra.test.specs._</p>
+
+<p>object MyScalatraServletTests extends ScalatraSpecification {
+  addServlet(classOf[MyScalatraServlet], "/*")</p>
+
+<p>  "MyScalatraServlet when using GET" should {</p>
+
+<pre><code>"/path/to/something should return 'hi!'" in {
+  get("/") {
+    status mustEqual(200)
+    body mustEqual("hi!")
+  }
+}
+</code></pre>
+
+<p>  }
+}
+{pygmentize}</p>
+
+<h3>Other test frameworks</h3>
+
+<h4>Dependency</h4>
+
+<pre><code>"org.scalatra" %% "scalatra-test" % "2.1.0" % "test"
+</code></pre>
+
+<h4>Usage guide</h4>
+
+<p>Create an instance of <code>org.scalatra.test.ScalatraTests</code>.  Be sure to call
+<code>start()</code> and <code>stop()</code> before and after your test suite.</p>
+
+<h3>Maven Repository</h3>
+
+<p>To make usage of Scalatra as a dependency convenient, Maven hosting is now
+available courtesy of
+<a href="https://docs.sonatype.com/display/NX/OSS+Repository+Hosting">Sonatype</a>.</p>
+
+<ul>
+<li><a href="https://oss.sonatype.org/content/repositories/releases">Releases</a></li>
+<li><a href="https://oss.sonatype.org/content/repositories/snapshots">Snapshots</a></li>
+</ul>
+
+
+<h3>Testing FAQ</h3>
+
+<h4>How do I set a servlet init parameter?</h4>
+
+<p>scalatra-test is built on Jetty's <a href="http://download.eclipse.org/jetty/stable-7/apidocs/org/eclipse/jetty/testing/ServletTester.html">ServletTester</a>, so it
+does not read your web.xml.  Most things you can do in a web.xml can be
+done from the context on the tester object.  In this case, call this in
+the constructor of your servlet:</p>
+
+<pre><code>tester.getContext.setInitParameter("db.username", "ross")
+</code></pre>
+
+<h4>How do I test file uploads?</h4>
+
+<p>Convenience methods exist for testing file uploads.</p>
+
+<p>Example based on Specs2:</p>
+
+<p>{pygmentize:: scala}
+class FileUploadSpec extends MutableScalatraSpec {
+  addServlet(classOf[FileUploadServlet], "/*")</p>
+
+<p>  "POST /files" should {</p>
+
+<pre><code>"return status 200" in {
+  // You can also pass headers after the files Map
+  post("/files", Map("private" -&gt; "true"), Map("kitten" -&gt; new File("kitten.png"))) {
+    status must_== 200
+  }
+}
+</code></pre>
+
+<p>  }</p>
+
+<p>  "PUT /files/:id" should {</p>
+
+<pre><code>"return status 200" in {
+  put("/files/10", Map("private" -&gt; "false"), Map("kitten" -&gt; new File("kitten.png"))) {
+    status must_== 200
+  }
+}
+</code></pre>
+
+<p>  }
+}
+{pygmentize}</p>
+
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

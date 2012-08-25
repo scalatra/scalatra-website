@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Scalatra | Installation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Scalatra</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/getting-started">Getting started</a></li>
+              <li><a href="/guides">Guides</a></li>
+              <li><a href="/news">News</a></li>
+              <li><a href="/community">Community</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h1>Installation</h1>
+
+<p>Getting started with a new web framework can be a bit scary. Luckily, Scalatra
+is actually quite easy to install, as it has relatively few dependencies.</p>
+
+<h3>1. Install a JDK</h3>
+
+<p>Scalatra is web microframework written in Scala, so you'll need to have a
+Java Development Kit (JDK) installed. Many systems will already include
+a JDK (do <code>java -version</code> and <code>javac -version</code> in a terminal to find if yours
+does). If you don't yet have Java installed, you can find out how to install
+it for your system <a href="http://docs.oracle.com/javase/7/docs/webnotes/install/index.html">here</a>.</p>
+
+<h3>2. Install SBT</h3>
+
+<p>The next thing you'll need is <code>sbt</code>, the Simple Build Tool. This is a Scala
+program which will automatically download everything your Scalatra project
+needs, and build it.</p>
+
+<p>You can download <code>sbt</code> at the <a href="http://www.scala-sbt.org/download.html">SBT website</a>.</p>
+
+<h3>3. Install conscript and giterate</h3>
+
+<p><a href="https://github.com/n8han/conscript">Conscript</a> is a tool for installing and
+updating Scala code. <a href="https://github.com/n8han/giter8/">Giter8</a>, which depends
+on conscript, allows you to check out project templates directly from Github.
+It's the recommended way of getting started with Scalatra.</p>
+
+<p>To install conscript, issue this command in your terminal:</p>
+
+<p>{pygmentize:: }
+curl https://raw.github.com/n8han/conscript/master/setup.sh | sh
+{pygmentize}</p>
+
+<p>This will create a <em>bin</em> folder in your home directory.  Put that on your
+path, by adding the following to your shell's profile (e.g. ~/.bash_profile):</p>
+
+<p>{pygmentize:: }
+PATH=$PATH:~/bin
+export path
+{pygmentize}</p>
+
+<p>Make sure you reload your shell:</p>
+
+<p>{pygmentize:: }
+source ~/.bash_profile
+{pygmentize}</p>
+
+<p>Now you can use conscript to install Giter8:
+{pygmentize:: }
+cs n8han/giter8
+{pygmentize}</p>
+
+<p>That's it! You've now got everything you need.</p>
+
+<h3>Generating a Scalatra project</h3>
+
+<p>Now that all of the dependencies are out of the way, you can generate a project. Run:</p>
+
+<p>{pygmentize:: }
+g8 scalatra/scalatra-sbt
+{pygmentize}</p>
+
+<p>This will check out a pre-built application skeleton for you (from Github),
+and ask you some questions about your application:</p>
+
+<p>{pygmentize::}
+$ g8 scalatra/scalatra-sbt</p>
+
+<blockquote><p>organization [com.example]:
+package [com.example.app]:
+name [scalatra-sbt-prototype]:
+servlet_name [MyScalatraServlet]:
+scala_version [2.9.1]:
+version [0.1.0-SNAPSHOT]:
+{pygmentize}</p></blockquote>
+
+<p><code>organization</code>: Used for publishing.  Should be the reverse of a domain
+name you control.  If you don't own a domain, <code>com.github.username</code> is a
+popular choice.</p>
+
+<p><code>package</code>: All Scala code belongs in a package.  The <a href="http://docs.scala-lang.org/style/naming-conventions.html#packages">Scala Style
+Guide</a>
+recommends that your packages start with your organization.  This convention is
+used across multiple JVM languages and gives your project a globally unique
+namespace.</p>
+
+<p><code>name</code>: The name of your project.  g8 will generate a project into a
+folder of this name, and the artifacts you publish will be based on this name.</p>
+
+<p><code>servlet_name</code>: the name of your servlet. This might be something like
+<em>BlogServlet</em> or just <em>Blog</em>.</p>
+
+<p><code>scala_version</code>: The version of Scala your project is built with.  When in
+doubt, use the default.</p>
+
+<p><code>version</code>: The version number of your project.  This is entirely up to you,
+but we like <a href="http://semver.org/">Semantic Versioning</a>.</p>
+
+<h3>Installation using <code>git clone</code></h3>
+
+<p>For those who prefer not to install giter8, an equivalent prototype project is
+maintained on GitHub:</p>
+
+<p>{pygmentize::}
+$ git clone http://github.com/scalatra/scalatra-sbt-prototype.git
+{pygmentize}</p>
+
+<p>You will need to manually update organization, name, and version in <code>build.sbt</code>.</p>
+
+<h3>Understanding SBT Dependencies</h3>
+
+<p>Scalatra uses Scala's [Simple Build Tool][sbt-site], or <code>sbt</code>, as a build system.</p>
+
+<p>The <code>build.sbt</code> file defines the libraries which your application will depend on.</p>
+
+<p>{pygmentize:: scala}
+organization := "org.example"</p>
+
+<p>name := "beesknees"</p>
+
+<p>version := "0.1.0-SNAPSHOT"</p>
+
+<p>seq(webSettings :_*)</p>
+
+<p>classpathTypes ~= (_ + "orbit")</p>
+
+<p>libraryDependencies ++= Seq(
+  "org.scalatra" % "scalatra" % "2.1.0",
+  "org.scalatra" % "scalatra-scalate" % "2.1.0",
+  "org.scalatra" % "scalatra-specs2" % "2.1.0" % "test",
+  "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
+  "org.eclipse.jetty" % "jetty-webapp" % "8.1.5.v20120716" % "container",
+  "org.eclipse.jetty" % "test-jetty-servlet" % "8.1.5.v20120716" % "test",
+  "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))</p>
+
+<p>)
+{pygmentize}</p>
+
+<p>If your project depends on any additional libraries, you may add any other
+dependencies you wish into the <code>libraryDependencies</code> section.</p>
+
+<p>The default dependencies are:</p>
+
+<p><code>scalatra</code>: This is the core Scalatra module, and is required to run the framework.</p>
+
+<p><code>scalatra-scalate</code>: This integrates with <a href="http://scalate.fusesource.org">Scalate</a>,
+a template engine supporting multiple template formats.  This is optional, but
+highly recommended for any app requiring templating.</p>
+
+<p><code>scalatra-specs2</code>: This integrates the <a href="https://github.com/etorreborre/specs2">Specs2</a> testing libraries.</p>
+
+<p><code>logback-classic</code>: Basic logging functionality, courtesy of <a href="http://logback.qos.ch/">Logback</a>.</p>
+
+<p><code>jetty-webapp</code>: This is the embedded servlet container used by the web plugin.
+Your application should be portable to any servlet container supporting at least
+the 2.5 specification.</p>
+
+<p><code>servlet-api</code>: Required for building your app.  It is placed in the <code>provided</code>
+configuration so that it is not bundled with your application.  Your servlet
+container will provide this at deployment time.</p>
+
+<h3>Building</h3>
+
+<p>Scala is a compiled language, so you need to build your Scalatra project.</p>
+
+<p>Enter your application's top-level directory and type <code>sbt</code>, and the
+application will build.</p>
+
+<h1>Running in Development</h1>
+
+<h3>Automatic Code Reloading</h3>
+
+<p>Restarting an application manually after every code change is both slow and
+painful. It can easily be avoided by using a tool for automatic code reloading.</p>
+
+<p>SBT will allow you to <a href="https://github.com/harrah/xsbt/wiki/Triggered-Execution">signal a restart of the application when it detects
+code changes</a>. The
+syntax for restarting includes adding <code>~</code> in front of the command you want to
+re-execute.  To recompile and reload your application automatically with
+xsbt-web-plugin 0.2.10, run the following:</p>
+
+<p>{pygmentize::}
+$ sbt</p>
+
+<blockquote><p>container:start
+~ ;copy-resources;aux-compile
+{pygmentize}</p></blockquote>
+
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

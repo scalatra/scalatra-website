@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Scalatra Guides | Configuration and Deployment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Scalatra</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/getting-started">Getting started</a></li>
+              <li><a href="/guides">Guides</a></li>
+              <li><a href="/news">News</a></li>
+              <li><a href="/community">Community</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h1>Logging</h1>
+
+<p>By default, Scalatra uses <a href="http://logback.qos.ch">Logback</a> for logging.</p>
+
+<p>You can easily add logging facilities to your project, if you've got the
+logging dependency in your <code>build.sbt</code> file:</p>
+
+<pre><code>  "ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime"
+</code></pre>
+
+<p>In your servlet or filter class:</p>
+
+<p>{pygmentize:: scala}</p>
+
+<p>import org.slf4j.{Logger, LoggerFactory}</p>
+
+<p>class YourServlet extends ScalatraServlet {</p>
+
+<p>  val logger =  LoggerFactory.getLogger(getClass)</p>
+
+<p>  def get("/") {</p>
+
+<pre><code>logger.info("foo")
+// whatever else you want to put in the body of the action
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>{pygmentize}</p>
+
+<p>This will get you basic logging support. There are some additional logging
+libraries you might want to investigate: <a href="https://github.com/weiglewilczek/slf4s">slf4s</a> and
+<a href="http://software.clapper.org/grizzled-slf4j/">grizzled-slf4j</a>,
+which act as Scala wrappers around slf4j.</p>
+
+<p>The Scala wrappers use by-name parameters for the log message, and
+check to see that the logging level is enabled.  This is a performance
+win for complex log messages involving expensive <code>toString</code>s or many
+concatenations.</p>
+
+<h1>Production Deployment</h1>
+
+<h3>As a War to Jetty/Tomcat/Etc</h3>
+
+<pre><code>$ sbt package
+$ mv target/example-1.0.war target/example.war
+$ scp target/example.war user@example.com:/usr/share/jetty/webapp
+</code></pre>
+
+<h3>As a Single Jar</h3>
+
+<p>Thanks to Riobard for this
+<a href="http://groups.google.com/group/scalatra-user/msg/7df47d814f12a45f">post</a> to
+the mailing list.</p>
+
+<h3>Extend sbt project definition:</h3>
+
+<p>Copy <a href="http://bit.ly/92NWdu">this piece of code</a>
+(Note the link doesn't work anymore !) into your sbt project definition
+(/project/build/src/your project.scala) and extend your project with the
+AssemblyProject, so you should have something like this:</p>
+
+<p><strong> SBT 0.7.X </strong>
+{pygmentize::scala}
+class JettyScalatraProject(info: ProjectInfo) extends DefaultProject(info) with AssemblyProject {</p>
+
+<pre><code>override def mainClass = Some("com.example.JettyLauncher") #point this to your entry object
+</code></pre>
+
+<p>  val jettytester = "org.mortbay.jetty" % "jetty-servlet-tester" % "6.1.22" % "provided->default"
+  val scalatest = "org.scalatest" % "scalatest" % "1.0" % "provided->default"
+}
+{pygmentize}</p>
+
+<p><strong> SBT 0.11.x </strong></p>
+
+<p>Create a runner for Jetty.
+{pygmentize::scala}
+import org.eclipse.jetty.server._
+import org.eclipse.jetty.servlet.ServletContextHandler
+import org.eclipse.jetty.webapp.WebAppContext
+object JettyLauncher {
+  def main(args: Array[String]) {</p>
+
+<pre><code>val Array(path, port) = args
+val server = new Server(port.toInt)
+val context = new
+</code></pre>
+
+<p>ServletContextHandler(ServletContextHandler.SESSIONS)</p>
+
+<pre><code>server.setHandler(context)
+val web = new WebAppContext(path, "/")
+server.setHandler(web)
+server.start()
+server.join()
+</code></pre>
+
+<p>  }
+}
+{pygmentize}</p>
+
+<p>Include the "webapp" directory in the assembly Jar.
+{pygmentize::scala}
+resourceGenerators in Compile &lt;+= (resourceManaged, baseDirectory) map { (managedBase, base) =>
+  val webappBase = base / "src" / "main" / "webapp"
+  for {</p>
+
+<pre><code>(from, to) &lt;- webappBase ** "*" x rebase(webappBase, managedBase / "main" / "webapp")
+</code></pre>
+
+<p>  } yield {</p>
+
+<pre><code>Sync.copy(from, to)
+to
+</code></pre>
+
+<p>  }
+}
+{pygmentize}</p>
+
+<p>Then launch sbt or reload it if it is already running. This should give you a
+new sbt command called "assembly". Try that in the sbt interactive prompt and
+it should produce a <strong>**-assembly-</strong>.jar file in your sbt /target/scala-2.7.7
+folder. All dependencies (like scala-library.jar) are included in this jar
+file and you can run it directly, e.g.</p>
+
+<p>{pygmentize::}
+java -jar <strong>*-assembly-</strong>.jar
+{pygmentize}</p>
+
+<h3>Launch Scalatra as a servlet</h3>
+
+<p>ScalatraServlet is an HttpServlet, we just need some glue code to launch an
+embedded Jetty server with this Servlet.</p>
+
+<p>{pygmentize::scala}
+package com.example  // remember this package in the sbt project definition
+import org.mortbay.jetty.Server
+import org.mortbay.jetty.servlet.{Context, ServletHolder}
+import org.scalatra.TemplateExample // this is the example Scalatra servlet</p>
+
+<p>object JettyLauncher { // this is my entry object as specified in sbt project definition
+  def main(args: Array[String]) {</p>
+
+<pre><code>val server = new Server(8080)
+val root = new Context(server, "/", Context.SESSIONS)
+root.addServlet(new ServletHolder(new TemplateExample), "/*")
+server.start()
+server.join()
+</code></pre>
+
+<p>  }
+}
+{pygmentize}</p>
+
+<p>Now save this alongside your Scalatra project as JettyLauncher.scala and run
+<code>sbt clean assembly</code>. You'll have the ultimate executable jar file
+in the target soon. Try</p>
+
+<p>{pygmentize::}
+java -jar <strong>-assembly-</strong>.jar
+{pygmentize}</p>
+
+<p>and see it will launch the embedded Jetty at port 8080 with the example
+Scalatra project running. On my machine (OS X 10.6 with JVM 1.6) this setup
+costs 38MB memory.</p>
+
+<h3>Scalatra on Heroku</h3>
+
+<p>This is pretty easy to get up and running. The only thing you really need to do
+is start Jetty directly, and add a script to execute this. You don't want to
+have to rely on SBT to start your application.</p>
+
+<p>The easiest way to do this is create a Main method to start Jetty. See
+JettyLauncher.scala (listing at bottom of this section) - save this in your
+src/main/scala dir, setting the filter to your applications filter. Then
+use Typesafe's start script plugin to generate a script to start the app.</p>
+
+<p>To enable the plugin, add the following to project/plugins/build.sbt</p>
+
+<p>{pygmentize::scala}
+resolvers += Classpaths.typesafeResolver</p>
+
+<p>addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.0")
+{pygmentize}</p>
+
+<p>And the following to your build.sbt</p>
+
+<p>{pygmentize::scala}
+import com.typesafe.startscript.StartScriptPlugin</p>
+
+<p>seq(StartScriptPlugin.startScriptForClassesSettings: _*)
+{pygmentize}</p>
+
+<p>Once this is done, you are ready to deploy to Heroku. Create a Procfile in
+the root of your project containing</p>
+
+<pre><code>web: target/start
+</code></pre>
+
+<p>Commit your changes to git and make sure you have the heroku gem installed
+(see Heroku's general <a href="http://devcenter.heroku.com/articles/scala">Scala instructions</a>).
+You can then create and push the app.</p>
+
+<pre><code>heroku create appname --stack cedar
+git push heroku master
+</code></pre>
+
+<p>{pygmentize::scala}
+import org.eclipse.jetty.server.Server
+import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
+import org.eclipse.jetty.webapp.WebAppContext</p>
+
+<p>object JettyLauncher {
+  def main(args: Array[String]) {</p>
+
+<pre><code>val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
+
+val server = new Server(port)
+val context = new WebAppContext()
+context setContextPath "/"
+context.setResourceBase("src/main/webapp")
+context.addServlet(classOf[MyCedarServlet], "/*")
+context.addServlet(classOf[DefaultServlet], "/")
+
+server.setHandler(context)
+
+server.start
+server.join
+</code></pre>
+
+<p>  }</p>
+
+<p>}
+{pygmentize}</p>
+
+<h3>Including Scala Compiler</h3>
+
+<p>If you need the Scala compiler included within a WAR file add the declaration
+below to your SBT build file.</p>
+
+<p>{pygmentize::scala}
+override def webappClasspath = super.webappClasspath +++ buildCompilerJar
+{pygmentize}</p>
+
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
