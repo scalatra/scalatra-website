@@ -3,7 +3,11 @@ layout: default
 title: Scalatra | Built With Scalatra
 ---
 
-## Production Systems Built With Scalatra
+<div class="page-header">
+  <h1>Production Systems Built With Scalatra</h1>
+</div>
+
+The following systems are known to incorporate Scalatra in their architecture:
 
 ### LinkedIn Signal
 

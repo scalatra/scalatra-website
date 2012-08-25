@@ -3,9 +3,11 @@ layout: default
 title: Scalatra | Community
 ---
 
-[Built with Scalatra](built-with.html)
+<div class="page-header">
+  <h1>The Scalatra Community</h1>
+</div>
 
-# Community
+[Built with Scalatra](built-with.html)
 
 ## Twitter
 

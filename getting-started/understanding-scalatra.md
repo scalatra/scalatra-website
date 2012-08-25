@@ -3,8 +3,9 @@ layout: default
 title: Scalatra | The Anatomy of a Scalatra Application
 ---
 
-The Anatomy of a Scalatra App
-=============================
+<div class="page-header">
+  <h1>The Anatomy of a Scalatra App</h1>
+</div>
 
 The recommended way of structuring a Scalatra project is as follows:
 

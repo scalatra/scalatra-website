@@ -4,7 +4,7 @@ title: Scalatra Guides | Views
 ---
 
 <div class="page-header">
-<h1>Views</h1>
+  <h1>Views</h1>
 </div>
 
 Scalatra can render views in three main ways.

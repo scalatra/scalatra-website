@@ -3,8 +3,9 @@ layout: default
 title: Introduction
 ---
 
-Introduction
-============
+<div class="page-header">
+  <h1>Introduction</h1>
+</div>
 
 Scalatra is one of a new breed of simple, accessible, scalable web frameworks.
 It combines the power of the JVM with the beauty and brevity of

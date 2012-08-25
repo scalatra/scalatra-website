@@ -3,8 +3,9 @@ layout: default
 title: Scalatra | Your First Scalatra App
 ---
 
-Hello World Application
-=======================
+<div class="page-header">
+  <h1>First Steps With Scalatra</h1>
+</div>
 
 Scalatra is installed, how about making your first application?  Source files
 go into `src/main/scala/com/example/app` (substitute your package for

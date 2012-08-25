@@ -4,7 +4,7 @@ title: Scalatra Guides | Models
 ---
 
 <div class="page-header">
-<h1>Models</h1>
+  <h1>Models</h1>
 </div>
 
 While Scalatra does not provide a library for models, you are free to use (or not use)

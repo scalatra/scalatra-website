@@ -4,7 +4,7 @@ title: Scalatra Guides | Configuration and Deployment
 ---
 
 <div class="page-header">
-<h1>Configuration &amp; Deployment</h1>
+  <h1>Configuration &amp; Deployment</h1>
 </div>
 
 
