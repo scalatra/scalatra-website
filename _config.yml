@@ -14,6 +14,7 @@ lsi:         false
 pygments:    true
 markdown:    rdiscount
 permalink:   date
+paginate:    5
 
 maruku:
   use_tex:    false
