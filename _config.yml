@@ -2,8 +2,9 @@ safe:        false
 auto:        false
 server:      false
 server_port: 4000
-baseurl:    /
-url: http://localhost:4000
+baseurl:    /scalatra-website/_pages
+url: http://localhost:4000/scalatra-website/_pages
+url_root: "/scalatra-website/_pages/"
 
 source:      .
 destination: ./_site
