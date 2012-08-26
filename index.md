@@ -9,7 +9,7 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
       <img src="assets/img/logo-x.png" class="img-rounded">
     </div>
     <div class="span6">
-      <p>Scalatra is a simple, accessible web micro-framework.</p>
+      <p>Scalatra is a simple, accessible and free web micro-framework.</p>
       <p> It combines the power of the JVM with the beauty and brevity of Scala,
           helping you quickly build high-performance web sites and APIs.</p>
     </div>
@@ -19,19 +19,25 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
 <div class="row">
   <div class="span4">
     <h2>Ready</h2>
-    <p>Scalatra is one of a new breed of simple, accessible, scalable web frameworks. </p>
-    <p><a href="getting-started" class="btn btn-primary">Go »</a></p>
+    <p><img src="assets/img/glyphicons/glyphicons_339_rabbit.png"> Get
+      set up in <a href="getting-started/installation.html">3 easy steps</a>.
+      There's a good chance that you already have most of the software you need.</p>
+    <p><a href="getting-started" class="btn btn-primary">Get started »</a></p>
   </div>
   <div class="span4">
-    <h2>Set</h2>
-    <p>It combines the power of the JVM with the beauty and brevity of Scala, allowing you to build high-performance web APIs which may be asynchronous or realtime.</p>
-    <p><a href="guides" class="btn btn-primary">Go »</a></p>
+    <h2>Steady</h2>
+    <p><img src="assets/img/glyphicons/glyphicons_064_lightbulb.png"> We're
+      working hard on all aspects of our framework, from the non-blocking
+      I/O through to an async future. We've documented our progress so far
+      in a handy set of reference guides, to quickly answer your questions.</p>
+    <p><a href="guides" class="btn btn-primary">View the guides »</a></p>
   </div>
   <div class="span4">
     <h2>Code</h2>
-    <p>It helps you to quickly build high-performance, scalable HTTP APIs for web
-and mobile applications.</p>
-    <p><a href="community" class="btn btn-primary">Go »</a></p>
+    <p><img src="assets/img/glyphicons/glyphicons_043_group.png"> We have a
+      small but active community, and an enthusiastic group of
+      developers working on the next version.</p>
+    <p><a href="community" class="btn btn-primary">Get involved »</a></p>
   </div>
 </div>
 
