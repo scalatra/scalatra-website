@@ -118,6 +118,23 @@ request to a URL evaluates some Scala code and returns some text in response.
 Whatever the block returns is sent back to the browser.
 </div>
 
+Scalatra allows you to return strongly-typed results from any of its actions.
+The action above returns an XML literal - you could easily change it to return
+a string, by altering the action:
+
+{% highlight scala %}
+
+  get("/") {
+    "Hi there!"
+  }
+
+{% endhighlight %}
+
+Returning a raw string is not something you'll do particularly often - usually
+you will want to return formatted HTML which is the product of a templating
+system, or an output format like JSON. See the [views](/guides/views.html) and
+[helpers](/guides/helpers.html) of our [guides](/guides) for more info.
+
 ## Automatic code reloading
 
 Restarting an application manually after every code change is both slow and
@@ -173,4 +190,8 @@ You should then get a website with examples running at
 Example code can be found in the ```example/src/main/scala/org/scalatra/```
 directory.
 
+Now that you've got a (rather simplistic) running application, you may want to
+[understand more](understanding-scalatra.html) about the project setup, or
+dive straight into our [guides](/guides), which show you how to perform common
+development tasks.
 
