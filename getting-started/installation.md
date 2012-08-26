@@ -68,6 +68,7 @@ Make sure you reload your shell:
 
 
 Now you can use conscript to install Giter8:
+
 {% highlight bash %}
 
   cs n8han/giter8
