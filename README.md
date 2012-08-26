@@ -1,19 +1,15 @@
 # Scalatra project
 
-This is the home of The [Scalatra](http://github.com/scalatra/scalatra/) Book.
+This is the home of The [Scalatra](http://github.com/scalatra/scalatra/)
+website which generates the site at http://scalatra.org.
 
-## Current snapshot
+To build it, you'll need to have [Jekyll](https://github.com/mojombo/jekyll)
+installed on your system.  See the Jekyll docs for installation instructions.
 
-The latest version of the book is published to http://test.scalatra.org/2.0.0/book.
+Once Jekyll's installed, you can do this to generate the documentation:
 
-## Running the book yourself
+ cd scalatra-website
+ jekyll --server --auto
 
-In a shell, run the following:
-
-    $ ./sbt
-    > update
-    > jetty-run
-    > ~generate-site
-
-Review changes at [http://127.0.0.1:8081](http://127.0.0.1:8081)
-
+This will start an embedded webserver and automatically regenerate the website
+as you make changes to it. You can then view the site at http://localhost:4000.

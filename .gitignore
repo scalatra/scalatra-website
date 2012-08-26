@@ -1,13 +1,5 @@
 *~
-lib_managed/
-project/boot/
-project/build/target/
-project/plugins/project/build.properties
-project/plugins/target/
-project/plugins/lib_managed/
-project/plugins/src_managed/
-src_managed/
-target/
+_site/
 *.eml
 *.iml
 *.ipr
