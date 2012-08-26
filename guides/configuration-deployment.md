@@ -13,8 +13,6 @@ As you develop, test, and get ready for final deployment,
 you'll need to configure things about your app: its environment, its settings,
 initial configurations when it starts up, and the software it depends on.
 
-[console]: http://scalate.fusesource.org/documentation/console.html
-
 ### Configuring your app's settings using the Scalatra bootstrap file
 
 The Scalatra bootstrap file, new in Scalatra 2.1.x, is the recommended way
@@ -265,6 +263,8 @@ happen in a ScalatraFilter, which just delegates to the filterChain when no
 route matches.
  * Meaningful error pages are enabled (e.g. on 404s, 500s).
  * The [Scalate console][console] is enabled.
+
+[console]: http://scalate.fusesource.org/documentation/console.html
 
 ### Logging
 
