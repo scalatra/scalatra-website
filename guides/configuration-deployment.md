@@ -72,7 +72,7 @@ configuration to the underlying servlet container.
 
 This closes the XML portion of our broadcast.
 
-Note that there is also a file called Scalatra.scala in your `src/main/scala`
+Note that there is also a file called `Scalatra.scala` in your `src/main/scala`
 directory. This is the Scalatra bootstrap config file, and it's where you should
 do most of your app configuration work.
 
@@ -187,8 +187,9 @@ the `init` method:
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 If you're an old Java hand, you'll be quite comfortable mounting servlets
-through the web.xml file in traditional servlet style, so you may not want
-to use the Scalatra bootstrap file.
+through the <code>web.xml</code> file in traditional servlet style, so you
+may not want to use the Scalatra bootstrap file. Keep in mind that you need
+to pick one or the other, because you can't use both at the same time.
 </div>
 
 #### Mounting multiple servlets (or filters) using web.xml
