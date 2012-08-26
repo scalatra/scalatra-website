@@ -78,3 +78,7 @@ Now you can use conscript to install Giter8:
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 That's it! You've now got everything you need.
 </div>
+
+Head over to the "[first steps](first-steps.html)" page, which will tell you how to generate,
+build, and run a Scalatra application.
+
