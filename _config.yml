@@ -1,12 +1,17 @@
+# This is the config file for the Scalatra 2.0.x guides ONLY.
+# If you're interested in changing anything other than the 2.0.x guides,
+# you should do it in the `master` branch.
+
 safe:        false
 auto:        false
 server:      false
 server_port: 4000
-baseurl:    /scalatra-website/_site/
-url: http://localhost:4000/scalatra-website/_site
+baseurl:     /scalatra-website/_site/
+guides_url:  /scalatra-website/_site/2.0/
+url:         http://localhost:4000/scalatra-website/_site/2.0
 
 source:      .
-destination: ./_site
+destination: ./_site/2.0
 plugins:     ./_plugins
 
 future:      true
