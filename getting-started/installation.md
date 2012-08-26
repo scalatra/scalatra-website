@@ -8,7 +8,7 @@ title: Scalatra | Installation
 </div>
 
 Getting started with a new web framework can be a bit scary. Luckily, Scalatra
-is actually quite easy to install, as it has relatively few dependencies.
+is easy to install, as it has relatively few dependencies.
 
 ## 1. Install a JDK
 
