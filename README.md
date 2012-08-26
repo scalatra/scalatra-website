@@ -1,6 +1,6 @@
 # Scalatra project
 
-This is the home of The [Scalatra](http://github.com/scalatra/scalatra/)
+This is the home of the [Scalatra](http://github.com/scalatra/scalatra/)
 website which generates the site at http://scalatra.org.
 
 To build it, you'll need to have [Jekyll](https://github.com/mojombo/jekyll)
