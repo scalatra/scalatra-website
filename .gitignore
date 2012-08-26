@@ -1,5 +1,9 @@
+# We normally won't want the generated site in git, but for the moment we want
+# to be able to look at the new site using genereated gh-pages, so this is
+# commented out.
+# _site/
+#
 *~
-_site/
 *.eml
 *.iml
 *.ipr
