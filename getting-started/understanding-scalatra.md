@@ -157,8 +157,14 @@ Here's an example Scalatra sbt file:
 
 {% endhighlight %}
 
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 If your project depends on any additional libraries, you can add them to the
-`libraryDependencies` section.
+<code>libraryDependencies</code> section. Doing that and running <code>sbt</code>
+again will download the dependency jar libraries and make them available to
+your application. If you don't know what the dependency details are, you can
+find out on <a href="http://search.maven.org">http://search.maven.org</a>.
+</div>
 
 The default dependencies are:
 
