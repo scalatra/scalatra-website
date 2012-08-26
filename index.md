@@ -27,11 +27,10 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
   </div>
   <div class="span4">
     <h2>Steady</h2>
-    <p><img src="assets/img/glyphicons/glyphicons_064_lightbulb.png"> We're
-      working hard on all aspects of our framework, from the non-blocking
-      I/O through to an async future. We've documented our progress so far
-      in a handy set of <a href="guides">reference guides</a>, to quickly
-      answer your questions.</p>
+    <p><img src="assets/img/glyphicons/glyphicons_064_lightbulb.png"> We've
+      documented the main aspects of Scalatra development in a handy set of
+      <a href="guides">reference guides</a>, to help you become productive
+      quickly.</p>
     <p><a href="guides" class="btn btn-primary">View the guides »</a></p>
   </div>
   <div class="span4">
