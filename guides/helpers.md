@@ -104,8 +104,7 @@ User class to the session and Basic Authentication methods.
 There is a new authentication middleware in the auth directory, to be
 documented soon.  See an example at
 [usage example](http://gist.github.com/660701).
-Another [example](https://gist.github.com/732347) for basic authentication
-can be found
+Here's another [example](https://gist.github.com/732347) for basic authentication.
 
 #### Dependency
 
@@ -239,7 +238,7 @@ work correctly in Jetty prior to version 8.1.3.
 
 {% endhighlight %}
 
-4. To handle the case where user uploads too large file, you can define an error handler:
+4. To handle the case where user uploads too large a file, you can define an error handler:
 
 {% highlight scala %}
 
