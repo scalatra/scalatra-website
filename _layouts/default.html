@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% include _head.html %}
+    {% include _head_relative.html %}
   </head>
 
     {% include _upper_body.html %}
 
-      <div class="row">
-        <div class="span9">
           {{content}}
-        </div>
-      </div>
 
-    {% include _lower_body.html %}
+    {% include _lower_body_relative.html %}
 
 </html>
