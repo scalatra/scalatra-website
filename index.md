@@ -95,15 +95,13 @@ is the construction of RESTful APIs.
 
 ### Scale up and customize
 
-Scalatra is a micro-framework, so it's great for starting small and building
-upwards.
+Scalatra is a micro-framework, so you start small and build upwards.
 
 You can easily add exactly the libraries you want - for data models, templating,
-unit and integration testing, async request handling, or server-push - in
-order to make your system do what you want.
+unit and integration testing, async request handling, or server-push.
 
-We can't predict what you'll want to build, or how you'll want to build it, so
-instead of prescribing a set of libraries for you to use, and building the
+We can't predict what you'll want to build, or how you'll want to build it.
+Instead of prescribing a set of libraries for you to use, and building the
 framework around that, we let _you_ choose.
 
 ## Versions
