@@ -9,8 +9,8 @@ title: Scalatra Guides | Configuration & deployment
 
 ## Configuring your application
 
-As you develop, test, and get your application ready for final deployment,
-you'll need to configure your application: its environment, its settings,
+As you develop, test, and get ready for final deployment,
+you'll need to configure things about your app: its environment, its settings,
 initial configurations when it starts up, and the software it depends on.
 
 [console]: http://scalate.fusesource.org/documentation/console.html
