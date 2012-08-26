@@ -20,8 +20,9 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
   <div class="span4">
     <h2>Ready</h2>
     <p><img src="assets/img/glyphicons/glyphicons_339_rabbit.png"> Get
-      set up in <a href="getting-started/installation.html">3 easy steps</a>.
-      There's a good chance that you already have most of the software you need.</p>
+      set up in <a href="getting-started/installation.html">3 easy steps</a>
+      with our quick installation guide. There's a good chance that you already
+      have most of the software you need.</p>
     <p><a href="getting-started" class="btn btn-primary">Get started »</a></p>
   </div>
   <div class="span4">
@@ -92,8 +93,18 @@ web systems, which embrace HTTP's stateless nature. You can build anything
 you want with Scalatra, but one of the things it's been most successful at
 is the construction of RESTful APIs.
 
+### Scale up and customize
 
+Scalatra is a micro-framework, so it's great for starting small and building
+upwards.
 
+You can easily add exactly the libraries you want - for data models, templating,
+unit and integration testing, async request handling, or server-push - in
+order to make your system do what you want.
+
+We can't predict what you'll want to build, or how you'll want to build it, so
+instead of prescribing a set of libraries for you to use, and building the
+framework around that, we let _you_ choose.
 
 ## Versions
 
