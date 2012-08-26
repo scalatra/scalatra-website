@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Scalatra guides | Routes and actions</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="/scalatra-website/_site/assets/css/bootstrap.css" rel="stylesheet">
+<link href="/scalatra-website/_site/assets/css/scalatra.css" rel="stylesheet">
+<style>
+  body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  }
+</style>
+<link href="/scalatra-website/_site/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon" href="/scalatra-website/_site/assets/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/scalatra-website/_site/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/scalatra-website/_site/assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/scalatra-website/_site/assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/scalatra-website/_site/assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+      <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/scalatra-website/_site/">Scalatra</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/scalatra-website/_site/getting-started">Getting started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Guides
+                <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/scalatra-website/_site/2.0/guides">Overview</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/routes-and-actions.html">Routes &amp; Actions</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/views.html">Views</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/helpers.html">Helpers</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/models.html">Models</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/testing.html">Testing</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/configuration-deployment.html">Configuration &amp; Deployment</a></li>
+                </ul>
+              </li>
+              <li><a href="/scalatra-website/_site/news">News</a></li>
+              <li><a href="/scalatra-website/_site/community">Community</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                API docs
+                <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+              <li>
+                <a href="http://scalatra.org/2.1/api">2.1</a>
+              </li>
+              <li>
+                <a href="http://scalatra.org/2.0/api">2.0</a>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+          <div class="page-header">
+  <h1>Routes &amp; actions</h1>
+</div>
+
+
+<p>In Scalatra, a route is an HTTP method paired with a URL matching pattern.</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// show something</span>
+    <span class="o">}</span>
+
+    <span class="n">post</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// submit/create something</span>
+    <span class="o">}</span>
+
+    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// update something</span>
+    <span class="o">}</span>
+
+    <span class="n">delete</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// delete something</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Route order</h2>
+
+<p>The first matching route is invoked. Routes are matched from the <em>bottom up</em>.</p>
+
+<p><span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
+Route definitions are executed as part of a Scala constructor; by matching
+from the bottom up, routes can be overridden in child classes.</p>
+
+<h2>Named parameters</h2>
+
+<p>Route patterns may include named parameters:</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/hello/:name&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Matches &quot;GET /hello/foo&quot; and &quot;GET /hello/bar&quot;</span>
+      <span class="c1">// params(&quot;name&quot;) is &quot;foo&quot; or &quot;bar&quot;</span>
+      <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="o">{</span><span class="n">params</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">)}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Wildcards</h2>
+
+<p>Route patterns may also include wildcard parameters, accessible through the
+<code>splat</code> key.</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/say/*/to/*&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Matches &quot;GET /say/hello/to/world&quot;</span>
+      <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;splat&quot;</span><span class="o">)</span> <span class="c1">// == Seq(&quot;hello&quot;, &quot;world&quot;)</span>
+    <span class="o">}</span>
+
+    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/download/*.*&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Matches &quot;GET /download/path/to/file.xml&quot;</span>
+      <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;splat&quot;</span><span class="o">)</span> <span class="c1">// == Seq(&quot;path/to/file&quot;, &quot;xml&quot;)</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Regular expressions</h2>
+
+<p>The route matcher may also be a regular expression.  Capture groups are
+accessible through the <code>captures</code> key.</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;&quot;&quot;^\/f(.*)/b(.*)&quot;&quot;&quot;</span><span class="o">.</span><span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Matches &quot;GET /foo/bar&quot;</span>
+      <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;captures&quot;</span><span class="o">)</span> <span class="c1">// == Seq(&quot;oo&quot;, &quot;ar&quot;)</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Rails-like pattern matching</h2>
+
+<p>By default, route patterns parsing is based on Sinatra.  Rails has a similar,
+but not identical, syntax, based on Rack::Mount's Strexp.  The path pattern
+parser is resolved implicitly, and may be overridden if you prefer an
+alternate syntax:</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="k">import</span> <span class="nn">org.scalatra._</span>
+
+    <span class="k">class</span> <span class="nc">RailsLikeRouting</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="o">{</span>
+      <span class="k">implicit</span> <span class="k">override</span> <span class="k">def</span> <span class="n">string2RouteMatcher</span><span class="o">(</span><span class="n">path</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span>
+        <span class="nc">RailsPathPatternParser</span><span class="o">(</span><span class="n">path</span><span class="o">)</span>
+
+      <span class="n">get</span><span class="o">(</span><span class="s">&quot;/:file(.:ext)&quot;</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// matched Rails-style }</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Path patterns in the REPL</h2>
+
+<p>If you want to experiment with path patterns, it's very easy in the <a href="http://www.scala-lang.org/node/2097">REPL</a>.</p>
+
+<pre><code>scala&gt; import org.scalatra.SinatraPathPatternParser
+import org.scalatra.SinatraPathPatternParser
+
+scala&gt; val pattern = SinatraPathPatternParser("/foo/:bar")
+pattern: PathPattern = PathPattern(^/foo/([^/?#]+)$,List(bar))
+
+scala&gt; pattern("/y/x") // doesn't match
+res1: Option[MultiParams] = None
+
+scala&gt; pattern("/foo/x") // matches
+res2: Option[MultiParams] = Some(Map(bar -&gt; ListBuffer(x)))
+</code></pre>
+
+<p>Alternatively, you may use the <code>RailsPathPatternParser</code> in place of the
+<code>SinatraPathPatternParser</code>.</p>
+
+<h2>Conditions</h2>
+
+<p>Routes may include conditions.  A condition is any expression that returns
+Boolean.  Conditions are evaluated by-name each time the route matcher runs.</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/foo&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Matches &quot;GET /foo&quot;</span>
+    <span class="o">}</span>
+
+    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/foo&quot;</span><span class="o">,</span> <span class="n">request</span><span class="o">.</span><span class="n">getRemoteHost</span> <span class="o">==</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Overrides &quot;GET /foo&quot; for local users</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<p>Multiple conditions can be chained together.  A route must match all
+conditions:</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/foo&quot;</span><span class="o">,</span> <span class="n">request</span><span class="o">.</span><span class="n">getRemoteHost</span> <span class="o">==</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="o">,</span> <span class="n">request</span><span class="o">.</span><span class="n">getRemoteUser</span> <span class="o">==</span> <span class="s">&quot;admin&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// Only matches if you&#39;re the admin, and you&#39;re localhost</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<p>No path pattern is necessary.  A route may consist of solely a condition:</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="n">isMaintenanceMode</span><span class="o">)</span> <span class="o">{</span>
+      <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Go</span> <span class="n">away</span><span class="o">!&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Actions</h2>
+
+<p>Each route is followed by an action.  An Action may return any value, which
+is then rendered to the response according to the following rules.</p>
+
+<dl class="dl-horizontal">
+<dt>ActionResult</dt>
+<dd>Sets status, body and headers. After importing
+<code>org.scalatra.ActionResult._</code>, you can return 200 OK, 404 Not Found
+and other responses by referencing them by their descriptions. See the <span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span> code (below) for an example.
+</dd>
+</dl>
+
+
+<dl class="dl-horizontal">
+<dt>Array[Byte]</dt>
+<dd>If no content-type is set, it is set to <code>application/octet-stream</code>.
+The byte array is written to the response's output stream.</dd>
+<dt>NodeSeq</dt>
+<dd>If no content-type is set, it is set to <code>text/html</code>.  The node
+sequence is converted to a string and written to the response's writer.</dd>
+<dt>Unit</dt>
+<dd>This signifies that the action has rendered the entire response, and
+no further action is taken.</dd>
+<dt>Any</dt>
+<dd> For any other value, if the content type is not set, it is set to
+<code>text/plain</code>.  The value is converted to a string and written to the
+response's writer.</dd>
+</dl>
+
+
+<p>This behavior may be customized for these or other return types by overriding
+<code>renderResponse</code>.</p>
+
+<p><span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span></p>
+
+<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/file/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">fileService</span><span class="o">.</span><span class="n">find</span><span class="o">(</span><span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">))</span> <span class="k">match</span> <span class="o">{</span>
+        <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">file</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Ok</span><span class="o">(</span><span class="n">file</span><span class="o">)</span>
+        <span class="k">case</span> <span class="nc">None</span>       <span class="k">=&gt;</span> <span class="nc">NotFound</span><span class="o">(</span><span class="s">&quot;Sorry, the file could not be found&quot;</span><span class="o">)</span>
+       <span class="o">}</span>
+     <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Parameter handling</h2>
+
+<p>Incoming HTTP request parameters become available to your actions through
+two methods: <code>multiParams</code> and <code>params</code>.</p>
+
+<dl class="dl-horizontal">
+<dt>multiParams</dt>
+<dd>a result of merging the standard request params (query
+string or post params) with the route parameters extracted from the route
+matchers of the current route. The default value for an unknown param is the
+empty sequence. Keys return <code>Seq</code>uences of values.</dd>
+<dt>params</dt>
+<dd>a special, simplified view of <code>multiParams</code>, containing only the
+head element for any known param, and returning the values as Strings.</dd>
+</dl>
+
+
+<h3>A params example</h3>
+
+<p>As an example, let's hit a URL with a GET like this:</p>
+
+<div class="highlight"><pre><code class="html">  /articles/52?foo=uno<span class="err">&amp;</span>bar=dos<span class="err">&amp;</span>baz=three<span class="err">&amp;</span>foo=anotherfoo
+</code></pre>
+</div>
+
+
+<p><span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+Look closely: there are two "foo" keys in there.</p>
+
+<p>Assuming there's a matching route at <code>/articles/:id</code>, we get the following
+results inside the action:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/articles/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">)</span> <span class="c1">// =&gt; &quot;52&quot;</span>
+    <span class="n">params</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">)</span> <span class="c1">// =&gt; &quot;uno&quot; (discarding the second &quot;foo&quot; parameter value)</span>
+    <span class="n">params</span><span class="o">(</span><span class="s">&quot;unknown&quot;</span><span class="o">)</span> <span class="c1">// =&gt; generates a NoSuchElementException</span>
+    <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="s">&quot;unknown&quot;</span><span class="o">)</span> <span class="c1">// =&gt; None - this is what Scala does with unknown keys in a Map</span>
+
+    <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">)</span> <span class="c1">// =&gt; Seq(&quot;52&quot;)</span>
+    <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">)</span> <span class="c1">// =&gt; Seq(&quot;uno&quot;, &quot;anotherfoo&quot;)</span>
+    <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;unknown&quot;</span><span class="o">)</span> <span class="c1">// =&gt; an empty Seq</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h3>params.getOrElse</h3>
+
+<p>You can set defaults for parameter values easily by using <code>params.getOrElse</code>.</p>
+
+<p>Let's say you wanted to require an :author name param, and set a :page value
+to 1 by default. If you don't receive an :author, you want to stop execution.
+You could do it like this:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/articles-by/:author/:page&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">author</span><span class="k">:</span><span class="kt">String</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&quot;author&quot;</span><span class="o">,</span> <span class="n">halt</span><span class="o">(</span><span class="mi">400</span><span class="o">))</span>
+    <span class="k">val</span> <span class="n">page</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&quot;page&quot;</span><span class="o">,</span> <span class="s">&quot;1&quot;</span><span class="o">).</span><span class="n">toInt</span>
+    <span class="c1">// now do stuff with your params</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Enabling support for PUT and DELETE requests</h2>
+
+<p>Scalatra supports all of the HTTP verbs: <code>GET</code> and <code>POST</code>, which are supported by
+browser clients, but also <code>PUT</code> and <code>DELETE</code>, which are not.</p>
+
+<p>Many client libraries use non-standard but simple conventions to indicate
+that they would like the request to be considered as a <code>PUT</code> or <code>DELETE</code> instead of
+a POST: for example, jQuery adds a <code>X-HTTP-METHOD-OVERRIDE</code> header to the request.</p>
+
+<p>Other clients and frameworks often indicate the same thing by adding a
+<code>_method=put</code> or <code>_method=delete</code> parameter to a POST body.</p>
+
+<p>Scalatra will look for these conventions on incoming requests and transform
+the request method automatically if you add the <code>MethodOverride</code> trait into your
+servlet or filter:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">class</span> <span class="nc">MyFilter</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="k">with</span> <span class="nc">MethodOverride</span> <span class="o">{</span>
+
+    <span class="c1">// POST to &quot;/foo/bar&quot; with params &quot;id=2&quot; and &quot;_method=put&quot; will hit this route:</span>
+    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/foo/bar/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// update your resource here</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Request filters</h2>
+
+<p>Scalatra offers a way for you too hook into the request chain of your
+application via filters.</p>
+
+<p>Filters define two methods, <code>before</code> and <code>after</code> which both accept a
+block to yield. Filters optionally take a URL pattern to match to the request.</p>
+
+<h3>before</h3>
+
+<p>The <code>before</code> method will let you pass a block to be evaluated <strong>before</strong> <em>each</em>
+and <em>every</em> route gets processed.</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="n">before</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">MyDb</span><span class="o">.</span><span class="n">connect</span>
+    <span class="n">contentType</span><span class="o">=</span><span class="s">&quot;text/html&quot;</span>
+  <span class="o">}</span>
+
+  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">list</span> <span class="k">=</span> <span class="nc">MyDb</span><span class="o">.</span><span class="n">findAll</span><span class="o">()</span>
+    <span class="n">templateEngine</span><span class="o">.</span><span class="n">layout</span><span class="o">(</span><span class="s">&quot;index.ssp&quot;</span><span class="o">,</span> <span class="n">list</span><span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<p>In this example, we've set up a <code>before</code> filter to connect using a contrived
+<code>MyDb</code> module, and set the <code>contentType</code> for all requests to <code>text/html</code>.</p>
+
+<h3>after</h3>
+
+<p>The <code>after</code> method lets you pass a block to be evaluated <strong>after</strong> <em>each</em> and
+<em>every</em> route gets processed.</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="n">after</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">MyDb</span><span class="o">.</span><span class="n">disconnect</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<p>As you can see from this example, we're asking the <code>MyDB</code> module to
+disconnect after the request has been processed.</p>
+
+<h2>Pattern matching</h2>
+
+<p>Filters optionally take a pattern to be matched against the requested URI
+during processing. Here's a quick example you could use to run a contrived
+<code>authenticate!</code> method before accessing any "admin" type requests.</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="n">before</span><span class="o">(</span><span class="s">&quot;/admin/*&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">basicAuth</span>
+  <span class="o">}</span>
+
+  <span class="n">after</span><span class="o">(</span><span class="s">&quot;/admin/*&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">logout</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h2>Processing order</h2>
+
+<p>Route actions, errors and filters run in the following order:</p>
+
+<ol>
+<li><code>before</code> filters.</li>
+<li>Routes and actions.</li>
+<li>If an exception is thrown during the <code>before</code> filter or route actions, it is
+passed to the <code>errorHandler</code> function, and its result becomes the action result.</li>
+<li><code>after</code> filters.</li>
+<li>The response is rendered.</li>
+</ol>
+
+
+<h2>Handlers</h2>
+
+<p>Handlers are top-level methods available in Scalatra to take care of common HTTP
+routines.</p>
+
+<h3>Redirects</h3>
+
+<p>There is a handler for redirection:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">){</span>
+    <span class="n">redirect</span><span class="o">(</span><span class="s">&quot;/someplace/else&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<p>This will return a redirect response, with HTTP status 302, pointing to
+<code>/someplace/else</code>.</p>
+
+<p><em>Caution:</em> <code>redirect</code> is implemented as a HaltException.  You probably don't
+want to catch it in an action.</p>
+
+<p>Although there's no built-in handler for permanent redirects, if you'd like to
+do a 301 permanent redirect, you can do something like this:</p>
+
+<div class="highlight"><pre><code class="scala"><span class="n">halt</span><span class="o">(</span><span class="n">status</span> <span class="k">=</span> <span class="mi">301</span><span class="o">,</span> <span class="n">headers</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;Location&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;http://example.org/&quot;</span><span class="o">))</span>
+</code></pre>
+</div>
+
+
+<h3>Halting</h3>
+
+<p>To immediately stop a request within a filter or route:</p>
+
+<div class="highlight"><pre><code class="scala"><span class="n">halt</span><span class="o">()</span>
+</code></pre>
+</div>
+
+
+<p>You can also specify the <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP status</a>:</p>
+
+<div class="highlight"><pre><code class="scala"><span class="n">halt</span><span class="o">(</span><span class="mi">403</span><span class="o">)</span>
+</code></pre>
+</div>
+
+
+<p>Or the status and the body:</p>
+
+<div class="highlight"><pre><code class="scala"><span class="n">halt</span><span class="o">(</span><span class="mi">403</span><span class="o">,</span> <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Go</span> <span class="n">away</span><span class="o">!&lt;/</span><span class="n">h1</span><span class="o">&gt;)</span>
+</code></pre>
+</div>
+
+
+<p>Or even the HTTP status reason and headers.  For more complex invocations, it
+is recommended to use named arguments:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="n">halt</span><span class="o">(</span><span class="n">status</span> <span class="k">=</span> <span class="mi">403</span><span class="o">,</span>
+       <span class="n">reason</span> <span class="k">=</span> <span class="s">&quot;Forbidden&quot;</span><span class="o">,</span>
+       <span class="n">headers</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;X-Your-Mother-Was-A&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;hamster&quot;</span><span class="o">,</span>
+                     <span class="s">&quot;X-And-Your-Father-Smelt-Of&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Elderberries&quot;</span><span class="o">),</span>
+       <span class="n">body</span> <span class="k">=</span> <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Go</span> <span class="n">away</span> <span class="n">or</span> <span class="n">I</span> <span class="n">shall</span> <span class="n">taunt</span> <span class="n">you</span> <span class="n">a</span> <span class="n">second</span> <span class="n">time</span><span class="o">!&lt;/</span><span class="n">h1</span><span class="o">&gt;)</span>
+</code></pre>
+</div>
+
+
+<p>The <code>reason</code> argument is ignored unless <code>status</code> is not null.  If you don't pass
+arguments for <code>status</code>, <code>reason</code>, or <code>body</code>, those parts of the response will
+be left unchanged.</p>
+
+<p><em>Caution:</em> <code>halt</code> is implemented as a HaltException.  You probably don't want
+to catch it in an action.</p>
+
+<h3>Passing</h3>
+
+<p>A route can punt processing to the next matching route using <code>pass()</code>.  Remember,
+unlike Sinatra, routes are matched from the bottom up.</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/guess/*&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="s">&quot;You missed!&quot;</span>
+  <span class="o">}</span>
+
+  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/guess/:who&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">params</span><span class="o">(</span><span class="s">&quot;who&quot;</span><span class="o">)</span> <span class="k">match</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="s">&quot;Frank&quot;</span> <span class="k">=&gt;</span> <span class="s">&quot;You got me!&quot;</span>
+      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">pass</span><span class="o">()</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<p>The route block is immediately exited and control continues with the next
+matching route.  If no matching route is found, the <code>notFound</code> handler is
+invoked.</p>
+
+<h3>notFound</h3>
+
+<p>The <code>notFound</code> handler allows you to execute code when there is no matching
+route for the current request's URL.</p>
+
+<p>The default behavior is:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="n">notFound</span> <span class="o">{</span>
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Not</span> <span class="n">found</span><span class="o">.</span> <span class="nc">Bummer</span><span class="o">.&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<p>What happens next differs slightly based on whether you've set your application
+up using ScalatraServlet or ScalatraFilter.</p>
+
+<ul>
+<li><em>ScalatraServlet</em>: sends a 404 response</li>
+<li><em>ScalatraFilter</em>: passes the request to the servlet filter chain, which may
+then throw a 404 or decide to do something different with it.</li>
+</ul>
+
+
+
+      </div> <!-- /container -->
+
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/scalatra-website/_site/assets/js/jquery.min.js"></script>
+  <script src="/scalatra-website/_site/assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>

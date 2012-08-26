@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Scalatra Guides | Configuration & deployment</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="/scalatra-website/_site/assets/css/bootstrap.css" rel="stylesheet">
+<link href="/scalatra-website/_site/assets/css/scalatra.css" rel="stylesheet">
+<style>
+  body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  }
+</style>
+<link href="/scalatra-website/_site/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon" href="/scalatra-website/_site/assets/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/scalatra-website/_site/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/scalatra-website/_site/assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/scalatra-website/_site/assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/scalatra-website/_site/assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+      <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/scalatra-website/_site/">Scalatra</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/scalatra-website/_site/getting-started">Getting started</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Guides
+                <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="/scalatra-website/_site/2.0/guides">Overview</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/routes-and-actions.html">Routes &amp; Actions</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/views.html">Views</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/helpers.html">Helpers</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/models.html">Models</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/testing.html">Testing</a></li>
+                  <li><a href="/scalatra-website/_site/2.0/guides/configuration-deployment.html">Configuration &amp; Deployment</a></li>
+                </ul>
+              </li>
+              <li><a href="/scalatra-website/_site/news">News</a></li>
+              <li><a href="/scalatra-website/_site/community">Community</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                API docs
+                <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+              <li>
+                <a href="http://scalatra.org/2.1/api">2.1</a>
+              </li>
+              <li>
+                <a href="http://scalatra.org/2.0/api">2.0</a>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+          <div class="page-header">
+  <h1>Configuration & deployment</h1>
+</div>
+
+
+<h2>Configuring your application</h2>
+
+<p>As you develop, test, and get ready for final deployment,
+you'll need to configure things about your app: its environment, its settings,
+initial configurations when it starts up, and the software it depends on.</p>
+
+<h3>Configuring your app's settings using the Scalatra bootstrap file</h3>
+
+<p>The Scalatra bootstrap file, new in Scalatra 2.1.x, is the recommended way
+of configuring your application. It allows you to easily mount different
+servlets, set application parameters, and run initialization code for your
+app, without touching much in the way of XML.</p>
+
+<p>If you've just started a new project in Scalatra 2.1.x, using the giter8 template,
+all of this will already be set up for you. However, if you're upgrading from
+2.0.x, or you just want to understand what's going on, read on.</p>
+
+<p>First, the bad news: there <em>is</em> some XML involved, because this is one of the
+points where Scalatra needs to interface with Java servlets, the underlying
+technology it's sitting on top of.</p>
+
+<p>All Scalatra projects have a <code>web.xml</code> file, in <code>src/main/webapp/WEB-INF/</code>.
+Find yours and open it.</p>
+
+<p>In a regular Java servlet application, most application configuration is done
+inside <code>web.xml</code>. However, Scalatra applications can drop in some standard
+config code, and use regular Scala code for configuration afterwards.</p>
+
+<p>The XML which allows you to do this is as follows:</p>
+
+<div class="highlight"><pre><code class="xml">  <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+  <span class="nt">&lt;web-app</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
+        <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+        <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;</span>
+        <span class="na">version=</span><span class="s">&quot;3.0&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;listener&gt;</span>
+        <span class="nt">&lt;listener-class&gt;</span>org.scalatra.servlet.ScalatraListener<span class="nt">&lt;/listener-class&gt;</span>
+      <span class="nt">&lt;/listener&gt;</span>
+
+      <span class="nt">&lt;servlet-mapping&gt;</span>
+        <span class="nt">&lt;servlet-name&gt;</span>default<span class="nt">&lt;/servlet-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/img/*<span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/css/*<span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/js/*<span class="nt">&lt;/url-pattern&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/assets/*<span class="nt">&lt;/url-pattern&gt;</span>
+      <span class="nt">&lt;/servlet-mapping&gt;</span>
+  <span class="nt">&lt;/web-app&gt;</span>
+</code></pre>
+</div>
+
+
+<p><span class="badge badge-success"><i class="icon-thumbs-up icon-white"></i></span>
+If you started your project in an older version of Scalatra, and want to start
+using the new Scalatra bootstrap configuration style, drop that XML into your
+web.xml and you're all set.</p>
+
+<p>Note that there are no servlet-names, servlet classes, etc. That's all
+handled dynamically by the <code>ScalatraListener</code> class, which will supply our actual
+configuration to the underlying servlet container.</p>
+
+<p>This closes the XML portion of our broadcast.</p>
+
+<p>Note that there is also a file called <code>Scalatra.scala</code> in your <code>src/main/scala</code>
+directory. This is the Scalatra bootstrap config file, and it's where you should
+do most of your app configuration work.</p>
+
+<p>The simplest version of this file, which gets generated when you
+make a new project using the giter8 template, looks something like this:</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="k">import</span> <span class="nn">org.scalatra.LifeCycle</span>
+    <span class="k">import</span> <span class="nn">javax.servlet.ServletContext</span>
+    <span class="k">import</span> <span class="nn">org.yourdomain.projectname._</span>
+
+    <span class="k">class</span> <span class="nc">Scalatra</span> <span class="k">extends</span> <span class="nc">LifeCycle</span> <span class="o">{</span>
+
+      <span class="k">override</span> <span class="k">def</span> <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="c1">// mount servlets like this:</span>
+        <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">ArticlesServlet</span><span class="o">,</span> <span class="s">&quot;/articles/*&quot;</span><span class="o">)</span>
+
+        <span class="c1">// set init params like this:</span>
+        <span class="c1">// org.scalatra.cors.allowedOrigins = &quot;http://example.com&quot;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h4>Mounting multiple servlets (or filters)</h4>
+
+<p>If you've got more than one servlet or filter in your application, you'll
+need to mount them.</p>
+
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+If you're coming from a dynamic language, such as PHP, Ruby, Python, or Perl,
+you may be shocked to find that servlet-based applications, including Scalatra,
+are unable to dynamically require and use controller classes. You'll need to
+explicitly tell your application about a new `ScalatraServlet` or `ScalatraFilter`
+whenever you add one.
+</div>
+
+
+<p>The Scalatra bootstrap config class allows you to mount servlets or
+filters (or both) into your application, and define URL path patterns that
+they'll respond to.</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">override</span> <span class="k">def</span> <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="c1">// mount a first servlet like this:</span>
+    <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">ArticlesServlet</span><span class="o">,</span> <span class="s">&quot;/articles/*&quot;</span><span class="o">)</span>
+
+    <span class="c1">// mount a second servlet like this:</span>
+    <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">CommentsServlet</span><span class="o">,</span> <span class="s">&quot;/comments/*&quot;</span><span class="o">)</span>
+
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h4>Setting init params</h4>
+
+<p>You can also set init params in the Scalatra bootstrap file. For instance, you
+can set the <code>org.scalatra.environment</code> init parameter to set the application
+environment:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">override</span> <span class="k">def</span> <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="c1">// mount a first servlet like this:</span>
+    <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">ArticlesServlet</span><span class="o">,</span> <span class="s">&quot;/articles/*&quot;</span><span class="o">)</span>
+
+    <span class="c1">// Let&#39;s set the environment</span>
+    <span class="n">org</span><span class="o">.</span><span class="n">scalatra</span><span class="o">.</span><span class="n">environment</span> <span class="k">=</span> <span class="s">&quot;production&quot;</span>
+
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h4>Running code at application start</h4>
+
+<p>The Scalatra bootstrap file is also a good place to put things like database
+initialization code, which need to be set up once in your application. You can
+mix in whatever traits you want, and run any Scala code you want from inside
+the <code>init</code> method:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.scalatra.LifeCycle</span>
+  <span class="k">import</span> <span class="nn">javax.servlet.ServletContext</span>
+
+  <span class="c1">// Import the trait:</span>
+  <span class="k">import</span> <span class="nn">com.yourdomain.yourapp.DatabaseInit</span>
+
+  <span class="c1">// Mixing in the trait:</span>
+  <span class="k">class</span> <span class="nc">Scalatra</span> <span class="k">extends</span> <span class="nc">LifeCycle</span> <span class="k">with</span> <span class="nc">DatabaseInit</span> <span class="o">{</span>
+
+    <span class="k">override</span> <span class="k">def</span> <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
+
+      <span class="c1">// call a method that comes from inside our DatabaseInit trait:</span>
+      <span class="n">configureDb</span><span class="o">()</span>
+
+      <span class="c1">// Mount our servlets as normal:</span>
+      <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">Articles</span><span class="o">,</span> <span class="s">&quot;/articles/*&quot;</span><span class="o">)</span>
+      <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">Users</span><span class="o">,</span> <span class="s">&quot;/users/*&quot;</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h3>Configuring your app using web.xml</h3>
+
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+If you're an old Java hand, you'll be quite comfortable mounting servlets
+through the <code>web.xml</code> file in traditional servlet style, so you
+may not want to use the Scalatra bootstrap file. Keep in mind that you need
+to pick one or the other, because you can't use both at the same time.
+</div>
+
+
+<h4>Mounting multiple servlets (or filters) using web.xml</h4>
+
+<p>You can see an example of mounting multiple servlets in the Scalatra 2.0.x
+examples
+<a href="https://github.com/scalatra/scalatra/blob/support/2.0.x/example/src/main/webapp/WEB-INF/web.xml">web.xml</a>
+file.</p>
+
+<p>An extract from that file looks like this:</p>
+
+<div class="highlight"><pre><code class="xml">  <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+  <span class="cp">&lt;!DOCTYPE web-app</span>
+<span class="cp">  PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN&quot;</span>
+<span class="cp">  &quot;http://java.sun.com/j2ee/dtds/web-app_2_2.dtd&quot;&gt;</span>
+  <span class="nt">&lt;web-app&gt;</span>
+    <span class="nt">&lt;servlet&gt;</span>
+      <span class="nt">&lt;servlet-name&gt;</span>BasicAuthExample<span class="nt">&lt;/servlet-name&gt;</span>
+      <span class="nt">&lt;servlet-class&gt;</span>org.scalatra.BasicAuthExample<span class="nt">&lt;/servlet-class&gt;</span>
+    <span class="nt">&lt;/servlet&gt;</span>
+    <span class="nt">&lt;servlet&gt;</span>
+      <span class="nt">&lt;servlet-name&gt;</span>TemplateExample<span class="nt">&lt;/servlet-name&gt;</span>
+      <span class="nt">&lt;servlet-class&gt;</span>org.scalatra.TemplateExample<span class="nt">&lt;/servlet-class&gt;</span>
+    <span class="nt">&lt;/servlet&gt;</span>
+  <span class="nt">&lt;/web-app&gt;</span>
+</code></pre>
+</div>
+
+
+<h4>Setting init params using web.xml</h4>
+
+<p>You can set init params for your servlets in the normal manner:</p>
+
+<div class="highlight"><pre><code class="xml">  <span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>BasicAuthExample<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>org.scalatra.BasicAuthExample<span class="nt">&lt;/servlet-class&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+      <span class="nt">&lt;param-name&gt;</span>org.scalatra.environment<span class="nt">&lt;/param-name&gt;</span>
+      <span class="nt">&lt;param-value&gt;</span>development<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+  <span class="nt">&lt;/servlet&gt;</span>
+</code></pre>
+</div>
+
+
+<h3>Application environments</h3>
+
+<p>The application environment is defined by:</p>
+
+<ol>
+<li>The <code>org.scalatra.environment</code> system property.</li>
+<li>The <code>org.scalatra.environment</code> init parameter.</li>
+</ol>
+
+
+<p><span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+The default is <code>development</code>.</p>
+
+<p>You can set the application's environment in the following ways:</p>
+
+<ol>
+<li>The preferred method: as an init-param in the Scalatra Bootstrap file.</li>
+<li>As an init-param in web.xml.</li>
+<li>As a system property: this is most commonly set with a <code>-D</code> option on the
+command line: <code>java -Dorg.scalatra.environment=development</code></li>
+</ol>
+
+
+<p>If the environment starts with "dev", then <code>isDevelopmentMode</code> returns true.</p>
+
+<p>In development mode, a few things happen.</p>
+
+<ul>
+<li>In a ScalatraServlet, the notFound handler is enhanced so that it dumps the
+effective request path and the list of routes it tried to match. This does not
+happen in a ScalatraFilter, which just delegates to the filterChain when no
+route matches.</li>
+<li>Meaningful error pages are enabled (e.g. on 404s, 500s).</li>
+<li>The <a href="http://scalate.fusesource.org/documentation/console.html">Scalate console</a> is enabled.</li>
+</ul>
+
+
+<h3>Logging</h3>
+
+<p>By default, Scalatra uses <a href="http://logback.qos.ch">Logback</a> for logging.</p>
+
+<p>You can easily add logging facilities to your project, if you've got the
+logging dependency in your <code>build.sbt</code> file:</p>
+
+<pre><code>  "ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime"
+</code></pre>
+
+<p>In your servlet or filter class:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.slf4j.</span><span class="o">{</span><span class="nc">Logger</span><span class="o">,</span> <span class="nc">LoggerFactory</span><span class="o">}</span>
+
+  <span class="k">class</span> <span class="nc">YourServlet</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="o">{</span>
+
+    <span class="k">val</span> <span class="n">logger</span> <span class="k">=</span>  <span class="nc">LoggerFactory</span><span class="o">.</span><span class="n">getLogger</span><span class="o">(</span><span class="n">getClass</span><span class="o">)</span>
+
+    <span class="k">def</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">)</span>
+      <span class="c1">// whatever else you want to put in the body of the action</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<p>This will get you basic logging support. There are some additional logging
+libraries you might want to investigate: <a href="https://github.com/weiglewilczek/slf4s">slf4s</a> and
+<a href="http://software.clapper.org/grizzled-slf4j/">grizzled-slf4j</a>,
+which act as Scala wrappers around slf4j.</p>
+
+<p>The Scala wrappers use by-name parameters for the log message, and
+check to see that the logging level is enabled.  This is a performance
+win for complex log messages involving expensive <code>toString</code>s or many
+concatenations.</p>
+
+<h2>Production deployment</h2>
+
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+If you're coming from a non-Java background, you may find the subject of
+servlet containers and JVM deployments to be unnecessarily frightening. Don't
+despair. Despite all the mystery which surrounds them, servlet deployments are
+extremely simple. You will be surprised at how easy it is!
+</div>
+
+
+<h3>As a war file</h3>
+
+<p>The simplest way to deploy your Scalatra application is as a Web ARchive (WAR)
+file. With any luck, your app can be up and running in a production configuration
+about 5 minutes from now.</p>
+
+<p>From the command line, execute the following:</p>
+
+<pre><code>$ sbt
+</code></pre>
+
+<p>Now you're in the sbt console. Package your application by typing <code>package</code>:</p>
+
+<pre><code>&gt; package
+[info] Compiling 6 Scala sources to /path/to/your/project/target/scala-2.9.1/classes...
+[info] Packaging /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ...
+[info] Done packaging.
+</code></pre>
+
+<p>This will generate a WAR file for you, and tell you where it went. A WAR file
+is basically a zip file which contains your entire application, including all
+of its compiled Scala code, and associated assets such as images, javascript,
+stylesheets.</p>
+
+<h4>Jelastic</h4>
+
+<p>Now that you've got the war file, you need to put it in on an application server.
+One easy way to do this is to put it up onto <a href="http://jelastic.com/">Jelastic</a>,
+a Java Platform as a Service provider.</p>
+
+<p>This is the simplest option, if you want to get something running and put
+it up on the public-facing internet. Sign up for the (free) service, upload
+your WAR file, and you're finished.</p>
+
+<h4>Your own servlet container</h4>
+
+<p>Another option is to run your own servlet container - there are certainly
+<a href="http://en.wikipedia.org/wiki/Web_container">lots to choose from</a>.</p>
+
+<p>Let's try <a href="http://tomcat.apache.org">Tomcat</a>, with a local installation.</p>
+
+<div class="alert alert-info">
+<p><span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+What follows is <strong>not</strong> a best-practice guide for configuring Tomcat.
+It's aimed at people who are new to servlet containers, and want to see their
+application working. Servlet container configuration can be as potentially complex
+as other web servers, such as Apache or Nginx, and it's up to you to understand
+the performance and security implications of what you're doing. We recommend
+that you read the docs on your chosen servlet container before exposing yourself
+to the public internet.</p>
+
+<p>Having said all that, the basic case is extremely easy, as you'll see in a moment.</p>
+</div>
+
+
+<p>First download and extract tomcat:</p>
+
+<pre><code>$ wget http://mirror.lividpenguin.com/pub/apache/tomcat/tomcat-7/v7.0.29/bin/apache-tomcat-7.0.29.tar.gz
+$ mv apache-tomcat-7.0.29.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
+$ tar -xvzf ~/Desktop/tomcat.tar.gz
+</code></pre>
+
+<p>Ok, Tomcat is now installed.</p>
+
+<pre><code>$ ~/Desktop/tomcat/bin/startup.sh
+</code></pre>
+
+<p>Now it should be started. Test this by browsing to
+<a href="http://localhost:8080/">http://localhost:8080/</a></p>
+
+<p>Now deploy your application. Dropping a war file into Tomcat's <code>webapp</code> folder
+causes it to be extracted, or "exploded". Tomcat will initialize your application
+on the first request.</p>
+
+<pre><code>$ mv /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/yourapp.war
+</code></pre>
+
+<p>Browse to <a href="http://localhost:8080/yourapp/">http://localhost:8080/yourapp/</a></p>
+
+<p>It's alive! Or it should be.</p>
+
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+Keep in mind that we've assumed your application has a route defined at the
+path "/".
+</div>
+
+
+<p>Paths inside the servlet container will be root-relative, so if you've
+got your servlets mounted like this in your Scalatra bootstrap file:</p>
+
+<pre><code>// mount servlets like this:
+context mount (new ArticlesServlet, "/articles/*")
+</code></pre>
+
+<p>you would need to go to <a href="http://localhost:8080/yourapp/articles/">http://localhost:8080/yourapp/articles/</a></p>
+
+<p>If you've hardcoded any paths in your application, you may see your app working,
+but the stylesheets and internal links may not be working correctly.</p>
+
+<p>If that's the case, it's time for a bit of a trick. You can move Tomcat's
+ROOT application to another spot, and put your app at the ROOT.</p>
+
+<pre><code>$ mv ~/Desktop/tomcat/webapps/ROOT ~/Desktop/tomcat/webapps/ORIGINAL_ROOT
+$ mv /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/ROOT.war
+</code></pre>
+
+<p><span class="badge badge-warning"><i class="icon-flag icon-white"></i></span>
+Tomcat paths are case-sensitive. Make sure you copy your app to <code>ROOT.war</code>.</p>
+
+<p>Your app should now be running at <a href="http://localhost:8080/">http://localhost:8080/</a></p>
+
+<h3>Launching Scalatra as a servlet</h3>
+
+<p>ScalatraServlet is an HttpServlet, we just need some glue code to launch an
+embedded Jetty server with this Servlet.</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">package</span> <span class="nn">com.example</span>  <span class="c1">// remember this package in the sbt project definition</span>
+  <span class="k">import</span> <span class="nn">org.mortbay.jetty.Server</span>
+  <span class="k">import</span> <span class="nn">org.mortbay.jetty.servlet.</span><span class="o">{</span><span class="nc">Context</span><span class="o">,</span> <span class="nc">ServletHolder</span><span class="o">}</span>
+  <span class="k">import</span> <span class="nn">org.scalatra.TemplateExample</span> <span class="c1">// this is the example Scalatra servlet</span>
+
+  <span class="k">object</span> <span class="nc">JettyLauncher</span> <span class="o">{</span> <span class="c1">// this is my entry object as specified in sbt project definition</span>
+    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="n">server</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Server</span><span class="o">(</span><span class="mi">8080</span><span class="o">)</span>
+      <span class="k">val</span> <span class="n">root</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Context</span><span class="o">(</span><span class="n">server</span><span class="o">,</span> <span class="s">&quot;/&quot;</span><span class="o">,</span> <span class="nc">Context</span><span class="o">.</span><span class="nc">SESSIONS</span><span class="o">)</span>
+      <span class="n">root</span><span class="o">.</span><span class="n">addServlet</span><span class="o">(</span><span class="k">new</span> <span class="nc">ServletHolder</span><span class="o">(</span><span class="k">new</span> <span class="nc">TemplateExample</span><span class="o">),</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
+      <span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
+      <span class="n">server</span><span class="o">.</span><span class="n">join</span><span class="o">()</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<p>Now save this alongside your Scalatra project as JettyLauncher.scala and run
+<code>sbt clean assembly</code>. You'll have the ultimate executable jar file
+in the target soon. Try</p>
+
+<div class="highlight"><pre><code class="bash">  java -jar **-assembly-**.jar
+</code></pre>
+</div>
+
+
+<p>and see it will launch the embedded Jetty at port 8080 with the example
+Scalatra project running. On an OS X 10.6 machine with JVM 1.6, this setup
+costs ~38MB memory.</p>
+
+<h3>Heroku</h3>
+
+<p>This is pretty easy to get up and running. The only thing you really need to do
+is start Jetty directly, and add a script to execute this. You don't want to
+have to rely on SBT to start your application.</p>
+
+<p>The easiest way to do this is create a Main method to start Jetty. See
+JettyLauncher.scala (listing at bottom of this section) - save this in your
+src/main/scala dir, setting the filter to your applications filter. Then
+use Typesafe's start script plugin to generate a script to start the app.</p>
+
+<p>To enable the plugin, add the following to project/plugins/build.sbt</p>
+
+<div class="highlight"><pre><code class="bash">  resolvers +<span class="o">=</span> Classpaths.typesafeResolver
+
+  addSbtPlugin<span class="o">(</span><span class="s2">&quot;com.typesafe.startscript&quot;</span> % <span class="s2">&quot;xsbt-start-script-plugin&quot;</span> % <span class="s2">&quot;0.5.0&quot;</span><span class="o">)</span>
+</code></pre>
+</div>
+
+
+<p>And the following to your build.sbt</p>
+
+<div class="highlight"><pre><code class="bash">  import com.typesafe.startscript.StartScriptPlugin
+
+  seq<span class="o">(</span>StartScriptPlugin.startScriptForClassesSettings: _*<span class="o">)</span>
+</code></pre>
+</div>
+
+
+<p>Once this is done, you are ready to deploy to Heroku. Create a Procfile in
+the root of your project containing</p>
+
+<pre><code>web: target/start
+</code></pre>
+
+<p>Commit your changes to git and make sure you have the heroku gem installed
+(see Heroku's general <a href="http://devcenter.heroku.com/articles/scala">Scala instructions</a>).
+You can then create and push the app.</p>
+
+<pre><code>heroku create appname --stack cedar
+git push heroku master
+</code></pre>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.eclipse.jetty.server.Server</span>
+  <span class="k">import</span> <span class="nn">org.eclipse.jetty.servlet.</span><span class="o">{</span><span class="nc">DefaultServlet</span><span class="o">,</span> <span class="nc">ServletContextHandler</span><span class="o">}</span>
+  <span class="k">import</span> <span class="nn">org.eclipse.jetty.webapp.WebAppContext</span>
+
+  <span class="k">object</span> <span class="nc">JettyLauncher</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+      <span class="k">val</span> <span class="n">port</span> <span class="k">=</span> <span class="k">if</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="n">getenv</span><span class="o">(</span><span class="s">&quot;PORT&quot;</span><span class="o">)</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="nc">System</span><span class="o">.</span><span class="n">getenv</span><span class="o">(</span><span class="s">&quot;PORT&quot;</span><span class="o">).</span><span class="n">toInt</span> <span class="k">else</span> <span class="mi">8080</span>
+
+      <span class="k">val</span> <span class="n">server</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Server</span><span class="o">(</span><span class="n">port</span><span class="o">)</span>
+      <span class="k">val</span> <span class="n">context</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">WebAppContext</span><span class="o">()</span>
+      <span class="n">context</span> <span class="n">setContextPath</span> <span class="s">&quot;/&quot;</span>
+      <span class="n">context</span><span class="o">.</span><span class="n">setResourceBase</span><span class="o">(</span><span class="s">&quot;src/main/webapp&quot;</span><span class="o">)</span>
+      <span class="n">context</span><span class="o">.</span><span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">MyCedarServlet</span><span class="o">],</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
+      <span class="n">context</span><span class="o">.</span><span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">DefaultServlet</span><span class="o">],</span> <span class="s">&quot;/&quot;</span><span class="o">)</span>
+
+      <span class="n">server</span><span class="o">.</span><span class="n">setHandler</span><span class="o">(</span><span class="n">context</span><span class="o">)</span>
+
+      <span class="n">server</span><span class="o">.</span><span class="n">start</span>
+      <span class="n">server</span><span class="o">.</span><span class="n">join</span>
+    <span class="o">}</span>
+
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
+<h3>Including the Scala compiler</h3>
+
+<p>If you need the Scala compiler included within a WAR file add the declaration
+below to your SBT build file.</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">override</span> <span class="k">def</span> <span class="n">webappClasspath</span> <span class="k">=</span> <span class="k">super</span><span class="o">.</span><span class="n">webappClasspath</span> <span class="o">+++</span> <span class="n">buildCompilerJar</span>
+</code></pre>
+</div>
+
+
+
+
+
+      </div> <!-- /container -->
+
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/scalatra-website/_site/assets/js/jquery.min.js"></script>
+  <script src="/scalatra-website/_site/assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>
