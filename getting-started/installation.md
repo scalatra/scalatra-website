@@ -15,8 +15,14 @@ is actually quite easy to install, as it has relatively few dependencies.
 Scalatra is web microframework written in Scala, so you'll need to have a
 Java Development Kit (JDK) installed. Many systems will already include
 a JDK (do `java -version` and `javac -version` in a terminal to find if yours
-does). If you don't yet have Java installed, you can find out how to install
-it for your system [here](http://docs.oracle.com/javase/7/docs/webnotes/install/index.html).
+does).
+
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+If you don't yet have Java installed, you can find out how to install
+it for your system <a href="http://docs.oracle.com/javase/7/docs/webnotes/install/index.html">here</a>.
+</div>
+
 
 ## 2. Install SBT
 
@@ -67,7 +73,11 @@ Now you can use conscript to install Giter8:
 
 {% endhighlight %}
 
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 That's it! You've now got everything you need.
+</div>
+
 
 ## Generate a Scalatra project
 
