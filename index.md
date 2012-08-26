@@ -121,14 +121,14 @@ framework around that, we let _you_ choose.
   </thead>
   <tbody>
     <tr>
-      <td>2.0.3</td>
+      <td>2.0.4</td>
       <td>Stable</td>
       <td><a href="http://github.com/scalatra/scalatra/tree/master">master</td></td>
       <td>
         <ul class="scala-versions">
           <li>2.9.1</li>
           <li>2.9.0-1</li>
-          <li>2.9.0</li>
+          <li>2.8.2</li>
           <li>2.8.1</li>
         </ul>
       </td>
@@ -136,14 +136,13 @@ framework around that, we let _you_ choose.
       <td>N/A</td>
     </tr>
     <tr>
-      <td>2.0.4-SNAPSHOT</td>
+      <td>2.0.5-SNAPSHOT</td>
       <td>Testing</td>
       <td><a href="http://github.com/scalatra/scalatra/tree/support/2.0.x">support/2.0.x</td></td>
       <td>
         <ul class="scala-versions">
           <li>2.9.1</li>
           <li>2.9.0-1</li>
-          <li>2.9.0</li>
           <li>2.8.2</li>
           <li>2.8.1</li>
         </ul>
@@ -152,35 +151,28 @@ framework around that, we let _you_ choose.
       <td>N/A</td>
     </tr>
     <tr>
-      <td>2.1.0-SNAPSHOT</td>
-      <td>Development</td>
-      <td><a href="http://github.com/scalatra/scalatra/tree/develop">develop</td>
+      <td>2.1.0</td>
+      <td>Stable</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/support/2.1.x">support/2.1.x</td></td>
       <td>
         <ul class="scala-versions">
-          <li>2.9.1</li>
-          <li>2.9.0-1</li>
-          <li>2.9.0</li>
-          <li>2.8.2</li>
-          <li>2.8.1</li>
+          <li>2.9.x</li>
         </ul>
       </td>
       <td>3.0</td>
       <td>N/A</td>
     </tr>
     <tr>
-      <td>3.0.0-SNAPSHOT</td>
-      <td>Experimental</td>
-      <td><a href="http://github.com/scalatra/scalatra/tree/netty">netty</td>
+      <td>2.2.0-SNAPSHOT</td>
+      <td>Development</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/develop">develop</td>
       <td>
         <ul class="scala-versions">
-          <li>2.9.1</li>
-          <li>2.9.0-1</li>
-          <li>2.9.0</li>
+          <li>2.9.x</li>
         </ul>
       </td>
       <td>3.0</td>
-      <td>3.3.1</td>
+      <td>N/A</td>
     </tr>
   </tbody>
 </table>
-
