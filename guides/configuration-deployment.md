@@ -62,8 +62,9 @@ The XML which allows you to do this is as follows:
 {% endhighlight %}
 
 <span class="badge badge-success"><i class="icon-thumbs-up icon-white"></i></span>
-If you started your project in an older version of Scalatra, and want to start using the new Scalatra bootstrap configuration style, drop that XML into your web.xml and you're
-all set.
+If you started your project in an older version of Scalatra, and want to start
+using the new Scalatra bootstrap configuration style, drop that XML into your
+web.xml and you're all set.
 
 Note that there are no servlet-names, servlet classes, etc. That's all
 handled dynamically by the `ScalatraListener` class, which will supply our actual
