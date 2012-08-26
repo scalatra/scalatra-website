@@ -76,7 +76,7 @@ before you can get started, but first, here's a Scalatra app:
 
   class HelloWorldApp extends ScalatraFilter {
     get("/") {
-      "Hello world!"
+      <h1>Hello, {params("name")}</h1>
     }
   }
 {% endhighlight %}
