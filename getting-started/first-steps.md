@@ -132,8 +132,8 @@ a string, by altering the action:
 
 Returning a raw string is not something you'll do particularly often - usually
 you will want to return formatted HTML which is the product of a templating
-system, or an output format like JSON. See the [views](/guides/views.html) and
-[helpers](/guides/helpers.html) of our [guides](/guides) for more info.
+system, or an output format like JSON. See the [views](../guides/views.html) and
+[helpers](../guides/helpers.html) of our [guides](../guides) for more info.
 
 ## Automatic code reloading
 
@@ -192,6 +192,6 @@ directory.
 
 Now that you've got a (rather simplistic) running application, you may want to
 [understand more](understanding-scalatra.html) about the project setup, or
-dive straight into our [guides](/guides), which show you how to perform common
+dive straight into our [guides](../guides), which show you how to perform common
 development tasks.
 
