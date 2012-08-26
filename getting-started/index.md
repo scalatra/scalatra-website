@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: home
 title: Scalatra | Getting started
 ---
 
@@ -9,27 +9,31 @@ title: Scalatra | Getting started
 
 
 You will need to install a few things before you can get started, but first,
-here's a very simple Scalatra app:
+here's a Scalatra app:
 
-{% highlight scala %}
+<div class="row">
+  <div class="span6">
+  {% highlight scala %}
 
-  package com.example.app
-  import org.scalatra._
+    package com.example.app
+    import org.scalatra._
 
-  class HelloWorldApp extends ScalatraFilter {
-    get("/") {
-      "Hello world!"
+    class HelloWorldApp extends ScalatraFilter {
+      get("/") {
+        "Hello world!"
+      }
     }
-  }
-
-{% endhighlight %}
-
-Notice a few things about it:
-
-* It's small.
-* It uses a [Sinatra](http://sinatrarb.com/)-style DSL.
-* It defines a single method, an HTTP GET to the path "/".
-* It renders a response, in this case the text _Hello World!_.
+  {% endhighlight %}
+  </div>
+  <div class="span6">
+  <p>Notice a few things about it:</p>
+  <ul>
+    <li>It's small - a full web application in 7 lines of code.</li>
+    <li>It uses a <a href="http://sinatrarb.com/">Sinatra</a>-style DSL.</li>
+    <li>It defines a single method, an HTTP GET to the path "/".</li>
+    <li>It renders a response, in this case the text <em>Hello world!</em></li>
+  </div>
+</div>
 
 This is the essence of Scalatra - small, easy to understand systems which
 embrace HTTP's stateless nature. You can build anything you want with Scalatra,
