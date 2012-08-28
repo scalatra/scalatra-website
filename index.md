@@ -57,7 +57,7 @@ frameworks such as [backbone.js](http://backbonejs.org/),
 features.
 * It will help you use all available cores of that new 16-core server. It
 also gives you easy access to Scala's new concurrency-management constructs:
-Akka Actors.
+[Akka Actors](http://akka.io).
 
 [linkedin]: http://www.linkedin.com
 [guardian]: http://www.guardian.co.uk
