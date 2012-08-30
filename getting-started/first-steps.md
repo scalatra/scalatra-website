@@ -68,12 +68,14 @@ but we like [Semantic Versioning](http://semver.org/).</dd>
 Scala is a compiled language, so you need to build your Scalatra project.
 
 Enter your application's top-level directory and type `sbt`, and the
-application will build.
+application will build. `sbt` will also take care of downloading an entire
+Scalatra development environment if you don't have one yet. This means it'll 
+spend some time downloading Scalatra and its libraries when you first run it.
 
 ## Hello world
 
-Scalatra is installed, how about making your first application?  Source files
-go into `src/main/scala/com/example/app` (substitute your package for
+Scalatra is now installed, how about making your first application?  Source 
+files go into `src/main/scala/com/example/app` (substitute your package for
 `com/example/app`).  Open
 `src/main/scala/com/example/app/MyScalatraServlet.scala`, or whatever you named
 your servlet when you generated your project with g8:
