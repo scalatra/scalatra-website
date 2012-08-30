@@ -77,6 +77,9 @@ Now you can use conscript to install Giter8:
 
 {% endhighlight %}
 
+Depending on your connection speed, this can take a bit of time, as `conscript` 
+downloads quite a few Scala dependencies.
+
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 That's it! You've now got everything you need.
