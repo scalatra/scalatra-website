@@ -65,8 +65,8 @@ Some of Scalate's all-star features include:
 Scalate includes support for some of the best engines available, such as
 [SSP][ssp] (similar to ERB), [SCAML][scaml] (a Scala HAML variant), 
 [Mustache][mustache], and [Jade][jade] (another HAML variant). Except for
-Mustache templates, templates are strongly typed, so your compiler can save 
-you time by tellin you when you make a mistake in your views.
+Mustache, templates are strongly typed, so your compiler can save 
+you time by telling you when you make a mistake in your views.
 
 [ssp]: http://scalate.fusesource.org/documentation/ssp-reference.html
 [scaml]: http://scalate.fusesource.org/documentation/scaml-reference.html
