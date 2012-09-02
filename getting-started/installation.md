@@ -13,7 +13,8 @@ is easy to install, as it has relatively few dependencies.
 ## On Windows
 
 The easiest way to get everything installed on Windows is to download the 
-Typesafe Stack installer, from http://typesafe.com/stack/download
+Typesafe Stack installer, from 
+[http://typesafe.com/stack/download](http://typesafe.com/stack/download)
 
 Download it, double-click it, and you're done.
 
