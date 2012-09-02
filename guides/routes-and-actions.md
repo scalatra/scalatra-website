@@ -43,14 +43,6 @@ class Blog extends ScalatraServlet {
 
 Those 4 example routes, and the actions inside the route blocks, could be the basis of a simple blogging system. The examples just stub out the actions - in a real application, you'd replace the  `// comments` with code to save and retrieve [models](models.html), and show HTML [views](views.html).
 
-### Route order
-
-The first matching route is invoked. Routes are matched from the *bottom up*.
-
-<span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
-Route definitions are executed as part of a Scala constructor; by matching
-from the bottom up, routes can be overridden in child classes.
-
 ### Named parameters
 
 Route patterns may include named parameters (see below for more on parameter handling):
@@ -171,6 +163,12 @@ No path pattern is necessary.  A route may consist of solely a condition:
       <h1>Go away!</h1>
     }
 {% endhighlight %}
+
+### Route order
+
+The first matching route is invoked. Routes are matched from the *bottom up*. <span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
+Route definitions are executed as part of a Scala constructor; by matching
+from the bottom up, routes can be overridden in child classes.
 
 ## Actions
 
