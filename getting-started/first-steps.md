@@ -156,6 +156,11 @@ xsbt-web-plugin 0.2.10, run the following:
 
 {% endhighlight %}
 
+Now that you've got a (rather simplistic) running application, you may want to
+[understand more](understanding-scalatra.html) about the project setup, or
+dive straight into our [guides](../guides), which show you how to perform common
+development tasks.
+
 ## Scalatra examples
 
 The easiest way to learn a new web framework is to see example code in action.
@@ -191,9 +196,3 @@ You should then get a website with examples running at
 
 Example code can be found in the ```example/src/main/scala/org/scalatra/```
 directory.
-
-Now that you've got a (rather simplistic) running application, you may want to
-[understand more](understanding-scalatra.html) about the project setup, or
-dive straight into our [guides](../guides), which show you how to perform common
-development tasks.
-
