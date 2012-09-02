@@ -9,7 +9,7 @@ title: Scalatra guides | Views
 
 If you're using Scalatra to build a web application (as opposed to an API), chances are you'll
 want to render HTML layouts, page content, and re-usable fragments or partials. Like many other
-frameworks, we refer to the process of templating HTML output as "views".
+frameworks, we refer to HTML templates as "views".
 
 Scalatra can render views in two main ways.
 
