@@ -209,15 +209,12 @@ The `layout` key passed from your actions is somewhat special, as it's used by
 Scalate to identify the layout file, which wraps a standard layout around the 
 output for the current action.
 
-If you want, you can optionally set off your `layout` parameter from the others, perhaps
-by doing something like this (in jade this time):
-
 {% highlight scala %}
 
   def get("/") {
     contentType="text/html"
 
-    jade("/index", ("layout" -> "WEB-INF/layouts/app.jade"), "foo" -> "uno", "bar" -> "dos")
+    jade("/index", "layout" -> "WEB-INF/layouts/app.jade", "foo" -> "uno", "bar" -> "dos")
   }
 
 {% endhighlight %}
