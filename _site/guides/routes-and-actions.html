@@ -86,28 +86,42 @@
 </div>
 
 
-<p>In Scalatra, a route is an HTTP method paired with a URL matching pattern.</p>
+<p>All web applications need a way to match up the incoming HTTP request with some code to execute on the server. In Scalatra, this is done using <em>routes</em> and <em>actions</em>.</p>
 
-<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// show something</span>
+<p>If somebody makes a POST request to your application, at http://www.yourapp.org/articles, you might want to invoke code on the server which will look at the information contained in the incoming request, and use it to create a new Article object. The fact that it's a <em>POST</em> request, and the request path <em>/articles</em>, are <em>route</em> information. The code that you execute is the <em>action</em>.</p>
+
+<h2>Routes</h2>
+
+<p>In Scalatra, a route is an HTTP method (GET, PUT, POST, or DELETE) paired with a URL matching pattern. If you set your application up using RESTful conventions, your controller might look something like this:</p>
+
+<div class="highlight"><pre><code class="scala"><span class="k">class</span> <span class="nc">Blog</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="o">{</span>
+
+
+    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/article/:id&quot;</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//  &lt;= this is a route</span>
+      <span class="c1">// this is an action</span>
+      <span class="c1">// this action would show the article which has the specified :id</span>
     <span class="o">}</span>
 
-    <span class="n">post</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// submit/create something</span>
+    <span class="n">post</span><span class="o">(</span><span class="s">&quot;/article&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// this action would submit/create an article</span>
     <span class="o">}</span>
 
-    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// update something</span>
+    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/article/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// update the article which has the specified :id</span>
     <span class="o">}</span>
 
-    <span class="n">delete</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// delete something</span>
+    <span class="n">delete</span><span class="o">(</span><span class="s">&quot;/article/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// delete the article with the specified :id</span>
     <span class="o">}</span>
+
+<span class="o">}</span>
 </code></pre>
 </div>
 
 
-<h2>Route order</h2>
+<p>Those 4 example routes, and the actions inside the route blocks, could be the basis of a simple blogging system. The examples just stub out the actions - in a real application, you'd replace the  <code>// comments</code> with code to save and retrieve <a href="models.html">models</a>, and show HTML <a href="views.html">views</a>.</p>
+
+<h3>Route order</h3>
 
 <p>The first matching route is invoked. Routes are matched from the <em>bottom up</em>.</p>
 
@@ -115,9 +129,9 @@
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.</p>
 
-<h2>Named parameters</h2>
+<h3>Named parameters</h3>
 
-<p>Route patterns may include named parameters:</p>
+<p>Route patterns may include named parameters (see below for more on parameter handling):</p>
 
 <div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/hello/:name&quot;</span><span class="o">)</span> <span class="o">{</span>
       <span class="c1">// Matches &quot;GET /hello/foo&quot; and &quot;GET /hello/bar&quot;</span>
@@ -128,7 +142,7 @@ from the bottom up, routes can be overridden in child classes.</p>
 </div>
 
 
-<h2>Wildcards</h2>
+<h3>Wildcards</h3>
 
 <p>Route patterns may also include wildcard parameters, accessible through the
 <code>splat</code> key.</p>
@@ -146,7 +160,7 @@ from the bottom up, routes can be overridden in child classes.</p>
 </div>
 
 
-<h2>Regular expressions</h2>
+<h3>Regular expressions</h3>
 
 <p>The route matcher may also be a regular expression.  Capture groups are
 accessible through the <code>captures</code> key.</p>
@@ -159,7 +173,7 @@ accessible through the <code>captures</code> key.</p>
 </div>
 
 
-<h2>Rails-like pattern matching</h2>
+<h3>Rails-like pattern matching</h3>
 
 <p>By default, route patterns parsing is based on Sinatra.  Rails has a similar,
 but not identical, syntax, based on Rack::Mount's Strexp.  The path pattern
@@ -178,7 +192,7 @@ alternate syntax:</p>
 </div>
 
 
-<h2>Path patterns in the REPL</h2>
+<h3>Path patterns in the REPL</h3>
 
 <p>If you want to experiment with path patterns, it's very easy in the <a href="http://www.scala-lang.org/node/2097">REPL</a>.</p>
 
@@ -198,7 +212,7 @@ res2: Option[MultiParams] = Some(Map(bar -&gt; ListBuffer(x)))
 <p>Alternatively, you may use the <code>RailsPathPatternParser</code> in place of the
 <code>SinatraPathPatternParser</code>.</p>
 
-<h2>Conditions</h2>
+<h3>Conditions</h3>
 
 <p>Routes may include conditions.  A condition is any expression that returns
 Boolean.  Conditions are evaluated by-name each time the route matcher runs.</p>
@@ -279,7 +293,7 @@ response's writer.</dd>
 </div>
 
 
-<h2>Parameter handling</h2>
+<h3>Parameter handling</h3>
 
 <p>Incoming HTTP request parameters become available to your actions through
 two methods: <code>multiParams</code> and <code>params</code>.</p>
@@ -296,7 +310,7 @@ head element for any known param, and returning the values as Strings.</dd>
 </dl>
 
 
-<h3>A params example</h3>
+<h4>A params example</h4>
 
 <p>As an example, let's hit a URL with a GET like this:</p>
 
@@ -325,7 +339,7 @@ results inside the action:</p>
 </div>
 
 
-<h3>params.getOrElse</h3>
+<h4>params.getOrElse</h4>
 
 <p>You can set defaults for parameter values easily by using <code>params.getOrElse</code>.</p>
 
@@ -342,7 +356,7 @@ You could do it like this:</p>
 </div>
 
 
-<h2>Enabling support for PUT and DELETE requests</h2>
+<h3>Enabling support for PUT and DELETE requests</h3>
 
 <p>Scalatra supports all of the HTTP verbs: <code>GET</code> and <code>POST</code>, which are supported by
 browser clients, but also <code>PUT</code> and <code>DELETE</code>, which are not.</p>
@@ -369,15 +383,13 @@ servlet or filter:</p>
 </div>
 
 
-<h2>Request filters</h2>
+<h3>Filters</h3>
 
 <p>Scalatra offers a way for you too hook into the request chain of your
-application via filters.</p>
-
-<p>Filters define two methods, <code>before</code> and <code>after</code> which both accept a
+application via <code>before</code> and <code>after</code> filters, which both accept a
 block to yield. Filters optionally take a URL pattern to match to the request.</p>
 
-<h3>before</h3>
+<h4>before</h4>
 
 <p>The <code>before</code> method will let you pass a block to be evaluated <strong>before</strong> <em>each</em>
 and <em>every</em> route gets processed.</p>
@@ -398,7 +410,7 @@ and <em>every</em> route gets processed.</p>
 <p>In this example, we've set up a <code>before</code> filter to connect using a contrived
 <code>MyDb</code> module, and set the <code>contentType</code> for all requests to <code>text/html</code>.</p>
 
-<h3>after</h3>
+<h4>after</h4>
 
 <p>The <code>after</code> method lets you pass a block to be evaluated <strong>after</strong> <em>each</em> and
 <em>every</em> route gets processed.</p>
@@ -413,7 +425,7 @@ and <em>every</em> route gets processed.</p>
 <p>As you can see from this example, we're asking the <code>MyDB</code> module to
 disconnect after the request has been processed.</p>
 
-<h2>Pattern matching</h2>
+<h4>Pattern matching</h4>
 
 <p>Filters optionally take a pattern to be matched against the requested URI
 during processing. Here's a quick example you could use to run a contrived
@@ -430,7 +442,7 @@ during processing. Here's a quick example you could use to run a contrived
 </div>
 
 
-<h2>Processing order</h2>
+<h3>Processing order</h3>
 
 <p>Route actions, errors and filters run in the following order:</p>
 
@@ -444,12 +456,12 @@ passed to the <code>errorHandler</code> function, and its result becomes the act
 </ol>
 
 
-<h2>Handlers</h2>
+<h3>Handlers</h3>
 
 <p>Handlers are top-level methods available in Scalatra to take care of common HTTP
 routines.</p>
 
-<h3>Redirects</h3>
+<h4>Redirects</h4>
 
 <p>There is a handler for redirection:</p>
 
@@ -474,7 +486,7 @@ do a 301 permanent redirect, you can do something like this:</p>
 </div>
 
 
-<h3>Halting</h3>
+<h4>Halting</h4>
 
 <p>To immediately stop a request within a filter or route:</p>
 
@@ -516,7 +528,7 @@ be left unchanged.</p>
 <p><em>Caution:</em> <code>halt</code> is implemented as a HaltException.  You probably don't want
 to catch it in an action.</p>
 
-<h3>Passing</h3>
+<h4>Passing</h4>
 
 <p>A route can punt processing to the next matching route using <code>pass()</code>.  Remember,
 unlike Sinatra, routes are matched from the bottom up.</p>
@@ -539,7 +551,7 @@ unlike Sinatra, routes are matched from the bottom up.</p>
 matching route.  If no matching route is found, the <code>notFound</code> handler is
 invoked.</p>
 
-<h3>notFound</h3>
+<h4>notFound</h4>
 
 <p>The <code>notFound</code> handler allows you to execute code when there is no matching
 route for the current request's URL.</p>
