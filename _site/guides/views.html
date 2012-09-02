@@ -334,8 +334,8 @@ how it looks, when using the ScalateSupport helpers to render the page.</p>
 <div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">templateEngine</span><span class="o">.</span><span class="n">layout</span><span class="o">(</span><span class="s">&quot;index.ssp&quot;</span><span class="o">)</span>
     <span class="c1">// renders webapp/index.ssp</span>
-    <span class="c1">// OR look in a sub-directory</span>
 
+    <span class="c1">// OR you can tell Scalate to look in a sub-directory</span>
     <span class="n">templateEngine</span><span class="o">.</span><span class="n">layout</span><span class="o">(</span><span class="s">&quot;/dogs/index.ssp&quot;</span><span class="o">)</span>
     <span class="c1">// would instead render webapp/dogs/index.ssp</span>
   <span class="o">}</span>
@@ -347,7 +347,7 @@ how it looks, when using the ScalateSupport helpers to render the page.</p>
 in the <code>webapp</code> folder of your application (which is found under <code>src/main/</code>
 in the project tree).</p>
 
-<h4>Rendering a 404 page</h4>
+<h4>Rendering a 404 page using Scalate</h4>
 
 <p>You may need to render some other page when Scalatra can't find a route.</p>
 
