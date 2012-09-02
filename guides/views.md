@@ -11,11 +11,10 @@ If you're using Scalatra to build a web application (as opposed to an API), chan
 want to render HTML layouts, page content, and re-usable fragments or partials. Like many other
 frameworks, we refer to the process of templating HTML output as "views".
 
-Scalatra can render views in three main ways.
+Scalatra can render views in two main ways.
 
 1. Inline HTML, returned directly from an action.
-1. Using the ScalateSupport helpers which are built into Scalatra.
-1. Using Scalate directly, calling Scalate functionality without using Scalatra's built-in helpers.
+1. Using the ScalateSupport helper trait which comes built into the default Scalatra g8 template.
 
 ## Inline HTML
 
@@ -36,7 +35,6 @@ value from an action:
   }
 
 {% endhighlight %}
-
 
 Note the use of the curly braces on the `{uri("/")}` part of the inlined view.
 This tells Scalatra to render Scala code.
@@ -66,7 +64,9 @@ Some of Scalate's all-star features include:
 
 Scalate includes support for some of the best engines available, such as
 [SSP][ssp] (similar to ERB), [SCAML][scaml] (a Scala HAML variant), 
-[Mustache][mustache], and [Jade][jade] (another HAML variant).
+[Mustache][mustache], and [Jade][jade] (another HAML variant). Except for
+Mustache templates, templates are strongly typed, so your compiler can save 
+you time by tellin you when you make a mistake in your views.
 
 [ssp]: http://scalate.fusesource.org/documentation/ssp-reference.html
 [scaml]: http://scalate.fusesource.org/documentation/scaml-reference.html
@@ -93,7 +93,30 @@ with `ScalateSupport`, like this:
 
 The easiest way of using Scalate is to use Scalatra's ScalateSupport helpers.
 
+Each possible kind of Scalate template (mustache, scaml, jade, ssp) has a
+corresponding helper which can be used to find the template file.
+
 Basic usage:
+
+{% highlight scala %}
+
+  def get("/") {
+    contentType="text/html"
+
+    ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp")
+  }
+
+{% endhighlight %}
+
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+When using the scalate helper methods, it is not required to having a leading
+`/`, so `ssp("index")` would work just as well as `ssp("/index")`.
+</div>
+
+You can also use a little bit less magic to do the same thing, using a method
+called `layoutTemplate`. This method allows you to render any type of Scalate 
+template:
 
 {% highlight scala %}
 
@@ -110,39 +133,18 @@ When using `layoutTemplate`, you *must* prefix your view paths with a relative
 `/` character. So, `layoutTemplate("/WEB-INF/views/foo.ssp")` is good,
 `layoutTemplate("WEB-INF/views/foo.ssp)` will fail.
 
-Rendering with a different layout:
+#### Passing parameters to views
 
-{% highlight scala %}
+Scalate templates are strongly typed (except for Mustache, which isn't).
 
-  def get("/") {
-    contentType="text/html"
+<div class="alert alert-info">
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<p>If you're coming from a dynamic language, pay attention to this next bit, 
+  because it'll surprise you: you need to explicitly declare variables inside 
+  your views.</p>
+</div>
 
-    layoutTemplate("/WEB-INF/views/index.ssp", "layout" -> "/WEB-INF/layouts/app.ssp")
-  }
-
-{% endhighlight %}
-
-Each possible kind of Scalate template (mustache, scaml, jade, ssp) has a
-corresponding helper which can be used to find the template file, without a
-suffix, and without the `WEB-INF/views` part of the path. The above example can be
-written as:
-
-{% highlight scala %}
-
-  def get("/") {
-    contentType="text/html"
-
-    ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp")
-  }
-
-{% endhighlight %}
-
-When using the scalate helper methods, it is not required to having a leading
-`/`, so `ssp("index")` would work just as well as `ssp("/index")`.
-
-#### Passing parameters to templates
-
-Parameters may be passed to your templates using a Seq(String, Any) after the
+Parameters may be passed to your views using a Seq(String, Any) after the
 path to the template file. The simplest example might look like this:
 
 {% highlight scala %}
@@ -150,21 +152,19 @@ path to the template file. The simplest example might look like this:
   def get("/") {
     contentType="text/html"
 
-    layoutTemplate("/WEB-INF/views/index.ssp", "foo" -> "uno", "bar" -> "dos")
+    ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp", "foo" -> "uno", "bar" -> "dos")
   }
 
 {% endhighlight %}
 
-Putting it all together, in a scaml example (alternatively use mustache, ssp,
-or jade):
+The view for this action could look like:
 
-{% highlight scala %}
+{% highlight html %}
 
-  def get("/") {
-    contentType="text/html"
-
-    scaml("/index", "layout" -> "WEB-INF/layouts/app.scaml", "foo" -> "uno", "bar" -> "dos")
-  }
+<%@ val foo: String %>
+<%@ val bar: String %>
+<p>Foo is <%= foo %></p>
+<p>Bar is <%= bar %></p>
 
 {% endhighlight %}
 
@@ -186,6 +186,9 @@ could look something like this:
   </html>
 
 {% endhighlight %}
+
+Whatever view you specify in your action will be rendered at the `<%= yeield =>`
+statement.
 
 #### Specifying which layout to use
 
@@ -227,30 +230,6 @@ attribute:
   }
 
 {% endhighlight %}
-
-Your layout file itself might look something like this:
-
-{% highlight html %}
-
-  <%@ var body: String %>
-  <%@ var title: String = "Some Default Title" %>
-  <html>
-  <head>
-    <title>${title}</title>
-  </head>
-  <body>
-    <p>layout header goes here...</p>
-
-    ${unescape(body)}
-
-    <p>layout footer goes here...</p>
-  </body>
-  </html>
-
-{% endhighlight %}
-
-In this layout, the template output for the current action will be inserted
-at the `${unescape(body)}` directive.
 
 #### Rendering a 404 page
 
