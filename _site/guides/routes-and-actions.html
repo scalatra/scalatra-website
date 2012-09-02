@@ -97,7 +97,7 @@
 <div class="highlight"><pre><code class="scala"><span class="k">class</span> <span class="nc">Blog</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="o">{</span>
 
 
-    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/articles/:id&quot;</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//  &lt;= this is a route</span>
+    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/articles/:id&quot;</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//  &lt;= this is a route matcher</span>
       <span class="c1">// this is an action</span>
       <span class="c1">// this action would show the article which has the specified :id</span>
     <span class="o">}</span>
@@ -120,14 +120,6 @@
 
 
 <p>Those 4 example routes, and the actions inside the route blocks, could be the basis of a simple blogging system. The examples just stub out the actions - in a real application, you'd replace the  <code>// comments</code> with code to save and retrieve <a href="models.html">models</a>, and show HTML <a href="views.html">views</a>.</p>
-
-<h3>Route order</h3>
-
-<p>The first matching route is invoked. Routes are matched from the <em>bottom up</em>.</p>
-
-<p><span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
-Route definitions are executed as part of a Scala constructor; by matching
-from the bottom up, routes can be overridden in child classes.</p>
 
 <h3>Named parameters</h3>
 
@@ -246,6 +238,12 @@ conditions:</p>
 </code></pre>
 </div>
 
+
+<h3>Route order</h3>
+
+<p>The first matching route is invoked. Routes are matched from the <em>bottom up</em>. <span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
+Route definitions are executed as part of a Scala constructor; by matching
+from the bottom up, routes can be overridden in child classes.</p>
 
 <h2>Actions</h2>
 
