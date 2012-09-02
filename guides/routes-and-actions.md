@@ -439,8 +439,8 @@ Or the status and the body:
 halt(403, <h1>Go away!</h1>)
 {% endhighlight %}
 
-Or even the HTTP status reason and headers.  For more complex invocations, it
-is recommended to use named arguments:
+Or even the HTTP status reason and headers. For more complex invocations, you can
+use named arguments:
 
 {% highlight scala %}
 
