@@ -20,20 +20,20 @@ In Scalatra, a route is an HTTP method (GET, PUT, POST, or DELETE) paired with a
 class Blog extends ScalatraServlet {
 
 
-    get("/article/:id") {  //  <= this is a route
+    get("/articles/:id") {  //  <= this is a route
       // this is an action
       // this action would show the article which has the specified :id
     }
 
-    post("/article") {
+    post("/articles") {
       // this action would submit/create an article
     }
 
-    put("/article/:id") {
+    put("/articles/:id") {
       // update the article which has the specified :id
     }
 
-    delete("/article/:id") {
+    delete("/articles/:id") {
       // delete the article with the specified :id
     }
 
