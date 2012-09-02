@@ -239,6 +239,33 @@ conditions:</p>
 </div>
 
 
+<h3>Enabling support for PUT and DELETE requests</h3>
+
+<p>Scalatra supports all of the HTTP verbs: <code>GET</code> and <code>POST</code>, which are supported by
+browser clients, but also <code>PUT</code> and <code>DELETE</code>, which are not.</p>
+
+<p>Many client libraries use non-standard but simple conventions to indicate
+that they would like the request to be considered as a <code>PUT</code> or <code>DELETE</code> instead of
+a POST: for example, jQuery adds a <code>X-HTTP-METHOD-OVERRIDE</code> header to the request.</p>
+
+<p>Other clients and frameworks often indicate the same thing by adding a
+<code>_method=put</code> or <code>_method=delete</code> parameter to a POST body.</p>
+
+<p>Scalatra will look for these conventions on incoming requests and transform
+the request method automatically if you add the <code>MethodOverride</code> trait into your
+servlet or filter:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">class</span> <span class="nc">MyFilter</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="k">with</span> <span class="nc">MethodOverride</span> <span class="o">{</span>
+
+    <span class="c1">// POST to &quot;/foo/bar&quot; with params &quot;id=2&quot; and &quot;_method=put&quot; will hit this route:</span>
+    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/foo/bar/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">// update your resource here</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
 <h3>Route order</h3>
 
 <p>The first matching route is invoked. Routes are matched from the <em>bottom up</em>. <span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
@@ -354,33 +381,6 @@ You could do it like this:</p>
 </div>
 
 
-<h3>Enabling support for PUT and DELETE requests</h3>
-
-<p>Scalatra supports all of the HTTP verbs: <code>GET</code> and <code>POST</code>, which are supported by
-browser clients, but also <code>PUT</code> and <code>DELETE</code>, which are not.</p>
-
-<p>Many client libraries use non-standard but simple conventions to indicate
-that they would like the request to be considered as a <code>PUT</code> or <code>DELETE</code> instead of
-a POST: for example, jQuery adds a <code>X-HTTP-METHOD-OVERRIDE</code> header to the request.</p>
-
-<p>Other clients and frameworks often indicate the same thing by adding a
-<code>_method=put</code> or <code>_method=delete</code> parameter to a POST body.</p>
-
-<p>Scalatra will look for these conventions on incoming requests and transform
-the request method automatically if you add the <code>MethodOverride</code> trait into your
-servlet or filter:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">class</span> <span class="nc">MyFilter</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="k">with</span> <span class="nc">MethodOverride</span> <span class="o">{</span>
-
-    <span class="c1">// POST to &quot;/foo/bar&quot; with params &quot;id=2&quot; and &quot;_method=put&quot; will hit this route:</span>
-    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/foo/bar/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// update your resource here</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h3>Filters</h3>
 
 <p>Scalatra offers a way for you too hook into the request chain of your
@@ -440,7 +440,7 @@ during processing. Here's a quick example you could use to run a contrived
 </div>
 
 
-<h3>Processing order</h3>
+<h3>Processing order for actions, errors, and filters</h3>
 
 <p>Route actions, errors and filters run in the following order:</p>
 
