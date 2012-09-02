@@ -257,7 +257,7 @@ how it looks, when using the ScalateSupport helpers to render the page.
 
 ### Using Scalate directly
 
-Some people like to call Scalate methods directly, preferring to bypass the
+Some people like to call Scalate methods directly, bypassing the
 (relatively minimal) magic of the ScalateSupport helpers. 
 
 Scalate can be called directly, using the
