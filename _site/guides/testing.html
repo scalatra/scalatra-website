@@ -109,23 +109,6 @@ default.</p>
 <p>Extend ScalatraSuite with your preferred Suite implementation.  You get
 ShouldMatchers and MustMatchers for free.</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.scalatra.test.scalatest._</span>
-
-  <span class="k">class</span> <span class="nc">MyScalatraServletTests</span> <span class="k">extends</span> <span class="nc">ScalatraSuite</span> <span class="k">with</span> <span class="nc">FunSuite</span> <span class="o">{</span>
-    <span class="c1">// `MyScalatraServlet` is your app which extends ScalatraServlet</span>
-    <span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">MyScalatraServlet</span><span class="o">],</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
-
-    <span class="n">test</span><span class="o">(</span><span class="s">&quot;simple get&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">get</span><span class="o">(</span><span class="s">&quot;/path/to/something&quot;</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">status</span> <span class="n">should</span> <span class="n">equal</span> <span class="o">(</span><span class="mi">200</span><span class="o">)</span>
-        <span class="n">body</span> <span class="n">should</span> <span class="n">include</span> <span class="o">(</span><span class="s">&quot;hi!&quot;</span><span class="o">)</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>Convenience traits are provided for many Suite implementations:</p>
 
 <ul>
@@ -160,23 +143,6 @@ by scalatra-test.</p>
 <blockquote><p>unit specifications where the specification text is interleaved with the
 specification code. It is generally used to specify a single class.</p></blockquote>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.scalatra.test.specs2._</span>
-
-  <span class="k">class</span> <span class="nc">HelloWorldMutableServletSpec</span> <span class="k">extends</span> <span class="nc">MutableScalatraSpec</span> <span class="o">{</span>
-    <span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">HelloWorldServlet</span><span class="o">],</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
-
-    <span class="s">&quot;GET / on HelloWorldServlet&quot;</span> <span class="n">should</span> <span class="o">{</span>
-      <span class="s">&quot;return status 200&quot;</span> <span class="n">in</span> <span class="o">{</span>
-        <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-          <span class="n">status</span> <span class="n">must_==</span> <span class="mi">200</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h4>Acceptance testing</h4>
 
 <p>From the <a href="http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html">Specs2 QuickStart</a>:</p>
@@ -184,23 +150,6 @@ specification code. It is generally used to specify a single class.</p></blockqu
 <blockquote><p>acceptance specifications where all the specification text stands as one and
 the implementation code is elsewhere.  It is generally used for acceptance or
 integration scenarios</p></blockquote>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.scalatra.test.specs2._</span>
-
-  <span class="k">class</span> <span class="nc">HelloWorldServletSpec</span> <span class="k">extends</span> <span class="nc">ScalatraSpec</span> <span class="o">{</span> <span class="k">def</span> <span class="n">is</span> <span class="k">=</span>
-    <span class="s">&quot;GET / on HelloWorldServlet&quot;</span>                     <span class="o">^</span>
-      <span class="s">&quot;return status 200&quot;</span>                            <span class="o">!</span> <span class="n">getRoot200</span><span class="o">^</span>
-                                                     <span class="n">end</span>
-
-    <span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">HelloWorldServlet</span><span class="o">],</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
-
-    <span class="k">def</span> <span class="n">getRoot200</span> <span class="k">=</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">status</span> <span class="n">must_==</span> <span class="mi">200</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h3><a href="http://code.google.com/p/specs/">Specs</a></h3>
 
@@ -213,24 +162,6 @@ begin with Specs2.</p>
 </code></pre>
 
 <h4>Example</h4>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.scalatra.test.specs._</span>
-
-  <span class="k">object</span> <span class="nc">MyScalatraServletTests</span> <span class="k">extends</span> <span class="nc">ScalatraSpecification</span> <span class="o">{</span>
-    <span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">MyScalatraServlet</span><span class="o">],</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
-
-    <span class="s">&quot;MyScalatraServlet when using GET&quot;</span> <span class="n">should</span> <span class="o">{</span>
-      <span class="s">&quot;/path/to/something should return &#39;hi!&#39;&quot;</span> <span class="n">in</span> <span class="o">{</span>
-        <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-          <span class="n">status</span> <span class="n">mustEqual</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span>
-          <span class="n">body</span> <span class="n">mustEqual</span><span class="o">(</span><span class="s">&quot;hi!&quot;</span><span class="o">)</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h3>Other test frameworks</h3>
 
@@ -273,32 +204,6 @@ the constructor of your servlet:</p>
 <p>Convenience methods exist for testing file uploads.</p>
 
 <p>Example based on Specs2:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">class</span> <span class="nc">FileUploadSpec</span> <span class="k">extends</span> <span class="nc">MutableScalatraSpec</span> <span class="o">{</span>
-    <span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">FileUploadServlet</span><span class="o">],</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
-
-    <span class="s">&quot;POST /files&quot;</span> <span class="n">should</span> <span class="o">{</span>
-      <span class="s">&quot;return status 200&quot;</span> <span class="n">in</span> <span class="o">{</span>
-        <span class="c1">// You can also pass headers after the files Map</span>
-        <span class="n">post</span><span class="o">(</span><span class="s">&quot;/files&quot;</span><span class="o">,</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;private&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;true&quot;</span><span class="o">),</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;kitten&quot;</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">&quot;kitten.png&quot;</span><span class="o">)))</span> <span class="o">{</span>
-          <span class="n">status</span> <span class="n">must_==</span> <span class="mi">200</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="s">&quot;PUT /files/:id&quot;</span> <span class="n">should</span> <span class="o">{</span>
-      <span class="s">&quot;return status 200&quot;</span> <span class="n">in</span> <span class="o">{</span>
-        <span class="n">put</span><span class="o">(</span><span class="s">&quot;/files/10&quot;</span><span class="o">,</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;private&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;false&quot;</span><span class="o">),</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;kitten&quot;</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">&quot;kitten.png&quot;</span><span class="o">)))</span> <span class="o">{</span>
-          <span class="n">status</span> <span class="n">must_==</span> <span class="mi">200</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
-
 
 
       </div> <!-- /container -->

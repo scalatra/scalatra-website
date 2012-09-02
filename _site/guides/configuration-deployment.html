@@ -115,27 +115,6 @@ config code, and use regular Scala code for configuration afterwards.</p>
 
 <p>The XML which allows you to do this is as follows:</p>
 
-<div class="highlight"><pre><code class="xml">  <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-  <span class="nt">&lt;web-app</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
-        <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-        <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;</span>
-        <span class="na">version=</span><span class="s">&quot;3.0&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;listener&gt;</span>
-        <span class="nt">&lt;listener-class&gt;</span>org.scalatra.servlet.ScalatraListener<span class="nt">&lt;/listener-class&gt;</span>
-      <span class="nt">&lt;/listener&gt;</span>
-
-      <span class="nt">&lt;servlet-mapping&gt;</span>
-        <span class="nt">&lt;servlet-name&gt;</span>default<span class="nt">&lt;/servlet-name&gt;</span>
-        <span class="nt">&lt;url-pattern&gt;</span>/img/*<span class="nt">&lt;/url-pattern&gt;</span>
-        <span class="nt">&lt;url-pattern&gt;</span>/css/*<span class="nt">&lt;/url-pattern&gt;</span>
-        <span class="nt">&lt;url-pattern&gt;</span>/js/*<span class="nt">&lt;/url-pattern&gt;</span>
-        <span class="nt">&lt;url-pattern&gt;</span>/assets/*<span class="nt">&lt;/url-pattern&gt;</span>
-      <span class="nt">&lt;/servlet-mapping&gt;</span>
-  <span class="nt">&lt;/web-app&gt;</span>
-</code></pre>
-</div>
-
-
 <p><span class="badge badge-success"><i class="icon-thumbs-up icon-white"></i></span>
 If you started your project in an older version of Scalatra, and want to start
 using the new Scalatra bootstrap configuration style, drop that XML into your
@@ -153,25 +132,6 @@ do most of your app configuration work.</p>
 
 <p>The simplest version of this file, which gets generated when you
 make a new project using the giter8 template, looks something like this:</p>
-
-<div class="highlight"><pre><code class="scala">    <span class="k">import</span> <span class="nn">org.scalatra.LifeCycle</span>
-    <span class="k">import</span> <span class="nn">javax.servlet.ServletContext</span>
-    <span class="k">import</span> <span class="nn">org.yourdomain.projectname._</span>
-
-    <span class="k">class</span> <span class="nc">Scalatra</span> <span class="k">extends</span> <span class="nc">LifeCycle</span> <span class="o">{</span>
-
-      <span class="k">override</span> <span class="k">def</span> <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
-
-        <span class="c1">// mount servlets like this:</span>
-        <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">ArticlesServlet</span><span class="o">,</span> <span class="s">&quot;/articles/*&quot;</span><span class="o">)</span>
-
-        <span class="c1">// set init params like this:</span>
-        <span class="c1">// org.scalatra.cors.allowedOrigins = &quot;http://example.com&quot;</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h4>Mounting multiple servlets (or filters)</h4>
 
@@ -192,37 +152,11 @@ whenever you add one.
 filters (or both) into your application, and define URL path patterns that
 they'll respond to.</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">override</span> <span class="k">def</span> <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
-
-    <span class="c1">// mount a first servlet like this:</span>
-    <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">ArticlesServlet</span><span class="o">,</span> <span class="s">&quot;/articles/*&quot;</span><span class="o">)</span>
-
-    <span class="c1">// mount a second servlet like this:</span>
-    <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">CommentsServlet</span><span class="o">,</span> <span class="s">&quot;/comments/*&quot;</span><span class="o">)</span>
-
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h4>Setting init params</h4>
 
 <p>You can also set init params in the Scalatra bootstrap file. For instance, you
 can set the <code>org.scalatra.environment</code> init parameter to set the application
 environment:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">override</span> <span class="k">def</span> <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
-
-    <span class="c1">// mount a first servlet like this:</span>
-    <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">ArticlesServlet</span><span class="o">,</span> <span class="s">&quot;/articles/*&quot;</span><span class="o">)</span>
-
-    <span class="c1">// Let&#39;s set the environment</span>
-    <span class="n">org</span><span class="o">.</span><span class="n">scalatra</span><span class="o">.</span><span class="n">environment</span> <span class="k">=</span> <span class="s">&quot;production&quot;</span>
-
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h4>Running code at application start</h4>
 
@@ -230,29 +164,6 @@ environment:</p>
 initialization code, which need to be set up once in your application. You can
 mix in whatever traits you want, and run any Scala code you want from inside
 the <code>init</code> method:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.scalatra.LifeCycle</span>
-  <span class="k">import</span> <span class="nn">javax.servlet.ServletContext</span>
-
-  <span class="c1">// Import the trait:</span>
-  <span class="k">import</span> <span class="nn">com.yourdomain.yourapp.DatabaseInit</span>
-
-  <span class="c1">// Mixing in the trait:</span>
-  <span class="k">class</span> <span class="nc">Scalatra</span> <span class="k">extends</span> <span class="nc">LifeCycle</span> <span class="k">with</span> <span class="nc">DatabaseInit</span> <span class="o">{</span>
-
-    <span class="k">override</span> <span class="k">def</span> <span class="n">init</span><span class="o">(</span><span class="n">context</span><span class="k">:</span> <span class="kt">ServletContext</span><span class="o">)</span> <span class="o">{</span>
-
-      <span class="c1">// call a method that comes from inside our DatabaseInit trait:</span>
-      <span class="n">configureDb</span><span class="o">()</span>
-
-      <span class="c1">// Mount our servlets as normal:</span>
-      <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">Articles</span><span class="o">,</span> <span class="s">&quot;/articles/*&quot;</span><span class="o">)</span>
-      <span class="n">context</span> <span class="n">mount</span> <span class="o">(</span><span class="k">new</span> <span class="nc">Users</span><span class="o">,</span> <span class="s">&quot;/users/*&quot;</span><span class="o">)</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h3>Configuring your app using web.xml</h3>
 
@@ -274,39 +185,9 @@ file.</p>
 
 <p>An extract from that file looks like this:</p>
 
-<div class="highlight"><pre><code class="xml">  <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-  <span class="cp">&lt;!DOCTYPE web-app</span>
-<span class="cp">  PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN&quot;</span>
-<span class="cp">  &quot;http://java.sun.com/j2ee/dtds/web-app_2_2.dtd&quot;&gt;</span>
-  <span class="nt">&lt;web-app&gt;</span>
-    <span class="nt">&lt;servlet&gt;</span>
-      <span class="nt">&lt;servlet-name&gt;</span>BasicAuthExample<span class="nt">&lt;/servlet-name&gt;</span>
-      <span class="nt">&lt;servlet-class&gt;</span>org.scalatra.BasicAuthExample<span class="nt">&lt;/servlet-class&gt;</span>
-    <span class="nt">&lt;/servlet&gt;</span>
-    <span class="nt">&lt;servlet&gt;</span>
-      <span class="nt">&lt;servlet-name&gt;</span>TemplateExample<span class="nt">&lt;/servlet-name&gt;</span>
-      <span class="nt">&lt;servlet-class&gt;</span>org.scalatra.TemplateExample<span class="nt">&lt;/servlet-class&gt;</span>
-    <span class="nt">&lt;/servlet&gt;</span>
-  <span class="nt">&lt;/web-app&gt;</span>
-</code></pre>
-</div>
-
-
 <h4>Setting init params using web.xml</h4>
 
 <p>You can set init params for your servlets in the normal manner:</p>
-
-<div class="highlight"><pre><code class="xml">  <span class="nt">&lt;servlet&gt;</span>
-    <span class="nt">&lt;servlet-name&gt;</span>BasicAuthExample<span class="nt">&lt;/servlet-name&gt;</span>
-    <span class="nt">&lt;servlet-class&gt;</span>org.scalatra.BasicAuthExample<span class="nt">&lt;/servlet-class&gt;</span>
-    <span class="nt">&lt;init-param&gt;</span>
-      <span class="nt">&lt;param-name&gt;</span>org.scalatra.environment<span class="nt">&lt;/param-name&gt;</span>
-      <span class="nt">&lt;param-value&gt;</span>development<span class="nt">&lt;/param-value&gt;</span>
-    <span class="nt">&lt;/init-param&gt;</span>
-  <span class="nt">&lt;/servlet&gt;</span>
-</code></pre>
-</div>
-
 
 <h3>Application environments</h3>
 
@@ -356,21 +237,6 @@ logging dependency in your <code>build.sbt</code> file:</p>
 </code></pre>
 
 <p>In your servlet or filter class:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.slf4j.</span><span class="o">{</span><span class="nc">Logger</span><span class="o">,</span> <span class="nc">LoggerFactory</span><span class="o">}</span>
-
-  <span class="k">class</span> <span class="nc">YourServlet</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="o">{</span>
-
-    <span class="k">val</span> <span class="n">logger</span> <span class="k">=</span>  <span class="nc">LoggerFactory</span><span class="o">.</span><span class="n">getLogger</span><span class="o">(</span><span class="n">getClass</span><span class="o">)</span>
-
-    <span class="k">def</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">)</span>
-      <span class="c1">// whatever else you want to put in the body of the action</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <p>This will get you basic logging support. There are some additional logging
 libraries you might want to investigate: <a href="https://github.com/weiglewilczek/slf4s">slf4s</a> and
@@ -510,32 +376,9 @@ Tomcat paths are case-sensitive. Make sure you copy your app to <code>ROOT.war</
 <p>ScalatraServlet is an HttpServlet, we just need some glue code to launch an
 embedded Jetty server with this Servlet.</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">package</span> <span class="nn">com.example</span>  <span class="c1">// remember this package in the sbt project definition</span>
-  <span class="k">import</span> <span class="nn">org.mortbay.jetty.Server</span>
-  <span class="k">import</span> <span class="nn">org.mortbay.jetty.servlet.</span><span class="o">{</span><span class="nc">Context</span><span class="o">,</span> <span class="nc">ServletHolder</span><span class="o">}</span>
-  <span class="k">import</span> <span class="nn">org.scalatra.TemplateExample</span> <span class="c1">// this is the example Scalatra servlet</span>
-
-  <span class="k">object</span> <span class="nc">JettyLauncher</span> <span class="o">{</span> <span class="c1">// this is my entry object as specified in sbt project definition</span>
-    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
-      <span class="k">val</span> <span class="n">server</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Server</span><span class="o">(</span><span class="mi">8080</span><span class="o">)</span>
-      <span class="k">val</span> <span class="n">root</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Context</span><span class="o">(</span><span class="n">server</span><span class="o">,</span> <span class="s">&quot;/&quot;</span><span class="o">,</span> <span class="nc">Context</span><span class="o">.</span><span class="nc">SESSIONS</span><span class="o">)</span>
-      <span class="n">root</span><span class="o">.</span><span class="n">addServlet</span><span class="o">(</span><span class="k">new</span> <span class="nc">ServletHolder</span><span class="o">(</span><span class="k">new</span> <span class="nc">TemplateExample</span><span class="o">),</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
-      <span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
-      <span class="n">server</span><span class="o">.</span><span class="n">join</span><span class="o">()</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>Now save this alongside your Scalatra project as JettyLauncher.scala and run
 <code>sbt clean assembly</code>. You'll have the ultimate executable jar file
 in the target soon. Try</p>
-
-<div class="highlight"><pre><code class="bash">  java -jar **-assembly-**.jar
-</code></pre>
-</div>
-
 
 <p>and see it will launch the embedded Jetty at port 8080 with the example
 Scalatra project running. On an OS X 10.6 machine with JVM 1.6, this setup
@@ -554,21 +397,7 @@ use Typesafe's start script plugin to generate a script to start the app.</p>
 
 <p>To enable the plugin, add the following to project/plugins/build.sbt</p>
 
-<div class="highlight"><pre><code class="bash">  resolvers +<span class="o">=</span> Classpaths.typesafeResolver
-
-  addSbtPlugin<span class="o">(</span><span class="s2">&quot;com.typesafe.startscript&quot;</span> % <span class="s2">&quot;xsbt-start-script-plugin&quot;</span> % <span class="s2">&quot;0.5.0&quot;</span><span class="o">)</span>
-</code></pre>
-</div>
-
-
 <p>And the following to your build.sbt</p>
-
-<div class="highlight"><pre><code class="bash">  import com.typesafe.startscript.StartScriptPlugin
-
-  seq<span class="o">(</span>StartScriptPlugin.startScriptForClassesSettings: _*<span class="o">)</span>
-</code></pre>
-</div>
-
 
 <p>Once this is done, you are ready to deploy to Heroku. Create a Procfile in
 the root of your project containing</p>
@@ -584,43 +413,10 @@ You can then create and push the app.</p>
 git push heroku master
 </code></pre>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.eclipse.jetty.server.Server</span>
-  <span class="k">import</span> <span class="nn">org.eclipse.jetty.servlet.</span><span class="o">{</span><span class="nc">DefaultServlet</span><span class="o">,</span> <span class="nc">ServletContextHandler</span><span class="o">}</span>
-  <span class="k">import</span> <span class="nn">org.eclipse.jetty.webapp.WebAppContext</span>
-
-  <span class="k">object</span> <span class="nc">JettyLauncher</span> <span class="o">{</span>
-    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
-      <span class="k">val</span> <span class="n">port</span> <span class="k">=</span> <span class="k">if</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="n">getenv</span><span class="o">(</span><span class="s">&quot;PORT&quot;</span><span class="o">)</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="nc">System</span><span class="o">.</span><span class="n">getenv</span><span class="o">(</span><span class="s">&quot;PORT&quot;</span><span class="o">).</span><span class="n">toInt</span> <span class="k">else</span> <span class="mi">8080</span>
-
-      <span class="k">val</span> <span class="n">server</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Server</span><span class="o">(</span><span class="n">port</span><span class="o">)</span>
-      <span class="k">val</span> <span class="n">context</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">WebAppContext</span><span class="o">()</span>
-      <span class="n">context</span> <span class="n">setContextPath</span> <span class="s">&quot;/&quot;</span>
-      <span class="n">context</span><span class="o">.</span><span class="n">setResourceBase</span><span class="o">(</span><span class="s">&quot;src/main/webapp&quot;</span><span class="o">)</span>
-      <span class="n">context</span><span class="o">.</span><span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">MyCedarServlet</span><span class="o">],</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
-      <span class="n">context</span><span class="o">.</span><span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">DefaultServlet</span><span class="o">],</span> <span class="s">&quot;/&quot;</span><span class="o">)</span>
-
-      <span class="n">server</span><span class="o">.</span><span class="n">setHandler</span><span class="o">(</span><span class="n">context</span><span class="o">)</span>
-
-      <span class="n">server</span><span class="o">.</span><span class="n">start</span>
-      <span class="n">server</span><span class="o">.</span><span class="n">join</span>
-    <span class="o">}</span>
-
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h3>Including the Scala compiler</h3>
 
 <p>If you need the Scala compiler included within a WAR file add the declaration
 below to your SBT build file.</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">override</span> <span class="k">def</span> <span class="n">webappClasspath</span> <span class="k">=</span> <span class="k">super</span><span class="o">.</span><span class="n">webappClasspath</span> <span class="o">+++</span> <span class="n">buildCompilerJar</span>
-</code></pre>
-</div>
-
-
-
 
 
       </div> <!-- /container -->

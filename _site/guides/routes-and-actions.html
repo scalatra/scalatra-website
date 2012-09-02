@@ -87,25 +87,6 @@
 
 <p>In Scalatra, a route is an HTTP method paired with a URL matching pattern.</p>
 
-<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// show something</span>
-    <span class="o">}</span>
-
-    <span class="n">post</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// submit/create something</span>
-    <span class="o">}</span>
-
-    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// update something</span>
-    <span class="o">}</span>
-
-    <span class="n">delete</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// delete something</span>
-    <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h2>Route order</h2>
 
 <p>The first matching route is invoked. Routes are matched from the <em>bottom up</em>.</p>
@@ -118,45 +99,15 @@ from the bottom up, routes can be overridden in child classes.</p>
 
 <p>Route patterns may include named parameters:</p>
 
-<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/hello/:name&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// Matches &quot;GET /hello/foo&quot; and &quot;GET /hello/bar&quot;</span>
-      <span class="c1">// params(&quot;name&quot;) is &quot;foo&quot; or &quot;bar&quot;</span>
-      <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="o">{</span><span class="n">params</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">)}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-    <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h2>Wildcards</h2>
 
 <p>Route patterns may also include wildcard parameters, accessible through the
 <code>splat</code> key.</p>
 
-<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/say/*/to/*&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// Matches &quot;GET /say/hello/to/world&quot;</span>
-      <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;splat&quot;</span><span class="o">)</span> <span class="c1">// == Seq(&quot;hello&quot;, &quot;world&quot;)</span>
-    <span class="o">}</span>
-
-    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/download/*.*&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// Matches &quot;GET /download/path/to/file.xml&quot;</span>
-      <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;splat&quot;</span><span class="o">)</span> <span class="c1">// == Seq(&quot;path/to/file&quot;, &quot;xml&quot;)</span>
-    <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h2>Regular expressions</h2>
 
 <p>The route matcher may also be a regular expression.  Capture groups are
 accessible through the <code>captures</code> key.</p>
-
-<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;&quot;&quot;^\/f(.*)/b(.*)&quot;&quot;&quot;</span><span class="o">.</span><span class="n">r</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// Matches &quot;GET /foo/bar&quot;</span>
-      <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;captures&quot;</span><span class="o">)</span> <span class="c1">// == Seq(&quot;oo&quot;, &quot;ar&quot;)</span>
-    <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h2>Rails-like pattern matching</h2>
 
@@ -164,18 +115,6 @@ accessible through the <code>captures</code> key.</p>
 but not identical, syntax, based on Rack::Mount's Strexp.  The path pattern
 parser is resolved implicitly, and may be overridden if you prefer an
 alternate syntax:</p>
-
-<div class="highlight"><pre><code class="scala">    <span class="k">import</span> <span class="nn">org.scalatra._</span>
-
-    <span class="k">class</span> <span class="nc">RailsLikeRouting</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="o">{</span>
-      <span class="k">implicit</span> <span class="k">override</span> <span class="k">def</span> <span class="n">string2RouteMatcher</span><span class="o">(</span><span class="n">path</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span>
-        <span class="nc">RailsPathPatternParser</span><span class="o">(</span><span class="n">path</span><span class="o">)</span>
-
-      <span class="n">get</span><span class="o">(</span><span class="s">&quot;/:file(.:ext)&quot;</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// matched Rails-style }</span>
-    <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h2>Path patterns in the REPL</h2>
 
@@ -202,35 +141,10 @@ res2: Option[MultiParams] = Some(Map(bar -&gt; ListBuffer(x)))
 <p>Routes may include conditions.  A condition is any expression that returns
 Boolean.  Conditions are evaluated by-name each time the route matcher runs.</p>
 
-<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/foo&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// Matches &quot;GET /foo&quot;</span>
-    <span class="o">}</span>
-
-    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/foo&quot;</span><span class="o">,</span> <span class="n">request</span><span class="o">.</span><span class="n">getRemoteHost</span> <span class="o">==</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// Overrides &quot;GET /foo&quot; for local users</span>
-    <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>Multiple conditions can be chained together.  A route must match all
 conditions:</p>
 
-<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/foo&quot;</span><span class="o">,</span> <span class="n">request</span><span class="o">.</span><span class="n">getRemoteHost</span> <span class="o">==</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="o">,</span> <span class="n">request</span><span class="o">.</span><span class="n">getRemoteUser</span> <span class="o">==</span> <span class="s">&quot;admin&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// Only matches if you&#39;re the admin, and you&#39;re localhost</span>
-    <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>No path pattern is necessary.  A route may consist of solely a condition:</p>
-
-<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="n">isMaintenanceMode</span><span class="o">)</span> <span class="o">{</span>
-      <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Go</span> <span class="n">away</span><span class="o">!&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-    <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h2>Actions</h2>
 
@@ -268,16 +182,6 @@ response's writer.</dd>
 
 <p><span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span></p>
 
-<div class="highlight"><pre><code class="scala">    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/file/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">fileService</span><span class="o">.</span><span class="n">find</span><span class="o">(</span><span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">))</span> <span class="k">match</span> <span class="o">{</span>
-        <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">file</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Ok</span><span class="o">(</span><span class="n">file</span><span class="o">)</span>
-        <span class="k">case</span> <span class="nc">None</span>       <span class="k">=&gt;</span> <span class="nc">NotFound</span><span class="o">(</span><span class="s">&quot;Sorry, the file could not be found&quot;</span><span class="o">)</span>
-       <span class="o">}</span>
-     <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h2>Parameter handling</h2>
 
 <p>Incoming HTTP request parameters become available to your actions through
@@ -299,30 +203,11 @@ head element for any known param, and returning the values as Strings.</dd>
 
 <p>As an example, let's hit a URL with a GET like this:</p>
 
-<div class="highlight"><pre><code class="html">  /articles/52?foo=uno<span class="err">&amp;</span>bar=dos<span class="err">&amp;</span>baz=three<span class="err">&amp;</span>foo=anotherfoo
-</code></pre>
-</div>
-
-
 <p><span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 Look closely: there are two "foo" keys in there.</p>
 
 <p>Assuming there's a matching route at <code>/articles/:id</code>, we get the following
 results inside the action:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/articles/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">)</span> <span class="c1">// =&gt; &quot;52&quot;</span>
-    <span class="n">params</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">)</span> <span class="c1">// =&gt; &quot;uno&quot; (discarding the second &quot;foo&quot; parameter value)</span>
-    <span class="n">params</span><span class="o">(</span><span class="s">&quot;unknown&quot;</span><span class="o">)</span> <span class="c1">// =&gt; generates a NoSuchElementException</span>
-    <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="s">&quot;unknown&quot;</span><span class="o">)</span> <span class="c1">// =&gt; None - this is what Scala does with unknown keys in a Map</span>
-
-    <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">)</span> <span class="c1">// =&gt; Seq(&quot;52&quot;)</span>
-    <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">)</span> <span class="c1">// =&gt; Seq(&quot;uno&quot;, &quot;anotherfoo&quot;)</span>
-    <span class="n">multiParams</span><span class="o">(</span><span class="s">&quot;unknown&quot;</span><span class="o">)</span> <span class="c1">// =&gt; an empty Seq</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h3>params.getOrElse</h3>
 
@@ -331,15 +216,6 @@ results inside the action:</p>
 <p>Let's say you wanted to require an :author name param, and set a :page value
 to 1 by default. If you don't receive an :author, you want to stop execution.
 You could do it like this:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/articles-by/:author/:page&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">val</span> <span class="n">author</span><span class="k">:</span><span class="kt">String</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&quot;author&quot;</span><span class="o">,</span> <span class="n">halt</span><span class="o">(</span><span class="mi">400</span><span class="o">))</span>
-    <span class="k">val</span> <span class="n">page</span><span class="k">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">getOrElse</span><span class="o">(</span><span class="s">&quot;page&quot;</span><span class="o">,</span> <span class="s">&quot;1&quot;</span><span class="o">).</span><span class="n">toInt</span>
-    <span class="c1">// now do stuff with your params</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h2>Enabling support for PUT and DELETE requests</h2>
 
@@ -357,17 +233,6 @@ a POST: for example, jQuery adds a <code>X-HTTP-METHOD-OVERRIDE</code> header to
 the request method automatically if you add the <code>MethodOverride</code> trait into your
 servlet or filter:</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">class</span> <span class="nc">MyFilter</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="k">with</span> <span class="nc">MethodOverride</span> <span class="o">{</span>
-
-    <span class="c1">// POST to &quot;/foo/bar&quot; with params &quot;id=2&quot; and &quot;_method=put&quot; will hit this route:</span>
-    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/foo/bar/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// update your resource here</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h2>Request filters</h2>
 
 <p>Scalatra offers a way for you too hook into the request chain of your
@@ -381,19 +246,6 @@ block to yield. Filters optionally take a URL pattern to match to the request.</
 <p>The <code>before</code> method will let you pass a block to be evaluated <strong>before</strong> <em>each</em>
 and <em>every</em> route gets processed.</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="n">before</span><span class="o">()</span> <span class="o">{</span>
-    <span class="nc">MyDb</span><span class="o">.</span><span class="n">connect</span>
-    <span class="n">contentType</span><span class="o">=</span><span class="s">&quot;text/html&quot;</span>
-  <span class="o">}</span>
-
-  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">val</span> <span class="n">list</span> <span class="k">=</span> <span class="nc">MyDb</span><span class="o">.</span><span class="n">findAll</span><span class="o">()</span>
-    <span class="n">templateEngine</span><span class="o">.</span><span class="n">layout</span><span class="o">(</span><span class="s">&quot;index.ssp&quot;</span><span class="o">,</span> <span class="n">list</span><span class="o">)</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>In this example, we've set up a <code>before</code> filter to connect using a contrived
 <code>MyDb</code> module, and set the <code>contentType</code> for all requests to <code>text/html</code>.</p>
 
@@ -401,13 +253,6 @@ and <em>every</em> route gets processed.</p>
 
 <p>The <code>after</code> method lets you pass a block to be evaluated <strong>after</strong> <em>each</em> and
 <em>every</em> route gets processed.</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">after</span><span class="o">()</span> <span class="o">{</span>
-    <span class="nc">MyDb</span><span class="o">.</span><span class="n">disconnect</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <p>As you can see from this example, we're asking the <code>MyDB</code> module to
 disconnect after the request has been processed.</p>
@@ -417,17 +262,6 @@ disconnect after the request has been processed.</p>
 <p>Filters optionally take a pattern to be matched against the requested URI
 during processing. Here's a quick example you could use to run a contrived
 <code>authenticate!</code> method before accessing any "admin" type requests.</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">before</span><span class="o">(</span><span class="s">&quot;/admin/*&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">basicAuth</span>
-  <span class="o">}</span>
-
-  <span class="n">after</span><span class="o">(</span><span class="s">&quot;/admin/*&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">user</span><span class="o">.</span><span class="n">logout</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h2>Processing order</h2>
 
@@ -452,13 +286,6 @@ routines.</p>
 
 <p>There is a handler for redirection:</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">){</span>
-    <span class="n">redirect</span><span class="o">(</span><span class="s">&quot;/someplace/else&quot;</span><span class="o">)</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>This will return a redirect response, with HTTP status 302, pointing to
 <code>/someplace/else</code>.</p>
 
@@ -468,45 +295,16 @@ want to catch it in an action.</p>
 <p>Although there's no built-in handler for permanent redirects, if you'd like to
 do a 301 permanent redirect, you can do something like this:</p>
 
-<div class="highlight"><pre><code class="scala"><span class="n">halt</span><span class="o">(</span><span class="n">status</span> <span class="k">=</span> <span class="mi">301</span><span class="o">,</span> <span class="n">headers</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;Location&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;http://example.org/&quot;</span><span class="o">))</span>
-</code></pre>
-</div>
-
-
 <h3>Halting</h3>
 
 <p>To immediately stop a request within a filter or route:</p>
 
-<div class="highlight"><pre><code class="scala"><span class="n">halt</span><span class="o">()</span>
-</code></pre>
-</div>
-
-
 <p>You can also specify the <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP status</a>:</p>
-
-<div class="highlight"><pre><code class="scala"><span class="n">halt</span><span class="o">(</span><span class="mi">403</span><span class="o">)</span>
-</code></pre>
-</div>
-
 
 <p>Or the status and the body:</p>
 
-<div class="highlight"><pre><code class="scala"><span class="n">halt</span><span class="o">(</span><span class="mi">403</span><span class="o">,</span> <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Go</span> <span class="n">away</span><span class="o">!&lt;/</span><span class="n">h1</span><span class="o">&gt;)</span>
-</code></pre>
-</div>
-
-
 <p>Or even the HTTP status reason and headers.  For more complex invocations, it
 is recommended to use named arguments:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">halt</span><span class="o">(</span><span class="n">status</span> <span class="k">=</span> <span class="mi">403</span><span class="o">,</span>
-       <span class="n">reason</span> <span class="k">=</span> <span class="s">&quot;Forbidden&quot;</span><span class="o">,</span>
-       <span class="n">headers</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;X-Your-Mother-Was-A&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;hamster&quot;</span><span class="o">,</span>
-                     <span class="s">&quot;X-And-Your-Father-Smelt-Of&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Elderberries&quot;</span><span class="o">),</span>
-       <span class="n">body</span> <span class="k">=</span> <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Go</span> <span class="n">away</span> <span class="n">or</span> <span class="n">I</span> <span class="n">shall</span> <span class="n">taunt</span> <span class="n">you</span> <span class="n">a</span> <span class="n">second</span> <span class="n">time</span><span class="o">!&lt;/</span><span class="n">h1</span><span class="o">&gt;)</span>
-</code></pre>
-</div>
-
 
 <p>The <code>reason</code> argument is ignored unless <code>status</code> is not null.  If you don't pass
 arguments for <code>status</code>, <code>reason</code>, or <code>body</code>, those parts of the response will
@@ -520,20 +318,6 @@ to catch it in an action.</p>
 <p>A route can punt processing to the next matching route using <code>pass()</code>.  Remember,
 unlike Sinatra, routes are matched from the bottom up.</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/guess/*&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="s">&quot;You missed!&quot;</span>
-  <span class="o">}</span>
-
-  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/guess/:who&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">params</span><span class="o">(</span><span class="s">&quot;who&quot;</span><span class="o">)</span> <span class="k">match</span> <span class="o">{</span>
-      <span class="k">case</span> <span class="s">&quot;Frank&quot;</span> <span class="k">=&gt;</span> <span class="s">&quot;You got me!&quot;</span>
-      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">pass</span><span class="o">()</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>The route block is immediately exited and control continues with the next
 matching route.  If no matching route is found, the <code>notFound</code> handler is
 invoked.</p>
@@ -544,13 +328,6 @@ invoked.</p>
 route for the current request's URL.</p>
 
 <p>The default behavior is:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">notFound</span> <span class="o">{</span>
-    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Not</span> <span class="n">found</span><span class="o">.</span> <span class="nc">Bummer</span><span class="o">.&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <p>What happens next differs slightly based on whether you've set your application
 up using ScalatraServlet or ScalatraFilter.</p>

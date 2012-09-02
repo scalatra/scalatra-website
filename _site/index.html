@@ -139,7 +139,7 @@ frameworks such as <a href="http://backbonejs.org/">backbone.js</a>,
 features.</li>
 <li>It will help you use all available cores of that new 16-core server. It
 also gives you easy access to Scala's new concurrency-management constructs:
-Akka Actors.</li>
+<a href="http://akka.io">Akka Actors</a>.</li>
 </ul>
 
 
@@ -147,18 +147,6 @@ Akka Actors.</li>
 
 <p>You will need to <a href="getting-started/installation.html">install a few things</a>
 before you can get started, but first, here's a Scalatra app:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">package</span> <span class="nn">com.example.app</span>
-  <span class="k">import</span> <span class="nn">org.scalatra._</span>
-
-  <span class="k">class</span> <span class="nc">HelloWorldApp</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="o">{</span>
-    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="o">{</span><span class="n">params</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">)}&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <p>Notice a few things about it:</p>
 

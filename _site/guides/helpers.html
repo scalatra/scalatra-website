@@ -128,15 +128,6 @@ Once <code>session</code> is called, a cookie-based session will be created.</p>
 <p>Then you will be able to use the default cookie based session handler in your
 application:</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">session</span><span class="o">.</span><span class="n">contains</span><span class="o">(</span><span class="s">&quot;counter&quot;</span><span class="o">))</span> <span class="n">session</span><span class="o">(</span><span class="s">&quot;counter&quot;</span><span class="o">)</span> <span class="k">=</span> <span class="mi">0</span>
-    <span class="n">session</span><span class="o">(</span><span class="s">&quot;counter&quot;</span><span class="o">)</span> <span class="k">=</span> <span class="n">session</span><span class="o">(</span><span class="s">&quot;counter&quot;</span><span class="o">).</span><span class="n">toInt</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="s">&quot;You&#39;ve hit this page %s times!&quot;</span> <span class="n">format</span> <span class="n">session</span><span class="o">(</span><span class="s">&quot;counter&quot;</span><span class="o">).</span><span class="n">toInt</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>The <code>session</code> implicitly implements <code>scala.collection.mutable.Map</code> backed by
 <code>session</code> attributes.</p>
 
@@ -164,11 +155,6 @@ by servlet context attributes.</p>
 exceptions.  This page renders the template source with the error highlighted.
 To disable this behavior, override <code>isScalateErrorPageEnabled</code>:</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">override</span> <span class="k">def</span> <span class="n">isScalatePageEnabled</span> <span class="k">=</span> <span class="kc">false</span>
-</code></pre>
-</div>
-
-
 <h2>Scentry + authentication</h2>
 
 <p>Scentry is a user submitted authentication scheme. Combined
@@ -182,12 +168,6 @@ Here's another <a href="https://gist.github.com/732347">example</a> for basic au
 
 <h4>Dependency</h4>
 
-<div class="highlight"><pre><code class="scala"><span class="c1">// Put this in build.sbt:</span>
-<span class="s">&quot;org.scalatra&quot;</span> <span class="o">%</span> <span class="s">&quot;scalatra-auth&quot;</span> <span class="o">%</span> <span class="s">&quot;2.1.0&quot;</span>
-</code></pre>
-</div>
-
-
 <h2>Flash map</h2>
 
 <p>Flash support, allowing you to store information across requests and expire
@@ -199,41 +179,10 @@ The exception is adding new flash entries into <code>flash.now</code>.</p>
 <p>In order to enable flash support, you'll need to extend your servlet class
 with <code>FlashMapSupport</code>. You can set the flash like this:</p>
 
-<div class="highlight"><pre><code class="scala"><span class="k">class</span> <span class="nc">FooServlet</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">FlashMapSupport</span> <span class="o">{</span>
- <span class="n">post</span><span class="o">(</span><span class="s">&quot;/articles/create&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// watch out: this creates a session!</span>
-    <span class="n">flash</span><span class="o">(</span><span class="s">&quot;notice&quot;</span><span class="o">)</span> <span class="k">=</span> <span class="s">&quot;article created succesfully&quot;</span>
-    <span class="n">redirect</span><span class="o">(</span><span class="s">&quot;/home&quot;</span><span class="o">)</span>
-  <span class="o">}</span>
-
-  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/home&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">ssp</span><span class="o">(</span><span class="s">&quot;/home&quot;</span><span class="o">)</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>and then you can use it in your view, to let the user know what happened.
 <code>home.ssp</code> might look like this:</p>
 
-<div class="highlight"><pre><code class="scala"><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="nc">Here</span> <span class="n">is</span> <span class="n">the</span> <span class="n">flash</span><span class="k">:</span> <span class="k">&lt;%</span><span class="o">=</span> <span class="n">flash</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="s">&quot;notice&quot;</span><span class="o">)</span> <span class="o">%&gt;&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-  <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
-</code></pre>
-</div>
-
-
 <p>You can add more than one entry to the <code>FlashMap</code>, using <code>+=</code>:</p>
-
-<div class="highlight"><pre><code class="scala"><span class="n">flash</span> <span class="k">=</span> <span class="o">(</span><span class="s">&quot;notice&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Hello from your application&quot;</span><span class="o">)</span>
-<span class="n">flash</span> <span class="o">+=</span> <span class="o">(</span><span class="s">&quot;error&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;An error occurred&quot;</span><span class="o">)</span>
-<span class="n">flash</span><span class="o">.</span><span class="n">now</span> <span class="o">+=</span> <span class="o">(</span><span class="s">&quot;info&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;redirect to see the error&quot;</span><span class="o">)</span>
-</code></pre>
-</div>
-
 
 <p><code>flash.now</code> operates pretty much in the same way as <code>flash</code> does, except that
 it sets a value for the current request only.  It will be removed before the
@@ -252,32 +201,8 @@ the Servlet 3.0 API's built-in support for <code>multipart/form-data</code> requ
 </ol>
 
 
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.scalatra.ScalatraServlet</span>
-  <span class="k">import</span> <span class="nn">org.scalatra.servlet.FileUploadSupport</span>
-  <span class="k">import</span> <span class="nn">javax.servlet.annotation.MultipartConfig</span>
-
-  <span class="nd">@MultipartConfig</span><span class="o">(</span><span class="n">maxFileSize</span><span class="k">=</span><span class="mi">3</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="o">)</span>
-  <span class="k">class</span> <span class="nc">MyApp</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">FileUploadSupport</span> <span class="o">{</span>
-    <span class="c1">// ...</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>If you prefer using your <em>web.xml</em> over the <code>@MultipartConfig</code> annotation, you can also
 place <code>&lt;multipart-config&gt;</code> to your <code>&lt;servlet&gt;</code>:</p>
-
-<div class="highlight"><pre><code class="scala"><span class="o">&lt;</span><span class="n">servlet</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">servlet</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="n">myapp</span><span class="o">&lt;/</span><span class="n">servlet</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">servlet</span><span class="o">-</span><span class="n">class</span><span class="o">&gt;</span><span class="n">com</span><span class="o">.</span><span class="n">me</span><span class="o">.</span><span class="nc">MyApp</span><span class="o">&lt;/</span><span class="n">servlet</span><span class="o">-</span><span class="n">class</span><span class="o">&gt;</span>
-
-  <span class="o">&lt;</span><span class="n">multipart</span><span class="o">-</span><span class="n">config</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">max</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">size</span><span class="o">&gt;</span><span class="mi">3145728</span><span class="o">&lt;/</span><span class="n">max</span><span class="o">-</span><span class="n">file</span><span class="o">-</span><span class="n">size</span><span class="o">&gt;</span>
-  <span class="o">&lt;/</span><span class="n">multipart</span><span class="o">-</span><span class="n">config</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">servlet</span><span class="o">&gt;</span>
-</code></pre>
-</div>
-
 
 <p>See
 <a href="http://docs.oracle.com/javaee/6/api/javax/servlet/annotation/MultipartConfig.html">javax.servlet.annotation.MultipartConfig Javadoc</a>
@@ -287,42 +212,10 @@ for more details on configurable attributes.</p>
 work correctly in Jetty prior to version 8.1.3.</p>
 
 <ol>
-<li>Be sure that your form is of type <code>multipart/form-data</code>:</li>
+<li><p>Be sure that your form is of type <code>multipart/form-data</code>:</p></li>
+<li><p>Your files are available through the <code>fileParams</code> or <code>fileMultiParams</code> maps:</p></li>
+<li><p>To handle the case where user uploads too large a file, you can define an error handler:</p></li>
 </ol>
-
-
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="o">&lt;</span><span class="n">form</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="n">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="n">input</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;thefile&quot;</span> <span class="o">/&gt;</span>
-      <span class="o">&lt;</span><span class="n">input</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="o">/&gt;</span>
-    <span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
-<ol>
-<li>Your files are available through the <code>fileParams</code> or <code>fileMultiParams</code> maps:</li>
-</ol>
-
-
-<div class="highlight"><pre><code class="scala">  <span class="n">post</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">processFile</span><span class="o">(</span><span class="n">fileParams</span><span class="o">(</span><span class="s">&quot;thefile&quot;</span><span class="o">))</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
-<ol>
-<li>To handle the case where user uploads too large a file, you can define an error handler:</li>
-</ol>
-
-
-<div class="highlight"><pre><code class="scala">  <span class="n">error</span> <span class="o">{</span>
-    <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">SizeConstraintExceededException</span> <span class="o">=&gt;</span> <span class="nc">RequestEntityTooLarge</span><span class="o">(</span><span class="s">&quot;too much!&quot;</span><span class="o">)</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
 
 
 <p>Scalatra wraps <code>IllegalStateException</code> thrown by <code>HttpServletRequest#getParts()</code> inside
@@ -335,50 +228,17 @@ the wrapping by overriding <code>isSizeConstraintException</code> method.</p>
 You can configure that to be wrapped inside <code>SizeConstraintExceededException</code>s by including the
 following snippet to your servlet:</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">override</span> <span class="k">def</span> <span class="n">isSizeConstraintException</span><span class="o">(</span><span class="n">e</span><span class="k">:</span> <span class="kt">Exception</span><span class="o">)</span> <span class="k">=</span> <span class="n">e</span> <span class="k">match</span> <span class="o">{</span>
-    <span class="k">case</span> <span class="n">se</span><span class="k">:</span> <span class="kt">ServletException</span> <span class="kt">if</span> <span class="kt">se.getMessage.contains</span><span class="o">(</span><span class="err">&quot;</span><span class="kt">exceeds</span> <span class="kt">max</span> <span class="kt">filesize</span><span class="err">&quot;</span><span class="o">)</span> <span class="kt">||</span>
-                                 <span class="n">se</span><span class="o">.</span><span class="n">getMessage</span><span class="o">.</span><span class="n">startsWith</span><span class="o">(</span><span class="s">&quot;Request exceeds maxRequestSize&quot;</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="kc">true</span>
-    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="kc">false</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h2>Anti-XML integration</h2>
 
 <p>Scalatra provides optional <a href="http://anti-xml.org/">Anti-XML</a> integration:</p>
 
 <h4>Dependency</h4>
 
-<div class="highlight"><pre><code class="scala">  <span class="c1">// Put this in build.sbt:</span>
-  <span class="s">&quot;org.scalatra&quot;</span> <span class="o">%</span> <span class="s">&quot;scalatra-anti-xml&quot;</span> <span class="o">%</span> <span class="s">&quot;2.1.0&quot;</span>
-</code></pre>
-</div>
-
-
 <p>Extend your application with <code>AntiXmlSupport</code>:</p>
-
-<div class="highlight"><pre><code class="scala"><span class="k">import</span> <span class="nn">org.scalatra.ScalatraServlet</span>
-<span class="k">import</span> <span class="nn">org.scalatra.antixml.AntiXmlSupport</span>
-<span class="k">import</span> <span class="nn">com.codecommit.antixml._</span>
-
-<span class="k">class</span> <span class="nc">MyApp</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">AntiXmlSupport</span> <span class="o">{</span>
-  <span class="c1">// ...</span>
-<span class="o">}</span>
-</code></pre>
-</div>
-
 
 <p>Actions results of type <code>com.codecommit.antixml.Elem</code> will be serialized
 to the response body, and a content type of <code>text/html</code> will be inferred if
 none is set.</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="nc">XML</span><span class="o">.</span><span class="n">fromString</span><span class="o">(</span><span class="s">&quot;&quot;&quot;&lt;foo bar=&quot;baz&quot;&gt;&lt;/foo&gt;&quot;&quot;&quot;</span><span class="o">)</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h2>URL support and reverse routes</h2>
 
@@ -388,64 +248,19 @@ redirect statement.</p>
 
 <h3>Page relative url:</h3>
 
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">){</span>
-    <span class="c1">// This will redirect to http://&lt;host&gt;/page-relative</span>
-    <span class="n">redirect</span><span class="o">(</span><span class="n">url</span><span class="o">(</span><span class="s">&quot;page-relative&quot;</span><span class="o">))</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h3>Context relative url:</h3>
 
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">){</span>
-    <span class="c1">// This will redirect to http://&lt;host&gt;/&lt;context&gt;/context-relative</span>
-    <span class="n">redirect</span><span class="o">(</span><span class="n">url</span><span class="o">(</span><span class="s">&quot;/context-relative&quot;</span><span class="o">))</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h3>Mapped params:</h3>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// This will redirect to http://&lt;host&gt;/&lt;context&gt;/en-to-es?one=uno&amp;two=dos</span>
-    <span class="n">redirect</span><span class="o">(</span> <span class="n">url</span><span class="o">(</span><span class="s">&quot;/en-to-es&quot;</span><span class="o">,</span> <span class="nc">Map</span><span class="o">(</span><span class="s">&quot;one&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;uno&quot;</span><span class="o">,</span> <span class="s">&quot;two&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;dos&quot;</span><span class="o">))</span> <span class="o">)</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h3>Reverse routes:</h3>
 
 <p>It is possible to save your routes as variables so that they have convenient
 handles:</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">class</span> <span class="nc">MyApp</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">UrlGeneratorSupport</span> <span class="o">{</span>
-    <span class="c1">// When you create a route, you can save it as a variable</span>
-    <span class="k">val</span> <span class="n">viewUser</span> <span class="k">=</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/user/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
-       <span class="c1">// your user action would go here</span>
-     <span class="o">}</span>
-
-    <span class="n">post</span><span class="o">(</span><span class="s">&quot;/user/new&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="c1">// url method provided by UrlGeneratorSupport.  Pass it the route</span>
-      <span class="c1">// and the params.</span>
-      <span class="n">redirect</span><span class="o">(</span><span class="n">url</span><span class="o">(</span><span class="n">viewUser</span><span class="o">,</span> <span class="s">&quot;id&quot;</span> <span class="o">-&gt;</span> <span class="n">newUser</span><span class="o">.</span><span class="n">id</span><span class="o">))</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>There's also a <code>ScalateUrlGeneratorSupport</code>.  It reflectively finds all
 members of your app of type Route (e.g., viewUser above) and makes them
 available in your templates.  You should then be able to do something like this
 right in your templates:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">url</span><span class="o">(</span><span class="n">viewUser</span><span class="o">,</span> <span class="s">&quot;id&quot;</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">)</span>
-</code></pre>
-</div>
-
 
 <h2>AkkaSupport</h2>
 
@@ -455,30 +270,8 @@ mix it right into your application.</p>
 
 <h4>Dependency:</h4>
 
-<div class="highlight"><pre><code class="scala"><span class="c1">// Put this in build.sbt:</span>
-<span class="s">&quot;io.akka&quot;</span> <span class="o">%</span> <span class="s">&quot;akka&quot;</span> <span class="o">%</span> <span class="s">&quot;2.0.3&quot;</span>
-</code></pre>
-</div>
-
-
 <p>Provides a mechanism for adding <a href="http://akka.io/">Akka</a> futures to your routes. Akka support
 is only available in Scalatra 2.1 and up.</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">_root_.akka.dispatch._</span>
-  <span class="k">import</span> <span class="nn">org.scalatra.akka.AkkaSupport</span>
-
-  <span class="k">class</span> <span class="nc">MyAppServlet</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">AkkaSupport</span> <span class="o">{</span>
-    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">){</span>
-      <span class="nc">Future</span> <span class="o">{</span>
-        <span class="c1">// Add other logic here</span>
-
-        <span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;&lt;</span><span class="n">body</span><span class="o">&gt;</span><span class="nc">Hello</span> <span class="nc">Akka</span><span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
 
 <h2>Cross origin resource sharing</h2>
 

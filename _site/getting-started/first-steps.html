@@ -95,26 +95,8 @@ generate a project.</p>
 
 <p>Run:</p>
 
-<div class="highlight"><pre><code class="bash">  g8 scalatra/scalatra-sbt
-</code></pre>
-</div>
-
-
 <p>This will check out a pre-built application skeleton for you (from Github),
 and ask you some questions about your application:</p>
-
-<div class="highlight"><pre><code class="bash">  <span class="nv">$ </span>g8 scalatra/scalatra-sbt
-  &gt; organization <span class="o">[</span>com.example<span class="o">]</span>:
-  &gt; package <span class="o">[</span>com.example.app<span class="o">]</span>:
-  &gt; name <span class="o">[</span>scalatra-sbt-prototype<span class="o">]</span>:
-  &gt; servlet_name <span class="o">[</span>MyScalatraServlet<span class="o">]</span>:
-  &gt; scala_version <span class="o">[</span>2.9.1<span class="o">]</span>:
-  &gt; version <span class="o">[</span>0.1.0-SNAPSHOT<span class="o">]</span>:
-</code></pre>
-</div>
-
-
-
 
 <dl class="dl-horizontal">
   <dt>organization</dt>
@@ -147,44 +129,20 @@ but we like [Semantic Versioning](http://semver.org/).</dd>
 <p>Scala is a compiled language, so you need to build your Scalatra project.</p>
 
 <p>Enter your application's top-level directory and type <code>sbt</code>, and the
-application will build.</p>
+application will build. <code>sbt</code> will also take care of downloading an entire
+Scalatra development environment if you don't have one yet. This means it'll
+spend some time downloading Scalatra and its libraries when you first run it.</p>
 
 <h2>Hello world</h2>
 
-<p>Scalatra is installed, how about making your first application?  Source files
-go into <code>src/main/scala/com/example/app</code> (substitute your package for
+<p>Scalatra is now installed, how about making your first application?  Source
+files go into <code>src/main/scala/com/example/app</code> (substitute your package for
 <code>com/example/app</code>).  Open
 <code>src/main/scala/com/example/app/MyScalatraServlet.scala</code>, or whatever you named
 your servlet when you generated your project with g8:</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">package</span> <span class="nn">com.example.app</span>
-
-  <span class="k">import</span> <span class="nn">org.scalatra._</span>
-  <span class="k">import</span> <span class="nn">scalate.ScalateSupport</span>
-
-  <span class="k">class</span> <span class="nc">MyScalatraServlet</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">ScalateSupport</span> <span class="o">{</span>
-
-    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="n">world</span><span class="o">!&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-          <span class="nc">Say</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;hello-scalate&quot;</span><span class="o">&gt;</span><span class="n">hello</span> <span class="n">to</span> <span class="nc">Scalate</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;.</span>
-        <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
-      <span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>If you haven't already done so, from your project root, you can run the project
 with:</p>
-
-<div class="highlight"><pre><code class="bash">  <span class="nv">$ </span>sbt
-  &gt; container:start
-</code></pre>
-</div>
-
 
 <p>The application starts on <a href="http://localhost:8080">http://localhost:8080</a>.</p>
 
@@ -200,17 +158,10 @@ Whatever the block returns is sent back to the browser.
 The action above returns an XML literal - you could easily change it to return
 a string, by altering the action:</p>
 
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="s">&quot;Hi there!&quot;</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <p>Returning a raw string is not something you'll do particularly often - usually
 you will want to return formatted HTML which is the product of a templating
 system, or an output format like JSON. See the <a href="../guides/views.html">views</a> and
-<a href="../guides/helpers.html">helpers</a> of our <a href="../guides">guides</a> for more info.</p>
+<a href="../guides/helpers.html">helpers</a> sections of our <a href="../guides">guides</a> for more info.</p>
 
 <h2>Automatic code reloading</h2>
 
@@ -222,13 +173,6 @@ code changes</a>. The
 syntax for restarting includes adding <code>~</code> in front of the command you want to
 re-execute.  To recompile and reload your application automatically with
 xsbt-web-plugin 0.2.10, run the following:</p>
-
-<div class="highlight"><pre><code class="bash">  <span class="nv">$ </span>sbt
-  &gt; container:start
-  &gt; ~ ;copy-resources;aux-compile
-</code></pre>
-</div>
-
 
 <h2>Scalatra examples</h2>
 
