@@ -138,10 +138,10 @@ When using `layoutTemplate`, you *must* prefix your view paths with a relative
 Scalate templates are strongly typed (except for Mustache, which isn't).
 
 <div class="alert alert-info">
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-<p>If you're coming from a dynamic language, pay attention to this next bit, 
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span> 
+If you're coming from a dynamic language, pay attention to this next bit, 
   because it'll surprise you: you need to explicitly declare variables inside 
-  your views.</p>
+  your views.
 </div>
 
 Parameters may be passed to your views using a Seq(String, Any) after the
