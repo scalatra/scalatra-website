@@ -281,13 +281,10 @@ response will render within the default layout.</p>
 Scalate to identify the layout file, which wraps a standard layout around the
 output for the current action.</p>
 
-<p>If you want, you can optionally set off your <code>layout</code> parameter from the others, perhaps
-by doing something like this (in jade this time):</p>
-
 <div class="highlight"><pre><code class="scala">  <span class="k">def</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">contentType</span><span class="o">=</span><span class="s">&quot;text/html&quot;</span>
 
-    <span class="n">jade</span><span class="o">(</span><span class="s">&quot;/index&quot;</span><span class="o">,</span> <span class="o">(</span><span class="s">&quot;layout&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;WEB-INF/layouts/app.jade&quot;</span><span class="o">),</span> <span class="s">&quot;foo&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;uno&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;dos&quot;</span><span class="o">)</span>
+    <span class="n">jade</span><span class="o">(</span><span class="s">&quot;/index&quot;</span><span class="o">,</span> <span class="s">&quot;layout&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;WEB-INF/layouts/app.jade&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;uno&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;dos&quot;</span><span class="o">)</span>
   <span class="o">}</span>
 </code></pre>
 </div>
