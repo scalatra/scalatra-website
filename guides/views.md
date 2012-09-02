@@ -39,8 +39,8 @@ value from an action:
 Note the use of the curly braces on the `{uri("/")}` part of the inlined view.
 This tells Scalatra to render Scala code.
 
-This would be a very poor way to structure views for a large application, but it might
-be handy if your application is quite simple (or you're just cranking out a quick prototype).
+This would be a very poor way to structure complex views for a large application, but it might
+be useful if your templating needs are quite simple (or you're just cranking out a quick prototype).
 
 Normally you'll want more structure than inline HTML can provide, so that you can separate
 your views from your controller actions and routing. 
@@ -62,7 +62,7 @@ Some of Scalate's all-star features include:
 *   Backtraces with correct filenames and line numbers
 *   Template file caching and reloading
 
-Scalate includes support for some of the best engines available, such as
+Scalate includes support for multiple templateing styles, including
 [SSP][ssp] (similar to ERB), [SCAML][scaml] (a Scala HAML variant), 
 [Mustache][mustache], and [Jade][jade] (another HAML variant). Except for
 Mustache, templates are strongly typed, so your compiler can save 
@@ -138,17 +138,16 @@ When using `layoutTemplate`, you *must* prefix your view paths with a relative
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span> 
 If you're coming from a dynamic language, pay attention to this next bit, 
-  because it'll surprise you: you need to explicitly declare variables inside 
+  because it may surprise you: you need to explicitly declare variables inside 
   your views.
 </div>
 
-Scalate templates are strongly typed (except for Mustache, which isn't). This
-makes them extremely fast, and helps you get more productive by letting the 
-compiler tell you when something's wrong. 
-
-It also means that any controller variables that you want to access in your 
-views need to be explicitly sent to the view by your controller. They 
-need to be declared in the views before they can be used.
+As mentioned previously, Scalate templates are strongly typed (except for 
+Mustache, which isn't). This makes them extremely fast, and helps your productivity
+by letting the compiler tell you when something's wrong. It also means that any 
+controller variables that you want to access in your views need to be explicitly 
+sent to the view by your controller. They need to be declared in the views before 
+they can be used.
 
 View parameters are be passed to your views using a Seq(String, Any) after 
 the path to the template file. The simplest example might look like this:
