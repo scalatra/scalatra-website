@@ -66,7 +66,7 @@ Some of Scalate's all-star features include:
 
 Scalate includes support for some of the best engines available, such as
 [SSP][ssp] (similar to ERB), [SCAML][scaml] (a Scala HAML variant), 
-[Mustache][mustache] and [Jade][jade] (another HAML variant).
+[Mustache][mustache], and [Jade][jade] (another HAML variant).
 
 [ssp]: http://scalate.fusesource.org/documentation/ssp-reference.html
 [scaml]: http://scalate.fusesource.org/documentation/scaml-reference.html
@@ -74,7 +74,7 @@ Scalate includes support for some of the best engines available, such as
 [jade]: http://scalate.fusesource.org/documentation/jade.html
 
 All you need to get started is `Scalate`, which is included in Scalatra. 
-By default, Scalatra looks in the `views` directory in your application root.
+By default, Scalatra looks for views in the `views` directory in your application root.
 
 There are two ways to use Scalate. You can use the ScalateSupport helpers,
 or call Scalate directly. Either way, you'll need to extend your servlet 
@@ -91,8 +91,7 @@ with `ScalateSupport`, like this:
 
 ### ScalateSupport helpers
 
-The second way of using Scalate is to use Scalatra's ScalateSupport helpers, which
-are a bit more "magic" than calling Scalate directly.
+The easiest way of using Scalate is to use Scalatra's ScalateSupport helpers.
 
 Basic usage:
 
@@ -106,11 +105,13 @@ Basic usage:
 
 {% endhighlight %}
 
+<span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> 
 When using `layoutTemplate`, you *must* prefix your view paths with a relative
 `/` character. So, `layoutTemplate("/WEB-INF/views/foo.ssp")` is good,
 `layoutTemplate("WEB-INF/views/foo.ssp)` will fail.
 
 Rendering with a different layout:
+
 {% highlight scala %}
 
   def get("/") {

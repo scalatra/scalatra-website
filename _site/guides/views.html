@@ -146,10 +146,10 @@ template engines going - it's extremely fast, flexible, and feature-rich.</p>
 
 <p>Scalate includes support for some of the best engines available, such as
 <a href="http://scalate.fusesource.org/documentation/ssp-reference.html">SSP</a> (similar to ERB), <a href="http://scalate.fusesource.org/documentation/scaml-reference.html">SCAML</a> (a Scala HAML variant),
-<a href="http://scalate.fusesource.org/documentation/mustache.html">Mustache</a> and <a href="http://scalate.fusesource.org/documentation/jade.html">Jade</a> (another HAML variant).</p>
+<a href="http://scalate.fusesource.org/documentation/mustache.html">Mustache</a>, and <a href="http://scalate.fusesource.org/documentation/jade.html">Jade</a> (another HAML variant).</p>
 
 <p>All you need to get started is <code>Scalate</code>, which is included in Scalatra.
-By default, Scalatra looks in the <code>views</code> directory in your application root.</p>
+By default, Scalatra looks for views in the <code>views</code> directory in your application root.</p>
 
 <p>There are two ways to use Scalate. You can use the ScalateSupport helpers,
 or call Scalate directly. Either way, you'll need to extend your servlet
@@ -164,8 +164,7 @@ with <code>ScalateSupport</code>, like this:</p>
 
 <h3>ScalateSupport helpers</h3>
 
-<p>The second way of using Scalate is to use Scalatra's ScalateSupport helpers, which
-are a bit more "magic" than calling Scalate directly.</p>
+<p>The easiest way of using Scalate is to use Scalatra's ScalateSupport helpers.</p>
 
 <p>Basic usage:</p>
 
@@ -178,7 +177,8 @@ are a bit more "magic" than calling Scalate directly.</p>
 </div>
 
 
-<p>When using <code>layoutTemplate</code>, you <em>must</em> prefix your view paths with a relative
+<p><span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span>
+When using <code>layoutTemplate</code>, you <em>must</em> prefix your view paths with a relative
 <code>/</code> character. So, <code>layoutTemplate("/WEB-INF/views/foo.ssp")</code> is good,
 <code>layoutTemplate("WEB-INF/views/foo.ssp)</code> will fail.</p>
 
@@ -238,9 +238,27 @@ or jade):</p>
 
 <h4>Layouts</h4>
 
-<p>The <code>layout</code> key is somewhat special, as it's used by scalate to identify the
-layout file, which wraps a standard layout around the output for the current
-action.</p>
+<p>Scalatra automatically looks for layouts in a <code>webapp/layout/default.xx</code>
+file to render before loading any other views (where <code>xx</code> is a Scalate
+template suffix type). If you're using <code>SSP</code>, your <code>webapp/layout/default.ssp</code>
+could look something like this:</p>
+
+<div class="highlight"><pre><code class="html">  <span class="err">&lt;</span>%@ var yield: String %&gt;
+  <span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>..<span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+      <span class="err">&lt;</span>%= yield %&gt;
+    <span class="nt">&lt;/body&gt;</span>
+  <span class="nt">&lt;/html&gt;</span>
+</code></pre>
+</div>
+
+
+<h4>Specifying which layout to use</h4>
+
+<p>The <code>layout</code> key passed from your actions is somewhat special, as it's used by
+scalate to identify the layout file, which wraps a standard layout around the
+output for the current action.</p>
 
 <p>If you want, you can set off your <code>layout</code> parameter from the others, perhaps
 by doing something like this (in jade this time):</p>
@@ -261,6 +279,8 @@ is one of the scalate template types). If you are using ssp, for instance, and
 you put a default.ssp file in WEB-INF/layouts/default.ssp, it will
 automatically be used. In this case, you can simply call <code>ssp("/index")</code> and the
 response will render within the default layout.</p>
+
+<h4>Disabling layouts</h4>
 
 <p>To disable a layout for certain templates, Scalate accepts an empty <code>layout</code>
 attribute:</p>
@@ -337,27 +357,12 @@ how it looks, when using the ScalateSupport helpers to render the page.</p>
 in the <code>webapp</code> folder of your application (which is found under <code>src/main/</code>
 in the project tree).</p>
 
-<p>Scalatra automatically looks for layouts in a <code>webapp/layout/default.xx</code>
-file to render before loading any other views (where <code>xx</code> is a Scalate
-template suffix type). If you're using <code>SSP</code>, your <code>webapp/layout/default.ssp</code>
-would look something like this:</p>
-
-<div class="highlight"><pre><code class="html">  <span class="err">&lt;</span>%@ var yield: String %&gt;
-  <span class="nt">&lt;html&gt;</span>
-    <span class="nt">&lt;head&gt;</span>..<span class="nt">&lt;/head&gt;</span>
-    <span class="nt">&lt;body&gt;</span>
-      <span class="err">&lt;</span>%= yield %&gt;
-    <span class="nt">&lt;/body&gt;</span>
-  <span class="nt">&lt;/html&gt;</span>
-</code></pre>
-</div>
-
-
 <h4>Rendering a 404 page</h4>
 
 <p>You may need to render some other page when Scalatra can't find a route.</p>
 
-<p>Using Scalate directly:</p>
+<p>Using Scalate directly, it looks a little bit different than when you're using
+the ScalateSupport helpers:</p>
 
 <div class="highlight"><pre><code class="scala">  <span class="k">class</span> <span class="nc">MyScalatraFilter</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="k">with</span> <span class="nc">ScalateSupport</span> <span class="o">{</span>
     <span class="n">notFound</span> <span class="o">{</span>
