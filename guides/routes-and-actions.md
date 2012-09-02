@@ -199,6 +199,8 @@ The first matching route is invoked. Routes are matched from the *bottom up*. <s
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
+----
+
 ## Actions
 
 Each route is followed by an action.  An Action may return any value, which
