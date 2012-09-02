@@ -148,7 +148,7 @@ compiler tell you when something's wrong.
 
 It also means that any controller variables that you want to access in your 
 views need to be explicitly sent to the view by your controller. They 
-also need to be declared in the views before they can be used.
+need to be declared in the views before they can be used.
 
 View parameters are be passed to your views using a Seq(String, Any) after 
 the path to the template file. The simplest example might look like this:
