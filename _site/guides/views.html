@@ -120,8 +120,8 @@ value from an action:</p>
 <p>Note the use of the curly braces on the <code>{uri("/")}</code> part of the inlined view.
 This tells Scalatra to render Scala code.</p>
 
-<p>This would be a very poor way to structure views for a large application, but it might
-be handy if your application is quite simple (or you're just cranking out a quick prototype).</p>
+<p>This would be a very poor way to structure complex views for a large application, but it might
+be useful if your templating needs are quite simple (or you're just cranking out a quick prototype).</p>
 
 <p>Normally you'll want more structure than inline HTML can provide, so that you can separate
 your views from your controller actions and routing.</p>
@@ -143,7 +143,7 @@ template engines going - it's extremely fast, flexible, and feature-rich.</p>
 </ul>
 
 
-<p>Scalate includes support for some of the best engines available, such as
+<p>Scalate includes support for multiple templateing styles, including
 <a href="http://scalate.fusesource.org/documentation/ssp-reference.html">SSP</a> (similar to ERB), <a href="http://scalate.fusesource.org/documentation/scaml-reference.html">SCAML</a> (a Scala HAML variant),
 <a href="http://scalate.fusesource.org/documentation/mustache.html">Mustache</a>, and <a href="http://scalate.fusesource.org/documentation/jade.html">Jade</a> (another HAML variant). Except for
 Mustache, templates are strongly typed, so your compiler can save
@@ -213,18 +213,17 @@ When using <code>layoutTemplate</code>, you <em>must</em> prefix your view paths
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span> 
 If you're coming from a dynamic language, pay attention to this next bit, 
-  because it'll surprise you: you need to explicitly declare variables inside 
+  because it may surprise you: you need to explicitly declare variables inside 
   your views.
 </div>
 
 
-<p>Scalate templates are strongly typed (except for Mustache, which isn't). This
-makes them extremely fast, and helps you get more productive by letting the
-compiler tell you when something's wrong.</p>
-
-<p>It also means that any controller variables that you want to access in your
-views need to be explicitly sent to the view by your controller. They
-also need to be declared in the views before they can be used.</p>
+<p>As mentioned previously, Scalate templates are strongly typed (except for
+Mustache, which isn't). This makes them extremely fast, and helps your productivity
+by letting the compiler tell you when something's wrong. It also means that any
+controller variables that you want to access in your views need to be explicitly
+sent to the view by your controller. They need to be declared in the views before
+they can be used.</p>
 
 <p>View parameters are be passed to your views using a Seq(String, Any) after
 the path to the template file. The simplest example might look like this:</p>
@@ -251,10 +250,9 @@ look like:</p>
 
 <h4>Layouts</h4>
 
-<p>Scalatra automatically looks for layouts in a <code>webapp/layout/default.xx</code>
-file to render before loading any other views (where <code>xx</code> is a Scalate
-template suffix type). If you're using <code>SSP</code>, your <code>webapp/layout/default.ssp</code>
-could look something like this:</p>
+<p>Scalatra looks for layouts in the <code>webapp/layout/</code> directory, and inserts the rendered
+view for the current action into the template at the point you specify. If you're using
+<code>SSP</code>, your layout might look something like this:</p>
 
 <div class="highlight"><pre><code class="html">  <span class="err">&lt;</span>%@ var yield: String %&gt;
   <span class="nt">&lt;html&gt;</span>
@@ -267,39 +265,38 @@ could look something like this:</p>
 </div>
 
 
-<p>Whatever view you specify in your action will be rendered at the <code>&lt;%= yeield =&gt;</code>
-statement.</p>
+<p>The specific view for your action will be rendered at the <code>&lt;%= yield =&gt;</code> statement.</p>
 
-<h4>Specifying which layout to use</h4>
+<h4>Default layouts</h4>
+
+<p>By convention, Scalatra sets a default layout at <code>WEB-INF/layouts/default.xx</code> (where xx
+is one of the scalate template types). If you are using ssp, for instance, and
+you put a default.ssp file at WEB-INF/layouts/default.ssp, it will
+automatically be used. In that case, you can simply call <code>ssp("/index")</code> and the
+response will render within the default layout.</p>
+
+<h4>Specifying an alternate layout</h4>
 
 <p>The <code>layout</code> key passed from your actions is somewhat special, as it's used by
 scalate to identify the layout file, which wraps a standard layout around the
 output for the current action.</p>
 
-<p>If you want, you can set off your <code>layout</code> parameter from the others, perhaps
+<p>If you want, you can optionally set off your <code>layout</code> parameter from the others, perhaps
 by doing something like this (in jade this time):</p>
 
 <div class="highlight"><pre><code class="scala">  <span class="k">def</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">contentType</span><span class="o">=</span><span class="s">&quot;text/html&quot;</span>
 
-    <span class="n">jade</span><span class="o">(</span><span class="s">&quot;/index&quot;</span><span class="o">,(</span><span class="s">&quot;layout&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;WEB-INF/layouts/app.jade&quot;</span><span class="o">),</span> <span class="s">&quot;foo&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;uno&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;dos&quot;</span><span class="o">)</span>
+    <span class="n">jade</span><span class="o">(</span><span class="s">&quot;/index&quot;</span><span class="o">,</span> <span class="o">(</span><span class="s">&quot;layout&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;WEB-INF/layouts/app.jade&quot;</span><span class="o">),</span> <span class="s">&quot;foo&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;uno&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;dos&quot;</span><span class="o">)</span>
   <span class="o">}</span>
 </code></pre>
 </div>
 
 
-<h4>Setting a default layout</h4>
-
-<p>Scalatra sets a default layout at <code>WEB-INF/layouts/default.xx</code> (where xx
-is one of the scalate template types). If you are using ssp, for instance, and
-you put a default.ssp file in WEB-INF/layouts/default.ssp, it will
-automatically be used. In this case, you can simply call <code>ssp("/index")</code> and the
-response will render within the default layout.</p>
-
 <h4>Disabling layouts</h4>
 
 <p>To disable a layout for certain templates, Scalate accepts an empty <code>layout</code>
-attribute:</p>
+parameter:</p>
 
 <div class="highlight"><pre><code class="scala">  <span class="k">def</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// This template will render without a layout.</span>
