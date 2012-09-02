@@ -122,37 +122,6 @@ From the [Specs2 QuickStart][Specs2 Quickstart]:
 
 {% endhighlight %}
 
-### [Specs](http://code.google.com/p/specs/)
-
-Specs is now in maintenance mode.  The author recommends that new projects
-begin with Specs2.
-
-#### Dependency
-
-    "org.scalatra" %% "scalatra-specs" % "2.1.0" % "test"
-
-#### Example
-
-{% highlight scala %}
-
-  import org.scalatra.test.specs._
-
-  object MyScalatraServletTests extends ScalatraSpecification {
-    addServlet(classOf[MyScalatraServlet], "/*")
-
-    "MyScalatraServlet when using GET" should {
-      "/path/to/something should return 'hi!'" in {
-        get("/") {
-          status mustEqual(200)
-          body mustEqual("hi!")
-        }
-      }
-    }
-  }
-
-{% endhighlight %}
-
-
 
 ### Other test frameworks
 
