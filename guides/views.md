@@ -177,10 +177,9 @@ look like:
 
 #### Layouts
 
-Scalatra automatically looks for layouts in a `webapp/layout/default.xx` 
-file to render before loading any other views (where `xx` is a Scalate 
-template suffix type). If you're using `SSP`, your `webapp/layout/default.ssp` 
-could look something like this:
+Scalatra looks for layouts in the `webapp/layout/` directory, and inserts the rendered
+view for the current action into the template at the point you specify. If you're using 
+`SSP`, your layout might look something like this:
 
 {% highlight html %}
 
@@ -194,16 +193,23 @@ could look something like this:
 
 {% endhighlight %}
 
-Whatever view you specify in your action will be rendered at the `<%= yeield =>`
-statement.
+The specific view for your action will be rendered at the `<%= yield =>` statement.
 
-#### Specifying which layout to use
+#### Default layouts
+
+By convention, Scalatra sets a default layout at `WEB-INF/layouts/default.xx` (where xx
+is one of the scalate template types). If you are using ssp, for instance, and
+you put a default.ssp file at WEB-INF/layouts/default.ssp, it will
+automatically be used. In that case, you can simply call `ssp("/index")` and the
+response will render within the default layout.
+
+#### Specifying an alternate layout
 
 The `layout` key passed from your actions is somewhat special, as it's used by 
 scalate to identify the layout file, which wraps a standard layout around the 
 output for the current action.
 
-If you want, you can set off your `layout` parameter from the others, perhaps
+If you want, you can optionally set off your `layout` parameter from the others, perhaps
 by doing something like this (in jade this time):
 
 {% highlight scala %}
@@ -211,23 +217,15 @@ by doing something like this (in jade this time):
   def get("/") {
     contentType="text/html"
 
-    jade("/index",("layout" -> "WEB-INF/layouts/app.jade"), "foo" -> "uno", "bar" -> "dos")
+    jade("/index", ("layout" -> "WEB-INF/layouts/app.jade"), "foo" -> "uno", "bar" -> "dos")
   }
 
 {% endhighlight %}
 
-#### Setting a default layout
-
-Scalatra sets a default layout at `WEB-INF/layouts/default.xx` (where xx
-is one of the scalate template types). If you are using ssp, for instance, and
-you put a default.ssp file in WEB-INF/layouts/default.ssp, it will
-automatically be used. In this case, you can simply call `ssp("/index")` and the
-response will render within the default layout.
-
 #### Disabling layouts
 
 To disable a layout for certain templates, Scalate accepts an empty `layout`
-attribute:
+parameter:
 
 {% highlight scala %}
 
@@ -270,8 +268,8 @@ Scalate can be called directly, using the
   get("/") {
     templateEngine.layout("index.ssp")
     // renders webapp/index.ssp
-    // OR look in a sub-directory
 
+    // OR you can tell Scalate to look in a sub-directory
     templateEngine.layout("/dogs/index.ssp")
     // would instead render webapp/dogs/index.ssp
   }
@@ -282,7 +280,7 @@ When using Scalate directly, Scalatra will look for your template files
 in the `webapp` folder of your application (which is found under `src/main/`
 in the project tree).
 
-#### Rendering a 404 page
+#### Rendering a 404 page using Scalate
 
 You may need to render some other page when Scalatra can't find a route.
 
