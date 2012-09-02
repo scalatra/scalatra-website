@@ -44,7 +44,7 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
 
 ### Why would you want to use Scalatra?
 
-* It's been proven in production - [LinkedIn][linkedin], the
+* It's been proven in production - the [BBC][bbc] [LinkedIn][linkedin], the
 [Guardian newspaper][guardian], games website [IGN][ign], and the
 [UK government][govuk] all rely on it.
 * It can help you quickly build high-performance, scalable HTTP APIs for web
@@ -59,6 +59,7 @@ features.
 also gives you easy access to Scala's new concurrency-management constructs:
 [Akka Actors](http://akka.io).
 
+[bbc]: http://bbc.co.uk
 [linkedin]: http://www.linkedin.com
 [guardian]: http://www.guardian.co.uk
 [ign]: http://www.ign.com
