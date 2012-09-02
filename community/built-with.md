@@ -7,9 +7,13 @@ title: Scalatra | Built with Scalatra
   <h1>Production systems built with Scalatra</h1>
 </div>
 
-## Companies
+## Companies and other organizations
 
 The following systems are known to incorporate Scalatra in their architecture:
+
+### BBC Future Media
+
+The [BBC](http://www.bbc.co.uk)'s Linked Data Team has built a Scalatra REST API for use on the BBC's dynamic web development platform.
 
 ### LinkedIn Signal
 
