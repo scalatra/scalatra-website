@@ -44,7 +44,7 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
 
 ### Why would you want to use Scalatra?
 
-* It's been proven in production - the [BBC][bbc] [LinkedIn][linkedin], the
+* It's been proven in production - the [BBC][bbc], [LinkedIn][linkedin], the
 [Guardian newspaper][guardian], games website [IGN][ign], and the
 [UK government][govuk] all rely on it.
 * It can help you quickly build high-performance, scalable HTTP APIs for web
