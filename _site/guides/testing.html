@@ -203,36 +203,6 @@ integration scenarios</p></blockquote>
 </div>
 
 
-<h3><a href="http://code.google.com/p/specs/">Specs</a></h3>
-
-<p>Specs is now in maintenance mode.  The author recommends that new projects
-begin with Specs2.</p>
-
-<h4>Dependency</h4>
-
-<pre><code>"org.scalatra" %% "scalatra-specs" % "2.1.0" % "test"
-</code></pre>
-
-<h4>Example</h4>
-
-<div class="highlight"><pre><code class="scala">  <span class="k">import</span> <span class="nn">org.scalatra.test.specs._</span>
-
-  <span class="k">object</span> <span class="nc">MyScalatraServletTests</span> <span class="k">extends</span> <span class="nc">ScalatraSpecification</span> <span class="o">{</span>
-    <span class="n">addServlet</span><span class="o">(</span><span class="n">classOf</span><span class="o">[</span><span class="kt">MyScalatraServlet</span><span class="o">],</span> <span class="s">&quot;/*&quot;</span><span class="o">)</span>
-
-    <span class="s">&quot;MyScalatraServlet when using GET&quot;</span> <span class="n">should</span> <span class="o">{</span>
-      <span class="s">&quot;/path/to/something should return &#39;hi!&#39;&quot;</span> <span class="n">in</span> <span class="o">{</span>
-        <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-          <span class="n">status</span> <span class="n">mustEqual</span><span class="o">(</span><span class="mi">200</span><span class="o">)</span>
-          <span class="n">body</span> <span class="n">mustEqual</span><span class="o">(</span><span class="s">&quot;hi!&quot;</span><span class="o">)</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-</code></pre>
-</div>
-
-
 <h3>Other test frameworks</h3>
 
 <h4>Dependency</h4>
