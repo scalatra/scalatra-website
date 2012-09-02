@@ -105,7 +105,7 @@ We can't predict what you'll want to build, or how you'll want to build it.
 Instead of prescribing a set of libraries for you to use, and building the
 framework around that, we let _you_ choose.
 
-## Versions
+### Versions
 
 <table class="table table-striped table-bordered">
   <thead>
