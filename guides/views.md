@@ -149,7 +149,7 @@ controller variables that you want to access in your views need to be explicitly
 sent to the view by your controller. They need to be declared in the views before 
 they can be used.
 
-View parameters are be passed to your views using a Seq(String, Any) after 
+View parameters are passed to your views using a Seq(String, Any) after 
 the path to the template file. The simplest example might look like this:
 
 {% highlight scala %}
