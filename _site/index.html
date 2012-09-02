@@ -16,6 +16,7 @@
   }
 </style>
 <link href="/scalatra-website/_site/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="/scalatra-website/_site/assets/css/syntax.css" rel="stylesheet">
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -147,6 +148,18 @@ also gives you easy access to Scala's new concurrency-management constructs:
 
 <p>You will need to <a href="getting-started/installation.html">install a few things</a>
 before you can get started, but first, here's a Scalatra app:</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">package</span> <span class="nn">com.example.app</span>
+  <span class="k">import</span> <span class="nn">org.scalatra._</span>
+
+  <span class="k">class</span> <span class="nc">HelloWorldApp</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="o">{</span>
+    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+      <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="o">{</span><span class="n">params</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">)}&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
 
 <p>Notice a few things about it:</p>
 

@@ -16,6 +16,7 @@
   }
 </style>
 <link href="/scalatra-website/_site/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="/scalatra-website/_site/assets/css/syntax.css" rel="stylesheet">
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -155,7 +156,21 @@ protected by the web application container.</p>
 <p>There are two base classes you can inherit from in order to make a
 Scalatra application: <code>ScalatraServlet</code> and <code>ScalatraFilter</code>.</p>
 
+<div class="highlight"><pre><code class="scala">  <span class="k">class</span> <span class="nc">YourServlet</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">ScalateSupport</span> <span class="o">{</span>
+    <span class="c1">// your class here</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
+
 <p>vs.</p>
+
+<div class="highlight"><pre><code class="scala">  <span class="k">class</span> <span class="nc">YourFilter</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="k">with</span> <span class="nc">ScalateSupport</span> <span class="o">{</span>
+    <span class="c1">// your class here</span>
+  <span class="o">}</span>
+</code></pre>
+</div>
+
 
 <p>The main difference is the default behavior when a route is not found.
 A <code>ScalatraFilter</code> will delegate to the next filter or servlet in the chain (as
@@ -191,6 +206,36 @@ dedicated web server</li>
 so that <code>sbt</code> can download them for you and build your Scalatra project.</p>
 
 <p>Here's an example Scalatra sbt file:</p>
+
+<div class="highlight"><pre><code class="scala">    <span class="n">organization</span> <span class="o">:=</span> <span class="s">&quot;org.example&quot;</span>
+
+    <span class="n">name</span> <span class="o">:=</span> <span class="s">&quot;yourapp&quot;</span>
+
+    <span class="n">version</span> <span class="o">:=</span> <span class="s">&quot;0.1.0-SNAPSHOT&quot;</span>
+
+    <span class="n">scalaVersion</span> <span class="o">:=</span> <span class="s">&quot;2.9.1&quot;</span>
+
+    <span class="n">seq</span><span class="o">(</span><span class="n">webSettings</span> <span class="k">:_</span><span class="kt">*</span><span class="o">)</span>
+
+    <span class="n">classpathTypes</span> <span class="o">~=</span> <span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="s">&quot;orbit&quot;</span><span class="o">)</span>
+
+    <span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span>
+      <span class="s">&quot;org.scalatra&quot;</span> <span class="o">%</span> <span class="s">&quot;scalatra&quot;</span> <span class="o">%</span> <span class="s">&quot;2.1.0&quot;</span><span class="o">,</span>
+      <span class="s">&quot;org.scalatra&quot;</span> <span class="o">%</span> <span class="s">&quot;scalatra-scalate&quot;</span> <span class="o">%</span> <span class="s">&quot;2.1.0&quot;</span><span class="o">,</span>
+      <span class="s">&quot;org.scalatra&quot;</span> <span class="o">%</span> <span class="s">&quot;scalatra-specs2&quot;</span> <span class="o">%</span> <span class="s">&quot;2.1.0&quot;</span> <span class="o">%</span> <span class="s">&quot;test&quot;</span><span class="o">,</span>
+      <span class="s">&quot;ch.qos.logback&quot;</span> <span class="o">%</span> <span class="s">&quot;logback-classic&quot;</span> <span class="o">%</span> <span class="s">&quot;1.0.6&quot;</span> <span class="o">%</span> <span class="s">&quot;runtime&quot;</span><span class="o">,</span>
+      <span class="s">&quot;org.eclipse.jetty&quot;</span>        <span class="o">%</span> <span class="s">&quot;jetty-webapp&quot;</span>           <span class="o">%</span> <span class="s">&quot;8.1.5.v20120716&quot;</span>     <span class="o">%</span> <span class="s">&quot;container&quot;</span><span class="o">,</span>
+      <span class="s">&quot;org.eclipse.jetty&quot;</span>        <span class="o">%</span> <span class="s">&quot;test-jetty-servlet&quot;</span>     <span class="o">%</span> <span class="s">&quot;8.1.5.v20120716&quot;</span>     <span class="o">%</span> <span class="s">&quot;test&quot;</span><span class="o">,</span>
+      <span class="s">&quot;org.eclipse.jetty.orbit&quot;</span>  <span class="o">%</span> <span class="s">&quot;javax.servlet&quot;</span>          <span class="o">%</span> <span class="s">&quot;3.0.0.v201112011016&quot;</span> <span class="o">%</span> <span class="s">&quot;container;provided;test&quot;</span> <span class="n">artifacts</span> <span class="o">(</span><span class="nc">Artifact</span><span class="o">(</span><span class="s">&quot;javax.servlet&quot;</span><span class="o">,</span> <span class="s">&quot;jar&quot;</span><span class="o">,</span> <span class="s">&quot;jar&quot;</span><span class="o">))</span>
+
+    <span class="o">)</span>
+
+    <span class="n">resolvers</span> <span class="o">+=</span> <span class="s">&quot;Sonatype OSS Snapshots&quot;</span> <span class="n">at</span> <span class="s">&quot;http://oss.sonatype.org/content/repositories/snapshots/&quot;</span>
+</code></pre>
+</div>
+
+
+
 
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>

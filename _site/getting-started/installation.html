@@ -16,6 +16,7 @@
   }
 </style>
 <link href="/scalatra-website/_site/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="/scalatra-website/_site/assets/css/syntax.css" rel="stylesheet">
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -88,7 +89,16 @@
 <p>Getting started with a new web framework can be a bit scary. Luckily, Scalatra
 is easy to install, as it has relatively few dependencies.</p>
 
-<h2>1. Install a JDK</h2>
+<h2>On Windows</h2>
+
+<p>The easiest way to get everything installed on Windows is to download the
+Typesafe Stack installer, from http://typesafe.com/stack/download</p>
+
+<p>Download it, double-click it, and you're done.</p>
+
+<h2>On Linux or Mac OS X</h2>
+
+<h3>1. Install a JDK</h3>
 
 <p>Scalatra is web microframework written in Scala, so you'll need to have a
 Java Development Kit (JDK) installed. Many systems will already include
@@ -104,26 +114,6 @@ over at the Java 7 install page</a>. Make sure you've got Open JDK or Sun JDK,
 as <code>gcj</code>, which is pre-installed on some Linux distros, won't work.
 </div>
 
-
-<h2>On Windows</h2>
-
-<p>The easiest way to get everything installed on Windows is to download the
-Typesafe Stack installer, from http://typesafe.com/stack/download</p>
-
-<p>Download it, double-click it, and you're done.</p>
-
-<h2>On Mac OS X using Homebrew</h2>
-
-<p>Type <code>brew install giter8 sbt</code></p>
-
-<h2>On Debian/Ubuntu Linux</h2>
-
-<p>Download the Typesafe .deb file from http://typesafe.com/stack/download
-and run it. That'll give you the ability to <code>apt-get install sbt giter8</code>.</p>
-
-<p>There is no step 3. You're done.</p>
-
-<h2>Manual installation on Linux or Mac OS X</h2>
 
 <h3>2. Install SBT</h3>
 
@@ -142,12 +132,33 @@ It's the recommended way of getting started with Scalatra.</p>
 
 <p>To install conscript, issue this command in your terminal:</p>
 
+<div class="highlight"><pre><code class="bash">  curl https://raw.github.com/n8han/conscript/master/setup.sh | sh
+</code></pre>
+</div>
+
+
 <p>This will create a <em>bin</em> folder in your home directory.  Put that on your
 path, by adding the following to your shell's profile (e.g. ~/.bash_profile):</p>
 
+<div class="highlight"><pre><code class="bash">  <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/bin
+  <span class="nb">export </span>path
+</code></pre>
+</div>
+
+
 <p>Make sure you reload your shell:</p>
 
+<div class="highlight"><pre><code class="bash">  <span class="nb">source</span> ~/.bash_profile
+</code></pre>
+</div>
+
+
 <p>Now you can use conscript to install Giter8:</p>
+
+<div class="highlight"><pre><code class="bash">  cs n8han/giter8
+</code></pre>
+</div>
+
 
 <p>Depending on your connection speed, this can take a bit of time, as <code>conscript</code>
 downloads quite a few Scala dependencies.</p>

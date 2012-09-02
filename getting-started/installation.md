@@ -24,7 +24,7 @@ Download it, double-click it, and you're done.
 Scalatra is web microframework written in Scala, so you'll need to have a
 Java Development Kit (JDK) installed. Many systems will already include
 a JDK (do `java -version` and `javac -version` in a terminal to find if yours
-does).
+does). 
 
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>

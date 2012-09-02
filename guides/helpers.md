@@ -318,7 +318,7 @@ redirect statement.
     // This will redirect to http://<host>/page-relative
     redirect(url("page-relative"))
   }
-
+ 
 {% endhighlight %}
 
 ### Context relative url:
