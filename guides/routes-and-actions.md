@@ -370,7 +370,7 @@ during processing. Here's a quick example you could use to run a contrived
 {% endhighlight %}
 
 
-### Processing order
+### Processing order for actions, errors, and filters
 
 Route actions, errors and filters run in the following order:
 
