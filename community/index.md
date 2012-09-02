@@ -7,7 +7,7 @@ title: Scalatra | Community
   <h1>The Scalatra community</h1>
 </div>
 
-Quite a few high-profile companies have incorporated Scalatra as part of their
+Quite a few big organizations have incorporated Scalatra as part of their
 production systems. You can see the ones we know about on our
 [Built with Scalatra](built-with.html) page.
 
