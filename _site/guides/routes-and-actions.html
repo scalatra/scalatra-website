@@ -525,9 +525,6 @@ use named arguments:</p>
 arguments for <code>status</code>, <code>reason</code>, or <code>body</code>, those parts of the response will
 be left unchanged.</p>
 
-<p><em>Caution:</em> <code>halt</code> is implemented as a HaltException.  You probably don't want
-to catch it in an action.</p>
-
 <h4>Passing</h4>
 
 <p>A route can punt processing to the next matching route using <code>pass()</code>.  Remember,
