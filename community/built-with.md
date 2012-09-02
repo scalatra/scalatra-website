@@ -27,9 +27,9 @@ The [BBC](http://www.bbc.co.uk)'s Linked Data Team has built a Scalatra REST API
 
 Scalatra is used in a number of systems that help power [The Guardian](http:///www.guardian.co.uk/), for instance the [music artist pages](http://www.guardian.co.uk/info/developer-blog/2011/jun/23/internet).
 
-### Gov.UK
+### Gov.uk
 
-[Gov.UK](http://www.gov.uk) is using Scalatra for its internal API system. [source](http://radar.oreilly.com/2012/01/with-govuk-british-government.html)
+[The British government](http://www.gov.uk) [is using Scalatra](http://radar.oreilly.com/2012/01/with-govuk-british-government.html) as a router to distribute requests to other back-end apps on its new flagship website.
 
 ### IGN
 
