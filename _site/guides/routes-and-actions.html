@@ -88,7 +88,7 @@
 
 <p>All web applications need a way to match up the incoming HTTP request with some code to execute on the server. In Scalatra, this is done using <em>routes</em> and <em>actions</em>.</p>
 
-<p>If somebody makes a POST request to your application, at <em>http://www.yourapp.org/articles</em>, you might want to invoke code on the server which will look at the information contained in the incoming request, and use it to create a new <em>Article</em> object. The fact that it's a <em>POST</em> request, and the request path <em>/articles</em>, are <em>route</em> information. The code that you execute is the <em>action</em>.</p>
+<p>If somebody makes a POST request to your application, at <em>http://www.yourapp.org/articles</em>, you might want to invoke code on the server which will look at the information contained in the incoming request, and use it to create a new <em>Article</em> object. The fact that it's a <em>POST</em> request, and the request path is <em>/articles</em>, are <em>route</em> information. The code that you execute is the <em>action</em>.</p>
 
 <h2>Routes</h2>
 
@@ -97,20 +97,20 @@
 <div class="highlight"><pre><code class="scala"><span class="k">class</span> <span class="nc">Blog</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="o">{</span>
 
 
-    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/article/:id&quot;</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//  &lt;= this is a route</span>
+    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/articles/:id&quot;</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">//  &lt;= this is a route</span>
       <span class="c1">// this is an action</span>
       <span class="c1">// this action would show the article which has the specified :id</span>
     <span class="o">}</span>
 
-    <span class="n">post</span><span class="o">(</span><span class="s">&quot;/article&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">post</span><span class="o">(</span><span class="s">&quot;/articles&quot;</span><span class="o">)</span> <span class="o">{</span>
       <span class="c1">// this action would submit/create an article</span>
     <span class="o">}</span>
 
-    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/article/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">put</span><span class="o">(</span><span class="s">&quot;/articles/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
       <span class="c1">// update the article which has the specified :id</span>
     <span class="o">}</span>
 
-    <span class="n">delete</span><span class="o">(</span><span class="s">&quot;/article/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">delete</span><span class="o">(</span><span class="s">&quot;/articles/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
       <span class="c1">// delete the article with the specified :id</span>
     <span class="o">}</span>
 
