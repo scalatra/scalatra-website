@@ -197,7 +197,7 @@ The specific view for your action will be rendered at the `<%= yield =>` stateme
 
 #### Default layouts
 
-By convention, Scalatra sets a default layout at `WEB-INF/layouts/default.xx` (where xx
+By convention, Scalatra uses a default layout at `WEB-INF/layouts/default.xx` (where xx
 is one of the scalate template types). If you are using ssp, for instance, and
 you put a default.ssp file at WEB-INF/layouts/default.ssp, it will
 automatically be used. In that case, you can simply call `ssp("/index")` and the
