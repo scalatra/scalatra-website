@@ -36,7 +36,7 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
   <div class="span4">
     <h2>Code</h2>
     <p><img src="assets/img/glyphicons/glyphicons_043_group.png"> We have a
-      small but active community, and an enthusiastic group of
+      very active community, and an enthusiastic group of
       developers working on the next version.</p>
     <p><a href="community" class="btn btn-primary">Get involved »</a></p>
   </div>
