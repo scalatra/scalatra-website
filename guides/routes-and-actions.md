@@ -456,9 +456,6 @@ The `reason` argument is ignored unless `status` is not null.  If you don't pass
 arguments for `status`, `reason`, or `body`, those parts of the response will
 be left unchanged.
 
-_Caution:_ `halt` is implemented as a HaltException.  You probably don't want
-to catch it in an action.
-
 #### Passing
 
 A route can punt processing to the next matching route using `pass()`.  Remember,
