@@ -222,13 +222,12 @@ If you're coming from a dynamic language, pay attention to this next bit,
 makes them extremely fast, and helps you get more productive by letting the
 compiler tell you when something's wrong.</p>
 
-<p>Any controller variables that you want to access in your views need to be
-explicitly sent to the view by your controller, and they also need to be
-declared in the views before they can be used.</p>
+<p>It also means that any controller variables that you want to access in your
+views need to be explicitly sent to the view by your controller. They
+also need to be declared in the views before they can be used.</p>
 
-<p>View parameters are be passed to your views using a
-Seq(String, Any) after the path to the template file. The simplest example
-might look like this:</p>
+<p>View parameters are be passed to your views using a Seq(String, Any) after
+the path to the template file. The simplest example might look like this:</p>
 
 <div class="highlight"><pre><code class="scala">  <span class="k">def</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">contentType</span><span class="o">=</span><span class="s">&quot;text/html&quot;</span>
