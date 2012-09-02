@@ -210,8 +210,6 @@ When using <code>layoutTemplate</code>, you <em>must</em> prefix your view paths
 
 <h4>Passing parameters to views</h4>
 
-<p>Scalate templates are strongly typed (except for Mustache, which isn't).</p>
-
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span> 
 If you're coming from a dynamic language, pay attention to this next bit, 
@@ -220,19 +218,29 @@ If you're coming from a dynamic language, pay attention to this next bit,
 </div>
 
 
-<p>Parameters may be passed to your views using a Seq(String, Any) after the
-path to the template file. The simplest example might look like this:</p>
+<p>Scalate templates are strongly typed (except for Mustache, which isn't). This
+makes them extremely fast, and helps you get more productive by letting the
+compiler tell you when something's wrong.</p>
+
+<p>Any controller variables that you want to access in your views need to be
+explicitly sent to the view by your controller, and they also need to be
+declared in the views before they can be used.</p>
+
+<p>View parameters are be passed to your views using a
+Seq(String, Any) after the path to the template file. The simplest example
+might look like this:</p>
 
 <div class="highlight"><pre><code class="scala">  <span class="k">def</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">contentType</span><span class="o">=</span><span class="s">&quot;text/html&quot;</span>
 
-    <span class="n">ssp</span><span class="o">(</span><span class="s">&quot;/index&quot;</span><span class="o">,</span> <span class="s">&quot;layout&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;WEB-INF/layouts/app.ssp&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;uno&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;dos&quot;</span><span class="o">)</span>
+    <span class="n">ssp</span><span class="o">(</span><span class="s">&quot;/index&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;uno&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;dos&quot;</span><span class="o">)</span>
   <span class="o">}</span>
 </code></pre>
 </div>
 
 
-<p>The view for this action could look like:</p>
+<p>The view for this action needs to declare variables for <code>foo</code> and <code>bar</code>, which would
+look like:</p>
 
 <div class="highlight"><pre><code class="html"><span class="err">&lt;</span>%@ val foo: String %&gt;
 <span class="err">&lt;</span>%@ val bar: String %&gt;

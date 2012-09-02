@@ -135,8 +135,6 @@ When using `layoutTemplate`, you *must* prefix your view paths with a relative
 
 #### Passing parameters to views
 
-Scalate templates are strongly typed (except for Mustache, which isn't).
-
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span> 
 If you're coming from a dynamic language, pay attention to this next bit, 
@@ -144,20 +142,29 @@ If you're coming from a dynamic language, pay attention to this next bit,
   your views.
 </div>
 
-Parameters may be passed to your views using a Seq(String, Any) after the
-path to the template file. The simplest example might look like this:
+Scalate templates are strongly typed (except for Mustache, which isn't). This
+makes them extremely fast, and helps you get more productive by letting the 
+compiler tell you when something's wrong. 
+
+It also means that any controller variables that you want to access in your 
+views need to be explicitly sent to the view by your controller. They 
+also need to be declared in the views before they can be used.
+
+View parameters are be passed to your views using a Seq(String, Any) after 
+the path to the template file. The simplest example might look like this:
 
 {% highlight scala %}
 
   def get("/") {
     contentType="text/html"
 
-    ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp", "foo" -> "uno", "bar" -> "dos")
+    ssp("/index", "foo" -> "uno", "bar" -> "dos")
   }
 
 {% endhighlight %}
 
-The view for this action could look like:
+The view for this action needs to declare variables for `foo` and `bar`, which would
+look like:
 
 {% highlight html %}
 
@@ -167,6 +174,7 @@ The view for this action could look like:
 <p>Bar is <%= bar %></p>
 
 {% endhighlight %}
+
 
 #### Layouts
 
