@@ -206,7 +206,7 @@ response will render within the default layout.
 #### Specifying an alternate layout
 
 The `layout` key passed from your actions is somewhat special, as it's used by 
-scalate to identify the layout file, which wraps a standard layout around the 
+Scalate to identify the layout file, which wraps a standard layout around the 
 output for the current action.
 
 If you want, you can optionally set off your `layout` parameter from the others, perhaps
