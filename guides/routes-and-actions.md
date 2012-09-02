@@ -9,7 +9,7 @@ title: Scalatra guides | Routes and actions
 
 All web applications need a way to match up the incoming HTTP request with some code to execute on the server. In Scalatra, this is done using _routes_ and _actions_.
 
-If somebody makes a POST request to your application, at http://www.yourapp.org/articles, you might want to invoke code on the server which will look at the information contained in the incoming request, and use it to create a new Article object. The fact that it's a _POST_ request, and the request path _/articles_, are _route_ information. The code that you execute is the _action_.
+If somebody makes a POST request to your application, at *http://www.yourapp.org/articles*, you might want to invoke code on the server which will look at the information contained in the incoming request, and use it to create a new *Article* object. The fact that it's a _POST_ request, and the request path is _/articles_, are _route_ information. The code that you execute is the _action_.
 
 ## Routes
 
