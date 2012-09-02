@@ -225,7 +225,7 @@ controller variables that you want to access in your views need to be explicitly
 sent to the view by your controller. They need to be declared in the views before
 they can be used.</p>
 
-<p>View parameters are be passed to your views using a Seq(String, Any) after
+<p>View parameters are passed to your views using a Seq(String, Any) after
 the path to the template file. The simplest example might look like this:</p>
 
 <div class="highlight"><pre><code class="scala">  <span class="k">def</span> <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
@@ -269,7 +269,7 @@ view for the current action into the template at the point you specify. If you'r
 
 <h4>Default layouts</h4>
 
-<p>By convention, Scalatra sets a default layout at <code>WEB-INF/layouts/default.xx</code> (where xx
+<p>By convention, Scalatra uses a default layout at <code>WEB-INF/layouts/default.xx</code> (where xx
 is one of the scalate template types). If you are using ssp, for instance, and
 you put a default.ssp file at WEB-INF/layouts/default.ssp, it will
 automatically be used. In that case, you can simply call <code>ssp("/index")</code> and the
@@ -278,7 +278,7 @@ response will render within the default layout.</p>
 <h4>Specifying an alternate layout</h4>
 
 <p>The <code>layout</code> key passed from your actions is somewhat special, as it's used by
-scalate to identify the layout file, which wraps a standard layout around the
+Scalate to identify the layout file, which wraps a standard layout around the
 output for the current action.</p>
 
 <p>If you want, you can optionally set off your <code>layout</code> parameter from the others, perhaps
@@ -325,7 +325,7 @@ how it looks, when using the ScalateSupport helpers to render the page.</p>
 
 <h3>Using Scalate directly</h3>
 
-<p>Some people like to call Scalate methods directly, preferring to bypass the
+<p>Some people like to call Scalate methods directly, bypassing the
 (relatively minimal) magic of the ScalateSupport helpers.</p>
 
 <p>Scalate can be called directly, using the
