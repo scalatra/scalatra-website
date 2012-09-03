@@ -27,7 +27,7 @@ class FooController extends ScalatraServlet {
 To add a helper, you can mix in a trait:
 
 ```scala
-class FooServlet extends ScalatraServlet with ScalateSupport {
+class FooController extends ScalatraServlet with ScalateSupport {
 
   // now your class has access to Scalate helpers. Easy, yes?
 
