@@ -7,10 +7,7 @@ title: Scalatra Guides | Helpers
 <h1>Helpers</h1>
 </div>
 
-Helpers exist as traits in Scalatra that can applied to your base class.
-
-[scalate]: http://scalate.fusesource.org
-[views]: http://www.scalatra.org/stable/book/#Views
+Helpers exist as traits in Scalatra that can applied to your base class. 
 
 ## Request
 
