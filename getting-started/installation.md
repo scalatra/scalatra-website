@@ -28,6 +28,11 @@ OpenJDK Runtime Environment (IcedTea6 1.11.1) (6b24-1.11.1-3)
 OpenJDK 64-Bit Server VM (build 20.0-b12, mixed mode)
 </pre>
 
+<pre>
+$ javac -version
+javac 1.7.0_03
+</pre>
+
 You need at least version 1.6.
 
 If you don't yet have Java installed, you can find out how to install
