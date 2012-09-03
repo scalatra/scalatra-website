@@ -7,12 +7,16 @@ title: Scalatra Guides | Helpers
 <h1>Helpers</h1>
 </div>
 
-Helpers exist as traits in Scalatra that can applied to your base class.
+Scalatra has a wide range of _helpers_ to take care of common web development
+tasks. Some are built-in, and you can download a wide range of external helpers
+as well - or implement your own. 
 
-The most bare-bones possible Scalatra servlet looks something like this:
+Helpers in Scalatra are Scala traits that can applied to your controllers class.
+
+The most bare-bones possible Scalatra controller looks something like this:
 
 ```scala
-class FooServlet extends ScalatraServlet {
+class FooController extends ScalatraServlet {
 
   get("/" {
     // do something
@@ -20,7 +24,7 @@ class FooServlet extends ScalatraServlet {
 }
 ```
 
-To add a helper, you can just mix in a trait, like this:
+To add a helper, you can mix in a trait:
 
 ```scala
 class FooServlet extends ScalatraServlet with ScalateSupport {
