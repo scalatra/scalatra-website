@@ -22,7 +22,7 @@ title: Scalatra | Getting started
    <a href="first-steps.html" class="btn btn-primary">Go »</a> </div>
   <div class="span4">
     <h2>How does it work?</h2>
-    <p>Understanding a Scalatra project isn't difficult, but it can save you
+    <p>Understanding a Scalatra project isn't difficult, and it can save you
     a lot of time if you understand a bit about what's happening under the hood.
     Here are the basics.</p>
     <a href="understanding-scalatra.html" class="btn btn-primary">Go »</a>
