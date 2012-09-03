@@ -10,7 +10,7 @@ title: Scalatra | Installation
 Getting started with a new web framework can be a bit scary. Luckily, Scalatra
 is easy to install, as it has relatively few dependencies.
 
-## Install a JDK
+## 1. Install a JDK
 
 Scalatra is web microframework written in Scala, so you'll need to have a
 Java Development Kit (JDK) installed. Many systems will already include
@@ -26,75 +26,91 @@ over at the Java 7 install page</a>. Make sure you've got Open JDK or Sun JDK,
 as <code>gcj</code>, which is pre-installed on some Linux distros, won't work.
 </div>
 
-### The Typesafe Stack
-
-TypeSafe is a Scala consulting company which maintains both the Scala language itself
-and quite a few of its associated tools. They offer easy-to-install packages for
-most types of system: Windows, Mac OS X (via homebrew), Debian/Ubuntu, and Red Hat Linux.
-
-The easiest way to get everything installed is to download the 
-Typesafe Stack, from 
-[http://typesafe.com/stack/download](http://typesafe.com/stack/download)
-
-Once that's done, head over to the "[first steps](first-steps.html)" page, 
-which will tell you how to generate, build, and run a Scalatra application.
-
-## Manual install on Linux or Mac OS X
-
-If you'd rather install things yourself, it's still a very easy process. 
-
-### Install SBT
-
-The next thing you'll need is `sbt`, the Simple Build Tool. This is a Scala
-program which will automatically download everything your Scalatra project
-needs, and build it.
-
-You can download `sbt` at the [SBT website](http://www.scala-sbt.org/download.html).
-
-### Install conscript and giterate
+Once you're sure you've got Java installed, you need to download a few other
+utilities. 
 
 [Conscript](https://github.com/n8han/conscript) is a tool for installing and
 updating Scala code. [Giter8](https://github.com/n8han/giter8/), which depends
 on conscript, allows you to check out project templates directly from Github.
 It's the recommended way of getting started with Scalatra.
 
-To install conscript, issue this command in your terminal:
+Then, you'll need SBT, the Simple Build Tool. This is a Scala program which will 
+automatically download everything your Scalatra project needs, and build it.
 
-{% highlight bash %}
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#stack">Install the TypeSafe Stack</a></li>
+  <li><a href="#manual">Install Manually</a></li>
+</ul>
+ 
+<div class="tab-content">
+  <div class="tab-pane active" id="stack">
+  	<p>TypeSafe is a Scala consulting company which maintains both the Scala language itself
+  	and quite a few of its associated tools. They offer easy-to-install packages for
+  	most systems: Windows, Mac OS X (via homebrew), Debian/Ubuntu, and Red Hat Linux.</p>
 
-  curl https://raw.github.com/n8han/conscript/master/setup.sh | sh
+  	<p>The TypeSafe Stack includes everything you'll need to get started with Scalatra, including
+  		sbt, conscript, and giter8.</p>
+  	<p><a href="http://typesafe.com/stack/download" class="btn btn-primary">Download »</a></p>
+  </div>
+  <div class="tab-pane" id="manual">
 
-{% endhighlight %}
+  	If you'd rather install things yourself, it's still a very easy process. 
 
-This will create a _bin_ folder in your home directory.  Put that on your
-path, by adding the following to your shell's profile (e.g. ~/.bash_profile):
+  	<h4>Install SBT</h4>
 
-{% highlight bash %}
+  	The next thing you'll need is `sbt`, the Simple Build Tool. 
 
-  PATH=$PATH:~/bin
-  export path
+  	You can download `sbt` at the [SBT website](http://www.scala-sbt.org/download.html).
 
-{% endhighlight %}
+  	### 3. Install conscript and giterate
 
-Make sure you reload your shell:
+  	To install conscript, issue this command in your terminal:
 
-{% highlight bash %}
+  	{% highlight bash %}
 
-  source ~/.bash_profile
+  	  curl https://raw.github.com/n8han/conscript/master/setup.sh | sh
 
-{% endhighlight %}
+  	{% endhighlight %}
+
+  	This will create a _bin_ folder in your home directory.  Put that on your
+  	path, by adding the following to your shell's profile (e.g. ~/.bash_profile):
+
+  	{% highlight bash %}
+
+  	  PATH=$PATH:~/bin
+  	  export path
+
+  	{% endhighlight %}
+
+  	Make sure you reload your shell:
+
+  	{% highlight bash %}
+
+  	  source ~/.bash_profile
+
+  	{% endhighlight %}
 
 
-Now you can use conscript to install Giter8:
+  	Now you can use conscript to install Giter8:
 
-{% highlight bash %}
+  	{% highlight bash %}
 
-  cs n8han/giter8
+  	  cs n8han/giter8
 
-{% endhighlight %}
+  	{% endhighlight %}
 
-Depending on your connection speed, this can take a bit of time, as `conscript` 
-downloads quite a few Scala dependencies.
+  	Depending on your connection speed, this can take a bit of time, as `conscript` 
+  	downloads quite a few Scala dependencies.
+
+  </div>
+</div>
+ 
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show');
+  })
+</script>
+
 
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
