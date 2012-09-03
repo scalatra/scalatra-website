@@ -387,8 +387,17 @@ url(viewUser, "id" -> 1)
 Scalatra allows you to mix in the `CorsSupport` trait if you need to do
 [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
-Adding `CorsSupport` allows all requests from anywhere, by default. You can
-configure your application to be more restrictive by using the following init
+Adding `CorsSupport` allows all requests from anywhere, by default. 
+
+```scala
+import org.scalatra.CorsSupport
+
+class YourServlet extends ScalatraBase with CorsSupport {
+ 
+}
+```
+
+You can configure your application to be more restrictive by using the following init
 params.
 
 `org.scalatra.cors.allowedOrigins = "http://example.com:8080 http://foo.example.com"`
