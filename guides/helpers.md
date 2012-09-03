@@ -52,7 +52,7 @@ It also provides you with an easy way to build up exactly the code stack you
 want, and makes it easy to write your own helper traits when you need to 
 do something that the Scalatra team hasn't thought of yet.
 
-### Keeping your application looking nice and clean
+### DRYing up your helper traits
 
 After a while, you may find that you've got a large 
 number of traits mixed into your servlets and things start to look a little 
