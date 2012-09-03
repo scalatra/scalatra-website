@@ -18,7 +18,8 @@ class FooServlet extends ScalatraServlet {
     // do something
   }
 
-}```
+}
+```
 
 To add a helper, you can just mix in a trait, like this:
 
@@ -27,7 +28,8 @@ class FooServlet extends ScalatraServlet with ScalateSupport {
 
   // now your class has access to Scalate helpers. Easy, yes?
 
-}```
+}
+```
 
 Adding the ScalateSupport trait like this gives you the ability to do templating
 (see the [views](views.html) guide for more on that). 
@@ -65,7 +67,8 @@ class FooServlet extends ScalatraServlet
     // do something
   }
   
-}```
+}
+```
 
 The simplest way to clean this up is to make your own trait
 whch includes all the other standard traits you want to use throughout your
@@ -79,7 +82,8 @@ trait MyStack extends ScalatraServlet
   // the trait body can be empty, it's just being used 
   // to collect all the other traits so you can extend your servlet.
   
-}```
+}
+```
 
 Then you can mix that into your servlets. Nice and DRY:
 
@@ -91,6 +95,7 @@ class FooServlet extends MyStack {
   }
 
 }
+```
 
 ## Built-in helpers
 
@@ -174,30 +179,7 @@ The servlet context is available through the `servletContext` variable.  The
 servlet context implicitly implements `scala.collection.mutable.Map` backed
 by servlet context attributes.
 
-
-### External helpers
-
-
-
-## Scentry + authentication
-
-Scentry is a user submitted authentication scheme. Combined
-`ScentrySupport` and `BasicAuthSupport` traits allow you to quickly tie a
-User class to the session and Basic Authentication methods.
-
-There is a new authentication middleware in the auth directory, to be
-documented soon.  See an example at
-[usage example](http://gist.github.com/660701).
-Here's another [example](https://gist.github.com/732347) for basic authentication.
-
-#### Dependency
-
-```scala
-// Put this in build.sbt:
-"org.scalatra" % "scalatra-auth" % "2.1.0"
-```
-
-## Flash map
+### Flash map
 
 Flash support, allowing you to store information across requests and expire
 it immediately after a redirect, is included within Scalatra by default.
@@ -332,48 +314,13 @@ override def isSizeConstraintException(e: Exception) = e match {
 }
 ```
 
-## Anti-XML integration
-
-Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
-
-#### Dependency
-
-```scala
-
-  // Put this in build.sbt:
-  "org.scalatra" % "scalatra-anti-xml" % "2.1.0"
-
-```
-
-Extend your application with `AntiXmlSupport`:
-
-```scala
-import org.scalatra.ScalatraServlet
-import org.scalatra.antixml.AntiXmlSupport
-import com.codecommit.antixml._
-
-class MyApp extends ScalatraServlet with AntiXmlSupport {
-  // ...
-}
-```
-
-Actions results of type `com.codecommit.antixml.Elem` will be serialized
-to the response body, and a content type of `text/html` will be inferred if
-none is set.
-
-```scala
-get("/") {
-  XML.fromString("""<foo bar="baz"></foo>""")
-}
-```
-
-## URL support and reverse routes
+### URL support and reverse routes
 
 UrlSupport provides two instances that provide you with relative URLs.
 `UrlSupport.url` will return a string that can be used in your output or a
 redirect statement.
 
-### Page relative url:
+###3 Page relative url:
 ```scala
 get("/"){
   // This will redirect to http://<host>/page-relative
@@ -381,7 +328,7 @@ get("/"){
 }
 ```
 
-### Context relative url:
+#### Context relative url:
 
 ```scala
 get("/"){
@@ -428,41 +375,7 @@ right in your templates:
 url(viewUser, "id" -> 1)
 ```
 
-## AkkaSupport
-
-Akka is a toolkit and runtime for building highly concurrent, distributed, and
-fault tolerant event-driven applications on the JVM. Scalatra allows you to
-mix it right into your application.
-
-#### Dependency:
-
-```scala
-// Put this in build.sbt:
-"io.akka" % "akka" % "2.0.3"
-```
-
-Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
-is only available in Scalatra 2.1 and up.
-
-```scala
-import _root_.akka.dispatch._
-import org.scalatra.akka.AkkaSupport
-
-class MyAppServlet extends ScalatraServlet with AkkaSupport {
-  get("/"){
-    Future {
-      // Add other logic here
-
-      <html><body>Hello Akka</body></html>
-    }
-  }
-}
-```
-
-[akka]: http://akka.io/
-
-
-## Cross origin resource sharing
+### Cross origin resource sharing
 
 Scalatra allows you to mix in the `CorsSupport` trait if you need to do
 [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
@@ -501,8 +414,97 @@ at [HTML5Rocks][html5rocks].
 [corsSpec]: http://www.w3.org/TR/cors
 [html5rocks]: http://www.html5rocks.com/en/tutorials/cors/
 
-Init params can go into either your web.xml file or into your Scalatra
-bootstrap config file (src/main/scala/Scalatra.scala). See the
-[Scalatra bootstrap][bootstrap] section for further info.
 
-[bootstrap]: http://www.scalatra.org/2.1/book/#Mounting_multiple_servlets__or_filters_
+## External helpers
+
+External helpers may be written by you and packaged for inclusion in your 
+application, or they may be written by other people. For external helpers, 
+you'll need to add a dependency line into your project's `build.sbt` file.
+
+### Scentry + authentication
+
+Scentry is a user submitted authentication scheme. Combined
+`ScentrySupport` and `BasicAuthSupport` traits allow you to quickly tie a
+User class to the session and Basic Authentication methods.
+
+#### Dependency
+
+```scala
+// Put this in build.sbt:
+"org.scalatra" % "scalatra-auth" % "2.1.0"
+```
+
+There is a new authentication middleware in the auth directory, to be
+documented soon.  See an example at
+[usage example](http://gist.github.com/660701).
+Here's another [example](https://gist.github.com/732347) for basic authentication.
+
+
+### Anti-XML integration
+
+Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
+
+#### Dependency
+
+```scala
+
+  // Put this in build.sbt:
+  "org.scalatra" % "scalatra-anti-xml" % "2.1.0"
+
+```
+
+Extend your application with `AntiXmlSupport`:
+
+```scala
+import org.scalatra.ScalatraServlet
+import org.scalatra.antixml.AntiXmlSupport
+import com.codecommit.antixml._
+
+class MyApp extends ScalatraServlet with AntiXmlSupport {
+  // ...
+}
+```
+
+Actions results of type `com.codecommit.antixml.Elem` will be serialized
+to the response body, and a content type of `text/html` will be inferred if
+none is set.
+
+```scala
+get("/") {
+  XML.fromString("""<foo bar="baz"></foo>""")
+}
+```
+
+
+### AkkaSupport
+
+Akka is a toolkit and runtime for building highly concurrent, distributed, and
+fault tolerant event-driven applications on the JVM. Scalatra allows you to
+mix it right into your application.
+
+#### Dependency:
+
+```scala
+// Put this in build.sbt:
+"io.akka" % "akka" % "2.0.3"
+```
+
+Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
+is only available in Scalatra 2.1 and up.
+
+```scala
+import _root_.akka.dispatch._
+import org.scalatra.akka.AkkaSupport
+
+class MyAppServlet extends ScalatraServlet with AkkaSupport {
+  get("/"){
+    Future {
+      // Add other logic here
+
+      <html><body>Hello Akka</body></html>
+    }
+  }
+}
+```
+
+[akka]: http://akka.io/
