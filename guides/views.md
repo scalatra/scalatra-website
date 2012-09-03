@@ -105,7 +105,7 @@ Basic usage:
   def get("/") {
     contentType="text/html"
 
-    ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp")
+    ssp("/index")
   }
 
 {% endhighlight %}
