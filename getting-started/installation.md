@@ -8,8 +8,9 @@ title: Scalatra | Installation
 </div>
 
 Getting started with a new web framework can be a bit scary. Luckily, Scalatra
-is easy to install, as it has relatively few dependencies. It can run on
-Windows, Mac OS X, Linux, or BSD operating systems. 
+is easy to install, as it has relatively few dependencies. 
+
+It can run on Windows, Mac OS X, Linux, or BSD. 
 
 ## 1. Install a JDK
 
