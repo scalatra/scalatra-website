@@ -13,7 +13,7 @@ As you develop, test, and get ready for final deployment,
 you'll need to configure things about your app: its environment, its settings,
 initial configurations when it starts up, and the software it depends on.
 
-### Configuring your app's settings using the Scalatra bootstrap file
+### Configuring your app using the Scalatra bootstrap file
 
 The Scalatra bootstrap file, new in Scalatra 2.1.x, is the recommended way
 of configuring your application. It allows you to easily mount different
