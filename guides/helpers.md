@@ -7,7 +7,7 @@ title: Scalatra Guides | Helpers
 <h1>Helpers</h1>
 </div>
 
-Scalatra has a wide range of _helpers_ to take care of common web development
+Scalatra has a wide range of helpers to take care of common web development
 tasks. Some are built-in, and you can download a wide range of external helpers
 as well - or implement your own. 
 
