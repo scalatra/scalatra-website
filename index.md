@@ -20,7 +20,7 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
   <div class="span4">
     <h2>Ready</h2>
     <p><img src="assets/img/glyphicons/glyphicons_339_rabbit.png"> Get
-      set up in <a href="getting-started/installation.html">3 easy steps</a>
+      set up in <a href="getting-started/installation.html">2 easy steps</a>
       with our quick installation guide. There's a good chance that you already
       have most of the software you need.</p>
     <p><a href="getting-started" class="btn btn-primary">Get started »</a></p>
