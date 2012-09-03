@@ -44,7 +44,7 @@ Why do it this way?
 Scalatra is a micro-framework. At its very heart, it's nothing more than a 
 domain-specific language (DSL) for reading incoming HTTP requests and responding
 to them using with actions. You can use helper traits like building blocks, 
-selecting exactly the ones that match your exact problem set. This keeps your
+selecting the ones that match your exact problem set. This keeps your
 application lean, mean, and fast, and reduces the number of external dependencies
 that you need to worry about.
 
@@ -109,6 +109,12 @@ Other built-in helpers (such as `FlashMapSupport`) don't require any additional
 `build.sbt` lines, but are still optional. You'll need to mix them into your
 servlet before they'll become available.
 
+Much of Scalatra is actually implemented as traits. To see all of the built-in 
+helpers, you can just [browse the Scalatra core source][scalatracore] on 
+GitHub. Scalatra code is meant to be simple and readable; don't be scared
+to take a look at it if you need to understand how something works.
+
+[scalatracore]: https://github.com/scalatra/scalatra/tree/develop/core/src/main/scala/org/scalatra
  
 ### Request
 
@@ -320,7 +326,8 @@ UrlSupport provides two instances that provide you with relative URLs.
 `UrlSupport.url` will return a string that can be used in your output or a
 redirect statement.
 
-###3 Page relative url:
+#### Page relative url:
+
 ```scala
 get("/"){
   // This will redirect to http://<host>/page-relative
@@ -421,6 +428,8 @@ External helpers may be written by you and packaged for inclusion in your
 application, or they may be written by other people. For external helpers, 
 you'll need to add a dependency line into your project's `build.sbt` file.
 
+
+
 ### Scentry + authentication
 
 Scentry is a user submitted authentication scheme. Combined
@@ -447,10 +456,8 @@ Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 #### Dependency
 
 ```scala
-
   // Put this in build.sbt:
   "org.scalatra" % "scalatra-anti-xml" % "2.1.0"
-
 ```
 
 Extend your application with `AntiXmlSupport`:
