@@ -37,27 +37,25 @@ config code, and use regular Scala code for configuration afterwards.
 
 The XML which allows you to do this is as follows:
 
-{% highlight xml %}
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+      version="3.0">
+    <listener>
+      <listener-class>org.scalatra.servlet.ScalatraListener</listener-class>
+    </listener>
 
-  <?xml version="1.0" encoding="UTF-8"?>
-  <web-app xmlns="http://java.sun.com/xml/ns/javaee"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-        version="3.0">
-      <listener>
-        <listener-class>org.scalatra.servlet.ScalatraListener</listener-class>
-      </listener>
-
-      <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>/img/*</url-pattern>
-        <url-pattern>/css/*</url-pattern>
-        <url-pattern>/js/*</url-pattern>
-        <url-pattern>/assets/*</url-pattern>
-      </servlet-mapping>
-  </web-app>
-
-{% endhighlight %}
+    <servlet-mapping>
+      <servlet-name>default</servlet-name>
+      <url-pattern>/img/*</url-pattern>
+      <url-pattern>/css/*</url-pattern>
+      <url-pattern>/js/*</url-pattern>
+      <url-pattern>/assets/*</url-pattern>
+    </servlet-mapping>
+</web-app>
+```
 
 <span class="badge badge-success"><i class="icon-thumbs-up icon-white"></i></span>
 If you started your project in an older version of Scalatra, and want to start
@@ -77,25 +75,23 @@ do most of your app configuration work.
 The simplest version of this file, which gets generated when you
 make a new project using the giter8 template, looks something like this:
 
-{% highlight scala %}
+```scala
+import org.scalatra.LifeCycle
+import javax.servlet.ServletContext
+import org.yourdomain.projectname._
 
-    import org.scalatra.LifeCycle
-    import javax.servlet.ServletContext
-    import org.yourdomain.projectname._
+class Scalatra extends LifeCycle {
 
-    class Scalatra extends LifeCycle {
+  override def init(context: ServletContext) {
 
-      override def init(context: ServletContext) {
+    // mount servlets like this:
+    context mount (new ArticlesServlet, "/articles/*")
 
-        // mount servlets like this:
-        context mount (new ArticlesServlet, "/articles/*")
-
-        // set init params like this:
-        // org.scalatra.cors.allowedOrigins = "http://example.com"
-      }
-    }
-
-{% endhighlight %}
+    // set init params like this:
+    // org.scalatra.cors.allowedOrigins = "http://example.com"
+  }
+}
+```
 
 #### Mounting multiple servlets (or filters)
 
@@ -115,19 +111,17 @@ The Scalatra bootstrap config class allows you to mount servlets or
 filters (or both) into your application, and define URL path patterns that
 they'll respond to.
 
-{% highlight scala %}
+```scala
+override def init(context: ServletContext) {
 
-  override def init(context: ServletContext) {
+  // mount a first servlet like this:
+  context mount (new ArticlesServlet, "/articles/*")
 
-    // mount a first servlet like this:
-    context mount (new ArticlesServlet, "/articles/*")
+  // mount a second servlet like this:
+  context mount (new CommentsServlet, "/comments/*")
 
-    // mount a second servlet like this:
-    context mount (new CommentsServlet, "/comments/*")
-
-  }
-
-{% endhighlight %}
+}
+```
 
 #### Setting init params
 
@@ -135,19 +129,17 @@ You can also set init params in the Scalatra bootstrap file. For instance, you
 can set the `org.scalatra.environment` init parameter to set the application
 environment:
 
-{% highlight scala %}
+```scala
+override def init(context: ServletContext) {
 
-  override def init(context: ServletContext) {
+  // mount a first servlet like this:
+  context mount (new ArticlesServlet, "/articles/*")
 
-    // mount a first servlet like this:
-    context mount (new ArticlesServlet, "/articles/*")
+  // Let's set the environment
+  org.scalatra.environment = "production"
 
-    // Let's set the environment
-    org.scalatra.environment = "production"
-
-  }
-
-{% endhighlight %}
+}
+```
 
 #### Running code at application start
 
@@ -156,29 +148,27 @@ initialization code, which need to be set up once in your application. You can
 mix in whatever traits you want, and run any Scala code you want from inside
 the `init` method:
 
-{% highlight scala %}
+```scala
+import org.scalatra.LifeCycle
+import javax.servlet.ServletContext
 
-  import org.scalatra.LifeCycle
-  import javax.servlet.ServletContext
+// Import the trait:
+import com.yourdomain.yourapp.DatabaseInit
 
-  // Import the trait:
-  import com.yourdomain.yourapp.DatabaseInit
+// Mixing in the trait:
+class Scalatra extends LifeCycle with DatabaseInit {
 
-  // Mixing in the trait:
-  class Scalatra extends LifeCycle with DatabaseInit {
+  override def init(context: ServletContext) {
 
-    override def init(context: ServletContext) {
+    // call a method that comes from inside our DatabaseInit trait:
+    configureDb()
 
-      // call a method that comes from inside our DatabaseInit trait:
-      configureDb()
-
-      // Mount our servlets as normal:
-      context mount (new Articles, "/articles/*")
-      context mount (new Users, "/users/*")
-    }
+    // Mount our servlets as normal:
+    context mount (new Articles, "/articles/*")
+    context mount (new Users, "/users/*")
   }
-
-{% endhighlight %}
+}
+```
 
 ### Configuring your app using web.xml
 
@@ -200,41 +190,37 @@ file.
 
 An extract from that file looks like this:
 
-{% highlight xml %}
-
-  <?xml version="1.0" encoding="UTF-8"?>
-  <!DOCTYPE web-app
-  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
-  "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
-  <web-app>
-    <servlet>
-      <servlet-name>BasicAuthExample</servlet-name>
-      <servlet-class>org.scalatra.BasicAuthExample</servlet-class>
-    </servlet>
-    <servlet>
-      <servlet-name>TemplateExample</servlet-name>
-      <servlet-class>org.scalatra.TemplateExample</servlet-class>
-    </servlet>
-  </web-app>
-
-{% endhighlight %}
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+"http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+  <servlet>
+    <servlet-name>BasicAuthExample</servlet-name>
+    <servlet-class>org.scalatra.BasicAuthExample</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TemplateExample</servlet-name>
+    <servlet-class>org.scalatra.TemplateExample</servlet-class>
+  </servlet>
+</web-app>
+```
 
 #### Setting init params using web.xml
 
 You can set init params for your servlets in the normal manner:
 
-{% highlight xml %}
-
-  <servlet>
-    <servlet-name>BasicAuthExample</servlet-name>
-    <servlet-class>org.scalatra.BasicAuthExample</servlet-class>
-    <init-param>
-      <param-name>org.scalatra.environment</param-name>
-      <param-value>development</param-value>
-    </init-param>
-  </servlet>
-
-{% endhighlight %}
+```xml
+<servlet>
+  <servlet-name>BasicAuthExample</servlet-name>
+  <servlet-class>org.scalatra.BasicAuthExample</servlet-class>
+  <init-param>
+    <param-name>org.scalatra.environment</param-name>
+    <param-value>development</param-value>
+  </init-param>
+</servlet>
+```
 
 ### Application environments
 
@@ -275,25 +261,25 @@ By default, Scalatra uses [Logback][logback] for logging.
 You can easily add logging facilities to your project, if you've got the
 logging dependency in your `build.sbt` file:
 
-      "ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime"
+```scala
+"ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime"
+```
 
 In your servlet or filter class:
 
-{% highlight scala %}
+```scala
+import org.slf4j.{Logger, LoggerFactory}
 
-  import org.slf4j.{Logger, LoggerFactory}
+class YourServlet extends ScalatraServlet {
 
-  class YourServlet extends ScalatraServlet {
+  val logger =  LoggerFactory.getLogger(getClass)
 
-    val logger =  LoggerFactory.getLogger(getClass)
-
-    def get("/") {
-      logger.info("foo")
-      // whatever else you want to put in the body of the action
-    }
+  def get("/") {
+    logger.info("foo")
+    // whatever else you want to put in the body of the action
   }
-
-{% endhighlight %}
+}
+```
 
 This will get you basic logging support. There are some additional logging
 libraries you might want to investigate: [slf4s][slf4s] and
@@ -427,34 +413,30 @@ Your app should now be running at [http://localhost:8080/](http://localhost:8080
 ScalatraServlet is an HttpServlet, we just need some glue code to launch an
 embedded Jetty server with this Servlet.
 
-{% highlight scala %}
+```scala
+package com.example  // remember this package in the sbt project definition
+import org.mortbay.jetty.Server
+import org.mortbay.jetty.servlet.{Context, ServletHolder}
+import org.scalatra.TemplateExample // this is the example Scalatra servlet
 
-  package com.example  // remember this package in the sbt project definition
-  import org.mortbay.jetty.Server
-  import org.mortbay.jetty.servlet.{Context, ServletHolder}
-  import org.scalatra.TemplateExample // this is the example Scalatra servlet
-
-  object JettyLauncher { // this is my entry object as specified in sbt project definition
-    def main(args: Array[String]) {
-      val server = new Server(8080)
-      val root = new Context(server, "/", Context.SESSIONS)
-      root.addServlet(new ServletHolder(new TemplateExample), "/*")
-      server.start()
-      server.join()
-    }
+object JettyLauncher { // this is my entry object as specified in sbt project definition
+  def main(args: Array[String]) {
+    val server = new Server(8080)
+    val root = new Context(server, "/", Context.SESSIONS)
+    root.addServlet(new ServletHolder(new TemplateExample), "/*")
+    server.start()
+    server.join()
   }
-
-{% endhighlight %}
+}
+```
 
 Now save this alongside your Scalatra project as JettyLauncher.scala and run
 <code>sbt clean assembly</code>. You'll have the ultimate executable jar file
 in the target soon. Try
 
-{% highlight bash %}
-
-  java -jar **-assembly-**.jar
-
-{% endhighlight %}
+```bash
+java -jar **-assembly-**.jar
+```
 
 and see it will launch the embedded Jetty at port 8080 with the example
 Scalatra project running. On an OS X 10.6 machine with JVM 1.6, this setup
@@ -474,24 +456,20 @@ use Typesafe's start script plugin to generate a script to start the app.
 To enable the plugin, add the following to project/plugins/build.sbt
 
 
-{% highlight bash %}
+```scala
+resolvers += Classpaths.typesafeResolver
 
-  resolvers += Classpaths.typesafeResolver
-
-  addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.0")
-
-{% endhighlight %}
+addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.0")
+```
 
 
 And the following to your build.sbt
 
-{% highlight bash %}
+```scala
+import com.typesafe.startscript.StartScriptPlugin
 
-  import com.typesafe.startscript.StartScriptPlugin
-
-  seq(StartScriptPlugin.startScriptForClassesSettings: _*)
-
-{% endhighlight %}
+seq(StartScriptPlugin.startScriptForClassesSettings: _*)
+```
 
 Once this is done, you are ready to deploy to Heroku. Create a Procfile in
 the root of your project containing
@@ -505,40 +483,36 @@ You can then create and push the app.
     heroku create appname --stack cedar
     git push heroku master
 
-{% highlight scala %}
+```scala
+import org.eclipse.jetty.server.Server
+import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
+import org.eclipse.jetty.webapp.WebAppContext
 
-  import org.eclipse.jetty.server.Server
-  import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
-  import org.eclipse.jetty.webapp.WebAppContext
+object JettyLauncher {
+  def main(args: Array[String]) {
+    val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
 
-  object JettyLauncher {
-    def main(args: Array[String]) {
-      val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
+    val server = new Server(port)
+    val context = new WebAppContext()
+    context setContextPath "/"
+    context.setResourceBase("src/main/webapp")
+    context.addServlet(classOf[MyCedarServlet], "/*")
+    context.addServlet(classOf[DefaultServlet], "/")
 
-      val server = new Server(port)
-      val context = new WebAppContext()
-      context setContextPath "/"
-      context.setResourceBase("src/main/webapp")
-      context.addServlet(classOf[MyCedarServlet], "/*")
-      context.addServlet(classOf[DefaultServlet], "/")
+    server.setHandler(context)
 
-      server.setHandler(context)
-
-      server.start
-      server.join
-    }
-
+    server.start
+    server.join
   }
 
-{% endhighlight %}
+}
+```
 
 ### Including the Scala compiler
 
 If you need the Scala compiler included within a WAR file add the declaration
 below to your SBT build file.
 
-{% highlight scala %}
-
-  override def webappClasspath = super.webappClasspath +++ buildCompilerJar
-
-{% endhighlight %}
+```scala
+override def webappClasspath = super.webappClasspath +++ buildCompilerJar
+```

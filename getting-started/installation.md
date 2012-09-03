@@ -21,17 +21,17 @@ a JDK.
 Run `java -version` and `javac -version` in a terminal to find if yours
 does. The output should look something like this:
 
-<pre>
+```
 $ java -version
 java version "1.6.0_24"
 OpenJDK Runtime Environment (IcedTea6 1.11.1) (6b24-1.11.1-3)
 OpenJDK 64-Bit Server VM (build 20.0-b12, mixed mode)
-</pre>
+```
 
-<pre>
+```
 $ javac -version
 javac 1.7.0_03
-</pre>
+```
 
 You need at least version 1.6.
 

@@ -15,31 +15,28 @@ If somebody makes a POST request to your application, at *http://www.yourapp.org
 
 In Scalatra, a route is an HTTP method (GET, PUT, POST, or DELETE) paired with a URL matching pattern. If you set your application up using RESTful conventions, your controller might look something like this:
 
-{% highlight scala %}
-
+```scala
 class Blog extends ScalatraServlet {
 
+  get("/articles/:id") {  //  <= this is a route matcher
+    // this is an action
+    // this action would show the article which has the specified :id
+  }
 
-    get("/articles/:id") {  //  <= this is a route matcher
-      // this is an action
-      // this action would show the article which has the specified :id
-    }
+  post("/articles") {
+    // this action would submit/create an article
+  }
 
-    post("/articles") {
-      // this action would submit/create an article
-    }
+  put("/articles/:id") {
+    // update the article which has the specified :id
+  }
 
-    put("/articles/:id") {
-      // update the article which has the specified :id
-    }
-
-    delete("/articles/:id") {
-      // delete the article with the specified :id
-    }
+  delete("/articles/:id") {
+    // delete the article with the specified :id
+  }
 
 }
-
-{% endhighlight %}
+```
 
 Those 4 example routes, and the actions inside the route blocks, could be the basis of a simple blogging system. The examples just stub out the actions - in a real application, you'd replace the  `// comments` with code to save and retrieve [models](models.html), and show HTML [views](views.html).
 
@@ -47,47 +44,42 @@ Those 4 example routes, and the actions inside the route blocks, could be the ba
 
 Route patterns may include named parameters (see below for more on parameter handling):
 
-{% highlight scala %}
-
-    get("/hello/:name") {
-      // Matches "GET /hello/foo" and "GET /hello/bar"
-      // params("name") is "foo" or "bar"
-      <p>Hello, {params("name")}</p>
-    }
-
-{% endhighlight %}
+```scala
+get("/hello/:name") {
+  // Matches "GET /hello/foo" and "GET /hello/bar"
+  // params("name") is "foo" or "bar"
+  <p>Hello, {params("name")}</p>
+}
+```
 
 ### Wildcards
 
 Route patterns may also include wildcard parameters, accessible through the
 `splat` key.
 
-{% highlight scala %}
+```scala
+get("/say/*/to/*") {
+  // Matches "GET /say/hello/to/world"
+  multiParams("splat") // == Seq("hello", "world")
+}
 
-    get("/say/*/to/*") {
-      // Matches "GET /say/hello/to/world"
-      multiParams("splat") // == Seq("hello", "world")
-    }
-
-    get("/download/*.*") {
-      // Matches "GET /download/path/to/file.xml"
-      multiParams("splat") // == Seq("path/to/file", "xml")
-    }
-
-{% endhighlight %}
+get("/download/*.*") {
+  // Matches "GET /download/path/to/file.xml"
+  multiParams("splat") // == Seq("path/to/file", "xml")
+}
+```
 
 ### Regular expressions
 
 The route matcher may also be a regular expression.  Capture groups are
 accessible through the `captures` key.
 
-{% highlight scala %}
-
-    get("""^\/f(.*)/b(.*)""".r) {
-      // Matches "GET /foo/bar"
-      multiParams("captures") // == Seq("oo", "ar")
-    }
-{% endhighlight %}
+```scala
+get("""^\/f(.*)/b(.*)""".r) {
+  // Matches "GET /foo/bar"
+  multiParams("captures") // == Seq("oo", "ar")
+}
+```
 
 ### Rails-like pattern matching
 
@@ -96,33 +88,34 @@ but not identical, syntax, based on Rack::Mount's Strexp.  The path pattern
 parser is resolved implicitly, and may be overridden if you prefer an
 alternate syntax:
 
-{% highlight scala %}
+```scala
+import org.scalatra._
 
-    import org.scalatra._
+class RailsLikeRouting extends ScalatraFilter {
+  implicit override def string2RouteMatcher(path: String) =
+    RailsPathPatternParser(path)
 
-    class RailsLikeRouting extends ScalatraFilter {
-      implicit override def string2RouteMatcher(path: String) =
-        RailsPathPatternParser(path)
-
-      get("/:file(.:ext)") { // matched Rails-style }
-    }
-{% endhighlight %}
+  get("/:file(.:ext)") { // matched Rails-style }
+}
+```
 
 ### Path patterns in the REPL
 
 If you want to experiment with path patterns, it's very easy in the [REPL][repl].
 
-    scala> import org.scalatra.SinatraPathPatternParser
-    import org.scalatra.SinatraPathPatternParser
+```
+scala> import org.scalatra.SinatraPathPatternParser
+import org.scalatra.SinatraPathPatternParser
 
-    scala> val pattern = SinatraPathPatternParser("/foo/:bar")
-    pattern: PathPattern = PathPattern(^/foo/([^/?#]+)$,List(bar))
+scala> val pattern = SinatraPathPatternParser("/foo/:bar")
+pattern: PathPattern = PathPattern(^/foo/([^/?#]+)$,List(bar))
 
-    scala> pattern("/y/x") // doesn't match
-    res1: Option[MultiParams] = None
+scala> pattern("/y/x") // doesn't match
+res1: Option[MultiParams] = None
 
-    scala> pattern("/foo/x") // matches
-    res2: Option[MultiParams] = Some(Map(bar -> ListBuffer(x)))
+scala> pattern("/foo/x") // matches
+res2: Option[MultiParams] = Some(Map(bar -> ListBuffer(x)))
+```
 
 Alternatively, you may use the `RailsPathPatternParser` in place of the
 `SinatraPathPatternParser`.
@@ -134,35 +127,32 @@ Alternatively, you may use the `RailsPathPatternParser` in place of the
 Routes may include conditions.  A condition is any expression that returns
 Boolean.  Conditions are evaluated by-name each time the route matcher runs.
 
-{% highlight scala %}
+```scala
+get("/foo") {
+  // Matches "GET /foo"
+}
 
-    get("/foo") {
-      // Matches "GET /foo"
-    }
-
-    get("/foo", request.getRemoteHost == "127.0.0.1") {
-      // Overrides "GET /foo" for local users
-    }
-{% endhighlight %}
+get("/foo", request.getRemoteHost == "127.0.0.1") {
+  // Overrides "GET /foo" for local users
+}
+```
 
 Multiple conditions can be chained together.  A route must match all
 conditions:
 
-{% highlight scala %}
-
-    get("/foo", request.getRemoteHost == "127.0.0.1", request.getRemoteUser == "admin") {
-      // Only matches if you're the admin, and you're localhost
-    }
-{% endhighlight %}
+```scala
+get("/foo", request.getRemoteHost == "127.0.0.1", request.getRemoteUser == "admin") {
+  // Only matches if you're the admin, and you're localhost
+}
+```
 
 No path pattern is necessary.  A route may consist of solely a condition:
 
-{% highlight scala %}
-
-    get(isMaintenanceMode) {
-      <h1>Go away!</h1>
-    }
-{% endhighlight %}
+```scala
+get(isMaintenanceMode) {
+  <h1>Go away!</h1>
+}
+```
 
 ### Enabling support for PUT and DELETE requests
 
@@ -180,17 +170,15 @@ Scalatra will look for these conventions on incoming requests and transform
 the request method automatically if you add the `MethodOverride` trait into your
 servlet or filter:
 
-{% highlight scala %}
+```scala
+class MyFilter extends ScalatraFilter with MethodOverride {
 
-  class MyFilter extends ScalatraFilter with MethodOverride {
-
-    // POST to "/foo/bar" with params "id=2" and "_method=put" will hit this route:
-    put("/foo/bar/:id") {
-      // update your resource here
-    }
+  // POST to "/foo/bar" with params "id=2" and "_method=put" will hit this route:
+  put("/foo/bar/:id") {
+    // update your resource here
   }
-
-{% endhighlight %}
+}
+```
 
 
 ### Route order
@@ -233,14 +221,14 @@ This behavior may be customized for these or other return types by overriding
 `renderResponse`.
 
 <span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span>
-{% highlight scala %}
-    get("/file/:id") {
-      fileService.find(params("id")) match {
-        case Some(file) => Ok(file)
-        case None       => NotFound("Sorry, the file could not be found")
-       }
-     }
-{% endhighlight %}
+```scala
+get("/file/:id") {
+  fileService.find(params("id")) match {
+    case Some(file) => Ok(file)
+    case None       => NotFound("Sorry, the file could not be found")
+   }
+ }
+```
 
 
 ### Parameter handling
@@ -263,11 +251,9 @@ head element for any known param, and returning the values as Strings.</dd>
 
 As an example, let's hit a URL with a GET like this:
 
-{% highlight html %}
-
-  /articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo
-
-{% endhighlight %}
+```
+/articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo
+```
 
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 Look closely: there are two "foo" keys in there.
@@ -275,20 +261,18 @@ Look closely: there are two "foo" keys in there.
 Assuming there's a matching route at `/articles/:id`, we get the following
 results inside the action:
 
-{% highlight scala %}
+```scala
+get("/articles/:id") {
+  params("id") // => "52"
+  params("foo") // => "uno" (discarding the second "foo" parameter value)
+  params("unknown") // => generates a NoSuchElementException
+  params.get("unknown") // => None - this is what Scala does with unknown keys in a Map
 
-  get("/articles/:id") {
-    params("id") // => "52"
-    params("foo") // => "uno" (discarding the second "foo" parameter value)
-    params("unknown") // => generates a NoSuchElementException
-    params.get("unknown") // => None - this is what Scala does with unknown keys in a Map
-
-    multiParams("id") // => Seq("52")
-    multiParams("foo") // => Seq("uno", "anotherfoo")
-    multiParams("unknown") // => an empty Seq
-  }
-
-{% endhighlight %}
+  multiParams("id") // => Seq("52")
+  multiParams("foo") // => Seq("uno", "anotherfoo")
+  multiParams("unknown") // => an empty Seq
+}
+```
 
 #### params.getOrElse
 
@@ -298,15 +282,13 @@ Let's say you wanted to require an :author name param, and set a :page value
 to 1 by default. If you don't receive an :author, you want to stop execution.
 You could do it like this:
 
-{% highlight scala %}
-
-  get("/articles-by/:author/:page") {
-    val author:String = params.getOrElse("author", halt(400))
-    val page:Int = params.getOrElse("page", "1").toInt
-    // now do stuff with your params
-  }
-
-{% endhighlight %}
+```scala
+get("/articles-by/:author/:page") {
+  val author:String = params.getOrElse("author", halt(400))
+  val page:Int = params.getOrElse("page", "1").toInt
+  // now do stuff with your params
+}
+```
 
 ### Filters
 
@@ -320,19 +302,17 @@ block to yield. Filters optionally take a URL pattern to match to the request.
 The `before` method will let you pass a block to be evaluated **before** _each_
 and _every_ route gets processed.
 
-{% highlight scala %}
+```scala
+before() {
+  MyDb.connect
+  contentType="text/html"
+}
 
-  before() {
-    MyDb.connect
-    contentType="text/html"
-  }
-
-  get("/") {
-    val list = MyDb.findAll()
-    templateEngine.layout("index.ssp", list)
-  }
-
-{% endhighlight %}
+get("/") {
+  val list = MyDb.findAll()
+  templateEngine.layout("index.ssp", list)
+}
+```
 
 In this example, we've set up a `before` filter to connect using a contrived
 `MyDb` module, and set the `contentType` for all requests to `text/html`.
@@ -342,13 +322,11 @@ In this example, we've set up a `before` filter to connect using a contrived
 The `after` method lets you pass a block to be evaluated **after** _each_ and
 _every_ route gets processed.
 
-{% highlight scala %}
-
-  after() {
-    MyDb.disconnect
-  }
-
-{% endhighlight %}
+```scala
+after() {
+  MyDb.disconnect
+}
+```
 
 As you can see from this example, we're asking the `MyDB` module to
 disconnect after the request has been processed.
@@ -359,17 +337,15 @@ Filters optionally take a pattern to be matched against the requested URI
 during processing. Here's a quick example you could use to run a contrived
 `authenticate!` method before accessing any "admin" type requests.
 
-{% highlight scala %}
+```scala
+before("/admin/*") {
+  basicAuth
+}
 
-  before("/admin/*") {
-    basicAuth
-  }
-
-  after("/admin/*") {
-    user.logout
-  }
-
-{% endhighlight %}
+after("/admin/*") {
+  user.logout
+}
+```
 
 
 ### Processing order for actions, errors, and filters
@@ -393,13 +369,11 @@ routines.
 
 There is a handler for redirection:
 
-{% highlight scala %}
-
-  get("/"){
-    redirect("/someplace/else")
-  }
-
-{% endhighlight %}
+```scala
+get("/"){
+  redirect("/someplace/else")
+}
+```
 
 This will return a redirect response, with HTTP status 302, pointing to
 `/someplace/else`.
@@ -410,47 +384,43 @@ want to catch it in an action.
 Although there's no built-in handler for permanent redirects, if you'd like to
 do a 301 permanent redirect, you can do something like this:
 
-{% highlight scala %}
+```scala
 halt(status = 301, headers = Map("Location" -> "http://example.org/"))
-{% endhighlight %}
+```
 
 #### Halting
 
 To immediately stop a request within a filter or route:
 
-{% highlight scala %}
-
+```scala
 halt()
-{% endhighlight %}
+```
 
 You can also specify the [HTTP status][statuses]:
 
 [statuses]: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 
-{% highlight scala %}
-
+```scala
 halt(403)
-{% endhighlight %}
+```
 
 Or the status and the body:
 
-{% highlight scala %}
-
+```scala
 halt(403, <h1>Go away!</h1>)
-{% endhighlight %}
+```
 
 Or even the HTTP status reason and headers. For more complex invocations, you can
 use named arguments:
 
-{% highlight scala %}
+```scala
+halt(status = 403,
+     reason = "Forbidden",
+     headers = Map("X-Your-Mother-Was-A" -> "hamster",
+                   "X-And-Your-Father-Smelt-Of" -> "Elderberries"),
+     body = <h1>Go away or I shall taunt you a second time!</h1>)
 
-  halt(status = 403,
-       reason = "Forbidden",
-       headers = Map("X-Your-Mother-Was-A" -> "hamster",
-                     "X-And-Your-Father-Smelt-Of" -> "Elderberries"),
-       body = <h1>Go away or I shall taunt you a second time!</h1>)
-
-{% endhighlight %}
+```
 
 The `reason` argument is ignored unless `status` is not null.  If you don't pass
 arguments for `status`, `reason`, or `body`, those parts of the response will
@@ -461,20 +431,18 @@ be left unchanged.
 A route can punt processing to the next matching route using `pass()`.  Remember,
 unlike Sinatra, routes are matched from the bottom up.
 
-{% highlight scala %}
+```scala
+get("/guess/*") {
+  "You missed!"
+}
 
-  get("/guess/*") {
-    "You missed!"
+get("/guess/:who") {
+  params("who") match {
+    case "Frank" => "You got me!"
+    case _ => pass()
   }
-
-  get("/guess/:who") {
-    params("who") match {
-      case "Frank" => "You got me!"
-      case _ => pass()
-    }
-  }
-
-{% endhighlight %}
+}
+```
 
 The route block is immediately exited and control continues with the next
 matching route.  If no matching route is found, the `notFound` handler is
@@ -487,13 +455,11 @@ route for the current request's URL.
 
 The default behavior is:
 
-{% highlight scala %}
-
-  notFound {
-    <h1>Not found. Bummer.</h1>
-  }
-
-{% endhighlight %}
+```scala
+notFound {
+  <h1>Not found. Bummer.</h1>
+}
+```
 
 What happens next differs slightly based on whether you've set your application
 up using ScalatraServlet or ScalatraFilter.

@@ -79,23 +79,21 @@ protected by the web application container.
 There are two base classes you can inherit from in order to make a
 Scalatra application: `ScalatraServlet` and `ScalatraFilter`.
 
-{% highlight scala %}
+```scala
+class YourServlet extends ScalatraServlet with ScalateSupport {
+  // your class here
+}
 
-  class YourServlet extends ScalatraServlet with ScalateSupport {
-    // your class here
-  }
-
-{% endhighlight %}
+```
 
 vs.
 
-{% highlight scala %}
+```scala
+class YourFilter extends ScalatraFilter with ScalateSupport {
+  // your class here
+}
 
-  class YourFilter extends ScalatraFilter with ScalateSupport {
-    // your class here
-  }
-
-{% endhighlight %}
+```
 
 The main difference is the default behavior when a route is not found.
 A `ScalatraFilter` will delegate to the next filter or servlet in the chain (as
@@ -129,34 +127,29 @@ so that `sbt` can download them for you and build your Scalatra project.
 
 Here's an example Scalatra sbt file:
 
-{% highlight scala %}
+```scala
+organization := "org.example"
 
-    organization := "org.example"
+name := "yourapp"
 
-    name := "yourapp"
+version := "0.1.0-SNAPSHOT"
 
-    version := "0.1.0-SNAPSHOT"
+scalaVersion := "2.9.1"
 
-    scalaVersion := "2.9.1"
+seq(webSettings :_*)
 
-    seq(webSettings :_*)
+classpathTypes ~= (_ + "orbit")
 
-    classpathTypes ~= (_ + "orbit")
+libraryDependencies ++= Seq(
+  "org.scalatra" % "scalatra" % "2.1.1",
+  "org.scalatra" % "scalatra-scalate" % "2.1.1",
+  "org.scalatra" % "scalatra-specs2" % "2.1.1" % "test",
+  "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
+  "org.eclipse.jetty"        % "jetty-webapp"           % "8.1.5.v20120716"     % "container",
+  "org.eclipse.jetty.orbit"  % "javax.servlet"          % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 
-    libraryDependencies ++= Seq(
-      "org.scalatra" % "scalatra" % "2.1.0",
-      "org.scalatra" % "scalatra-scalate" % "2.1.0",
-      "org.scalatra" % "scalatra-specs2" % "2.1.0" % "test",
-      "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-      "org.eclipse.jetty"        % "jetty-webapp"           % "8.1.5.v20120716"     % "container",
-      "org.eclipse.jetty"        % "test-jetty-servlet"     % "8.1.5.v20120716"     % "test",
-      "org.eclipse.jetty.orbit"  % "javax.servlet"          % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
-
-    )
-
-    resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
-
-{% endhighlight %}
+)
+```
 
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>

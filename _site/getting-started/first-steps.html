@@ -8,15 +8,15 @@
 <meta name="author" content="">
 
 <!-- Le styles -->
-<link href="/scalatra-website/_site/assets/css/bootstrap.css" rel="stylesheet">
-<link href="/scalatra-website/_site/assets/css/scalatra.css" rel="stylesheet">
+<link href="/scalatra-website/assets/css/bootstrap.css" rel="stylesheet">
+<link href="/scalatra-website/assets/css/scalatra.css" rel="stylesheet">
 <style>
   body {
     padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
   }
 </style>
-<link href="/scalatra-website/_site/assets/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="/scalatra-website/_site/assets/css/syntax.css" rel="stylesheet">
+<link href="/scalatra-website/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="/scalatra-website/assets/css/syntax.css" rel="stylesheet">
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -24,11 +24,11 @@
 <![endif]-->
 
 <!-- Le fav and touch icons -->
-<link rel="shortcut icon" href="/scalatra-website/_site/assets/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/scalatra-website/_site/assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/scalatra-website/_site/assets/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/scalatra-website/_site/assets/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="/scalatra-website/_site/assets/ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="/scalatra-website/assets/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/scalatra-website/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/scalatra-website/assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/scalatra-website/assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/scalatra-website/assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
 
       <body>
@@ -40,27 +40,27 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/scalatra-website/_site/">Scalatra</a>
+          <a class="brand" href="/scalatra-website/">Scalatra</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="/scalatra-website/_site/getting-started">Getting started</a></li>
+              <li><a href="/scalatra-website/getting-started">Getting started</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Guides
                 <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="/scalatra-website/_site/guides">Overview</a></li>
-                  <li><a href="/scalatra-website/_site/guides/routes-and-actions.html">Routes &amp; Actions</a></li>
-                  <li><a href="/scalatra-website/_site/guides/views.html">Views</a></li>
-                  <li><a href="/scalatra-website/_site/guides/helpers.html">Helpers</a></li>
-                  <li><a href="/scalatra-website/_site/guides/models.html">Models</a></li>
-                  <li><a href="/scalatra-website/_site/guides/testing.html">Testing</a></li>
-                  <li><a href="/scalatra-website/_site/guides/configuration-deployment.html">Configuration &amp; Deployment</a></li>
+                  <li><a href="/scalatra-website/guides">Overview</a></li>
+                  <li><a href="/scalatra-website/guides/routes-and-actions.html">Routes &amp; Actions</a></li>
+                  <li><a href="/scalatra-website/guides/views.html">Views</a></li>
+                  <li><a href="/scalatra-website/guides/helpers.html">Helpers</a></li>
+                  <li><a href="/scalatra-website/guides/models.html">Models</a></li>
+                  <li><a href="/scalatra-website/guides/testing.html">Testing</a></li>
+                  <li><a href="/scalatra-website/guides/configuration-deployment.html">Configuration &amp; Deployment</a></li>
                 </ul>
               </li>
-              <li><a href="/scalatra-website/_site/news">News</a></li>
-              <li><a href="/scalatra-website/_site/community">Community</a></li>
+              <li><a href="/scalatra-website/news">News</a></li>
+              <li><a href="/scalatra-website/community">Community</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 API docs
@@ -88,34 +88,27 @@
   </h1>
 </div>
 
-
-<h2>Generate a Scalatra project</h2>
+<h2 id="toc_11">Generate a Scalatra project</h2>
 
 <p>Now that the <a href="installation.html">installation</a> is out of the way, you can
 generate a project.</p>
 
 <p>Run:</p>
-
-<div class="highlight"><pre><code class="bash">  g8 scalatra/scalatra-sbt
+<div class="highlight"><pre><code class="bash">g8 scalatra/scalatra-sbt
 </code></pre>
 </div>
-
 
 <p>This will check out a pre-built application skeleton for you (from Github),
 and ask you some questions about your application:</p>
-
-<div class="highlight"><pre><code class="bash">  <span class="nv">$ </span>g8 scalatra/scalatra-sbt
-  &gt; organization <span class="o">[</span>com.example<span class="o">]</span>:
-  &gt; package <span class="o">[</span>com.example.app<span class="o">]</span>:
-  &gt; name <span class="o">[</span>scalatra-sbt-prototype<span class="o">]</span>:
-  &gt; servlet_name <span class="o">[</span>MyScalatraServlet<span class="o">]</span>:
-  &gt; scala_version <span class="o">[</span>2.9.1<span class="o">]</span>:
-  &gt; version <span class="o">[</span>0.1.0-SNAPSHOT<span class="o">]</span>:
+<div class="highlight"><pre><code class="text">$ g8 scalatra/scalatra-sbt
+&gt; organization [com.example]:
+&gt; package [com.example.app]:
+&gt; name [scalatra-sbt-prototype]:
+&gt; servlet_name [MyScalatraServlet]:
+&gt; scala_version [2.9.1]:
+&gt; version [0.1.0-SNAPSHOT]:
 </code></pre>
 </div>
-
-
-
 
 <dl class="dl-horizontal">
   <dt>organization</dt>
@@ -142,52 +135,47 @@ doubt, use the default.</dd>
 but we like [Semantic Versioning](http://semver.org/).</dd>
 </dl>
 
-
-<h2>Building</h2>
+<h2 id="toc_12">Building</h2>
 
 <p>Scala is a compiled language, so you need to build your Scalatra project.</p>
 
-<p>Enter your application's top-level directory and type <code>sbt</code>, and the
+<p>Enter your application&#39;s top-level directory and type <code>sbt</code>, and the
 application will build. <code>sbt</code> will also take care of downloading an entire
-Scalatra development environment if you don't have one yet. This means it'll
+Scalatra development environment if you don&#39;t have one yet. This means it&#39;ll 
 spend some time downloading Scalatra and its libraries when you first run it.</p>
 
-<h2>Hello world</h2>
+<h2 id="toc_13">Hello world</h2>
 
-<p>Scalatra is now installed, how about making your first application?  Source
+<p>Scalatra is now installed, how about making your first application?  Source 
 files go into <code>src/main/scala/com/example/app</code> (substitute your package for
 <code>com/example/app</code>).  Open
 <code>src/main/scala/com/example/app/MyScalatraServlet.scala</code>, or whatever you named
 your servlet when you generated your project with g8:</p>
+<div class="highlight"><pre><code class="scala"><span class="k">package</span> <span class="nn">com.example.app</span>
 
-<div class="highlight"><pre><code class="scala">  <span class="k">package</span> <span class="nn">com.example.app</span>
+<span class="k">import</span> <span class="nn">org.scalatra._</span>
+<span class="k">import</span> <span class="nn">scalate.ScalateSupport</span>
 
-  <span class="k">import</span> <span class="nn">org.scalatra._</span>
-  <span class="k">import</span> <span class="nn">scalate.ScalateSupport</span>
+<span class="k">class</span> <span class="nc">MyScalatraServlet</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">ScalateSupport</span> <span class="o">{</span>
 
-  <span class="k">class</span> <span class="nc">MyScalatraServlet</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">ScalateSupport</span> <span class="o">{</span>
-
-    <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-      <span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
-          <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="n">world</span><span class="o">!&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-          <span class="nc">Say</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;hello-scalate&quot;</span><span class="o">&gt;</span><span class="n">hello</span> <span class="n">to</span> <span class="nc">Scalate</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;.</span>
-        <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
-      <span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
-    <span class="o">}</span>
+  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="n">world</span><span class="o">!&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+        <span class="nc">Say</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">&quot;hello-scalate&quot;</span><span class="o">&gt;</span><span class="n">hello</span> <span class="n">to</span> <span class="nc">Scalate</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;.</span>
+      <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
   <span class="o">}</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
-
-<p>If you haven't already done so, from your project root, you can run the project
+<p>If you haven&#39;t already done so, from your project root, you can run the project
 with:</p>
-
-<div class="highlight"><pre><code class="bash">  <span class="nv">$ </span>sbt
-  &gt; container:start
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sbt
+&gt; container:start
 </code></pre>
 </div>
-
 
 <p>The application starts on <a href="http://localhost:8080">http://localhost:8080</a>.</p>
 
@@ -198,24 +186,21 @@ request to a URL evaluates some Scala code and returns some text in response.
 Whatever the block returns is sent back to the browser.
 </div>
 
-
 <p>Scalatra allows you to return strongly-typed results from any of its actions.
 The action above returns an XML literal - you could easily change it to return
 a string, by altering the action:</p>
-
-<div class="highlight"><pre><code class="scala">  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-    <span class="s">&quot;Hi there!&quot;</span>
-  <span class="o">}</span>
+<div class="highlight"><pre><code class="scala"><span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+  <span class="s">&quot;Hi there!&quot;</span>
+<span class="o">}</span>
 </code></pre>
 </div>
 
-
-<p>Returning a raw string is not something you'll do particularly often - usually
+<p>Returning a raw string is not something you&#39;ll do particularly often - usually
 you will want to return formatted HTML which is the product of a templating
 system, or an output format like JSON. See the <a href="../guides/views.html">views</a> and
 <a href="../guides/helpers.html">helpers</a> sections of our <a href="../guides">guides</a> for more info.</p>
 
-<h2>Automatic code reloading</h2>
+<h2 id="toc_14">Automatic code reloading</h2>
 
 <p>Restarting an application manually after every code change is both slow and
 painful. It can easily be avoided by using a tool for automatic code reloading.</p>
@@ -223,24 +208,22 @@ painful. It can easily be avoided by using a tool for automatic code reloading.<
 <p>SBT will allow you to <a href="https://github.com/harrah/xsbt/wiki/Triggered-Execution">signal a restart of the application when it detects
 code changes</a>. The
 syntax for restarting involves adding <code>~</code> in front of the command you want to
-re-execute.  To recompile and reload your application automatically, run the
+re-execute.  To recompile and reload your application automatically, run the 
 following:</p>
-
-<div class="highlight"><pre><code class="bash">  <span class="nv">$ </span>sbt
-  &gt; container:start
-  &gt; ~ ;copy-resources;aux-compile
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sbt
+&gt; container:start
+&gt; ~ ;copy-resources;aux-compile
 </code></pre>
 </div>
 
-
-<p>Now that you've got a (rather simplistic) running application, you may want to
+<p>Now that you&#39;ve got a (rather simplistic) running application, you may want to
 <a href="understanding-scalatra.html">understand more</a> about the project setup, or
 dive straight into our <a href="../guides">guides</a>, which show you how to perform common
 development tasks.</p>
 
 <p>Alternately, you might want to look at some example applications.</p>
 
-<h2>Scalatra examples</h2>
+<h2 id="toc_15">Scalatra examples</h2>
 
 <p>For most people, the easiest way to learn a new web framework is to see example code in action.</p>
 
@@ -260,20 +243,19 @@ including:</p>
 <li>chat (Servlet 3.0-based async chat)</li>
 </ul>
 
-
 <p>To run the code, do the following:</p>
-
-<pre><code>$ git clone https://github.com/scalatra/scalatra.git
+<div class="highlight"><pre><code class="text">$ git clone https://github.com/scalatra/scalatra.git
 $ cd scalatra
 $ sbt
-# now you're in the sbt shell!
+# now you&#39;re in the sbt shell!
 &gt; project scalatra-example
 &gt; container:start
 </code></pre>
+</div>
 
 <p>You should then get a website with examples running at
 <a href="http://localhost:8080/">http://localhost:8080/</a>
-(make sure you're not already running your own project on that port!).</p>
+(make sure you&#39;re not already running your own project on that port!).</p>
 
 <p>Example code can be found in the <code>example/src/main/scala/org/scalatra/</code>
 directory.</p>
@@ -303,8 +285,8 @@ directory.</p>
   <!-- Le javascript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="/scalatra-website/_site/assets/js/jquery.min.js"></script>
-  <script src="/scalatra-website/_site/assets/js/bootstrap.min.js"></script>
+  <script src="/scalatra-website/assets/js/jquery.min.js"></script>
+  <script src="/scalatra-website/assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>

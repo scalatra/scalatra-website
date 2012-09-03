@@ -17,26 +17,22 @@ generate a project.
 
 Run:
 
-{% highlight bash %}
-
-  g8 scalatra/scalatra-sbt
-
-{% endhighlight %}
+```bash
+g8 scalatra/scalatra-sbt
+```
 
 This will check out a pre-built application skeleton for you (from Github),
 and ask you some questions about your application:
 
-{% highlight bash %}
-
-  $ g8 scalatra/scalatra-sbt
-  > organization [com.example]:
-  > package [com.example.app]:
-  > name [scalatra-sbt-prototype]:
-  > servlet_name [MyScalatraServlet]:
-  > scala_version [2.9.1]:
-  > version [0.1.0-SNAPSHOT]:
-
-{% endhighlight %}
+```
+$ g8 scalatra/scalatra-sbt
+> organization [com.example]:
+> package [com.example.app]:
+> name [scalatra-sbt-prototype]:
+> servlet_name [MyScalatraServlet]:
+> scala_version [2.9.1]:
+> version [0.1.0-SNAPSHOT]:
+```
 
 <dl class="dl-horizontal">
   <dt>organization</dt>
@@ -80,36 +76,32 @@ files go into `src/main/scala/com/example/app` (substitute your package for
 `src/main/scala/com/example/app/MyScalatraServlet.scala`, or whatever you named
 your servlet when you generated your project with g8:
 
-{% highlight scala %}
+```scala
+package com.example.app
 
-  package com.example.app
+import org.scalatra._
+import scalate.ScalateSupport
 
-  import org.scalatra._
-  import scalate.ScalateSupport
+class MyScalatraServlet extends ScalatraServlet with ScalateSupport {
 
-  class MyScalatraServlet extends ScalatraServlet with ScalateSupport {
-
-    get("/") {
-      <html>
-        <body>
-          <h1>Hello, world!</h1>
-          Say <a href="hello-scalate">hello to Scalate</a>.
-        </body>
-      </html>
-    }
+  get("/") {
+    <html>
+      <body>
+        <h1>Hello, world!</h1>
+        Say <a href="hello-scalate">hello to Scalate</a>.
+      </body>
+    </html>
   }
-
-{% endhighlight %}
+}
+```
 
 If you haven't already done so, from your project root, you can run the project
 with:
 
-{% highlight bash %}
-
-  $ sbt
-  > container:start
-
-{% endhighlight %}
+```bash
+$ sbt
+> container:start
+```
 
 The application starts on [http://localhost:8080](http://localhost:8080).
 
@@ -124,13 +116,11 @@ Scalatra allows you to return strongly-typed results from any of its actions.
 The action above returns an XML literal - you could easily change it to return
 a string, by altering the action:
 
-{% highlight scala %}
-
-  get("/") {
-    "Hi there!"
-  }
-
-{% endhighlight %}
+```scala
+get("/") {
+  "Hi there!"
+}
+```
 
 Returning a raw string is not something you'll do particularly often - usually
 you will want to return formatted HTML which is the product of a templating
@@ -148,13 +138,11 @@ syntax for restarting involves adding `~` in front of the command you want to
 re-execute.  To recompile and reload your application automatically, run the 
 following:
 
-{% highlight bash %}
-
-  $ sbt
-  > container:start
-  > ~ ;copy-resources;aux-compile
-
-{% endhighlight %}
+```bash
+$ sbt
+> container:start
+> ~ ;copy-resources;aux-compile
+```
 
 Now that you've got a (rather simplistic) running application, you may want to
 [understand more](understanding-scalatra.html) about the project setup, or
@@ -185,12 +173,14 @@ including:
 
 To run the code, do the following:
 
-    $ git clone https://github.com/scalatra/scalatra.git
-    $ cd scalatra
-    $ sbt
-    # now you're in the sbt shell!
-    > project scalatra-example
-    > container:start
+```
+$ git clone https://github.com/scalatra/scalatra.git
+$ cd scalatra
+$ sbt
+# now you're in the sbt shell!
+> project scalatra-example
+> container:start
+```
 
 You should then get a website with examples running at
 [http://localhost:8080/](http://localhost:8080/)

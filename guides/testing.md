@@ -23,30 +23,30 @@ default.
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-scalatest" % "2.1.0" % "test"
+```scala
+"org.scalatra" %% "scalatra-scalatest" % "2.1.1" % "test"
+```
 
 #### Example
 
 Extend ScalatraSuite with your preferred Suite implementation.  You get
 ShouldMatchers and MustMatchers for free.
 
-{% highlight scala %}
+```scala
+import org.scalatra.test.scalatest._
 
-  import org.scalatra.test.scalatest._
+class MyScalatraServletTests extends ScalatraSuite with FunSuite {
+  // `MyScalatraServlet` is your app which extends ScalatraServlet
+  addServlet(classOf[MyScalatraServlet], "/*")
 
-  class MyScalatraServletTests extends ScalatraSuite with FunSuite {
-    // `MyScalatraServlet` is your app which extends ScalatraServlet
-    addServlet(classOf[MyScalatraServlet], "/*")
-
-    test("simple get") {
-      get("/path/to/something") {
-        status should equal (200)
-        body should include ("hi!")
-      }
+  test("simple get") {
+    get("/path/to/something") {
+      status should equal (200)
+      body should include ("hi!")
     }
   }
-
-{% endhighlight %}
+}
+```
 
 Convenience traits are provided for many Suite implementations:
 
@@ -64,7 +64,9 @@ Convenience traits are provided for many Suite implementations:
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-specs2" % "2.1.0" % "test"
+```scala
+"org.scalatra" %% "scalatra-specs2" % "2.1.1" % "test"
+```
 
 #### Example
 
@@ -78,23 +80,21 @@ From the [Specs2 QuickStart][Specs2 Quickstart]:
 > unit specifications where the specification text is interleaved with the
 > specification code. It is generally used to specify a single class.
 
-{% highlight scala %}
+```scala
+import org.scalatra.test.specs2._
 
-  import org.scalatra.test.specs2._
+class HelloWorldMutableServletSpec extends MutableScalatraSpec {
+  addServlet(classOf[HelloWorldServlet], "/*")
 
-  class HelloWorldMutableServletSpec extends MutableScalatraSpec {
-    addServlet(classOf[HelloWorldServlet], "/*")
-
-    "GET / on HelloWorldServlet" should {
-      "return status 200" in {
-        get("/") {
-          status must_== 200
-        }
+  "GET / on HelloWorldServlet" should {
+    "return status 200" in {
+      get("/") {
+        status must_== 200
       }
     }
   }
-
-{% endhighlight %}
+}
+```
 
 #### Acceptance testing
 
@@ -104,30 +104,30 @@ From the [Specs2 QuickStart][Specs2 Quickstart]:
 > the implementation code is elsewhere.  It is generally used for acceptance or
 > integration scenarios
 
-{% highlight scala %}
+```scala
+import org.scalatra.test.specs2._
 
-  import org.scalatra.test.specs2._
+class HelloWorldServletSpec extends ScalatraSpec { def is =
+  "GET / on HelloWorldServlet"                     ^
+    "return status 200"                            ! getRoot200^
+                                                   end
 
-  class HelloWorldServletSpec extends ScalatraSpec { def is =
-    "GET / on HelloWorldServlet"                     ^
-      "return status 200"                            ! getRoot200^
-                                                     end
+  addServlet(classOf[HelloWorldServlet], "/*")
 
-    addServlet(classOf[HelloWorldServlet], "/*")
-
-    def getRoot200 = get("/") {
-      status must_== 200
-    }
+  def getRoot200 = get("/") {
+    status must_== 200
   }
-
-{% endhighlight %}
+}
+```
 
 
 ### Other test frameworks
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-test" % "2.1.0" % "test"
+```scala
+"org.scalatra" %% "scalatra-test" % "2.1.1" % "test"
+```
 
 #### Usage guide
 
@@ -153,7 +153,9 @@ does not read your web.xml.  Most things you can do in a web.xml can be
 done from the context on the tester object.  In this case, call this in
 the constructor of your servlet:
 
-    tester.getContext.setInitParameter("db.username", "ross")
+```scala
+tester.getContext.setInitParameter("db.username", "ross")
+```
 
 [Specs2 Quickstart]: http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
 [ServletTester]: http://download.eclipse.org/jetty/stable-7/apidocs/org/eclipse/jetty/testing/ServletTester.html
@@ -164,27 +166,25 @@ Convenience methods exist for testing file uploads.
 
 Example based on Specs2:
 
-{% highlight scala %}
+```scala
+class FileUploadSpec extends MutableScalatraSpec {
+  addServlet(classOf[FileUploadServlet], "/*")
 
-  class FileUploadSpec extends MutableScalatraSpec {
-    addServlet(classOf[FileUploadServlet], "/*")
-
-    "POST /files" should {
-      "return status 200" in {
-        // You can also pass headers after the files Map
-        post("/files", Map("private" -> "true"), Map("kitten" -> new File("kitten.png"))) {
-          status must_== 200
-        }
-      }
-    }
-
-    "PUT /files/:id" should {
-      "return status 200" in {
-        put("/files/10", Map("private" -> "false"), Map("kitten" -> new File("kitten.png"))) {
-          status must_== 200
-        }
+  "POST /files" should {
+    "return status 200" in {
+      // You can also pass headers after the files Map
+      post("/files", Map("private" -> "true"), Map("kitten" -> new File("kitten.png"))) {
+        status must_== 200
       }
     }
   }
 
-{% endhighlight %}
+  "PUT /files/:id" should {
+    "return status 200" in {
+      put("/files/10", Map("private" -> "false"), Map("kitten" -> new File("kitten.png"))) {
+        status must_== 200
+      }
+    }
+  }
+}
+```

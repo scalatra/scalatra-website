@@ -52,15 +52,13 @@ Once `session` is called, a cookie-based session will be created.
 Then you will be able to use the default cookie based session handler in your
 application:
 
-{% highlight scala %}
-
-  get("/") {
-    if(session.contains("counter")) session("counter") = 0
-    session("counter") = session("counter").toInt + 1
-    "You've hit this page %s times!" format session("counter").toInt
-  }
-
-{% endhighlight %}
+```scala
+get("/") {
+  if(session.contains("counter")) session("counter") = 0
+  session("counter") = session("counter").toInt + 1
+  "You've hit this page %s times!" format session("counter").toInt
+}
+```
 
 The `session` implicitly implements `scala.collection.mutable.Map` backed by
 `session` attributes.
@@ -89,11 +87,9 @@ Mixing in ScalateSupport enables the Scalate error page for any uncaught
 exceptions.  This page renders the template source with the error highlighted.
 To disable this behavior, override `isScalateErrorPageEnabled`:
 
-{% highlight scala %}
-
-  override def isScalatePageEnabled = false
-
-{% endhighlight %}
+```scala
+override def isScalatePageEnabled = false
+```
 
 ## Scentry + authentication
 
@@ -108,12 +104,10 @@ Here's another [example](https://gist.github.com/732347) for basic authenticatio
 
 #### Dependency
 
-{% highlight scala %}
-
+```scala
 // Put this in build.sbt:
 "org.scalatra" % "scalatra-auth" % "2.1.0"
-
-{% endhighlight %}
+```
 
 ## Flash map
 
@@ -126,8 +120,7 @@ The exception is adding new flash entries into `flash.now`.
 In order to enable flash support, you'll need to extend your servlet class
 with `FlashMapSupport`. You can set the flash like this:
 
-{% highlight scala %}
-
+```scala
 class FooServlet extends ScalatraServlet with FlashMapSupport {
  post("/articles/create") {
     // watch out: this creates a session!
@@ -139,31 +132,26 @@ class FooServlet extends ScalatraServlet with FlashMapSupport {
     ssp("/home")
   }
 }
-
-{% endhighlight %}
+```
 
 and then you can use it in your view, to let the user know what happened.
 `home.ssp` might look like this:
 
-{% highlight scala %}
-
+```scala
 <html>
   <body>
     <p>Here is the flash: <%= flash.get("notice") %></p>
   </body>
 </html>
-
-{% endhighlight %}
+```
 
 You can add more than one entry to the `FlashMap`, using `+=`:
 
-{% highlight scala %}
-
+```scala
 flash = ("notice" -> "Hello from your application")
 flash += ("error" -> "An error occurred")
 flash.now += ("info" -> "redirect to see the error")
-
-{% endhighlight %}
+```
 
 `flash.now` operates pretty much in the same way as `flash` does, except that
 it sets a value for the current request only.  It will be removed before the
@@ -179,24 +167,21 @@ the Servlet 3.0 API's built-in support for `multipart/form-data` requests.
 
 1. Extend your application with `FileUploadSupport`:
 
-{% highlight scala %}
+```scala
+import org.scalatra.ScalatraServlet
+import org.scalatra.servlet.FileUploadSupport
+import javax.servlet.annotation.MultipartConfig
 
-  import org.scalatra.ScalatraServlet
-  import org.scalatra.servlet.FileUploadSupport
-  import javax.servlet.annotation.MultipartConfig
-
-  @MultipartConfig(maxFileSize=3*1024*1024)
-  class MyApp extends ScalatraServlet with FileUploadSupport {
-    // ...
-  }
-
-{% endhighlight %}
+@MultipartConfig(maxFileSize=3*1024*1024)
+class MyApp extends ScalatraServlet with FileUploadSupport {
+  // ...
+}
+```
 
 If you prefer using your _web.xml_ over the `@MultipartConfig` annotation, you can also
 place `<multipart-config>` to your `<servlet>`:
 
-{% highlight scala %}
-
+```xml
 <servlet>
   <servlet-name>myapp</servlet-name>
   <servlet-class>com.me.MyApp</servlet-class>
@@ -205,8 +190,7 @@ place `<multipart-config>` to your `<servlet>`:
     <max-file-size>3145728</max-file-size>
   </multipart-config>
 </servlet>
-
-{% endhighlight %}
+```
 
 See
 [javax.servlet.annotation.MultipartConfig Javadoc](http://docs.oracle.com/javaee/6/api/javax/servlet/annotation/MultipartConfig.html)
@@ -217,36 +201,30 @@ work correctly in Jetty prior to version 8.1.3.
 
 2. Be sure that your form is of type `multipart/form-data`:
 
-{% highlight scala %}
-
-  get("/") {
-    <form method="post" enctype="multipart/form-data">
-      <input type="file" name="thefile" />
-      <input type="submit" />
-    </form>
-  }
-
-{% endhighlight %}
+```scala
+get("/") {
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="thefile" />
+    <input type="submit" />
+  </form>
+}
+```
 
 3. Your files are available through the `fileParams` or `fileMultiParams` maps:
 
-{% highlight scala %}
-
-  post("/") {
-    processFile(fileParams("thefile"))
-  }
-
-{% endhighlight %}
+```scala
+post("/") {
+  processFile(fileParams("thefile"))
+}
+```
 
 4. To handle the case where user uploads too large a file, you can define an error handler:
 
-{% highlight scala %}
-
-  error {
-    case e: SizeConstraintExceededException => RequestEntityTooLarge("too much!")
-  }
-
-{% endhighlight %}
+```scala
+error {
+  case e: SizeConstraintExceededException => RequestEntityTooLarge("too much!")
+}
+```
 
 Scalatra wraps `IllegalStateException` thrown by `HttpServletRequest#getParts()` inside
 `SizeConstraintExceededException` for the convenience of use. If the container for some
@@ -258,15 +236,13 @@ For example, Jetty 8.1.3 incorrectly throws `ServletException` instead of `Illeg
 You can configure that to be wrapped inside `SizeConstraintExceededException`s by including the
 following snippet to your servlet:
 
-{% highlight scala %}
-
-  override def isSizeConstraintException(e: Exception) = e match {
-    case se: ServletException if se.getMessage.contains("exceeds max filesize") ||
-                                 se.getMessage.startsWith("Request exceeds maxRequestSize") => true
-    case _ => false
-  }
-
-{% endhighlight %}
+```scala
+override def isSizeConstraintException(e: Exception) = e match {
+  case se: ServletException if se.getMessage.contains("exceeds max filesize") ||
+                               se.getMessage.startsWith("Request exceeds maxRequestSize") => true
+  case _ => false
+}
+```
 
 ## Anti-XML integration
 
@@ -274,16 +250,16 @@ Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
 #### Dependency
 
-{% highlight scala %}
+```scala
 
   // Put this in build.sbt:
   "org.scalatra" % "scalatra-anti-xml" % "2.1.0"
 
-{% endhighlight %}
+```
 
 Extend your application with `AntiXmlSupport`:
 
-{% highlight scala %}
+```scala
 import org.scalatra.ScalatraServlet
 import org.scalatra.antixml.AntiXmlSupport
 import com.codecommit.antixml._
@@ -291,19 +267,17 @@ import com.codecommit.antixml._
 class MyApp extends ScalatraServlet with AntiXmlSupport {
   // ...
 }
-{% endhighlight %}
+```
 
 Actions results of type `com.codecommit.antixml.Elem` will be serialized
 to the response body, and a content type of `text/html` will be inferred if
 none is set.
 
-{% highlight scala %}
-
-  get("/") {
-    XML.fromString("""<foo bar="baz"></foo>""")
-  }
-
-{% endhighlight %}
+```scala
+get("/") {
+  XML.fromString("""<foo bar="baz"></foo>""")
+}
+```
 
 ## URL support and reverse routes
 
@@ -312,69 +286,59 @@ UrlSupport provides two instances that provide you with relative URLs.
 redirect statement.
 
 ### Page relative url:
-{% highlight scala %}
-
-  get("/"){
-    // This will redirect to http://<host>/page-relative
-    redirect(url("page-relative"))
-  }
- 
-{% endhighlight %}
+```scala
+get("/"){
+  // This will redirect to http://<host>/page-relative
+  redirect(url("page-relative"))
+}
+```
 
 ### Context relative url:
 
-{% highlight scala %}
-
-  get("/"){
-    // This will redirect to http://<host>/<context>/context-relative
-    redirect(url("/context-relative"))
-  }
-
-{% endhighlight %}
+```scala
+get("/"){
+  // This will redirect to http://<host>/<context>/context-relative
+  redirect(url("/context-relative"))
+}
+```
 
 ### Mapped params:
 
-{% highlight scala %}
-
-  get("/") {
-    // This will redirect to http://<host>/<context>/en-to-es?one=uno&two=dos
-    redirect( url("/en-to-es", Map("one" -> "uno", "two" -> "dos")) )
-  }
-
-{% endhighlight %}
+```scala
+get("/") {
+  // This will redirect to http://<host>/<context>/en-to-es?one=uno&two=dos
+  redirect( url("/en-to-es", Map("one" -> "uno", "two" -> "dos")) )
+}
+```
 
 ### Reverse routes:
 
 It is possible to save your routes as variables so that they have convenient
 handles:
 
-{% highlight scala %}
+```scala
+class MyApp extends ScalatraServlet with UrlGeneratorSupport {
+  // When you create a route, you can save it as a variable
+  val viewUser = get("/user/:id") {
+     // your user action would go here
+   }
 
-  class MyApp extends ScalatraServlet with UrlGeneratorSupport {
-    // When you create a route, you can save it as a variable
-    val viewUser = get("/user/:id") {
-       // your user action would go here
-     }
-
-    post("/user/new") {
-      // url method provided by UrlGeneratorSupport.  Pass it the route
-      // and the params.
-      redirect(url(viewUser, "id" -> newUser.id))
-    }
+  post("/user/new") {
+    // url method provided by UrlGeneratorSupport.  Pass it the route
+    // and the params.
+    redirect(url(viewUser, "id" -> newUser.id))
   }
-
-{% endhighlight %}
+}
+```
 
 There's also a `ScalateUrlGeneratorSupport`.  It reflectively finds all
 members of your app of type Route (e.g., viewUser above) and makes them
 available in your templates.  You should then be able to do something like this
 right in your templates:
 
-{% highlight scala %}
-
-  url(viewUser, "id" -> 1)
-
-{% endhighlight %}
+```scala
+url(viewUser, "id" -> 1)
+```
 
 ## AkkaSupport
 
@@ -384,30 +348,28 @@ mix it right into your application.
 
 #### Dependency:
 
-{% highlight scala %}
+```scala
 // Put this in build.sbt:
 "io.akka" % "akka" % "2.0.3"
-{% endhighlight %}
+```
 
 Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
 is only available in Scalatra 2.1 and up.
 
-{% highlight scala %}
+```scala
+import _root_.akka.dispatch._
+import org.scalatra.akka.AkkaSupport
 
-  import _root_.akka.dispatch._
-  import org.scalatra.akka.AkkaSupport
+class MyAppServlet extends ScalatraServlet with AkkaSupport {
+  get("/"){
+    Future {
+      // Add other logic here
 
-  class MyAppServlet extends ScalatraServlet with AkkaSupport {
-    get("/"){
-      Future {
-        // Add other logic here
-
-        <html><body>Hello Akka</body></html>
-      }
+      <html><body>Hello Akka</body></html>
     }
   }
-
-{% endhighlight %}
+}
+```
 
 [akka]: http://akka.io/
 

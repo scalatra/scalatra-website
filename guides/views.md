@@ -23,18 +23,16 @@ The simplest method of rendering a view is by using inline HTML.
 Unlike a lot of other frameworks, Scalatra can output XML literals directly as a return
 value from an action:
 
-{% highlight scala %}
+```scala
+def get("/") {
+  contentType="text/html"
 
-  def get("/") {
-    contentType="text/html"
-
-    <html>
-    <head><title>Test</title></head>
-    <body>Test Body for {uri("/")}</body>
-    </html>
-  }
-
-{% endhighlight %}
+  <html>
+  <head><title>Test</title></head>
+  <body>Test Body for {uri("/")}</body>
+  </html>
+}
+```
 
 Note the use of the curly braces on the `{uri("/")}` part of the inlined view.
 This tells Scalatra to render Scala code.
@@ -80,15 +78,13 @@ There are two ways to use Scalate. You can use the ScalateSupport helpers,
 or call Scalate directly. Either way, you'll need to extend your servlet
 with `ScalateSupport`, like this:
 
-{% highlight scala %}
-
-  class YourServlet extends ScalatraServlet with ScalateSupport {
-    def get("/") {
-      // render your views in the action (see below)
-    }
+```scala
+class YourServlet extends ScalatraServlet with ScalateSupport {
+  def get("/") {
+    // render your views in the action (see below)
   }
-
-{% endhighlight %}
+}
+```
 
 
 ### ScalateSupport helpers
@@ -100,15 +96,13 @@ corresponding helper which can be used to find the template file.
 
 Basic usage:
 
-{% highlight scala %}
+```scala
+def get("/") {
+  contentType="text/html"
 
-  def get("/") {
-    contentType="text/html"
-
-    ssp("/index")
-  }
-
-{% endhighlight %}
+  ssp("/index")
+}
+```
 
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
@@ -121,15 +115,13 @@ called `layoutTemplate`. This method allows you to render any type of Scalate
 template. You need to give the full path to the template, starting from the  WEB-INF
 directory:
 
-{% highlight scala %}
+```scala
+def get("/") {
+  contentType="text/html"
 
-  def get("/") {
-    contentType="text/html"
-
-    layoutTemplate("/WEB-INF/views/index.ssp")
-  }
-
-{% endhighlight %}
+  layoutTemplate("/WEB-INF/views/index.ssp")
+}
+```
 
 <span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span>
 When using `layoutTemplate`, you *must* prefix your view paths with a relative
@@ -155,27 +147,23 @@ they can be used.
 View parameters are passed to your views using a Seq(String, Any) after
 the path to the template file. The simplest example might look like this:
 
-{% highlight scala %}
+```scala
+def get("/") {
+  contentType="text/html"
 
-  def get("/") {
-    contentType="text/html"
-
-    ssp("/index", "foo" -> "uno", "bar" -> "dos")
-  }
-
-{% endhighlight %}
+  ssp("/index", "foo" -> "uno", "bar" -> "dos")
+}
+```
 
 The view for this action needs to declare variables for `foo` and `bar`, which would
 look like:
 
-{% highlight html %}
-
+```html
 <%@ val foo: String %>
 <%@ val bar: String %>
 <p>Foo is <%= foo %></p>
 <p>Bar is <%= bar %></p>
-
-{% endhighlight %}
+```
 
 
 #### Layouts
@@ -184,8 +172,7 @@ Scalatra looks for layouts in the `webapp/layout/` directory, and inserts the re
 view for the current action into the template at the point you specify. If you're using
 `SSP`, your layout might look something like this:
 
-{% highlight html %}
-
+```html
   <%@ var yield: String %>
   <html>
     <head>..</head>
@@ -193,8 +180,7 @@ view for the current action into the template at the point you specify. If you'r
       <%= yield %>
     </body>
   </html>
-
-{% endhighlight %}
+```
 
 The specific view for your action will be rendered at the `<%= yield =>` statement.
 
@@ -212,29 +198,25 @@ The `layout` key passed from your actions is somewhat special, as it's used by
 Scalate to identify the layout file, which wraps a standard layout around the
 output for the current action.
 
-{% highlight scala %}
+```scala
+def get("/") {
+  contentType="text/html"
 
-  def get("/") {
-    contentType="text/html"
-
-    jade("/index", "layout" -> "WEB-INF/layouts/app.jade", "foo" -> "uno", "bar" -> "dos")
-  }
-
-{% endhighlight %}
+  jade("/index", "layout" -> "WEB-INF/layouts/app.jade", "foo" -> "uno", "bar" -> "dos")
+}
+```
 
 #### Disabling layouts
 
 To disable a layout for certain templates, Scalate accepts an empty `layout`
 parameter:
 
-{% highlight scala %}
-
-  def get("/") {
-    // This template will render without a layout.
-    jade("/index", "layout" -> "", "foo" -> "uno", "bar" -> "dos")
-  }
-
-{% endhighlight %}
+```scala
+def get("/") {
+  // This template will render without a layout.
+  jade("/index", "layout" -> "", "foo" -> "uno", "bar" -> "dos")
+}
+```
 
 #### Rendering a 404 page
 
@@ -243,16 +225,14 @@ You may need to render a 404 page when Scalatra can't find a route.
 You can do this by putting the `notFound` helper into your servlet. Here's
 how it looks, when using the ScalateSupport helpers to render the page.
 
-{% highlight scala %}
-
-  notFound {
-    findTemplate(requestPath) map { path =>
-      contentType = "text/html"
-      layoutTemplate(path)
-    } orElse serveStaticResource() getOrElse resourceNotFound()
-  }
-
-{% endhighlight %}
+```scala
+notFound {
+  findTemplate(requestPath) map { path =>
+    contentType = "text/html"
+    layoutTemplate(path)
+  } orElse serveStaticResource() getOrElse resourceNotFound()
+}
+```
 
 
 ### Using Scalate directly
@@ -263,18 +243,16 @@ Some people like to call Scalate methods directly, bypassing the
 Scalate can be called directly, using the
 `templateEngine.layout("templateName")` method, like this:
 
-{% highlight scala %}
+```scala
+get("/") {
+  templateEngine.layout("index.ssp")
+  // renders webapp/index.ssp
 
-  get("/") {
-    templateEngine.layout("index.ssp")
-    // renders webapp/index.ssp
-
-    // OR you can tell Scalate to look in a sub-directory
-    templateEngine.layout("/dogs/index.ssp")
-    // would instead render webapp/dogs/index.ssp
-  }
-
-{% endhighlight %}
+  // OR you can tell Scalate to look in a sub-directory
+  templateEngine.layout("/dogs/index.ssp")
+  // would instead render webapp/dogs/index.ssp
+}
+```
 
 When using Scalate directly, Scalatra will look for your template files
 in the `webapp` folder of your application (which is found under `src/main/`
@@ -287,27 +265,25 @@ You may need to render some other page when Scalatra can't find a route.
 Using Scalate directly, it looks a little bit different than when you're using
 the ScalateSupport helpers:
 
-{% highlight scala %}
-
-  class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
-    notFound {
-      // If no route matches, then try to render a Scaml template
-      val templateBase = requestPath match {
-        case s if s.endsWith("/") => s + "index"
-        case s => s
-      }
-      val templatePath = "/WEB-INF/scalate/templates/" + templateBase + ".scaml"
-      servletContext.getResource(templatePath) match {
-        case url: URL =>
-          contentType = "text/html"
-          templateEngine.layout(templatePath)
-        case _ =>
-          filterChain.doFilter(request, response)
-      }
+```scala
+class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
+  notFound {
+    // If no route matches, then try to render a Scaml template
+    val templateBase = requestPath match {
+      case s if s.endsWith("/") => s + "index"
+      case s => s
+    }
+    val templatePath = "/WEB-INF/scalate/templates/" + templateBase + ".scaml"
+    servletContext.getResource(templatePath) match {
+      case url: URL =>
+        contentType = "text/html"
+        templateEngine.layout(templatePath)
+      case _ =>
+        filterChain.doFilter(request, response)
     }
   }
-
-{% endhighlight %}
+}
+```
 
 ### Further reading
 
