@@ -41,6 +41,19 @@ same basic structure you get when you generate a new project using giter8:
              |_ web.xml
 
 
+
+The basic structure should be reasonably familiar to anybody who's seen a Play, 
+Rails, Sinatra, or Padrino application. Your views go in the views folder, 
+layouts (which wrap views) go in the layouts folder. 
+
+The Scalatra giter8 project puts your Scala application code into a series of
+namespaced directories: in the example above, _org.yourdomain.projectname_. 
+This is entirely optional. The [Scala style guide][styleguide]
+suggests doing it this way, but the language doesn't do anything to enforce it.
+If you want to, you can put all of your Scala code in the same directory.
+
+[styleguide]: http://docs.scala-lang.org/style/
+
 ## Serving static files
 
 Static files can be served out of the `webapp` folder, which acts as the ROOT
