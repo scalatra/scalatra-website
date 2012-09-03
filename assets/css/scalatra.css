@@ -10,8 +10,8 @@ footer[role="contentinfo"] {
     color: #999;
     text-shadow: 0 1px 1px rgba(0,0,0,0.5);
     background-color: #222;
-    margin-top: 36px;
-    padding: 36px 0;
+    margin: 0 -36px;
+    padding: 36px;
 }
 footer[role="contentinfo"] a {
     color: #ddd;
@@ -30,3 +30,23 @@ footer[role="contentinfo"] a:hover {
   width: 120px;
   text-indent: -999em; }
 
+.content {
+  background: #fff;
+  padding:36px;
+  /* +1 px border*/
+  margin: 0 -37px;
+  border-left:1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/* Correct margins for other device sizes */
+
+@media (max-width: 979px) {
+  .navbar-fixed-top {margin-bottom:0;}
+  footer[role="contentinfo"] {margin:0;}
+  
+}
+
+@media(max-width:767px) {
+  .content {margin:0;}
+}
