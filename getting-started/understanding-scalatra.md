@@ -11,7 +11,8 @@ title: Scalatra | The anatomy of a Scalatra app
 
 ## Project structure
 
-The recommended way of structuring a Scalatra project is as follows:
+The recommended way of structuring a Scalatra project is as follows. It's the
+same basic structure you get when you generate a new project using giter8:
 
     project
 
@@ -159,7 +160,7 @@ Here's an example Scalatra sbt file:
 
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-If your project depends on any additional libraries, you can add them to the
+If you want to add any additional libraries to your project, add them to the
 <code>libraryDependencies</code> section. Doing that and running <code>sbt</code>
 again will download the dependency jar libraries and make them available to
 your application. If you don't know what the dependency details are, you can
