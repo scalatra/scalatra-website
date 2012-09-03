@@ -285,6 +285,16 @@ class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
 }
 ```
 
+### Scalate error page
+
+Mixing in ScalateSupport enables the Scalate error page for any uncaught
+exceptions.  This page renders the template source with the error highlighted.
+To disable this behavior, override `isScalateErrorPageEnabled`:
+
+```scala
+override def isScalatePageEnabled = false
+```
+
 ### Further reading
 
 For more information on Scalate, please refer to the [Scalate User's guide][sug].
