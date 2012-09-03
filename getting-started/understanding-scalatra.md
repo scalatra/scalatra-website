@@ -11,8 +11,8 @@ title: Scalatra | The anatomy of a Scalatra app
 
 ## Project structure
 
-The recommended way of structuring a Scalatra project is as follows. It's the
-same basic structure you get when you generate a new project using giter8:
+The recommended way of structuring a Scalatra project is as follows. It's 
+what you get when you generate a new project using giter8:
 
     project
 
