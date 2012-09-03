@@ -107,7 +107,7 @@ servlet before they'll become available.
 
 Much of Scalatra is actually implemented as traits. To see all of the built-in 
 helpers, you can just [browse the Scalatra core source][scalatracore] on 
-GitHub. Scalatra code is meant to be simple and readable; don't be scared
+GitHub. Scalatra source code is meant to be simple and readable; don't be scared
 to take a look at it if you need to understand how something works.
 
 [scalatracore]: https://github.com/scalatra/scalatra/tree/develop/core/src/main/scala/org/scalatra
