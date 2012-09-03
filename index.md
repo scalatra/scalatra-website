@@ -149,7 +149,7 @@ framework around that, we let _you_ choose.
       <td>N/A</td>
     </tr>
     <tr>
-      <td>2.1.0</td>
+      <td>2.1.1</td>
       <td>Stable</td>
       <td><a href="http://github.com/scalatra/scalatra/tree/support/2.1.x">support/2.1.x</td></td>
       <td>
