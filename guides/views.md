@@ -21,7 +21,7 @@ Scalatra can render views in two main ways.
 The simplest method of rendering a view is by using inline HTML.
 
 Unlike a lot of other frameworks, Scalatra can output XML literals directly as a return
-value from an action: 
+value from an action:
 
 {% highlight scala %}
 
@@ -43,12 +43,12 @@ This would be a very poor way to structure complex views for a large application
 be useful if your templating needs are quite simple (or you're just cranking out a quick prototype).
 
 Normally you'll want more structure than inline HTML can provide, so that you can separate
-your views from your controller actions and routing. 
+your views from your controller actions and routing.
 
 
 ## Introducing Scalate
 
-Scalatra uses an extremely powerful templating engine, [Scalate][scalate]. 
+Scalatra uses an extremely powerful templating engine, [Scalate][scalate].
 It supports multiple template styles. We think it's one of the best
 template engines going - it's extremely fast, flexible, and feature-rich.
 
@@ -63,9 +63,9 @@ Some of Scalate's all-star features include:
 *   Template file caching and reloading
 
 Scalate includes support for multiple templateing styles, including
-[SSP][ssp] (similar to ERB), [SCAML][scaml] (a Scala HAML variant), 
+[SSP][ssp] (similar to Velocity or ERB), [SCAML][scaml] (a Scala HAML variant),
 [Mustache][mustache], and [Jade][jade] (another HAML variant). Except for
-Mustache, templates are strongly typed, so your compiler can save 
+Mustache, templates are strongly typed, so your compiler can save
 you time by telling you when you make a mistake in your views.
 
 [ssp]: http://scalate.fusesource.org/documentation/ssp-reference.html
@@ -73,11 +73,11 @@ you time by telling you when you make a mistake in your views.
 [mustache]: http://scalate.fusesource.org/documentation/mustache.html
 [jade]: http://scalate.fusesource.org/documentation/jade.html
 
-All you need to get started is `Scalate`, which is included in Scalatra. 
+All you need to get started is `Scalate`, which is included in Scalatra.
 By default, Scalatra looks for views in the `views` directory in your application root.
 
 There are two ways to use Scalate. You can use the ScalateSupport helpers,
-or call Scalate directly. Either way, you'll need to extend your servlet 
+or call Scalate directly. Either way, you'll need to extend your servlet
 with `ScalateSupport`, like this:
 
 {% highlight scala %}
@@ -117,7 +117,7 @@ When using the scalate helper methods, it is not required to having a leading
 </div>
 
 You can also use a little bit less magic to do the same thing, using a method
-called `layoutTemplate`. This method allows you to render any type of Scalate 
+called `layoutTemplate`. This method allows you to render any type of Scalate
 template. You need to give the full path to the template, starting from the  WEB-INF
 directory:
 
@@ -131,7 +131,7 @@ directory:
 
 {% endhighlight %}
 
-<span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> 
+<span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span>
 When using `layoutTemplate`, you *must* prefix your view paths with a relative
 `/` character. So, `layoutTemplate("/WEB-INF/views/foo.ssp")` is good,
 `layoutTemplate("WEB-INF/views/foo.ssp)` will fail.
@@ -139,20 +139,20 @@ When using `layoutTemplate`, you *must* prefix your view paths with a relative
 #### Passing parameters to views
 
 <div class="alert alert-info">
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span> 
-If you're coming from a dynamic language, pay attention to this next bit, 
-  because it may surprise you: you need to explicitly declare variables inside 
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+If you're coming from a dynamic language, pay attention to this next bit,
+  because it may surprise you: you need to explicitly declare variables inside
   your views.
 </div>
 
-As mentioned previously, Scalate templates are strongly typed (except for 
+As mentioned previously, Scalate templates are strongly typed (except for
 Mustache, which isn't). This makes them extremely fast, and helps your productivity
-by letting the compiler tell you when something's wrong. It also means that any 
-controller variables that you want to access in your views need to be explicitly 
-sent to the view by your controller. They need to be declared in the views before 
+by letting the compiler tell you when something's wrong. It also means that any
+controller variables that you want to access in your views need to be explicitly
+sent to the view by your controller. They need to be declared in the views before
 they can be used.
 
-View parameters are passed to your views using a Seq(String, Any) after 
+View parameters are passed to your views using a Seq(String, Any) after
 the path to the template file. The simplest example might look like this:
 
 {% highlight scala %}
@@ -181,7 +181,7 @@ look like:
 #### Layouts
 
 Scalatra looks for layouts in the `webapp/layout/` directory, and inserts the rendered
-view for the current action into the template at the point you specify. If you're using 
+view for the current action into the template at the point you specify. If you're using
 `SSP`, your layout might look something like this:
 
 {% highlight html %}
@@ -208,8 +208,8 @@ response will render within the default layout.
 
 #### Specifying an alternate layout
 
-The `layout` key passed from your actions is somewhat special, as it's used by 
-Scalate to identify the layout file, which wraps a standard layout around the 
+The `layout` key passed from your actions is somewhat special, as it's used by
+Scalate to identify the layout file, which wraps a standard layout around the
 output for the current action.
 
 {% highlight scala %}
@@ -238,9 +238,9 @@ parameter:
 
 #### Rendering a 404 page
 
-You may need to render a 404 page when Scalatra can't find a route. 
+You may need to render a 404 page when Scalatra can't find a route.
 
-You can do this by putting the `notFound` helper into your servlet. Here's 
+You can do this by putting the `notFound` helper into your servlet. Here's
 how it looks, when using the ScalateSupport helpers to render the page.
 
 {% highlight scala %}
@@ -258,7 +258,7 @@ how it looks, when using the ScalateSupport helpers to render the page.
 ### Using Scalate directly
 
 Some people like to call Scalate methods directly, bypassing the
-(relatively minimal) magic of the ScalateSupport helpers. 
+(relatively minimal) magic of the ScalateSupport helpers.
 
 Scalate can be called directly, using the
 `templateEngine.layout("templateName")` method, like this:
@@ -284,7 +284,7 @@ in the project tree).
 
 You may need to render some other page when Scalatra can't find a route.
 
-Using Scalate directly, it looks a little bit different than when you're using 
+Using Scalate directly, it looks a little bit different than when you're using
 the ScalateSupport helpers:
 
 {% highlight scala %}
