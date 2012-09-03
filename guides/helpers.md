@@ -7,9 +7,105 @@ title: Scalatra Guides | Helpers
 <h1>Helpers</h1>
 </div>
 
-Helpers exist as traits in Scalatra that can applied to your base class. 
+Helpers exist as traits in Scalatra that can applied to your base class.
 
-## Request
+The most bare-bones possible Scalatra servlet looks something like this:
+
+```scala
+class FooServlet extends ScalatraServlet {
+
+  get("/" {
+    // do something
+  }
+
+}```
+
+To add a helper, you can just mix in a trait, like this:
+
+```scala
+class FooServlet extends ScalatraServlet with ScalateSupport {
+
+  // now your class has access to Scalate helpers. Easy, yes?
+
+}```
+
+Adding the ScalateSupport trait like this gives you the ability to do templating
+(see the [views](views.html) guide for more on that). 
+
+Some helpers are built directly into Scalatra. Other helpers need to be added
+as dependencies in the `build.sbt` file and mixed into your servlet. See the 
+[understanding Scalatra projects](../getting-started/understanding-scalatra.html)
+for more information on adding a new external dependency.
+
+Why do it this way? 
+
+Scalatra is a micro-framework. At its very heart, it's nothing more than a 
+domain-specific language (DSL) for reading incoming HTTP requests and responding
+to them using with actions. You can use helper traits like building blocks, 
+selecting exactly the ones that match your exact problem set. This keeps your
+application lean, mean, and fast, and reduces the number of external dependencies
+that you need to worry about.
+
+It also provides you with an easy way to build up exactly the code stack you 
+want, and makes it easy to write your own helper traits when you need to 
+do something that the Scalatra team hasn't thought of yet.
+
+### Keeping your application looking nice and clean
+
+After a while, you may find that you've got a large 
+number of traits mixed into your servlets and things start to look a little 
+messy:
+
+```scala 
+class FooServlet extends ScalatraServlet 
+      with ScalateSupport with FlashMapSupport 
+      with AkkaSupport with KitchenSinkSupport {
+  
+  get("/") {
+    // do something
+  }
+  
+}```
+
+The simplest way to clean this up is to make your own trait
+whch includes all the other standard traits you want to use throughout your
+application:
+
+```scala
+trait MyStack extends ScalatraServlet 
+      with ScalateSupport with FlashMapSupport 
+      with AkkaSupport with KitchenSinkSupport {
+  
+  // the trait body can be empty, it's just being used 
+  // to collect all the other traits so you can extend your servlet.
+  
+}```
+
+Then you can mix that into your servlets. Nice and DRY:
+
+```scala 
+class FooServlet extends MyStack {
+
+  get("/" {
+    // do something
+  }
+
+}
+
+## Built-in helpers
+
+All of the built-in helpers can simply be mixed into your servlet without
+adding any additional dependencies to `build.sbt`. Some of the built-in helpers
+(such as the `request`, `response`, and `session` helpers) are available to every 
+Scalatra application because they're part of ScalatraBase, which everything
+else inherits from. 
+
+Other built-in helpers (such as `FlashMapSupport`) don't require any additional
+`build.sbt` lines, but are still optional. You'll need to mix them into your
+servlet before they'll become available.
+
+ 
+### Request
 
 Inside any action, the current request is available through the `request` variable.
 The underlying servlet request is implicitly extended with the following methods:
@@ -28,7 +124,7 @@ The underlying servlet request is implicitly extended with the following methods
 The `request` also implements a `scala.collection.mutable.Map` backed by the
 request attributes.
 
-## Response
+### Response
 
 The response is available through the `response` variable.
 
@@ -37,7 +133,7 @@ If you override the Scalatra handling and write directly to
 the response object (e.g. `response.getOutputStream`), then your action should
 return `Unit()` to prevent a conflict with multiple writes.
 
-## Session handling
+### Session handling
 
 Scalatra has session handling built into the framework by default. There are
 no modules or traits that you need to include.
@@ -72,12 +168,14 @@ The default session in Scalatra is cookie-based, but the cookie is used only
 as a session identifier (session data is stored server-side). If you are
 building out a shared-nothing architecture, this is something to be aware of.
 
-## ServletContext
+### ServletContext
 
 The servlet context is available through the `servletContext` variable.  The
 servlet context implicitly implements `scala.collection.mutable.Map` backed
 by servlet context attributes.
 
+
+### External helpers
 
 
 
