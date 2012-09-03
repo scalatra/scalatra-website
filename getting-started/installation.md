@@ -8,11 +8,12 @@ title: Scalatra | Installation
 </div>
 
 Getting started with a new web framework can be a bit scary. Luckily, Scalatra
-is easy to install, as it has relatively few dependencies.
+is easy to install, as it has relatively few dependencies. It can run on
+Windows, Mac OS X, Linux, or BSD operating systems. 
 
 ## 1. Install a JDK
 
-Scalatra is web microframework written in Scala, so you'll need to have a
+Scalatra is web micro-framework written in Scala, so you'll need to have a
 Java Development Kit (JDK) installed. Many systems will already include
 a JDK. 
 
