@@ -144,9 +144,9 @@ painful. It can easily be avoided by using a tool for automatic code reloading.
 
 SBT will allow you to [signal a restart of the application when it detects
 code changes](https://github.com/harrah/xsbt/wiki/Triggered-Execution). The
-syntax for restarting includes adding `~` in front of the command you want to
-re-execute.  To recompile and reload your application automatically with
-xsbt-web-plugin 0.2.10, run the following:
+syntax for restarting involves adding `~` in front of the command you want to
+re-execute.  To recompile and reload your application automatically, run the 
+following:
 
 {% highlight bash %}
 
@@ -161,9 +161,11 @@ Now that you've got a (rather simplistic) running application, you may want to
 dive straight into our [guides](../guides), which show you how to perform common
 development tasks.
 
+Alternately, you might want to look at some example applications.
+
 ## Scalatra examples
 
-The easiest way to learn a new web framework is to see example code in action.
+For most people, the easiest way to learn a new web framework is to see example code in action.
 
 The Scalatra code base contains [examples][examples] which you can easily run
 yourself. This is a great way to dissect some running code for common tasks,
