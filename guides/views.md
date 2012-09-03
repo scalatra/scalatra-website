@@ -118,7 +118,8 @@ When using the scalate helper methods, it is not required to having a leading
 
 You can also use a little bit less magic to do the same thing, using a method
 called `layoutTemplate`. This method allows you to render any type of Scalate 
-template:
+template. You need to give the full path to the template, starting from the  WEB-INF
+directory:
 
 {% highlight scala %}
 
