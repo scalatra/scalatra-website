@@ -70,17 +70,16 @@ also gives you easy access to Scala's new concurrency-management constructs:
 You will need to [install a few things](getting-started/installation.html)
 before you can get started, but first, here's a Scalatra app:
 
-{% highlight scala %}
+```scala
+package com.example.app
+import org.scalatra._
 
-  package com.example.app
-  import org.scalatra._
-
-  class HelloWorldApp extends ScalatraFilter {
-    get("/") {
-      <h1>Hello, {params("name")}</h1>
-    }
+class HelloWorldApp extends ScalatraFilter {
+  get("/") {
+    <h1>Hello, {params("name")}</h1>
   }
-{% endhighlight %}
+}
+```
 
 Notice a few things about it:
 
