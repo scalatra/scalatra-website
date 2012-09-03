@@ -78,15 +78,8 @@ The servlet context is available through the `servletContext` variable.  The
 servlet context implicitly implements `scala.collection.mutable.Map` backed
 by servlet context attributes.
 
-## Scalate error page
 
-Mixing in ScalateSupport enables the Scalate error page for any uncaught
-exceptions.  This page renders the template source with the error highlighted.
-To disable this behavior, override `isScalateErrorPageEnabled`:
 
-```scala
-override def isScalatePageEnabled = false
-```
 
 ## Scentry + authentication
 
