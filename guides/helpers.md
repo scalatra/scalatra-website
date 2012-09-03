@@ -17,7 +17,6 @@ class FooServlet extends ScalatraServlet {
   get("/" {
     // do something
   }
-
 }
 ```
 
@@ -66,7 +65,6 @@ class FooServlet extends ScalatraServlet
   get("/") {
     // do something
   }
-  
 }
 ```
 
@@ -81,7 +79,6 @@ trait MyStack extends ScalatraServlet
   
   // the trait body can be empty, it's just being used 
   // to collect all the other traits so you can extend your servlet.
-  
 }
 ```
 
@@ -93,7 +90,6 @@ class FooServlet extends MyStack {
   get("/" {
     // do something
   }
-
 }
 ```
 
