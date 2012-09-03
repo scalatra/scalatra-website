@@ -83,7 +83,9 @@ with `ScalateSupport`, like this:
 {% highlight scala %}
 
   class YourServlet extends ScalatraServlet with ScalateSupport {
-    // your class here
+    def get("/") {
+      // render your views in the action (see below)
+    }
   }
 
 {% endhighlight %}
