@@ -16,7 +16,7 @@ If somebody makes a POST request to your application, at *http://www.yourapp.org
 In Scalatra, a route is an HTTP method (GET, PUT, POST, or DELETE) paired with a URL matching pattern. If you set your application up using RESTful conventions, your controller might look something like this:
 
 ```scala
-class Blog extends ScalatraServlet {
+class Articles extends ScalatraServlet {
 
   get("/articles/:id") {  //  <= this is a route matcher
     // this is an action
@@ -221,6 +221,7 @@ This behavior may be customized for these or other return types by overriding
 `renderResponse`.
 
 <span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span>
+
 ```scala
 get("/file/:id") {
   fileService.find(params("id")) match {
