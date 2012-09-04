@@ -51,7 +51,11 @@ selecting the ones that match your exact problem set. This keeps your
 application lean, mean, and fast, and reduces the number of external dependencies
 that you need to worry about.
 
-It also provides you with an easy way to build up exactly the code stack you 
+At the same time, this approach allows you to expand as necessary. Depending 
+on what traits you mix in, Scalatra can be anything from a tiny HTTP DSL all 
+the way up to a lightweight but full-stack MVC web framework. 
+
+This approach provides you with an easy way to build up exactly the code stack you 
 want, and makes it easy to write your own helper traits when you need to 
 do something that the Scalatra team hasn't thought of yet.
 
