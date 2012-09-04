@@ -332,6 +332,13 @@ UrlSupport provides two instances that provide you with relative URLs.
 `UrlSupport.url` will return a string that can be used in your output or a
 redirect statement.
 
+```
+class MyApp extends ScalatraServlet with UrlSupport {
+
+}
+```
+
+
 #### Page relative url:
 
 ```scala
@@ -350,7 +357,7 @@ get("/"){
 }
 ```
 
-### Mapped params:
+#### Mapped params:
 
 ```scala
 get("/") {
@@ -359,7 +366,7 @@ get("/") {
 }
 ```
 
-### Reverse routes:
+#### Reverse routes:
 
 It is possible to save your routes as variables so that they have convenient
 handles:
