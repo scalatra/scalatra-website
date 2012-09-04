@@ -56,7 +56,7 @@ folder of this name, and the artifacts you publish will be based on this name.</
 doubt, use the default.</dd>
   <dt>version</dt>
   <dd>The version number of your project.  This is entirely up to you,
-but we like [Semantic Versioning](http://semver.org/).</dd>
+but we like <a href="http://semver.org">semantic versioning</a>.</dd>
 </dl>
 
 ## Building
