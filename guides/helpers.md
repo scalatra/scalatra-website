@@ -332,7 +332,7 @@ UrlSupport provides two instances that provide you with relative URLs.
 `UrlSupport.url` will return a string that can be used in your output or a
 redirect statement.
 
-```
+```scala
 class MyApp extends ScalatraServlet with UrlSupport {
 
 }
