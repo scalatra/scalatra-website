@@ -299,7 +299,7 @@ post("/") {
 }
 ```
 
-To handle the case where user uploads too large a file, you can define an error handler:
+To handle the case where the user uploads too large a file, you can define an error handler:
 
 ```scala
 error {
