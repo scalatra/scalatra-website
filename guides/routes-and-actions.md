@@ -221,6 +221,7 @@ This behavior may be customized for these or other return types by overriding
 `renderResponse`.
 
 <span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span>
+
 ```scala
 get("/file/:id") {
   fileService.find(params("id")) match {
