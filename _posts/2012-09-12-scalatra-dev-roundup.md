@@ -20,9 +20,11 @@ params, and the converter will automatically deserialize the JSON, perform
 validations, and inflate a command object for you - so you know you've got
 good data coming in the front door when you start processing the request.
 
-Ivan Porto Carrero,the Scalatra core team member working on this, has offered
-an advance sneak-peek [on his blog](http://flanders.co.nz/2012/09/08/typeclass-based-databinding-for-scalatra/).
+[Ivan Porto Carrero](https://twitter.com/casualjim), the Scalatra core team
+member working on this, has offered an advance sneak-peek
+[on his blog](http://flanders.co.nz/2012/09/08/typeclass-based-databinding-for-scalatra/).
 
-Ivan and Ross Baker, another member of the core team, are currently both in
-San Francisco. This is a rare occurrence fraught with frightening possibilities.
-Watch this space to see what that brings.
+Ivan and [Ross Baker](https://twitter.com/rossabaker), another member of the
+core team, are currently both in San Francisco. This is a rare occurrence
+fraught with frightening possibilities. Watch this space to see what that
+brings.
