@@ -3,7 +3,7 @@ layout: default
 title: New tutorials available
 ---
 
-Many thanks to Jos Dirksen ([@josdirksen](https://twitter.com/josdirksen)) of
+Many thanks to [Jos Dirksen](https://twitter.com/josdirksen) of
 [smartjava.org](http://smartjava.org), who has been working on a series of
 Scalatra tutorials. The [first part](http://www.smartjava.org/content/tutorial-getting-started-scala-and-scalatra-part-i)
 offers a very quick intro to Scalatra and some tips on Eclipse integration.
