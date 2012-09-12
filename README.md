@@ -4,11 +4,13 @@ This is the home of the [Scalatra](http://github.com/scalatra/scalatra/)
 website which generates the site at http://scalatra.org.
 
 To build it, you'll need to have [Jekyll](https://github.com/mojombo/jekyll)
-installed on your system.  See the Jekyll docs for installation instructions.
+and a few other things installed on your system. `cd` into the root directory
+of the project and type:
 
-Once Jekyll's installed, you can do this to generate the documentation:
+`bundle install`
 
- cd scalatra-website
+Once everything's installed, you can do this to generate the documentation:
+
  jekyll --server --auto
 
 This will start an embedded webserver and automatically regenerate the website
