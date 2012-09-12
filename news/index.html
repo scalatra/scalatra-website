@@ -6,7 +6,7 @@ title: Scalatra | Project news
 {% for post in paginator.posts %}
   <div class="full">
     <h1 class="entry-title">
-      <a href="{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
+      <a href="/{{ site.baseurl }}{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
     </h1>
     <div class="entry-content full-content">
       {{ post.content }}
