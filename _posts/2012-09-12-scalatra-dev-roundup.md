@@ -9,7 +9,7 @@ outside world. Let's try and fix that.
 
 As you may have noticed, we released the 2.1.x series of Scalatra, and
 to celebrate that release we also built out an improved website with better
-instructions for getting started and performing common development tasks.
+instructions for [getting started](http://scalatra.org/getting-started/) and performing [common development tasks](http://scalatra.org/guides/).
 
 Development on Scalatra 2.2.x is now proceeding full steam ahead.
 One major new feature is improved data binding.
