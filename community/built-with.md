@@ -37,10 +37,6 @@ Scalatra is used in a number of systems that help power [The Guardian](http:///w
 
 ## Open source projects
 
-### Bowler framework
-
-[Bowler](http://bowlerframework.org) is a RESTful, multi-channel ready web framework in Scala with a functional flavour, built on top of Scalatra and Scalate, with Lift-JSON doing the heavy JSON lifting. The project is built with Simple Build Tool ("sbt")- we intend to further add custom sbt processors in the future to automate boilerplate tasks.
-
 ### Fink
 
 [Fink](https://github.com/dozed/fink) is a Scalatra based CMS.
