@@ -18,7 +18,7 @@ A working code example of an Atmosphere chat server is available in the Scalatra
 $ git clone --branch=develop https://github.com/scalatra/scalatra.git
 $ cd scalatra
 $ sbt
-# Now you're in the sbt shell!
+# Now you're in the sbt (s)hell!
 > project scalatra-example
 > container:start
 ```
