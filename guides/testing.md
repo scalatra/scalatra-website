@@ -154,7 +154,7 @@ done from the context on the tester object.  In this case, call this in
 the constructor of your servlet:
 
 ```scala
-tester.getContext.setInitParameter("db.username", "ross")
+servletContextHandler.setInitParameter("db.username", "ross")
 ```
 
 [Specs2 Quickstart]: http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
