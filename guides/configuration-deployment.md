@@ -176,8 +176,8 @@ class Scalatra extends LifeCycle with DatabaseInit {
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 If you're an old Java hand, you'll be quite comfortable mounting servlets
 through the <code>web.xml</code> file in traditional servlet style, so you
-may not want to use the Scalatra bootstrap file. Keep in mind that you need
-to pick one or the other, because you can't use both at the same time.
+may not want to use the Scalatra bootstrap file. If you want, you can use
+web.xml for some things and the Scalatra bootstrap file for others.
 </div>
 
 #### Mounting multiple servlets (or filters) using web.xml
