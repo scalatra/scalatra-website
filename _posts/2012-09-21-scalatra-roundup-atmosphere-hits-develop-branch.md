@@ -23,6 +23,6 @@ $ sbt
 > container:start
 ```
 
-Then point your browser at [http://localhost:8080/chat.html](http://localhost:8080/atmosphere)
+Then point your browser at [http://localhost:8080/atmosphere](http://localhost:8080/atmosphere)
 
 If you connect from multiple browsers, you'll be able to talk to yourself. This might not seem like a technological revolution at first, but in fact the potential of Atmosphere is quite striking. For the past 20 years or so, everybody on the web has been used to a request/response interaction model where the browser client asks a server for a piece of information, and the server responds. Atmosphere turns that relationship on its head, and allows the server to reliably push information to persistently-connected clients. There is a whole world of new design patterns lurking in there!
