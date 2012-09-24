@@ -173,6 +173,8 @@ your application. If you don't know what the dependency details are, you can
 find out on <a href="http://search.maven.org">http://search.maven.org</a>.
 </div>
 
+If you're using [sbt-eclipse](https://github.com/typesafehub/sbteclipse) or [sbt-idea](https://github.com/mpeltonen/sbt-idea) to make sbt dependencies available to your IDE, make sure you re-run `sbt-eclipse` or `sbt-idea` whenever you add or update a dependency in build.sbt.
+
 The default dependencies are:
 
 <dl class="dl-horizontal">
