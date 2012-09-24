@@ -118,5 +118,7 @@ export path</pre>
 
 That's it! You've now got everything you need.
 
+You might want to set up your IDE. If you're using Eclipse, you can use the [sbt-eclipse](https://github.com/typesafehub/sbteclipse) plugin. This gets sbt dependencies set up on the Eclipse classpath, so that your project works as expected in the IDE. Similar functionality for IntelliJ IDEA is provided by the [sbt-idea](https://github.com/mpeltonen/sbt-idea) plugin.
+
 Head over to the "[first steps](first-steps.html)" page, which will tell you how to generate,
 build, and run a Scalatra application.
