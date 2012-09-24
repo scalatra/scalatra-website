@@ -11,7 +11,7 @@ title: Scalatra | The anatomy of a Scalatra app
 
 ## Project structure
 
-The recommended way of structuring a Scalatra project is as follows. It's 
+The recommended way of structuring a Scalatra project is as follows. It's
 what you get when you generate a new project using giter8:
 
     project
@@ -42,12 +42,12 @@ what you get when you generate a new project using giter8:
 
 
 
-The basic structure should be reasonably familiar to anybody who's seen a Play, 
-Rails, Sinatra, or Padrino application. Your views go in the views folder, 
-layouts (which wrap views) go in the layouts folder. 
+The basic structure should be reasonably familiar to anybody who's seen a Play,
+Rails, Sinatra, or Padrino application. Your views go in the views folder,
+layouts (which wrap views) go in the layouts folder.
 
 The Scalatra giter8 project puts your Scala application code into a series of
-namespaced directories: in the example above, _org.yourdomain.projectname_. 
+namespaced directories: in the example above, _org.yourdomain.projectname_.
 This is entirely optional. The [Scala style guide][styleguide]
 suggests doing it this way, but the language doesn't do anything to enforce it.
 If you want to, you can put all of your Scala code in the same directory.
@@ -194,3 +194,5 @@ The default dependencies are:
   configuration so that it is not bundled with your application.  Your servlet
   container will provide this at deployment time.</dd>
 </dl>
+
+The Scalatra components in your project should all have the same version number (2.1.1 in the above example). Although it's theoretically possible to mix and match differently-versioned components in your projects, it's not recommended, because we compile, test and release Scalatra dependencies together based on their version number. 
