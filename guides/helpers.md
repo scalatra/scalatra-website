@@ -77,7 +77,7 @@ class FooServlet extends ScalatraServlet
 ```
 
 The simplest way to clean this up is to make your own trait
-whch includes all the other standard traits you want to use throughout your
+which includes all the other standard traits you want to use throughout your
 application:
 
 ```scala
