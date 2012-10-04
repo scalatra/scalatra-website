@@ -231,6 +231,20 @@ get("/file/:id") {
  }
 ```
 
+In this example, ActionResult is being used conditionally to give back different
+response codes based on what's happened in the action. If a `file` is found
+by the hypothetical `fileService`, the action returns `Ok(file)`. This means
+that the response was successful, and there's a response code of 200.
+
+If the `fileService` didn't find a file, the action returns `NotFound` and
+a message. The `NotFound` sets a response code of 404.
+
+There are several dozen possible responses in Scalatra, if you want to see
+all of them and find out what response codes they produce, the easiest way is
+to look at the [ActionResult source code][actionresult-source].
+
+
+[actionresult-source]:https://github.com/scalatra/scalatra/blob/develop/core/src/main/scala/org/scalatra/ActionResult.scala
 
 ### Parameter handling
 
