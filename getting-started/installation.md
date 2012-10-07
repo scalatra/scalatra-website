@@ -38,7 +38,7 @@ You need at least version 1.6.
 If you don't yet have Java installed, you can find out how to install
 it for your system
 <a href="http://docs.oracle.com/javase/7/docs/webnotes/install/index.html">
-over at the Java 7 install page</a>. Make sure you've got Open JDK or Sun JDK,
+over at the Java 7 install page</a>. Make sure you've got OpenJDK or Sun's JDK,
 as <code>gcj</code>, which is pre-installed on some Linux distros, won't work.
 
 ----
