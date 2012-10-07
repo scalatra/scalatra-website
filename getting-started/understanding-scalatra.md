@@ -129,9 +129,9 @@ in the same WAR.
 * You want to match routes with a prefix deeper than the context path.
 
 
-## Scalatra's SBT dependencies
+## Scalatra's sbt dependencies
 
-Scalatra uses Scala's [Simple Build Tool][sbt-site], or `sbt`, as a build system.
+Scalatra uses Scala's [Simple Build Tool][sbt-site], or sbt, as a build system.
 
 [sbt-site]: http://www.scala-sbt.org/
 
@@ -141,13 +141,13 @@ so that `sbt` can download them for you and build your Scalatra project.
 Here's an example Scalatra sbt file:
 
 ```scala
-organization := "org.example"
+organization := "com.example"
 
 name := "yourapp"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.9.2"
 
 seq(webSettings :_*)
 
@@ -158,8 +158,8 @@ libraryDependencies ++= Seq(
   "org.scalatra" % "scalatra-scalate" % "2.1.1",
   "org.scalatra" % "scalatra-specs2" % "2.1.1" % "test",
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-  "org.eclipse.jetty"        % "jetty-webapp"           % "8.1.5.v20120716"     % "container",
-  "org.eclipse.jetty.orbit"  % "javax.servlet"          % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+  "org.eclipse.jetty" % "jetty-webapp" % "8.1.5.v20120716" % "container",
+  "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 
 )
 ```
@@ -167,7 +167,7 @@ libraryDependencies ++= Seq(
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 If you want to add any additional libraries to your project, add them to the
-<code>libraryDependencies</code> section. Doing that and running <code>sbt</code>
+`libraryDependencies` section. Doing that and running `./sbt`
 again will download the dependency jar libraries and make them available to
 your application. If you don't know what the dependency details are, you can
 find out on <a href="http://search.maven.org">http://search.maven.org</a>.
