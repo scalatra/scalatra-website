@@ -43,7 +43,7 @@ as <code>gcj</code>, which is pre-installed on some Linux distros, won't work.
 
 ----
 
-## 2. Install conscript, and giter8
+## 2. Install conscript and giter8
 
 Once you're sure you've got Java installed, you will need to download a few other
 utilities.
@@ -55,34 +55,36 @@ It's the recommended way to generate Scalatra project skeletons.
 
 <h4>Install conscript and giterate</h4>
 
-  	<p>To install conscript, issue this command in your terminal:</p>
+  <p>To install conscript, issue this command in your terminal:</p>
 
-  	<pre>curl https://raw.github.com/n8han/conscript/master/setup.sh | sh</pre>
+  <pre>curl https://raw.github.com/n8han/conscript/master/setup.sh | sh</pre>
 
-  	<p>This will create a _bin_ folder in your home directory.  Put that on your
-  	path, by adding the following to your shell's profile (e.g. <code>~/.bash_profile)</code>:</p>
+  <p>This will create a _bin_ folder in your home directory.  Put that on your
+  path, by adding the following to your shell's profile (e.g. <code>~/.bash_profile)</code>:</p>
 
-  	<pre>PATH=$PATH:~/bin
-export path</pre>
+<pre>
+PATH=$PATH:~/bin
+export path
+</pre>
 
-  	<p>Make sure you reload your shell:</p>
+  <p>Make sure you reload your shell:</p>
 
-  	<pre>source ~/.bash_profile</pre>
+  <pre>source ~/.bash_profile</pre>
 
 
-  	<p>Now you can use conscript to install Giter8:</p>
+  <p>Now you can use conscript to install Giter8:</p>
 
-  	<pre>cs n8han/giter8</pre>
+  <pre>cs n8han/giter8</pre>
 
-  	<p>Depending on your connection speed, this can take a bit of time, as `conscript`
-  	downloads quite a few Scala dependencies.</p>
+  <p>Depending on your connection speed, this can take a bit of time, as `conscript`
+  downloads quite a few Scala dependencies.</p>
 
-  	<h4>Install SBT</h4>
+  <h4>Install SBT</h4>
 
-  	<p>The last thing you'll need is `sbt`, the Simple Build Tool.</p>
+  <p>The last thing you'll need is `sbt`, the Simple Build Tool.</p>
 
-  	<p>You can download <code>sbt</code> at the
-  		<a href="http://www.scala-sbt.org/download.html">SBT website</a>.</p>
+  <p>You can download <code>sbt</code> at the
+  <a href="http://www.scala-sbt.org/download.html">SBT website</a>.</p>
 
   </div>
 </div>
