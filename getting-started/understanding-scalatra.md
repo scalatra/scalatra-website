@@ -167,16 +167,17 @@ libraryDependencies ++= Seq(
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 If you want to add any additional libraries to your project, add them to the
-`libraryDependencies` section. Doing that and running `./sbt`
-again will download the dependency jar libraries and make them available to
-your application. If you don't know what the dependency details are, you can
-find out on <a href="http://search.maven.org">http://search.maven.org</a>.
+<code>libraryDependencies</code> section.
+Doing that and running <code>./sbt</code> again will download the dependency jar
+libraries and make them available to your application.
+If you don't know what the dependency details are, you can find out on
+<a href="http://search.maven.org">http://search.maven.org</a>.
 </div>
 
 If you're using [sbt-eclipse](https://github.com/typesafehub/sbteclipse) or
 [sbt-idea](https://github.com/mpeltonen/sbt-idea) to make sbt dependencies
 available to your IDE, make sure you re-run `sbt-eclipse` or `sbt-idea` from
-within sbtwhenever you add or update a dependency in `build.sbt`.
+within sbt whenever you add or update a dependency in `build.sbt`.
 
 The default dependencies are:
 
@@ -195,7 +196,7 @@ The default dependencies are:
   <dt>jetty-webapp</dt>
   <dd>This is the embedded servlet container used by the web plugin. Your application should be portable to any servlet container supporting at least the 2.5 specification.</dd>
   <dt>servlet-api</dt>
-  <dd>Required for building your app.  It is placed in the `provided`
+  <dd>Required for building your app.  It is placed in the <code>provided</code>
   configuration so that it is not bundled with your application.  Your servlet
   container will provide this at deployment time.</dd>
 </dl>
