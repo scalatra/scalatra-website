@@ -43,42 +43,15 @@ as <code>gcj</code>, which is pre-installed on some Linux distros, won't work.
 
 ----
 
-## 2. Install sbt, conscript, and giter8
+## 2. Install conscript, and giter8
 
-Once you're sure you've got Java installed, you need to download a few other
+Once you're sure you've got Java installed, you will need to download a few other
 utilities.
 
 [Conscript](https://github.com/n8han/conscript) is a tool for installing and
 updating Scala code. [Giter8](https://github.com/n8han/giter8/), which depends
 on conscript, allows you to check out project templates directly from Github.
 It's the recommended way to generate Scalatra project skeletons.
-
-Lastly, you'll need [sbt](http://scala-sbt.org), the Simple Build Tool. This is
-a Scala program which will automatically download everything your Scalatra project
-needs, and build it.
-
-You can either use install packages for your system (using the TypeSafe Stack) or
-install them manually.
-
-<ul class="nav nav-tabs" id="myTab">
-  <li class="active"><a href="#stack" data-toggle="tab">Install the TypeSafe Stack</a></li>
-  <li><a href="#manual" data-toggle="tab">Install Manually</a></li>
-</ul>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="stack">
-  	<p>TypeSafe is a Scala consulting company which maintains both the Scala language itself
-  	and quite a few of its associated tools. They offer easy-to-install packages for
-  	most systems: Windows, Mac OS X (via homebrew), Debian/Ubuntu, and Red Hat Linux.</p>
-
-  	<p>The TypeSafe Stack includes everything you'll need to get started with Scalatra, including
-  		<code>sbt</code>, <code>conscript</code>, and <code>giter8</code>.</p>
-  	<p>To install it, <a href="http://typesafe.com/stack/download">go to the
-  	   Typesafe downloads page.</a></p>
-  </div>
-  <div class="tab-pane" id="manual">
-
-  	<p>If you'd rather install things yourself, it's still a very easy process.</p>
 
 <h4>Install conscript and giterate</h4>
 
@@ -118,7 +91,10 @@ export path</pre>
 
 That's it! You've now got everything you need.
 
-You might want to set up your IDE. If you're using Eclipse, you can use the [sbt-eclipse](https://github.com/typesafehub/sbteclipse) plugin. This gets sbt dependencies set up on the Eclipse classpath, so that your project works as expected in the IDE. Similar functionality for IntelliJ IDEA is provided by the [sbt-idea](https://github.com/mpeltonen/sbt-idea) plugin. Make sure the you run "sbt eclipse" or "sbt idea" every time you [add or update a dependency](understanding-scalatra.html) in build.sbt.
+You might want to set up your IDE. If you're using Eclipse, you can use the [sbt-eclipse](https://github.com/typesafehub/sbteclipse) plugin.
+This gets sbt dependencies set up on the Eclipse classpath, so that your project works as expected in the IDE.
+Similar functionality for IntelliJ IDEA is provided by the [sbt-idea](https://github.com/mpeltonen/sbt-idea) plugin.
+Make sure the you run `sbt eclipse` or `sbt idea` every time you [add or update a dependency](understanding-scalatra.html) in `build.sbt`.
 
 Head over to the "[first steps](first-steps.html)" page, which will tell you how to generate,
 build, and run a Scalatra application.
