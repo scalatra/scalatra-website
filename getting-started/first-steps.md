@@ -149,7 +149,7 @@ want to re-execute.
 To recompile and reload your application automatically, run the following:
 
 ```bash
-$ sbt
+$ ./sbt
 > container:start
 > ~ ;copy-resources;aux-compile
 ```
@@ -188,7 +188,7 @@ Download and run the examples:
 ```
 $ git clone https://github.com/scalatra/scalatra.git
 $ cd scalatra
-$ sbt
+$ ./sbt
 # now you're in the sbt shell!
 > project scalatra-example
 > container:start
