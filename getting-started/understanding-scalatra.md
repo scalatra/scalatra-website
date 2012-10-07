@@ -42,7 +42,7 @@ what you get when you generate a new project using giter8:
 
 
 
-The basic structure should be reasonably familiar to anybody who's seen a Play,
+The basic structure should be reasonably familiar to anybody who's seen a
 Rails, Sinatra, or Padrino application. Your views go in the views folder,
 layouts (which wrap views) go in the layouts folder.
 
