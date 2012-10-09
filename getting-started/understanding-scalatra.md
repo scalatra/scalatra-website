@@ -42,7 +42,7 @@ what you get when you generate a new project using giter8:
 
 
 
-The basic structure should be reasonably familiar to anybody who's seen a Play,
+The basic structure should be reasonably familiar to anybody who's seen a
 Rails, Sinatra, or Padrino application. Your views go in the views folder,
 layouts (which wrap views) go in the layouts folder.
 
@@ -129,9 +129,9 @@ in the same WAR.
 * You want to match routes with a prefix deeper than the context path.
 
 
-## Scalatra's SBT dependencies
+## Scalatra's sbt dependencies
 
-Scalatra uses Scala's [Simple Build Tool][sbt-site], or `sbt`, as a build system.
+Scalatra uses Scala's [Simple Build Tool][sbt-site], or sbt, as a build system.
 
 [sbt-site]: http://www.scala-sbt.org/
 
@@ -141,13 +141,13 @@ so that `sbt` can download them for you and build your Scalatra project.
 Here's an example Scalatra sbt file:
 
 ```scala
-organization := "org.example"
+organization := "com.example"
 
 name := "yourapp"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.9.2"
 
 seq(webSettings :_*)
 
@@ -158,8 +158,8 @@ libraryDependencies ++= Seq(
   "org.scalatra" % "scalatra-scalate" % "2.1.1",
   "org.scalatra" % "scalatra-specs2" % "2.1.1" % "test",
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-  "org.eclipse.jetty"        % "jetty-webapp"           % "8.1.5.v20120716"     % "container",
-  "org.eclipse.jetty.orbit"  % "javax.servlet"          % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+  "org.eclipse.jetty" % "jetty-webapp" % "8.1.5.v20120716" % "container",
+  "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 
 )
 ```
@@ -167,13 +167,17 @@ libraryDependencies ++= Seq(
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 If you want to add any additional libraries to your project, add them to the
-<code>libraryDependencies</code> section. Doing that and running <code>sbt</code>
-again will download the dependency jar libraries and make them available to
-your application. If you don't know what the dependency details are, you can
-find out on <a href="http://search.maven.org">http://search.maven.org</a>.
+<code>libraryDependencies</code> section.
+Doing that and running <code>./sbt</code> again will download the dependency jar
+libraries and make them available to your application.
+If you don't know what the dependency details are, you can find out on
+<a href="http://search.maven.org">http://search.maven.org</a>.
 </div>
 
-If you're using [sbt-eclipse](https://github.com/typesafehub/sbteclipse) or [sbt-idea](https://github.com/mpeltonen/sbt-idea) to make sbt dependencies available to your IDE, make sure you re-run `sbt-eclipse` or `sbt-idea` whenever you add or update a dependency in build.sbt.
+If you're using [sbt-eclipse](https://github.com/typesafehub/sbteclipse) or
+[sbt-idea](https://github.com/mpeltonen/sbt-idea) to make sbt dependencies
+available to your IDE, make sure you re-run `sbt-eclipse` or `sbt-idea` from
+within sbt whenever you add or update a dependency in `build.sbt`.
 
 The default dependencies are:
 
@@ -192,7 +196,7 @@ The default dependencies are:
   <dt>jetty-webapp</dt>
   <dd>This is the embedded servlet container used by the web plugin. Your application should be portable to any servlet container supporting at least the 2.5 specification.</dd>
   <dt>servlet-api</dt>
-  <dd>Required for building your app.  It is placed in the `provided`
+  <dd>Required for building your app.  It is placed in the <code>provided</code>
   configuration so that it is not bundled with your application.  Your servlet
   container will provide this at deployment time.</dd>
 </dl>
