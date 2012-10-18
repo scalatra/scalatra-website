@@ -305,6 +305,15 @@ get("/articles-by/:author/:page") {
 }
 ```
 
+#### GET and POST params, and where's my JSON?
+
+Both GET and POST params end up in the `params` bag - you shouldn't need to read
+anything off the `request.body`. 
+
+If you put data directly into the POST body of your request, e.g. 
+`'{"some":"object"}'` as a JSON hash without a key, then the JSON itself 
+becomes an empty key in the `params` Map.
+
 ### Filters
 
 Scalatra offers a way for you too hook into the request chain of your
