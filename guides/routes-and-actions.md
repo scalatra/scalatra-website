@@ -311,7 +311,7 @@ Both GET and POST params end up in the `params` bag - you shouldn't need to read
 anything off the `request.body`. 
 
 If you put data directly into the POST body of your request, e.g. 
-`'{"some":"object"}'` as a JSON hash without a key, then the JSON itself 
+`'{"some":"object"}'` by itself as a JSON hash, then the JSON itself 
 becomes an empty key in the `params` Map.
 
 ### Filters
