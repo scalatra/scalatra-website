@@ -182,7 +182,7 @@ view for the current action into the template at the point you specify. If you'r
   </html>
 ```
 
-The specific view for your action will be rendered at the `<%= yield =>` statement.
+The specific view for your action will be rendered at the `<%= yield %>` statement.
 
 #### Default layouts
 
