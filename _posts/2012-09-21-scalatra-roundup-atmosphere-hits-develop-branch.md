@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Dev Roundup - Atmosphere Hits Develop Branch
+title: Atmosphere Hits Develop Branch
 ---
 
 Another busy week in the world of Scalatra. The [ScalaQuery][scalaquery] library, renamed to [Slick](http://slick.typesafe.com/) for Scala 2.10, is [TypeSafe](http://www.typesafe.com)'s answer to Scala data persistence, and it's a library with a bright future. [Jos Dirksen](http://twitter.com/josdirksen) has once again been at it with the tutorials, this time demonstrating [how to integrate Scalatra and Scalaquery][smartjava-scalaquery] in part 3 of his ongoing Scalatra series.
