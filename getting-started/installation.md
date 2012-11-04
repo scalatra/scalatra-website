@@ -74,7 +74,7 @@ install them manually.
   	<p>The TypeSafe Stack includes everything you'll need to get started with Scalatra, including
   		<code>sbt</code>, <code>conscript</code>, and <code>giter8</code>.</p>
   	<p>To install it, <a href="http://typesafe.com/stack/download">go to the
-  	   Typesafe downloads page.</a></p>
+        Typesafe downloads page</a>.</p>
   </div>
   <div class="tab-pane" id="manual">
 
