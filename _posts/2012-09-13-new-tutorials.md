@@ -1,6 +1,8 @@
 ---
 layout: post
 title: New tutorials available
+author: Dave Hrycyszyn
+twitter: futurechimp
 ---
 
 Many thanks to [Jos Dirksen](https://twitter.com/josdirksen) of

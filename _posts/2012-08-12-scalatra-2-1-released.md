@@ -1,6 +1,8 @@
 ---
 layout: post
 title: Scalatra 2.1 released
+author: Dave Hrycyszyn
+twitter: futurechimp
 ---
 
 scalatra-scalate
