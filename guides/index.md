@@ -42,3 +42,8 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 ## Advanced topics
 
 Scalatra has advanced features, including integrations with the <a href="http://swagger.wordnik.com">Swagger</a> API documentation and exploration toolset, and the <a href="https://github.com/Atmosphere/atmosphere">Atmosphere</a> portable websocket/comet/socket.io framework. Watch here for guides on these topics, we're working on them.
+
+<div class="span4">
+	<h3>Handling JSON</h3>
+	<p>Scalatra can automaticaly turn incoming params and outgoing data into JSON, using the <a href="http://json4s.org">json4s</a> library's support for Jackson or lift-json.</p><p><a href="json.html" class="btn">View »</a> </p>
+</div>
