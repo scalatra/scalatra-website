@@ -1,9 +1,9 @@
 Scalatra makes JSON handling quick and easy. By adding a few library imports and several lines of code, you can get automatic JSON serialization and deserialization for any Scala case class.
 
-Let's say you've got a bare controller like this one:
+Let's say you've generated a brand-new Scalatra project, and accepted all the defaults, except you've used "FlowersController" instead of "MyScalatraServlet" for the servlet name. Then you trim things down so you've got a bare controller like this one:
 
 ```scala
-package com.example.swagger.sample
+package com.example.app
 
 import org.scalatra._
 
@@ -12,16 +12,30 @@ class FlowersController extends ScalatraServlet {
 }
 ```
 
-We can quickly add a Flower model to this, so that we've got a data model to play with:
+This assumes that your ScalatraBootstrap file, in `src/main/scala/ScalatraBootstrap.scala, looks like this:
+
+```scala
+import com.example.app._
+import org.scalatra._
+import javax.servlet.ServletContext
+
+class ScalatraBootstrap extends LifeCycle {
+  override def init(context: ServletContext) {
+    context.mount(new FlowersController, "/*")
+  }
+}
+```
+
+We can quickly add a Flower model underneath our controller class, so that we've got a data model to play with:
 
 ```scala
 // A Flower object to use as a faked-out data model
 case class Flower(slug: String, name: String)
 ```
 
-If you wanted your application to be more structured, you might put that into a `models` directory. However, we're not too concerned about that for the purposes of this tutorial, so let's just put it in the FlowersController.scala file for now.
+If you wanted your application to be more structured, you might put that into a `models` directory. However, we're not too concerned about that for the purposes of this tutorial, so let's just put it in FlowersController.scala file for now.
 
-Now that you've got a model, let's add a data store. To keep things as simple as possible, we can just make a List of Flower objects, and hang them off of a 
+Now that you've got a model, let's add a data store. To keep things as simple as possible, we can just make a List of Flower objects, and hang them off of an object. Put this at the bottom of FlowersController.scala:
 
 ```scala
 object FlowerData {
@@ -44,7 +58,7 @@ get("/"){
 }
 ```
 
-If you hit your local server, you should see the following output:
+If you hit your local server on [http://localhost:8080](http://localhost:8080), you should see the following output:
 
 ```scala
 List(Flower(yellow-tulip,Yellow Tulip), Flower(red-rose,Red Rose), Flower(black-rose, Black Rose))
@@ -105,6 +119,8 @@ Your code should compile again at this point. Refresh your browser at [http://lo
 ```json
 [{"slug":"yellow-tulip","name":"Yellow Tulip"},{"slug":"red-rose","name":"Red Rose"},{"slug":"black-rose","name":"Black Rose"}]
 ```
+
+The `JValueResult` and `JsonJacksonSupport` traits which we mixed into the controller, combined with the `implicit val jsonFormats`, are now turning all Scalatra action result values into JSON.
 
 Inbound JSON can work the same way.
 
