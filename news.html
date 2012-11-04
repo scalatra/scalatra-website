@@ -8,15 +8,15 @@ title: Scalatra | Project news
     <h1 class="entry-title">
       <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
     </h1>
-    <div class="entry-content full-content">
-      {{ post.content }}
-      <div class="clear"></div>
-    </div>
     <p class="by-line">
       <span class="date full-date">
         <abbr class="published" title="{{ post.date }}">{{ post.date | date_to_string }}</abbr>
       </span>
     </p>
+    <div class="entry-content full-content">
+      {{ post.content }}
+      <div class="clear"></div>
+    </div>
     <div class="clear"></div>
   </div>
   <div class="rule"><hr/></div>
