@@ -10,7 +10,7 @@ Work continues on the Scalatra 2.2 development branch. [Swagger](http://swagger.
 
 This is pre-release documentation, please let us know if anything doesn't work so we can fix it before release. Note that although the docs talk about using version `2.2.0` in `build.sbt`, you'll need use `2.2.0-SNAPSHOT` for all your build definitions until the final release arrives. If you want to try generating a new Scalatra 2.2.0 project to try out all the new toys, you can:
 
-```shell
+```
 g8 scalatra/scalatra-sbt.g8 --branch develop
 ```
 
