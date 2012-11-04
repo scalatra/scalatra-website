@@ -43,8 +43,13 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
   <div class="span3">
     <h3>Project news</h3>
     <ul>
-    {% for post in paginator.posts %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% for post in paginator.posts limit:3 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a>
+        <br/>
+        <abbr class="published" title="{{ post.date }}">
+          {{ post.date | date_to_string }}
+        </abbr>
+      </li>
     {% endfor %}
     </ul>
   </div>  

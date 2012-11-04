@@ -17,7 +17,7 @@ markdown:    redcarpet2
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "with_toc_data"]
 permalink:   date
-paginate:    6
+paginate:    10
 paginate_files: 
   - news.html
   - index.html
