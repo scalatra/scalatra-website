@@ -38,3 +38,5 @@ post("/todos") {
 This allows you to easily defend yourself right at the front door, rather than allowing unvalidated data to get deeply into your application stack. Although this syntax may change somewhat before release, the databinders will be a major new feature of Scalatra 2.2.
 
 You can follow along with the progress of the [Todolist application](https://github.com/scalatra/scalatra-databinding-example) to see how things work, on Github.
+
+Lastly, [Jos Dirksen](http://twitter.com/josdirksen) rounded out his series of Scalatra tutorials with a zinger of a [blog post](http://www.smartjava.org/content/tutorial-getting-started-scala-and-scalatra-part-iv) on dependency injection and Akka usage in Scalatra. Not to be missed!
