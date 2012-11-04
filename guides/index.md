@@ -47,3 +47,9 @@ Scalatra has advanced features, including integrations with the <a href="http://
 	<h3>Handling JSON</h3>
 	<p>Scalatra can automaticaly turn incoming params and outgoing data into JSON, using the <a href="http://json4s.org">json4s</a> library's support for Jackson or lift-json.</p><p><a href="json.html" class="btn">View »</a> </p>
 </div>
+
+
+<div class="span4">
+	<h3>Swagger</h3>
+	<p>Scalatra can help you communicate with other development teams, prospective API consumers, and even non-technical people, about your application's REST API capabilities. With a tiny amount of setup, it auto-generates runnable API documentation for your applications, using <a href="http://swagger.wordnik.com">Swagger</a>.</p><p><a href="swagger.html" class="btn">View »</a> </p>
+</div>
