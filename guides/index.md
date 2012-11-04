@@ -23,7 +23,7 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 	</div>
 	<div class="span4">
 		<h3>Helpers</h3>
-		<p>Scalatra includes several dozen helper integrations so that you can easily accomplish commond development tasks. This guide shows you how to select and add helper traits to your application, for things like Flash map integration, session handling, redirects, getting access to the request, and cross-origin resource sharing.</p><p><a href="helpers.html" class="btn">View »</a> </p>
+		<p>Scalatra includes several dozen helper integrations so that you can easily accomplish common development tasks. This guide shows you how to select and add helper traits to your application, for things like Flash map integration, session handling, redirects, getting access to the request, and cross-origin resource sharing.</p><p><a href="helpers.html" class="btn">View »</a> </p>
 	</div>
 	<div class="span4">
 		<h3>Models</h3>
@@ -36,7 +36,7 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 	<div class="span4">
 		<h3>Configuration &amp; deployment</h3>
 		<p>In order to get your application into production, you'll need to understand how to set startup parameters, run initialization code, and deploy to an application server.</p><p><a href="configuration-deployment.html" class="btn">View »</a> </p>
-	</div>	
+	</div>
 </div>
 
 ## Advanced topics
