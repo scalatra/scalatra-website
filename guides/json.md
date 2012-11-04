@@ -1,4 +1,6 @@
-Scalatra makes JSON handling quick and easy. Let's say you've got a bare controller like this one:
+Scalatra makes JSON handling quick and easy. By adding a few library imports and several lines of code, you can get automatic JSON serialization and deserialization for any Scala case class.
+
+Let's say you've got a bare controller like this one:
 
 ```scala
 package com.example.swagger.sample
@@ -103,4 +105,8 @@ Your code should compile again at this point. Refresh your browser at [http://lo
 ```json
 [{"slug":"yellow-tulip","name":"Yellow Tulip"},{"slug":"red-rose","name":"Red Rose"},{"slug":"black-rose","name":"Black Rose"}]
 ```
+
+Inbound JSON can work the same way.
+
+TODO: find out how to make it work :).
 
