@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Scalatra 2.1.1 released
 ---
 
