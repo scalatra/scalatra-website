@@ -1,3 +1,12 @@
+---
+layout: default
+title: Scalatra Guides | Handling JSON
+---
+
+<div class="page-header">
+  <h1>Handling JSON</h1>
+</div>
+
 Scalatra makes JSON handling quick and easy. By adding a few library imports and several lines of code, you can get automatic JSON serialization and deserialization for any Scala case class.
 
 Let's say you've generated a brand-new Scalatra project, and accepted all the defaults, except you've used "FlowersController" instead of "MyScalatraServlet" for the servlet name. Then you trim things down so you've got a bare controller like this one:
