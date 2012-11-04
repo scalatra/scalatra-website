@@ -18,4 +18,6 @@ redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "with_toc_data"]
 permalink:   date
 paginate:    6
-paginate_file: news.html
+paginate_files: 
+  - news.html
+  - index.html
