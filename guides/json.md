@@ -42,9 +42,9 @@ We can quickly add a Flower model underneath our controller class, so that we've
 case class Flower(slug: String, name: String)
 ```
 
-If you wanted your application to be more structured, you might put that into a `models` directory. However, we're not too concerned about that for the purposes of this tutorial, so let's just put it in FlowersController.scala file for now.
+If you wanted your application to be more structured, you might put that in its own file in a `models` directory. However, we're not too concerned about that for the purposes of this tutorial, so let's just put it in `FlowersController.scala` for now.
 
-Now that you've got a model, let's add a data store. To keep things as simple as possible, we can just make a List of Flower objects, and hang them off of an object. Put this at the bottom of FlowersController.scala:
+Now that you've got a model, let's add a data store. Instead of taking a detour to talk about persistence libraries, we can just make a List of Flowers, and hang them off of an object. Put this at the bottom of FlowersController.scala:
 
 ```scala
 object FlowerData {
