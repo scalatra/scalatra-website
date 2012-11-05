@@ -21,7 +21,7 @@ class FlowersController extends ScalatraServlet {
 }
 ```
 
-This assumes that your ScalatraBootstrap file, in `src/main/scala/ScalatraBootstrap.scala, looks like this:
+This assumes that your ScalatraBootstrap file, in `src/main/scala/ScalatraBootstrap.scala`, looks like this:
 
 ```scala
 import com.example.app._
