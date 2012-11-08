@@ -295,6 +295,12 @@ win for complex log messages involving expensive `toString`s or many
 concatenations.
 
 
+### Changing the port in development
+
+Add `port in container.Configuration := 8081` to `build.sbt` if you would
+like your Scalatra app to run something other than the default port (8080).
+
+
 ## Production deployment
 
 <div class="alert alert-info">
