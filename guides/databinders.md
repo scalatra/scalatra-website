@@ -9,8 +9,38 @@ title: Scalatra Guides | Databinders
 
 Scalatra includes a very sophisticated set of databinders. 
 
-These allow you to parse incoming data, instantiate objects, and automatically apply validations to the objects. 
+These allow you to parse incoming data, instantiate objects, and automatically apply validations to the objects. This sounds like it might be quite complex, but once you've got the (quite minimal) infrastructure in place, it can dramatically simplify your code.
 
+Let's say we've got a Todolist application. Using a databinder, a controller 
+action for creating and saving a new Todo object might look like this:
+
+```scala
+  post("/todos") {
+    val cmd = command[CreateTodoCommand]
+    TodoData.execute(cmd).fold(
+      errors => halt(400, errors),
+      todo => redirect("/")
+    )
+  }  
+```
+
+You define the command separately, tell it which case class type it
+operates upon, and set up validations inside the command:
+
+```scala
+class CreateTodoCommand extends TodosCommand[Todo] { 
+
+  val name: Field[String] = asType[String]("name").notBlank.minLength(3) 
+
+}
+```
+
+You can perhaps see the benefits:
+
+* the validations DSL makes setting validation conditions on your case classes very easy.
+* validations are taken care of right at the front door of your application, so bad data never gets deep into your stack.
+* error handling and validation failures are extremely convenient, and you can use Scala's pattern matching to determine appropriate responses.
+ 
 To see how Scalatra's databinders work, let's make a TodoList application. It'll allow you to use Scalatra's new databinder support to validate incoming data and do data-related work by executing queries in commands.
 
 Generate a new project. We'll use `org.scalatra.example.databinding` domain as a namespace, you can change to your own domain throughout the codebase.
