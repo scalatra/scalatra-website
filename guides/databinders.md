@@ -14,7 +14,7 @@ These allow you to parse incoming data, instantiate objects, and automatically a
 Let's say we've got a Todolist application, and it contains a simple Todo class
 which is used for persistence:
 
-```
+```scala
 // A Todo object to use as a data model 
 case class Todo(id: Integer, name: String, done: Boolean = false)
 ```
