@@ -637,7 +637,7 @@ curl -X post -d name="Do that thing" http://localhost:8080/todos
 ]
 ```
 
-We've also got a new capability: we can post a JSON document to
+We've also got a new capability: we can POST a JSON document to
 http://localhost:8080/todos, and the `CreateTodoCommand` will handle that 
 as well:
 
