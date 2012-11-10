@@ -131,7 +131,18 @@ Your code should compile again at this point. Refresh your browser at [http://lo
 
 The `JValueResult` and `JsonJacksonSupport` traits which we mixed into the controller, combined with the `implicit val jsonFormats`, are now turning all Scalatra action result values into JSON.
 
-Inbound JSON can work the same way.
+Inbound JSON works in a similar way.
 
-TODO: find out how to make it work :).
+When a json request comes, which is identified by the Content-Type header or format param then scalatra will try to read the json body into an AST. 
+
+You can then extract a case class from this json AST.
+
+```scala
+case class Person(id: Int, name: String)
+
+post("/create") {
+  parsedBody.extract[Person]
+}
+```
+
 
