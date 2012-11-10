@@ -330,6 +330,7 @@ Then add a `handle` method:
       add(newTodo(c.name.value getOrElse ""))
   }
 ```
+
 Writing a `handle` function is something you'll do very often when using
 Scalatra command objects to do your databinding. Remember when we said
 in our quick theoretical discussion above, that the simplest Command
@@ -340,8 +341,8 @@ GoF version.
 In Scalatra, when you call `execute` on your Command, you're telling it to
 do two things:
 
-# run validations on all fields defined in your command
-# call the `handle` method to do whatever work you actually want to do
+* run validations on all fields defined in your command
+* call the `handle` method to do whatever work you actually want to do
 
 This is the reason that we've mixed `CommandHandler` into `TodoData`:
 it `TodoData` the ability to handle commands, as long as we give it
