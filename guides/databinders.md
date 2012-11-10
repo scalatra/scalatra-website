@@ -344,7 +344,9 @@ Fill in the action for `post("/todos")` like this:
     )
   }
 
-This won't compile yet. Before we make it compile, let's take it line by line. 
+This won't compile yet. Before we make it compile, let's take a line by line
+look at the action, to understand what it's doing. 
+
 First, we instantiate a new CreateTodoCommand: 
 
 ```scala
