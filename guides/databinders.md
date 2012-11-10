@@ -427,7 +427,7 @@ which we'll use in a moment.
 
 Then add a `handle` method:
 
-```
+```scala
   protected def handle: Handler  = {
     case c: CreateTodoCommand => 
       add(newTodo(c.name.value getOrElse ""))
