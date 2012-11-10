@@ -641,7 +641,9 @@ We've also got a new capability: we can POST a JSON document to
 http://localhost:8080/todos, and the `CreateTodoCommand` will handle that 
 as well:
 
-`curl -X post -i -H "Content-Type: Application/JSON" -d '{"name":"Find out how to use JSON commands", "done":true }' http://localhost:8080/todos`
+```bash
+curl -X post -i -H "Content-Type: Application/JSON" -d '{"name":"Find out how to use JSON commands", "done":true }' http://localhost:8080/todos
+```
 
 Scalatra reads the Content-Type header, takes the hint that what's coming in the
 door is JSON, and informs the `CreateTodoCommand` of that.
@@ -649,4 +651,6 @@ door is JSON, and informs the `CreateTodoCommand` of that.
 Alternately, if you prefer, you can just as easily send a `format` parameter
 instead of a `Content-Type` header:
 
-`curl -X post -i -d '{"name":"Find out how to use JSON commands", "done":true }' http://localhost:8080/todos?format=json`
+```bash
+curl -X post -i -d '{"name":"Find out how to use JSON commands", "done":true }' http://localhost:8080/todos?format=json
+```
