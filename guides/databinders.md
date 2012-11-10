@@ -75,9 +75,14 @@ You can perhaps see the benefits:
 * validations are taken care of right at the front door of your application. Bad data never gets deep into your stack.
 * error handling and validation failures are extremely convenient, and you can use Scala's pattern matching to determine appropriate responses.
 
-To see how Scalatra's databinders work, let's make a TodoList application. It'll allow you to use Scalatra's new databinder support to validate incoming data and do data-related work by executing queries in commands.
+To see how Scalatra's databinders work, let's create a TodoList application. 
+It'll allow you to use Scalatra's new databinder support to validate incoming 
+data and do data-related work by executing queries in commands.
 
-Generate a new project. We'll use `org.scalatra.example.databinding` domain as a namespace, you can change to your own domain throughout the codebase.
+## Generating the project
+
+Generate a new project. We'll use `org.scalatra.example.databinding` domain as 
+a namespace, you can change to your own domain throughout the codebase.
 
 ```bash
 g8 scalatra/scalatra-sbt.g8
