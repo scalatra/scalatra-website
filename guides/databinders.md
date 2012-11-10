@@ -67,7 +67,7 @@ characters, and then save the Todo object.
 However, since databinder commands in Scalatra have nothing to do with your 
 chosen persistence library, the concepts of databinding and validation are 
 completely de-coupled from the concept of persistence. You _might_ want to have
-the `execute` action of a command trigger a persistence function; just as easily,
+the `execute` method of a command trigger a persistence function; just as easily,
 you could serialize the Todo object and send it off to a queue, to have some other
 application do some work on it first.
 
