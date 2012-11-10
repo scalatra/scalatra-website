@@ -11,8 +11,16 @@ Scalatra includes a very sophisticated set of databinders.
 
 These allow you to parse incoming data, instantiate objects, and automatically apply validations to the objects. This sounds like it might be quite complex, but once you've got the (quite minimal) infrastructure in place, it can dramatically simplify your code.
 
-Let's say we've got a Todolist application. Using a databinder, a controller 
-action for creating and saving a new Todo object might look like this:
+Let's say we've got a Todolist application, and it contains a simple Todo class
+which is used for persistence:
+
+```
+// A Todo object to use as a data model 
+case class Todo(id: Integer, name: String, done: Boolean = false)
+```
+
+Using a databinder, a controller action for creating and saving a new Todo 
+object might look like this:
 
 ```scala
   post("/todos") {
@@ -35,12 +43,25 @@ class CreateTodoCommand extends TodosCommand[Todo] {
 }
 ```
 
+The `CreateTodoCommand` can automatically read incoming POST params or JSON, 
+populate the Todo case class's fields with whatever info it read, run validations
+to ensure that the `name` property is a non-empty `String` with at least 3
+characters, and then save the Todo object. 
+
+However, since databinder commands in Scalatra have nothing to do with your 
+chosen persistence library, the concepts of databinding and validation are 
+completely de-coupled from the concept of persistence. You _might_ want to have
+the `execute` action of a command trigger a persistence function; just as easily,
+you could serialize the Todo object and send it off to a queue, to have some other
+application do some work on it first.
+
 You can perhaps see the benefits:
 
+* data validation and persistence are de-coupled
 * the validations DSL makes setting validation conditions on your case classes very easy.
-* validations are taken care of right at the front door of your application, so bad data never gets deep into your stack.
+* validations are taken care of right at the front door of your application. Bad data never gets deep into your stack.
 * error handling and validation failures are extremely convenient, and you can use Scala's pattern matching to determine appropriate responses.
- 
+
 To see how Scalatra's databinders work, let's make a TodoList application. It'll allow you to use Scalatra's new databinder support to validate incoming data and do data-related work by executing queries in commands.
 
 Generate a new project. We'll use `org.scalatra.example.databinding` domain as a namespace, you can change to your own domain throughout the codebase.
