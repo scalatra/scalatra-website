@@ -208,18 +208,25 @@ Todo(1,Shampoo the cat)
 All pretty simple so far. Let's drop in some code which will allow us to add
 a new Todo object, using a Scalatra command.
 
-Scalatra's databinders are built using the classical [Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns) 
+## Commands in Scalatra
+
+Scalatra's databinders are built using the classical 
+[Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns) (Gof)
 [Command pattern](https://en.wikipedia.org/wiki/Command_pattern), with some
 small variations. In its simplest form, a command object has one method, 
 `execute`, which calls a method on another class, the _receiver_. The 
 command object can carry data with it, be passed from method to method, and
-finally tell the receiver to do some work when the `execute` method is called. It's a way to increase flexibility and de-couple calling methods from 
+finally tell the receiver to do some work when the `execute` method is called. 
+It's a way to increase flexibility and de-couple calling methods from 
 receivers. 
 
-In Scalatra, the Command objects used for databinding have a few things 
-added to them. First, they're able to automatically parse incoming parameters
+In Scalatra, `Command` objects used for databinding have a few things 
+added to them, which aren't in the traditional GoF Command Pattern. 
+First, they're able to automatically parse incoming parameters
 and populate model objects. Second, they can also run validations on the
 parameters to ensure data correctness. 
+
+### Adding a command to persist Todo objects
 
 We'll need a file in which to place our commands. Make a
 new folder in `org.scalatra.example.databinding`, and call it `commands`.
