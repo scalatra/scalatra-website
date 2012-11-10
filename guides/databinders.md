@@ -464,7 +464,7 @@ of all todos, and sorts the list.
 The `add` method returns a ModelValidation[Todo], which is carried around in the
 todo.successNel. Think of `successNel` as being like a two part variable 
 name. The result is either `Success[Model]` or 
-`Failure[NonEmptyList[ValdationError]]`. So you're getting
+`Failure[NonEmptyList[ValidationError]]`. So you're getting
 back either "success" OR a non-empty list ("Nel"). This type signature is
 in turn dictated by the return value needed by the `handle` method, above.
  
