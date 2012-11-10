@@ -288,6 +288,8 @@ from incoming params. It can do this because it inherits our abstract
 from the `ModelClass[S]` type parameter, and can inject params into the 
 Todo object because it's got the capabilities of `ParamsOnlyCommand`.
 
+### Validations
+
 CreateTodoCommand has an interesting `val` hanging around in the class
 body: 
 
@@ -303,6 +305,8 @@ it must have a `minLength(3)` (i.e. it must have a minimum length of
 
 That's it for the command setup. Now that we've got a command which can 
 create Todos, let's use it in a controller action to create a Todo object.
+
+## Using the new command in a controller action
 
 Back in TodosController, let's add a new route, and set it up to use this
 new capability. 
