@@ -198,7 +198,8 @@ Then put this action in your controller
   }
 ```
 
-Hitting [http://localhost:8080/todos/1](http://localhost:8080/todos/1) should now show you a Scala representation of the first Todo object:
+Hitting [http://localhost:8080/todos/1](http://localhost:8080/todos/1) should 
+now show you a Scala representation of the first Todo object:
 
 ```scala
 Todo(1,Shampoo the cat)
