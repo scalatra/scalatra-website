@@ -327,12 +327,13 @@ validation and error handling.
 Before we can use any command-related code, we'll need to import it into
 our controller class. You'll need:
 
+```scala
 // the Scalatra databinding handlers
 import org.scalatra.databinding._
 
 // our own Command classes
 import commands._
-
+```
 
 Fill in the action for `post("/todos")` like this:
 
