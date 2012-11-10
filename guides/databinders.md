@@ -82,6 +82,16 @@ To see how Scalatra's databinders work, let's create a TodoList application.
 It'll allow you to use Scalatra's new databinder support to validate incoming 
 data and do data-related work by executing queries in commands.
 
+### Downloading the sample project
+
+Before you start, you may wish to download the completed, runnable Todolist
+project. This may help you cross-check your own code if you run into any
+problems. It's available here:
+
+[https://github.com/scalatra/scalatra-databinding-example/](https://github.com/scalatra/scalatra-databinding-example/)
+
+
+
 ### Generating the project
 
 Generate a new project. We'll use `org.scalatra.example.databinding` domain as 
