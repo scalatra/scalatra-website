@@ -153,7 +153,7 @@ object TodoData {
   val idCounter = new AtomicInteger(3)
 
   /**
-   * Some fake flowers data so we can simulate retrievals.
+   * Some fake data so we can simulate retrievals.
    */
   var all = List(
       Todo(1, "Shampoo the cat"),
