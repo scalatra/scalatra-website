@@ -512,9 +512,11 @@ First, the incoming params (in this case only `name`) hit the `post("/todos")`
 method. A new `CreateTodoCommand` is instantiated: 
 `val cmd = command[CreateTodoCommand]`
 
-Then it gets executed: `TodoData.execute(cmd)`. Calling `execute` on the
-command causes all validations to run, and then the `handle` method is
-called. _Note: validations could fail!_
+_Note: The method `command[Foo]` comes courtesy of Scalatra's command support._
+
+Next, the command gets executed: `TodoData.execute(cmd)`. 
+Calling `execute` on the command causes all validations to run, and then 
+the `handle` method is called. _Note: validations could fail!_
 
 In this case, the `handle` command as implemented in `TodoData` adds a 
 new Todo object to the list of todos:  
