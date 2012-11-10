@@ -73,7 +73,7 @@ application do some work on it first.
 
 You can perhaps see the benefits:
 
-* data validation and persistence are de-coupled
+* data validation and persistence are de-coupled.
 * the validations DSL makes setting validation conditions on your case classes very easy.
 * validations are taken care of right at the front door of your application. Bad data never gets deep into your stack.
 * error handling and validation failures are extremely convenient, and you can use Scala's pattern matching to determine appropriate responses.
