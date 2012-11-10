@@ -9,7 +9,10 @@ title: Scalatra Guides | Databinders
 
 Scalatra includes a very sophisticated set of databinders. 
 
-These allow you to parse incoming data, instantiate objects, and automatically apply validations to the objects. This sounds like it might be quite complex, but once you've got the (quite minimal) infrastructure in place, it can dramatically simplify your code.
+These allow you to parse incoming data, instantiate objects, and automatically 
+apply validations to the objects. This sounds like it might be quite complex, 
+but once you've got the (quite minimal) infrastructure in place, it can 
+dramatically simplify your code.
 
 Let's say we've got a Todolist application, and it contains a simple Todo class
 which is used for persistence:
