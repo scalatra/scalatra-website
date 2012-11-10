@@ -79,7 +79,7 @@ To see how Scalatra's databinders work, let's create a TodoList application.
 It'll allow you to use Scalatra's new databinder support to validate incoming 
 data and do data-related work by executing queries in commands.
 
-## Generating the project
+### Generating the project
 
 Generate a new project. We'll use `org.scalatra.example.databinding` domain as 
 a namespace, you can change to your own domain throughout the codebase.
@@ -111,7 +111,7 @@ container:start
 ~;copy-resources;aux-compile
 ```
 
-## Setting up a model and fake datastore
+### Setting up a model and fake datastore
 
 Before we start actually building the controller, let's set up some fake data. 
 
@@ -174,7 +174,7 @@ has methods on it to access all Todos, find out how many haven't yet been
 completed (using the `remaining` method), and instantiating a new `Todo`
 object with an auto-incrementing integer primary key.
 
-## Retrieving objects in a controller
+### Retrieving objects in a controller
 
 Let's move back to the TodosController, and get databinding working. 
 
@@ -208,7 +208,7 @@ Todo(1,Shampoo the cat)
 All pretty simple so far. Let's drop in some code which will allow us to add
 a new Todo object, using a Scalatra command.
 
-## Commands in Scalatra
+### Commands in Scalatra
 
 Scalatra's databinders are built using the classical 
 [Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns) (Gof)
@@ -226,7 +226,7 @@ First, they're able to automatically parse incoming parameters
 and populate model objects. Second, they can also run validations on the
 parameters to ensure data correctness. 
 
-### Adding a command to persist Todo objects
+#### Adding a command to persist Todo objects
 
 We'll need a file in which to place our commands. Make a
 new folder in `org.scalatra.example.databinding`, and call it `commands`.
@@ -288,7 +288,7 @@ from incoming params. It can do this because it inherits our abstract
 from the `ModelClass[S]` type parameter, and can inject params into the 
 Todo object because it's got the capabilities of `ParamsOnlyCommand`.
 
-### Validations
+#### Validations
 
 CreateTodoCommand has an interesting `val` hanging around in the class
 body: 
@@ -306,7 +306,7 @@ it must have a `minLength(3)` (i.e. it must have a minimum length of
 That's it for the command setup. Now that we've got a command which can 
 create Todos, let's use it in a controller action to create a Todo object.
 
-## Using the new command in a controller action
+### Using the new command in a controller action
 
 Back in TodosController, let's add a new route, and set it up to use this
 new capability. 
@@ -525,7 +525,7 @@ of the `TodoData.execute` method call:
 If we get back errors (from either the validations or the `allCatch` block), 
 we halt with a 400 status. If we get back a `todo`, we redirect to "/".
 
-## Using Scalatra's databinders with JSON
+### Using Scalatra's databinders with JSON
  
 So far, we've been doing everything with params data only. We can easily
 switch to using JSON instead. Conveniently, when you enable the JSON support with
