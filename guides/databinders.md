@@ -49,7 +49,7 @@ class CreateTodoCommand extends TodosCommand[Todo] {
 Several things happen when `execute` is called. First, validations
 are run, and then the command receiver's `handle` method does some work.
 
-Our `handle` command for creating a new Todo object might trigger a persistence 
+Our `handle` method for creating a new Todo object might trigger a persistence 
 function, like this:
 
 ```scala
