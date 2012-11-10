@@ -521,10 +521,10 @@ of the `TodoData.execute` method call:
     todo => redirect("/")
   )
 ```
-If we get back errors, we halt with a 400 status. If we get back a `todo`,
-we redirect to "/".
+If we get back errors (from either the validations or the `allCatch` block), 
+we halt with a 400 status. If we get back a `todo`, we redirect to "/".
 
-Using Scalatra's databinders with JSON
+## Using Scalatra's databinders with JSON
  
 So far, we've been doing everything with params data only. We can easily
 switch to using JSON instead. Conveniently, when you enable the JSON support with
