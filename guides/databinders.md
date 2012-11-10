@@ -3,6 +3,10 @@ layout: default
 title: Scalatra Guides | Databinders
 ---
 
+<div class="page-header">
+<h1>Databinders</h1>
+</div>
+
 Scalatra includes a very sophisticated set of databinders. 
 
 These allow you to parse incoming data, instantiate objects, and automatically apply validations to the objects. 
