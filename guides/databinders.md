@@ -90,8 +90,6 @@ problems. It's available here:
 
 [https://github.com/scalatra/scalatra-databinding-example/](https://github.com/scalatra/scalatra-databinding-example/)
 
-
-
 ### Generating the project
 
 Generate a new project. We'll use `org.scalatra.example.databinding` domain as 
