@@ -590,7 +590,7 @@ and adding `with JValueResult` to the TodosController class declaration.
 
 That's it for your controller. Now let's fix up the commands.
 
-In commands/TodoCommands.scala, remove `with ParamsOnlySupport` from the 
+In `commands/TodoCommands.scala`, remove `with ParamsOnlySupport` from the 
 `abstract class TodosCommand[S]` and add `with JsonCommand` instead.
 
 Add the following imports to the top of the file:
