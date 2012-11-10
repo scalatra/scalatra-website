@@ -345,7 +345,7 @@ do two things:
 * call the `handle` method to do whatever work you actually want to do
 
 This is the reason that we've mixed `CommandHandler` into `TodoData`:
-it `TodoData` the ability to handle commands, as long as we give it
+it gives `TodoData` the ability to handle commands, as long as we give it
 a `handle` method. In our case, the `handle` method uses pattern matching
 to see what command is being executed, and (in this case) adds a new Todo
 object with the value of the command's `name` field.
