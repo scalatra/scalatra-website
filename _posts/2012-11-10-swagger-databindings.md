@@ -14,6 +14,9 @@ This week saw publication of a long
 We've also published a pre-release 
 Scalatra Guide on the new 
 [databinder commands](http://scalatra.org/2.2/guides/databinders.html) in 2.2.
+If you want to try it out, make sure you 
+`g8 scalatra/scalatra-sbt.g8 --branch develop` and append `-SNAPSHOT` to all the
+dependencies in the Guide, as it's written for 2.2.0 final. 
 
 Next up is a guide to Scalatra's Atmosphere support. We also plan to fill in
 certain other under-documented aspects of Scalatra, notably the lamentably
