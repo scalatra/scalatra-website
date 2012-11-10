@@ -270,10 +270,8 @@ We then tell TodoData, our fake datastore, to `execute` the `cmd`. At
 present, this is holding up compilation: `TodoData` has no
 `execute` method. Let's fix this. 
 
-The first thing we'll need is some logging code.
-
-TODO: Why is this the case? It seems a little strange to require logging
-code in order to get Command support, is it strictly necessary?
+First, let's make a logger. This isn't strictly necessary, but it's a nice
+thing to have around.
 
 Create a new folder, `utils`, in `org.scalatra.example.databinding`, and 
 put the following code into `Logger.scala` inside it:
