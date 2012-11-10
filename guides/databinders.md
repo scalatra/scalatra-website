@@ -645,7 +645,7 @@ as well:
 curl -X post -i -H "Content-Type: Application/JSON" -d '{"name":"Find out how to use JSON commands", "done":true }' http://localhost:8080/todos
 ```
 
-Scalatra reads the Content-Type header, takes the hint that what's coming in the
+Scalatra reads the `Content-Type` header, takes the hint that what's coming in the
 door is JSON, and informs the `CreateTodoCommand` of that.
 
 Alternately, if you prefer, you can just as easily send a `format` parameter
