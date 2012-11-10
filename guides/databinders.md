@@ -11,7 +11,7 @@ To see how Scalatra's databinders work, let's make a TodoList application. It'll
 
 Generate a new project. We'll use `org.scalatra.example.databinding` domain as a namespace, you can change to your own domain throughout the codebase.
 
-```shell
+```bash
 g8 scalatra/scalatra-sbt.g8
 organization [com.example]: org.scalatra 
 package [com.example.myapp]: org.scalatra.example.databinding
