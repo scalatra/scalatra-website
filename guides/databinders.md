@@ -502,7 +502,7 @@ method. A new `CreateTodoCommand` is instantiated:
 
 Then it gets executed: `TodoData.execute(cmd)`. Calling `execute` on the
 command causes all validations to run, and then the `handle` method is
-called. Note: validations could fail!
+called. _Note: validations could fail!_
 
 In this case, the `handle` command as implemented in `TodoData` adds a 
 new Todo object to the list of todos:  
@@ -510,7 +510,7 @@ new Todo object to the list of todos:
 `add(newTodo(c.name.value getOrElse ""))`
 
 The `add` method attempts to add the new Todo object to the datastore. 
-This could also potentially fail. 
+_This could also potentially fail._
 
 What happens in the failure cases? This is determined by the remainder
 of the `TodoData.execute` method call:
