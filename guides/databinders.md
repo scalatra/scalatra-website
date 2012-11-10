@@ -182,7 +182,7 @@ object TodoData {
 For the purposes of this example, we won't bother with persisting our Todos 
 to disk. The `TodoData` object acts as temporary storage of our Todos, and 
 has methods on it to access all Todos, find out how many haven't yet been 
-completed (using the `remaining` method), and instantiating a new `Todo`
+completed (using the `remaining` method), and instantiate a new `Todo`
 object with an auto-incrementing integer primary key.
 
 ### Retrieving objects in a controller
