@@ -43,6 +43,19 @@ class CreateTodoCommand extends TodosCommand[Todo] {
 }
 ```
 
+The command's executor does work when `execute` is called. First, validations
+are run, and then the command executor's `handle` method does some work.
+
+Our command for creating a new Todo object might trigger a persistence 
+function, like this:
+
+```scala
+  protected def handle: Handler  = {
+    case c: CreateTodoCommand => 
+      add(newTodo(~c.name.value))
+  }
+```
+
 The `CreateTodoCommand` can automatically read incoming POST params or JSON, 
 populate the Todo case class's fields with whatever info it read, run validations
 to ensure that the `name` property is a non-empty `String` with at least 3
