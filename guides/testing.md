@@ -148,7 +148,7 @@ available courtesy of
 
 #### How do I set a servlet init parameter?
 
-scalatra-test is built on Jetty's [ServletTester] [ServletTester], so it
+scalatra-test is built on an embedded Jetty server, so it
 does not read your web.xml.  Most things you can do in a web.xml can be
 done from the context on the tester object.  In this case, call this in
 the constructor of your servlet:
@@ -158,7 +158,6 @@ servletContextHandler.setInitParameter("db.username", "ross")
 ```
 
 [Specs2 Quickstart]: http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
-[ServletTester]: http://download.eclipse.org/jetty/stable-7/apidocs/org/eclipse/jetty/testing/ServletTester.html
 
 #### How do I test file uploads?
 
