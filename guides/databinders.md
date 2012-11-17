@@ -348,6 +348,7 @@ import commands._
 
 Fill in the action for `post("/todos")` like this:
 
+```scala
   post("/todos") {
     val cmd = command[CreateTodoCommand]
     TodoData.execute(cmd).fold(
@@ -355,6 +356,7 @@ Fill in the action for `post("/todos")` like this:
       todo => redirect("/")
     )
   }
+```
 
 This won't compile yet. Before we make it compile, let's take a line by line
 look at the action, to understand what it's doing. 
