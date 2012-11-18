@@ -357,10 +357,12 @@ to the public internet.</p>
 <p>Having said all that, the basic case is extremely easy, as you'll see in a moment.</p>
 </div>
 
-First download and extract tomcat:
+First download and extract tomcat. The wget link below may become out of date,
+visit http://tomcat.apache.org/download-70.cgi in your browser to find the
+latest version if that one 404s.
 
-    $ wget http://mirror.lividpenguin.com/pub/apache/tomcat/tomcat-7/v7.0.29/bin/apache-tomcat-7.0.29.tar.gz
-    $ mv apache-tomcat-7.0.29.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
+    $ wget http://mirror.lividpenguin.com/pub/apache/tomcat/tomcat-7/v7.0.32/bin/apache-tomcat-7.0.32.tar.gz
+    $ mv apache-tomcat-7.0.32.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
     $ tar -xvzf ~/Desktop/tomcat.tar.gz
 
 Ok, Tomcat is now installed.
