@@ -9,10 +9,9 @@ title: Scalatra Guides | Databinders
 
 Scalatra includes a very sophisticated set of databinders. 
 
-These allow you to parse incoming data, instantiate objects, and automatically 
-apply validations to the objects. This sounds like it might be quite complex, 
-but once you've got the (quite minimal) infrastructure in place, it can 
-dramatically simplify your code.
+These allow you to parse incoming data, instantiate command objects, and automatically apply validations to the objects. This sounds like it 
+might be quite complex, but once you've got the (quite minimal) 
+infrastructure in place, it can dramatically simplify your code.
 
 Let's say we've got a Todolist application, and it contains a simple Todo class
 which is used for persistence:
@@ -60,9 +59,9 @@ function, like this:
 ```
 
 The `CreateTodoCommand` can automatically read incoming POST params or JSON, 
-populate the Todo case class's fields with whatever info it read, run validations
-to ensure that the `name` property is a non-empty `String` with at least 3
-characters, and then save the Todo object. 
+populate itself with whatever info it read, run validations to ensure that 
+the `name` property is a non-empty `String` with at least 3 characters, 
+and then, in this case, save the Todo object. 
 
 However, since databinder commands in Scalatra have nothing to do with your 
 chosen persistence library, the concepts of databinding and validation are 
@@ -74,9 +73,9 @@ another object, or transform it in some way.
 You can perhaps see the benefits:
 
 * data validation and persistence are de-coupled.
-* the validations DSL makes setting validation conditions on your case classes very easy.
+* the validations DSL makes setting validation conditions very easy.
 * validations are taken care of right at the front door of your application. Bad data never gets deep into your stack.
-* error handling and validation failures are extremely convenient, and you can use Scala's pattern matching to determine appropriate responses.
+* error handling and validation failures are more convenient, and you can use Scala's pattern matching to determine appropriate responses.
 
 To see how Scalatra's databinders work, let's create a TodoList application. 
 It'll allow you to use Scalatra's new databinder support to validate incoming 
