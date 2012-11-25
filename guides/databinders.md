@@ -313,11 +313,9 @@ case class type it's operating upon.
 It allows population of a command's fields from incoming params.
 
 Finally, there's the concrete `CreateTodoCommand` class. This is the first
-command object we'll use, and its job will be to create a Todo object
-from incoming params. It can do this because it inherits our abstract
-`TodosCommand[Todo]` class, which knows we're operating on Todo objects
-from the `ModelClass[S]` type parameter, and can inject params into the 
-Todo object because it's got the capabilities of `ParamsOnlyCommand`.
+command object we'll use, and its job will be to validate incoming params
+for a Todo object. Once that's done, we'll use the command receiver's `handle`
+method to persist a new Todo object in our fake datastore.
 
 #### Validations
 
