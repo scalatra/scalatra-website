@@ -332,7 +332,8 @@ be `notBlank` (i.e. it can't be an empty string or a null value), and
 it must have a `minLength(3)` (i.e. it must have a minimum length of
 3 characters).
 
-A full list of available validations is available at TODO.
+A full list of available validations is available in the 
+[Validators API docs](http://scalatra.org/2.2/api/#org.scalatra.validation.Validators$).
 
 That's it for the command setup. Now that we've got a command which can 
 create Todos, let's use it in a controller action to create a Todo object.
@@ -683,4 +684,6 @@ curl -X post -i -d '{"name":"Find out how to use JSON commands", "done":true }' 
 At this point, your project should be very similar to the [JSON commands](https://github.com/scalatra/scalatra-databinding-example/tree/json-binding)
 Git example. Take a look at that code if you're having any problems. 
 
-TODO: writing your own validations.
+
+### Writing your own validations.
+
