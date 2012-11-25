@@ -87,7 +87,7 @@ You can perhaps see the benefits:
 * validations are taken care of right at the front door of your application. Bad data never gets deep into your stack.
 * error handling and validation failures are more convenient, and you can use Scala's pattern matching to determine appropriate responses.
 
-
+## The TodoList application
 
 To see how Scalatra's databinders work, let's create a TodoList application. 
 It'll allow you to use Scalatra's new databinder support to validate incoming 
@@ -100,6 +100,16 @@ project. This may help you cross-check your own code if you run into any
 problems. It's available here:
 
 [https://github.com/scalatra/scalatra-databinding-example/](https://github.com/scalatra/scalatra-databinding-example/)
+
+This tutorial will start by generating a fresh project, talk you through
+the project setup, and then show you several different ways of using 
+databinders and commands in Scalatra. There are a few different git tags
+available:
+
+* [Params binding](https://github.com/scalatra/scalatra-databinding-example/tree/paramsonly-binding) shows the use of incoming HTTP params
+with Command objects.
+
+* [JSON commands](https://github.com/scalatra/scalatra-databinding-example/tree/json-binding) shows the use of JSON with command objects.
 
 ### Generating the project
 
@@ -551,6 +561,9 @@ of the `TodoData.execute` method call:
 If we get back errors (from either the validations or the `allCatch` block), 
 we halt with a 400 status. If we get back a `todo`, we redirect to "/".
 
+At this point, your project should be very similar to what's tagged in the
+example project's Git repository, in the [params binding](https://github.com/scalatra/scalatra-databinding-example/tree/paramsonly-binding) example. 
+
 ### Using Scalatra's databinders with JSON
  
 So far, we've been doing everything with params data only. We can easily
@@ -667,3 +680,7 @@ instead of a `Content-Type` header:
 ```bash
 curl -X post -i -d '{"name":"Find out how to use JSON commands", "done":true }' http://localhost:8080/todos?format=json
 ```
+
+At this point, your project should be very similar to the [JSON commands](https://github.com/scalatra/scalatra-databinding-example/tree/json-binding)
+Git example. Take a look at that code if you're having any problems. 
+
