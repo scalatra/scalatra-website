@@ -332,6 +332,8 @@ be `notBlank` (i.e. it can't be an empty string or a null value), and
 it must have a `minLength(3)` (i.e. it must have a minimum length of
 3 characters).
 
+A full list of available validations is available at TODO.
+
 That's it for the command setup. Now that we've got a command which can 
 create Todos, let's use it in a controller action to create a Todo object.
 
