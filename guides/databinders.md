@@ -773,7 +773,8 @@ stdlib - it can be considered a 2-value sequence:
 
 where the right-hand value means Success.
 
-^^^^^^TODO: that is bullshit ^^^^^^^^
+TODO: that is bullshit
+
 talk to casualjim and figure out what the types really are. But that's
 my present understanding of what's going on with that _ flatMap voodoo.
 
