@@ -762,7 +762,8 @@ the output of `.minLength(3)` is fed into `_` and forms the input for our
 `startsWithCap` function. The use of `flatMap` here is a 
 [Scala trick](http://www.brunton-spall.co.uk/post/2011/12/02/map-map-and-flatmap-in-scala/)
 to pull the value `"Walk the dog"` out of `Success("Walk the dog")
-`, because Scalatra's `Success("Foo")` operates much like an Option("Foo").
-
+`, because Scalatra's `Success("Foo")` operates much like an 
+`Option("Foo")` - it can be considered a sequence that is either empty 
+or has 1 item.
 
 
