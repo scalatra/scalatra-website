@@ -802,8 +802,9 @@ for use in our application.
 So let's use it. Now that we've defined the validator and imported it, 
 all we need to do is add `.startsWithCap()` to our validation line:
 
-`val name: Field[String] = asType[String]("name").notBlank.minLength(3).startsWithCap()
-`
+```scala
+val name: Field[String] = asType[String]("name").notBlank.minLength(3).startsWithCap()
+```
 
 It's worth noting that we could just as easily have defined our new
 validation in a library, imported it, and pimped our application. This
