@@ -254,8 +254,8 @@ receivers.
 
 In Scalatra, `Command` objects used for databinding have a few things 
 added to them, which aren't in the traditional GoF Command Pattern. 
-First, they're able to automatically parse incoming parameters
-and populate model objects. Second, they can also run validations on the
+First, they're able to automatically read incoming parameters
+and populate themselves with data. Second, they can also run validations on the
 parameters to ensure data correctness. 
 
 #### Adding a command to persist Todo objects
