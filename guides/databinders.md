@@ -736,14 +736,13 @@ The heart of the validation function is this bit of code here:
 
 `new PredicateValidator[String](b.name, """^[A-Z,0-9]""".r.findFirstIn(_).isDefined`
 
-To paraphrase, that's saying that we're going to run a new `PredicateValidator[String]` on `b.name`, and that validation should 
-pass if the regex `[A-Z,0-9]` applies to `b.name`.
+To paraphrase, we're going to run a validation
+on the FieldValidator's name, and that the validation should pass if 
+the regex `[A-Z,0-9]` matches the first letter of the incoming string.
 
 What's that `_ flatMap` doing there at the start of the validation 
-function?
-
-Eventually, we're going to chain together our new custom validation
-with the rest of the validations, like this:
+function? This takes a bit of explaining. Eventually, we're going to chain together our new `startsWithCap` validation with the rest of the 
+validations we've already defined, like this:
 
 ```scala
   val name: Field[String] = asType[String]("name").notBlank.minLength(3).startsWithCap()
@@ -761,22 +760,18 @@ Error with a validation failure message inside it, and no more
 validations in the chain are run.
 
 When our custom validation runs, it is taking as input the output of the
-previous validation function. So in our case, the output of 
+previous validation function. So in our case, the success output of 
 `.minLength(3)` is fed into `_` and forms the input for our `startsWithCap`
-function. The use of `flatMap` here is a 
+function.
+
+The use of `flatMap` in that function is a 
 [Scala trick](http://www.brunton-spall.co.uk/post/2011/12/02/map-map-and-flatmap-in-scala/)
 to pull the value `"Walk the dog"` out of `Success("Walk the dog")
-`, because `Success("Foo")`, operates much like an `Either` from the 
-stdlib - it can be considered a 2-value sequence: 
+`, because a validation's return type operates much like an `Either` 
+from the stdlib - it can be considered a 2-value sequence, with a type
+signature something like this: 
 
 `Validation[Error(message), Success(value)]`
-
-where the right-hand value means Success.
-
-TODO: that is bullshit
-
-talk to casualjim and figure out what the types really are. But that's
-my present understanding of what's going on with that _ flatMap voodoo.
 
 Back to the task at hand. 
 
@@ -807,7 +802,7 @@ for use in our application.
 So let's use it. Now that we've defined the validator and imported it, 
 all we need to do is add `.startsWithCap()` to our validation line:
 
-`  val name: Field[String] = asType[String]("name").notBlank.minLength(3).startsWithCap()
+`val name: Field[String] = asType[String]("name").notBlank.minLength(3).startsWithCap()
 `
 
 It's worth noting that we could just as easily have defined our new
