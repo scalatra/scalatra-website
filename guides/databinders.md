@@ -759,9 +759,10 @@ A successful validation for a `name` of `Walk the dog` is of type
 `Success("Walk the dog")`. When our custom validation is run, it is taking
 as input the output of the previous validation function. So in our case,
 the output of `.minLength(3)` is fed into `_` and forms the input for our
-`startsWithCap` function. The use of `flatMap` here is a Scala trick
+`startsWithCap` function. The use of `flatMap` here is a 
+[Scala trick](http://www.brunton-spall.co.uk/post/2011/12/02/map-map-and-flatmap-in-scala/)
 to pull the value `"Walk the dog"` out of `Success("Walk the dog")
-`.
+`, because Scalatra's `Success("Foo")` operates much like an Option("Foo").
 
 
 
