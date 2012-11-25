@@ -63,7 +63,15 @@ populate itself with whatever info it read, run validations to ensure that
 the `name` property is a non-empty `String` with at least 3 characters, 
 and then, in this case, save the Todo object. 
 
-However, since databinder commands in Scalatra have nothing to do with your 
+Note that in this code, the incoming params are not automatically 
+pushed onto a new instance of the Todo case class. This is because Scalatra
+users habitually use wildly varying approaches to persistence frameworks and
+have very different needs from data validation. What the `CreateTodoCommand` 
+object gives you instead, is a way to componentize and re-use the same Command
+object across any part of your application which requires the creation of a Todo, 
+and easily apply validation conditions based on incoming parameters.
+
+Since databinder commands in Scalatra have nothing to do with your 
 chosen persistence library, the concepts of databinding and validation are 
 completely de-coupled from the concept of persistence. You _might_ want to have
 the `execute` method of a command trigger a persistence function; just as easily,
@@ -76,6 +84,8 @@ You can perhaps see the benefits:
 * the validations DSL makes setting validation conditions very easy.
 * validations are taken care of right at the front door of your application. Bad data never gets deep into your stack.
 * error handling and validation failures are more convenient, and you can use Scala's pattern matching to determine appropriate responses.
+
+
 
 To see how Scalatra's databinders work, let's create a TodoList application. 
 It'll allow you to use Scalatra's new databinder support to validate incoming 
