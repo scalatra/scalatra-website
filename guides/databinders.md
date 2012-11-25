@@ -766,4 +766,42 @@ to pull the value `"Walk the dog"` out of `Success("Walk the dog")
 `Option("Foo")` - it can be considered a sequence that is either empty 
 or has 1 item.
 
+Back to the task at hand. 
+
+All we need to do now is make our application aware of our new validation
+code, and then apply it.
+
+Scalatra's `FieldDescriptor` trait already exists, but we can use the
+Pimp My Library technique to add in our new validation code. 
+
+Let's add to our abstract `TodosCommand` class:
+
+```scala
+abstract class TodosCommand[S](implicit mf: Manifest[S]) extends ModelCommand[S] with JsonCommand {
+  
+  /**
+   * Pimp the [org.scalatra.databinding.FieldDescriptor] class with our [TodosStringValidations]
+   * 
+   * This adds the validation to the binding for the FieldDescriptor's b.validateWith function.
+   */
+  implicit def todoStringValidators(b: FieldDescriptor[String]) = new TodosStringValidations(b)
+}
+```
+
+Using `implicit def`, we're decorating Scalatra's `FieldDescriptor[String]`
+with our new `TodosStringValidations(b)`. This makes the code available
+for use in our application. 
+
+So let's use it. Now that we've defined the validator and imported it, 
+all we need to do is add `.startsWithCap()` to our validation line:
+
+`  val name: Field[String] = asType[String]("name").notBlank.minLength(3).startsWithCap()
+`
+
+It's worth noting that we could just as easily have defined our new
+validation in a library, imported it, and pimped our application. This
+gives you the ability to build up whatever custom validators you'd like 
+and carry them around between projects.
+
+
 
