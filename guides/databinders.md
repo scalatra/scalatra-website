@@ -66,10 +66,12 @@ and then, in this case, save the Todo object.
 Note that in this code, the incoming params are not automatically 
 pushed onto a new instance of the Todo case class. This is because Scalatra
 users habitually use wildly varying approaches to persistence frameworks and
-have very different needs from data validation. What the `CreateTodoCommand` 
-object gives you instead, is a way to componentize and re-use the same Command
-object across any part of your application which requires the creation of a Todo, 
-and easily apply validation conditions based on incoming parameters.
+have very different needs when it comes to data validation. 
+
+What the `CreateTodoCommand` object gives you instead, is a way to componentize 
+and re-use the same Command object across any part of your application which
+requires the creation of a Todo, and easily apply validation conditions 
+based on incoming parameters.
 
 Since databinder commands in Scalatra have nothing to do with your 
 chosen persistence library, the concepts of databinding and validation are 
