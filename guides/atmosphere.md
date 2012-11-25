@@ -41,17 +41,30 @@ class MyAtmoServlet {
   }
 ```
 
+As you can see, there are quite a few kinds of events which Scalatra's 
+atmosphere integration can deal with. 
+
+*TODO: is there a full list of these?*
+
 Scala pattern matching is used to detect which type of event has occurred, and
 the function for each case can be set to do something about the event. For
 instance, you might want to broadcast a message to all connected clients when
 a new client connects:
 
 ```scala
-  case Connected =>
+  case Connected => notifyJoin(uuid)
+```
+
+And you'd notify clients like this:
+
+*TODO: pseudocode alert!*
+
+```scala
+  def notifyJoin(uuid) {
     println("Client %s is connected" format uuid)
     broadcast(("author" -> "Someone") ~ 
       ("message" -> "joined the room") ~ 
       ("time" -> (new Date().getTime.toString )), Everyone)
-```
+  }
 
 
