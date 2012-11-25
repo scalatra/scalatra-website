@@ -683,3 +683,4 @@ curl -X post -i -d '{"name":"Find out how to use JSON commands", "done":true }' 
 At this point, your project should be very similar to the [JSON commands](https://github.com/scalatra/scalatra-databinding-example/tree/json-binding)
 Git example. Take a look at that code if you're having any problems. 
 
+TODO: writing your own validations.
