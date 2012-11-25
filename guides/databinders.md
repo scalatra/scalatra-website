@@ -310,8 +310,7 @@ and it's abstract. It gives the Command object the ability to know which
 case class type it's operating upon.
 
 `ParamsOnlyCommand` is basically a Command with type conversion enabled. 
-It allows population of a model's fields from incoming params
-when it's operating upon a Scala case class.
+It allows population of a command's fields from incoming params.
 
 Finally, there's the concrete `CreateTodoCommand` class. This is the first
 command object we'll use, and its job will be to create a Todo object
