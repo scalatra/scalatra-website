@@ -23,7 +23,7 @@ realtime for the JVM.
 TODO: atmo dependency here
 ```
 
-Basic setup of an Atmosphere-enable route looks like this:
+Basic setup of an Atmosphere-enabled route looks like this:
 
 ```scala
 class MyAtmoServlet {
@@ -41,5 +41,17 @@ class MyAtmoServlet {
   }
 ```
 
+Scala pattern matching is used to detect which type of event has occurred, and
+the function for each case can be set to do something about the event. For
+instance, you might want to broadcast a message to all connected clients when
+a new client connects:
+
+```scala
+  case Connected =>
+    println("Client %s is connected" format uuid)
+    broadcast(("author" -> "Someone") ~ 
+      ("message" -> "joined the room") ~ 
+      ("time" -> (new Date().getTime.toString )), Everyone)
+```
 
 
