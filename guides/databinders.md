@@ -684,6 +684,84 @@ curl -X post -i -d '{"name":"Find out how to use JSON commands", "done":true }' 
 At this point, your project should be very similar to the [JSON commands](https://github.com/scalatra/scalatra-databinding-example/tree/json-binding)
 Git example. Take a look at that code if you're having any problems. 
 
-
 ### Writing your own validations.
+
+Scalatra gives you a fairly comprehensive list of 
+[pre-built validations](http://scalatra.org/2.2/api/#org.scalatra.validation.Validators$),
+but you can also write your own custom validators fairly easily. 
+
+A Scalatra [Command](http://scalatra.org/2.2/api/#org.scalatra.databinding.Command) is partly composed of [Field](http://scalatra.org/2.2/api/#org.scalatra.databinding.Field) objects, each of which has a 
+[FieldDescriptor](http://scalatra.org/2.2/api/#org.scalatra.databinding.FieldDescriptor) which acts as a kind of builder for the Field.
+
+In order to write a validator, we need to do two things. 
+
+First, we need to write a class to carry around our custom validations.
+
+Second, we need to [pimp](http://www.artima.com/weblogs/viewpost.jsp?thread=179766) Scalatra's FieldDescriptor class so that it's got 
+access to our new validation. Let's see this in action.
+
+We'll need to decide what kind of validation to make. Since all-lower-case
+text is the mark of the pathologically lazy, let's hold ourselves to a
+higher standard, and define a validation which will force users of our 
+application to capitalize the first letter of the `name` field in their 
+`Todo` objects.
+
+Open up your `TodoCommands.scala` file, and drop this into it above the
+`abstract class TodosCommand`:
+
+```scala
+/**
+ * A class to keep our custom String validations in.
+ * 
+ * Note that it takes a FieldDescriptor[String] binding as a parameter.
+ * This is so that we can pimp the FieldDescriptor. 
+ */
+class TodosStringValidations(b: FieldDescriptor[String]) {
+
+  // define a validation which we can apply to a [Field]
+  def startsWithCap(message: String = "%s must start with a capital letter.") = b.validateWith(_ => 
+    _ flatMap { new PredicateValidator[String](b.name, """^[A-Z,0-9]""".r.findFirstIn(_).isDefined, message).validate(_) }
+  )
+}
+```
+
+The `TodosStringValidations` class is just a container for our 
+validations.
+
+Inside it, there's a `startsWithCap` function, which takes a `String`
+parameter for the validation `message`, and can apply itself to a
+`FieldDescriptor[String]` via binding `b`, using `b.validateWith`.
+
+The heart of the validation function is this bit of code here:
+
+`new PredicateValidator[String](b.name, """^[A-Z,0-9]""".r.findFirstIn(_).isDefined`
+
+To paraphrase, that's saying that we're going to run a new `PredicateValidator[String]` on `b.name`, and that validation should 
+pass if the regex `[A-Z,0-9]` applies to `b.name`.
+
+What's that `_ flatMap` doing there at the start of the validation 
+function?
+
+Eventually, we're going to chain together our new custom validation
+with the rest of the validations, like this:
+
+```scala
+  val name: Field[String] = asType[String]("name").notBlank.minLength(3).startsWithCap()
+```
+
+Validations are evaluated in a chain, starting on the left, and proceeding
+rightwards. Each validation condition is a logical AND. 
+
+Let's assume that we try to validate a new `Todo` with the name
+"Walk the dog".
+
+A successful validation for a `name` of `Walk the dog` is of type 
+`Success("Walk the dog")`. When our custom validation is run, it is taking
+as input the output of the previous validation function. So in our case,
+the output of `.minLength(3)` is fed into `_` and forms the input for our
+`startsWithCap` function. The use of `flatMap` here is a Scala trick
+to pull the value `"Walk the dog"` out of `Success("Walk the dog")
+`.
+
+
 
