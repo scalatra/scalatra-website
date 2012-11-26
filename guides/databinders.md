@@ -755,8 +755,8 @@ Let's assume that we try to validate a new `Todo` with the name
 "Walk the dog".
 
 A successful validation for a `name` of `Walk the dog` is of type 
-`Success("Walk the dog")`. In contrast, a failed validation returns an
-Error with a validation failure message inside it, and no more
+`Success("Walk the dog")`. In contrast, a failed validation returns a
+Failure(ValidationError) with a failure message inside it, and no more
 validations in the chain are run.
 
 When our custom validation runs, it is taking as input the output of the
@@ -767,11 +767,11 @@ function.
 The use of `flatMap` in that function is a 
 [Scala trick](http://www.brunton-spall.co.uk/post/2011/12/02/map-map-and-flatmap-in-scala/)
 to pull the value `"Walk the dog"` out of `Success("Walk the dog")
-`, because a validation's return type operates much like an `Either` 
+`, because a Validation's return type operates much like an `Either` 
 from the stdlib - it can be considered a 2-value sequence, with a type
 signature something like this: 
 
-`Validation[Error(message), Success(value)]`
+`Validation[Failure(error), Success(data)]`
 
 Back to the task at hand. 
 
