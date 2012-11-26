@@ -756,7 +756,7 @@ Let's assume that we try to validate a new `Todo` with the name
 
 A successful validation for a `name` of `Walk the dog` is of type 
 `Success("Walk the dog")`. In contrast, a failed validation returns a
-Failure(ValidationError) with a failure message inside it, and no more
+`Failure(ValidationError)` with a failure message inside it, and no more
 validations in the chain are run.
 
 When our custom validation runs, it is taking as input the output of the
