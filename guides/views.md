@@ -192,7 +192,7 @@ you put a default.ssp file at WEB-INF/layouts/default.ssp, it will
 automatically be used. In that case, you can simply call `ssp("/index")` and the
 response will render within the default layout.
 
-#### Specifying an alternate layout
+#### <a id="layouts"></a>Specifying an alternate layout
 
 The `layout` key passed from your actions is somewhat special, as it's used by
 Scalate to identify the layout file, which wraps a standard layout around the
