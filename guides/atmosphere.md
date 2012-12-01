@@ -94,22 +94,18 @@ about the event. For instance, you might want to broadcast a message
 to all connected clients when a new client connects:
 
 ```scala
-  case Connected => notifyJoin(uuid)
+  case Connected => 
 ```
 
-And you'd notify clients like this:
-
-*TODO: pseudocode alert!*
+And you could notify clients with an implementation like this:
 
 ```scala
-  def notifyJoin(uuid) {
+  case Connected => 
     println("Client %s is connected" format uuid)
-    broadcast(("author" -> "Someone") ~ 
-      ("message" -> "joined the room") ~ 
-      ("time" -> (new Date().getTime.toString )), Everyone)
-  }
+    broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
+```
 
-Let's see implementations for the Atmosphere events:
+Let's see sample code for our Atmosphere events:
 
 ```scala
 atmosphere("/the-chat") {
