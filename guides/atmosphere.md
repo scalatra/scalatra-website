@@ -77,16 +77,16 @@ class NotificationsController extends ScalatraServlet
   }
 ```
 
-As you can see, there are quite a few kinds of events which Scalatra's 
-atmosphere integration can deal with. 
-
-*TODO: is there a full list of these?*
-
 The AtmosphereSupport trait adds a new kind of route matcher to your
 controller, sitting alongside the regular HTTP `get`, `put`, 
 `post`, `delete` and friends: you've now got an `atmosphere` route type,
 which can be used to bind persistent socket connections to your 
 application.
+
+As you can see, there are quite a few kinds of events which Scalatra's 
+atmosphere integration can deal with. 
+
+*TODO: is there a full list of these?*
 
 Scala pattern matching is used to detect which type of event has 
 occurred, and the function for each case can be set to do something 
