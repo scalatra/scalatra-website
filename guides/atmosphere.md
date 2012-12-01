@@ -158,7 +158,7 @@ to pull this implementation code:*
     println("Client %s is connected" format uuid)
     broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
 ```
-*Out into its own `notifyConnect(uuid: String)` method, so that the
+*Out into its own `def notifyConnect(uuid: String) = {}` method, so that the
 pattern match looked like this?*
 
 ```scala
