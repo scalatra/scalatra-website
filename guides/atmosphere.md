@@ -81,7 +81,13 @@ The AtmosphereSupport trait adds a new kind of route matcher to your
 controller, sitting alongside the regular HTTP `get`, `put`, 
 `post`, `delete` and friends: you've now got an `atmosphere` route type,
 which can be used to bind persistent socket connections to your 
-application.
+application. 
+
+Inside the `atmosphere` route, you instantiate a `new AtmosphereClient`
+and define a `receive` method, which listens for events. 
+
+*TODO: is there an equivalent `send` method? Or any other methods which
+we'd want to put in our AtmosphereClient in other situations?*
 
 As you can see, there are quite a few kinds of events which Scalatra's 
 atmosphere integration can deal with. 
@@ -105,29 +111,29 @@ And you could notify clients with an implementation like this:
     broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
 ```
 
-*TODO:* Where did `uuid` come from?
+*TODO: Where did `uuid` come from?*
 
-*TODO:* what does `broadcast` mean? Is it "send a message to everybody except the sender?"
+*TODO: what does `broadcast` mean? Is it "send a message to everybody except the sender?"*
 
-*TODO:* list all available socket-related methods. In the example code,
-we can see `broadcast()` and `send()`. Are there any others?
+*TODO: list all available socket-related methods. In the example code,
+we can see `broadcast()` and `send()`. Are there any others?*
 
-*TODO:* what would be necessary to make the compiler happy if I wanted
-to pull this implementation code:
+*TODO: what would be necessary to make the compiler happy if I wanted
+to pull this implementation code:*
 
 ```scala
     println("Client %s is connected" format uuid)
     broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
 ```
-Out into its own `notifyConnect(uuid: String)` method, so that the
-pattern match looked like this?
+*Out into its own `notifyConnect(uuid: String)` method, so that the
+pattern match looked like this?*
 
 ```scala
 case Connected => notifyConnect(uuid)
 ```
 
-At present, if I try that, I don't have the `broadcast` method in scope.
-
+*At present, if I try that, I don't have the `broadcast` method in scope.*
+  
 Let's see sample code for our Atmosphere events:
 
 ```scala
@@ -160,6 +166,6 @@ atmosphere("/the-chat") {
   }
 ```
 
-*TODO:* somebody give me a good explanation of the `~` operator in the
-above code. 
+*TODO: somebody give me a good explanation of the `~` operator in the
+above code.*
 
