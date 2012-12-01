@@ -26,7 +26,9 @@ realtime for the JVM.
 You'll need to add the TypeSafe sbt resolver in order to get the
 Akka 2.0.x dependency, so drop this into the bottom of build.sbt:
 
+```scala
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+```
 
 Basic setup of an Atmosphere-enabled route looks like this:
 
