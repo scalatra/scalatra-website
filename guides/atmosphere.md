@@ -19,7 +19,37 @@ it can be set up to use the [socket.io](http://socket.io) toolkit.
 
 It's carefree realtime for the JVM.
 
-### dependency
+In this Guide, we'll build a NotificationsController class which pages
+in your application can subscribe to. When things happen which your
+users should know about, we'll broadcast them to everyone who's
+connected.
+
+### Getting started
+
+You'll need to do a few things to a default Scalatra project in order
+to get it ready for use with Atmosphere.
+
+First, open up your `web.xml` file. You'll see it's got a listener set:
+
+```xml
+<listener>
+  <listener-class>org.scalatra.servlet.ScalatraListener</listener-class>
+</listener>
+```
+
+You'll need to change the default listener so it uses an 
+Atmosphere-aware one:
+
+```xml
+<listener>
+  <listener-class>org.scalatra.atmosphere.ScalatraAtmosphereListener</listener-class>
+</listener>  
+```
+
+#### dependencies
+
+The following dependencies will be needed to make the sample application
+work.
 
 ```scala
   "org.scalatra" % "scalatra-atmosphere" % "2.2.0-SNAPSHOT",
@@ -29,6 +59,8 @@ It's carefree realtime for the JVM.
 
 *TODO*: Check with casualjim. Is this the smallest dependency graph 
 needed (are the json libraries necessary)?
+
+Scalatra's Atmosphere integration depends on Akka.
 
 You'll need to add the TypeSafe sbt resolver in order to get the
 Akka 2.0.x dependency, so drop this into the bottom of build.sbt:
@@ -55,7 +87,8 @@ import java.util.Date
 import java.text.SimpleDateFormat
 ```
 
-Basic setup of an Atmosphere-enabled route looks like this:
+The basic setup of an Atmosphere-enabled servlet and route looks like 
+this:
 
 ```scala
 class NotificationsController extends ScalatraServlet 
