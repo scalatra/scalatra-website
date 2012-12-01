@@ -109,11 +109,11 @@ And you could notify clients with an implementation like this:
 
 *TODO:* what does `broadcast` mean? Is it "send a message to everybody except the sender?"
 
-*TODO:* what would be necessary to make the compiler happy if I wanted
-to pull this implementation code:
-
 *TODO:* list all available socket-related methods. In the example code,
 we can see `broadcast()` and `send()`. Are there any others?
+
+*TODO:* what would be necessary to make the compiler happy if I wanted
+to pull this implementation code:
 
 ```scala
     println("Client %s is connected" format uuid)
