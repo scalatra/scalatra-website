@@ -26,6 +26,9 @@ connected.
 
 ### Getting started
 
+Generate a project using `g8 scalatra/scalatra-sbt`, and call your
+initial servlet `NotificationsController`.
+
 You'll need to do a few things to a default Scalatra project in order
 to get it ready for use with Atmosphere.
 
@@ -86,6 +89,8 @@ import JsonDSL._
 import java.util.Date
 import java.text.SimpleDateFormat
 ```
+
+### Writing the NotificationsController
 
 The basic setup of an Atmosphere-enabled servlet and route looks like 
 this:
