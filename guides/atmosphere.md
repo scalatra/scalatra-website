@@ -126,6 +126,8 @@ pattern match looked like this?
 case Connected => notifyConnect(uuid)
 ```
 
+At present, if I try that, I don't have the `broadcast` method in scope.
+
 Let's see sample code for our Atmosphere events:
 
 ```scala
