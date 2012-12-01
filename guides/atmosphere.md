@@ -57,8 +57,8 @@ work.
   "org.json4s"   %% "json4s-jackson" % "3.0.0",
 ```
 
-*TODO*: Check with casualjim. Is this the smallest dependency graph 
-needed (are the json libraries necessary)?
+*TODO: Check with casualjim. Is this the smallest dependency graph 
+needed (are the json libraries necessary)?*
 
 Scalatra's Atmosphere integration depends on Akka.
 
