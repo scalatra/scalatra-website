@@ -14,4 +14,5 @@ Once everything's installed, you can do this to generate the documentation:
  jekyll --server --auto
 
 This will start an embedded webserver and automatically regenerate the website
-as you make changes to it. You can then view the site at http://localhost:4000.
+as you make changes to it. You can then view the site at 
+[http://localhost:4000](http://localhost:4000).
