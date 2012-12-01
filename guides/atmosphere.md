@@ -105,6 +105,27 @@ And you could notify clients with an implementation like this:
     broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
 ```
 
+*TODO:* Where did `uuid` come from?
+
+*TODO:* what does `broadcast` mean? Is it "send a message to everybody except the sender?"
+
+*TODO:* what would be necessary to make the compiler happy if I wanted
+to pull this implementation code:
+
+*TODO:* list all available socket-related methods. In the example code,
+we can see `broadcast()` and `send()`. Are there any others?
+
+```scala
+    println("Client %s is connected" format uuid)
+    broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
+```
+Out into its own `notifyConnect(uuid: String)` method, so that the
+pattern match looked like this?
+
+```scala
+case Connected => notifyConnect(uuid)
+```
+
 Let's see sample code for our Atmosphere events:
 
 ```scala
@@ -136,7 +157,6 @@ atmosphere("/the-chat") {
     case t: Throwable => t.printStackTrace()
   }
 ```
-
 
 *TODO:* somebody give me a good explanation of the `~` operator in the
 above code. 
