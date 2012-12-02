@@ -9,25 +9,26 @@ title: Scalatra Guides | Atmosphere
 
 Scalatra has a built-in integration with 
 [Atmosphere](https://github.com/Atmosphere/atmosphere), the asynchronous
-websocket/comet framework. Atmosphere allows you to keep a persistent connection
-alive between the server and the user's browser (or other user-agents). 
-You can push new information to your user at any time, without 
-refreshing the page.
+websocket/comet framework. Atmosphere allows you to keep a persistent
+connection alive between the server and the user's browser (or other 
+user-agents). You can push new information to your user at any time, 
+without refreshing the page.
 
 Atmosphere can use its own JavaScript libraries to accomplish this, or
 it can be set up to use the [socket.io](http://socket.io) toolkit. 
 
 It's carefree realtime for the JVM.
 
-In this Guide, we'll build a NotificationsController class which pages
-in your application can subscribe to. When things happen which your
-users should know about, we'll broadcast them to everyone who's
-connected.
+### Sample code
+
+In this Guide, we'll build a fairly simple chat example. A finished
+example of this application is available at 
+[https://github.com/futurechimp/scalatra-atmosphere-example](https://github.com/futurechimp/scalatra-atmosphere-example)
 
 ### Getting started
 
 Generate a project using `g8 scalatra/scalatra-sbt`, and call your
-initial servlet `NotificationsController`.
+initial servlet `ChatController`.
 
 You'll need to do a few things to a default Scalatra project in order
 to get it ready for use with Atmosphere.
@@ -58,10 +59,8 @@ work.
   "org.scalatra" % "scalatra-atmosphere" % "2.2.0-SNAPSHOT",
   "org.scalatra" % "scalatra-json" % "2.2.0-SNAPSHOT",
   "org.json4s"   %% "json4s-jackson" % "3.0.0",
+  "org.eclipse.jetty" % "jetty-websocket" % "8.1.7.v20120910" % "container",
 ```
-
-*TODO: Check with casualjim. Is this the smallest dependency graph 
-needed (are the json libraries necessary)?*
 
 Scalatra's Atmosphere integration depends on Akka.
 
@@ -90,13 +89,13 @@ import java.util.Date
 import java.text.SimpleDateFormat
 ```
 
-### Writing the NotificationsController
+### Writing the ChatController
 
 The basic setup of an Atmosphere-enabled servlet and route looks like 
 this:
 
 ```scala
-class NotificationsController extends ScalatraServlet 
+class ChatController extends ScalatraServlet 
   with ScalateSupport with JValueResult 
   with JacksonJsonSupport with SessionSupport 
   with AtmosphereSupport {
@@ -124,13 +123,12 @@ application.
 Inside the `atmosphere` route, you instantiate a `new AtmosphereClient`
 and define a `receive` method, which listens for events. 
 
-*TODO: is there an equivalent `send` method? Or any other methods which
-we'd want to put in our AtmosphereClient in other situations?*
+One AtmosphereClient is instantiated per connected user. It's worth
+taking a look at the 
+[ScalaDocs](http://scalatra.org/2.2/api/#org.scalatra.atmosphere.AtmosphereClient) and [source](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/AtmosphereClient.scala) for AtmosphereClient to see what it can do.
 
 As you can see, there are quite a few kinds of events which Scalatra's 
-atmosphere integration can deal with. 
-
-*TODO: is there a full list of these?*
+atmosphere integration can deal with.
 
 Scala pattern matching is used to detect which type of event has 
 occurred, and the function for each case can be set to do something 
@@ -149,30 +147,51 @@ And you could notify clients with an implementation like this:
     broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
 ```
 
-*TODO: Where did `uuid` come from?*
+The `uuid` in that code comes from the AtmosphereClient instance - each
+connected user gets its own client with a unique identifier, and 
+Scalatra keeps a list of atmosphere clients which are connected to 
+a given `atmosphere` route. 
 
-*TODO: what does `broadcast` mean? Is it "send a message to everybody except the sender?"*
+You can then decide which connected clients you'd like to send a given
+message to. 
 
-*TODO: list all available socket-related methods. In the example code,
-we can see `broadcast()` and `send()`. Are there any others?*
+By default, the AtmosphereClient's `broadcast` method mimics standard
+chat server functionality - calling `broadcast(message)` sends the 
+supplied message to all connected users except the current one.
 
-*TODO: what would be necessary to make the compiler happy if I wanted
-to pull this implementation code:*
+The `send(message)` method does exactly the opposite: it sends the
+message to only the current client.
+
+The AtmosphereClient implements several default filters so that it can
+decide which clients should receive a message:
 
 ```scala
-    println("Client %s is connected" format uuid)
-    broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
+  final protected def SkipSelf: ClientFilter = _.uuid != uuid
+  final protected def OnlySelf: ClientFilter = _.uuid == uuid
+  final protected val Everyone: ClientFilter = _ => true
 ```
-*Out into its own `def notifyConnect(uuid: String) = {}` method, so that the
-pattern match looked like this?*
+
+If you need to segment message delivery further than this, for example
+in order to enforce security rules, you can subclass AtmosphereClient
+and implement your own ClientFilters:
 
 ```scala
-case Connected => notifyConnect(uuid)
+class MySecureClient extends AtmosphereClient {
+
+  // adminUuids is a collection of uuids for admin users. You'd need to
+  // add each admin user's uuid to the list at connection time.
+  final protected def OnlyAdmins: ClientFilter = adminUuids.contains(_.uuid)
+
+  /**
+   * Broadcast a message to admin users only.
+   */
+  def adminBroadcast(msg) {
+    broadcast(msg, OnlyAdmins)
+  }
+}
 ```
 
-*At present, if I try that, I don't have the `broadcast` method in scope.*
-  
-Let's see sample code for our Atmosphere events:
+Let's see sample code for all of the Atmosphere event types:
 
 ```scala
 atmosphere("/the-chat") {
@@ -204,6 +223,287 @@ atmosphere("/the-chat") {
   }
 ```
 
-*TODO: somebody give me a good explanation of the `~` operator in the
-above code.*
+The `~` operator is used quite a bit there, it's a JSON operator which
+turns `("name" -> "joe") ~ ("age" -> 35)` into `{"name":"joe","age":35}`.
 
+That's pretty much it on the server side.
+
+### JavaScript client
+
+Browser clients can connect to the `atmosphere` using a JavaScript client.
+
+Atmosphere has its own connection library, and also supports the use of 
+[socket.io](http://socket.io). Whichever connector you choose, the base
+library will assess the browser client it's hosted in and figure out 
+which of the available transport types will work, falling back as 
+necessary to maintain connectivity in a wide range of possible clients.
+
+You're strongly advised to read Atmosphere's 
+[extensive documentation](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-API)
+in order to understand your connection options. 
+
+Besides the basic connectivity provided by the Atmosphere connector, 
+you'll need to provide your own application-specific logic, also in
+JavaScript. Here's an `application.js` file for our chat application:
+
+```javascript
+$(function() {
+  "use strict";
+
+  var detect = $("#detect");
+  var header = $('#header');
+  var content = $('#content');
+  var input = $('#input');
+  var status = $('#status');
+  var myName = false;
+  var author = null;
+  var loggedIn = false;
+  var socket = $.atmosphere;
+  var subSocket;
+  var transport = 'websocket';
+
+  /** 
+   * The following code is just here for demonstration purpose and is  
+   * not required.
+   */
+
+  /**  
+   * Used to demonstrate the request.onTransportFailure callback. 
+   * Not mandatory.
+   */
+  var sseSupported = false;
+
+  /**
+   * Define a list of transports. The Atmosphere client code will take
+   * care of checking whether each of them is supported or not. 
+   */
+  var transports = [];
+  transports[0] = "websocket";
+  transports[1] = "sse";
+  transports[2] = "jsonp";
+  transports[3] = "long-polling";
+  transports[4] = "streaming";
+  transports[5] = "ajax";
+
+  /**  
+   * Loop through the possible transports, and show a message stating
+   * whether each transport is supported.
+   */
+  $.each(transports, function (index, tr) {
+     var req = new $.atmosphere.AtmosphereRequest();
+
+     req.url = "/the-chat";
+     req.contentType = "application/json";
+     req.transport = tr;
+     req.headers = { "X-SCALATRA-SAMPLE" : "true" };
+
+     req.onOpen = function(response) {
+       detect.append('<p><span style="color:blue">' + tr + 
+        ' supported: '  + '</span>' + (response.transport == tr));
+     };
+
+     req.onReconnect = function(r) { r.close() };
+
+     socket.subscribe(req)
+  });
+
+
+  /* Below is code that can be re-used */
+
+
+  // We are now ready to cut the request
+  var request = {
+    url: "/the-chat",
+    contentType: "application/json",
+    logLevel: 'debug',
+    shared: true,
+    transport: transport,
+    trackMessageLength : true,
+    fallbackTransport: 'long-polling'
+  };
+
+  /**
+   * This runs when the connection is first made.
+   */
+  request.onOpen = function(response) {
+    content.html($('<p>', {
+      text: 'Atmosphere connected using ' + response.transport
+    }));
+    input.removeAttr('disabled').focus();
+    status.text('Choose name:');
+    transport = response.transport;
+
+    // If we're using the "local" transport, it means we're probably
+    // already connected in another browser tab or window. In this case,
+    // ask the user for their name.
+    if (response.transport == "local") {
+      subSocket.pushLocal("Name?");
+    }
+  };
+
+  /**  
+   * You can share messages between windows/tabs. 
+   * 
+   * Atmosphere can detect whether a message has come from the same
+   * browser instance, and allow you to take action on it.
+   * 
+   * This keeps your users from getting multiple connections from the 
+   * same browser instance, and helps ensure your users can be notified
+   * if they happen to crack a few tabs which both point at the same
+   * Atmosphere connection.
+   */
+  request.onLocalMessage = function(message) {
+    if (transport != 'local') {
+      header.append($('<h4>', {
+        text: 'A new tab/window has been opened'
+      }).css('color', 'green'));
+      if (myName) {
+        subSocket.pushLocal(myName);
+      }
+    } else {
+      if (!myName) {
+        myName = message;
+        loggedIn = true;
+        status.text(message + ': ').css('color', 'blue');
+        input.removeAttr('disabled').focus();
+      }
+    }
+  };
+
+  /**  
+   * Demonstrates how you can customize the fallbackTransport
+   * using the onTransportFailure function.
+   */
+  request.onTransportFailure = function(errorMsg, r) {
+    jQuery.atmosphere.info(errorMsg);
+    if (window.EventSource) {
+      r.fallbackTransport = "sse";
+      transport = "see";
+    }
+    header.html($('<h3>', {
+      text: 'Atmosphere Chat. Default transport is WebSocket, fallback is ' +
+       r.fallbackTransport
+    }));
+  };
+
+  /**
+   * Runs when the client reconnects to Atmosphere.
+   */
+  request.onReconnect = function(rq, rs) {
+    socket.info("Reconnecting")
+  };
+
+  /**
+   * This is what runs when an Atmosphere message is pushed from the
+   * server to this client.
+   */
+  request.onMessage = function(rs) {
+
+    // We need to be logged in.
+    if (!myName) return;
+
+    var message = rs.responseBody;
+    try {
+      var json = jQuery.parseJSON(message);
+      console.log("got a message")
+      console.log(json)
+    } catch (e) {
+      console.log('This doesn\'t look like a valid JSON object: ', 
+        message.data);
+      return;
+    }
+
+    if (!loggedIn) {
+      loggedIn = true;
+      status.text(myName + ': ').css('color', 'blue');
+      input.removeAttr('disabled').focus();
+      subSocket.pushLocal(myName);
+    } else {
+      input.removeAttr('disabled');
+      var me = json.author == author;
+
+      var date = typeof(json.time) == 'string' ? 
+        parseInt(json.time) : json.time;
+
+      addMessage(json.author, json.message, me ? 'blue' : 'black', 
+        new Date(date));
+    }
+  };
+
+  /**
+   * When the connection closes, run this:
+   */
+  request.onClose = function(rs) {
+    loggedIn = false;
+  };
+
+  /**
+   * Run this when a connection error occurs.
+   */
+  request.onError = function(rs) {
+    content.html($('<p>', {
+      text: 'Sorry, but there\'s some problem with your ' + 
+      'socket or the server is down'
+    }));
+  };
+
+  // Subscribe to receive events from Atmosphere.
+  subSocket = socket.subscribe(request);
+
+  /**
+   * This is the chat client part.
+   */
+  input.keydown(function(e) {
+    // Send a message when the <enter> key is pressed.
+    if (e.keyCode === 13) {
+      var msg = $(this).val();
+
+      // The first message is always the author's name.
+      if (author == null) {
+        author = msg;
+      }
+
+      // Format the json message our atmosphere action will receive.
+      var json = { author: author, message: msg };
+
+      // Send the message.
+      subSocket.push(jQuery.stringifyJSON(json));
+
+      // Reset the chat text field.
+      $(this).val('');
+
+      if (myName === false) {
+        myName = msg;
+        loggedIn = true;
+        status.text(myName + ': ').css('color', 'blue');
+        input.removeAttr('disabled').focus();
+        subSocket.pushLocal(myName);
+      } else {
+        addMessage(author, msg, 'blue', new Date);
+      }
+    }
+  });
+
+  function addMessage(author, message, color, datetime) {
+    content.append('<p><span style="color:' + color + '">' + author + '</span> @ ' + +(datetime.getHours() < 10 ? '0' + datetime.getHours() : datetime.getHours()) + ':' + (datetime.getMinutes() < 10 ? '0' + datetime.getMinutes() : datetime.getMinutes()) + ': ' + message + '</p>');
+  }
+});
+```
+
+
+*TODO: what would be necessary to make the compiler happy if I wanted
+to pull this implementation code:*
+
+```scala
+    println("Client %s is connected" format uuid)
+    broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
+```
+*Out into its own `def notifyConnect(uuid: String) = {}` method, so that the
+pattern match looked like this?*
+
+```scala
+case Connected => notifyConnect(uuid)
+```
+
+*At present, if I try that, I don't have the `broadcast` method in scope.*
+  
