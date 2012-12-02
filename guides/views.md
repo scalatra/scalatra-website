@@ -168,7 +168,7 @@ look like:
 
 #### Layouts
 
-Scalatra looks for layouts in the `webapp/layout/` directory, and inserts the rendered
+Scalatra looks for layouts in the `webapp/layouts/` directory, and inserts the rendered
 view for the current action into the template at the point you specify. If you're using
 `SSP`, your layout might look something like this:
 
