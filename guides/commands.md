@@ -279,7 +279,7 @@ package org.scalatra.example.commands.commandsupport
 import org.scalatra.example.commands.models._
 
 // the Scalatra commands handlers
-import org.scalatra.databinders._
+import org.scalatra.commands._
 
 
 abstract class TodosCommand[S](implicit mf: Manifest[S]) extends ModelCommand[S]
@@ -360,7 +360,7 @@ our controller class. You'll need:
 
 ```scala
 // the Scalatra command handlers
-import org.scalatra.databinding._
+import org.scalatra.commands._
 
 // our own Command classes
 import commands._
@@ -419,8 +419,8 @@ Open up `data/TodoData.scala`, and add the following code.
 At the top of the file, add:
 
 ```scala
-// the Scalatra databinding handlers
-import org.scalatra.databinding._
+// the Scalatra command handlers
+import org.scalatra.commands._
 
 // our commands
 import org.scalatra.example.commands.commandsupport._
@@ -689,8 +689,8 @@ Scalatra gives you a fairly comprehensive list of
 [pre-built validations](http://scalatra.org/2.2/api/#org.scalatra.validation.Validators$),
 but you can also write your own custom validators fairly easily. 
 
-A Scalatra [Command](http://scalatra.org/2.2/api/#org.scalatra.databinding.Command) is partly composed of [Field](http://scalatra.org/2.2/api/#org.scalatra.databinding.Field) objects, each of which has a 
-[FieldDescriptor](http://scalatra.org/2.2/api/#org.scalatra.databinding.FieldDescriptor) which acts as a kind of builder for the Field.
+A Scalatra [Command](http://scalatra.org/2.2/api/#org.scalatra.commands.Command) is partly composed of [Field](http://scalatra.org/2.2/api/#org.scalatra.commands.Field) objects, each of which has a 
+[FieldDescriptor](http://scalatra.org/2.2/api/#org.scalatra.commands.FieldDescriptor) which acts as a kind of builder for the Field.
 
 In order to write a validator, we need to do two things. 
 
@@ -786,7 +786,7 @@ Let's add to our abstract `TodosCommand` class:
 abstract class TodosCommand[S](implicit mf: Manifest[S]) extends ModelCommand[S] with JsonCommand {
   
   /**
-   * Pimp the [org.scalatra.databinding.FieldDescriptor] class with our [TodosStringValidations]
+   * Pimp the [org.scalatra.commands.FieldDescriptor] class with our [TodosStringValidations]
    * 
    * This adds the validation to the binding for the FieldDescriptor's b.validateWith function.
    */
