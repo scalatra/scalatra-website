@@ -312,9 +312,9 @@ end up with something like this:
 class MyClient extends AtmosphereClient {
 
   def broadcastMessage(json: String) {
-      println("Got message %s from %s".format((json \ "message").extract[String], (json \ "author").extract[String]))
-      val msg = json merge (("time" -> (new Date().getTime().toString)): JValue)
-      broadcast(msg)
+    println("Got message %s from %s".format((json \ "message").extract[String], (json \ "author").extract[String]))
+    val msg = json merge (("time" -> (new Date().getTime().toString)): JValue)
+    broadcast(msg)
   }
 
 }
