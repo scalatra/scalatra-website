@@ -128,7 +128,13 @@ taking a look at the
 [ScalaDocs](http://scalatra.org/2.2/api/#org.scalatra.atmosphere.AtmosphereClient) and [source](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/AtmosphereClient.scala) for AtmosphereClient to see what it can do.
 
 As you can see, there are quite a few kinds of events which Scalatra's 
-atmosphere integration can deal with.
+atmosphere integration can deal with:
+
+ * `Connected`
+ * `Disconnected`
+ * `Error`
+ * `TextMessage`
+ * `JsonMessage`
 
 Scala pattern matching is used to detect which type of event has 
 occurred, and the function for each case can be set to do something 
