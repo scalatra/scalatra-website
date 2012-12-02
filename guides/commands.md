@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Scalatra Guides | Databinders
+title: Scalatra Guides | Commands
 ---
 
 <div class="page-header">
-<h1>Databinders</h1>
+<h1>Commands and data validation</h1>
 </div>
 
-Scalatra includes a very sophisticated set of databinders. 
+Scalatra includes a very sophisticated set of validation commands. 
 
 These allow you to parse incoming data, instantiate command objects, and automatically apply validations to the objects. This sounds like it 
 might be quite complex, but once you've got the (quite minimal) 
@@ -21,7 +21,7 @@ which is used for persistence:
 case class Todo(id: Integer, name: String, done: Boolean = false)
 ```
 
-Using a databinder, a controller action for creating and saving a new Todo 
+Using a command, a controller action for creating and saving a new Todo 
 object might look like this:
 
 ```scala
@@ -73,8 +73,8 @@ and re-use the same Command object across any part of your application which
 requires the creation of a Todo, and easily apply validation conditions 
 based on incoming parameters.
 
-Since databinder commands in Scalatra have nothing to do with your 
-chosen persistence library, the concepts of databinding and validation are 
+Since validation commands in Scalatra have nothing to do with your 
+chosen persistence library, the concepts of commands and validation are 
 completely de-coupled from the concept of persistence. You _might_ want to have
 the `execute` method of a command trigger a persistence function; just as easily,
 you could serialize the Todo object and send it off to a queue, attach it to
@@ -89,9 +89,9 @@ You can perhaps see the benefits:
 
 ## The TodoList application
 
-To see how Scalatra's databinders work, let's create a TodoList application. 
-It'll allow you to use Scalatra's new databinder support to validate incoming 
-data and do data-related work by executing queries in commands.
+To see how Scalatra's commands work, let's create a TodoList application. 
+It'll allow you to use Scalatra's command support to validate incoming 
+data and do data-related work.
 
 ### Downloading the sample project
 
@@ -103,23 +103,22 @@ problems. It's available here:
 
 This tutorial will start by generating a fresh project, talk you through
 the project setup, and then show you several different ways of using 
-databinders and commands in Scalatra. There are a few different git tags
-available:
+commands in Scalatra. There are a few different git tags available:
 
 * [Params binding](https://github.com/scalatra/scalatra-databinding-example/tree/paramsonly-binding) shows the use of incoming HTTP params
 with Command objects.
 
-* [JSON commands](https://github.com/scalatra/scalatra-databinding-example/tree/json-binding) shows the use of JSON with command objects.
+* [JSON commands](https://github.com/scalatra/scalatra-databinding-example/tree/json-binding) shows the use of JSON with Command objects.
 
 ### Generating the project
 
-Generate a new project. We'll use `org.scalatra.example.databinding` domain as 
+Generate a new project. We'll use `org.scalatra.example.commands` domain as 
 a namespace, you can change to your own domain throughout the codebase.
 
 ```bash
 g8 scalatra/scalatra-sbt.g8
 organization [com.example]: org.scalatra 
-package [com.example.myapp]: org.scalatra.example.databinding
+package [com.example.myapp]: org.scalatra.example.commands
 name [My Scalatra Web App]: TodoList
 servlet_name [MyServlet]: TodosController
 scala_version [2.9.2]: 
@@ -147,12 +146,12 @@ container:start
 
 Before we start actually building the controller, let's set up some fake data. 
 
-Add two folders in `org.scalatra.example.databinding`: call one `models` and the other `data`.
+Add two folders in `org.scalatra.example.commands`: call one `models` and the other `data`.
 
 Inside the `models` folder, add a file called `Models.scala`, with the following contents:
 
 ```scala
-package com.futurechimps.example.databindings.models
+package com.futurechimps.example.commands.models
 
 // A Todo object to use as a data model 
 case class Todo(id: Integer, name: String, done: Boolean = false)
@@ -163,9 +162,9 @@ You might drop a few more models in there later on, but for now we'll just defin
 Next, inside the `data` folder, add a file called `TodoData.scala`, with the following contents:
 
 ```scala
-package org.scalatra.example.databinding.data
+package org.scalatra.example.commands.data
 
-import org.scalatra.example.databinding.models._
+import org.scalatra.example.commands.models._
 import java.util.concurrent.atomic.AtomicInteger
 
 object TodoData {
@@ -208,7 +207,7 @@ object with an auto-incrementing integer primary key.
 
 ### Retrieving objects in a controller
 
-Let's move back to the TodosController, and get databinding working. 
+Let's move back to the TodosController, and get the commands working. 
 
 Just to see if everything is working, let's try and retrieve a single Todo. 
 
@@ -242,7 +241,7 @@ a new Todo object, using a Scalatra command.
 
 ### Commands in Scalatra
 
-Scalatra's databinders are built using the classical 
+Scalatra's commands are built using the classical 
 [Gang of Four](https://en.wikipedia.org/wiki/Design_Patterns) (Gof)
 [Command pattern](https://en.wikipedia.org/wiki/Command_pattern), with some
 small variations. In its simplest form, a command object has one method, 
@@ -252,8 +251,8 @@ finally tell the receiver to do some work when the `execute` method is called.
 It's a way to increase flexibility and de-couple calling methods from 
 receivers. 
 
-In Scalatra, `Command` objects used for databinding have a few things 
-added to them, which aren't in the traditional GoF Command Pattern. 
+In Scalatra, `Command` objects have a few things 
+added to them which aren't in the traditional GoF Command Pattern. 
 First, they're able to automatically read incoming parameters
 and populate themselves with data. Second, they can also run validations on the
 parameters to ensure data correctness. 
@@ -261,11 +260,11 @@ parameters to ensure data correctness.
 #### Adding a command to persist Todo objects
 
 We'll need a file in which to place our commands. Make a
-new folder in `org.scalatra.example.databinding`, and call it `commands`.
+new folder in `org.scalatra.example.commands`, and call it `commandsupport`.
 Then create a new file in that folder, calling it `TodoCommands.scala`. This
 will store all of the Todo-related commands so they're in one place.
 
-To start with, you'll need to add databinder support to your application.
+To start with, you'll need to add command support to your application.
 
 ```scala
 "org.scalatra" % "scalatra-data-binding" % "2.2.0-SNAPSHOT",
@@ -274,13 +273,13 @@ To start with, you'll need to add databinder support to your application.
 `TodoCommands.scala` can look like this:
 
 ```scala
-package org.scalatra.example.databinding.commands
+package org.scalatra.example.commands.commandsupport
 
 // the model code from this application
-import org.scalatra.example.databinding.models._
+import org.scalatra.example.commands.models._
 
-// the Scalatra databinding handlers
-import org.scalatra.databinding._
+// the Scalatra commands handlers
+import org.scalatra.databinders._
 
 
 abstract class TodosCommand[S](implicit mf: Manifest[S]) extends ModelCommand[S]
@@ -295,7 +294,7 @@ class CreateTodoCommand extends TodosCommand[Todo] {
 ```
 
 There are a few things going on here, so let's break it apart. First, there
-are some imports: the model code for our application, and the databinding
+are some imports: the model code for our application, and the command
 support. 
 
 The next thing is the `abstract class TodosCommand`. This sets up an 
@@ -360,7 +359,7 @@ Before we can use any command-related code, we'll need to import it into
 our controller class. You'll need:
 
 ```scala
-// the Scalatra databinding handlers
+// the Scalatra command handlers
 import org.scalatra.databinding._
 
 // our own Command classes
@@ -399,11 +398,11 @@ present, this is holding up compilation: `TodoData` has no
 First, let's make a logger. This isn't strictly necessary, but it's a nice
 thing to have around.
 
-Create a new folder, `utils`, in `org.scalatra.example.databinding`, and 
+Create a new folder, `utils`, in `org.scalatra.example.commands`, and 
 put the following code into `Logger.scala` inside it:
 
 ```scala
-package org.scalatra.example.databinding
+package org.scalatra.example.commands
 package utils
 
 import grizzled.slf4j.Logger
@@ -424,10 +423,10 @@ At the top of the file, add:
 import org.scalatra.databinding._
 
 // our commands
-import org.scalatra.example.databinding.commands._
+import org.scalatra.example.commands.commandsupport._
 
 // our logger object
-import org.scalatra.example.databinding.utils.Logging
+import org.scalatra.example.commands.utils.Logging
 ```
 
 This import gives `TodoData` access to Scalatra's commands. 
@@ -564,7 +563,7 @@ we halt with a 400 status. If we get back a `todo`, we redirect to "/".
 At this point, your project should be very similar to what's tagged in the
 example project's Git repository, in the [params binding](https://github.com/scalatra/scalatra-databinding-example/tree/paramsonly-binding) example. 
 
-### Using Scalatra's databinders with JSON
+### Using Scalatra's commands with JSON
  
 So far, we've been doing everything with params data only. We can easily
 switch to using JSON instead. Conveniently, when you enable the JSON support with
