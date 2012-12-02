@@ -151,7 +151,7 @@ Add two folders in `org.scalatra.example.commands`: call one `models` and the ot
 Inside the `models` folder, add a file called `Models.scala`, with the following contents:
 
 ```scala
-package com.futurechimps.example.commands.models
+package org.scalatra.example.commands.models
 
 // A Todo object to use as a data model 
 case class Todo(id: Integer, name: String, done: Boolean = false)
