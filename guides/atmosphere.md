@@ -275,7 +275,7 @@ in order to enforce security rules, you can subclass AtmosphereClient
 and implement your own ClientFilters:
 
 ```scala
-class MySecureClient extends AtmosphereClient {
+class SecureClient extends AtmosphereClient {
 
   // adminUuids is a collection of uuids for admin users. You'd need to
   // add each admin user's uuid to the list at connection time.
@@ -290,3 +290,47 @@ class MySecureClient extends AtmosphereClient {
 }
 ```
 
+You could then use `SecureClient` in your `atmosphere` route instead of
+the default `AtmosphereClient`:
+
+```scala
+atmosphere("/the-chat") {
+  new SecureClient {
+    // your events would go here.
+  }
+}
+```
+
+### Cleaning up the case statements
+
+This subclassing approach is also an excellent way to clean up the code
+in your pattern matching blocks. If it starts getting out of hand, you
+can put whatever methods you need in your AtmosphereClient subclass and
+end up with something like this:
+
+```scala
+class MyClient extends AtmosphereClient {
+
+  def broadcastMessage(json: String) {
+      println("Got message %s from %s".format((json \ "message").extract[String], (json \ "author").extract[String]))
+      val msg = json merge (("time" -> (new Date().getTime().toString)): JValue)
+      broadcast(msg)
+  }
+
+}
+```
+
+And you'd use it like this:
+
+```scala
+atmosphere("/the-chat") {
+  new MyClient {
+    def receive = {
+      // ... 
+
+      // Let's use our new broadcastMessage function from MyClient:
+      case JsonMessage(json) => broadcastMessage(json)
+    }
+  }
+}
+```
