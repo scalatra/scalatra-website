@@ -17,7 +17,7 @@ without refreshing the page.
 Atmosphere can use its own JavaScript libraries to accomplish this, or
 it can be set up to use the [socket.io](http://socket.io) toolkit. 
 
-It's carefree realtime for the JVM.
+It's carefree server push for the JVM.
 
 ### Sample code
 
