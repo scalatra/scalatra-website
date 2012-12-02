@@ -80,7 +80,7 @@ the `execute` method of a command trigger a persistence function; just as easily
 you could serialize the Todo object and send it off to a queue, attach it to
 another object, or transform it in some way.
 
-You can perhaps see the benefits:
+This has some benefits:
 
 * data validation and persistence are de-coupled.
 * the validations DSL makes setting validation conditions very easy.
