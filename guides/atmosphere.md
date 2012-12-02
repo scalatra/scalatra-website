@@ -326,10 +326,10 @@ And you'd use it like this:
 atmosphere("/the-chat") {
   new MyClient {
     def receive = {
-      // ... 
-
       // Let's use our new broadcastMessage function from MyClient:
       case JsonMessage(json) => broadcastMessage(json)
+
+      // ... implement other message types
     }
   }
 }
