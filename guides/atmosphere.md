@@ -145,7 +145,7 @@ to all connected clients when a new client connects:
   case Connected => 
 ```
 
-And you could notify clients with an implementation like this:
+You can notify clients with an implementation like this:
 
 ```scala
   case Connected => 
@@ -236,7 +236,8 @@ That's pretty much it on the server side.
 
 ### JavaScript client
 
-Browser clients can connect to the `atmosphere` using a JavaScript client.
+Browser clients can connect to the `atmosphere` route using a JavaScript
+client.
 
 Atmosphere has its own connection library, and also supports the use of 
 [socket.io](http://socket.io). Whichever connector you choose, the base
