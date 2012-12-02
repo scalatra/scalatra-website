@@ -457,7 +457,7 @@ Then add a `handle` method:
 ```
 
 Writing a `handle` function is something you'll do very often when using
-Scalatra command objects to do your databinding. Remember when we said
+Scalatra command objects. Remember when we said
 in our quick theoretical discussion above, that the simplest Command
 object has a single method, `execute`? Scalatra follows this pattern,
 but `execute` on a Scalatra command does a bit more than in the classical
