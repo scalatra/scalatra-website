@@ -329,3 +329,19 @@ atmosphere("/the-chat") {
   }
 }
 ```
+
+### Pattern matching on Atmosphere messages
+
+It's possible (and in fact encouraged) to do sophisticated pattern matching
+on Atmosphere message types in order to simplify your application code. 
+
+This gives you a very flat and extensible way of dealing with many messages 
+without having to serialize them into actual model classes.
+
+```scala
+case JsonMessage(JObject(JField("type", JString("event_1")) :: fields) =>
+case JsonMessage(args @ JObject(JField("type", JString("event_1")) :: fields) =>
+```
+
+### Defining your own wire formats
+
