@@ -14,9 +14,6 @@ connection alive between the server and the user's browser (or other
 user-agents). You can push new information to your user at any time, 
 without a page refresh.
 
-Atmosphere can use its own JavaScript libraries to accomplish this, or
-it can be set up to use the [socket.io](http://socket.io) toolkit. 
-
 It's carefree server push for the JVM.
 
 ### Sample code
@@ -200,11 +197,9 @@ That's pretty much it on the server side.
 Browser clients can connect to the `atmosphere` route using a JavaScript
 client.
 
-Atmosphere has its own connection library, and also supports the use of 
-[socket.io](http://socket.io). Whichever connector you choose, the base
-library will assess the browser client it's hosted in and figure out 
-which of the available transport types will work, falling back as 
-necessary to maintain connectivity in a wide range of possible clients.
+Atmosphere has its own connection library, which will assess the browser client 
+it's hosted in and figure out which of the available transport types will work, falling back as necessary to maintain connectivity in a wide range of 
+possible clients.
 
 You're strongly advised to read Atmosphere's 
 [extensive documentation](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-API)
