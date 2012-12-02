@@ -18,3 +18,9 @@ details using either its own
 [connector](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-API)
 or [socket.io](http://socket.io).
 
+
+In other news, after quite a bit of discussion over the exact meaning of
+the word "databinding", the namespace formerly known as "databinding"
+has been renamed to "commands". We've updated the
+[Scalatra Guides](http://scalatra.org/2.2/guides) to reflect the new
+name. Code examples should work as before. 
