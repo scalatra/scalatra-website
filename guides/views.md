@@ -173,16 +173,17 @@ view for the current action into the template at the point you specify. If you'r
 `SSP`, your layout might look something like this:
 
 ```html
-  <%@ var yield: String %>
+  <%@ val body: String %>
   <html>
     <head>..</head>
     <body>
-      <%= yield %>
+      <%= unescape(body) %>
     </body>
   </html>
 ```
 
-The specific view for your action will be rendered at the `<%= yield %>` statement.
+The specific view for your action will be rendered at the 
+`<%= unescape(body) %>` statement.
 
 #### Default layouts
 
