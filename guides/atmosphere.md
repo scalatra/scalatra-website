@@ -343,5 +343,13 @@ case JsonMessage(JObject(JField("type", JString("event_1")) :: fields) =>
 case JsonMessage(args @ JObject(JField("type", JString("event_1")) :: fields) =>
 ```
 
-### Defining your own wire formats
+### Wire formats
 
+Data travelling between the browser and the websocket server needs to be in a
+defined transport format, called a wire format, before it reaches the Atmosphere
+client.
+
+You can define your own wire formats by extending the 
+[WireFormat](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/wire_format.scala)
+trait. To create a new wire format, extend WireFormat and implement its methods
+in your subclass. 
