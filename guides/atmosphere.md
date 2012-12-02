@@ -158,45 +158,6 @@ connected user gets its own client with a unique identifier, and
 Scalatra keeps a list of atmosphere clients which are connected to 
 a given `atmosphere` route. 
 
-You can then decide which connected clients you'd like to send a given
-message to. 
-
-By default, the AtmosphereClient's `broadcast` method mimics standard
-chat server functionality - calling `broadcast(message)` sends the 
-supplied message to all connected users except the current one.
-
-The `send(message)` method does exactly the opposite: it sends the
-message to only the current client.
-
-The AtmosphereClient implements several default filters so that it can
-decide which clients should receive a message:
-
-```scala
-  final protected def SkipSelf: ClientFilter = _.uuid != uuid
-  final protected def OnlySelf: ClientFilter = _.uuid == uuid
-  final protected val Everyone: ClientFilter = _ => true
-```
-
-If you need to segment message delivery further than this, for example
-in order to enforce security rules, you can subclass AtmosphereClient
-and implement your own ClientFilters:
-
-```scala
-class MySecureClient extends AtmosphereClient {
-
-  // adminUuids is a collection of uuids for admin users. You'd need to
-  // add each admin user's uuid to the list at connection time.
-  final protected def OnlyAdmins: ClientFilter = adminUuids.contains(_.uuid)
-
-  /**
-   * Broadcast a message to admin users only.
-   */
-  def adminBroadcast(msg) {
-    broadcast(msg, OnlyAdmins)
-  }
-}
-```
-
 Let's see sample code for all of the Atmosphere event types:
 
 ```scala
@@ -282,23 +243,50 @@ client.
 
 You should be able to connect to it from any browser which supports
 JavaScript. Try opening several different browsers (e.g. Firefox and
-Chrome) and signing in as different users, then chat to each other. 
+Chrome) and signing in as different users, then chat to each other by
+going to [http://localhost:8080/](http://localhost:8080/) and hitting 
+the running application. You can also open multiple tabs in the 
+same browser to see Atmosphere detect multiple local instances and use
+its `onLocalMessage` handler. 
 
+### Segmenting message delivery
 
+You can easily decide which connected clients you'd like to send a given
+message to. 
 
-*TODO: what would be necessary to make the compiler happy if I wanted
-to pull this implementation code:*
+By default, the AtmosphereClient's `broadcast` method mimics standard
+chat server functionality - calling `broadcast(message)` sends the 
+supplied message to all connected users except the current one.
+
+The `send(message)` method does exactly the opposite: it sends the
+message to only the current client.
+
+The AtmosphereClient implements several default filters so that it can
+decide which clients should receive a message:
 
 ```scala
-    println("Client %s is connected" format uuid)
-    broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
+  final protected def SkipSelf: ClientFilter = _.uuid != uuid
+  final protected def OnlySelf: ClientFilter = _.uuid == uuid
+  final protected val Everyone: ClientFilter = _ => true
 ```
-*Out into its own `def notifyConnect(uuid: String) = {}` method, so that the
-pattern match looked like this?*
+
+If you need to segment message delivery further than this, for example
+in order to enforce security rules, you can subclass AtmosphereClient
+and implement your own ClientFilters:
 
 ```scala
-case Connected => notifyConnect(uuid)
+class MySecureClient extends AtmosphereClient {
+
+  // adminUuids is a collection of uuids for admin users. You'd need to
+  // add each admin user's uuid to the list at connection time.
+  final protected def OnlyAdmins: ClientFilter = adminUuids.contains(_.uuid)
+
+  /**
+   * Broadcast a message to admin users only.
+   */
+  def adminBroadcast(msg) {
+    broadcast(msg, OnlyAdmins)
+  }
+}
 ```
 
-*At present, if I try that, I don't have the `broadcast` method in scope.*
-  
