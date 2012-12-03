@@ -12,10 +12,9 @@ support.
 
 The [Atmosphere](https://github.com/Atmosphere/atmosphere) integration is an
 exciting addition to the upcoming Scalatra 2.2 release. It provides server-push 
-capabilities for persistently connected clients. It takes care of the low-level
-connection and transport details using either its own 
-[connector](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-API)
-or [socket.io](http://socket.io).
+capabilities for persistently connected clients, and takes care of the low-level
+connection and transport details using its own JavaScript
+[connector library](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-API).
 
 In other news, after quite a bit of discussion over the exact meaning of
 the word "databinding", the namespace formerly known as "databinding"
