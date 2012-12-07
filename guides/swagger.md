@@ -267,7 +267,7 @@ class ScalatraBootstrap extends LifeCycle {
 
 ```
 
-Change it to look like this:
+Change the class body to look like this:
 
 ```scala
 class ScalatraBootstrap extends LifeCycle {
