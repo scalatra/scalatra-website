@@ -33,7 +33,9 @@ Scalatra is used in a number of systems that help power [The Guardian](http:///w
 
 ### IGN
 
-[IGN](http://www.ign.com) is using Scalatra for its backend services.
+[IGN](http://www.ign.com) is an American entertainment website that focuses on video games, films, music and other media. Scalatra is used as part of its back-end
+services.
+
 
 ### LinkedIn Signal
 
