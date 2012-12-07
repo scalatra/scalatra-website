@@ -36,6 +36,11 @@ Scalatra is used in a number of systems that help power [The Guardian](http:///w
 [IGN](http://www.ign.com) is an American entertainment website that focuses on video games, films, music and other media. Scalatra is used as part of its back-end
 services.
 
+### Janrain
+
+[Janrain](http://janrain.com) offers software as a service solutions for 
+commercial businesses and websites to connect their sites to the social web. 
+
 
 ### LinkedIn Signal
 
