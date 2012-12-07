@@ -15,6 +15,10 @@ The following companies, public-sector organizations, and governments are using 
 
 The [BBC](http://www.bbc.co.uk)'s Linked Data Team has built a Scalatra REST API for use on the BBC's dynamic web development platform.
 
+### Box.com
+
+[Box](http://box.com) (formerly Box.net) is an online file sharing and Cloud content management service for enterprise companies.
+
 ### Chacha
 
 [ChaCha](http://www.chacha.com/) is using it in multiple internal applications.
