@@ -43,5 +43,6 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 
 Scalatra has advanced features, including integrations with the <a href="http://swagger.wordnik.com">Swagger</a> API documentation and exploration toolset, and the <a href="https://github.com/Atmosphere/atmosphere">Atmosphere</a> portable websocket/comet/server push framework.
 
-We're almost done with Scalatra 2.2, so if you'd like to see the new docs for
-that version, see the [Scalatra 2.2 guides](http://scalatra.org/2.2/guides).
+We're almost done with Scalatra 2.2, with improved documentation of advanced
+functionality. If you'd like to see the new docs for that version, see the 
+[Scalatra 2.2 guides](http://scalatra.org/2.2/guides).
