@@ -290,7 +290,7 @@ class FlowersController extends ScalatraServlet with JacksonJsonSupport
   with JValueResult {
 ```
 
-Let's add the SwaggerSupport trait, and also make the FlowerController aware of swagger in its constructor.
+Let's add the SwaggerSupport trait, and also make the FlowerController aware of Swagger in its constructor.
 
 ```scala
 class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet 
