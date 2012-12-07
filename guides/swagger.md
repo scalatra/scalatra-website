@@ -172,6 +172,9 @@ You can see the API's output by pointing your browser at a slug, e.g. [http://lo
 
 Making the API's methods, parameters, and responses visible, in an engaging, easy to understand way, can transform the process of building REST APIs. The people at [Wordnik][wordnik], the word meanings site, have built a toolset called [Swagger][swagger], which can help with this.
 
+[wordnik]: http://wordnik.com
+[swagger]: http://swagger.wordnik.com
+
 Swagger is a specification for documenting the behaviour of a REST API - the API's name, what resources it offers, available methods and their parameters, and return values. The specification can be used in a standalone way to describe your API using simple JSON files. With a little help from annotations, Swagger-compatible frameworks can also generate all the Swagger output necessary to give you auto-generated, functional documentation.
 
 ### The Swagger resources file
