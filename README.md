@@ -1,7 +1,7 @@
 # Scalatra project
 
 This is the home of the [Scalatra](http://github.com/scalatra/scalatra/)
-website which generates the site at http://scalatra.org.
+website which generates the site at http://scalatra.org/2.2/.
 
 To build it, you'll need to have [Jekyll](https://github.com/mojombo/jekyll)
 and a few other things installed on your system. `cd` into the root directory
