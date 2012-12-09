@@ -213,3 +213,5 @@ The default dependencies are:
 
 The Scalatra components in your project should all have the same version number (2.2.0 in the above example).
 Although it's theoretically possible to mix and match differently-versioned components in your projects, it's not recommended, because we compile, test and release Scalatra dependencies together based on their version number. 
+
+Now that you understand the basics of building Scalatra apps, we strongly recommend you consider [using JRebel](jrebel.html), which will make your webapp restart much more quickly after a code change during development.
