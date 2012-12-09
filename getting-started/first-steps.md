@@ -61,7 +61,7 @@ version [0.1.0-SNAPSHOT]:
   <dt>scala_version</dt>
   <dd>
     The Scala version to use.
-    The bottom of the <a href="http://www.scalatra.org/">homepage</a> lists which Scala versions are compatible with the latest Scalatra releases.
+    The bottom of the <a href="http://www.scalatra.org/2.2/">homepage</a> lists which Scala versions are compatible with the latest Scalatra releases.
     When in doubt, use the default.
   </dd>
   <dd>
