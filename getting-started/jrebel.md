@@ -11,8 +11,7 @@ title: Scalatra | JRebel integration
 JRebel is generally able to eliminate the need for the following slow "app restart" in sbt following a code change:
 
 ```
-> container:stop
-> container:start
+> container:reload
 ```
 
 While JRebel is not open source, it is free for Scala users.
@@ -54,8 +53,8 @@ export SCALATRA_JREBEL="~/jrebel/jrebel.jar"
 Now reload your shell:
 
 ```
-source ~/.bash_profile # on Mac
-source ~/.bashrc       # on Linux
+$ source ~/.bash_profile # on Mac
+$ source ~/.bashrc       # on Linux
 ```
 
 ## 5. See it in action!
@@ -88,11 +87,11 @@ Starting sbt: invoke with -help for other options
 > 
 ```
 
-As usual, Start the servlet container and tell sbt to automatically restart the app on code changes:
+You will start the servlet container slightly differently now that you're using sbt.
 
 ```
 > container:start
-> ~ ;copy-resources;aux-compile
+> ~ compile
 ```
 
 Don't worry if JRebel complains about there being no `test-classes` directory.
@@ -118,8 +117,6 @@ If JRebel is doing is correctly installed, you will see a bunch of output, cruci
 [2012-12-08 18:29:53] JRebel: Reloading class 'com.example.app.MyScalatraServlet'.
 ```
 
-If you don't see `JRebel: Reloading class ...`, JRebel isn't installed correctly.
-
 ## 6. Limitations
 
-JRebel is nearly always able to eliminate the need to explicitly stop and start your container after a code change. However, if you change any of your routes, there is nothing JRebel can do, you will have to run `container:stop` and then `container:start` to see your changes.
+JRebel is nearly always able to eliminate the need to explicitly reload your container after a code change. However, if you change any of your routes, there is nothing JRebel can do, you will have to run `container:reload`.
