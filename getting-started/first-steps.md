@@ -19,7 +19,7 @@ generate a project:
 g8 scalatra/scalatra-sbt
 ```
 
-This will check out a pre-built application skeleton for you (from Github),
+This will check out a pre-built application skeleton for you (from [Github](https://github.com/scalatra/scalatra-sbt.g8)),
 and ask you some questions about your application:
 
 ```
