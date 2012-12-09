@@ -18,28 +18,26 @@ what you get when you generate a new project using giter8:
 
     src
     |_ main
+    |  |_ scala
+    |  |  |   |_ScalatraBootstrap.scala <= see note below!
+    |  |  |_org
+    |  |      |_ yourdomain
+    |  |         |_ projectname
+    |  |            |_ MyScalatraServlet.scala
+    |  |_ webapp
+    |     |_ WEB-INF
+    |        |_ views
+    |        |  |_ hello-scalate.scaml
+    |        |_ layouts
+    |        |  |_ default.scaml
+    |        |_ web.xml
+    |_ test
        |_ scala
-       |  |   |_Scalatra.scala <= see note below!
-       |  |
-       |  |_org
-       |      |_yourdomain
-       |        |
-       |        |_projectname
-       |          |_ ArticlesServlet.scala
-       |          |_ UsersServlet.scala
-       |
-       |_ webapp
-          |
-          |_ WEB-INF
-             |
-             |_ views
-             |  |_ default.jade
-             |
-             |_ layouts
-             |  |_ default.jade
-             |
-             |_ web.xml
-
+          |_ org
+             |_ yourdomain
+                |_ projectname
+                   |_ MyScalatraServletSpec.scala
+              
 
 
 The basic structure should be reasonably familiar to anybody who's seen a
@@ -48,11 +46,9 @@ layouts (which wrap views) go in the layouts folder.
 
 The Scalatra giter8 project puts your Scala application code into a series of
 namespaced directories: in the example above, _org.yourdomain.projectname_.
-This is entirely optional. The [Scala style guide][styleguide]
+This is entirely optional. The [Scala style guide](http://docs.scala-lang.org/style/)
 suggests doing it this way, but the language doesn't do anything to enforce it.
 If you want to, you can put all of your Scala code in the same directory.
-
-[styleguide]: http://docs.scala-lang.org/style/
 
 ## Serving static files
 
@@ -77,9 +73,9 @@ An example structure may help in understanding this.
           |  |
           |  |_ web.xml
           |- stylesheets
-          |    |_ default.css
+          |  |_ default.css
           |- images
-               |_ foo.jpg
+             |_ foo.jpg
 
 
 In this application, the only publicly accessible files will be at
