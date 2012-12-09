@@ -87,7 +87,7 @@ on first run.
 Now that Scalatra is now installed, how about making your first application?
 Source files go into `src/main/scala/com/example/app`
 (substitute your package for `com/example/app`).
-Open `src/main/scala/com/example/app/MyServlet.scala`, or whatever
+Open `src/main/scala/com/example/app/MyScalatraServlet.scala`, or whatever
 you named your servlet when you generated your project with g8:
 
 ```scala
