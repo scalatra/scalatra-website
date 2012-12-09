@@ -18,28 +18,26 @@ what you get when you generate a new project using giter8:
 
     src
     |_ main
+    |  |_ scala
+    |  |  |   |_ScalatraBootstrap.scala <= see note below!
+    |  |  |_org
+    |  |      |_ yourdomain
+    |  |         |_ projectname
+    |  |            |_ MyScalatraServlet.scala
+    |  |_ webapp
+    |     |_ WEB-INF
+    |        |_ views
+    |        |  |_ hello-scalate.scaml
+    |        |_ layouts
+    |        |  |_ default.scaml
+    |        |_ web.xml
+    |_ test
        |_ scala
-       |  |   |_Scalatra.scala <= see note below!
-       |  |
-       |  |_org
-       |      |_yourdomain
-       |        |
-       |        |_projectname
-       |          |_ ArticlesServlet.scala
-       |          |_ UsersServlet.scala
-       |
-       |_ webapp
-          |
-          |_ WEB-INF
-             |
-             |_ views
-             |  |_ default.jade
-             |
-             |_ layouts
-             |  |_ default.jade
-             |
-             |_ web.xml
-
+          |_ org
+             |_ yourdomain
+                |_ projectname
+                   |_ MyScalatraServletSpec.scala
+              
 
 
 The basic structure should be reasonably familiar to anybody who's seen a
@@ -48,11 +46,9 @@ layouts (which wrap views) go in the layouts folder.
 
 The Scalatra giter8 project puts your Scala application code into a series of
 namespaced directories: in the example above, _org.yourdomain.projectname_.
-This is entirely optional. The [Scala style guide][styleguide]
+This is entirely optional. The [Scala style guide](http://docs.scala-lang.org/style/)
 suggests doing it this way, but the language doesn't do anything to enforce it.
 If you want to, you can put all of your Scala code in the same directory.
-
-[styleguide]: http://docs.scala-lang.org/style/
 
 ## Serving static files
 
@@ -77,9 +73,9 @@ An example structure may help in understanding this.
           |  |
           |  |_ web.xml
           |- stylesheets
-          |    |_ default.css
+          |  |_ default.css
           |- images
-               |_ foo.jpg
+             |_ foo.jpg
 
 
 In this application, the only publicly accessible files will be at
@@ -110,7 +106,7 @@ class YourFilter extends ScalatraFilter with ScalateSupport {
 
 The main difference is the default behavior when a route is not found.
 A `ScalatraFilter` will delegate to the next filter or servlet in the chain (as
-configured by web.xml), whereas a `ScalatraServlet` will return a 404
+configured by `web.xml`), whereas a `ScalatraServlet` will return a 404
 response.
 
 Another difference is that `ScalatraFilter` matches routes relative to
@@ -127,6 +123,7 @@ in the same WAR.
 ### Use ScalatraServlet if:
 
 * You want to match routes with a prefix deeper than the context path.
+* You're not sure which to use!
 
 
 ## Scalatra's sbt dependencies
@@ -154,9 +151,9 @@ seq(webSettings :_*)
 classpathTypes ~= (_ + "orbit")
 
 libraryDependencies ++= Seq(
-  "org.scalatra" % "scalatra" % "2.1.1",
-  "org.scalatra" % "scalatra-scalate" % "2.1.1",
-  "org.scalatra" % "scalatra-specs2" % "2.1.1" % "test",
+  "org.scalatra" % "scalatra" % "2.2.0",
+  "org.scalatra" % "scalatra-scalate" % "2.2.0",
+  "org.scalatra" % "scalatra-specs2" % "2.2.0" % "test",
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
   "org.eclipse.jetty" % "jetty-webapp" % "8.1.5.v20120716" % "container",
   "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
@@ -185,20 +182,36 @@ The default dependencies are:
   <dt>scalatra</dt>
   <dd>This is the core Scalatra module, and is required to run the framework.</dd>
   <dt>scalatra-scalate</dt>
-  <dd>This integrates with <a href="http://scalate.fusesource.org">Scalate</a>,
-  a template engine supporting multiple template formats. Scalate is optional, but
-  highly recommended for any app requiring templating.</dd>
+  <dd>
+    This integrates with <a href="http://scalate.fusesource.org">Scalate</a>,
+    a template engine supporting multiple template formats. Scalate is optional, but
+    highly recommended for any app requiring templating.
+  </dd>
   <dt>scalatra-specs2</dt>
-  <dd>This integrates the <a href="https://github.com/etorreborre/specs2">Specs2</a>
-      testing libraries.</dd>
+  <dd>
+    This integrates the <a href="https://github.com/etorreborre/specs2">Specs2</a> testing libraries.
+    It is placed in the <code>test</code> scope, so it's not deployed with your app in production.
+  </dd>
   <dt>logback-classic</dt>
-  <dd>Basic logging functionality, courtesy of <a href="http://logback.qos.ch/">Logback</a>.</dd>
+  <dd>
+    Basic logging functionality, courtesy of <a href="http://logback.qos.ch/">Logback</a>.
+    It's placed in the <code>runtime</code> scope so it's not bundled with your application.
+    This allows the particular logging implementation (or no logging implementation at all), to be provided at runtime.
+  </dd>
   <dt>jetty-webapp</dt>
-  <dd>This is the embedded servlet container used by the web plugin. Your application should be portable to any servlet container supporting at least the 2.5 specification.</dd>
-  <dt>servlet-api</dt>
-  <dd>Required for building your app.  It is placed in the <code>provided</code>
-  configuration so that it is not bundled with your application.  Your servlet
-  container will provide this at deployment time.</dd>
+  <dd>
+    This is the embedded servlet container used by the web plugin.
+    Your application should be portable to any servlet container supporting at least the 2.5 specification.
+  </dd>
+  <dt>javax.servlet</dt>
+  <dd>
+    Required for building your app.
+    It is placed in the <code>provided</code> configuration so that it is not bundled with your application.
+    Your servlet container will provide this at deployment time.
+  </dd>
 </dl>
 
-The Scalatra components in your project should all have the same version number (2.1.1 in the above example). Although it's theoretically possible to mix and match differently-versioned components in your projects, it's not recommended, because we compile, test and release Scalatra dependencies together based on their version number. 
+The Scalatra components in your project should all have the same version number (2.2.0 in the above example).
+Although it's theoretically possible to mix and match differently-versioned components in your projects, it's not recommended, because we compile, test and release Scalatra dependencies together based on their version number. 
+
+Now that you understand the basics of building Scalatra apps, we strongly recommend you consider [using JRebel](jrebel.html), which will make your webapp restart much more quickly after a code change during development.

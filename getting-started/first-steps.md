@@ -19,15 +19,16 @@ generate a project:
 g8 scalatra/scalatra-sbt
 ```
 
-This will check out a pre-built application skeleton for you (from Github),
+This will check out a pre-built application skeleton for you (from [Github](https://github.com/scalatra/scalatra-sbt.g8)),
 and ask you some questions about your application:
 
 ```
 $ g8 scalatra/scalatra-sbt
 organization [com.example]:
-package [com.example.myapp]:
+package [com.example.app]:
 name [My Scalatra Web App]:
-servlet_name [MyServlet]:
+servlet_name [MyScalatraServlet]:
+scala_version [2.9.2]:
 version [0.1.0-SNAPSHOT]:
 ```
 
@@ -36,12 +37,12 @@ version [0.1.0-SNAPSHOT]:
   <dd>
     Used for publishing.
     Should be the reverse of a domain name you control.
-    If you don't own a domain, `com.github.username` is a popular choice.
+    If you don't own a domain, <code>com.github.username</code> is a popular choice.
   </dd>
   <dt>package</dt>
   <dd>
     All Scala code belongs in a package.
-    The [Scala Style Guide](http://docs.scala-lang.org/style/naming-conventions.html#packages) recommends that your packages start with your organization.
+    The <a href="http://docs.scala-lang.org/style/naming-conventions.html#packages">Scala Style Guide<a> recommends that your packages start with your organization.
     This convention is used across multiple JVM languages and gives your
     project a globally unique namespace.
   </dd>
@@ -54,9 +55,15 @@ version [0.1.0-SNAPSHOT]:
   <dt>servlet_name</dt>
   <dd>
     The name of your servlet class.
-    This might be something like *BlogServlet* or just *Blog*.
+    This might be something like <code>BlogServlet</code> or just <code>Blog</code>.
   </dd>
   <dt>version</dt>
+  <dt>scala_version</dt>
+  <dd>
+    The Scala version to use.
+    The bottom of the <a href="http://www.scalatra.org/2.2/">homepage</a> lists which Scala versions are compatible with the latest Scalatra releases.
+    When in doubt, use the default.
+  </dd>
   <dd>
     Your project's version.
     This is entirely up to you, but we like
@@ -68,8 +75,16 @@ version [0.1.0-SNAPSHOT]:
 
 Scala is a compiled language, so you need to build your Scalatra project.
 
-Enter your application's top-level directory, type `./sbt`, and the
+Enter your application's top-level directory, set `sbt` to executable, type `./sbt`, and the
 application will build.
+For example:
+
+```bash
+$ cd /your/project/directory
+$ chmod u+x sbt
+$ ./sbt
+```
+
 sbt will also take care of downloading an entire Scalatra development
 environment if you don't have one yet.
 That means sbt may spend some time downloading Scalatra and its libraries
@@ -80,7 +95,7 @@ on first run.
 Now that Scalatra is now installed, how about making your first application?
 Source files go into `src/main/scala/com/example/app`
 (substitute your package for `com/example/app`).
-Open `src/main/scala/com/example/app/MyServlet.scala`, or whatever
+Open `src/main/scala/com/example/app/MyScalatraServlet.scala`, or whatever
 you named your servlet when you generated your project with g8:
 
 ```scala
@@ -189,7 +204,6 @@ Download and run the examples:
 $ git clone https://github.com/scalatra/scalatra.git
 $ cd scalatra
 $ ./sbt
-# now you're in the sbt shell!
 > project scalatra-example
 > container:start
 ```
