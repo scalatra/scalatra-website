@@ -36,6 +36,6 @@ title: Scalatra | Getting started
       Use JRebel (for free!) to dramatically speed up your Scalatra web development.
       Scalatra comes pre-integrated with JRebel.
     </p>
-    <p><a href=jrebel.html" class="btn btn-primary">Go »</a></p>
+    <p><a href="jrebel.html" class="btn btn-primary">Go »</a></p>
  </div>
 </div>
