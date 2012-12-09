@@ -37,12 +37,12 @@ version [0.1.0-SNAPSHOT]:
   <dd>
     Used for publishing.
     Should be the reverse of a domain name you control.
-    If you don't own a domain, `com.github.username` is a popular choice.
+    If you don't own a domain, <code>com.github.username</code> is a popular choice.
   </dd>
   <dt>package</dt>
   <dd>
     All Scala code belongs in a package.
-    The [Scala Style Guide](http://docs.scala-lang.org/style/naming-conventions.html#packages) recommends that your packages start with your organization.
+    The <a href="http://docs.scala-lang.org/style/naming-conventions.html#packages">Scala Style Guide<a> recommends that your packages start with your organization.
     This convention is used across multiple JVM languages and gives your
     project a globally unique namespace.
   </dd>
@@ -55,13 +55,13 @@ version [0.1.0-SNAPSHOT]:
   <dt>servlet_name</dt>
   <dd>
     The name of your servlet class.
-    This might be something like *BlogServlet* or just *Blog*.
+    This might be something like <code>BlogServlet</code> or just <code>Blog</code>.
   </dd>
   <dt>version</dt>
   <dt>scala_version</dt>
   <dd>
     The Scala version to use.
-    The bottom of the [homepage](http://www.scalatra.org/) lists which Scala versions are compatible with the latest Scalatra releases.
+    The bottom of the <a href="http://www.scalatra.org/">homepage</a> lists which Scala versions are compatible with the latest Scalatra releases.
     When in doubt, use the default.
   </dd>
   <dd>
