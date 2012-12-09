@@ -204,7 +204,6 @@ Download and run the examples:
 $ git clone https://github.com/scalatra/scalatra.git
 $ cd scalatra
 $ ./sbt
-# now you're in the sbt shell!
 > project scalatra-example
 > container:start
 ```
