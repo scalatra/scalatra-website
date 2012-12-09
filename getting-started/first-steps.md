@@ -25,9 +25,10 @@ and ask you some questions about your application:
 ```
 $ g8 scalatra/scalatra-sbt
 organization [com.example]:
-package [com.example.myapp]:
+package [com.example.app]:
 name [My Scalatra Web App]:
-servlet_name [MyServlet]:
+servlet_name [MyScalatraServlet]:
+scala_version [2.9.2]:
 version [0.1.0-SNAPSHOT]:
 ```
 
@@ -57,6 +58,12 @@ version [0.1.0-SNAPSHOT]:
     This might be something like *BlogServlet* or just *Blog*.
   </dd>
   <dt>version</dt>
+  <dt>scala_version</dt>
+  <dd>
+    The Scala version to use.
+    The bottom of the [homepage](http://www.scalatra.org/) lists which Scala versions are compatible with the latest Scalatra releases.
+    When in doubt, use the default.
+  </dd>
   <dd>
     Your project's version.
     This is entirely up to you, but we like
