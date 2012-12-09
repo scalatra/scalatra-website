@@ -85,6 +85,6 @@ That's it! You now have everything you need.
 You may want to set up your IDE. If you're using Eclipse, you can use the [sbt-eclipse](https://github.com/typesafehub/sbteclipse) plugin.
 It generates Eclipse classpath and configuration files to ensure the project will work as expected in the IDE.
 Similar functionality for IntelliJ IDEA is provided by the [sbt-idea](https://github.com/mpeltonen/sbt-idea) plugin.
-Make sure the you run `sbt eclipse` or `sbt idea` every time you [add or update a dependency](understanding-scalatra.html) in `build.sbt`.
+Be sure to run `./sbt eclipse` or `./sbt idea` every time you [add or update a dependency](understanding-scalatra.html) in `build.sbt`.
 
 Head over to the "[first steps](first-steps.html)" page, which will show you how to generate, build, and run a Scalatra application.
