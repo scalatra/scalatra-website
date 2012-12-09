@@ -106,7 +106,7 @@ class YourFilter extends ScalatraFilter with ScalateSupport {
 
 The main difference is the default behavior when a route is not found.
 A `ScalatraFilter` will delegate to the next filter or servlet in the chain (as
-configured by web.xml), whereas a `ScalatraServlet` will return a 404
+configured by `web.xml`), whereas a `ScalatraServlet` will return a 404
 response.
 
 Another difference is that `ScalatraFilter` matches routes relative to
@@ -123,6 +123,7 @@ in the same WAR.
 ### Use ScalatraServlet if:
 
 * You want to match routes with a prefix deeper than the context path.
+* You're not sure which to use!
 
 
 ## Scalatra's sbt dependencies
@@ -150,9 +151,9 @@ seq(webSettings :_*)
 classpathTypes ~= (_ + "orbit")
 
 libraryDependencies ++= Seq(
-  "org.scalatra" % "scalatra" % "2.1.1",
-  "org.scalatra" % "scalatra-scalate" % "2.1.1",
-  "org.scalatra" % "scalatra-specs2" % "2.1.1" % "test",
+  "org.scalatra" % "scalatra" % "2.2.0",
+  "org.scalatra" % "scalatra-scalate" % "2.2.0",
+  "org.scalatra" % "scalatra-specs2" % "2.2.0" % "test",
   "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
   "org.eclipse.jetty" % "jetty-webapp" % "8.1.5.v20120716" % "container",
   "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
@@ -181,20 +182,34 @@ The default dependencies are:
   <dt>scalatra</dt>
   <dd>This is the core Scalatra module, and is required to run the framework.</dd>
   <dt>scalatra-scalate</dt>
-  <dd>This integrates with <a href="http://scalate.fusesource.org">Scalate</a>,
-  a template engine supporting multiple template formats. Scalate is optional, but
-  highly recommended for any app requiring templating.</dd>
+  <dd>
+    This integrates with <a href="http://scalate.fusesource.org">Scalate</a>,
+    a template engine supporting multiple template formats. Scalate is optional, but
+    highly recommended for any app requiring templating.
+  </dd>
   <dt>scalatra-specs2</dt>
-  <dd>This integrates the <a href="https://github.com/etorreborre/specs2">Specs2</a>
-      testing libraries.</dd>
+  <dd>
+    This integrates the <a href="https://github.com/etorreborre/specs2">Specs2</a> testing libraries.
+    It is placed in the <code>test</code> scope, so it's not deployed with your app in production.
+  </dd>
   <dt>logback-classic</dt>
-  <dd>Basic logging functionality, courtesy of <a href="http://logback.qos.ch/">Logback</a>.</dd>
+  <dd>
+    Basic logging functionality, courtesy of <a href="http://logback.qos.ch/">Logback</a>.
+    It's placed in the <code>runtime</code> scope so it's not bundled with your application.
+    This allows the particular logging implementation (or no logging implementation at all), to be provided at runtime.
+  </dd>
   <dt>jetty-webapp</dt>
-  <dd>This is the embedded servlet container used by the web plugin. Your application should be portable to any servlet container supporting at least the 2.5 specification.</dd>
-  <dt>servlet-api</dt>
-  <dd>Required for building your app.  It is placed in the <code>provided</code>
-  configuration so that it is not bundled with your application.  Your servlet
-  container will provide this at deployment time.</dd>
+  <dd>
+    This is the embedded servlet container used by the web plugin.
+    Your application should be portable to any servlet container supporting at least the 2.5 specification.
+  </dd>
+  <dt>javax.servlet</dt>
+  <dd>
+    Required for building your app.
+    It is placed in the <code>provided</code> configuration so that it is not bundled with your application.
+    Your servlet container will provide this at deployment time.
+  </dd>
 </dl>
 
-The Scalatra components in your project should all have the same version number (2.1.1 in the above example). Although it's theoretically possible to mix and match differently-versioned components in your projects, it's not recommended, because we compile, test and release Scalatra dependencies together based on their version number. 
+The Scalatra components in your project should all have the same version number (2.2.0 in the above example).
+Although it's theoretically possible to mix and match differently-versioned components in your projects, it's not recommended, because we compile, test and release Scalatra dependencies together based on their version number. 
