@@ -75,8 +75,16 @@ version [0.1.0-SNAPSHOT]:
 
 Scala is a compiled language, so you need to build your Scalatra project.
 
-Enter your application's top-level directory, type `./sbt`, and the
+Enter your application's top-level directory, set `sbt` to executable, type `./sbt`, and the
 application will build.
+For example:
+
+```bash
+$ cd /your/project/directory
+$ chmod u+x sbt
+$ ./sbt
+```
+
 sbt will also take care of downloading an entire Scalatra development
 environment if you don't have one yet.
 That means sbt may spend some time downloading Scalatra and its libraries
