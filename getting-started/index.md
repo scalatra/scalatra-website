@@ -28,3 +28,14 @@ title: Scalatra | Getting started
     <a href="understanding-scalatra.html" class="btn btn-primary">Go »</a>
   </div>
 </div>
+
+<div class="row">
+  <div class="span4">
+    <h2>JRebel integration</h2>
+    <p>
+      Use JRebel (for free!) to dramatically speed up your Scalatra web development.
+      Scalatra comes pre-integrated with JRebel.
+    </p>
+    <p><a href=jrebel.html" class="btn btn-primary">Go »</a></p>
+ </div>
+</div>
