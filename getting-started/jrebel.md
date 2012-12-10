@@ -110,7 +110,7 @@ get("/") {
 }
 ```
 
-If JRebel is doing is correctly installed, you will see a bunch of output, crucially containing this line:
+If JRebel is doing is correctly installed you will see a notice from JRebel that it has reloaded classes for you:
 
 ```
 1. Waiting for source changes... (press enter to interrupt)
@@ -119,4 +119,4 @@ If JRebel is doing is correctly installed, you will see a bunch of output, cruci
 
 ## 6. Limitations
 
-JRebel is nearly always able to eliminate the need to explicitly reload your container after a code change. However, if you change any of your routes, there is nothing JRebel can do, you will have to run `container:reload`.
+JRebel is nearly always able to eliminate the need to explicitly reload your container after a code change. However, if you change any of your routes patterns, there is nothing JRebel can do, you will have to run `container:reload`.
