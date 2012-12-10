@@ -34,7 +34,7 @@ class FooController extends ScalatraServlet with ScalateSupport {
 }
 ```
 
-Adding the ScalateSupport trait like this gives you the ability to do templating
+Adding the `ScalateSupport` trait like this gives you the ability to do templating
 (see the [views](views.html) guide for more on that).
 
 Some helpers are built directly into Scalatra. Other helpers need to be added
@@ -62,7 +62,7 @@ do something that the Scalatra team hasn't thought of yet.
 ### DRYing up your helper traits
 
 After a while, you may find that you've got a large
-number of traits mixed into your servlets and things start to look a little
+number of traits mixed into your servlets and things are starting to look a little
 messy:
 
 ```scala
@@ -95,7 +95,7 @@ Then you can mix that into your servlets. Nice and DRY:
 ```scala
 class FooServlet extends MyStack {
 
-  get("/" {
+  get("/") {
     // do something
   }
 }
@@ -106,7 +106,7 @@ class FooServlet extends MyStack {
 All of the built-in helpers can simply be mixed into your servlet without
 adding any additional dependencies to `build.sbt`. Some of the built-in helpers
 (such as the `request`, `response`, and `session` helpers) are available to every
-Scalatra application because they're part of ScalatraBase, which everything
+Scalatra application because they're part of `ScalatraBase`, which everything
 else inherits from.
 
 Other built-in helpers (such as `FlashMapSupport`) don't require any additional
@@ -237,7 +237,7 @@ flash.now += ("info" -> "redirect to see the error")
 it sets a value for the current request only.  It will be removed before the
 next request unless explicitly kept.
 
-Please note: extending your ScalatraServlet with `FlashMapSupport` triggers
+Please note: extending your `ScalatraServlet` with `FlashMapSupport` triggers
 a session, which is why it's an optional mixin.
 
 ## Uploading files
@@ -258,7 +258,7 @@ class MyApp extends ScalatraServlet with FileUploadSupport {
 }
 ```
 
-If you prefer using your _web.xml_ over the `@MultipartConfig` annotation, you can also
+If you prefer using your `web.xml` over the `@MultipartConfig` annotation, you can also
 place `<multipart-config>` to your `<servlet>`:
 
 ```xml
@@ -277,8 +277,8 @@ See
 for more details on configurable attributes.
 
 <span class="badge badge-warning"><i class="icon-flag icon-white"></i></span>
-Note for Jetty users: `@MultipartConfig` and the _web.xml_ `<multipart-config>`
-does not work correctly in Jetty prior to version 8.1.3.
+Note for Jetty users: `@MultipartConfig` and the `<multipart-config>` tag in `web.xml`
+do not work correctly in Jetty prior to version 8.1.3.
 
 Be sure that your form is of type `multipart/form-data`:
 
@@ -328,7 +328,7 @@ override def isSizeConstraintException(e: Exception) = e match {
 
 ### URL support and reverse routes
 
-UrlSupport provides two instances that provide you with relative URLs.
+`UrlSupport` provides two instances that provide you with relative URLs.
 `UrlSupport.url` will return a string that can be used in your output or a
 redirect statement.
 

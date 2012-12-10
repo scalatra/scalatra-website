@@ -9,11 +9,11 @@ title: Scalatra guides | Routes and actions
 
 All web applications need a way to match up the incoming HTTP request with some code to execute on the server. In Scalatra, this is done using _routes_ and _actions_.
 
-If somebody makes a POST request to your application, at *http://www.yourapp.org/articles*, you might want to invoke code on the server which will look at the information contained in the incoming request, and use it to create a new *Article* object. The fact that it's a _POST_ request, and the request path is _/articles_, are _route_ information. The code that you execute is the _action_.
+If somebody makes a POST request to your application, at `http://www.yourapp.org/articles`, you might want to invoke code on the server which will look at the information contained in the incoming request, and use it to create a new `Article` object. The fact that it's a POST request, and the request path is `/articles`, are _route_ information. The code that you execute is the _action_.
 
 ## Routes
 
-In Scalatra, a route is an HTTP method (GET, PUT, POST, or DELETE) paired with a URL matching pattern. If you set your application up using RESTful conventions, your controller might look something like this:
+In Scalatra, a route is an HTTP method (GET, PUT, POST, or DELETE) paired with a URL matching pattern. If you set up your application using RESTful conventions, your controller might look something like this:
 
 ```scala
 class Articles extends ScalatraServlet {
@@ -38,7 +38,7 @@ class Articles extends ScalatraServlet {
 }
 ```
 
-Those 4 example routes, and the actions inside the route blocks, could be the basis of a simple blogging system. The examples just stub out the actions - in a real application, you'd replace the  `// comments` with code to save and retrieve [models](models.html), and show HTML [views](views.html).
+Those four example routes, and the actions inside the route blocks, could be the basis of a simple blogging system. The examples just stub out the actions - in a real application, you'd replace the  `// comments` with code to save and retrieve [models](models.html), and show HTML [views](views.html).
 
 ### Named parameters
 
@@ -102,8 +102,13 @@ class RailsLikeRouting extends ScalatraFilter {
 ### Path patterns in the REPL
 
 If you want to experiment with path patterns, it's very easy in the [REPL][repl].
+Simply use a Scalatra project, like one created by our giter8 template.
 
 ```
+$ cd [project root]
+$ ./sbt
+> console
+
 scala> import org.scalatra.SinatraPathPatternParser
 import org.scalatra.SinatraPathPatternParser
 
@@ -183,7 +188,8 @@ class MyFilter extends ScalatraFilter with MethodOverride {
 
 ### Route order
 
-The first matching route is invoked. Routes are matched from the *bottom up*. <span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
+The first matching route is invoked. Routes are matched from the *bottom up*, i.e. from the bottom of the Scala class defining your servlet to the top.
+<span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
@@ -393,7 +399,7 @@ get("/"){
 This will return a redirect response, with HTTP status 302, pointing to
 `/someplace/else`.
 
-_Caution:_ `redirect` is implemented as a HaltException.  You probably don't
+_Caution:_ `redirect` is implemented as a `HaltException`.  You probably don't
 want to catch it in an action.
 
 Although there's no built-in handler for permanent redirects, if you'd like to
@@ -463,7 +469,7 @@ The route block is immediately exited and control continues with the next
 matching route.  If no matching route is found, the `notFound` handler is
 invoked.
 
-#### notFound
+#### Not Found (404)
 
 The `notFound` handler allows you to execute code when there is no matching
 route for the current request's URL.
@@ -479,6 +485,6 @@ notFound {
 What happens next differs slightly based on whether you've set your application
 up using ScalatraServlet or ScalatraFilter.
 
-* _ScalatraServlet_: sends a 404 response
-* _ScalatraFilter_: passes the request to the servlet filter chain, which may
+* `ScalatraServlet`: sends a 404 response
+* `ScalatraFilter`: passes the request to the servlet filter chain, which may
   then throw a 404 or decide to do something different with it.
