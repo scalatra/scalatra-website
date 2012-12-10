@@ -14,7 +14,7 @@ session tracking.
 
 ## Integrations
 
-scalatra-test can be used with the test framework of your choosing.  A basic
+Scalatra can be used with the test framework of your choosing.  A basic
 example from each supported framework is shown below.  You may mix and match if
 transitioning from one framework to another; sbt will find and run them all by
 default.
@@ -29,8 +29,8 @@ default.
 
 #### Example
 
-Extend ScalatraSuite with your preferred Suite implementation.  You get
-ShouldMatchers and MustMatchers for free.
+Extend `ScalatraSuite` with your preferred `org.scalatest.Suite` implementation.
+You get `ShouldMatchers` and `MustMatchers` for free.
 
 ```scala
 import org.scalatra.test.scalatest._
@@ -48,17 +48,17 @@ class MyScalatraServletTests extends ScalatraSuite with FunSuite {
 }
 ```
 
-Convenience traits are provided for many Suite implementations:
+Convenience traits are provided for many `Suite` implementations:
 
-* ScalatraSpec
-* ScalatraFlatSpec
-* ScalatraFreeSpec
-* ScalatraWordSpec
-* ScalatraFunSuite
-* ScalatraFeatureSpec
-* ScalatraJUnit3Suite
-* ScalatraJUnitSuite (JUnit 4)
-* ScalatraTestNGSuite
+* `ScalatraSpec`
+* `ScalatraFlatSpec`
+* `ScalatraFreeSpec`
+* `ScalatraWordSpec`
+* `ScalatraFunSuite`
+* `ScalatraFeatureSpec`
+* `ScalatraJUnit3Suite`
+* `ScalatraJUnitSuite` (JUnit 4)
+* `ScalatraTestNGSuite`
 
 ### [Specs2](http://etorreborre.github.com/specs2/)
 
@@ -70,8 +70,8 @@ Convenience traits are provided for many Suite implementations:
 
 #### Example
 
-Specs2 supports two basic styles: Unit and Acceptance.  Both are supported
-by scalatra-test.
+Specs2 supports two basic styles: *unit* and *acceptance*.
+Both are supported by Scalatra.
 
 #### Unit testing
 
@@ -108,9 +108,9 @@ From the [Specs2 QuickStart][Specs2 Quickstart]:
 import org.scalatra.test.specs2._
 
 class HelloWorldServletSpec extends ScalatraSpec { def is =
-  "GET / on HelloWorldServlet"                     ^
-    "return status 200"                            ! getRoot200^
-                                                   end
+  "GET / on HelloWorldServlet"                            ^
+    "returns status 200"                                  ! getRoot200^
+                                                          end
 
   addServlet(classOf[HelloWorldServlet], "/*")
 
@@ -149,9 +149,9 @@ available courtesy of
 #### How do I set a servlet init parameter?
 
 scalatra-test is built on an embedded Jetty server, so it
-does not read your web.xml.  Most things you can do in a web.xml can be
-done from the context on the tester object.  In this case, call this in
-the constructor of your servlet:
+does not read your `web.xml`.  Most things you can do in a `web.xml` can be
+done from the context of the tester object.
+Call this in the constructor of your servlet:
 
 ```scala
 servletContextHandler.setInitParameter("db.username", "ross")
@@ -163,7 +163,7 @@ servletContextHandler.setInitParameter("db.username", "ross")
 
 Convenience methods exist for testing file uploads.
 
-Example based on Specs2:
+Example using Specs2:
 
 ```scala
 class FileUploadSpec extends MutableScalatraSpec {
