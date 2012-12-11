@@ -91,7 +91,7 @@ You will start the servlet container slightly differently now that you're using 
 
 ```
 > container:start
-> ~ compile
+> ~ copy-resources
 ```
 
 Don't worry if JRebel complains about there being no `test-classes` directory.
