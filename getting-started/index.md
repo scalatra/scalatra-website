@@ -38,4 +38,12 @@ title: Scalatra | Getting started
     </p>
     <p><a href="jrebel.html" class="btn btn-primary">Go »</a></p>
  </div>
+  <div class="span4">
+    <h2>Deploy to Heroku</h2>
+    <p>
+      Heroku is a popular app platform.
+      It makes it easy to deploy and scale web applications.
+    </p>
+    <p><a href="heroku.html" class="btn btn-primary">Go »</a></p>
+ </div>
 </div>
