@@ -16,14 +16,14 @@ Now that [installation](installation.html) is out of the way, you can
 generate a project:
 
 ```bash
-g8 scalatra/scalatra-sbt
+g8 scalatra/scalatra-sbt -b develop
 ```
 
 This will check out a pre-built application skeleton for you (from [Github](https://github.com/scalatra/scalatra-sbt.g8)),
 and ask you some questions about your application:
 
 ```
-$ g8 scalatra/scalatra-sbt
+$ g8 scalatra/scalatra-sbt -b develop
 organization [com.example]:
 package [com.example.app]:
 name [My Scalatra Web App]:
