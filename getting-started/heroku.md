@@ -31,7 +31,6 @@ Open `build.sbt` in the root of your project. You will find two lines like these
 
 ```scala
 "org.eclipse.jetty" % "jetty-webapp" % "8.1.7.v20120910" % "container",
-
 "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 ```
 
@@ -39,7 +38,6 @@ Those are basically right, but we need to add `compile` scope because Heroku is 
 
 ```scala
 "org.eclipse.jetty" % "jetty-webapp" % "8.1.7.v20120910" % "compile;container",
-
 "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 ```
 
