@@ -417,21 +417,31 @@ embedded Jetty server with this Servlet.
 
 ```scala
 package com.example  // remember this package in the sbt project definition
-import org.mortbay.jetty.Server
-import org.mortbay.jetty.servlet.{Context, ServletHolder}
+import org.eclipse.jetty.server.Server
+import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
+import org.eclipse.jetty.webapp.WebAppContext
 import org.scalatra.TemplateExample // this is the example Scalatra servlet
 
 object JettyLauncher { // this is my entry object as specified in sbt project definition
   def main(args: Array[String]) {
-    val server = new Server(8080)
-    val root = new Context(server, "/", Context.SESSIONS)
-    root.addServlet(new ServletHolder(new TemplateExample), "/*")
-    server.start()
-    server.join()
+    val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
+
+    val server = new Server(port)
+    val context = new WebAppContext()
+    context setContextPath "/"
+    context.setResourceBase("src/main/webapp")
+    context.addServlet(classOf[TemplateExample], "/*")
+    context.addServlet(classOf[DefaultServlet], "/")
+
+    server.setHandler(context)
+
+    server.start
+    server.join
   }
 }
 ```
 
+With the [sbt-assembly](https://github.com/sbt/sbt-assembly) plugin you can make a launchable jar.
 Now save this alongside your Scalatra project as JettyLauncher.scala and run
 <code>sbt clean assembly</code>. You'll have the ultimate executable jar file
 in the target soon. Try
