@@ -35,12 +35,12 @@ Open `build.sbt` in the root of your project. You will find two lines like these
 "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 ```
 
-Those are basically right, but we need to add `runtime` scope because Heroku is not a servlet host. It can only run your app via an embedded Jetty server you provide. So replace the two lines above with these two:
+Those are basically right, but we need to add `compile` scope because Heroku is not a servlet host. It can only run your app via an embedded Jetty server you provide. So replace the two lines above with these two:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "8.1.7.v20120910" % "runtime;container",
+"org.eclipse.jetty" % "jetty-webapp" % "8.1.7.v20120910" % "compile;container",
 
-"org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "runtime;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+"org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 ```
 
 ### Escape sbt
