@@ -94,7 +94,7 @@ import javax.servlet.ServletContext
 class ScalatraBootstrap extends LifeCycle {
 
   override def init {
-    context.mount(new FlowersController, "/flowers")
+    context.mount(new FlowersController, "/flowers/*")
   }
 }
 ```
