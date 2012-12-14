@@ -329,7 +329,7 @@ Let's go through the annotations in detail.
 
 The `summary` and `notes` should be human-readable messages that you intend to be read by developers of API clients. The summary is a short description, while the notes should offer a longer description and include any noteworthy features which somebody might otherwise miss.
 
-The `nickname` is intended as a machine-readable key which can be used by client code to identify this API action - it'll be used, for instance, by swagger-ui to generate method names. You can call it whatever you want, but make sure you don't include any spaces in it, or client code generation will probably fail - so "getFlowers" or "get_flowers" is fine, "get flowers" isn't.
+The `nickname` is intended as a machine-readable key which can be used by client code to identify this API action - it'll be used, for instance, by swagger-ui to generate javascript method names. You can call it whatever you want, but make sure you don't include any spaces in it, or client code generation will probably fail - so "getFlowers" or "get_flowers" is fine, "get flowers" isn't.
 
 The `responseClass` is essentially a type annotation, so that clients know what data types to expect back. In this case, clients should expect a List of Flower objects.
 
