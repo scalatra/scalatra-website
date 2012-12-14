@@ -199,7 +199,7 @@ app to grab the new jars:
 "org.scalatra" % "scalatra-swagger"  % "2.2.0-SNAPSHOT",
 ```
 
-You'll now need to import Scalatra's Swagger support into your FlowersController:
+You'll now need to import Scalatra's Swagger support into your `FlowersController`:
 
 ```scala
 // Swagger support
