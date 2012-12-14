@@ -9,7 +9,10 @@ title: Scalatra Guides | Swagger
 
 ## What is Swagger?
 
-[Swagger](http://swagger.wordnik.com) is a specification which allows you to quickly define the functionality of a REST API using JSON documents. But it's more than just a spec. It provides automatic generation of interactive API docs, client-side code generation in multiple languages, and server-side code generation in Java and Scala.
+[Swagger](http://swagger.wordnik.com) is a specification which allows you to quickly define the functionality of a REST API using JSON documents. But it's more than
+just a spec. It provides automatic generation of interactive API docs,
+client-side code generation in multiple languages, and server-side code generation
+in Java and Scala.
 
 It's not easy to describe, but it is easy to understand once you see it.  Take a look at the Swagger demo app now:
 
