@@ -158,7 +158,7 @@ see how to automate this in a moment:
 ```
 
 These JSON files can then be offered to a standard HTML/CSS/JavaScript client
-to make it easy for people to browse the docs. It's extremely impressive -
+to make it easy for people to browse the docs. You may want to
 take a moment to view the [Swagger Pet Store][petstore] example. Click on the
 route definitions to see what operations are available for each resource. You
 can use the web interface to send live test queries to the API, and view the
