@@ -266,16 +266,10 @@ class ScalatraBootstrap extends LifeCycle {
 
 ### Adding SwaggerSupport to the FlowersController
 
-Then we can add some code to enable Swagger on your FlowersController.
-Currently, your FlowersController declaration should look like this:
+You'll need to enable Swagger on your FlowersController.
 
-```scala
-class FlowersController extends ScalatraServlet with JacksonJsonSupport
-  with JValueResult {
-```
-
-Let's add the SwaggerSupport trait, and also make the FlowerController aware of
-Swagger in its constructor.
+Let's add the SwaggerSupport trait to the FlowersController, and also make it
+aware of Swagger in its constructor.
 
 ```scala
 class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet
