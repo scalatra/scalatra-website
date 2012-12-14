@@ -193,6 +193,18 @@ The first matching route is invoked. Routes are matched from the *bottom up*, i.
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
+### Routing FAQ
+
+#### How can I make Scalatra ignore trailing slashes on routes?
+If you'd like `foo/bar` and `foo/bar/` to be equivalent, simply append `/?` to your URL matching pattern.
+For example:
+
+```scala
+get("foo/bar/?") {
+  //...
+}
+```
+
 ----
 
 ## Actions
