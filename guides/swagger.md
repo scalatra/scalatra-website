@@ -124,12 +124,10 @@ Now let's add some Swagger to this simple application.
 
 Making the API's methods, parameters, and responses visible, in an engaging, easy to understand way, can transform the process of building REST APIs.
 
-Swagger is a specification for documenting the behaviour of a REST API - the
-API's name, what resources it offers, available methods and their parameters,
-and return values. The specification can be used in a standalone way to describe
-your API using simple JSON files. With a little help from annotations,
-Swagger-compatible frameworks can also generate all the Swagger output necessary
-to give you auto-generated, functional documentation.
+Scalatra's Swagger support allows you to auto-generate runnable documentation
+for a REST API - the API's name, what resources it offers, available methods
+and their parameters, and return values. The specification can be used in a
+standalone way to describe your API using simple JSON files.
 
 ### The Swagger resources file
 
