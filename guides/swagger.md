@@ -400,6 +400,4 @@ Interestingly, you are able to use the remotely-hosted documentation browser at 
 
 The reason it works is that Scalatra has Cross-Origin Resource Sharing (CORS) support built-in, allowing cross-origin JavaScript requests by default for all requesting domains. This makes it easy to serve JS API clients - but if you want, you can lock down requests to specific domains using Scalatra's CorsSupport trait. See the Scalatra [Helpers](http://scalatra.org/2.2/guides/helpers.html) documentation for more.
 
-## Sample code
 
-You can download and run a working version of this application by doing a `git clone https://github.com/futurechimp/flowershop.git`, and running `sbt` in the top-level of the project.
