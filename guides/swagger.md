@@ -212,7 +212,7 @@ Any Scalatra application which uses Swagger support must implement a Swagger
 controller. Those JSON specification files, which we'd otherwise need to write
 by hand, need to be served by something, after all. Let's add a standard Swagger
 controller to our application. Drop this code into a new file next to your
-FlowersController.scala. You can call it FlowersSwagger.scala:
+`FlowersController.scala`. You can call it `FlowersSwagger.scala`:
 
 ```scala
 package com.example.swagger.sample
@@ -266,9 +266,9 @@ class ScalatraBootstrap extends LifeCycle {
 
 ### Adding SwaggerSupport to the FlowersController
 
-You'll need to enable Swagger on your FlowersController.
+You'll need to enable Swagger on your `FlowersController`.
 
-Let's add the SwaggerSupport trait to the FlowersController, and also make it
+Let's add the SwaggerSupport trait to the `FlowersController`, and also make it
 aware of Swagger in its constructor.
 
 ```scala
@@ -277,9 +277,9 @@ class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet
 ```
 
 In order to make our application compile again, we'll need to add a name and
-description to our FlowersController. This allows Swagger to inform clients
+description to our `FlowersController`. This allows Swagger to inform clients
 what our API is called, and what it does. You can do this by adding the following
-code to the body of the FlowersController class:
+code to the body of the `FlowersController` class:
 
 ```scala
   override protected val applicationName = Some("flowers")
