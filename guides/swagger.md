@@ -15,7 +15,15 @@ It's not easy to describe, but it is easy to understand once you see it.  Take a
 
 [http://petstore.swagger.wordnik.com](http://petstore.swagger.wordnik.com)
 
-Swagger support is one of the most exciting new features in Scalatra 2.2. Let's take a look at how it all works. We'll start with an app looks like this:
+Swagger support is one of the most exciting new features in Scalatra 2.2. Let's take a look at how it all works.
+
+### Sample code
+
+You can download and run a working version of this application by doing a `git clone https://github.com/futurechimp/flowershop.git`, and running `sbt` in the top-level of the project.
+
+### Application setup
+
+We'll start with an app looks like this:
 
 ```scala
 package com.example.app
