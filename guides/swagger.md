@@ -204,9 +204,7 @@ Any Scalatra application which uses Swagger support must implement a Swagger
 controller. Those JSON specification files, which we'd otherwise need to write
 by hand, need to be served by something, after all. Let's add a standard Swagger
 controller to our application. Drop this code into a new file next to your
-FlowersController.scala. You can call it FlowersSwagger.scala
-
-_FlowersSwagger.scala_
+FlowersController.scala. You can call it FlowersSwagger.scala:
 
 ```scala
 package com.example.swagger.sample
