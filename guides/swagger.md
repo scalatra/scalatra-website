@@ -15,7 +15,7 @@ It's not easy to describe, but it is easy to understand once you see it.  Take a
 
 [http://petstore.swagger.wordnik.com](http://petstore.swagger.wordnik.com)
 
-Swagger support is one of the most exciting new features in Scalatra 2.2. Let's take a look at how it all works. We can use the JSON demonstration app from the JSON guide as a starting point. That app looks like this:
+Swagger support is one of the most exciting new features in Scalatra 2.2. Let's take a look at how it all works. We'll start with an app looks like this:
 
 ```scala
 package com.example.app
@@ -39,8 +39,21 @@ class FlowersController extends ScalatraServlet with JacksonJsonSupport with JVa
     contentType = formats("json")
   }
 
+  /*
+   * Retrieve a list of flowers
+   */
   get("/"){
-    FlowerData.all
+    params.get("name") match {
+      case Some(name) => FlowerData.all filter (_.name.toLowerCase contains name.toLowerCase())
+      case None => FlowerData.all
+    }
+  }
+
+  get("/:slug") {
+    FlowerData.all find (_.slug == params("slug")) match {
+      case Some(b) => b
+      case None => halt(404)
+    }
   }
 
 }
@@ -69,31 +82,9 @@ Don't forget to add the JSON libraries to your build.sbt file to make this work:
   "org.json4s"   %% "json4s-jackson" % "3.0.0",
 ```
 
-The output from hitting this app on [http://localhost:8080/](http://localhost:8080), looks like this:
+Every Scalatra application has a file called `ScalatraBootstrap.scala`, located in the `src/main/scala` directory. This file allows you to mount your controllers at whatever url paths you want.
 
-```json
-[{"slug":"yellow-tulip","name":"Yellow Tulip"},{"slug":"red-rose","name":"Red Rose"},{"slug":"black-rose","name":"Black Rose"}]
-```
-
-Scalatra has found all the flowers for us and returned the data. Looking at what we've got so far, though, it's not a very descriptive API. What resource is actually being retrieved? It's not possible to tell by looking at the URL. Let's change that.
-
-## Setting the mount path for better API clarity
-
-Every Scalatra application has a file called `ScalatraBootstrap.scala`, located in the `src/main/scala` directory. This file allows you to mount your controllers at whatever url paths you want. If you open yours right now, it'll look something like this:
-
-```scala
-import com.example.swagger.sample._
-import org.scalatra._
-import javax.servlet.ServletContext
-
-class ScalatraBootstrap extends LifeCycle {
-  override def init(context: ServletContext) {
-    context.mount(new FlowersController, "/*")
-  }
-}
-```
-
-Let's change it a bit, adding a route namespace to the FlowersController:
+Set yours so that there's a route namespace for the FlowersController:
 
 ```scala
 import com.example.swagger.sample._
@@ -108,78 +99,42 @@ class ScalatraBootstrap extends LifeCycle {
 }
 ```
 
-The only change was to replace the "/*" mount point with "/flowers". Easy enough. Let's make sure it works. Hit the url [http://localhost:8080/flowers](http://localhost:8080/flowers) in your browser, and you should once again see the same results as before:
+Hit the url [http://localhost:8080/flowers](http://localhost:8080/flowers) in your browser, and you should see this output:
 
 ```json
 [{"slug":"yellow-tulip","name":"Yellow Tulip"},{"slug":"red-rose","name":"Red Rose"},{"slug":"black-rose","name":"Black Rose"}]
 ```
 
-This is a much more descriptive URL path. Clients can now understand that they're operating on a `flower` resource.
+Scalatra can also take any incoming `?name=foo` parameter off the query string, and make it available to this action as the variable `name`, then filter the FlowerData
+list for matching results. If you point your browser at
+[http://localhost:8080/flowers?name=rose](http://localhost:8080/flowers?name=rose),
+you'll see only the roses.
 
-
-## Making the flowers API searchable
-
-Next, let's make our API searchable. We want to be able to search for flowers by name and get a list of results matching the query. The easiest way to do this is with some pattern matching inside the `/` in our controller.
-
-Currently that route looks like this:
-
-```scala
-  get("/"){
-    FlowerData.all
-  }
-```
-
-We can change it to read a query string parameter, and search inside our list of flowers.
-
-```scala
-  /*
-   * Retrieve a list of flowers
-   */
-  get("/"){
-    params.get("name") match {
-      case Some(name) => FlowerData.all filter (_.name.toLowerCase contains name.toLowerCase())
-      case None => FlowerData.all
-    }
-  }
-```
-
-Scalatra can now take any incoming `?name=foo` parameter off the query string, and make it available to this action as the variable `name`, then filter the FlowerData list for matching results.
-
-If you refresh your browser at [http://localhost:8080/flowers](http://localhost:8080/flowers), you should see no change - all flowers are returned. However, if you point your browser at [http://localhost:8080/flowers?name=rose](http://localhost:8080/flowers?name=rose), you'll see only the roses.
-
-## Retrieving a single flower by its slug
-
-The last controller method we'll create for the moment is one that retrieves a specific flower. We can easily retrieve a flower by its slug, like this:
-
-```scala
-  get("/:slug") {
-    FlowerData.all find (_.slug == params("slug")) match {
-      case Some(b) => b
-      case None => halt(404)
-    }
-  }
-```
-
-Once again, we're using Scala's pattern matching to see whether we can find a matching slug. If we can't find the desired flower, the action returns a 404 and halts processing.
-
-You can see the API's output by pointing your browser at a slug, e.g. [http://localhost:8080/flowers/yellow-tulip](http://localhost:8080/flowers/yellow-tulip)
+We can easily retrieve a flower by its slug.  You can see the API's output by
+pointing your browser at a slug, e.g.
+[http://localhost:8080/flowers/yellow-tulip](http://localhost:8080/flowers/yellow-tulip)
 
 ```json
 {"slug":"yellow-tulip","name":"Yellow Tulip"}
 ```
 
+Now let's add some Swagger to this simple application.
+
 ## Swagger: A quick introduction
 
-Making the API's methods, parameters, and responses visible, in an engaging, easy to understand way, can transform the process of building REST APIs. The people at [Wordnik][wordnik], the word meanings site, have built a toolset called [Swagger][swagger], which can help with this.
+Making the API's methods, parameters, and responses visible, in an engaging, easy to understand way, can transform the process of building REST APIs.
 
-[wordnik]: http://wordnik.com
-[swagger]: http://swagger.wordnik.com
-
-Swagger is a specification for documenting the behaviour of a REST API - the API's name, what resources it offers, available methods and their parameters, and return values. The specification can be used in a standalone way to describe your API using simple JSON files. With a little help from annotations, Swagger-compatible frameworks can also generate all the Swagger output necessary to give you auto-generated, functional documentation.
+Swagger is a specification for documenting the behaviour of a REST API - the
+API's name, what resources it offers, available methods and their parameters,
+and return values. The specification can be used in a standalone way to describe
+your API using simple JSON files. With a little help from annotations,
+Swagger-compatible frameworks can also generate all the Swagger output necessary
+to give you auto-generated, functional documentation.
 
 ### The Swagger resources file
 
-If you want to, you can write a Swagger JSON description file by hand. A Swagger resource description for our FlowersController might look like this (don't bother doing so, though, because we'll see how to automate this in a moment):
+If you want to, you can write a Swagger JSON description file by hand. A
+Swagger resource description for our FlowersController might look like this:
 
 ```json
 {"basePath":"http://localhost:8080","swaggerVersion":"1.0","apiVersion":"1","apis":[{"path":"/api-docs/flowers.{format}","description":"The flowershop API. It exposes operations for browing and searching lists of flowers"}]}
@@ -189,33 +144,49 @@ This file describes what APIs we're offering. Each API has its own JSON descript
 
 ### A sample Swagger resource file
 
-The descriptor for our `flower` resource might look something like this. Again,
-we'll see how to automate the generation of this code in a moment:
+The descriptor for our `flower` resource might look something like this. We'll
+see how to automate this in a moment:
 
 ```json
 {"resourcePath":"/","listingPath":"/api-docs/flowers","description":"The flowershop API. It exposes operations for browing and searching lists of flowers","apis":[{"path":"//","description":"","secured":true,"operations":[{"httpMethod":"GET","responseClass":"List[Flower]","summary":"Show all flowers","notes":"Shows all the flowers in the flower shop. You can search it too.","deprecated":false,"nickname":"getFlowers","parameters":[{"name":"name","description":"A name to search for","required":false,"paramType":"query","allowMultiple":false,"dataType":"string"}],"errorResponses":[]}]},{"path":"//{slug}","description":"","secured":true,"operations":[{"httpMethod":"GET","responseClass":"Flower","summary":"Find by slug","notes":"Returns the flower for the provided slug, if a matching flower exists.","deprecated":false,"nickname":"findBySlug","parameters":[{"name":"slug","description":"Slug of flower that needs to be fetched","required":true,"paramType":"path","allowMultiple":false,"dataType":"string"}],"errorResponses":[]}]}],"models":{"Flower":{"id":"Flower","description":"Flower","properties":{"name":{"description":null,"enum":[],"required":true,"type":"string"},"slug":{"description":null,"enum":[],"required":true,"type":"string"}}}},"basePath":"http://localhost:8080","swaggerVersion":"1.0","apiVersion":"1"}
 ```
 
-These JSON files can then be offered to a standard HTML/CSS/JavaScript client to make it easy for people to browse the docs. It's extremely impressive - take a moment to view the [Swagger Pet Store][petstore] example. Click on the route definitions to see what operations are available for each resource. You can use the web interface to send live test queries to the API, and view the API's response to each query.
+These JSON files can then be offered to a standard HTML/CSS/JavaScript client
+to make it easy for people to browse the docs. It's extremely impressive -
+take a moment to view the [Swagger Pet Store][petstore] example. Click on the
+route definitions to see what operations are available for each resource. You
+can use the web interface to send live test queries to the API, and view the
+API's response to each query.
 
 [petstore]: http://petstore.swagger.wordnik.com
 
 ### Swagger integration
 
-Let's get back to the spec files. In addition to enabling automatic documentation as in the Pet Store example, these JSON files allow client and server code to be automatically generated, in multiple languages.
+Let's get back to the spec files. In addition to enabling automatic documentation
+as in the Pet Store example, these JSON files allow client and server code to
+be automatically generated, in multiple languages.
 
-Scalatra's Swagger integration allow you to annotate the code within your RESTful API in order to automatically generate JSON descriptors which are valid Swagger specs. This means that once you annotate your API methods, you get some very useful (and pretty) documentation capabilities for free, using the [swagger-ui][ui]. You also get the ability to generate client and server code in multiple languages, using the [swagger-codegen][codegen] project. Client code can be generated for Flash, Java, JavaScript, Objective-C, PHP, Python, Python3, Ruby, or Scala.
+Scalatra's Swagger integration allow you to annotate the code within your RESTful
+API in order to automatically generate JSON descriptors which are valid Swagger
+specs. This means that once you annotate your API methods, you get some very
+useful (and pretty) documentation capabilities for free, using the
+[swagger-ui][ui]. You also get the ability to generate client and server code
+in multiple languages, using the [swagger-codegen][codegen] project.
+
+Client code can be generated for Flash, Java, JavaScript, Objective-C, PHP, Python, Python3, Ruby, or Scala.
 
 [ui]:https://github.com/wordnik/swagger-ui
 [codegen]:https://github.com/wordnik/swagger-codegen
 
 ## Setting up the Scalatra Flower Shop with Swagger
 
-Let's annotate our Scalatra flowershop with Swagger, in order to auto-generate runnable API documentation.
+Let's annotate our Scalatra flowershop with Swagger, in order to auto-generate
+runnable API documentation.
 
 ### Add the dependencies
 
-First, add the Swagger dependencies to your `build.sbt` file, then restart your app to grab the new jars:
+First, add the Swagger dependencies to your `build.sbt` file, then restart your
+app to grab the new jars:
 
 ```scala
 "com.wordnik"  % "swagger-core_2.9.1"  % "1.1-SNAPSHOT",
@@ -231,7 +202,11 @@ import org.scalatra.swagger._
 
 ### Auto-generating the resources.json spec file
 
-Any Scalatra application which uses Swagger support must implement a Swagger controller. Those JSON specification files, which we'd otherwise need to write by hand, need to be served by something, after all. Let's add a standard Swagger controller to our application. Drop this code into a new file next to your FlowersController.scala. You can call it FlowersSwagger.scala
+Any Scalatra application which uses Swagger support must implement a Swagger
+controller. Those JSON specification files, which we'd otherwise need to write
+by hand, need to be served by something, after all. Let's add a standard Swagger
+controller to our application. Drop this code into a new file next to your
+FlowersController.scala. You can call it FlowersSwagger.scala
 
 _FlowersSwagger.scala_
 
@@ -250,9 +225,13 @@ class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with J
 class FlowersSwagger extends Swagger("1.0", "1")
 ```
 
-That code basically gives you a new controller which will automatically produce Swagger-compliant JSON specs for every Swaggerized API method in your application.
+That code basically gives you a new controller which will automatically produce
+Swagger-compliant JSON specs for every Swaggerized API method in your application.
 
-The rest of your application doesn't know about it yet, though. In order to get everything set up properly, you'll need to change your ScalatraBootstrap file so that the container knows about this new servlet. Currently it looks like this:
+The rest of your application doesn't know about it yet, though. In order to
+get everything set up properly, you'll need to change your ScalatraBootstrap
+file so that the container knows about this new servlet. Currently it looks
+like this:
 
 ```scala
 import com.example.swagger.sample._
@@ -283,28 +262,33 @@ class ScalatraBootstrap extends LifeCycle {
 
 ### Adding SwaggerSupport to the FlowersController
 
-Then we can add some code to enable Swagger on your FlowersController. Currently, your FlowersController declaration should look like this:
+Then we can add some code to enable Swagger on your FlowersController.
+Currently, your FlowersController declaration should look like this:
 
 ```scala
-class FlowersController extends ScalatraServlet with JacksonJsonSupport 
+class FlowersController extends ScalatraServlet with JacksonJsonSupport
   with JValueResult {
 ```
 
-Let's add the SwaggerSupport trait, and also make the FlowerController aware of Swagger in its constructor.
+Let's add the SwaggerSupport trait, and also make the FlowerController aware of
+Swagger in its constructor.
 
 ```scala
-class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet 
+class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet
   with JacksonJsonSupport with JValueResult with SwaggerSupport {
 ```
 
-In order to make our application compile again, we'll need to add a name and description to our FlowersController. This allows Swagger to inform clients what our API is called, and what it does. You can do this by adding the following code to the body of the FlowersController class:
+In order to make our application compile again, we'll need to add a name and
+description to our FlowersController. This allows Swagger to inform clients
+what our API is called, and what it does. You can do this by adding the following
+code to the body of the FlowersController class:
 
 ```scala
   override protected val applicationName = Some("flowers")
   protected val applicationDescription = "The flowershop API. It exposes operations for browsing and searching lists of flowers, and retrieving single flowers."
 ```
 
-That's pretty much it for setup. Now we can start documenting our API's methods.
+That's pretty much it for Swagger setup. Now we can start documenting our API's methods.
 
 
 ### Annotating API methods
@@ -420,4 +404,4 @@ The reason it works is that Scalatra has Cross-Origin Resource Sharing (CORS) su
 
 ## Sample code
 
-You can download and run a working version of this application by doing a `git clone https://github.com/futurechimp/flowershop.git`, and running `sbt` in the top-level of the project. 
+You can download and run a working version of this application by doing a `git clone https://github.com/futurechimp/flowershop.git`, and running `sbt` in the top-level of the project.
