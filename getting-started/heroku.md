@@ -94,7 +94,6 @@ object JettyLauncher {
     server.start
     server.join
   }
-
 }
 ```
 
@@ -159,3 +158,6 @@ No app host is perfect. You should be aware of two limitations as you develop on
 - Heroku ["slugs"](https://devcenter.heroku.com/articles/slug-compiler) (deployed apps with their dependencies) are limited to 200MB.
 If your project has a large number of dependencies, you may exceed this limit.
 - At present, Heroku [does not support WebSockets](https://devcenter.heroku.com/articles/http-routing#websockets).
+
+[Jelastic](jelastic.html) is another app host that does not have these limitations.
+However, Jelastic does not have Heroku's special access to AWS products.
