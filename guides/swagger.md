@@ -233,8 +233,8 @@ class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with J
 class FlowersSwagger extends Swagger("1.0", "1")
 ```
 
-That code basically gives you a new controller which will automatically produce
-Swagger-compliant JSON specs for every Swaggerized API method in your application.
+This controller will automatically produce Swagger-compliant JSON specs for
+every annotated API method in your application.
 
 The rest of your application doesn't know about it yet, though. In order to
 get everything set up properly, you'll need to change your ScalatraBootstrap
