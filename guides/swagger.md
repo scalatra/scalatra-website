@@ -134,7 +134,7 @@ pointing your browser at a slug, e.g.
 
 Now let's add some Swagger to this simple application.
 
-## Swagger: A quick introduction
+## Swagger: a quick introduction
 
 Making an API's methods, parameters, and responses visible, in an engaging, easy to understand way, can transform the process of building REST APIs.
 
