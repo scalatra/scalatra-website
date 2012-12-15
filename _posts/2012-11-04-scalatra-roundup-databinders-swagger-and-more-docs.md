@@ -8,7 +8,7 @@ Work continues on the Scalatra 2.2 development branch. [Swagger](http://swagger.
 * 2.2.x [Swagger Guide](https://github.com/scalatra/scalatra-website/blob/2.2/guides/swagger.md)
 * 2.2.x [Json Guide](https://github.com/scalatra/scalatra-website/blob/2.2/guides/json.md)
 
-This is pre-release documentation, please let us know if anything doesn't work so we can fix it before release. Note that although the docs talk about using version `2.2.0` in `build.sbt`, you'll need use `2.2.0-SNAPSHOT` for all your build definitions until the final release arrives. If you want to try generating a new Scalatra 2.2.0 project to try out all the new toys, you can:
+This is pre-release documentation, please let us know if anything doesn't work so we can fix it before release. Note that although the docs talk about using version `2.2.0` in `build.sbt`, you'll need use `{{ site.scalatra_version }}` for all your build definitions until the final release arrives. If you want to try generating a new Scalatra 2.2.0 project to try out all the new toys, you can:
 
 ```
 g8 scalatra/scalatra-sbt.g8 --branch develop

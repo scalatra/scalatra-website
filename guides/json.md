@@ -84,8 +84,8 @@ The first thing you'll need is Scalatra's JSON handling library. The second thin
 In the root of your generated project, you'll find a file called `build.sbt`. Open that up, and add the following two lines to the `libraryDependencies` sequence, after the other scalatra-related lines:
 
 ```scala
-  "org.scalatra" % "scalatra-json" % "2.2.0-SNAPSHOT",
-  "org.json4s"   %% "json4s-jackson" % "3.0.0",
+  "org.scalatra" % "scalatra-json" % "{{ site.scalatra_version }}",
+  "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
 ```
 
 Restart sbt to download the new jars. 

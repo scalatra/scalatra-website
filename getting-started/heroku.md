@@ -31,15 +31,15 @@ $ g8 scalatra/scalatra-sbt -b develop
 Open `build.sbt` in the root of your project. You will find two lines like these:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "8.1.7.v20120910" % "container",
-"org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+"org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "container",
+"org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 ```
 
 Those are basically right, but we need to add `compile` scope because Heroku is not a servlet host. It can only run your app via an embedded Jetty server you provide. So replace the two lines above with these two:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "8.1.7.v20120910" % "compile;container",
-"org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+"org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "compile;container",
+"org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 ```
 
 ### Escape sbt
@@ -49,7 +49,7 @@ You don't want to use sbt to run your app in production. We'll install an sbt pl
 Tell sbt where to find the plugin by adding this line to `project/plugins.sbt` (you may need to create the file first):
 
 ```scala
-addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.3")
+addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "{{ site.start_script_plugin_version }}")
 ```
 
 Tell sbt how to use the plugin by adding this line to `build.sbt`:
