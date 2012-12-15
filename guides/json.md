@@ -92,7 +92,7 @@ Restart sbt to download the new jars.
 
 Add the following imports to the top of your FlowersController file, in order to make the new JSON libraries available:
 
-```
+```scala
 // JSON-related libraries
 import org.json4s.{DefaultFormats, Formats}
 
@@ -102,7 +102,7 @@ import org.scalatra.json._
 
 Now we can add a bit of magic to the FlowersController. Putting this line of code right underneath the controller class definition will allow your controller to automatically convert Scalatra action results to JSON:
 
-```
+```scala
   // Sets up automatic case class to JSON output serialization, required by
   // the JValueResult trait.
   protected implicit val jsonFormats: Formats = DefaultFormats
@@ -117,10 +117,10 @@ Just like its Sinatra forebear, Scalatra has a rich set of constructs for runnin
   }
 ```
 
-Now mix `JacksonJsonSupport` and `JValueResult` into your servlet so your controller declaration looks like this:
+Now mix `JacksonJsonSupport` into your servlet so your controller declaration looks like this:
 
-```
-class FlowersController extends ScalatraServlet with JacksonJsonSupport with JValueResult {
+```scala
+class FlowersController extends ScalatraServlet with JacksonJsonSupport {
 ```
 
 Your code should compile again at this point. Refresh your browser at [http://localhost:8080/flowers](http://localhost:8080/flowers), and suddenly the output of your `/` action has changed to JSON:
@@ -129,7 +129,7 @@ Your code should compile again at this point. Refresh your browser at [http://lo
 [{"slug":"yellow-tulip","name":"Yellow Tulip"},{"slug":"red-rose","name":"Red Rose"},{"slug":"black-rose","name":"Black Rose"}]
 ```
 
-The `JValueResult` and `JsonJacksonSupport` traits which we mixed into the controller, combined with the `implicit val jsonFormats`, are now turning all Scalatra action result values into JSON.
+The `JsonJacksonSupport` trait which we mixed into the controller, combined with the `implicit val jsonFormats`, are now turning all Scalatra action result values into JSON.
 
 Inbound JSON works in a similar way.
 

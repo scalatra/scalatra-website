@@ -72,7 +72,7 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 
 Your imports should look like this:
 
-```
+```scala
 // Default imports from a stock Scalatra g8 code generator:
 import org.scalatra._
 import scalate.ScalateSupport
