@@ -20,7 +20,7 @@ title: Scalatra | Deploying to Heroku
 Create a Scalatra project from the usual Scalatra giter8 template.
 Check out the the [installation](installation.html) and [first steps](first-steps.html) guides if this isn't familiar.
 
-```sh
+```bash
 $ g8 scalatra/scalatra-sbt -b develop
 ```
 
@@ -101,7 +101,7 @@ object JettyLauncher {
 ## 5. Test your configuration
 We're done tweaking the project, but we should probably test that it works before deploying to Heroku.
 
-```sh
+```bash
 $ cd [app root]
 $ ./sbt
 > container:start
@@ -116,7 +116,7 @@ If you see a webpage instead of an error message, you're in business.
 
 If you haven't set up your project as a Git repo, do so.
 
-```sh
+```bash
 $ cd [app root]
 $ chmod u+x sbt
 $ git init
@@ -126,13 +126,13 @@ $ git commit -m 'first commit'
 
 Log into Heroku.
 
-```sh
+```bash
 $ heroku login
 ```
 
 Create your Heroku endpoint and deploy to it.
 
-```sh
+```bash
 $ cd [app root]
 $ heroku create --stack cedar
 $ git push heroku master
