@@ -190,10 +190,8 @@ Swagger spec file for the API.
 
 Scalatra's Swagger integration allow you to annotate the code within your RESTful
 API in order to automatically generate Swagger spec files. This means that once
-you annotate your API methods, you get documentation for free.
-
-Let's annotate our Scalatra flowershop with Swagger, in order to auto-generate
-runnable API documentation.
+you annotate your API methods, you get documentation and client code generation
+for free.
 
 ### Add the dependencies
 
