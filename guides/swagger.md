@@ -18,7 +18,10 @@ It's not easy to describe, but it is easy to understand once you see it.  Take a
 
 [http://petstore.swagger.wordnik.com](http://petstore.swagger.wordnik.com)
 
-Swagger support is one of the most exciting new features in Scalatra 2.2.
+Swagger support is one of the most exciting new features in Scalatra 2.2. This
+guide will walk you through the process of taking a simple Scalatra application
+and adding Swagger to it, so that your runnable documentation automatically stays
+in sync with your API.
 
 ### Sample code
 
@@ -116,7 +119,7 @@ Hit the url [http://localhost:8080/flowers](http://localhost:8080/flowers) in yo
 [{"slug":"yellow-tulip","name":"Yellow Tulip"},{"slug":"red-rose","name":"Red Rose"},{"slug":"black-rose","name":"Black Rose"}]
 ```
 
-Scalatra can also take any incoming `?name=foo` parameter off the query string, and make it available to this action as the variable `name`, then filter the FlowerData
+Our application can also take any incoming `?name=foo` parameter off the query string, and make it available to this action as the variable `name`, then filter the FlowerData
 list for matching results. If you point your browser at
 [http://localhost:8080/flowers?name=rose](http://localhost:8080/flowers?name=rose),
 you'll see only the roses.
@@ -133,14 +136,15 @@ Now let's add some Swagger to this simple application.
 
 ## Swagger: A quick introduction
 
-Making the API's methods, parameters, and responses visible, in an engaging, easy to understand way, can transform the process of building REST APIs.
+Making an API's methods, parameters, and responses visible, in an engaging, easy to understand way, can transform the process of building REST APIs.
 
 Scalatra's Swagger support allows you to auto-generate runnable documentation
 for a REST API - the API's name, what resources it offers, available methods
-and their parameters, and return values. The specification can be used in a
-standalone way to describe your API using simple JSON files.
+and their parameters, and return values.
 
-### The Swagger resources file
+
+Before we see the auto-generation of Swagger spec files, though, it makes sense
+to understand what's being generated.
 
 If you want to, you can write a Swagger JSON description file by hand. A
 Swagger resource description for our FlowersController might look like this:
@@ -151,8 +155,6 @@ Swagger resource description for our FlowersController might look like this:
 
 This file describes what APIs we're offering. Each API has its own JSON descriptor file which details what resources it offers, the paths to those resources, required and optional parameters, and other information.
 
-### A sample Swagger resource file
-
 The descriptor for our `flower` resource might look something like this. We'll
 see how to automate this in a moment:
 
@@ -160,8 +162,17 @@ see how to automate this in a moment:
 {"resourcePath":"/","listingPath":"/api-docs/flowers","description":"The flowershop API. It exposes operations for browing and searching lists of flowers","apis":[{"path":"//","description":"","secured":true,"operations":[{"httpMethod":"GET","responseClass":"List[Flower]","summary":"Show all flowers","notes":"Shows all the flowers in the flower shop. You can search it too.","deprecated":false,"nickname":"getFlowers","parameters":[{"name":"name","description":"A name to search for","required":false,"paramType":"query","allowMultiple":false,"dataType":"string"}],"errorResponses":[]}]},{"path":"//{slug}","description":"","secured":true,"operations":[{"httpMethod":"GET","responseClass":"Flower","summary":"Find by slug","notes":"Returns the flower for the provided slug, if a matching flower exists.","deprecated":false,"nickname":"findBySlug","parameters":[{"name":"slug","description":"Slug of flower that needs to be fetched","required":true,"paramType":"path","allowMultiple":false,"dataType":"string"}],"errorResponses":[]}]}],"models":{"Flower":{"id":"Flower","description":"Flower","properties":{"name":{"description":null,"enum":[],"required":true,"type":"string"},"slug":{"description":null,"enum":[],"required":true,"type":"string"}}}},"basePath":"http://localhost:8080","swaggerVersion":"1.0","apiVersion":"1"}
 ```
 
-These JSON files can then be offered to a standard HTML/CSS/JavaScript client
-to make it easy for people to browse the docs. You may want to
+These JSON files can then be offered to a standard HTML/CSS/JavaScript client,
+called the [swagger-ui][ui], to make it easy for people to browse the docs. If
+you write them by hand, you can simply put them on any HTTP server, point the
+swagger-ui client at them, and start viewing the runnable documentation.
+
+You also get the ability to generate client and server code
+in multiple languages, using the [swagger-codegen][codegen] project.
+
+Client code can be generated for Flash, Java, JavaScript, Objective-C, PHP, Python, Python3, Ruby, or Scala.
+
+You may want to
 take a moment to view the [Swagger Pet Store][petstore] example. Click on the
 route definitions to see what operations are available for each resource. You
 can use the web interface to send live test queries to the API, and view the
@@ -169,25 +180,17 @@ API's response to each query.
 
 [petstore]: http://petstore.swagger.wordnik.com
 
-### Swagger integration
+Click on the "raw" link next to each API description, and you'll see the
+Swagger spec file for the API.
 
-Let's get back to the spec files. In addition to enabling automatic documentation
-as in the Pet Store example, these JSON files allow client and server code to
-be automatically generated, in multiple languages.
+## Scalatra's Swagger integration
 
 Scalatra's Swagger integration allow you to annotate the code within your RESTful
-API in order to automatically generate JSON descriptors which are valid Swagger
-specs. This means that once you annotate your API methods, you get some very
-useful (and pretty) documentation capabilities for free, using the
-[swagger-ui][ui]. You also get the ability to generate client and server code
-in multiple languages, using the [swagger-codegen][codegen] project.
-
-Client code can be generated for Flash, Java, JavaScript, Objective-C, PHP, Python, Python3, Ruby, or Scala.
+API in order to automatically generate Swagger spec files. This means that once
+you annotate your API methods, you get documentation for free.
 
 [ui]:https://github.com/wordnik/swagger-ui
 [codegen]:https://github.com/wordnik/swagger-codegen
-
-## Setting up the Scalatra Flower Shop with Swagger
 
 Let's annotate our Scalatra flowershop with Swagger, in order to auto-generate
 runnable API documentation.
