@@ -170,6 +170,9 @@ swagger-ui client at them, and start viewing the runnable documentation.
 You also get the ability to generate client and server code
 in multiple languages, using the [swagger-codegen][codegen] project.
 
+[ui]:https://github.com/wordnik/swagger-ui
+[codegen]:https://github.com/wordnik/swagger-codegen
+
 Client code can be generated for Flash, Java, JavaScript, Objective-C, PHP, Python, Python3, Ruby, or Scala.
 
 You may want to
@@ -188,9 +191,6 @@ Swagger spec file for the API.
 Scalatra's Swagger integration allow you to annotate the code within your RESTful
 API in order to automatically generate Swagger spec files. This means that once
 you annotate your API methods, you get documentation for free.
-
-[ui]:https://github.com/wordnik/swagger-ui
-[codegen]:https://github.com/wordnik/swagger-codegen
 
 Let's annotate our Scalatra flowershop with Swagger, in order to auto-generate
 runnable API documentation.
