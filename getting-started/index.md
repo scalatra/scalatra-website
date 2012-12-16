@@ -39,26 +39,20 @@ title: Scalatra | Getting started
     <p><a href="jrebel.html" class="btn btn-primary">Go »</a></p>
   </div>
   <div class="span4">
+    <h2>Deploy to Jelastic</h2>
+    <p>
+      Jelastic is our favorite app platform.
+      It's designed specifically for servlet-based apps, and supports the latest
+      TCP goodness, like WebSockets.
+    </p>
+    <p><a href="jelastic.html" class="btn btn-primary">Go »</a></p>
+  </div>
+  <div class="span4">
     <h2>Deploy to Heroku</h2>
     <p>
       Heroku is a popular app platform.
       It makes it easy to deploy and scale web applications.
     </p>
     <p><a href="heroku.html" class="btn btn-primary">Go »</a></p>
-  </div>
-  <div class="span4">
-    <h2>Deploy to Jelastic</h2>
-    <p>
-    </p>
-    <p><a href=jelastic.html" class="btn btn-primary">Go »</a></p>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span4">
-    <h2>Continuous integration on CloudBees</h2>
-    <p>
-    </p>
-    <p><a href=cloudbees.html" class="btn btn-primary">Go »</a></p>
   </div>
 </div>

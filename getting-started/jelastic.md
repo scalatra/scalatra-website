@@ -52,7 +52,6 @@ addSbtPlugin("com.github.casualjim" % "sbt-jelastic-deploy" % "0.1.2")
 
 Add the following lines to `buid.sbt`.
 You will need to replace `"scalatra-test"` with the name of your environment.
-If you're not using ServInt, you will also have the change the `apiHoster` value.
 
 ```scala
 seq(jelasticSettings:_*)
@@ -151,3 +150,8 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 [info] Logged out of jelastic.
 [success] Total time: 210 s, completed Dec 16, 2012 2:45:04 PM
 ```
+
+## 8. Visit your website
+
+Since we used the environment `scalatra-test`, the app is now live at [http://scalatra-test.jelastic.servint.net](http://scalatra-test.jelastic.servint.net).
+As always, you will have to substitute your environment name into that URL.
