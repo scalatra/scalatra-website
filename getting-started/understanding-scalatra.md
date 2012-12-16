@@ -1,6 +1,6 @@
 ---
 layout: default
-title: The anatomy of a Scalatra app | Scalatra
+title: Anatomy of a Scalatra app | Scalatra
 ---
 
 <div class="page-header">
