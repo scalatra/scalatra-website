@@ -4,10 +4,10 @@ title: Deploying to Jelastic | Scalatra
 ---
 
 <div class="page-header">
-  <h1>Deploying to Heroku</h1>
+  <h1>Deploying to Jelastic</h1>
 </div>
 
-[Jelastic](http://www.heroku.com/) is a cloud application platform designed specifically
+[Jelastic](http://jelastic.com/) is a cloud application platform designed specifically
 for servlets like Scalatra apps.
 Jelastic allows you to scale your app both horizontally (more instances) and vertically
 (more powerful instances).
