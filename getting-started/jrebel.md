@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra | JRebel integration
+title: JRebel integration | Scalatra
 ---
 
 <div class="page-header">

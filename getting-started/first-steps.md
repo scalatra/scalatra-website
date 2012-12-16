@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra | Your first scalatra app
+title: Your first scalatra app | Scalatra
 ---
 
 <div class="page-header">

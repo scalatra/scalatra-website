@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra guides | Routes and actions
+title: Routes and actions | Scalatra guides
 ---
 
 <div class="page-header">

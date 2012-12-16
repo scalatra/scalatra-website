@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra Guides | Commands
+title: Commands | Scalatra guides
 ---
 
 <div class="page-header">

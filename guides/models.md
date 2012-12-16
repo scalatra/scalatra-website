@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra Guides | Models
+title: Models | Scalatra guides
 ---
 
 <div class="page-header">

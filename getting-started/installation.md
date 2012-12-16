@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra | Installation
+title: Installation | Scalatra
 ---
 
 <div class="page-header">

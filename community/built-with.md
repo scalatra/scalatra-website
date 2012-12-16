@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra | Built with Scalatra
+title: Built with Scalatra | Scalatra
 ---
 
 <div class="page-header">

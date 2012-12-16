@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra | Community
+title: Community | Scalatra
 ---
 
 <div class="page-header">

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra Guides | Helpers
+title: Helpers | Scalatra guides
 ---
 
 <div class="page-header">

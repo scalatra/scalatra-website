@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra Guides | Swagger
+title: Swagger | Scalatra guides
 ---
 
 <div class="page-header">

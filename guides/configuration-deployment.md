@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra Guides | Configuration & deployment
+title: Configuration & deployment | Scalatra guides
 ---
 
 <div class="page-header">

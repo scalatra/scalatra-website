@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra Guides | Atmosphere
+title: Atmosphere | Scalatra guides
 ---
 
 <div class="page-header">

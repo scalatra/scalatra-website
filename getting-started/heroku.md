@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra | Deploying to Heroku
+title: Deploying to Heroku | Scalatra
 ---
 
 <div class="page-header">

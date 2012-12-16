@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra Guides | Handling JSON
+title: Handling JSON | Scalatra guides
 ---
 
 <div class="page-header">

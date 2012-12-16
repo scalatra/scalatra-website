@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra guides | Testing
+title: Testing | Scalatra guides
 ---
 
 <div class="page-header">

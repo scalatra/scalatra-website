@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra | Getting started
+title: Getting started | Scalatra
 ---
 
 <div class="page-header">
