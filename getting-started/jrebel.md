@@ -40,13 +40,13 @@ Fortunately, the Scalatra giter8 project is already set up to use JRebel.
 You only need to tell Scalatra where to find the jrebel jar.
 To do so, edit your shell resource file (usually `~/.bash_profile` on Mac, and `~/.bashrc` on Linux), and add the following line:
 
-```sh
+```bash
 export SCALATRA_JREBEL="/path/to/jrebel/jrebel.jar"
 ```
 
 For example, if you unzipped your JRebel download in your home directory, you whould use:
 
-```sh
+```bash
 export SCALATRA_JREBEL="~/jrebel/jrebel.jar"
 ```
 

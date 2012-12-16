@@ -462,47 +462,13 @@ User class to the session and Basic Authentication methods.
 
 ```scala
 // Put this in build.sbt:
-"org.scalatra" % "scalatra-auth" % "2.1.0"
+"org.scalatra" % "scalatra-auth" % "{{ site.scalatra_version }}"
 ```
 
 There is a new authentication middleware in the auth directory, to be
 documented soon.  See an example at
 [usage example](http://gist.github.com/660701).
 Here's another [example](https://gist.github.com/732347) for basic authentication.
-
-
-### Anti-XML integration
-
-Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
-
-#### Dependency
-
-```scala
-  // Put this in build.sbt:
-  "org.scalatra" % "scalatra-anti-xml" % "2.1.0"
-```
-
-Extend your application with `AntiXmlSupport`:
-
-```scala
-import org.scalatra.ScalatraServlet
-import org.scalatra.antixml.AntiXmlSupport
-import com.codecommit.antixml._
-
-class MyApp extends ScalatraServlet with AntiXmlSupport {
-  // ...
-}
-```
-
-Actions results of type `com.codecommit.antixml.Elem` will be serialized
-to the response body, and a content type of `text/html` will be inferred if
-none is set.
-
-```scala
-get("/") {
-  XML.fromString("""<foo bar="baz"></foo>""")
-}
-```
 
 
 ### AkkaSupport
@@ -515,7 +481,7 @@ mix it right into your application.
 
 ```scala
 // Put this in build.sbt:
-"io.akka" % "akka" % "2.0.3"
+"org.scalatra" % "scalatra-akka" % "{{ site.scalatra_version }}"
 ```
 
 Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support

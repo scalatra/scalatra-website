@@ -24,7 +24,7 @@ default.
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-scalatest" % "2.1.1" % "test"
+"org.scalatra" %% "scalatra-scalatest" % "{{ site.scalatra_version }}" % "test"
 ```
 
 #### Example
@@ -65,7 +65,7 @@ Convenience traits are provided for many `Suite` implementations:
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-specs2" % "2.1.1" % "test"
+"org.scalatra" %% "scalatra-specs2" % "{{ site.scalatra_version }}" % "test"
 ```
 
 #### Example
@@ -126,7 +126,7 @@ class HelloWorldServletSpec extends ScalatraSpec { def is =
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-test" % "2.1.1" % "test"
+"org.scalatra" %% "scalatra-test" % "{{ site.scalatra_version }}" % "test"
 ```
 
 #### Usage guide

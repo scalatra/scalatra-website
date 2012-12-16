@@ -5,6 +5,14 @@ server:      false
 server_port: 4000
 baseurl:    /2.2/
 url: http://localhost:4000/
+jetty_version: 8.1.8.v20121106
+scalatra_version: 2.2.0-RC2
+servlet_version: 3.0.0.v201112011016
+json4s_version: 3.0.0
+swagger_version: 1.1-SNAPSHOT
+logback_version: 1.0.9
+start_script_plugin_version: 0.5.3
+akka_version: 2.0.4
 
 source:      .
 destination: ./_site

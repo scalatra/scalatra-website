@@ -53,10 +53,10 @@ The following dependencies will be needed to make the sample application
 work.
 
 ```scala
-  "org.scalatra" % "scalatra-atmosphere" % "2.2.0-SNAPSHOT",
-  "org.scalatra" % "scalatra-json" % "2.2.0-SNAPSHOT",
-  "org.json4s"   %% "json4s-jackson" % "3.0.0",
-  "org.eclipse.jetty" % "jetty-websocket" % "8.1.7.v20120910" % "container",
+  "org.scalatra" % "scalatra-atmosphere" % "{{ site.scalatra_version }}",
+  "org.scalatra" % "scalatra-json" % "{{ site.scalatra_version }}",
+  "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
+  "org.eclipse.jetty" % "jetty-websocket" % "{{ site.jetty_version }}" % "container",
 ```
 
 Scalatra's Atmosphere integration depends on Akka.
@@ -72,7 +72,7 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 
 Your imports should look like this:
 
-```
+```scala
 // Default imports from a stock Scalatra g8 code generator:
 import org.scalatra._
 import scalate.ScalateSupport

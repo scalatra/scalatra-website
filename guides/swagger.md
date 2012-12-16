@@ -92,8 +92,8 @@ object FlowerData {
 Don't forget to add the JSON libraries to your build.sbt file to make this work:
 
 ```scala
-  "org.scalatra" % "scalatra-json" % "2.2.0-SNAPSHOT",
-  "org.json4s"   %% "json4s-jackson" % "3.0.0",
+  "org.scalatra" % "scalatra-json" % "{{ site.scalatra_version }}",
+  "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
 ```
 
 Every Scalatra application has a file called `ScalatraBootstrap.scala`, located in the `src/main/scala` directory. This file allows you to mount your controllers at whatever url paths you want.
@@ -199,8 +199,8 @@ First, add the Swagger dependencies to your `build.sbt` file, then restart your
 app to grab the new jars:
 
 ```scala
-"com.wordnik"  % "swagger-core_2.9.1"  % "1.1-SNAPSHOT",
-"org.scalatra" % "scalatra-swagger"  % "2.2.0-SNAPSHOT",
+"com.wordnik"  % "swagger-core_2.9.1"  % "{{ site.swagger_version }}",
+"org.scalatra" % "scalatra-swagger"  % "{{ site.scalatra_version }}",
 ```
 
 You'll now need to import Scalatra's Swagger support into your `FlowersController`:

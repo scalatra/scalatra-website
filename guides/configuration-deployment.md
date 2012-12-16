@@ -262,7 +262,7 @@ You can easily add logging facilities to your project, if you've got the
 logging dependency in your `build.sbt` file:
 
 ```scala
-"ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime"
+"ch.qos.logback" % "logback-classic" % "{{ site.logback_version }}" % "runtime"
 ```
 
 In your servlet or filter class:
@@ -479,7 +479,7 @@ To enable the plugin, add the following to project/plugins/build.sbt
 ```scala
 resolvers += Classpaths.typesafeResolver
 
-addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.0")
+addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "{{ site.start_script_plugin_version }}")
 ```
 
 
