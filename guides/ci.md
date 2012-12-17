@@ -21,6 +21,7 @@ shifted to the build server by creating a temporary "staging" branch.
 They don't share the peculiarities of your shell environment, home directory,
 `/usr/local/bin` directory, etc.
 
+Wikipedia lists [even more advantages](http://en.wikipedia.org/wiki/Continuous_integration#Advantages).
 Continuous integration is not much less important than source control and build
 automation; it should be a part of most of your projects!
 
