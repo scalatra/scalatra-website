@@ -24,6 +24,9 @@ An "environment" in Jelastic-speak is a selection of a servlet container and any
 (like databases) that you may want.
 On your [management console](https://app.jelastic.servint.net/) click
 "Create environment."
+
+<a href="jelastic-screenshot.png"><img width="500" src="jelastic-screenshot.png" /></a>
+
 You need to choose an environment name that is unique across the entire ServInt host.
 **We'll proceed with the environment name `scalatra-test`, but yours will necessarily be
 different.**
