@@ -57,11 +57,11 @@ title: Getting started | Scalatra
   </div>
 </div>
 
-<div class="row">
-  <div class="span4">
-    <h2>Deploy to Google App Engine</h2>
-    <p>
-    </p>
-    <p><a href="google-app-engine.html" class="btn btn-primary">Go »</a></p>
-  </div>
-</div>
+<!-- <div class="row"> -->
+<!--   <div class="span4"> -->
+<!--     <h2>Deploy to Google App Engine</h2> -->
+<!--     <p> -->
+<!--     </p> -->
+<!--     <p><a href="google-app-engine.html" class="btn btn-primary">Go »</a></p> -->
+<!--   </div> -->
+<!-- </div> -->
