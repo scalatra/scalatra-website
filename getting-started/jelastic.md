@@ -11,12 +11,12 @@ title: Deploying to Jelastic | Scalatra
 for servlets like Scalatra apps.
 Jelastic allows you to scale your app both horizontally (more instances) and vertically
 (more powerful instances).
+They offer a 2-week free trial, after which point their rates are among the best in the industry.
 
 ----
 
-## 1. Sign up for a free a [free account](http://jelastic.com/).
+## 1. [Register](http://jelastic.com/) for an account.
 Jelastic is a platform with many hosts to choose from.
-Be sure to choose a host whose free trial is not limited by time.
 **In this guide we'll assume you've chosen ServInt as your host.**
 
 ## 2. Create an environment.
