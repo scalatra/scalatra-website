@@ -68,6 +68,6 @@ title: Deployment | Scalatra
     <p>
       Google App Engine isn't supported. Learn why.
     </p>
-    <p><a href=google-app-engine.html" class="btn btn-primary">Go »</a></p>
+    <p><a href="google-app-engine.html" class="btn btn-primary">Go »</a></p>
   </div>
 </div>
