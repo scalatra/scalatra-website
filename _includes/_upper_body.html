@@ -14,7 +14,34 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li>
-              <a href="{{ site.baseurl }}getting-started">Getting started</a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Getting-Started
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ site.baseurl }}getting-started">Overview</a></li>
+                <li class="divider"></li>
+                <li>
+                  <a href="{{ site.baseurl }}getting-started/installation.html">
+                    Installation
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}getting-started/first-steps.html">
+                    First Steps
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}getting-started/project-structure.html">
+                    Project Structure
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}getting-started/jrebel.html">
+                    JRebel Integration
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -39,7 +66,15 @@
                 <li>
                   <a href="{{ site.baseurl }}guides/testing.html">Testing</a>
                 </li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/logging.html">Logging</a>
+                </li>
                 <li class="divider"></li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/bootstrap.html">
+                    Twitter Bootstrap
+                  </a>
+                </li>
                 <li>
                   <a href="{{ site.baseurl }}guides/atmosphere.html">
                     Atmosphere
@@ -65,6 +100,12 @@
                 <li><a href="{{ site.baseurl }}deployment">Overview</a></li>
                 <li class="divider"></li>
                 <li>
+                  <a href="{{ site.baseurl }}deployment/configuration.html">
+                    Configuration
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
                   <a href="{{ site.baseurl }}deployment/heroku.html">
                     Heroku
                   </a>
@@ -79,8 +120,9 @@
                     CloudBees
                   </a>
                 </li>
+                <li class="divider"></li>
                 <li>
-                  <a href="{{ site.baseurl }}deployment/jelastic.html">
+                  <a href="{{ site.baseurl }}deployment/google-app-engine.html">
                     Google App Engine
                   </a>
                 </li>

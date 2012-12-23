@@ -12,6 +12,8 @@ Scalatra doesn't work on [Google App Engine](https://developers.google.com/appen
 
 *Why not?!*
 
+----
+
 ## Short answer ##
 Scalatra runs on the Java platform (JRE). GAE doesn't support the JRE.
 
