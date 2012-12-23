@@ -29,3 +29,8 @@ an [inconsistent state](https://developers.google.com/appengine/docs/java/runtim
 - Apps [cannot make client requests](https://developers.google.com/appengine/docs/java/runtime#The_Sandbox) without using GAE's fetch service.
 - [Not all](https://developers.google.com/appengine/docs/java/jrewhitelist) JRE classes are supported.
 - Logging is possible [only through `java.util.logging`](https://developers.google.com/appengine/docs/java/runtime#Logging).
+
+## Future ##
+It's really the Servlet 3.0 that is absolutely essential for Scalatra.
+Once that is implemented, if there is sufficient demand, it may be possible to support
+GAE without forking the Scalatra codebase.
