@@ -1,60 +1,114 @@
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="{{ site.baseurl }}">Scalatra</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a href="{{ site.baseurl }}getting-started">Getting started</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar"
+           data-toggle="collapse"
+           data-target=".nav-collapse"
+           >
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="{{ site.baseurl }}">Scalatra</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li>
+              <a href="{{ site.baseurl }}getting-started">Getting started</a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Guides
                 <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="{{ site.baseurl }}guides">Overview</a></li>
-                  <li class="divider"></li>
-                  <li><a href="{{ site.baseurl }}guides/routes-and-actions.html">Routes &amp; Actions</a></li>
-                  <li><a href="{{ site.baseurl }}guides/views.html">Views</a></li>
-                  <li><a href="{{ site.baseurl }}guides/helpers.html">Helpers</a></li>
-                  <li><a href="{{ site.baseurl }}guides/models.html">Models</a></li>
-                  <li><a href="{{ site.baseurl }}guides/testing.html">Testing</a></li>
-                  <li><a href="{{ site.baseurl }}guides/configuration-deployment.html">Configuration &amp; Deployment</a></li>
-                  <!-- <li><a href="{{ site.baseurl }}guides/ci.html">Continuous Integration</a></li> -->
-                  <li class="divider"></li>
-                  <li><a href="{{ site.baseurl }}guides/atmosphere.html">Atmosphere</a></li>
-                  <li><a href="{{ site.baseurl }}guides/commands.html">Commands</a></li>
-                  <li><a href="{{ site.baseurl }}guides/json.html">JSON Handling</a></li>
-                  <li><a href="{{ site.baseurl }}guides/swagger.html">Swagger</a></li>   
-                </ul>
-              </li>
-              <li><a href="{{ site.baseurl }}news.html">News</a></li>
-              <li><a href="{{ site.baseurl }}community">Community</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ site.baseurl }}guides">Overview</a></li>
+                <li class="divider"></li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/routes-and-actions.html">
+                    Routes &amp; Actions
+                  </a>
+                </li>
+                <li><a href="{{ site.baseurl }}guides/views.html">Views</a></li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/helpers.html">Helpers</a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/models.html">Models</a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/testing.html">Testing</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/atmosphere.html">
+                    Atmosphere
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/commands.html">Commands</a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/json.html">JSON Handling</a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}guides/swagger.html">Swagger</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Deployment
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ site.baseurl }}deployment">Overview</a></li>
+                <li class="divider"></li>
+                <li>
+                  <a href="{{ site.baseurl }}deployment/heroku.html">
+                    Heroku
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}deployment/jelastic.html">
+                    Jelastic
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}deployment/cloudbees.html">
+                    CloudBees
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}deployment/jelastic.html">
+                    Google App Engine
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li><a href="{{ site.baseurl }}news.html">News</a></li>
+            <li><a href="{{ site.baseurl }}community">Community</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 API docs
                 <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-              <li>
-                <a href="{{ site.baseurl }}api">2.2</a>
-              </li>
-              <li>
-                <a href="{{ site.baseurl }}../2.1/api">2.1</a>
-              </li>
-              <li>
-                <a href="{{ site.baseurl }}../2.0/api">2.0</a>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="{{ site.baseurl }}api">2.2</a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}../2.1/api">2.1</a>
+                </li>
+                <li>
+                  <a href="{{ site.baseurl }}../2.0/api">2.0</a>
+                </li>
+              </ul>
+        </div><!--/.nav-collapse -->
       </div>
     </div>
+  </div>
 
-    <div class="container">
-      <div class="content">
+  <div class="container">
+    <div class="content">
