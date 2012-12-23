@@ -216,4 +216,4 @@ The code running the examples site resides in
 ```example/src/main/scala/org/scalatra/```.
 
 Now that you've created your first Scalatra app, it's time to learn a little
-bit about Scalatra's simple [project structure](understanding-scalatra.html).
+bit about Scalatra's simple [project structure](project-structure.html).

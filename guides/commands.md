@@ -4,7 +4,7 @@ title: Commands | Scalatra guides
 ---
 
 <div class="page-header">
-<h1>Commands and data validation</h1>
+  <h1>Commands and data validation</h1>
 </div>
 
 Scalatra includes a very sophisticated set of validation commands. 
