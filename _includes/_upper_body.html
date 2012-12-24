@@ -13,239 +13,176 @@
         <a class="brand" href="{{ site.baseurl }}">Scalatra</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Getting started
-                <b class="caret"></b>
-              </a>
+
+            <!-- START GETTING STARTED -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guides<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="{{ site.baseurl }}getting-started">Overview</a></li>
+                <li><a href="">Installation</a></li>
+                <li><a href="">First project</a></li>
                 <li class="divider"></li>
-                <li>
-                  <a href="{{ site.baseurl }}getting-started/installation.html">
-                    Installation
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}getting-started/first-steps.html">
-                    First steps
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}getting-started/project-structure.html">
-                    Project structure
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}getting-started/jrebel.html">
-                    JRebel integration
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="{{ site.baseurl }}getting-started/jrebel.html">
-                    Project philosophy
-                  </a>
-                </li>
+                <li><a href="">Project structure</a></li>
+                <li><a href="">IDE Support</a></li>
+                <li><a href="">JRebel integration</a></li>
               </ul>
             </li>
+            <!-- END GETTING STARTED -->
+
+
+            <!-- START GUIDES -->
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Guides
-                <b class="caret"></b>
-              </a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guides<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="{{ site.baseurl }}guides">Overview</a></li>
+
+
+                <li><a href="">Scalatra's philosophy</a></li>
                 <li class="divider"></li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/routes-and-actions.html">
-                    Routes &amp; actions
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/reverse-routes.html">
-                    Reverse routes
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/logging.html">Logging</a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/flash.html">Flash</a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/authentication.html">
-                    Authentication
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/authentication.html">
-                    Akka
-                  </a>
-                </li>
 
 
+                <!-- START HTTP -->
                 <li class="dropdown-submenu">
-                  <a tabindex="-1" href="#">Templating</a>
+                  <a tabindex="-1" href="#">HTTP</a>
                   <ul class="dropdown-menu">
-                    <li><a href="{{ site.baseurl }}guides/templating">Overview</a></li>
+                    <li><a href="">Request </a></li>
+                    <li><a href="">Routes</a></li>
+                    <li><a href="">Request &amp; Response</a></li>
                     <li class="divider"></li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/templating/scalate.html">
-                        Scalate
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/templating/twirl.html">
-                        Twirl
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/bootstrap.html">
-                        Twitter Bootstrap
-                      </a>
-                    </li>
+                    <li><a href="">Flash</a></li>
+                    <li><a href="">Authentication</a></li>
                   </ul>
                 </li>
+                <!-- END HTTP -->
 
 
+                <!-- START ASYNC -->
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">Async</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="">Akka</a></li>
+                    <li><a href="">Atmosphere</a></li>
+                  </ul>
+                </li>
+                <!-- END ASYNC -->
 
+
+                <!-- START VIEWS -->
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">Views</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="">Scalate</a></li>
+                    <li><a href="">Twirl</a></li>
+                    <li><a href="">Twitter Bootstrap</a></li>
+                  </ul>
+                </li>
+                <!-- END VIEWS -->
+
+
+                <!-- START FORMS -->
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">Formats</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="">Forms</a></li>
+                    <li><a href="">Commands</a></li>
+                    <li><a href="">JSON</a></li>
+                    <li><a href="">XML</a></li>
+                  </ul>
+                </li>
+                <!-- END FORMS -->
+
+
+                <!-- START PERSISTENCE -->
                 <li class="dropdown-submenu">
                   <a tabindex="-1" href="#">Persistence</a>
                   <ul class="dropdown-menu">
-                    <li><a href="{{ site.baseurl }}guides/persistence">Overview</a></li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/persistence/slick.html">
-                        Slick
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/persistence/specs2.html">
-                        Squeryl
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/persistence/scalacheck.html">
-                        MongoDB
-                      </a>
-                    </li>
+                    <li><a href="">Slick</a></li>
+                    <li><a href="">Squeryl</a></li>
+                    <li><a href="">MongoDB</a></li>
                   </ul>
                 </li>
+                <!-- END PERSISTENCE -->
 
 
+                <!-- START SERVICES -->
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">Web services</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="">HTTP client</a></li>
+                    <li><a href="">CORS</a></li>
+                    <li><a href="">OpenID</a></li>
+                    <li><a href="">OAuth</a></li>
+                  </ul>
+                </li>
+                <!-- END SERVICES -->
+
+
+                <!-- START RESOURCES -->
+                <li class="dropdown-submenu">
+                  <a tabindex="-1" href="#">Resources</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="">CoffeeScript</a></li>
+                    <li><a href="">LESS CSS</a></li>
+                    <li><a href="">wro4j</a></li>
+                  </ul>
+                </li>
+                <!-- END RESOURCES -->
+
+
+                <li><a href="">Internationalization</a></li>
+                <li class="divider"></li>
+
+
+                <!-- START TESTING -->
                 <li class="dropdown-submenu">
                   <a tabindex="-1" href="#">Testing</a>
                   <ul class="dropdown-menu">
-                    <li><a href="{{ site.baseurl }}guides/testing">Overview</a></li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/testing/scalatest.html">
-                        ScalaTest
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/testing/specs2.html">
-                        Specs2
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/testing/scalacheck.html">
-                        ScalaCheck
-                      </a>
-                    </li>
+                    <li><a href="">ScalaTest</a></li>
+                    <li><a href="">specs2</a></li>
+                    <li><a href="">ScalaCheck</a></li>
                   </ul>
                 </li>
+                <!-- END TESTING -->
 
+
+                <!-- START MONITORING -->
                 <li class="dropdown-submenu">
-                  <a tabindex="-1" href="#">Integrations</a>
+                  <a tabindex="-1" href="#">Monitoring</a>
                   <ul class="dropdown-menu">
-                    <li>
-                      <a href="{{ site.baseurl }}guides/integrations">Overview</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/integrations/helpers.html">
-                        Helpers
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/integrations/request-response.html">
-                        Request & response
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/integrations/upload.html">
-                        CORS
-                      </a>
-                    </li>
+                    <li><a href="">Metrics</a></li>
+                    <li><a href="">Logging</a></li>
                   </ul>
                 </li>
+                <!-- END MONITORING -->
 
 
+                <!-- START DEPLOYMENT -->
                 <li class="dropdown-submenu">
                   <a tabindex="-1" href="#">Deployment</a>
                   <ul class="dropdown-menu">
-                    <li><a href="{{ site.baseurl }}guides/deployment">Overview</a></li>
+                    <li><a href="">Standalone</a></li>
+                    <li><a href="">Servlet container</a></li>
+                    <li><a href="">Configuration</a></li>
                     <li class="divider"></li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/deployment/standalone.html">
-                        Standalone
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/deployment/containers.html">
-                        Servlet container
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/deployment/configuration.html">
-                        Configuration
-                      </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/deployment/heroku.html">
-                        Heroku
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/deployment/jelastic.html">
-                        Jelastic
-                      </a>
-                    </li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/deployment/cloudbees.html">
-                        CloudBees
-                      </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="{{ site.baseurl }}guides/deployment/google-app-engine.html">
-                        Google App Engine
-                      </a>
-                    </li>
+                    <li><a href="">Heroku</a></li>
+                    <li><a href="">Jelastic</a></li>
+                    <li><a href="">CloudBees</a></li>
+                    <li><a href="">Google App Engine</a></li>
                   </ul>
                 </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/atmosphere.html">
-                    Atmosphere
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/commands.html">Commands</a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/json.html">JSON Handling</a>
-                </li>
-                <li>
-                  <a href="{{ site.baseurl }}guides/swagger.html">Swagger</a>
-                </li>
+                <!-- END DEPLOYMENT -->
+
+
+                <li><a href="">Swagger</a></li>
+
+
               </ul>
             </li>
+            <!-- END GUIDE -->
+
+
 
             <li><a href="{{ site.baseurl }}news.html">News</a></li>
+
+
             <li><a href="{{ site.baseurl }}community">Community</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
