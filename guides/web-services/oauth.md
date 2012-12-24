@@ -1,10 +1,11 @@
 ---
 layout: default
-title: Twirl | Views | Scalatra guides
+title: OAuth | Web Services | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>Twirl</h1>
+  <h1>OAuth</h1>
 </div>
+
 
 ## Guide coming soon!

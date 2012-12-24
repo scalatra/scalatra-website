@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Twitter Bootstrap | Scalatra guides
+title: Twitter Bootstrap | Views | Scalatra guides
 ---
 
 <div class="page-header">

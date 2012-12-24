@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Akka | Scalatra guides
+title: Akka | Async | Scalatra guides
 ---
 
 <div class="page-header">

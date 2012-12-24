@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Google App Engine | Scalatra
+title: Google App Engine | Deployment | Scalatra
 ---
 
 <div class="page-header">

@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Twirl | Views | Scalatra guides
+title: HTTP client | Web Services | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>Twirl</h1>
+  <h1>HTTP client</h1>
 </div>
 
 ## Guide coming soon!

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: XML | Scalatra guides
+title: XML | Formats | Scalatra guides
 ---
 
 <div class="page-header">

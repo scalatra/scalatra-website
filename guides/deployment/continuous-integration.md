@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Continuous integration | Scalatra guides
+title: Continuous integration | Deployment | Scalatra guides
 ---
 
 <div class="page-header">

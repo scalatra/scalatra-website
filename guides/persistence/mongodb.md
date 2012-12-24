@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Twirl | Views | Scalatra guides
+title: MongoDB | Models | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>Twirl</h1>
+  <h1>MongoDB</h1>
 </div>
 
 ## Guide coming soon!

@@ -1,17 +1,21 @@
 ---
 layout: default
-title: Routes and actions | Scalatra guides
+title: Routes | HTTP | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>Routes &amp; actions</h1>
+  <h1>Routes</h1>
 </div>
 
 All web applications need a way to match up the incoming HTTP request with some code to execute on the server. In Scalatra, this is done using _routes_ and _actions_.
 
 If somebody makes a POST request to your application, at `http://www.yourapp.org/articles`, you might want to invoke code on the server which will look at the information contained in the incoming request, and use it to create a new `Article` object. The fact that it's a POST request, and the request path is `/articles`, are _route_ information. The code that you execute is the _action_.
 
-## Routes
+Actions are dealt with in the [next guide](actions.html).
+
+---
+
+### A simple example
 
 In Scalatra, a route is an HTTP method (GET, PUT, POST, or DELETE) paired with a URL matching pattern. If you set up your application using RESTful conventions, your controller might look something like this:
 
@@ -207,62 +211,6 @@ get("foo/bar/?") {
 
 ----
 
-## Actions
-
-Each route is followed by an action.  An Action may return any value, which
-is then rendered to the response according to the following rules.
-
-<dl class="dl-horizontal">
-<dt>ActionResult</dt>
-<dd>Sets status, body and headers. After importing
-<code>org.scalatra.ActionResult._</code>, you can return 200 OK, 404 Not Found
-and other responses by referencing them by their descriptions. See the <span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span> code (below) for an example.
-</dd>
-</dl>
-<dl class="dl-horizontal">
-<dt>Array[Byte]</dt>
-<dd>If no content-type is set, it is set to <code>application/octet-stream</code>.
-The byte array is written to the response's output stream.</dd>
-<dt>NodeSeq</dt>
-<dd>If no content-type is set, it is set to <code>text/html</code>.  The node
-sequence is converted to a string and written to the response's writer.</dd>
-<dt>Unit</dt>
-<dd>This signifies that the action has rendered the entire response, and
-no further action is taken.</dd>
-<dt>Any</dt>
-<dd> For any other value, if the content type is not set, it is set to
-<code>text/plain</code>.  The value is converted to a string and written to the
-response's writer.</dd>
-</dl>
-
-This behavior may be customized for these or other return types by overriding
-`renderResponse`.
-
-<span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span>
-
-```scala
-get("/file/:id") {
-  fileService.find(params("id")) match {
-    case Some(file) => Ok(file)
-    case None       => NotFound("Sorry, the file could not be found")
-   }
- }
-```
-
-In this example, ActionResult is being used conditionally to give back different
-response codes based on what's happened in the action. If a `file` is found
-by the hypothetical `fileService`, the action returns `Ok(file)`. This means
-that the response was successful, and there's a response code of 200.
-
-If the `fileService` didn't find a file, the action returns `NotFound` and
-a message. The `NotFound` sets a response code of 404.
-
-There are several dozen possible responses in Scalatra, if you want to see
-all of them and find out what response codes they produce, the easiest way is
-to look at the [ActionResult source code][actionresult-source].
-
-
-[actionresult-source]:https://github.com/scalatra/scalatra/blob/develop/core/src/main/scala/org/scalatra/ActionResult.scala
 
 ### Parameter handling
 
@@ -270,14 +218,14 @@ Incoming HTTP request parameters become available to your actions through
 two methods: `multiParams` and `params`.
 
 <dl class="dl-horizontal">
-<dt>multiParams</dt>
-<dd>a result of merging the standard request params (query
-string or post params) with the route parameters extracted from the route
-matchers of the current route. The default value for an unknown param is the
-empty sequence. Keys return <code>Seq</code>uences of values.</dd>
-<dt>params</dt>
-<dd>a special, simplified view of <code>multiParams</code>, containing only the
-head element for any known param, and returning the values as Strings.</dd>
+  <dt>multiParams</dt>
+  <dd>a result of merging the standard request params (query
+    string or post params) with the route parameters extracted from the route
+    matchers of the current route. The default value for an unknown param is the
+    empty sequence. Keys return <code>Seq</code>uences of values.</dd>
+  <dt>params</dt>
+  <dd>a special, simplified view of <code>multiParams</code>, containing only the
+    head element for any known param, and returning the values as Strings.</dd>
 </dl>
 
 #### A params example

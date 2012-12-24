@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reverse routes | Scalatra
+title: Reverse routes | HTTP | Scalatra
 ---
 
 <div class="page-header">

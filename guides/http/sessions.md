@@ -1,3 +1,13 @@
+---
+layout: default
+title: Sessions | HTTP | Scalatra guides
+---
+
+<div class="page-header">
+  <h1>Sessions</h1>
+</div>
+
+
 ### Session handling
 
 Scalatra has session handling built into the framework by default. There are

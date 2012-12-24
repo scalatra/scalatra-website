@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploying to CloudBees | Scalatra
+title: Deploying to CloudBees | Deployment | Scalatra
 ---
 
 <div class="page-header">

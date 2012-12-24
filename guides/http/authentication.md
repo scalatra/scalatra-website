@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Flash | Scalatra
+title: Authentication | HTTP | Scalatra
 ---
 
 <div class="page-header">
-  <h1>Flash</h1>
+  <h1>Authentication</h1>
 </div>
 
 

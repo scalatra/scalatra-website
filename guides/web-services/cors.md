@@ -1,3 +1,12 @@
+---
+layout: default
+title: CORS | Web Services | Scalatra guides
+---
+
+<div class="page-header">
+  <h1>CORS</h1>
+</div>
+
 ### Cross origin resource sharing
 
 Scalatra allows you to mix in the `CorsSupport` trait if you need to do

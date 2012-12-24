@@ -1,3 +1,13 @@
+---
+layout: default
+title: File upload | Formats | Scalatra guides
+---
+
+<div class="page-header">
+  <h1>File upload</h1>
+</div>
+
+
 ## Uploading files
 
 File upload support is included within Scalatra by default by leveraging

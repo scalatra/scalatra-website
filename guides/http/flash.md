@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Flash | Scalatra guides
+title: Flash | HTTP | Scalatra guides
 ---
 
 <div class="page-header">

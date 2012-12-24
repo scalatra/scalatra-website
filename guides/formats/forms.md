@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Forms | Scalatra guides
+title: Forms | Formats | Scalatra guides
 ---
 
 <div class="page-header">

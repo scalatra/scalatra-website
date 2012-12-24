@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Twirl | Views | Scalatra guides
+title: Metrics | Monitoring | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>Twirl</h1>
+  <h1>Metrics</h1>
 </div>
 
 ## Guide coming soon!

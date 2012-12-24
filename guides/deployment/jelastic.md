@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploying to Jelastic | Scalatra
+title: Deploying to Jelastic | Deployment | Scalatra
 ---
 
 <div class="page-header">

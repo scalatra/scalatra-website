@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Requests and responses | Scalatra
+title: Requests and responses | HTTP | Scalatra
 ---
 
 <div class="page-header">
