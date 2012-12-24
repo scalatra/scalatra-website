@@ -19,7 +19,7 @@ generate a project:
 g8 scalatra/scalatra-sbt -b develop
 ```
 
-This will check out a pre-built application skeleton for you (from [Github](https://github.com/scalatra/scalatra-sbt.g8)),
+This will check out a pre-built application skeleton for you (from [GitHub](https://github.com/scalatra/scalatra-sbt.g8)),
 and ask you some questions about your application:
 
 ```
@@ -42,7 +42,10 @@ version [0.1.0-SNAPSHOT]:
   <dt>package</dt>
   <dd>
     All Scala code belongs in a package.
-    The <a href="http://docs.scala-lang.org/style/naming-conventions.html#packages">Scala Style Guide<a> recommends that your packages start with your organization.
+    The
+    <a href="http://docs.scala-lang.org/style/naming-conventions.html#packages">
+      Scala Style Guide
+    </a> recommends that your packages start with your organization.
     This convention is used across multiple JVM languages and gives your
     project a globally unique namespace.
   </dd>
@@ -170,7 +173,7 @@ $ ./sbt
 ```
 
 Now that you've got a (rather simplistic) running application, you may want
-to [understand more](understanding-scalatra.html) about the project setup, or
+to [understand more](project-structure.html) about the project setup, or
 dive straight into our [guides](../guides), which show you how to perform
 common development tasks.
 
