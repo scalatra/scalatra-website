@@ -1,15 +1,13 @@
 ---
 layout: default
-title: Anatomy of a Scalatra app | Scalatra
+title: Project structure | Scalatra
 ---
 
 <div class="page-header">
-  <h1>The anatomy
-    <small>of a Scalatra app</small>
-  </h1>
+  <h1>Project structure</h1>
 </div>
 
-## Project structure
+## Paths
 
 The recommended way of structuring a Scalatra project is as follows. It's
 what you get when you generate a new project using giter8:

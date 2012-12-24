@@ -12,6 +12,8 @@ Luckily, Scalatra is easy to install, as it has relatively few dependencies.
 
 It can run on Windows, Mac OS X, Linux, or BSD.
 
+---
+
 ## 1. Install a JDK
 
 Scalatra is web micro-framework written in Scala, so you'll need to have a
@@ -42,9 +44,7 @@ over at the Java 7 install page</a>.
 Make sure you're using OpenJDK or Sun's JDK.
 Some Linux distros pre-install `gcj`, which won't work.
 
-----
-
-## 2. Install conscript and giter8
+## 2. Install giter8
 
 Once you're sure you've got Java installed, you will need to download a few
 other utilities.
@@ -76,15 +76,7 @@ source ~/.bashrc       # (Linux)
   <p>Depending on your connection speed, this can take a bit of time, as
   `conscript` downloads quite a few Scala dependencies.</p>
 
-----
+---
 
-## 3. IDE Setup (optional)
-
-That's it! You now have everything you need.
-
-You may want to set up your IDE. If you're using Eclipse, you can use the [sbt-eclipse](https://github.com/typesafehub/sbteclipse) plugin.
-It generates Eclipse classpath and configuration files to ensure the project will work as expected in the IDE.
-Similar functionality for IntelliJ IDEA is provided by the [sbt-idea](https://github.com/mpeltonen/sbt-idea) plugin.
-Be sure to run `./sbt eclipse` or `./sbt idea` every time you [add or update a dependency](understanding-scalatra.html) in `build.sbt`.
-
-Head over to the "[first steps](first-steps.html)" page, which will show you how to generate, build, and run a Scalatra application.
+With installation out of the way, head over to the "[first project](first-project.html)"
+page, which will show you how to generate, build, and run a Scalatra application.

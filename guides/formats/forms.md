@@ -1,9 +1,8 @@
 ---
 layout: default
-title: HTTP | Scalatra
+title: Forms | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>HTTP</h1>
+  <h1>Forms</h1>
 </div>
-

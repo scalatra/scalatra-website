@@ -4,7 +4,7 @@ title: Atmosphere | Scalatra guides
 ---
 
 <div class="page-header">
-<h1>Atmosphere</h1>
+  <h1>Atmosphere</h1>
 </div>
 
 Scalatra has a built-in integration with 
@@ -15,6 +15,8 @@ user-agents). You can push new information to your user at any time,
 without a page refresh.
 
 It's carefree server push for the JVM.
+
+---
 
 ### Sample code
 

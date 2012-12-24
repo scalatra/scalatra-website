@@ -1,9 +1,8 @@
 ---
 layout: default
-title: HTTP | Scalatra
+title: XML | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>HTTP</h1>
+  <h1>XML</h1>
 </div>
-

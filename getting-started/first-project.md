@@ -5,7 +5,7 @@ title: First steps | Scalatra
 
 <div class="page-header">
   <h1>
-    First steps
+    First project
     <small>with Scalatra</small>
   </h1>
 </div>
@@ -214,6 +214,8 @@ There should now be a website with examples running at
 
 The code running the examples site resides in
 ```example/src/main/scala/org/scalatra/```.
+
+---
 
 Now that you've created your first Scalatra app, it's time to learn a little
 bit about Scalatra's simple [project structure](project-structure.html).

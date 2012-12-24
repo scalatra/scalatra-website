@@ -4,7 +4,7 @@ title: JRebel integration | Scalatra
 ---
 
 <div class="page-header">
-  <h1>JRebel integration</h1>
+  <h1>JRebel integration (optional)</h1>
 </div>
 
 [JRebel](http://zeroturnaround.com/software/jrebel/) is a JVM plugin that makes developing web apps much faster.
