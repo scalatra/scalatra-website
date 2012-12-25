@@ -43,10 +43,11 @@ Rails, Sinatra, or Padrino application. Your views go in the views folder,
 layouts (which wrap views) go in the layouts folder.
 
 The Scalatra giter8 project puts your Scala application code into a series of
-namespaced directories: in the example above, _org.yourdomain.projectname_.
+namespaced directories: in the example above, `org.yourdomain.projectname`.
 This is entirely optional. The [Scala style guide](http://docs.scala-lang.org/style/)
 suggests doing it this way, but the language doesn't do anything to enforce it.
-If you want to, you can put all of your Scala code in the same directory.
+If you want to, you can put all of your Scala code in the same directory for easier
+navigation.
 
 ## Serving static files
 
@@ -169,7 +170,8 @@ If you don't know what the dependency details are, you can find out on
 <a href="http://search.maven.org">http://search.maven.org</a>.
 </div>
 
-If you're using [sbt-eclipse](https://github.com/typesafehub/sbteclipse) or
+If you're using [IDE plugins](ide-support.html) like
+[sbt-eclipse](https://github.com/typesafehub/sbteclipse) or
 [sbt-idea](https://github.com/mpeltonen/sbt-idea) to make sbt dependencies
 available to your IDE, make sure you re-run `sbt-eclipse` or `sbt-idea` from
 within sbt whenever you add or update a dependency in `build.sbt`.
@@ -187,31 +189,44 @@ The default dependencies are:
   </dd>
   <dt>scalatra-specs2</dt>
   <dd>
-    This integrates the <a href="https://github.com/etorreborre/specs2">Specs2</a> testing libraries.
-    It is placed in the <code>test</code> scope, so it's not deployed with your app in production.
+    This integrates the <a href="https://github.com/etorreborre/specs2">Specs2</a>
+    testing libraries.
+    It is placed in the <code>test</code> scope, so it's not deployed with your app
+    in production.
   </dd>
   <dt>logback-classic</dt>
   <dd>
-    Basic logging functionality, courtesy of <a href="http://logback.qos.ch/">Logback</a>.
-    It's placed in the <code>runtime</code> scope so it's not bundled with your application.
-    This allows the particular logging implementation (or no logging implementation at all), to be provided at runtime.
+    Basic logging functionality, courtesy of
+    <a href="http://logback.qos.ch/">Logback</a>.
+    It's placed in the <code>runtime</code> scope so it's not bundled with your
+    application.
+    This allows the particular logging implementation (or no logging implementation
+    at all), to be provided at runtime.
   </dd>
   <dt>jetty-webapp</dt>
   <dd>
     This is the embedded servlet container used by the web plugin.
-    Your application should be portable to any servlet container supporting at least the 2.5 specification.
+    Your application should be portable to any servlet container supporting at least
+    the 2.5 specification.
   </dd>
   <dt>javax.servlet</dt>
   <dd>
     Required for building your app.
-    It is placed in the <code>provided</code> configuration so that it is not bundled with your application.
+    It is placed in the <code>provided</code> configuration so that it is not bundled
+    with your application.
     Your servlet container will provide this at deployment time.
   </dd>
 </dl>
 
-The Scalatra components in your project should all have the same version number (2.2.0 in the above example).
-Although it's theoretically possible to mix and match differently-versioned components in your projects, it's not recommended, because we compile, test and release Scalatra dependencies together based on their version number. 
+The Scalatra components in your project should all have the same version number
+({{ site.scalatra_version }} in the above example).
+Although it's theoretically possible to mix and match differently-versioned components
+in your projects, it's not recommended, because we compile, test and release Scalatra
+dependencies together based on their version number. 
 
 ---
 
-Now that you understand the basics of building Scalatra apps, we strongly recommend you consider [using JRebel](jrebel.html), which will make your webapp restart much more quickly after a code change during development.
+Now that you understand the basics of building Scalatra apps, we recommend you
+consider [using JRebel](jrebel.html), which will make your webapp restart much more
+quickly after a code change during development.
+You may also want to [set up your IDE](ide-support.html).
