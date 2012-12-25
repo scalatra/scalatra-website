@@ -151,8 +151,7 @@ get("/") {
 Returning a raw string is not something you'll do particularly often -
 usually you will want to return formatted HTML that is the product of a
 templating system, or an output format like JSON.
-See the [views](../guides/views.html) and [helpers](../guides/helpers.html)
-sections of our [guides](../guides) for more info.
+See the [views](../guides/views) section of our [guides](../guides) for more info.
 
 ## Automatic code reloading
 
