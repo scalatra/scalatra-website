@@ -33,6 +33,9 @@ Since this call can be made from other templates, the artificial distinction bet
 "layouts" and "views" is erased.
 - Twirl simply embeds Scala in arbitrary text, whether that text is HTML, JSON, XML, or
 anything else. There is no new language to learn.
+- When you use Twirl, the compiler can check type errors *within* a template, but
+unlike Scalate it can also check that templates are being passed the right parameter
+types.
 
 ### Disadvantages of Twirl
 
