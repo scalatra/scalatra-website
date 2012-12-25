@@ -10,7 +10,7 @@ title: IDE Support | Scalatra
 Because Scalatra is a pure-Scala no-magic framework, Scala IDEs such as
 [Eclipse](http://scala-ide.org/),
 [IntelliJ](http://confluence.jetbrains.net/display/SCA/Scala+Plugin+for+IntelliJ+IDEA),
-and [ENSIME](https://github.com/aemoncannon/ensime)
+and [ENSIME](https://github.com/aemoncannon/ensime) (for Emacs)
 "understand" Scalatra and can assist your development.
 This is totally optional, so if you don't like IDEs, feel free to skip this section.
 
@@ -62,6 +62,7 @@ Be sure to re-run `./sbt idea` every time you add or update a dependency in
 ## ENSIME (for Emacs)
 
 Users of the one true editor, rejoice! There is excellent support for Scala in Emacs.
+
 - We recommend you install [scala-mode2](https://github.com/hvesalai/scala-mode2) for your basic formatting and syntax highlighting.
 - [ENSIME](https://github.com/aemoncannon/ensime) lives on top of your Scala major mode,
 adding features like refactoring and error highlighting.
