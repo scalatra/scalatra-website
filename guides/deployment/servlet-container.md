@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Deploying to servlet hosts | Deployment | Scalatra
+title: Deploying to servlet containers | Deployment | Scalatra
 ---
 
 <div class="page-header">
-  <h1>Deploying to servlet hosts</h1>
+  <h1>Deploying to servlet containers</h1>
 </div>
 
 <div class="alert alert-info">
