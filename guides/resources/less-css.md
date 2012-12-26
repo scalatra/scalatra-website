@@ -96,7 +96,7 @@ With installation out of the way, you're free to put your LESS files in
 It doesn't matter what the file/s are called, so long as they have the `.less`
 extension we said we'd use in the `wro.xml` configuration.
 
-For example, create `src/main/webapp/less/main.less`, which shows of the use of
+For example, create `src/main/webapp/less/main.less`, which shows off the use of
 variables in LESS:
 
 ```css
