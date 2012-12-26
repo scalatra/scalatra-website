@@ -97,7 +97,7 @@ For example, create `src/main/webapp/less/main.coffee`, which shows off the
 optionality of parentheses and semicolons in CoffeeScript:
 
 
-```
+```coffeescript
 alert "Hello CoffeeScript!"
 ```
 
