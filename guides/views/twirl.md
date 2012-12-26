@@ -12,10 +12,10 @@ created for the
 [Play 2 templating language](http://www.playframework.org/documentation/2.0/ScalaTemplates).
 
 <div class="alert alert-info">
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-See
-<a href="https://github.com/ymasory/scalatra-website-examples/tree/master/2.2/views/scalatra-twirl">scalatra-twirl</a>
-for a minimal and standalone project containing the examples in this guide.
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="{{site.examples}}views/scalatra-twirl">scalatra-twirl</a>
+  for a minimal and standalone project containing the examples in this guide.
 </div>
 
 ---
