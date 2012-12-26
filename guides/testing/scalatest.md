@@ -13,6 +13,8 @@ application.  The framework lets you send requests to your app and examine the
 response.  All HTTP verbs are supported, as well as request parameters and
 session tracking.
 
+---
+
 ## Integrations
 
 Scalatra can be used with the test framework of your choosing.  A basic

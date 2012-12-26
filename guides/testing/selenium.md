@@ -1,10 +1,10 @@
 ---
 layout: default
-title: ScalaCheck | Testing | Scalatra guides
+title: Selenium | Testing | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>ScalaCheck</h1>
+  <h1>Selenium</h1>
 </div>
 
 ## Guide coming soon!
