@@ -70,7 +70,7 @@ adding features like refactoring and error highlighting.
 [ensime-sbt-cmd](https://github.com/aemoncannon/ensime-sbt-cmd) plugin.
 Add this line to your `build.sbt` file:
 
-```
+```scala
 addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "0.1.0")
 ```
 
