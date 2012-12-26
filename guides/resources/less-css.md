@@ -19,7 +19,7 @@ when you have time to learn them, on your schedule!
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
-  <a href="{{site.examples}}resources/less-css">scalatra-less-css</a>
+  <a href="{{site.examples}}resources/scalatra-less-css">scalatra-less-css</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
