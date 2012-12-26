@@ -15,7 +15,7 @@ created for the
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 See
 <a href="https://github.com/ymasory/scalatra-website-examples/tree/master/2.2/views/scalatra-twirl">scalatra-twirl</a>
-for a complete, minimal, standalone project containing the examples in this guide.
+for a minimal and standalone project containing the examples in this guide.
 </div>
 
 ---

@@ -9,6 +9,13 @@ title: Deploying to Heroku | Deployment | Scalatra
 
 [Heroku](http://www.heroku.com/) is a cloud application platform that makes it easy to deploy and scale applications. With the right project setup, deploying your application becomes as easy as `git push`.
 
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="{{site.examples}}deployment/scalatra-heroku">scalatra-heroku</a>
+  for a minimal and standalone project containing the examples in this guide.
+</div>
+
 ----
 
 ## 1. Sign up for a free a [free account](https://api.heroku.com/signup).

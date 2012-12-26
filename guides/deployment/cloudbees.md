@@ -10,7 +10,14 @@ title: Deploying to CloudBees | Deployment | Scalatra
 [CloudBees](http://www.cloudbees.com/) is a hosted platform for JVM apps that puts
 everything from source control to continuous integration to production deployment under
 one roof.
-Its free plan is more than sufficient for a simple Scalatra app. 
+Its free plan is more than sufficient for a simple Scalatra app.
+
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="{{site.examples}}deployment/scalatra-cloudbees">scalatra-cloudbees</a>
+  for a minimal and standalone project containing the examples in this guide.
+</div>
 
 ---
 

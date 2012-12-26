@@ -13,6 +13,13 @@ Jelastic allows you to scale your app both horizontally (more instances) and ver
 (more powerful instances).
 They offer a 2-week free trial, after which point their rates are among the best in the industry.
 
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="{{site.examples}}deployment/scalatra-jelastic">scalatra-jelastic</a>
+  for a minimal and standalone project containing the examples in this guide.
+</div>
+
 ----
 
 ## 1. [Register](http://jelastic.com/) for an account.
