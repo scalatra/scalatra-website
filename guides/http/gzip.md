@@ -16,7 +16,7 @@ Just mix in `GZipSupport`!
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
-  <a href="{{site.examples}}deployment/scalatra-gzip">scalatra-gzip</a>
+  <a href="{{site.examples}}http/scalatra-gzip">scalatra-gzip</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
