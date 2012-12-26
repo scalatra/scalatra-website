@@ -104,21 +104,7 @@ object JettyLauncher {
 }
 ```
 
-## 5. Test your configuration
-We're done tweaking the project, but we should probably test that it works before deploying to Heroku.
-
-```bash
-$ cd [app root]
-$ ./sbt
-> container:start
-> browse
-```
-
-If `browse` doesn't launch your browser, manually open [http://localhost:8080/](http://localhost:8080/) in your browser.
-
-If you see a webpage instead of an error message, you're in business.
-
-## 6. Deploy
+## 5. Deploy
 
 If you haven't set up your project as a Git repo, do so.
 
@@ -159,7 +145,7 @@ To git@heroku.com:polar-atoll-9149.git
 
 Open your browser to to the URL provided right before `deployed to Heroku` in the output.
 
-## 7. Limitations
+## 6. Limitations
 No app host is perfect. You should be aware of two limitations as you develop on Heroku:
 
 - Heroku ["slugs"](https://devcenter.heroku.com/articles/slug-compiler) (deployed apps with their dependencies) are limited to 200MB.

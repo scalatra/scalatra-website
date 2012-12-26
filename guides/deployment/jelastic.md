@@ -94,22 +94,7 @@ export JELASTIC_PWD="iluvyou"
 
 Now close your shell and open a new one.
 
-## 6. Test your app
-We're done tweaking the project, but we should probably test that it works before
-deploying to Jelastic.
-
-```sh
-$ cd [app root]
-$ ./sbt
-> container:start
-> browse
-```
-
-If `browse` doesn't launch your browser, manually open [http://localhost:8080/](http://localhost:8080/) in your browser.
-
-If you see a webpage instead of an error message, you're in business.
-
-## 7. Deploy
+## 6. Deploy
 With the project set up, your first deploy, and all future deploys, are insanely easy:
 
 ```sh
@@ -161,7 +146,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 [success] Total time: 210 s, completed Dec 16, 2012 2:45:04 PM
 ```
 
-## 8. Visit your website
+## 7. Visit your website
 
 Since we used the environment `scalatra-test`, the app is now live at [http://scalatra-test.jelastic.servint.net](http://scalatra-test.jelastic.servint.net).
 As always, you will have to substitute your environment name into that URL.
