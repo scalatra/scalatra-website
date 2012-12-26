@@ -16,7 +16,7 @@ Its free plan is more than sufficient for a simple Scalatra app.
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
   <a href="{{site.examples}}deployment/scalatra-cloudbees">scalatra-cloudbees</a>
-  for a minimal and standalone project containing the examples in this guide.
+  for a minimal and standalone project containing the example in this guide.
 </div>
 
 ---

@@ -13,7 +13,7 @@ title: Deploying to Heroku | Deployment | Scalatra
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
   <a href="{{site.examples}}deployment/scalatra-heroku">scalatra-heroku</a>
-  for a minimal and standalone project containing the examples in this guide.
+  for a minimal and standalone project containing the example in this guide.
 </div>
 
 ----
