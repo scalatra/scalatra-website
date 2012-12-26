@@ -26,7 +26,7 @@ when you have time to learn them, on your schedule!
 ----
 
 ## Full usage guide
-Because LESS is an external project, we won't attempt to reproduce it's documentation
+Because LESS is an external project, we won't attempt to reproduce its documentation
 here.
 Go to the [official documentation](http://lesscss.org/) and learn you some LESS!
 

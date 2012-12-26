@@ -21,7 +21,7 @@ language that fixes the many warts of Javascript.
 ---
 
 ## Full usage guide
-Because CoffeeScript is an external project, we won't attempt to reproduce it's
+Because CoffeeScript is an external project, we won't attempt to reproduce its
 documentation here.
 Go to the [official documentation](http://coffeescript.org/); you'll be glad you did!
 
@@ -88,8 +88,6 @@ postProcessors =
 
 ## Example
 
-## Example
-
 With installation out of the way, you're free to put your CoffeeScript files in
 `src/main/webapp/coffee`.
 It doesn't matter what the file/s are called, so long as they have the `.coffee`
@@ -99,7 +97,7 @@ For example, create `src/main/webapp/less/main.coffee`, which shows off the
 optionality of parentheses and semicolons in CoffeeScript:
 
 
-```coffee
+```
 alert "Hello CoffeeScript!"
 ```
 
