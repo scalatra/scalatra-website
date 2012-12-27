@@ -88,7 +88,8 @@ class Scalatra extends LifeCycle {
     context mount (new ArticlesServlet, "/articles/*")
 
     // set init params like this:
-    // org.scalatra.cors.allowedOrigins = "http://example.com"
+    context.initParameters("org.scalatra.environment") = "production"
+    context.initParameters("org.scalatra.cors.allowedOrigins") = "http://example.com"
   }
 }
 ```
