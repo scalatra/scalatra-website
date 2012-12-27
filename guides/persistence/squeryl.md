@@ -17,7 +17,7 @@ a "butt-simple" connection pooling library.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
-  <a href="http://github.com/futurechimp/ScalatraSqueryl">scalatra-squeryl</a>
+  <a href="https://github.com/futurechimp/ScalatraSqueryl/tree/2.2">scalatra-squeryl</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
