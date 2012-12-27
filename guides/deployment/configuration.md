@@ -13,14 +13,14 @@ initial configurations when it starts up, and the software it depends on.
 
 ---
 
-### Configuring your app using the Scalatra bootstrap file
+### Configuring your app using the ScalatraBootstrap file
 
-The Scalatra bootstrap file, new in Scalatra 2.1.x, is the recommended way
+As of 2.1.x, the `ScalatraBootstrap` file is the recommended way
 of configuring your application. It allows you to easily mount different
 servlets, set application parameters, and run initialization code for your
 app, without touching much in the way of XML.
 
-If you've just started a new project in Scalatra 2.1.x, using the giter8 template,
+If you've just started a new project in Scalatra 2.2.x, using the giter8 template,
 all of this will already be set up for you. However, if you're upgrading from
 2.0.x, or you just want to understand what's going on, read on.
 
@@ -59,7 +59,7 @@ The XML which allows you to do this is as follows:
 
 <span class="badge badge-success"><i class="icon-thumbs-up icon-white"></i></span>
 If you started your project in an older version of Scalatra, and want to start
-using the new Scalatra bootstrap configuration style, drop that XML into your
+using the new ScalatraBootstrap configuration style, drop that XML into your
 web.xml and you're all set.
 
 Note that there are no servlet-names, servlet classes, etc. That's all
@@ -80,7 +80,7 @@ import org.scalatra.LifeCycle
 import javax.servlet.ServletContext
 import org.yourdomain.projectname._
 
-class Scalatra extends LifeCycle {
+class ScalatraBootstrap extends LifeCycle {
 
   override def init(context: ServletContext) {
 
@@ -107,7 +107,7 @@ explicitly tell your application about a new `ScalatraServlet` or `ScalatraFilte
 whenever you add one.
 </div>
 
-The Scalatra bootstrap config class allows you to mount servlets or
+The `ScalatraBootstrap` config class allows you to mount servlets or
 filters (or both) into your application, and define URL path patterns that
 they'll respond to.
 
@@ -143,7 +143,7 @@ override def init(context: ServletContext) {
 
 #### Running code at application start
 
-The Scalatra bootstrap file is also a good place to put things like database
+The ScalatraBootstrap file is also a good place to put things like database
 initialization code, which need to be set up once in your application. You can
 mix in whatever traits you want, and run any Scala code you want from inside
 the `init` method:
@@ -156,7 +156,7 @@ import javax.servlet.ServletContext
 import com.yourdomain.yourapp.DatabaseInit
 
 // Mixing in the trait:
-class Scalatra extends LifeCycle with DatabaseInit {
+class ScalatraBootstrap extends LifeCycle with DatabaseInit {
 
   override def init(context: ServletContext) {
 
