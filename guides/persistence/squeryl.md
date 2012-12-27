@@ -93,7 +93,7 @@ with C3P0's `ComboPooledDataSource`.
 
 Now that the session pool is defined, it'll need to be initialized. The best
 place to do this initialization work is in your application's ScalatraBootstrap
-file's init method.
+init method.
 
 Open up `src/main/scala/ScalatraBootstrap.scala`, and import your `DatabaseInit`
 trait. In the case of this example, we'll need 
