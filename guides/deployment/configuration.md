@@ -136,7 +136,7 @@ override def init(context: ServletContext) {
   context mount (new ArticlesServlet, "/articles/*")
 
   // Let's set the environment
-  org.scalatra.environment = "production"
+  context.initParameters("org.scalatra.environment") = "production"
 
 }
 ```
