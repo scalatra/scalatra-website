@@ -25,8 +25,8 @@ a "butt-simple" connection pooling library.
 
 ```scala
 "org.squeryl" %% "squeryl" % "0.9.5-6", 
-"mysql" % "mysql-connector-java" % "5.1.22",      # for MySQL, or use
-"postgresql" % "postgresql" % "9.1-901-1.jdbc4",  # for Postgres
+"mysql" % "mysql-connector-java" % "5.1.22",      // for MySQL, or use
+"postgresql" % "postgresql" % "9.1-901-1.jdbc4",  // for Postgres
 "c3p0" % "c3p0" % "0.9.1.2"
 ```
 
