@@ -1,5 +1,5 @@
 ---
-title: Scalatra - FAQ
+title: FAQ | Scalatra guides
 --- name:headExtra pipeline:jade
 link{:type => "text/css",
                 :rel => "stylesheet",

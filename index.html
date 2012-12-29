@@ -9,7 +9,7 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
       <img src="assets/img/logo-x.png" class="img-rounded">
     </div>
     <div class="span6">
-      <p>Scalatra is a blazing fast, async Scala web micro-framework.</p>
+      <p>Scalatra is a simple, accessible and free web micro-framework.</p>
       <p> It combines the power of the JVM with the beauty and brevity of Scala,
           helping you quickly build high-performance web sites and APIs.</p>
     </div>
@@ -41,15 +41,10 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
     <p><a href="community" class="btn btn-primary">Get involved »</a></p>
   </div>
   <div class="span3">
-    <h2>News</h2>
+    <h3>Project news</h3>
     <ul>
-    {% for post in paginator.posts limit:3 %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a>
-        <br/>
-        <abbr class="published" title="{{ post.date }}">
-          {{ post.date | date_to_string }}
-        </abbr>
-      </li>
+    {% for post in paginator.posts %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
     </ul>
   </div>  
@@ -74,41 +69,36 @@ also gives you easy access to Scala&#39;s new concurrency-management constructs:
 <a href="http://akka.io">Akka Actors</a>.</li>
 </ul>
 
+
+
 <h3>Start small</h3>
 
 <p>You will need to <a href="getting-started/installation.html">install a few things</a>
 before you can get started, but first, here&#39;s a Scalatra app:</p>
+<div class="highlight"><pre><code class="scala"><span class="k">package</span> <span class="nn">com.example.app</span>
+<span class="k">import</span> <span class="nn">org.scalatra._</span>
 
-<div class="row">
-  <div class="span6">
-    <p>Notice a few things about it:</p>
-    <ul>
-      <li>It&#39;s small - a full web application in 7 lines of code.</li>
-      <li>It uses a <a href="http://sinatrarb.com">Sinatra</a>-style DSL.</li>
-      <li>It defines a single method, an HTTP GET to the path &quot;/&quot;.</li>
-      <li>It renders a response, in this case the text <em>Hello</em> and whatever <em>name</em> parameter came in the door.</li>
-    </ul>
-
-    <p>This is the essence of Scalatra - a simple, easily understood way to make
-    web systems, which embrace HTTP&#39;s stateless nature. You can build anything
-    you want with Scalatra, but one of the things it&#39;s been most successful at
-    is the construction of RESTful APIs.</p>    
-  </div>  
-  <div class="span6">
-    <div class="highlight"><pre>    <code class="scala"><span class="k">package</span> <span class="nn">com.example.app</span>
-    <span class="k">import</span> <span class="nn">org.scalatra._</span>
-
-    <span class="k">class</span> <span class="nc">HelloWorldApp</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="o">{</span>
-      <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-        <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="o">{</span><span class="n">params</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">)}&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-    </code></pre>
-    </div>
-  </div>
+<span class="k">class</span> <span class="nc">HelloWorldApp</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="o">{</span>
+  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="o">{</span><span class="n">params</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">)}&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
 </div>
 
+<p>Notice a few things about it:</p>
 
+<ul>
+<li>It&#39;s small - a full web application in 7 lines of code.</li>
+<li>It uses a <a href="http://sinatrarb.com">Sinatra</a>-style DSL.</li>
+<li>It defines a single method, an HTTP GET to the path &quot;/&quot;.</li>
+<li>It renders a response, in this case the text <em>Hello world!</em></li>
+</ul>
+
+<p>This is the essence of Scalatra - a simple, easy to understand way to make
+web systems, which embraces HTTP&#39;s stateless nature. You can build anything
+you want with Scalatra, but one of the things it&#39;s been most successful at
+is the construction of RESTful APIs.</p>
 
 <h3 id="toc_25">Scale up and customize</h3>
 
@@ -136,43 +126,6 @@ framework around that, we let <em>you</em> choose.</p>
   </thead>
   <tbody>
     <tr>
-      <td>2.3.0-SNAPSHOT</td>
-      <td>Development</td>
-      <td><a href="http://github.com/scalatra/scalatra/tree/develop">develop</td>
-      <td>
-        <ul class="scala-versions">
-          <li>2.9.x</li>
-          <li>2.10.0-RC2</li>
-        </ul>
-      </td>
-      <td>3.0</td>
-      <td>N/A</td>
-    </tr>
-    <tr>
-      <td>2.2.0-RC2</td>
-      <td>Release Candidate</td>
-      <td><a href="http://github.com/scalatra/scalatra/tree/2.2.x">develop</td>
-      <td>
-        <ul class="scala-versions">
-          <li>2.9.x</li>
-        </ul>
-      </td>
-      <td>3.0</td>
-      <td>N/A</td>
-    </tr>
-    <tr>
-      <td>2.1.1</td>
-      <td>Stable</td>
-      <td><a href="http://github.com/scalatra/scalatra/tree/2.1.x">support/2.1.x</td></td>
-      <td>
-        <ul class="scala-versions">
-          <li>2.9.x</li>
-        </ul>
-      </td>
-      <td>3.0</td>
-      <td>N/A</td>
-    </tr>
-    <tr>
       <td>2.0.4</td>
       <td>Stable</td>
       <td><a href="http://github.com/scalatra/scalatra/tree/master">master</td></td>
@@ -185,6 +138,57 @@ framework around that, we let <em>you</em> choose.</p>
         </ul>
       </td>
       <td>2.5</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>2.0.5-SNAPSHOT</td>
+      <td>Testing</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/2.0.x">2.0.x</td></td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.9.1</li>
+          <li>2.9.0-1</li>
+          <li>2.8.2</li>
+          <li>2.8.1</li>
+        </ul>
+      </td>
+      <td>2.5</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>2.1.1</td>
+      <td>Stable</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/2.1.x">2.1.x</td></td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.9.x</li>
+        </ul>
+      </td>
+      <td>3.0</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>2.2.0-RC2</td>
+      <td>Testing</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/2.2.x">develop</td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.9.x</li>
+        </ul>
+      </td>
+      <td>3.0</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>2.3.0-SNAPSHOT</td>
+      <td>Development</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/develop">develop</td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.9.x</li>
+        </ul>
+      </td>
+      <td>3.0</td>
       <td>N/A</td>
     </tr>
   </tbody>

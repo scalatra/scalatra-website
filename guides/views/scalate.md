@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Scalatra guides | Views
+title: Scalate | Views | Scalatra guides
 ---
 
 <div class="page-header">
@@ -15,34 +15,6 @@ Scalatra can render views in two main ways.
 
 1. Inline HTML, returned directly from an action.
 1. Using the ScalateSupport helper trait which comes built into the default Scalatra g8 template.
-
-## Inline HTML
-
-The simplest method of rendering a view is by using inline HTML.
-
-Unlike a lot of other frameworks, Scalatra can output XML literals directly as a return
-value from an action:
-
-```scala
-def get("/") {
-  contentType="text/html"
-
-  <html>
-  <head><title>Test</title></head>
-  <body>Test Body for {uri("/")}</body>
-  </html>
-}
-```
-
-Note the use of the curly braces on the `{uri("/")}` part of the inlined view.
-This tells Scalatra to render Scala code.
-
-This would be a very poor way to structure complex views for a large application, but it might
-be useful if your templating needs are quite simple (or you're just cranking out a quick prototype).
-
-Normally you'll want more structure than inline HTML can provide, so that you can separate
-your views from your controller actions and routing.
-
 
 ## Introducing Scalate
 

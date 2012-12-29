@@ -1,20 +1,23 @@
 ---
 layout: default
-title: Scalatra guides | Testing
+title: ScalaTest | Testing | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>Testing</h1>
+  <h1>ScalaTest</h1>
 </div>
+
 
 Scalatra includes a test framework for writing the unit tests for your Scalatra
 application.  The framework lets you send requests to your app and examine the
 response.  All HTTP verbs are supported, as well as request parameters and
 session tracking.
 
+---
+
 ## Integrations
 
-scalatra-test can be used with the test framework of your choosing.  A basic
+Scalatra can be used with the test framework of your choosing.  A basic
 example from each supported framework is shown below.  You may mix and match if
 transitioning from one framework to another; sbt will find and run them all by
 default.
@@ -24,13 +27,13 @@ default.
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-scalatest" % "2.1.1" % "test"
+"org.scalatra" %% "scalatra-scalatest" % "{{ site.scalatra_version }}" % "test"
 ```
 
 #### Example
 
-Extend ScalatraSuite with your preferred Suite implementation.  You get
-ShouldMatchers and MustMatchers for free.
+Extend `ScalatraSuite` with your preferred `org.scalatest.Suite` implementation.
+You get `ShouldMatchers` and `MustMatchers` for free.
 
 ```scala
 import org.scalatra.test.scalatest._
@@ -48,77 +51,18 @@ class MyScalatraServletTests extends ScalatraSuite with FunSuite {
 }
 ```
 
-Convenience traits are provided for many Suite implementations:
+Convenience traits are provided for many `Suite` implementations:
 
-* ScalatraSpec
-* ScalatraFlatSpec
-* ScalatraFreeSpec
-* ScalatraWordSpec
-* ScalatraFunSuite
-* ScalatraFeatureSpec
-* ScalatraJUnit3Suite
-* ScalatraJUnitSuite (JUnit 4)
-* ScalatraTestNGSuite
+* `ScalatraSpec`
+* `ScalatraFlatSpec`
+* `ScalatraFreeSpec`
+* `ScalatraWordSpec`
+* `ScalatraFunSuite`
+* `ScalatraFeatureSpec`
+* `ScalatraJUnit3Suite`
+* `ScalatraJUnitSuite` (JUnit 4)
+* `ScalatraTestNGSuite`
 
-### [Specs2](http://etorreborre.github.com/specs2/)
-
-#### Dependency
-
-```scala
-"org.scalatra" %% "scalatra-specs2" % "2.1.1" % "test"
-```
-
-#### Example
-
-Specs2 supports two basic styles: Unit and Acceptance.  Both are supported
-by scalatra-test.
-
-#### Unit testing
-
-From the [Specs2 QuickStart][Specs2 Quickstart]:
-
-> unit specifications where the specification text is interleaved with the
-> specification code. It is generally used to specify a single class.
-
-```scala
-import org.scalatra.test.specs2._
-
-class HelloWorldMutableServletSpec extends MutableScalatraSpec {
-  addServlet(classOf[HelloWorldServlet], "/*")
-
-  "GET / on HelloWorldServlet" should {
-    "return status 200" in {
-      get("/") {
-        status must_== 200
-      }
-    }
-  }
-}
-```
-
-#### Acceptance testing
-
-From the [Specs2 QuickStart][Specs2 Quickstart]:
-
-> acceptance specifications where all the specification text stands as one and
-> the implementation code is elsewhere.  It is generally used for acceptance or
-> integration scenarios
-
-```scala
-import org.scalatra.test.specs2._
-
-class HelloWorldServletSpec extends ScalatraSpec { def is =
-  "GET / on HelloWorldServlet"                     ^
-    "return status 200"                            ! getRoot200^
-                                                   end
-
-  addServlet(classOf[HelloWorldServlet], "/*")
-
-  def getRoot200 = get("/") {
-    status must_== 200
-  }
-}
-```
 
 
 ### Other test frameworks
@@ -126,7 +70,7 @@ class HelloWorldServletSpec extends ScalatraSpec { def is =
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-test" % "2.1.1" % "test"
+"org.scalatra" %% "scalatra-test" % "{{ site.scalatra_version }}" % "test"
 ```
 
 #### Usage guide
@@ -149,9 +93,9 @@ available courtesy of
 #### How do I set a servlet init parameter?
 
 scalatra-test is built on an embedded Jetty server, so it
-does not read your web.xml.  Most things you can do in a web.xml can be
-done from the context on the tester object.  In this case, call this in
-the constructor of your servlet:
+does not read your `web.xml`.  Most things you can do in a `web.xml` can be
+done from the context of the tester object.
+Call this in the constructor of your servlet:
 
 ```scala
 servletContextHandler.setInitParameter("db.username", "ross")
@@ -163,7 +107,7 @@ servletContextHandler.setInitParameter("db.username", "ross")
 
 Convenience methods exist for testing file uploads.
 
-Example based on Specs2:
+Example using Specs2:
 
 ```scala
 class FileUploadSpec extends MutableScalatraSpec {
