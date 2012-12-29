@@ -49,3 +49,14 @@ footer[role="contentinfo"] a:hover {
 @media(max-width:767px) {
   .content {margin:0;}
 }
+
+#toc ul {
+  margin: 0;
+  list-style: none;
+  
+  font-size: 11px;
+}
+
+#toc ul > ul{
+  margin-left: 10px;
+}
