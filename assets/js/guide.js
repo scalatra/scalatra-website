@@ -37,7 +37,8 @@ $(function() {
       if ($.isArray(e)) {
         items.push(toUl(e));
       } else {
-        items.push('<li><a href="#' + e.id + '">' + e.title + "</a></li>");
+        var offset = $('#'+e.id).offset().top - 50;
+        items.push('<li><a href="#' + e.id + '" onclick="$(\'html,body\').animate({scrollTop: ' + offset + '}, 1000);">' + e.title + "</a></li>");
       }
     })
     return "<ul>" + items.join("") + "</ul>";
@@ -49,6 +50,8 @@ $(function() {
     return { title: $(e).html(), id: $(e).attr("id"), level: tag2level(e.tagName) };
   }).toArray();
 
-  $('#toc').append(toUl(nest(headers)));
+  if (headers.length > 0) {
+    $('#toc').append("<h4>Overview</h4>" + toUl(nest(headers)));
+  }
 
 });
