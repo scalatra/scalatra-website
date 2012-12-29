@@ -70,7 +70,9 @@ $(function() {
         tree.push(x);
         return nest0(xs, tree, l);
       } else if (x.level > l) {
-        var [y, ys] = nest0(xs, [x], x.level);
+        var t = nest0(xs, [x], x.level);
+        var y = t[0];
+        var ys = t[1];
         tree.push(y);
         return nest0(ys, tree, l);
       } else if (x.level < l) {
@@ -82,7 +84,9 @@ $(function() {
   function nest(lst) {
     if (lst.length == 0) return [];
     else {
-      var [x, xs] = nest0(lst, [], lst[0].level);
+      var t = nest0(lst, [], lst[0].level);
+      var x = t[0];
+      var xs = t[1];
       return x;
     }
   }
