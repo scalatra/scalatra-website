@@ -1,6 +1,8 @@
 ---
-layout: default
+layout: post
 title: Scalatra dev roundup
+author: Dave Hrycyszyn
+twitter: futurechimp
 ---
 
 Scalatra development has been proceeding at a rapid pace in recent months,

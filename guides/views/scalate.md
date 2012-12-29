@@ -140,21 +140,22 @@ look like:
 
 #### Layouts
 
-Scalatra looks for layouts in the `webapp/layout/` directory, and inserts the rendered
+Scalatra looks for layouts in the `webapp/layouts/` directory, and inserts the rendered
 view for the current action into the template at the point you specify. If you're using
 `SSP`, your layout might look something like this:
 
 ```html
-  <%@ var yield: String %>
+  <%@ val body: String %>
   <html>
     <head>..</head>
     <body>
-      <%= yield %>
+      <%= unescape(body) %>
     </body>
   </html>
 ```
 
-The specific view for your action will be rendered at the `<%= yield =>` statement.
+The specific view for your action will be rendered at the 
+`<%= unescape(body) %>` statement.
 
 #### Default layouts
 
@@ -164,7 +165,7 @@ you put a default.ssp file at WEB-INF/layouts/default.ssp, it will
 automatically be used. In that case, you can simply call `ssp("/index")` and the
 response will render within the default layout.
 
-#### Specifying an alternate layout
+#### <a id="layouts"></a>Specifying an alternate layout
 
 The `layout` key passed from your actions is somewhat special, as it's used by
 Scalate to identify the layout file, which wraps a standard layout around the

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include _head.html %}
+  </head>
+
+    {% include _upper_body.html %}
+
+        <h2> {{ page.title }} </h2>
+        <p class="by-line">by <a href="https://twitter.com/{{page.twitter}}">{{ page.author }}</a>,
+          <span class="date full-date">
+            <abbr class="published" title="{{ post.date }}">{{ page.date | date_to_string }}</abbr>
+          </span>
+        </p>
+
+        {{content}}
+
+    {% include _lower_body.html %}
+
+</html>
