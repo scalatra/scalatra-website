@@ -7,4 +7,4 @@ title: Slick | Models | Scalatra guides
   <h1>Slick</h1>
 </div>
 
-{% include _site/_under_construction.html %}
+{% include _under_construction.html %}

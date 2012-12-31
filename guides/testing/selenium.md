@@ -7,4 +7,4 @@ title: Selenium | Testing | Scalatra guides
   <h1>Selenium</h1>
 </div>
 
-{% include _site/_under_construction.html %}
+{% include _under_construction.html %}

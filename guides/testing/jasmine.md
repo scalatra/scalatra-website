@@ -7,4 +7,4 @@ title: Jasmine | Views | Scalatra guides
   <h1>Jasmine</h1>
 </div>
 
-{% include _site/_under_construction.html %}
+{% include _under_construction.html %}

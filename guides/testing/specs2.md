@@ -67,4 +67,4 @@ class HelloWorldServletSpec extends ScalatraSpec { def is =
 }
 ```
 
-{% include _site/_under_construction.html %}
+{% include _under_construction.html %}

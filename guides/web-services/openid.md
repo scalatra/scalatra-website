@@ -7,4 +7,4 @@ title: OpenID | Web Services | Scalatra guides
   <h1>OpenID</h1>
 </div>
 
-{% include _site/_under_construction.html %}
+{% include _under_construction.html %}

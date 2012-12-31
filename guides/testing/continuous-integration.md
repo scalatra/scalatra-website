@@ -33,4 +33,4 @@ automation; it should be a part of most of your projects!
 
 ## Integrate IRC and Twitter (seriously!) ##
 
-{% include _site/_under_construction.html %}
+{% include _under_construction.html %}

@@ -7,4 +7,4 @@ title: Metrics | Monitoring | Scalatra guides
   <h1>Metrics</h1>
 </div>
 
-{% include _site/_under_construction.html %}
+{% include _under_construction.html %}
