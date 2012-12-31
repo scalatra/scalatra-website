@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Slick | Models | Scalatra guides
 ---
 

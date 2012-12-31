@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Twitter Bootstrap | Views | Scalatra guides
 ---
 

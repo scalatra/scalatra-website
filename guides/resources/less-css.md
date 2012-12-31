@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: LESS CSS | Resources | Scalatra guides
 ---
 

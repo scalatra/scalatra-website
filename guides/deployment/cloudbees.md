@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Deploying to CloudBees | Deployment | Scalatra
 ---
 

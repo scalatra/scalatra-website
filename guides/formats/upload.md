@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: File upload | Formats | Scalatra guides
 ---
 
