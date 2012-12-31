@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: wro4j | Resources | Scalatra guides
 ---
 

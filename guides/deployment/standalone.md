@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Standalone deployment | Deployment | Scalatra
 ---
 

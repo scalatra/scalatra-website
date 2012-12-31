@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Specs2 | Testing | Scalatra guides
 ---
 

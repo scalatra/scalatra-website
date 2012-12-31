@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Requests and responses | HTTP | Scalatra
 ---
 

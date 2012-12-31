@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Routes and actions | HTTP | Scalatra guides
 ---
 

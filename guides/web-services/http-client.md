@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: HTTP client | Web Services | Scalatra guides
 ---
 

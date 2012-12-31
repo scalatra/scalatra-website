@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: CORS | Web Services | Scalatra guides
 ---
 
