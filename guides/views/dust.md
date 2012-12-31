@@ -7,4 +7,4 @@ title: Dust | Views | Scalatra guides
   <h1>Dust</h1>
 </div>
 
-## Guide coming soon!
+{% include _site/_under_construction.html %}

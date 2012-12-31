@@ -42,3 +42,5 @@ don't mix in `FlashMapSupport` (which also creates a session).
 The default session in Scalatra is cookie-based, but the cookie is used only
 as a session identifier (session data is stored server-side). If you are
 building out a shared-nothing architecture, this is something to be aware of.
+
+{% include _site/_under_construction.html %}

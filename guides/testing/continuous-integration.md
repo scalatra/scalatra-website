@@ -32,3 +32,5 @@ automation; it should be a part of most of your projects!
 ## Add a build status image to your `README` file  ##
 
 ## Integrate IRC and Twitter (seriously!) ##
+
+{% include _site/_under_construction.html %}

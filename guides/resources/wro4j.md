@@ -8,4 +8,4 @@ title: wro4j | Resources | Scalatra guides
 </div>
 
 
-## Guide coming soon!
+{% include _site/_under_construction.html %}

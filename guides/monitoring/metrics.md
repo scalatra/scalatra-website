@@ -7,4 +7,4 @@ title: Metrics | Monitoring | Scalatra guides
   <h1>Metrics</h1>
 </div>
 
-## Guide coming soon!
+{% include _site/_under_construction.html %}

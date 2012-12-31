@@ -7,4 +7,4 @@ title: ScalaCheck | Testing | Scalatra guides
   <h1>ScalaCheck</h1>
 </div>
 
-## Guide coming soon!
+{% include _site/_under_construction.html %}
