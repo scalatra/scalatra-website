@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Logging | Monitoring | Scalatra guides
 ---
 

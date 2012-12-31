@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Inline HTML | Views | Scalatra guides
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: OpenID | Web Services | Scalatra guides
 ---
 

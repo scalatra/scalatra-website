@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: guide
 title: Continuous integration | Deployment | Scalatra guides
 ---
 
