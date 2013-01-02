@@ -22,7 +22,7 @@ Both are supported by Scalatra.
 
 #### Unit testing
 
-From the [Specs2 QuickStart][Specs2 Quickstart]:
+From the [Specs2 QuickStart](Specs2 Quickstart):
 
 > unit specifications where the specification text is interleaved with the
 > specification code. It is generally used to specify a single class.
@@ -45,7 +45,7 @@ class HelloWorldMutableServletSpec extends MutableScalatraSpec {
 
 #### Acceptance testing
 
-From the [Specs2 QuickStart][Specs2 Quickstart]:
+From the [Specs2 QuickStart](Specs2 Quickstart):
 
 > acceptance specifications where all the specification text stands as one and
 > the implementation code is elsewhere.  It is generally used for acceptance or
