@@ -51,10 +51,10 @@ class HelloWorldServletTests extends ScalatraSuite with FunSuite {
 }
 ```
 
-The addServlet method is used here with classOf[HelloWorldServlet] to mount
+The addServlet method is used here with `classOf[HelloWorldServlet]` to mount
 the HelloWorld servlet into the ScalaTest test.
 
-If you've got a servlet which takes constructor params, you'll need to mount the servlet in your test with a different addServlet method overload, e.g.:
+If you've got a servlet which takes constructor params, you'll need to mount the servlet in your test with a different `addServlet` method overload, e.g.:
 
 ```scala
   implicit val myImplicitHere = new ImplicitConstructorParam
