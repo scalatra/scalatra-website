@@ -67,4 +67,13 @@ class HelloWorldServletSpec extends ScalatraSpec { def is =
 }
 ```
 
+The `addServlet` method is mounted here with classOf[HelloWorldServlet]. If
+you've got a servlet which takes constructor params, you'll need to mount the
+servlet in your test with a different `addServlet` method overload, e.g.:
+
+```scala
+  implicit val myImplicitHere = new ImplicitConstructorParam
+  addServlet(new HelloWorldServlet, "/*")
+```
+
 {% include _under_construction.html %}
