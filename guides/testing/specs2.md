@@ -67,8 +67,10 @@ class HelloWorldServletSpec extends ScalatraSpec { def is =
 }
 ```
 
-The `addServlet` method is mounted here with classOf[HelloWorldServlet]. If
-you've got a servlet which takes constructor params, you'll need to mount the
+The `addServlet` method is used here with `classOf[HelloWorldServlet]` to mount
+the HelloWorld servlet into the Specs2 test.
+
+If you've got a servlet which takes constructor params, you'll need to mount the
 servlet in your test with a different `addServlet` method overload, e.g.:
 
 ```scala
