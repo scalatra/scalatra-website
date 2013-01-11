@@ -38,9 +38,9 @@ You get `ShouldMatchers` and `MustMatchers` for free.
 ```scala
 import org.scalatra.test.scalatest._
 
-class MyScalatraServletTests extends ScalatraSuite with FunSuite {
-  // `MyScalatraServlet` is your app which extends ScalatraServlet
-  addServlet(classOf[MyScalatraServlet], "/*")
+class HelloWorldServletTests extends ScalatraSuite with FunSuite {
+  // `HelloWorldServlet` is your app which extends ScalatraServlet
+  addServlet(classOf[HelloWorldServlet], "/*")
 
   test("simple get") {
     get("/path/to/something") {
@@ -49,6 +49,16 @@ class MyScalatraServletTests extends ScalatraSuite with FunSuite {
     }
   }
 }
+```
+
+The addServlet method is used here with `classOf[HelloWorldServlet]` to mount
+the HelloWorld servlet into the ScalaTest test.
+
+If you've got a servlet which takes constructor params, you'll need to mount the servlet in your test with a different `addServlet` method overload, e.g.:
+
+```scala
+  implicit val myImplicitHere = new ImplicitConstructorParam
+  addServlet(new HelloWorldServlet, "/*")
 ```
 
 Convenience traits are provided for many `Suite` implementations:
@@ -62,7 +72,6 @@ Convenience traits are provided for many `Suite` implementations:
 * `ScalatraJUnit3Suite`
 * `ScalatraJUnitSuite` (JUnit 4)
 * `ScalatraTestNGSuite`
-
 
 
 ### Other test frameworks
