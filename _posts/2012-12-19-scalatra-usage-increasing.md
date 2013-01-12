@@ -8,9 +8,9 @@ twitter: futurechimp
 In preparation for the 2.2.0 final release, [Yuvi Masory](http://yuvimasory.com/) has been cranking out all kinds of reference material:
 
 * [Fast code reloading with JRebel](http://scalatra.org/2.2/getting-started/jrebel.html)
-* [Deploying to Jelastic](http://scalatra.org/2.2/getting-started/jelastic.html)
-* [Deploying to Heroku](http://scalatra.org/2.2/getting-started/heroku.html)
-* [Deploying to Google App Engine](http://scalatra.org/2.2/getting-started/google-app-engine.html)
+* [Deploying to Jelastic](http://scalatra.org/2.2/guides/deployment/jelastic.html)
+* [Deploying to Heroku](http://scalatra.org/2.2/guides/deployment/heroku.html)
+* [Deploying to Google App Engine](http://scalatra.org/2.2/guides/deployment/google-app-engine.html)
 
 This will hopefully make it much easier for people to get started with Scalatra, and to become productive quickly.
 

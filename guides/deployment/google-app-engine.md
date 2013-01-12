@@ -36,3 +36,10 @@ an [inconsistent state](https://developers.google.com/appengine/docs/java/runtim
 It's really the Servlet 3.0 that is absolutely essential for Scalatra.
 Once that is implemented, if there is sufficient demand, it may be possible to support
 GAE without forking the Scalatra codebase.
+
+## Pretty please? ##
+
+Scalatra 2.0.x was based on Servlet 2.5, and may work on GAE with the above
+caveats.  This is unsupported by the Scalatra team, as we believe you will get
+a better Scalatra experience with the [other Platform as a Service
+options](index.html).
