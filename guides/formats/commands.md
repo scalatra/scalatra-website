@@ -696,7 +696,7 @@ In order to write a validator, we need to do two things.
 
 First, we need to write a class to carry around our custom validations.
 
-Second, we need to [pimp](http://www.artima.com/weblogs/viewpost.jsp?thread=179766) Scalatra's FieldDescriptor class so that it's got 
+Second, we [implicitly extend](http://www.artima.com/pins1ed/implicit-conversions-and-parameters.html#21.1) Scalatra's FieldDescriptor class so that it's got 
 access to our new validation. Let's see this in action.
 
 We'll need to decide what kind of validation to make. Since all-lower-case
@@ -713,7 +713,7 @@ Open up your `TodoCommands.scala` file, and drop this into it above the
  * A class to keep our custom String validations in.
  * 
  * Note that it takes a FieldDescriptor[String] binding as a parameter.
- * This is so that we can pimp the FieldDescriptor. 
+ * This is so that we can extend the FieldDescriptor. 
  */
 class TodosStringValidations(b: FieldDescriptor[String]) {
 
@@ -778,7 +778,7 @@ What we need to do now is make our application aware of our new validation
 code, and then apply it.
 
 Scalatra's `FieldDescriptor` trait already exists, but we can use the
-Pimp My Library technique to add in our new validation code. 
+extension method technique to add in our new validation code. 
 
 Let's add to our abstract `TodosCommand` class:
 
@@ -786,7 +786,7 @@ Let's add to our abstract `TodosCommand` class:
 abstract class TodosCommand[S](implicit mf: Manifest[S]) extends ModelCommand[S] with JsonCommand {
   
   /**
-   * Pimp the [org.scalatra.commands.FieldDescriptor] class with our [TodosStringValidations]
+   * Extending the [org.scalatra.commands.FieldDescriptor] class with our [TodosStringValidations]
    * 
    * This adds the validation to the binding for the FieldDescriptor's b.validateWith function.
    */
@@ -806,7 +806,7 @@ val name: Field[String] = asType[String]("name").notBlank.minLength(3).startsWit
 ```
 
 It's worth noting that we could just as easily have defined our new
-validation in a library, imported it, and pimped our application. This
+validation in a library, imported it, and used it in our application. This
 gives you the ability to build up whatever custom validators you'd like 
 and carry them around between projects.
 
