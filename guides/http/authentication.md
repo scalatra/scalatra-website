@@ -126,7 +126,7 @@ The `AuthenticationSupport` trait has an extremely basic way of getting a User
 object from the session, and of pushing the user's id into the session. It also
 takes care of registering our single available strategy with Scentry.
 
-You'll also need a User class. Let's use a simple case class, first:
+You'll also need a User class. Let's use a simple case class:
 
 ```scala
 case class User(id: String)
