@@ -185,9 +185,12 @@ protected def basicAuth() = {
 }
 ```
 
-Some pretty simple setting of HTTP headers and status codes. If you were
-implementing cookie-based auth instead, you might be checking for the presence
-of a session identifier token.
+This example sets HTTP headers and status codes, and halts if no session 
+exists. 
+
+If you were implementing cookie-based auth instead, you could check for
+the presence of a session identifier token, and redirecting to a login page if
+it's not found.
 
 You might choose to run the `basicAuth` method in a `before()` filter in your
 controller, rather than hitting it in each action, to secure every method in
