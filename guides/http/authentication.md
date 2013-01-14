@@ -40,4 +40,10 @@ Armstrong's blog posts about Scalatra authentication:
 If you're trying to secure an API rather than a user's browser session,
 Jos Dirksen's [tutorial](http://www.smartjava.org/content/tutorial-getting-started-scala-and-scalatra-part-iii) on the subject may help.
 
+### Example codes
+
+* [Basic Auth example](https://github.com/scalatra/scalatra/blob/develop/example/src/main/scala/org/scalatra/BasicAuthExample.scala)
+* [Scalatra auth form](https://github.com/jlarmstrong/scalatra-auth-form)
+* [Scalatra auth email](https://github.com/jasonjackson/scalatra-auth-email)
+
 {% include _under_construction.html %}
