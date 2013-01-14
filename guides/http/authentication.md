@@ -71,27 +71,21 @@ trait, which itself extends `ScentryStrategy`. Ultimately, you'll want to extend
 simple case first.
 
 ```scala
-package org.scalatra
-package auth
+package org.scalatra.example
 
-import OurImplicits._
-import com.mongodb.casbah.Imports._
-import javax.servlet.http.{HttpServletResponse, HttpServletRequest}
-import net.iharder.Base64
-import org.scalatra.{ScalatraKernel}
-import com.mojolly.backchat.model.User
-import akka.util.Logging
-import org.scalatra.auth.{ScentrySupport, ScalatraKernelProxy, ScentryStrategy}
+import org.scalatra.auth.strategy.{BasicAuthStrategy, BasicAuthSupport}
+import org.scalatra.auth.{ScentrySupport, ScentryConfig}
+import org.scalatra.{ScalatraSyntax}
 
+class OurBasicAuthStrategy(protected override val app: ScalatraSyntax, realm: String)
+  extends BasicAuthStrategy[User](app, realm) {
 
-class OurBasicAuthStrategy[DBObject](protected val app: ScalatraKernelProxy, realm: String)
-  extends BasicAuthStrategy(app, realm) {
-
-  protected def validate(userName: String, password: String): Option[UserType] = {
-    User.login(userName, password)
+  protected def validate(userName: String, password: String): Option[User] = {
+    if(userName == "scalatra" && password == "scalatra") Some(User("scalatra"))
+    else None
   }
 
-  protected def getUserId(user: DBObject) = user.id.toString
+  protected def getUserId(user: User): String = user.id
 }
 ```
 The key thing here is the `validate` method, which attempts to log a user in
@@ -104,25 +98,25 @@ The next thing you'll need is the trait that ties together `OurBasicAuthStrategy
 with `ScentrySupport`. It might look like this:
 
 ```scala
-package org.scalatra.auth
+trait AuthenticationSupport extends ScentrySupport[User] with BasicAuthSupport[User] {
+  self: ScalatraSyntax =>
 
-import OurImplicits._
-import com.mongodb.casbah.Imports._
-import org.scalatra.auth.{ScentryConfig, ScentrySupport}
-import org.scalatra.ScalatraKernel
+  val realm = "Scalatra Basic Auth Example"
 
-trait AuthenticationSupport extends ScentrySupport[DBObject] with BasicAuthSupport { self: ScalatraKernel =>
-
-  val realm = Config.serviceName
-  protected def contextPath = request.getContextPath
-
-  protected def fromSession = { case id: String => User.findById(id) getOrElse null  }
-  protected def toSession   = { case usr: DBObject => usr.id.toString }
+  protected def fromSession = { case id: String => User(id)  }
+  protected def toSession   = { case usr: User => usr.id }
 
   protected val scentryConfig = (new ScentryConfig {}).asInstanceOf[ScentryConfiguration]
 
+
+  override protected def configureScentry = {
+    scentry.unauthenticated {
+      scentry.strategies("Basic").unauthenticated()
+    }
+  }
+
   override protected def registerAuthStrategies = {
-    scentry.registerStrategy('Basic, app => new OurBasicAuthStrategy(app, realm))
+    scentry.register("Basic", app => new OurBasicAuthStrategy(app, realm))
   }
 
 }
@@ -131,6 +125,12 @@ trait AuthenticationSupport extends ScentrySupport[DBObject] with BasicAuthSuppo
 The `AuthenticationSupport` trait has an extremely basic way of getting a User
 object from the session, and of pushing the user's id into the session. It also
 takes care of registering our single available strategy with Scentry.
+
+You'll also need a User class. Let's use a simple case class, first:
+
+```scala
+case class User(id: String)
+```
 
 ### Mix in AuthenticationSupport
 
@@ -148,7 +148,7 @@ class MyController extends ScalatraServlet with AuthenticationSupport {
     <html>
       <body>
         <h1>Hello from Scalatra</h1>
-        <p><a href="/myapi/linked" >click</a></p>
+        <p><a href="/auth-demo/linked" >click</a></p>
       </body>
     </html>
   }
