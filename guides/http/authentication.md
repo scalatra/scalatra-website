@@ -24,7 +24,7 @@ mix this trait into your controllers in order to secure them.
 
 Multiple strategies can be registered, and Scentry will cascade, attempting
 to log in a user with each strategy, until all available strategies are
-sexhausted.
+exhausted.
 
 You can either register strategies in controller code, like so:
 
