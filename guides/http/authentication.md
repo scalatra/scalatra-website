@@ -132,7 +132,7 @@ The `AuthenticationSupport` trait has an extremely basic way of getting a User
 object from the session, and of pushing the user's id into the session. It also
 takes care of registering our single available strategy with Scentry.
 
-### Mix in AuthentitionSupport
+### Mix in AuthenticationSupport
 
 Next, we mix the `AuthenticationSupport` trait into a controller:
 
