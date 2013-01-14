@@ -24,13 +24,6 @@ Combining `ScentrySupport` and `BasicAuthSupport` traits allow you to quickly ti
 "org.scalatra" % "scalatra-auth" % "{{ site.scalatra_version }}"
 ```
 
-There is a new authentication middleware in the auth directory, to be
-documented soon.
-
-See an example at [usage example](http://gist.github.com/660701).
-
-Here's another [example](https://gist.github.com/732347) for basic authentication.
-
 Until we get this guide finished properly, you may wish to look at Jared
 Armstrong's blog posts about Scalatra authentication:
 
@@ -42,7 +35,9 @@ Jos Dirksen's [tutorial](http://www.smartjava.org/content/tutorial-getting-start
 
 ### Example codes
 
-* [Basic Auth example](https://github.com/scalatra/scalatra/blob/develop/example/src/main/scala/org/scalatra/BasicAuthExample.scala)
+* [Cookie-based auth gist](http://gist.github.com/660701)
+* [Basic auth gist](https://gist.github.com/732347)
+* [Basic Auth example from the Scalatra codebase](https://github.com/scalatra/scalatra/blob/develop/example/src/main/scala/org/scalatra/BasicAuthExample.scala)
 * [Scalatra auth form](https://github.com/jlarmstrong/scalatra-auth-form)
 * [Scalatra auth email](https://github.com/jasonjackson/scalatra-auth-email)
 
