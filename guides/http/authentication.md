@@ -98,6 +98,8 @@ The key thing here is the `validate` method, which attempts to log a user in
 using methods on a User model. This might be used in a `login` action on one
 of your controllers, to figure out whether a user should be granted a session.
 
+### An AuthenticationSupport trait
+
 The next thing you'll need is the trait that ties together `OurBasicAuthStrategy`
 with `ScentrySupport`. It might look like this:
 
@@ -130,6 +132,8 @@ The `AuthenticationSupport` trait has an extremely basic way of getting a User
 object from the session, and of pushing the user's id into the session. It also
 takes care of registering our single available strategy with Scentry.
 
+### Mix in AuthentitionSupport
+
 Next, we mix the `AuthenticationSupport` trait into a controller:
 
 ```scala
@@ -137,7 +141,7 @@ import org.scalatra.ScalatraServlet
 import org.scalatra.auth.AuthenticationSupport
 
 
-class MyApiApp extends ScalatraServlet with AuthenticationSupport {
+class MyController extends ScalatraServlet with AuthenticationSupport {
 
   get("/?") {
     basicAuth
@@ -184,6 +188,12 @@ protected def basicAuth() = {
 Some pretty simple setting of HTTP headers and status codes. If you were
 implementing cookie-based auth instead, you might be checking for the presence
 of a session identifier token.
+
+You might choose to run the `basicAuth` method in a `before()` filter in your
+controller, rather than hitting it in each action, to secure every method in
+`MyController`. You might even set it up as a `before()` filter in the
+`AuthenticationSupport` trait, which would automatically secure any controller
+which mixed in the trait. As with most things in Scalatra, it's up to you.
 
 ## Cookie example
 
