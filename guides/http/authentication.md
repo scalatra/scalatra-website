@@ -42,7 +42,7 @@ To write a Scentry Strategy, you'll need to implement the methods in
 [ScentryStrategy](https://github.com/scalatra/scalatra/blob/develop/auth/src/main/scala/org/scalatra/auth/ScentryStrategy.scala).
 
 See Scalatra's built-in [BasicAuthStrategy](https://github.com/scalatra/scalatra/blob/develop/auth/src/main/scala/org/scalatra/auth/strategy/BasicAuthStrategy.scala)
-for an example of how to do this, but keep in mind that the `BasicAuthStrategy`
+for an example of how to do this. Keep in mind that the `BasicAuthStrategy`
 is itself abstract, so you'll need to implement your own concrete strategy.
 
 ## Dependency
@@ -53,11 +53,11 @@ is itself abstract, so you'll need to implement your own concrete strategy.
 ```
 
 You'll need the scalatra-auth dependency in your built.sbt for all subsequent
-examples.
+examples. `scalatra-auth` handles both cookie-based auth and HTTP basic auth.
 
 ## HTTP Basic Auth example
 
-Let's try the simplest possible example: HTTP Basic Auth.
+First things first. Let's try the simplest possible example: HTTP basic auth.
 
 
 ### Write the strategy
@@ -92,7 +92,8 @@ class OurBasicAuthStrategy[DBObject](protected val app: ScalatraKernelProxy, rea
 }
 ```
 The key thing here is the `validate` method, which attempts to log a user in
-using methods on a User model.
+using methods on a User model. This might be used in a `login` action on one
+of your controllers, to figure out whether a user should be granted a session.
 
 The next thing you'll need is the trait that ties together `OurBasicAuthStrategy`
 with `ScentrySupport`. It might look like this:
@@ -116,7 +117,6 @@ trait AuthenticationSupport extends ScentrySupport[DBObject] with BasicAuthSuppo
   protected val scentryConfig = (new ScentryConfig {}).asInstanceOf[ScentryConfiguration]
 
   override protected def registerAuthStrategies = {
-
     scentry.registerStrategy('Basic, app => new OurBasicAuthStrategy(app, realm))
   }
 
