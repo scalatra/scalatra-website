@@ -62,6 +62,12 @@ examples. `scalatra-auth` handles both cookie-based auth and HTTP basic auth.
 
 First things first. Let's try the simplest possible example: HTTP basic auth.
 
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="{{site.examples}}http/authentication-demo">authentication-demo</a>
+  for a minimal and standalone project containing the example in this guide.
+</div>
 
 ### Write the strategy
 
@@ -185,8 +191,8 @@ protected def basicAuth() = {
 }
 ```
 
-This example sets HTTP headers and status codes, and halts if no session 
-exists. 
+This example sets HTTP headers and status codes, and halts if no session
+exists.
 
 If you were implementing cookie-based auth instead, you could check for
 the presence of a session identifier token, and redirecting to a login page if
