@@ -39,7 +39,7 @@ code itself can follow the
 pretty closely:
 
 ```scala
-package com.futurechimps.squeryli.data # substitute your package here!
+package com.futurechimps.squeryli.data // substitute your package here!
 
 import com.mchange.v2.c3p0.ComboPooledDataSource
 import org.squeryl.adapters.MySQLAdapter

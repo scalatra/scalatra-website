@@ -86,9 +86,6 @@ class ScalatraBootstrap extends LifeCycle {
 
     // mount servlets like this:
     context mount (new ArticlesServlet, "/articles/*")
-
-    // set init params like this:
-    // org.scalatra.cors.allowedOrigins = "http://example.com"
   }
 }
 ```

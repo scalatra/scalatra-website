@@ -8,4 +8,4 @@ title: OAuth | Web Services | Scalatra guides
 </div>
 
 
-## Guide coming soon!
+{% include _under_construction.html %}

@@ -42,3 +42,5 @@ class MyAppServlet extends ScalatraServlet with AkkaSupport {
 ```
 
 [akka]: http://akka.io/
+
+{% include _under_construction.html %}

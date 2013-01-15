@@ -7,4 +7,4 @@ title: MongoDB | Models | Scalatra guides
   <h1>MongoDB</h1>
 </div>
 
-## Guide coming soon!
+{% include _under_construction.html %}

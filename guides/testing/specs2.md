@@ -22,7 +22,7 @@ Both are supported by Scalatra.
 
 #### Unit testing
 
-From the [Specs2 QuickStart][Specs2 Quickstart]:
+From the [Specs2 QuickStart](Specs2 Quickstart):
 
 > unit specifications where the specification text is interleaved with the
 > specification code. It is generally used to specify a single class.
@@ -45,7 +45,7 @@ class HelloWorldMutableServletSpec extends MutableScalatraSpec {
 
 #### Acceptance testing
 
-From the [Specs2 QuickStart][Specs2 Quickstart]:
+From the [Specs2 QuickStart](Specs2 Quickstart):
 
 > acceptance specifications where all the specification text stands as one and
 > the implementation code is elsewhere.  It is generally used for acceptance or
@@ -67,3 +67,15 @@ class HelloWorldServletSpec extends ScalatraSpec { def is =
 }
 ```
 
+The `addServlet` method is used here with `classOf[HelloWorldServlet]` to mount
+the HelloWorld servlet into the Specs2 test.
+
+If you've got a servlet which takes constructor params, you'll need to mount the
+servlet in your test with a different `addServlet` method overload, e.g.:
+
+```scala
+  implicit val myImplicitHere = new ImplicitConstructorParam
+  addServlet(new HelloWorldServlet, "/*")
+```
+
+{% include _under_construction.html %}

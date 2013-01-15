@@ -7,4 +7,4 @@ title: HTTP client | Web Services | Scalatra guides
   <h1>HTTP client</h1>
 </div>
 
-## Guide coming soon!
+{% include _under_construction.html %}

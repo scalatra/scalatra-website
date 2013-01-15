@@ -7,4 +7,4 @@ title: Twitter Bootstrap | Views | Scalatra guides
   <h1>Twitter Bootstrap</h1>
 </div>
 
-## Guide coming soon! ##
+{% include _under_construction.html %}
