@@ -15,16 +15,21 @@ Scentry is Scalatra's optional authentication system. It is a port of Ruby's
 Scalatra. You write auth strategies to meet your needs, and then use Scentry
 to enforce security for your strategies.
 
-There are a few moving parts here, but in general you need two things:
+There are a few moving parts here. In order to protect your application's actions
+with Scentry, you need two things:
 
-* a Strategy to enforce security, let's call it `YourStrategy`. A strategy is
+* a *Strategy* to enforce security, let's call it `YourStrategy`. A strategy is
 a piece of logic which determines whether a user should be authenticated.
-* a trait that ties `YourStrategy` together with `ScentrySupport`. You then
-mix this trait into your controllers in order to secure them.
+* a trait that ties `YourStrategy` together with Scalatra's built-in
+`ScentrySupport` class. You then mix this trait into your controllers in
+order to secure them. By convention, this trait is often called
+`AuthenticationSupport`, but you can call it whatever you want.
 
-Multiple strategies can be registered, and Scentry will cascade, attempting
-to log in a user with each strategy, until all available strategies are
-exhausted.
+Multiple strategies can be registered with Scentry - for example, you could write
+a `CookieStrategy`, a `UserPasswordStrategy`, and a `MyBasicAuthStrategy`.
+
+Scentry will cascade, attempting to log in a user with each strategy, until
+either the user is authenticated or all available strategies are exhausted.
 
 You can either register strategies in controller code, like so:
 
@@ -45,8 +50,7 @@ To write a Scentry Strategy, you'll need to implement the methods in
 [ScentryStrategy](https://github.com/scalatra/scalatra/blob/develop/auth/src/main/scala/org/scalatra/auth/ScentryStrategy.scala).
 
 See Scalatra's built-in [BasicAuthStrategy](https://github.com/scalatra/scalatra/blob/develop/auth/src/main/scala/org/scalatra/auth/strategy/BasicAuthStrategy.scala)
-for an example of how to do this. Keep in mind that the `BasicAuthStrategy`
-is itself abstract, so you'll need to implement your own concrete strategy.
+for an example.
 
 ## Dependency
 
@@ -71,8 +75,8 @@ First things first. Let's try the simplest possible example: HTTP basic auth.
 
 ### Write the strategy
 
-The class `OurBasicAuthStrategy` implements Scalatra's built-in `BasicAuthStrategy`
-trait, which itself extends `ScentryStrategy`. Ultimately, you'll want to extend
+The class `OurBasicAuthStrategy` will implement Scalatra's built-in `BasicAuthStrategy`
+trait, which itself extends `ScentryStrategy`. Normally, you'll want to extend
 `ScentryStrategy` when writing your own authentication logic, but let's see the
 simple case first.
 
@@ -171,11 +175,14 @@ class MyController extends ScalatraServlet with AuthenticationSupport {
 }
 ```
 
+Users who hit either of these routes when not logged in will be presented
+with the browswer's HTTP basic auth login prompt.
+
 A few things are worth mentioning here. The `basicAuth` method comes from the
 pre-built `BasicAuthStrategy` included in Scalatra. If you're defining your own
 authentication logic, you'll need to implement a similar method yourself.
 
-Here's what `basicAuth` actually does:
+Here's what `basicAuth` does:
 
 ```scala
 protected def basicAuth() = {
@@ -191,18 +198,25 @@ protected def basicAuth() = {
 }
 ```
 
-This example sets HTTP headers and status codes, and halts if no session
-exists.
+Calling `basicAuth` checks whether the user's browser has a basic auth session,
+and sets HTTP headers and status codes depending on what Scentry finds. `halt`
+is called if the user is unauthenticated or not using basic auth.
 
 If you were implementing cookie-based auth instead, you could check for
-the presence of a session identifier token, and redirecting to a login page if
-it's not found.
+the presence of a session identifier token, and redirect the user to a login
+page if it was not found.
+
+### What to protect
 
 You might choose to run the `basicAuth` method in a `before()` filter in your
 controller, rather than hitting it in each action, to secure every method in
-`MyController`. You might even set it up as a `before()` filter in the
+`MyController`.
+
+You might even set it up as a `before()` filter in the
 `AuthenticationSupport` trait, which would automatically secure any controller
-which mixed in the trait. As with most things in Scalatra, it's up to you.
+which mixed in the trait.
+
+As with most things in Scalatra, it's up to you.
 
 ## Cookie example
 
