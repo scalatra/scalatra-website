@@ -10,7 +10,7 @@ title: Authentication | HTTP | Scalatra
 {% include _in_progress.html %}
 
 
-Scentry is Scalatra's optional authentication system. It is a port of Ruby's
+*Scentry* is Scalatra's optional authentication system. It is a port of Ruby's
 [Warden](https://github.com/hassox/warden) authentication framework for
 Scalatra. You write auth strategies to meet your needs, and then use Scentry
 to enforce security for your strategies.
@@ -18,7 +18,7 @@ to enforce security for your strategies.
 There are a few moving parts here. In order to protect your application's actions
 with Scentry, you need two things:
 
-* a *Strategy* to enforce security, let's call it `YourStrategy`. A strategy is
+* a *strategy* to enforce security, let's call it `YourStrategy`. A strategy is
 a piece of logic which determines whether a user should be authenticated.
 * a trait that ties `YourStrategy` together with Scalatra's built-in
 `ScentrySupport` class. You then mix this trait into your controllers in
@@ -28,10 +28,11 @@ order to secure them. By convention, this trait is often called
 Multiple strategies can be registered with Scentry - for example, you could write
 a `CookieStrategy`, a `UserPasswordStrategy`, and a `MyBasicAuthStrategy`.
 
-Scentry will cascade, attempting to log in a user with each strategy, until
-either the user is authenticated or all available strategies are exhausted.
+Scentry will cascade through the strategies, attempting to log in a user with
+each strategy, until either the user is authenticated or all available
+strategies are exhausted.
 
-You can either register strategies in controller code, like so:
+You can register strategies in controller code, like so:
 
 ```scala
 override protected def registerAuthStrategies = {
@@ -40,9 +41,9 @@ override protected def registerAuthStrategies = {
   }
 ```
 
-or you can register a strategy using init params in `ScalatraBootstrap` or
-your application's `web.xml` file, using `scentry.strategies` as the key and
-the class name of your strategy as a value:
+Alternately, you can register a strategy using init params in
+`ScalatraBootstrap` or your application's `web.xml` file, using
+`scentry.strategies` as the key and the class name of your strategy as a value:
 
 `context.initParameters("scentry.strategies") = "UserPasswordStrategy"`
 
