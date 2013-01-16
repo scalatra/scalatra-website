@@ -45,27 +45,38 @@ request from inside one of your actions, using the
 Akka `ActorSystem`.
 
 ```scala
-import akka.dispatch.{Promise => AkkaPromise, Future}
-import dispatch
- 
+import _root_.akka.actor.ActorSystem
+import _root_.akka.dispatch.{Future, ExecutionContext}
+import _root_.akka.dispatch.{Promise => AkkaPromise}
+
+import org.scalatra._
+import akka.AkkaSupport
+
+import dispatch._
+
 object DispatchAkka {
-  
-  def makeRequest()(implicit ctx: ExecutionContext): Future[String] = {
+
+  def retrievePage()(implicit ctx: ExecutionContext): Future[String] = {
     val prom = AkkaPromise[String]()
-    Http(url("http://google.com") OK as.String) onComplete {
+    dispatch.Http(url("http://asofterworld.com/") OK as.String) onComplete {
       case r => prom.complete(r)
     }
     prom.future
   }
 }
- 
-class MyServlet extends ScalatraServlet with AkkaSupport {
+
+
+class PageRetriever extends ScalatraServlet with AkkaSupport {
+
   implicit val system = ActorSystem()
   protected implicit val executionContext = system.dispatcher
-  get("/async") {
-    DispatchAkka.makeRequest()
+
+  get("/") {
+    DispatchAkka.retrievePage()
   }
+
 }
+
 ```
 
 [akka]: http://akka.io/
