@@ -44,6 +44,12 @@ request from inside one of your actions, using the
 [Dispatch](http://dispatch.databinder.net/Dispatch.html) http client and an
 Akka `ActorSystem`.
 
+This example code will run in Scalatra 2.2.0 with Scala 2.9.2. In this
+combination, Scalatra uses Akka 2.0.5.
+
+When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and class names have changed. Consult the 
+[Akka upgrade guide](http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.0.x-2.1.x.html) to see the differences between the two Akka versions.
+
 ```scala
 import _root_.akka.actor.ActorSystem
 import _root_.akka.dispatch.{Future, ExecutionContext}
