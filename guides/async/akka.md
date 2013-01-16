@@ -23,8 +23,10 @@ mix it right into your application.
 "org.scalatra" % "scalatra-akka" % "{{ site.scalatra_version }}"
 ```
 
-Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
-is only available in Scalatra 2.1 and up.
+Scalatra's Akka support provides a mechanism for adding [Akka][akka] 
+futures to your routes. Akka support is only available in Scalatra 2.1 and up.
+
+The generic case looks like this:
 
 ```scala
 import _root_.akka.dispatch._
@@ -33,10 +35,38 @@ import org.scalatra.akka.AkkaSupport
 class MyAppServlet extends ScalatraServlet with AkkaSupport {
   get("/"){
     Future {
-      // Add other logic here
-
+      // Add async logic here
       <html><body>Hello Akka</body></html>
     }
+  }
+}
+```
+
+As a more concrete example, here's how you'd make an asynchronous HTTP 
+request from inside one of your actions, using the 
+[Dispatch](http://dispatch.databinder.net/Dispatch.html) http client and an
+Akka `ActorSystem`.
+
+```scala
+import akka.dispatch.{Promise => AkkaPromise, Future}
+import dispatch
+ 
+object DispatchAkka {
+  
+  def makeRequest()(implicit ctx: ExecutionContext): Future[String] = {
+    val prom = AkkaPromise[String]()
+    Http(url("http://google.com") OK as.String) onComplete {
+      case r => prom.complete(r)
+    }
+    prom.future
+  }
+}
+ 
+class MyServlet extends ScalatraServlet with AkkaSupport {
+  implicit val system = ActorSystem()
+  protected implicit val executionContext = system.dispatcher
+  get("/async") {
+    DispatchAkka.makeRequest()
   }
 }
 ```
