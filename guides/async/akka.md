@@ -69,7 +69,7 @@ object DispatchAkka {
 class PageRetriever extends ScalatraServlet with AkkaSupport {
 
   implicit val system = ActorSystem()
-  protected implicit val executionContext = system.dispatcher
+  protected implicit def executor: ExecutionContext = system.dispatcher
 
   get("/") {
     DispatchAkka.retrievePage()
