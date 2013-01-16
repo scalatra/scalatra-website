@@ -7,9 +7,6 @@ title: Akka | Async | Scalatra guides
   <h1>Akka</h1>
 </div>
 
----
-
-
 ### AkkaSupport
 
 Akka is a toolkit and runtime for building highly concurrent, distributed, and
