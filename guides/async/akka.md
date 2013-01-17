@@ -104,5 +104,3 @@ When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and
 [Akka upgrade guide](http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.0.x-2.1.x.html) to see the differences between the two Akka versions.
 
 [akka]: http://akka.io/
-
-{% include _under_construction.html %}
