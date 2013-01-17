@@ -29,7 +29,7 @@ resolvers += "Typesafe" at "http://repo.typesafe.com/typesafe/releases/",
 
 ### Akka futures
 
-Scalatra's Akka support provides a mechanism for adding [Akka][akka] 
+Scalatra's Akka support provides a mechanism for adding [Akka][akka]
 futures to your routes. Akka support is only available in Scalatra 2.1 and up.
 
 The generic case looks like this:
@@ -100,7 +100,7 @@ class PageRetriever extends ScalatraServlet with AkkaSupport {
 This example code will run in Scalatra 2.2.0 with Scala 2.9.2. In this
 combination, Scalatra uses Akka 2.0.5.
 
-When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and class names have changed. Consult the 
+When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and class names have changed. Consult the
 [Akka upgrade guide](http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.0.x-2.1.x.html) to see the differences between the two Akka versions.
 
 [akka]: http://akka.io/
