@@ -20,6 +20,15 @@ mix it right into your application.
 "org.scalatra" % "scalatra-akka" % "{{ site.scalatra_version }}"
 ```
 
+You'll also need to add the Typesafe resolver in build.sbt if you're using
+Scala 2.9.x:
+
+```scala
+resolvers += "Typesafe" at "http://repo.typesafe.com/typesafe/releases/",
+```
+
+### Akka futures
+
 Scalatra's Akka support provides a mechanism for adding [Akka][akka] 
 futures to your routes. Akka support is only available in Scalatra 2.1 and up.
 
@@ -39,16 +48,12 @@ class MyAppServlet extends ScalatraServlet with AkkaSupport {
 }
 ```
 
+### Async request example
+
 As a more concrete example, here's how you'd make an asynchronous HTTP 
 request from inside one of your actions, using the 
 [Dispatch](http://dispatch.databinder.net/Dispatch.html) http client and an
 Akka `ActorSystem`.
-
-This example code will run in Scalatra 2.2.0 with Scala 2.9.2. In this
-combination, Scalatra uses Akka 2.0.5.
-
-When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and class names have changed. Consult the 
-[Akka upgrade guide](http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.0.x-2.1.x.html) to see the differences between the two Akka versions.
 
 ```scala
 import _root_.akka.actor.ActorSystem
@@ -84,6 +89,12 @@ class PageRetriever extends ScalatraServlet with AkkaSupport {
 }
 
 ```
+
+This example code will run in Scalatra 2.2.0 with Scala 2.9.2. In this
+combination, Scalatra uses Akka 2.0.5.
+
+When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and class names have changed. Consult the 
+[Akka upgrade guide](http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.0.x-2.1.x.html) to see the differences between the two Akka versions.
 
 [akka]: http://akka.io/
 
