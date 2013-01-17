@@ -147,31 +147,23 @@ You don't need to call this class `User`. It can be named anything you want.
 Next, we mix the `AuthenticationSupport` trait into a controller:
 
 ```scala
-import org.scalatra.ScalatraServlet
-import org.scalatra.auth.AuthenticationSupport
+package org.scalatra.example
+
+import org.scalatra._
+
+class AuthDemo extends ScalatraServlet with AuthenticationSupport {
 
 
-class MyController extends ScalatraServlet with AuthenticationSupport {
-
-  get("/?") {
+  get("/*") {
     basicAuth
     <html>
       <body>
         <h1>Hello from Scalatra</h1>
-        <p><a href="/auth-demo/linked" >click</a></p>
+        <p>You are authenticated.</p>
       </body>
     </html>
   }
 
-  get("/linked") {
-    basicAuth
-    <html>
-      <body>
-        <h1>Hello again from Scalatra</h1>
-        <p><a href="/" >back</a></p>
-      </body>
-    </html>
-  }
 }
 ```
 
