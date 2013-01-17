@@ -50,8 +50,15 @@ class MyAppServlet extends ScalatraServlet with AkkaSupport {
 
 ### Async request example
 
-As a more concrete example, here's how you'd make an asynchronous HTTP 
-request from inside one of your actions, using the 
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="{{site.examples}}async/akka-dispatch-example">akka-dispatch-example</a>
+  for a minimal and standalone project containing the example in this guide.
+</div>
+
+As a more concrete example, here's how you'd make an asynchronous HTTP
+request from inside one of your actions, using the
 [Dispatch](http://dispatch.databinder.net/Dispatch.html) http client and an
 Akka `ActorSystem`.
 
