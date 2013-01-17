@@ -143,6 +143,8 @@ You'll also need a User class. Let's use a simple case class:
 case class User(id: String)
 ```
 
+You don't need to call this class `User`. It can be named anything you want.
+
 ### Mix in AuthenticationSupport
 
 Next, we mix the `AuthenticationSupport` trait into a controller:
@@ -215,9 +217,19 @@ BasicAuthStrategy is run. It presents a basic auth challenge to the user:
 The user enters credentials, or cancels to close the basic auth box.
 
 When good credentials are entered, the input is sent to Scentry's `validate`
-method, which we've overridden in `OurBasicAuthStrategy`. If the `validate`
-method returns our `User` class, Scentry considers that authentication has been
-granted; if it returns `None`, authentication has failed.
+method, which we've overridden in `OurBasicAuthStrategy`:
+
+```scala
+  protected def validate(userName: String, password: String): Option[User] = {
+    if(userName == "scalatra" && password == "scalatra") Some(User("scalatra"))
+    else None
+  }
+```
+
+
+If the `validate` method returns something other than a `None`, then Scentry
+considers the returned class as its `User` class, and decides that authentication has
+taken place; if it returns `None`, authentication has failed.
 
 If authentication is granted, the `BasicAuthStrategy` sets up HTTP basic auth
 in the user's browser. `halt` is called if the user is unauthenticated or not
