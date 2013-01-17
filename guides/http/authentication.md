@@ -199,13 +199,29 @@ protected def basicAuth() = {
 }
 ```
 
-Calling `basicAuth` checks whether the user's browser has a basic auth session,
-and sets HTTP headers and status codes depending on what Scentry finds. `halt`
-is called if the user is unauthenticated or not using basic auth.
+When a browser hits the protected servlet for the first time, the `basicAuth`
+method is called.
 
-If you were implementing cookie-based auth instead, you could check for
-the presence of a session identifier token, and redirect the user to a login
-page if it was not found.
+The user hasn't yet authenticated, so the `unauthenticated` method of Scentry's
+BasicAuthStrategy is run. It presents a basic auth challenge to the user:
+
+```scala
+ override def unauthenticated() {
+    app.response.setHeader("WWW-Authenticate", challenge)
+    app.halt(401, "Unauthenticated")
+  }
+```
+
+The user enters credentials, or cancels to close the basic auth box.
+
+When good credentials are entered, the input is sent to Scentry's `validate`
+method, which we've overridden in `OurBasicAuthStrategy`. If the `validate`
+method returns our `User` class, Scentry considers that authentication has been
+granted; if it returns `None`, authentication has failed.
+
+If authentication is granted, the `BasicAuthStrategy` sets up HTTP basic auth
+in the user's browser. `halt` is called if the user is unauthenticated or not
+using basic auth.
 
 ### What to protect
 
@@ -221,7 +237,9 @@ As with most things in Scalatra, it's up to you.
 
 ## Cookie example
 
-Still to do, but will be drawn from [Cookie-based auth gist](http://gist.github.com/660701).
+Still to do, but will be drawn from
+[Cookie-based auth gist](http://gist.github.com/660701) and
+[this example](https://github.com/scalatra/oauth2-server/blob/master/src/main/scala/org/scalatra/oauth2/auth/AuthenticationSupport.scala#L249-L260).
 
 ----
 
