@@ -10,8 +10,8 @@ title: Akka | Async | Scalatra guides
 ### AkkaSupport
 
 Akka is a toolkit and runtime for building highly concurrent, distributed, and
-fault tolerant event-driven applications on the JVM. Scalatra allows you to
-mix it right into your application.
+fault tolerant event-driven applications on the JVM. Scalatra allows you to easily
+mix it into your application.
 
 #### Dependency:
 
@@ -97,7 +97,7 @@ class PageRetriever extends ScalatraServlet with AkkaSupport {
 
 ```
 
-This example code will run in Scalatra 2.2.0 with Scala 2.9.2. In this
+This example code will run in Scalatra 2.2.x with Scala 2.9.2. In this
 combination, Scalatra uses Akka 2.0.5.
 
 When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and class names have changed. Consult the
