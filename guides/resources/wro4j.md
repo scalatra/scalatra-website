@@ -7,5 +7,16 @@ title: wro4j | Resources | Scalatra guides
   <h1>wro4j</h1>
 </div>
 
+The Web Resource Optimizer for Java (wro4j) is a Free and Open Source Java
+project which brings together almost all the modern web tools for
+compression and minification of your JavaScript and CSS assets: JsHint,
+CssLint, JsMin, Google Closure compressor, YUI Compressor, UglifyJs,
+Dojo Shrinksafe, Css Variables Support, JSON Compression, Less, Sass,
+CoffeeScript and much more.
 
-{% include _under_construction.html %}
+You can add wro4j to your Scalatra project by using the xsbt-wro4j plugin.
+
+See the [xsbt-wro4j-plugin][xsbt-wro4j] project documentation for details of
+how to do so.
+
+[xsbt-wro4j]: https://github.com/BowlingX/xsbt-wro4j-plugin/
