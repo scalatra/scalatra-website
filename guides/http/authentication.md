@@ -7,9 +7,6 @@ title: Authentication | HTTP | Scalatra
   <h1>Authentication</h1>
 </div>
 
-{% include _in_progress.html %}
-
-
 *Scentry* is Scalatra's optional authentication system. It is a port of Ruby's
 [Warden](https://github.com/hassox/warden) authentication framework for
 Scalatra. You write auth strategies to meet your needs, and then use Scentry
