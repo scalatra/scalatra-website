@@ -61,9 +61,9 @@ class ScalatraBootstrap extends LifeCycle {
 ```
 
 It's also considered good form to shut the ActorSystem down when you're done
-with it. Keep in mind that a servlet context does not necessarily mean an
-application shutdown, it can be a reload to - so you'll need to release the
-`ActorSystem` resources when your application exits.
+with it. Keep in mind that a servlet context destroy does not necessarily mean
+a full application shutdown, it might be a reload - so you'll need to release
+the `ActorSystem` resources when your Scalatra application is destroyed.
 
 
 ### Akka Futures
