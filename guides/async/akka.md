@@ -113,9 +113,9 @@ When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
-When you use scalatra with Akka, you most likely want to return a result of some sort so you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future.
+When you use Scalatra with Akka, you most likely want to return a result of some sort so you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future.
 
-When the request you get just needs to trigger something on an Actor (fire and forget) then you don't need a future and probably you want to reply with the Accepted status or something like it.
+When the request you get just needs to trigger something on an Actor (fire and forget) then you don't need a Future and probably you want to reply with the Accepted status or something like it.
 
 Here's some example code:
 
