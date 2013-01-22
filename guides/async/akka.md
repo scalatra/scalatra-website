@@ -27,6 +27,45 @@ Scala 2.9.x:
 resolvers += "Typesafe" at "http://repo.typesafe.com/typesafe/releases/",
 ```
 
+### Setting up  Akka
+
+When you're using Akka, you'll want to start your `Actor`s and `ActorSystem`
+from inside the `ScalatraBootstrap` class. You can then pass those into the
+constructors of your servlets as necessary:
+
+```scala
+import _root_.akka.actor.{ActorSystem, Props}
+import com.example.app._
+import org.scalatra._
+import javax.servlet.ServletContext
+
+
+class ScalatraBootstrap extends LifeCycle {
+
+  // Get a handle to an ActorSystem and a reference to one of your actors
+  val system = ActorSystem()
+  val myActor = system.actorOf(Props[MyActor])
+
+  // In the init method, mount your servlets with references to the system
+  // and/or ActorRefs, as necessary.
+  override def init(context: ServletContext) {
+    context.mount(new PageRetriever(system), "/*")
+    context.mount(new MyActorApp(system, myActor), "/actors/*")
+  }
+
+  // Make sure you shut down
+  override def destroy(context:ServletContext) {
+    system.shutdown()
+  }
+}
+```
+
+It's also considered good form to shut the ActorSystem down when you're done
+with it. Keep in mind that a servlet context does not necessarily mean an
+application shutdown, it can be a reload to - so you'll need to release the
+`ActorSystem` resources when your application exits.
+
+
 ### Akka futures
 
 Scalatra's Akka support provides a mechanism for adding [Akka][akka]
