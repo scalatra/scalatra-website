@@ -53,8 +53,8 @@ class MyAppServlet extends ScalatraServlet with AkkaSupport {
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
-  <a href="{{site.examples}}async/akka-dispatch-example">akka-dispatch-example</a>
-  for a minimal and standalone project containing the example in this guide.
+  <a href="{{site.examples}}async/akka-examples">akka-examples</a>
+  for a minimal and standalone project containing the examples in this guide.
 </div>
 
 As a more concrete example, here's how you'd make an asynchronous HTTP
@@ -102,5 +102,58 @@ combination, Scalatra uses Akka 2.0.5.
 
 When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and class names have changed. Consult the
 [Akka upgrade guide](http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.0.x-2.1.x.html) to see the differences between the two Akka versions.
+
+
+### Actor example
+
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="{{site.examples}}async/akka-examples">akka-examples</a>
+  for a minimal and standalone project containing the examples in this guide.
+</div>
+
+When you use scalatra with Akka, you most likely want to return a result of some sort so you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future.
+
+When the request you get just needs to trigger something on an Actor (fire and forget) then you don't need a future and probably you want to reply with the Accepted status or something like it.
+
+Here's some example code:
+
+```scala
+import akka.actor.{Actor, Props, ActorSystem}
+import akka.dispatch.ExecutionContext
+import akka.util.Timeout
+import org.scalatra.akka.AkkaSupport
+import org.scalatra.{Accepted, ScalatraServlet}
+
+class MyActorApp extends ScalatraServlet with AkkaSupport {
+
+  import _root_.akka.pattern.ask
+  protected implicit def executor: ExecutionContext = system.dispatcher
+
+  val system = ActorSystem()
+  implicit val timeout = Timeout(10)
+
+  val myActor = system.actorOf(Props[MyActor])
+
+  get("/async") {
+    myActor ? "Do stuff and give me an answer"
+  }
+
+  get("/fire-forget") {
+    myActor ! "Hey, you know what?"
+    Accepted()
+  }
+
+}
+
+class MyActor extends Actor {
+  def receive = {
+    case "Do stuff and give me an answer" => sender ! "The answer is 42"
+    case "Hey, you know what?" => println("Yeah I know... oh boy do I know")
+  }
+
+}
+```
 
 [akka]: http://akka.io/
