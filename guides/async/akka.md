@@ -102,14 +102,17 @@ request from inside one of your actions, using the
 Akka `ActorSystem`.
 
 ```scala
+package com.example.app
+
 import _root_.akka.actor.ActorSystem
 import _root_.akka.dispatch.{Future, ExecutionContext}
 import _root_.akka.dispatch.{Promise => AkkaPromise}
 
-import org.scalatra._
-import akka.AkkaSupport
+
+import org.scalatra.akka.AkkaSupport
 
 import dispatch._
+import org.scalatra._
 
 object DispatchAkka {
 
@@ -122,7 +125,6 @@ object DispatchAkka {
   }
 }
 
-
 class PageRetriever(system: ActorSystem) extends ScalatraServlet with AkkaSupport {
 
   protected implicit def executor: ExecutionContext = system.dispatcher
@@ -132,7 +134,6 @@ class PageRetriever(system: ActorSystem) extends ScalatraServlet with AkkaSuppor
   }
 
 }
-
 ```
 
 This example code will run in Scalatra 2.2.x with Scala 2.9.2. In this
@@ -158,21 +159,20 @@ When the request you get just needs to trigger something on an Actor (fire and f
 Here's some example code:
 
 ```scala
-import akka.actor.{Actor, Props, ActorSystem}
+package com.example.app
+
+import akka.actor.{ActorRef, Actor, Props, ActorSystem}
 import akka.dispatch.ExecutionContext
 import akka.util.Timeout
 import org.scalatra.akka.AkkaSupport
 import org.scalatra.{Accepted, ScalatraServlet}
 
-class MyActorApp extends ScalatraServlet with AkkaSupport {
+class MyActorApp(system:ActorSystem, myActor:ActorRef) extends ScalatraServlet with AkkaSupport {
 
-  import _root_.akka.pattern.ask
   protected implicit def executor: ExecutionContext = system.dispatcher
 
-  val system = ActorSystem()
+  import _root_.akka.pattern.ask
   implicit val timeout = Timeout(10)
-
-  val myActor = system.actorOf(Props[MyActor])
 
   get("/async") {
     myActor ? "Do stuff and give me an answer"
@@ -182,7 +182,6 @@ class MyActorApp extends ScalatraServlet with AkkaSupport {
     myActor ! "Hey, you know what?"
     Accepted()
   }
-
 }
 
 class MyActor extends Actor {
