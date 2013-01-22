@@ -66,7 +66,7 @@ application shutdown, it can be a reload to - so you'll need to release the
 `ActorSystem` resources when your application exits.
 
 
-### Akka futures
+### Akka Futures
 
 Scalatra's Akka support provides a mechanism for adding [Akka][akka]
 futures to your routes. Akka support is only available in Scalatra 2.1 and up.
