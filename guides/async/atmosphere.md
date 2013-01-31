@@ -332,6 +332,32 @@ atmosphere("/the-chat") {
 }
 ```
 
+### Broadcasting server-side events
+
+Atmosphere event sources don't necessarily need to be other Atmosphere 
+connections. 
+
+You could, for instance, use an AMQP message queue to
+broadcast events to connected browser clients whenever your application receives
+a given message type. You could broadcast messages to all connected clients, or
+to a selected group of clients, when a database record was updated, or when a 
+user's friend logged in.
+
+Each Scalatra servlet that registers an Atmosphere route gets access to an
+AtmosphereClient object, which can act as a broadcaster.
+
+So if you have a servlet that has 3 Atmosphere routes, and it's mounted 
+at `/real-time-buzz`, you can send messages to all connected clients 
+with `AtmosphereClient.broadcast("/real-time-buzz/fizz", message)`.
+
+Alternately, you can send to all the connected clients of all the endpoints in the
+`/real-time-buzz` servlet `AtmosphereClient.broadcast("/real-time-buzz", message)`.
+
+Lastly, you can send a message to all connected clients in all Atmosphere servlets 
+with `AtmosphereClient.broadcastAll(message)`.
+
+
+
 ### Pattern matching on Atmosphere messages
 
 It's possible (and in fact encouraged) to do sophisticated pattern matching
