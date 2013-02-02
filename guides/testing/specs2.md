@@ -84,7 +84,7 @@ servlet in your test with a different `addServlet` method overload, e.g.:
   addServlet(new HelloWorldServlet, "/*")
 ```
 
-#### Testing file uploads?
+#### Testing file uploads
 
 Convenience methods exist for testing file uploads.
 
