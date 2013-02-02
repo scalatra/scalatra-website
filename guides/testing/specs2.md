@@ -88,8 +88,6 @@ servlet in your test with a different `addServlet` method overload, e.g.:
 
 Convenience methods exist for testing file uploads.
 
-Example:
-
 ```scala
 class FileUploadSpec extends MutableScalatraSpec {
   addServlet(classOf[FileUploadServlet], "/*")
