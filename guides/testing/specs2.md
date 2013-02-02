@@ -25,10 +25,11 @@ Both are supported by Scalatra.
 
 ##### Unit testing
 
-From the [Specs2 QuickStart](Specs2 Quickstart):
+From the [Specs2 QuickStart][Quickstart]:
 
 > unit specifications where the specification text is interleaved with the
 > specification code. It is generally used to specify a single class.
+
 
 ```scala
 import org.scalatra.test.specs2._
@@ -48,11 +49,13 @@ class HelloWorldMutableServletSpec extends MutableScalatraSpec {
 
 ##### Acceptance testing
 
-From the [Specs2 QuickStart](Specs2 Quickstart):
+From the [Specs2 QuickStart][Quickstart]:
 
 > acceptance specifications where all the specification text stands as one and
 > the implementation code is elsewhere.  It is generally used for acceptance or
 > integration scenarios
+
+[Quickstart]: http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
 
 ```scala
 import org.scalatra.test.specs2._
