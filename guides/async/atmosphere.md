@@ -348,15 +348,14 @@ AtmosphereClient object, which can act as a broadcaster.
 
 So if you have a servlet that has 3 Atmosphere routes, and it's mounted 
 at `/real-time-buzz`, you can send messages to all connected clients 
-with `AtmosphereClient.broadcast("/real-time-buzz/fizz", message)`.
+with `AtmosphereClient.broadcast("/real-time-buzz/fizz", message)`, where
+`atmosphere("/fizz")` is one of the available routes.
 
-Alternately, you can send to all the connected clients of all the endpoints in the
+Alternately, you can send to all the connected clients of all 3 endpoints in the
 `/real-time-buzz` servlet `AtmosphereClient.broadcast("/real-time-buzz", message)`.
 
 Lastly, you can send a message to all connected clients in all Atmosphere servlets 
 with `AtmosphereClient.broadcastAll(message)`.
-
-
 
 ### Pattern matching on Atmosphere messages
 
