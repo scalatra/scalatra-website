@@ -84,4 +84,34 @@ servlet in your test with a different `addServlet` method overload, e.g.:
   addServlet(new HelloWorldServlet, "/*")
 ```
 
+#### Testing file uploads?
+
+Convenience methods exist for testing file uploads.
+
+Example:
+
+```scala
+class FileUploadSpec extends MutableScalatraSpec {
+  addServlet(classOf[FileUploadServlet], "/*")
+
+  "POST /files" should {
+    "return status 200" in {
+      // You can also pass headers after the files Map
+      post("/files", Map("private" -> "true"), Map("kitten" -> new File("kitten.png"))) {
+        status must_== 200
+      }
+    }
+  }
+
+  "PUT /files/:id" should {
+    "return status 200" in {
+      put("/files/10", Map("private" -> "false"), Map("kitten" -> new File("kitten.png"))) {
+        status must_== 200
+      }
+    }
+  }
+}
+```
+
 {% include _under_construction.html %}
+
