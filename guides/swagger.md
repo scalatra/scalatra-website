@@ -31,6 +31,8 @@ You can download and run a working version of this application by doing a `git c
 
 We'll start with an app looks like this:
 
+#### Controller and data store
+
 ```scala
 package com.example.app
 
@@ -88,6 +90,7 @@ object FlowerData {
       Flower("black-rose", "Black Rose"))
 }
 ```
+#### Dependencies
 
 Don't forget to add the JSON libraries to your build.sbt file to make this work:
 
@@ -95,6 +98,8 @@ Don't forget to add the JSON libraries to your build.sbt file to make this work:
   "org.scalatra" % "scalatra-json" % "{{ site.scalatra_version }}",
   "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
 ```
+
+#### Namespacing the controller
 
 Every Scalatra application has a file called `ScalatraBootstrap.scala`, located in the `src/main/scala` directory. This file allows you to mount your controllers at whatever url paths you want.
 
@@ -134,7 +139,7 @@ pointing your browser at a slug, e.g.
 
 Now let's add some Swagger to this simple application.
 
-## Swagger: a quick introduction
+### Swagger: a quick introduction
 
 Making an API's methods, parameters, and responses visible, in an engaging, easy to understand way, can transform the process of building REST APIs.
 
@@ -142,6 +147,7 @@ Scalatra's Swagger support allows you to auto-generate runnable documentation
 for a REST API - the API's name, what resources it offers, available methods
 and their parameters, and return values.
 
+#### Swagger spec files
 
 Before we see the auto-generation of Swagger spec files, though, it makes sense
 to understand what's being generated.
@@ -167,6 +173,8 @@ called the [swagger-ui][ui], to make it easy for people to browse the docs. If
 you write them by hand, you can simply put them on any HTTP server, point the
 swagger-ui client at them, and start viewing the runnable documentation.
 
+#### Generating API clients
+
 You also get the ability to generate client and server code
 in multiple languages, using the [swagger-codegen][codegen] project.
 
@@ -186,14 +194,14 @@ API's response to each query.
 Click on the "raw" link next to each API description, and you'll see the
 Swagger spec file for the API.
 
-## Scalatra's Swagger integration
+### Scalatra's Swagger integration
 
 Scalatra's Swagger integration allow you to annotate the code within your RESTful
 API in order to automatically generate Swagger spec files. This means that once
 you annotate your API methods, you get documentation and client code generation
 for free.
 
-### Add the dependencies
+#### Dependencies
 
 First, add the Swagger dependencies to your `build.sbt` file, then restart your
 app to grab the new jars:
@@ -210,7 +218,7 @@ You'll now need to import Scalatra's Swagger support into your `FlowersControlle
 import org.scalatra.swagger._
 ```
 
-### Auto-generating the resources.json spec file
+#### Auto-generating the resources.json spec file
 
 Any Scalatra application which uses Swagger support must implement a Swagger
 controller. Those JSON specification files, which we'd otherwise need to write
@@ -270,7 +278,7 @@ class ScalatraBootstrap extends LifeCycle {
 }
 ```
 
-### Adding SwaggerSupport to the FlowersController
+#### Adding SwaggerSupport to the FlowersController
 
 You'll need to enable Swagger on your `FlowersController`.
 
@@ -295,7 +303,7 @@ code to the body of the `FlowersController` class:
 That's pretty much it for Swagger setup. Now we can start documenting our API's methods.
 
 
-### Annotating API methods
+#### Annotating API methods
 
 Swagger annotations are quite simple. You decorate each of your routes with a bit of
 information, and Scalatra generates the spec file for your route.
@@ -389,7 +397,7 @@ You should see an auto-generated Swagger description of available APIs (in this 
 {"basePath":"http://localhost:8080","swaggerVersion":"1.0","apiVersion":"1","apis":[{"path":"/api-docs/flowers.{format}","description":"The flowershop API. It exposes operations for browing and searching lists of flowers"}]}
 ```
 
-### Browsing your API using swagger-ui
+#### Browsing your API using swagger-ui
 
 If you browse to [http://petstore.swagger.wordnik.com/](http://petstore.swagger.wordnik.com/), you'll see the default Swagger demo application - a Pet Store - and you'll be able to browse its documentation. One thing which may not be immediately obvious is that you can use this app to browse our local Flower Shop as well.
 
