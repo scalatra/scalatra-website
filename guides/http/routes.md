@@ -197,20 +197,6 @@ The first matching route is invoked. Routes are matched from the *bottom up*, i.
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
-### Routing FAQ
-
-#### How can I make Scalatra ignore trailing slashes on routes?
-If you'd like `foo/bar` and `foo/bar/` to be equivalent, simply append `/?` to your URL matching pattern.
-For example:
-
-```scala
-get("foo/bar/?") {
-  //...
-}
-```
-
-----
-
 
 ### Parameter handling
 
@@ -457,3 +443,15 @@ up using ScalatraServlet or ScalatraFilter.
 * `ScalatraServlet`: sends a 404 response
 * `ScalatraFilter`: passes the request to the servlet filter chain, which may
   then throw a 404 or decide to do something different with it.
+
+### Routing FAQ
+
+#### How can I make Scalatra ignore trailing slashes on routes?
+If you'd like `foo/bar` and `foo/bar/` to be equivalent, simply append `/?` to your URL matching pattern.
+For example:
+
+```scala
+get("foo/bar/?") {
+  //...
+}
+```
