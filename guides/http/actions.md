@@ -1,14 +1,15 @@
 ---
 layout: guide
-title: Routes and actions | HTTP | Scalatra guides
+title: Actions | HTTP | Scalatra guides
 ---
 
 <div class="page-header">
-  <h1>Routes &amp; actions</h1>
+  <h1>Actions</h1>
 </div>
 
 As explained in the [routes guide](routes.html), an action is the code that handles
 a route.
+
 When an incoming request matches a route, that route's action is executed.
 
 ## Default behavior
