@@ -120,9 +120,9 @@ override def init(context: ServletContext) {
 }
 ```
 
-#### Setting init params
+#### Init params
 
-You can also set init params in the Scalatra bootstrap file. For instance, you
+You can set init params in the Scalatra bootstrap file. For instance, you
 can set the `org.scalatra.environment` init parameter to set the application
 environment:
 
@@ -137,6 +137,84 @@ override def init(context: ServletContext) {
 
 }
 ```
+
+Each init param can be set in one of two ways. 
+
+The first form looks like this:
+
+`context.setInitParameter(org.scalatra.EnvironmentKey, "production")`
+
+The second form has a bit of syntactic sugar on it, so it looks a little
+less Java:
+
+`context.initParameters("org.scalatra.environment") = "production"`
+
+The two forms are equivalent.
+
+
+##### Environment init param
+
+`context.setInitParameter(org.scalatra.EnvironmentKey, "production")` or
+`context.initParameters("org.scalatra.environment") = "production"`
+
+This init param sets the application environment. 
+
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+The default is `development`.
+
+If the environment starts with "dev", then `isDevelopmentMode` returns true.
+
+In development mode, a few things happen.
+
+ * In a ScalatraServlet, the notFound handler is enhanced so that it dumps the
+effective request path and the list of routes it tried to match. This does not
+happen in a ScalatraFilter, which just delegates to the filterChain when no
+route matches.
+ * Meaningful error pages are enabled (e.g. on 404s, 500s).
+ * The [Scalate console][console] is enabled.
+
+[console]: http://scalate.fusesource.org/documentation/console.html
+
+##### Container init params
+
+`context.setInitParameter(ScalatraBase.HostNameKey, "myapp.local")` or
+`context.initParameters("org.scalatra.HostName") = "myapp.local"`
+
+`context.setInitParameter(ScalatraBase.PortKey, 443)` or 
+`context.initParameters("org.scalatra.Port") = 443`
+
+`context.setInitParameter(ScalatraBase.ForceHttpsKey, "true")` or
+`context.initParameters("org.scalatra.ForceHttps") = "true"`
+
+By default, the values for hostname, port, and SSL settings are inherited from
+the servlet container's settings. You can set these init params if you want to 
+override the domain or port your website is hosted on, or force the use of https.
+
+So if Jetty is running at http://localhost:8080 on your machine you may want 
+to expose it as: https://myapp.local:443 (with an appropriate entry in
+`/etc/hosts`).
+
+##### Cross Origin Resource Sharing init params
+
+These keys and their purposes are documented in the 
+[CORS guide](../web-services/cors.html), but for completeness, here they are. 
+
+The CORS guide uses the alternate forms of these keys, so check in that guide 
+if you'd like to see the alternate form.
+
+`context.setInitParameter(CorsSupport.AllowedOriginsKey, "www.other.com,www.foo.com")`
+`context.setInitParameter(CorsSupport.AllowedMethodsKey, "GET,PUT")`
+`context.setInitParameter(CorsSupport.AllowedHeadersKey, "Content-Type")`
+`context.setInitParameter(CorsSupport.AllowCredentialsKey, "true")`
+`context.setInitParameter(CorsSupport.PreflightMaxAgeKey, 1800)`
+
+##### Async init params
+
+`context.setAttribute(AsyncSupport.ExecutionContextKey, executionContext)` or
+`context.initParameters("org.scalatra.ExecutionContext") = executionContext`
+
+This key sets the `ExecutionContext` which Scalatra should use when creating an 
+Akka `Future`.
 
 #### Running code at application start
 
@@ -226,28 +304,12 @@ The application environment is defined by:
 1. The `org.scalatra.environment` system property.
 2. The `org.scalatra.environment` init parameter.
 
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-The default is `development`.
-
 You can set the application's environment in the following ways:
 
 1. The preferred method: as an init-param in the Scalatra Bootstrap file.
 2. As an init-param in web.xml.
 3. As a system property: this is most commonly set with a `-D` option on the
 command line: `java -Dorg.scalatra.environment=development`
-
-If the environment starts with "dev", then `isDevelopmentMode` returns true.
-
-In development mode, a few things happen.
-
- * In a ScalatraServlet, the notFound handler is enhanced so that it dumps the
-effective request path and the list of routes it tried to match. This does not
-happen in a ScalatraFilter, which just delegates to the filterChain when no
-route matches.
- * Meaningful error pages are enabled (e.g. on 404s, 500s).
- * The [Scalate console][console] is enabled.
-
-[console]: http://scalate.fusesource.org/documentation/console.html
 
 ### Changing the port in development
 
