@@ -20,11 +20,12 @@ It's carefree server push for the JVM.
 
 ### Atmosphere example app
 
-#### Sample code
-
-In this Guide, we'll build a fairly simple chat example. A finished
-example of this application is available at 
-[https://github.com/futurechimp/scalatra-atmosphere-example](https://github.com/futurechimp/scalatra-atmosphere-example)
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="https://github.com/futurechimp/scalatra-atmosphere-example">scalatra-atmosphere-example</a>
+  for a minimal and standalone project containing the example in this guide.
+</div>
 
 #### Generating the app
 
