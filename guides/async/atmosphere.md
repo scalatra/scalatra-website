@@ -18,13 +18,15 @@ It's carefree server push for the JVM.
 
 ---
 
-### Sample code
+### Atmosphere example app
+
+#### Sample code
 
 In this Guide, we'll build a fairly simple chat example. A finished
 example of this application is available at 
 [https://github.com/futurechimp/scalatra-atmosphere-example](https://github.com/futurechimp/scalatra-atmosphere-example)
 
-### Getting started
+#### Generating the app
 
 Generate a project using `g8 scalatra/scalatra-sbt`, and call your
 initial servlet `ChatController`.
@@ -49,7 +51,7 @@ Atmosphere-aware one:
 </listener>  
 ```
 
-#### dependencies
+#### Dependencies
 
 The following dependencies will be needed to make the sample application
 work.
@@ -70,7 +72,7 @@ Akka 2.0.x dependency, so make sure you've got this in `build.sbt`:
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 ```
 
-### imports
+#### Imports
 
 Your imports should look like this:
 
@@ -88,7 +90,7 @@ import java.util.Date
 import java.text.SimpleDateFormat
 ```
 
-### Writing the ChatController
+#### Writing the ChatController
 
 The basic setup of an Atmosphere-enabled servlet and route looks like 
 this:
@@ -194,7 +196,7 @@ turns `("name" -> "joe") ~ ("age" -> 35)` into `{"name":"joe","age":35}`.
 
 That's pretty much it on the server side.
 
-### JavaScript client
+#### JavaScript client
 
 Browser clients can connect to the `atmosphere` route using a JavaScript
 client.
