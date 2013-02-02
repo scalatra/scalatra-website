@@ -7,7 +7,10 @@ title: Specs2 | Testing | Scalatra guides
   <h1>Specs2</h1>
 </div>
 
-### [Specs2](http://etorreborre.github.com/specs2/)
+[Specs2](http://etorreborre.github.com/specs2/) is a library for writing 
+executable software specifications. With specs2 you can write software 
+specifications for one class (unit specifications) or a full system 
+(acceptance specifications).
 
 #### Dependency
 
@@ -15,12 +18,12 @@ title: Specs2 | Testing | Scalatra guides
 "org.scalatra" %% "scalatra-specs2" % "{{ site.scalatra_version }}" % "test"
 ```
 
-#### Example
+#### Examples
 
 Specs2 supports two basic styles: *unit* and *acceptance*.
 Both are supported by Scalatra.
 
-#### Unit testing
+##### Unit testing
 
 From the [Specs2 QuickStart](Specs2 Quickstart):
 
@@ -43,7 +46,7 @@ class HelloWorldMutableServletSpec extends MutableScalatraSpec {
 }
 ```
 
-#### Acceptance testing
+##### Acceptance testing
 
 From the [Specs2 QuickStart](Specs2 Quickstart):
 

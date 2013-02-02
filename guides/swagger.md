@@ -7,7 +7,7 @@ title: Swagger | Scalatra guides
   <h1>Swagger Support</h1>
 </div>
 
-## What is Swagger?
+### What is Swagger?
 
 [Swagger](http://swagger.wordnik.com) is a specification which allows you to quickly define the functionality of a REST API using JSON documents. But it's more than
 just a spec. It provides automatic generation of interactive API docs,
