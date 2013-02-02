@@ -9,7 +9,7 @@ title: CORS | Web Services | Scalatra guides
 
 ### Cross origin resource sharing
 
-Scalatra allows you to mix in the `CorsSupport` trait if you need to do
+Scalatra allows you to mix the `CorsSupport` trait into your servlets if you need to do
 [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
 Adding `CorsSupport` allows all requests from anywhere, by default.
