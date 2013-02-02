@@ -11,7 +11,7 @@ Bandwidth can be wasted when using verbose plaintext formats such as XML, leadin
 to a poor user experience for your apps.
 Fortunately, many clients can accept compressed content and Scalatra lets you
 compress server responses without any change to your business logic.
-Just mix in `GZipSupport`!
+Just mix in `GZipSupport`.
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
