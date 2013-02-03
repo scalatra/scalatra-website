@@ -311,6 +311,26 @@ You can set the application's environment in the following ways:
 3. As a system property: this is most commonly set with a `-D` option on the
 command line: `java -Dorg.scalatra.environment=development`
 
+When you deploy your application to a production environment, you'll typically
+want to change its environment to "production". 
+
+There are a few ways you can accomplish this.
+
+#### Environment variables
+
+If you're using Scalatra 2.1 or better, you can set it in your ScalatraBootstrap
+file based on an environment variable that's present on production machines.
+
+#### Massaging your WAR file
+
+If you're using Scalatra 2.0.x or just happen to like XML configuration, you can
+use a post-hook in the xsbt-web-plugin to 
+[massage the contents of your WAR file](https://github.com/JamesEarlDouglas/xsbt-web-plugin/wiki/Massage-WAR)
+during packaging. 
+
+Load the Web.xml file and replace the value org.scalatra.environment using
+Scala's standard XML tools.
+
 ### Changing the port in development
 
 Add `port in container.Configuration := 8081` to `build.sbt` if you would
