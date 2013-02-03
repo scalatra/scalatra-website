@@ -328,7 +328,7 @@ use a post-hook in the xsbt-web-plugin to
 [massage the contents of your WAR file](https://github.com/JamesEarlDouglas/xsbt-web-plugin/wiki/Massage-WAR)
 during packaging. 
 
-Load the Web.xml file and replace the value org.scalatra.environment using
+Load the Web.xml file and replace the value for `org.scalatra.environment` using
 Scala's standard XML tools.
 
 ### Changing the port in development
