@@ -47,34 +47,51 @@ title: Scalatra | A tiny, Sinatra-like web framework for Scala
       <li><a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
     </ul>
-  </div>  
+  </div>
 </div>
 
+<div class="row">
+  <div class="span6">
+    <h3>Why would you want to use Scalatra?</h3>
+    <ul>
+    <li>It&#39;s been proven in production - the <a href="http://bbc.co.uk">BBC</a>, <a href="http://www.linkedin.com">LinkedIn</a>, the
+    <a href="http://www.guardian.co.uk">Guardian newspaper</a>, games website <a href="http://www.ign.com">IGN</a>, and the
+    <a href="http://www.gov.uk">UK government</a> all rely on it.</li>
+    <li>It can help you quickly build high-performance, scalable HTTP APIs for web
+    and mobile applications.</li>
+    <li>It&#39;s a perfect server-side counterpart to in-browser client development
+    frameworks such as <a href="http://backbonejs.org/">backbone.js</a>,
+    <a href="http://emberjs.com">ember.js</a> or <a href="http://angularjs.org">angular.js</a>.</li>
+    <li>It&#39;s a simple, fun, and practical way to learn
+    <a href="http://www.scala-lang.org">Scala</a>, a new programming language with advanced
+    features.</li>
+    <li>It will help you use all available cores of that new 16-core server. It
+    also gives you easy access to Scala&#39;s new concurrency-management constructs:
+    <a href="http://akka.io">Akka Actors</a>.</li>
+    </ul>
+  </div>
+    <div class="span5 well">
+      <h4>We've got a book!</h4>
+      <div class="row">
+        <div class="span2">
+          <a href="http://www.manning.com/carrero2/">
+            <img src="/assets/img/book-cover.jpg">
+          </a>
+        </div>
+        <div class="span3">
+          <p>Order <a href="http://www.manning.com/carrero2/">Scalatra in Action</a> as part of the Manning Early Access Program (MEAP).</p>
+          <p>Written by members of the Scalatra team, the book walks you through the entire framework, from first steps to servlet deployment. </p>
+        </div>
+      </div>
+    </div>
 
-<h3>Why would you want to use Scalatra?</h3>
-<ul>
-<li>It&#39;s been proven in production - the <a href="http://bbc.co.uk">BBC</a>, <a href="http://www.linkedin.com">LinkedIn</a>, the
-<a href="http://www.guardian.co.uk">Guardian newspaper</a>, games website <a href="http://www.ign.com">IGN</a>, and the
-<a href="http://www.gov.uk">UK government</a> all rely on it.</li>
-<li>It can help you quickly build high-performance, scalable HTTP APIs for web
-and mobile applications.</li>
-<li>It&#39;s a perfect server-side counterpart to in-browser client development
-frameworks such as <a href="http://backbonejs.org/">backbone.js</a>,
-<a href="http://emberjs.com">ember.js</a> or <a href="http://angularjs.org">angular.js</a>.</li>
-<li>It&#39;s a simple, fun, and practical way to learn
-<a href="http://www.scala-lang.org">Scala</a>, a new programming language with advanced
-features.</li>
-<li>It will help you use all available cores of that new 16-core server. It
-also gives you easy access to Scala&#39;s new concurrency-management constructs:
-<a href="http://akka.io">Akka Actors</a>.</li>
-</ul>
-
-
+</div>
 
 <h3>Start small</h3>
 
 <p>You will need to <a href="getting-started/installation.html">install a few things</a>
 before you can get started, but first, here&#39;s a Scalatra app:</p>
+
 <div class="highlight"><pre><code class="scala"><span class="k">package</span> <span class="nn">com.example.app</span>
 <span class="k">import</span> <span class="nn">org.scalatra._</span>
 
