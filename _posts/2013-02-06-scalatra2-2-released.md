@@ -20,7 +20,7 @@ We are now also publishing Scalatra data to [ls.implicit.ly](http://ls.implicit.
 There are a few breaking changes in 2.2:
 
 * AkkaSupport now uses an ExecutionContext instead of an ActorSystem
-* LiftJsonSupport has been removed in favor of Json4s
+* LiftJsonSupport has been removed in favor of [Json4s](http://json4s.org), which is a drop-in replacement
 * All the signatures of the methods that access values in the request or response now take an implicit request and/or response
 
 This last one is particularly important if you are making heavy use of Akka Futures from your routes. Scalatra now stores the request and response in a thread-local and when you use Futures you can't access those anymore. This stops you from inadvertantly closing a Future (which should contain only immutable data) over the servlet request (which is unavoidably mutable), and should make your programming experience safer and more enjoyable.
