@@ -44,10 +44,9 @@ import org.json4s.{DefaultFormats, Formats}
 // JSON handling support from Scalatra
 import org.scalatra.json._
 
-class FlowersController extends ScalatraServlet with JacksonJsonSupport with JValueResult {
+class FlowersController extends ScalatraServlet with JacksonJsonSupport {
 
-  // Sets up automatic case class to JSON output serialization, required by
-  // the JValueResult trait.
+  // Sets up automatic case class to JSON output serialization
   protected implicit val jsonFormats: Formats = DefaultFormats
 
   // Before every action runs, set the content type to be in JSON format.
@@ -112,7 +111,7 @@ import javax.servlet.ServletContext
 
 class ScalatraBootstrap extends LifeCycle {
 
-  override def init {
+  override def init(context: ServletContext) {
     context.mount(new FlowersController, "/flowers/*")
   }
 }
@@ -207,8 +206,8 @@ First, add the Swagger dependencies to your `build.sbt` file, then restart your
 app to grab the new jars:
 
 ```scala
-"com.wordnik"  % "swagger-core_2.9.1"  % "{{ site.swagger_version }}",
-"org.scalatra" % "scalatra-swagger"  % "{{ site.scalatra_version }}",
+"com.wordnik"  %% "swagger-core"  % "{{ site.swagger_version }}",
+"org.scalatra" %% "scalatra-swagger"  % "{{ site.scalatra_version }}",
 ```
 
 You'll now need to import Scalatra's Swagger support into your `FlowersController`:
@@ -324,13 +323,14 @@ Right now, it looks like this:
 We'll need to add some information to the method in order to tell Swagger what this method does, what parameters it can take, and what it responds with.
 
 ```scala
-  get("/",
-    summary("Show all flowers"),
-    nickname("getFlowers"),
-    responseClass("List[Flower]"),
-    parameters(Parameter("name", "A name to search for", DataType.String, paramType = ParamType.Query, required = false)),
-    endpoint(""),
-    notes("Shows all the flowers in the flower shop. You can search it too.")){
+
+  val getFlowers = 
+    (apiOperation[List[Flower]]("getFlowers")
+      summary "Show all flowers"
+      notes "Shows all the flowers in the flower shop. You can search it too."
+      parameter queryParam[Option[String]]("name").description("A name to search for"))
+
+  get("/", operation(getFlowers)) {
     params.get("name") match {
       case Some(name) => FlowerData.all filter (_.name.toLowerCase contains name.toLowerCase)
       case None => FlowerData.all
@@ -364,16 +364,14 @@ We can do the same to our `get(/:slug)` route. Change it from this:
 to this:
 
 ```scala
-  get("/:slug",
-    summary("Find by slug"),
-    nickname("findBySlug"),
-    responseClass("Flower"),
-    endpoint("{slug}"),
-    notes("Returns the flower for the provided slug, if a matching flower exists."),
-    parameters(
-      Parameter("slug", "Slug of flower that needs to be fetched",
-        DataType.String,
-        paramType = ParamType.Path))) {
+  val findBySlug = 
+    (apiOperation[Flower]("findBySlug")
+      summary "Find by slug"
+      parameters (
+        pathParam[String]("slug").description("Slug of flower that needs to be fetched")
+      ))
+
+  get("/:slug", operation(findBySlug)) {
     FlowerData.all find (_.slug == params("slug")) match {
       case Some(b) => b
       case None => halt(404)

@@ -79,9 +79,11 @@ import org.scalatra.akka.AkkaSupport
 
 class MyAppServlet extends ScalatraServlet with AkkaSupport {
   get("/"){
-    Future {
-      // Add async logic here
-      <html><body>Hello Akka</body></html>
+    new AsyncResult { def is = 
+      Future {
+        // Add async logic here
+        <html><body>Hello Akka</body></html>
+      }
     }
   }
 }
@@ -130,7 +132,9 @@ class PageRetriever(system: ActorSystem) extends ScalatraServlet with AkkaSuppor
   protected implicit def executor: ExecutionContext = system.dispatcher
 
   get("/") {
-    DispatchAkka.retrievePage()
+    new AsyncResult { def is = 
+      DispatchAkka.retrievePage()
+    }
   }
 
 }
@@ -175,7 +179,7 @@ class MyActorApp(system:ActorSystem, myActor:ActorRef) extends ScalatraServlet w
   implicit val timeout = Timeout(10)
 
   get("/async") {
-    myActor ? "Do stuff and give me an answer"
+    new AsyncResult { def is = myActor ? "Do stuff and give me an answer" }
   }
 
   get("/fire-forget") {
