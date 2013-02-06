@@ -1,10 +1,17 @@
-The Scalatra team is excited to finally be able to say: we've just released Scalatra 2.2.0, 2.1.2 and 2.0.5!
+---
+layout: post
+title: "Scalatra 2.2 released"
+author: Dave Hrycyszyn
+twitter: futurechimp
+---
+
+The Scalatra team is excited to finally be able to say: we've just released Scalatra 2.2.0, 2.1.2 and 2.0.5.
 
 Let's talk about the old branches first.
 
-We've published 2.0.5 for Scala 2.10 so you can safely upgrade on servlet 2.5 containers.
+We've published 2.0.5 for Scala 2.10 so you can safely upgrade on servlet 2.5 containers. This gives anyone stuck deploying on older servlet containers a path to Scala 2.10.
 
-The 2.1.2 release is mostly a bug fix release, and allows for overriding the asyncTimeout in AkkaSupport.
+2.1.2 is mostly a bug fix release, and allows for overriding the asyncTimeout in AkkaSupport.
 
 Scalatra 2.2 is the new stable release, and we think it's the most biggest and most exciting release in the history of the project. The changes in 2.2 are listed here: [http://notes.implicit.ly/post/42420935465/scalatra-2-2-0](http://notes.implicit.ly/post/42420935465/scalatra-2-2-0).
 
