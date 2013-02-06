@@ -75,9 +75,9 @@ The generic case looks like this:
 
 ```scala
 import _root_.akka.dispatch._
-import org.scalatra.akka.AkkaSupport
+import org.scalatra.FutureSupport
 
-class MyAppServlet extends ScalatraServlet with AkkaSupport {
+class MyAppServlet extends ScalatraServlet with FutureSupport {
   get("/"){
     new AsyncResult { def is = 
       Future {
@@ -111,7 +111,7 @@ import _root_.akka.dispatch.{Future, ExecutionContext}
 import _root_.akka.dispatch.{Promise => AkkaPromise}
 
 
-import org.scalatra.akka.AkkaSupport
+import org.scalatra.FutureSupport
 
 import dispatch._
 import org.scalatra._
@@ -127,7 +127,7 @@ object DispatchAkka {
   }
 }
 
-class PageRetriever(system: ActorSystem) extends ScalatraServlet with AkkaSupport {
+class PageRetriever(system: ActorSystem) extends ScalatraServlet with FutureSupport {
 
   protected implicit def executor: ExecutionContext = system.dispatcher
 
@@ -168,10 +168,10 @@ package com.example.app
 import akka.actor.{ActorRef, Actor, Props, ActorSystem}
 import akka.dispatch.ExecutionContext
 import akka.util.Timeout
-import org.scalatra.akka.AkkaSupport
+import org.scalatra.FutureSupport
 import org.scalatra.{Accepted, ScalatraServlet}
 
-class MyActorApp(system:ActorSystem, myActor:ActorRef) extends ScalatraServlet with AkkaSupport {
+class MyActorApp(system:ActorSystem, myActor:ActorRef) extends ScalatraServlet with FutureSupport {
 
   protected implicit def executor: ExecutionContext = system.dispatcher
 
