@@ -54,7 +54,7 @@ for an example.
 
 ```scala
 // Put this in build.sbt:
-"org.scalatra" % "scalatra-auth" % "{{ site.scalatra_version }}"
+"org.scalatra" %% "scalatra-auth" % "{{ site.scalatra_version }}"
 ```
 
 You'll need the scalatra-auth dependency in your built.sbt for all subsequent

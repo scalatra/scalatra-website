@@ -94,7 +94,7 @@ object FlowerData {
 Don't forget to add the JSON libraries to your build.sbt file to make this work:
 
 ```scala
-  "org.scalatra" % "scalatra-json" % "{{ site.scalatra_version }}",
+  "org.scalatra" %% "scalatra-json" % "{{ site.scalatra_version }}",
   "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
 ```
 

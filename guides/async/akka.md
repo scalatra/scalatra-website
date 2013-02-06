@@ -17,7 +17,7 @@ mix it into your application.
 
 ```scala
 // Put this in build.sbt:
-"org.scalatra" % "scalatra-akka" % "{{ site.scalatra_version }}"
+"org.scalatra" %% "scalatra-akka" % "{{ site.scalatra_version }}"
 ```
 
 You'll also need to add the Typesafe resolver in build.sbt if you're using

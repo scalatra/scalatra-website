@@ -150,9 +150,9 @@ seq(webSettings :_*)
 classpathTypes ~= (_ + "orbit")
 
 libraryDependencies ++= Seq(
-  "org.scalatra" % "scalatra" % "{{ site.scalatra_version }}",
-  "org.scalatra" % "scalatra-scalate" % "{{ site.scalatra_version }}",
-  "org.scalatra" % "scalatra-specs2" % "{{ site.scalatra_version }}" % "test",
+  "org.scalatra" %% "scalatra" % "{{ site.scalatra_version }}",
+  "org.scalatra" %% "scalatra-scalate" % "{{ site.scalatra_version }}",
+  "org.scalatra" %% "scalatra-specs2" % "{{ site.scalatra_version }}" % "test",
   "ch.qos.logback" % "logback-classic" % "{{ site.logback_version }}" % "runtime",
   "org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "container",
   "org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
