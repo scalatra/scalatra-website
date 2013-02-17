@@ -12,12 +12,16 @@ title: CORS | Web Services | Scalatra guides
 Scalatra allows you to mix the `CorsSupport` trait into your servlets if you need to do
 [cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
-Adding `CorsSupport` allows all requests from anywhere, by default.
+Adding `CorsSupport` allows all requests from anywhere, by default. You'll need to add an `options` route to your servlet, though, so that your servlet will respond to the preflight request:
 
 ```scala
 import org.scalatra.CorsSupport
 
 class YourServlet extends ScalatraBase with CorsSupport {
+
+  options("/*"){
+    response.setHeader("Access-Control-Allow-Headers", request.getHeader("Access-Control-Request-Headers"));
+  }
 
 }
 ```
