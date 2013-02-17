@@ -13,20 +13,6 @@ Akka is a toolkit and runtime for building highly concurrent, distributed, and
 fault tolerant event-driven applications on the JVM. Scalatra allows you to easily
 mix it into your application.
 
-#### Dependency:
-
-```scala
-// Put this in build.sbt:
-"org.scalatra" %% "scalatra-akka" % "{{ site.scalatra_version }}"
-```
-
-You'll also need to add the Typesafe resolver in build.sbt if you're using
-Scala 2.9.x:
-
-```scala
-resolvers += "Typesafe" at "http://repo.typesafe.com/typesafe/releases/",
-```
-
 ### Setting up  Akka
 
 When you're using Akka, you'll want to start your `Actor`s and `ActorSystem`
