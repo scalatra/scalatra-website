@@ -11,7 +11,13 @@ title: Akka | Async | Scalatra guides
 
 Akka is a toolkit and runtime for building highly concurrent, distributed, and
 fault tolerant event-driven applications on the JVM. Scalatra allows you to easily
-mix it into your application.
+mix it into your application. 
+
+In versions of Scalatra before 2.2.0, Akka was an optional dependency, 
+contained in a scalatra-akka jar. In Scalatra 2.2.0, Akka has been 
+folded directly into Scalatra core, and the scalatra-akka dependency is no
+longer needed. To get access to Akka, all you need to do is mix FutureSupport
+into your servlets.
 
 ### Setting up  Akka
 
