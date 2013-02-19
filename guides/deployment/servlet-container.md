@@ -15,6 +15,12 @@ title: Deploying to servlet containers | Deployment | Scalatra
   extremely simple. You will be surprised at how easy it is!
 </div>
 
+### Compatibility
+
+Scalatra 2.2 runs on any servlet container which supports the Servlet 3.0 standard.
+
+If you're using an older container, you'll need to run the older Scalatra 2.0.x series.
+
 ### As a war file
 
 The simplest way to deploy your Scalatra application is as a Web ARchive (WAR)
