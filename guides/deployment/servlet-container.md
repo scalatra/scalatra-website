@@ -105,9 +105,7 @@ ROOT application to another spot, and put your app at the ROOT.
 
 <div class="alert alert-warning">
 <span class="badge badge-warning"><i class="icon-flag icon-white"></i></span>  Tomcat paths are case-sensitive. Make sure you copy your app to `ROOT.war`.<br /><br />
-Request body params dont get parsed in 'put(/:resource)' api when deploying scalatra app as a WAR in tomcat 6/7. To make your put work, set the connector attribute 'parseBodyMethods' to 'POST,PUT' in server.xml
-of tomcat.
-The same goes for PATCH.
+Request body params dont get parsed in 'put(/:resource)' api when deploying scalatra app as a WAR in Tomcat 7. To make your PUT work, set the connector attribute 'parseBodyMethods' to 'POST,PUT' in server.xml of tomcat. The same goes for PATCH.
 </div>
 
 Your app should now be running at [http://localhost:8080/](http://localhost:8080/)
