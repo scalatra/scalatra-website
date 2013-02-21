@@ -131,7 +131,7 @@ Scalatra uses Scala's [Simple Build Tool][sbt-site], or sbt, as a build system.
 
 [sbt-site]: http://www.scala-sbt.org/
 
-The `build.sbt` file defines the libraries which your application will depend on,
+The `build.scala` file defines the libraries which your application will depend on,
 so that `sbt` can download them for you and build your Scalatra project.
 
 Here's an example Scalatra sbt file:
