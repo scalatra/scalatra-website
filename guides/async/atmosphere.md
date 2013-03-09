@@ -236,7 +236,7 @@ what each of these mean.
 Lastly, there's a simple key-press detection which sends a chat 
 message to the server whenever the `enter` key is pressed.
 
-With all of this in place, you can add a few [Scalate views](https://github.com/futurechimp/scalatra-atmosphere-example/tree/master/src/main/webapp/WEB-INF) 
+With all of this in place, you can add a few [Scalate views](https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/WEB-INF) 
 to your chat application and it's all done. The example application has
 a default layout and action which will serve up a browser-based chat
 client.
