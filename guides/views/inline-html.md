@@ -11,8 +11,8 @@ title: Inline HTML | Views | Scalatra guides
 
 The simplest method of rendering a view is by using inline HTML.
 
-Unlike a lot of other frameworks, Scalatra can output XML literals directly as a return
-value from an action:
+Unlike frameworks in most other languages, Scalatra can use Scala's built-in
+XML literals to output XML directly as a return value from an action:
 
 ```scala
 def get("/") {
