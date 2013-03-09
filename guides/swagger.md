@@ -23,9 +23,12 @@ guide will walk you through the process of taking a simple Scalatra application
 and adding Swagger to it, so that your runnable documentation automatically stays
 in sync with your API.
 
-### Sample code
-
-You can download and run a working version of this application by doing a `git clone https://github.com/futurechimp/flowershop.git`, and running `sbt` in the top-level of the project.
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/swagger-example">swagger-example</a>
+  for a minimal and standalone project containing the example in this guide.
+</div>
 
 ### Application setup
 
@@ -34,7 +37,7 @@ We'll start with an app looks like this:
 #### Controller and data store
 
 ```scala
-package com.example.app
+package org.scalatra.example.swagger
 
 import org.scalatra._
 
@@ -105,8 +108,8 @@ Every Scalatra application has a file called `ScalatraBootstrap.scala`, located 
 Set yours so that there's a route namespace for the FlowersController:
 
 ```scala
-import com.example.swagger.sample._
-import org.scalatra._
+import org.scalatra.example.swagger._
+import org.scalatra.LifeCycle
 import javax.servlet.ServletContext
 
 class ScalatraBootstrap extends LifeCycle {
@@ -226,7 +229,7 @@ controller to our application. Drop this code into a new file next to your
 `FlowersController.scala`. You can call it `FlowersSwagger.scala`:
 
 ```scala
-package com.example.swagger.sample
+package org.scalatra.example.swagger
 
 import org.scalatra.swagger.{JacksonSwaggerBase, Swagger, SwaggerBase}
 
@@ -251,7 +254,7 @@ file so that the container knows about this new servlet. Currently it looks
 like this:
 
 ```scala
-import com.example.swagger.sample._
+import org.scalatra.example.swagger._
 import org.scalatra._
 import javax.servlet.ServletContext
 
