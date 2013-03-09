@@ -22,15 +22,15 @@ title: Slick | Models | Scalatra guides
 
 The sample project contains a minimal setup. For this guide the following files are important:
 
-  * `build.sbt`: we configure the SBT build and the dependencies here.
+  * `project/build.scala`: we configure the SBT build and the dependencies here.
   * `src/main/scala/slicksupport/slick.scala`: the scalatra application and the support trait.
   * `src/main/resources/c3p0.properties`: the connection pool is configured here.
 
 ```
 .
-├── build.sbt                        // sbt build configuration
 ├── project
 │   ├── build.properties
+│   ├── build.scala                  // sbt build configuration
 │   └── plugins.sbt
 └── src
     └── main
@@ -49,7 +49,7 @@ The sample project contains a minimal setup. For this guide the following files 
 
 ## SBT Configuration
 
-Let us start with the SBT setup by editing `build.sbt`. Slick targets Scala 2.10, so the SBT build needs to use it:
+Let us start with the SBT setup by editing `project/build.scala`. Slick targets Scala 2.10, so the SBT build needs to use it:
 
 ```scala
 scalaVersion := "2.10.0"

@@ -333,7 +333,7 @@ Scala's standard XML tools.
 
 ### Changing the port in development
 
-Add `port in container.Configuration := 8081` to `build.sbt` if you would
+Add `port in container.Configuration := 8081` to `project/build.scala` if you would
 like your Scalatra app to run something other than the default port (8080).
 
 

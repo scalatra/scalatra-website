@@ -35,7 +35,7 @@ $ g8 scalatra/scalatra-sbt -b develop
 
 ### Make Jetty embeddable
 
-Open `build.sbt` in the root of your project. You will find two lines like these:
+Open `project/build.scala` in the root of your project. You will find two lines like these:
 
 ```scala
 "org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "container",
@@ -59,7 +59,7 @@ Tell sbt where to find the plugin by adding this line to `project/plugins.sbt` (
 addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "{{ site.start_script_plugin_version }}")
 ```
 
-Tell sbt how to use the plugin by adding this line to `build.sbt`:
+Tell sbt how to use the plugin by adding this line to `project/build.scala`:
 
 ```scala
 seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*)

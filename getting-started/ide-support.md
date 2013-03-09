@@ -34,7 +34,7 @@ $ ./sbt
 ```
 
 Be sure to re-run `./sbt eclipse` every time you add or update a dependency in
-`build.sbt`.
+`project/build.scala`.
 
 ## IntelliJ IDEA
 
@@ -57,7 +57,7 @@ $ ./sbt
 ```
 
 Be sure to re-run `./sbt idea` every time you add or update a dependency in
-`build.sbt`.
+`project/build.scala`.
 
 ## ENSIME (for Emacs)
 
@@ -68,7 +68,7 @@ Users of the one true editor, rejoice! There is excellent support for Scala in E
 adding features like refactoring and error highlighting.
 - To integrate ENSIME with your Scalatra project, use the
 [ensime-sbt-cmd](https://github.com/aemoncannon/ensime-sbt-cmd) plugin.
-Add this line to your `build.sbt` file:
+Add this line to your `project/build.scala` file:
 
 ```scala
 addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "0.1.0")

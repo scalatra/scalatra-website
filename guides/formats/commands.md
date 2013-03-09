@@ -572,7 +572,7 @@ the commands, you can use either regular POST params, e.g. from a web form,
 
 Here's how it works.
 
-Add the following to build.sbt:
+Add the following to project/build.scala:
 
 ```scala
   "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",

@@ -67,7 +67,7 @@ work.
 Scalatra's Atmosphere integration depends on Akka.
 
 You'll need to add the TypeSafe sbt resolver in order to get the
-Akka 2.0.x dependency, so make sure you've got this in `build.sbt`:
+Akka 2.0.x dependency, so make sure you've got this in `project/build.scala`:
 
 ```scala
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"

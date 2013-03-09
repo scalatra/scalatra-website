@@ -174,7 +174,7 @@ If you're using [IDE plugins](ide-support.html) like
 [sbt-eclipse](https://github.com/typesafehub/sbteclipse) or
 [sbt-idea](https://github.com/mpeltonen/sbt-idea) to make sbt dependencies
 available to your IDE, make sure you re-run `sbt-eclipse` or `sbt-idea` from
-within sbt whenever you add or update a dependency in `build.sbt`.
+within sbt whenever you add or update a dependency in `project/build.scala`.
 
 The default dependencies are:
 

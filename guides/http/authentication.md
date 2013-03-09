@@ -53,7 +53,7 @@ for an example.
 ## Dependency
 
 ```scala
-// Put this in build.sbt:
+// Put this in project/build.scala:
 "org.scalatra" %% "scalatra-auth" % "{{ site.scalatra_version }}"
 ```
 
