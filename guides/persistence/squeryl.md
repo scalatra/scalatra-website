@@ -39,7 +39,7 @@ code itself can follow the
 pretty closely:
 
 ```scala
-package com.futurechimps.squeryli.data // substitute your package here!
+package org.scalatra.example.data
 
 import com.mchange.v2.c3p0.ComboPooledDataSource
 import org.squeryl.adapters.MySQLAdapter
@@ -79,8 +79,6 @@ trait DatabaseInit {
     cpds.close()
   }
 }
-
-
 ```
 
 You'll likely want to load up your database creds by reading a config file,
@@ -102,11 +100,16 @@ trait. In the case of this example, we'll need
 Then mix the `DatabaseInit` trait into `ScalatraBootstrap`, so it looks like this:
 
 ```scala
+import org.scalatra.LifeCycle
+import javax.servlet.ServletContext
+import org.scalatra.example.ArticlesController
+import org.scalatra.example.data.DatabaseInit
+
 class ScalatraBootstrap extends LifeCycle with DatabaseInit {
 
   override def init(context: ServletContext) {
     configureDb()
-    context mount (new Articles, "/*")
+    context mount (new ArticlesController, "/*")
   }
   
   override def destroy(context:ServletContext) {
@@ -125,7 +128,7 @@ Let's make a database session support trait which can be used in your
 controllers. A complete one with imports can look like this:
 
 ```scala
-package com.futurechimps.squeryli.data
+package org.scalatra.example.data
 
 import org.squeryl.Session
 import org.squeryl.SessionFactory
@@ -165,7 +168,7 @@ Now that it's defined, you can mix your new DatabaseSessionSupport trait into
 any of your controllers, e.g.
 
 ```scala
-class Articles extends ScalatraServlet with DatabaseSessionSupport
+class ArticlesController extends ScalatraServlet with DatabaseSessionSupport
 ```
 
 Any controller with this trait can now use Squeryl models.
