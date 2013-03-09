@@ -131,33 +131,58 @@ Scalatra uses Scala's [Simple Build Tool][sbt-site], or sbt, as a build system.
 
 [sbt-site]: http://www.scala-sbt.org/
 
-The `build.scala` file defines the libraries which your application will depend on,
+The `project/build.scala` file defines the libraries which your application will depend on,
 so that `sbt` can download them for you and build your Scalatra project.
 
-Here's an example Scalatra sbt file:
+Here's an example Scalatra `project/build.scala` file:
 
 ```scala
-organization := "com.example"
+import sbt._
+import Keys._
+import org.scalatra.sbt._
+import org.scalatra.sbt.PluginKeys._
+import com.mojolly.scalate.ScalatePlugin._
+import ScalateKeys._
 
-name := "yourapp"
+object MyExampleBuild extends Build {
+  val Organization = "com.example"
+  val Name = "An Example Application"
+  val Version = "0.1.0-SNAPSHOT"
+  val ScalaVersion = "2.9.2"
+  val ScalatraVersion = "({{ site.scalatra_version }}"
 
-version := "0.1.0-SNAPSHOT"
+  lazy val project = Project (
+    "scalatra-buildfile-example",
+    file("."),
+    settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+      organization := Organization,
+      name := Name,
+      version := Version,
+      scalaVersion := ScalaVersion,
+      resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
+      resolvers += "Akka Repo" at "http://repo.akka.io/repository",
+      libraryDependencies ++= Seq(
+        "org.scalatra" %% "scalatra" % ScalatraVersion,
+        "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
+        "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
+        "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
+        "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
+        "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+      ),
+      scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
+        Seq(
+          TemplateConfig(
+            base / "webapp" / "WEB-INF" / "templates",
+            Seq.empty,  /* default imports should be added here */
+            Seq.empty,  /* add extra bindings here */
+            Some("templates")
+          )
+        )
+      }
+    )
+  )
+}
 
-scalaVersion := "2.9.2"
-
-seq(webSettings :_*)
-
-classpathTypes ~= (_ + "orbit")
-
-libraryDependencies ++= Seq(
-  "org.scalatra" %% "scalatra" % "{{ site.scalatra_version }}",
-  "org.scalatra" %% "scalatra-scalate" % "{{ site.scalatra_version }}",
-  "org.scalatra" %% "scalatra-specs2" % "{{ site.scalatra_version }}" % "test",
-  "ch.qos.logback" % "logback-classic" % "{{ site.logback_version }}" % "runtime",
-  "org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "container",
-  "org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
-
-)
 ```
 
 <div class="alert alert-info">
