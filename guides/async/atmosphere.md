@@ -23,7 +23,7 @@ It's carefree server push for the JVM.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
-  <a href="https://github.com/futurechimp/scalatra-atmosphere-example">scalatra-atmosphere-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/async/scalatra-atmosphere-example">scalatra-atmosphere-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -192,7 +192,7 @@ atmosphere("/the-chat") {
   }
 ```
 
-The `~` operator is used quite a bit there, it's a JSON operator which
+The `~` operator is used quite a bit there. It's a JSON operator which
 turns `("name" -> "joe") ~ ("age" -> 35)` into `{"name":"joe","age":35}`.
 
 That's pretty much it on the server side.
@@ -214,10 +214,10 @@ Besides the basic connectivity provided by the Atmosphere connector,
 you'll need to provide your own application-specific logic, also in
 JavaScript. Here's an `application.js` file for our chat application:
 
-[https://github.com/futurechimp/scalatra-atmosphere-example/blob/master/src/main/webapp/js/application.js](https://github.com/futurechimp/scalatra-atmosphere-example/blob/master/src/main/webapp/js/application.js)
+[https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/application.js](https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/application.js)
 
 Drop that code into `webapp/js/atmosphere.js`, and put the
-[Atmosphere JavaScript client](https://github.com/futurechimp/scalatra-atmosphere-example/blob/master/src/main/webapp/js/jquery-atmosphere.js)
+[Atmosphere JavaScript client](https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/jquery-atmosphere.js)
 alongside it, and you've got a working client implementation. 
 
 A few key points in `application.js`. 
