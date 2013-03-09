@@ -40,6 +40,7 @@ You get `ShouldMatchers` and `MustMatchers` for free.
 
 ```scala
 import org.scalatra.test.scalatest._
+import org.scalatest.FunSuite
 
 class HelloWorldServletTests extends ScalatraSuite with FunSuite {
   // `HelloWorldServlet` is your app which extends ScalatraServlet
