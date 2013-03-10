@@ -9,6 +9,8 @@ title: Handling JSON | Formats | Scalatra guides
 
 Scalatra makes JSON handling quick and easy. By adding a few library imports and several lines of code, you can get automatic JSON serialization and deserialization for any Scala case class.
 
+### Setup
+
 Let's say you've generated a brand-new Scalatra project, and accepted all the defaults, except you've used "FlowersController" instead of "MyScalatraServlet" for the servlet name. Then you trim things down so you've got a bare controller like this one:
 
 ```scala
@@ -34,6 +36,8 @@ class ScalatraBootstrap extends LifeCycle {
   }
 }
 ```
+
+### The data infrastructure
 
 We can quickly add a Flower model underneath our controller class, so that we've got a data model to play with:
 
@@ -72,6 +76,8 @@ If you hit your local server on [http://localhost:8080](http://localhost:8080), 
 ```scala
 List(Flower(yellow-tulip,Yellow Tulip), Flower(red-rose,Red Rose), Flower(black-rose, Black Rose))
 ```
+
+### Defaulting to json output
 
 What's going on here? Scalatra has converted the `FlowerData.all` value to a string and rendered its Scala source representation as the response. This is the default behaviour, but in fact we don't want things to work this way - we want to use JSON as our data interchange format.
 
@@ -131,6 +137,8 @@ Your code should compile again at this point. Refresh your browser at [http://lo
 
 The `JsonJacksonSupport` trait which we mixed into the controller, combined with the `implicit val jsonFormats`, are now turning all Scalatra action result values into JSON.
 
+### Receiving JSON
+
 Inbound JSON works in a similar way.
 
 When a json request comes, which is identified by the Content-Type header or format param then scalatra will try to read the json body into an AST. 
@@ -145,4 +153,16 @@ post("/create") {
 }
 ```
 
+### Manipulating the json 
 
+You can transform the JSON AST before when it's being received by overriding the method `transformRequestBody`
+
+```scala
+protected override transformRequestBody(body: JValue): JValue = body.camelizeKeys
+```
+
+Likewise you can also transform the JSON AST right before sending it by overriding the method `transformResponseBody`
+
+```scala
+protected override transformResponseBody(body: JValue): JValue = body.underscoreKeys
+```
