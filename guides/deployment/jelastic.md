@@ -24,17 +24,18 @@ They offer a 2-week free trial, after which point their rates are among the best
 
 ## 1. [Register](http://jelastic.com/) for an account.
 Jelastic is a platform with many hosts to choose from.
-**In this guide we'll assume you've chosen ServInt as your host.**
+**In this guide we'll assume you've chosen LayerShift as your host.**
 
 ## 2. Create an environment.
 An "environment" in Jelastic-speak is a selection of a servlet container and any add-ons
 (like databases) that you may want.
-On your [management console](https://app.jelastic.servint.net/) click
+
+On your [management console](https://app.j.layershift.co.uk/) click
 "Create environment."
 
 <a href="jelastic-screenshot.png"><img width="500" src="jelastic-screenshot.png" /></a>
 
-You need to choose an environment name that is unique across the entire ServInt host.
+You need to choose an environment name that is unique across the entire Layershift host.
 **We'll proceed with the environment name `scalatra-test`, but yours will necessarily be
 different.**
 The default of Tomcat 7 automatically scaling between 1 and 8 cloudlets is fine for us.
@@ -74,7 +75,7 @@ JelasticKeys.password in JelasticKeys.deploy := sys.env.get("JELASTIC_PWD").getO
 sys error "Please export JELASTIC_PWD in your shell!"
 )
 
-JelasticKeys.apiHoster := "app.jelastic.servint.net"
+JelasticKeys.apiHoster := "app.j.layershift.co.uk"
 
 JelasticKeys.environment in JelasticKeys.deploy := "scalatra-test"
 
@@ -115,7 +116,7 @@ SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 [info] Jelastic session: 62e8x8c50adf7c46f3459f851617020ef8a53
-[info] Upload of http://6e49611e3c2db05e830d2d4c9381469a.app.jelastic.servint.net/xssu/rest/download/RDYYHFdvUVcIBl5JYldpTUAXDBQFHkQWCEE%2BGSgndlVHHkZZDwQBQmNTTEBI with size 22548400 succeeded.
+[info] Upload of http://6e49611e3c2db05e830d2d4c9381469a.app.j.layershift.co.uk/xssu/rest/download/RDYYHFdvUVcIBl5JYldpTUAXDBQFHkQWCEE%2BGSgndlVHHkZZDwQBQmNTTEBI with size 22548400 succeeded.
 [info] File registration for developer 25320 success
 [info] Deploy success
 [info] Stopping tomcat: 
@@ -124,9 +125,9 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 [info] Waiting for processes to exit..
 [info] Sending the Tomcat processes a SIGTERM asking them to shut down gracefully..
 [info] [  OK  ]
-[info] --2012-12-16 22:44:39--  http://6e49611e3c2db05e830d2d4c9381469a.app.jelastic.servint.net/xssu/rest/download/RDYYHFdvUVcIBl5JYldpTUAXDBQFHkQWCEE%2BGSgndlVHHkZZDwQBQmNTTEBI
-[info] Resolving 6e49611e3c2db05e830d2d4c9381469a.app.jelastic.servint.net... 207.58.158.90
-[info] Connecting to 6e49611e3c2db05e830d2d4c9381469a.app.jelastic.servint.net|207.58.158.90|:80... connected.
+[info] --2012-12-16 22:44:39--  http://6e49611e3c2db05e830d2d4c9381469a.app.j.layershift.co.uk/xssu/rest/download/RDYYHFdvUVcIBl5JYldpTUAXDBQFHkQWCEE%2BGSgndlVHHkZZDwQBQmNTTEBI
+[info] Resolving 6e49611e3c2db05e830d2d4c9381469a.app.j.layershift.co.uk... 207.58.158.90
+[info] Connecting to 6e49611e3c2db05e830d2d4c9381469a.app.j.layershift.co.uk|207.58.158.90|:80... connected.
 [info] HTTP request sent, awaiting response... 200 OK
 [info] Length: 22547738 (22M) [application/octet-stream]
 [info] Saving to: `/opt/tomcat//webapps/ROOT.war'
@@ -148,5 +149,5 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 
 ## 7. Visit your website
 
-Since we used the environment `scalatra-test`, the app is now live at [http://scalatra-test.jelastic.servint.net](http://scalatra-test.jelastic.servint.net).
+Since we used the environment `scalatra-test`, the app is now live at [http://scalatra-test.j.layershift.co.uk](http://scalatra-test.j.layershift.co.uk).
 As always, you will have to substitute your environment name into that URL.
