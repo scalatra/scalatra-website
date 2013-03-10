@@ -13,6 +13,14 @@ title: Reverse routes | HTTP | Scalatra
 `UrlSupport.url` will return a string that can be used in your output or a
 redirect statement.
 
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  The
+  <a href="{{site.examples}}http/scalatra-http-demo">http/scalatra-http-demo</a>
+  is a good place to start if you'd like to see working UrlSupport examples.
+</div>
+
+
 ```scala
 class MyApp extends ScalatraServlet with UrlSupport {
 

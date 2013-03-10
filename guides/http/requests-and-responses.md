@@ -26,6 +26,14 @@ The underlying servlet request is implicitly extended with the following methods
 The `request` also implements a `scala.collection.mutable.Map` backed by the
 request attributes.
 
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  The
+  <a href="{{site.examples}}http/scalatra-http-demo">http/scalatra-http-demo</a>
+  is a good place to start if you need to see basic requests and response, cookies, 
+  and dealing with form input.
+</div>
+
 ## Response
 
 The response is available through the `response` variable.
