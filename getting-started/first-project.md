@@ -176,48 +176,5 @@ to [understand more](project-structure.html) about the project setup, or
 dive straight into our [guides](../guides), which show you how to perform
 common development tasks.
 
-Alternately, you may want to look at some example applications.
-
-## Scalatra examples
-
-For most people, the easiest way to learn a new web framework is to see
-example code in action.
-
-The Scalatra code base contains [examples][examples] which you can easily run
-yourself.
-These are a great opportunity to dissect some code for common tasks,
-including:
-
-[examples]: https://github.com/scalatra/scalatra/tree/develop/example/src/main/scala/org/scalatra
-
-* parameters
-* form submission
-* file uploading
-* flash scope
-* login / logout actions
-* filters
-* cookies
-* chat (Atmosphere-based Meteor chat)
-* chat (Servlet 3.0-based async chat)
-
-Download and run the examples:
-
-```
-$ git clone https://github.com/scalatra/scalatra.git
-$ cd scalatra
-$ ./sbt
-> project scalatra-example
-> container:start
-```
-
-There should now be a website with examples running at
-[http://localhost:8080/](http://localhost:8080/).
-(Just make sure you're not already running your own project on that port!).
-
-The code running the examples site resides in
-```example/src/main/scala/org/scalatra/```.
-
----
-
-Now that you've created your first Scalatra app, it's time to learn a little
-bit about Scalatra's simple [project structure](project-structure.html).
+Many of the Scalatra guides have companion code projects, so you can learn
+by seeing running example code in action.
