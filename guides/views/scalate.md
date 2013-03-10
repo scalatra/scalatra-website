@@ -91,14 +91,14 @@ directory:
 def get("/") {
   contentType="text/html"
 
-  layoutTemplate("/WEB-INF/views/index.ssp")
+  layoutTemplate("/WEB-INF/templates/views/index.ssp")
 }
 ```
 
 <span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span>
 When using `layoutTemplate`, you *must* prefix your view paths with a relative
-`/` character. So, `layoutTemplate("/WEB-INF/views/foo.ssp")` is good,
-`layoutTemplate("WEB-INF/views/foo.ssp)` will fail.
+`/` character. So, `layoutTemplate("/WEB-INF/templates/views/foo.ssp")` is good,
+`layoutTemplate("WEB-INF/templates/views/foo.ssp)` will fail.
 
 #### Passing parameters to views
 
@@ -246,7 +246,7 @@ class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
       case s if s.endsWith("/") => s + "index"
       case s => s
     }
-    val templatePath = "/WEB-INF/scalate/templates/" + templateBase + ".scaml"
+    val templatePath = "/WEB-INF/templates/" + templateBase + ".scaml"
     servletContext.getResource(templatePath) match {
       case url: URL =>
         contentType = "text/html"
