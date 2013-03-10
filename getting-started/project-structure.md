@@ -13,11 +13,14 @@ The recommended way of structuring a Scalatra project is as follows. It's
 what you get when you generate a new project using giter8:
 
     project
+    |_build.properties      <= specifies what version of sbt to use
+    |_build.scala           <= dependencies and project config are set in here
+    |_plugins.sbt           <= sbt plugins can be added here
 
     src
     |_ main
     |  |_ scala
-    |  |  |   |_ScalatraBootstrap.scala <= see note below!
+    |  |  |   |_ScalatraBootstrap.scala     <= mount servlets in here
     |  |  |_org
     |  |      |_ yourdomain
     |  |         |_ projectname
