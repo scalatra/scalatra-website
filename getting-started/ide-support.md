@@ -53,10 +53,10 @@ project will work as expected in the IDE.
 
 ```
 $ ./sbt
-> idea
+> gen-idea
 ```
 
-Be sure to re-run `./sbt idea` every time you add or update a dependency in
+Be sure to re-run `./sbt gen-idea` every time you add or update a dependency in
 `project/build.scala`.
 
 ## ENSIME (for Emacs)
