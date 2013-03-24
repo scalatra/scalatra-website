@@ -57,7 +57,7 @@ for an example.
 "org.scalatra" %% "scalatra-auth" % "{{ site.scalatra_version }}"
 ```
 
-You'll need the scalatra-auth dependency in your built.sbt for all subsequent
+You'll need the scalatra-auth dependency in your `project/build.scala` for all subsequent
 examples. `scalatra-auth` handles both cookie-based auth and HTTP basic auth.
 
 ## HTTP Basic Auth example
