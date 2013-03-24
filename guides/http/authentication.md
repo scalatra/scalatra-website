@@ -85,7 +85,7 @@ import org.scalatra.auth.strategy.{BasicAuthStrategy, BasicAuthSupport}
 import org.scalatra.auth.{ScentrySupport, ScentryConfig}
 import org.scalatra.{ScalatraSyntax}
 
-class OurBasicAuthStrategy(protected override val app: ScalatraSyntax, realm: String)
+class OurBasicAuthStrategy(protected override val app: ScalatraBase, realm: String)
   extends BasicAuthStrategy[User](app, realm) {
 
   protected def validate(userName: String, password: String): Option[User] = {
@@ -107,7 +107,7 @@ with `ScentrySupport`. It might look like this:
 
 ```scala
 trait AuthenticationSupport extends ScentrySupport[User] with BasicAuthSupport[User] {
-  self: ScalatraSyntax =>
+  self: ScalatraBase =>
 
   val realm = "Scalatra Basic Auth Example"
 
