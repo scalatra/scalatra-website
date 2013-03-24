@@ -83,7 +83,7 @@ package org.scalatra.example
 
 import org.scalatra.auth.strategy.{BasicAuthStrategy, BasicAuthSupport}
 import org.scalatra.auth.{ScentrySupport, ScentryConfig}
-import org.scalatra.{ScalatraSyntax}
+import org.scalatra.{ScalatraBase}
 
 class OurBasicAuthStrategy(protected override val app: ScalatraBase, realm: String)
   extends BasicAuthStrategy[User](app, realm) {
