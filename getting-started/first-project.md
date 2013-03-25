@@ -95,7 +95,7 @@ on first run.
 
 ## Hello world
 
-Now that Scalatra is now installed, how about making your first application?
+Now that Scalatra is installed, how about making your first application?
 Source files go into `src/main/scala/com/example/app`
 (substitute your package for `com/example/app`).
 Open `src/main/scala/com/example/app/MyScalatraServlet.scala`, or whatever
