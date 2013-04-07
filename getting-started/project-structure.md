@@ -151,8 +151,8 @@ object MyExampleBuild extends Build {
   val Organization = "com.example"
   val Name = "An Example Application"
   val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.9.2"
-  val ScalatraVersion = "({{ site.scalatra_version }}"
+  val ScalaVersion = "2.10.1"
+  val ScalatraVersion = "{{ site.scalatra_version }}"
 
   lazy val project = Project (
     "scalatra-buildfile-example",
@@ -168,9 +168,9 @@ object MyExampleBuild extends Build {
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
-        "ch.qos.logback" % "logback-classic" % "1.0.6" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
-        "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+        "ch.qos.logback" % "logback-classic" % "{{ site.logback_version }}" % "runtime",
+        "org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "container",
+        "org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(

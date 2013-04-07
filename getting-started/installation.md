@@ -32,7 +32,7 @@ OpenJDK 64-Bit Server VM (build 20.0-b12, mixed mode)
 
 ```bash
 $ javac -version
-javac 1.7.0_03
+javac 1.6.0_24
 ```
 
 You need version 1.6 or higher.
