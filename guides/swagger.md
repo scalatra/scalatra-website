@@ -47,7 +47,7 @@ import org.json4s.{DefaultFormats, Formats}
 // JSON handling support from Scalatra
 import org.scalatra.json._
 
-class FlowersController extends ScalatraServlet with JacksonJsonSupport {
+class FlowersController extends ScalatraServlet with NativeJsonSupport {
 
   // Sets up automatic case class to JSON output serialization
   protected implicit val jsonFormats: Formats = DefaultFormats
@@ -98,7 +98,7 @@ Don't forget to add the JSON libraries to your `project/build.scala` file to mak
 
 ```scala
   "org.scalatra" %% "scalatra-json" % "{{ site.scalatra_version }}",
-  "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
+  "org.json4s"   %% "json4s-native" % "{{ site.json4s_version }}",
 ```
 
 #### Namespacing the controller
@@ -231,15 +231,16 @@ controller to our application. Drop this code into a new file next to your
 ```scala
 package org.scalatra.example.swagger
 
-import org.scalatra.swagger.{JacksonSwaggerBase, Swagger, SwaggerBase}
+import org.scalatra.swagger.{NativeSwaggerBase, Swagger}
 
 import org.scalatra.ScalatraServlet
 import com.fasterxml.jackson.databind._
 import org.json4s.jackson.Json4sScalaModule
 import org.json4s.{DefaultFormats, Formats}
 
-class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with JacksonSwaggerBase {
-  implicit val jsonFormats: Formats = DefaultFormats
+
+class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with NativeSwaggerBase {
+  implicit override val jsonFormats: Formats = DefaultFormats
 }
 
 class FlowersSwagger extends Swagger("1.0", "1")
@@ -289,7 +290,7 @@ aware of Swagger in its constructor.
 
 ```scala
 class FlowersController(implicit val swagger: Swagger) extends ScalatraServlet
-  with JacksonJsonSupport with JValueResult with SwaggerSupport {
+  with NativeJsonSupport with SwaggerSupport {
 ```
 
 In order to make our application compile again, we'll need to add a name and
