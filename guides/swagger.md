@@ -67,6 +67,9 @@ class FlowersController extends ScalatraServlet with NativeJsonSupport {
     }
   }
 
+  /**
+   * Find a flower using its slug.
+   */
   get("/:slug") {
     FlowerData.all find (_.slug == params("slug")) match {
       case Some(b) => b
