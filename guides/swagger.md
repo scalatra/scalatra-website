@@ -205,7 +205,7 @@ for free.
 
 #### Dependencies
 
-First, add the Swagger dependencies to your `project/build.scala` file, then restart your
+First, add the Swagger dependency to your `project/build.scala` file, then restart your
 app to grab the new jars:
 
 ```scala
