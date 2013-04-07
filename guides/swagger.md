@@ -209,7 +209,6 @@ First, add the Swagger dependencies to your `project/build.scala` file, then res
 app to grab the new jars:
 
 ```scala
-"com.wordnik"  %% "swagger-core"  % "{{ site.swagger_version }}",
 "org.scalatra" %% "scalatra-swagger"  % "{{ site.scalatra_version }}",
 ```
 
