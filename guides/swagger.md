@@ -315,7 +315,6 @@ Let's do the `get("/")` route first.
 Right now, it looks like this:
 
 ```scala
-
   get("/"){
     params.get("name") match {
       case Some(name) => FlowerData.all filter (_.name.toLowerCase contains name.toLowerCase)
@@ -327,13 +326,14 @@ Right now, it looks like this:
 We'll need to add some information to the method in order to tell Swagger what this method does, what parameters it can take, and what it responds with.
 
 ```scala
-  get("/",
-    summary("Show all flowers"),
-    nickname("getFlowers"),
-    responseClass("List[Flower]"),
-    parameters(Parameter("name", "A name to search for", DataType.String, paramType = ParamType.Query, required = false)),
-    endpoint(""),
-    notes("Shows all the flowers in the flower shop. You can search it too.")){
+
+  val getFlowers = 
+    (apiOperation[List[Flower]]("getFlowers")
+      summary "Show all flowers"
+      notes "Shows all the flowers in the flower shop. You can search it too."
+      parameter queryParam[Option[String]]("name").description("A name to search for"))
+
+  get("/", operation(getFlowers)) {
     params.get("name") match {
       case Some(name) => FlowerData.all filter (_.name.toLowerCase contains name.toLowerCase)
       case None => FlowerData.all
@@ -367,16 +367,14 @@ We can do the same to our `get(/:slug)` route. Change it from this:
 to this:
 
 ```scala
-  get("/:slug",
-    summary("Find by slug"),
-    nickname("findBySlug"),
-    responseClass("Flower"),
-    endpoint("{slug}"),
-    notes("Returns the flower for the provided slug, if a matching flower exists."),
-    parameters(
-      Parameter("slug", "Slug of flower that needs to be fetched",
-        DataType.String,
-        paramType = ParamType.Path))) {
+  val findBySlug = 
+    (apiOperation[Flower]("findBySlug")
+      summary "Find by slug"
+      parameters (
+        pathParam[String]("slug").description("Slug of flower that needs to be fetched")
+      ))
+
+  get("/:slug", operation(findBySlug)) {
     FlowerData.all find (_.slug == params("slug")) match {
       case Some(b) => b
       case None => halt(404)
