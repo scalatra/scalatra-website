@@ -324,7 +324,6 @@ Right now, it looks like this:
 We'll need to add some information to the method in order to tell Swagger what this method does, what parameters it can take, and what it responds with.
 
 ```scala
-
   val getFlowers = 
     (apiOperation[List[Flower]]("getFlowers")
       summary "Show all flowers"
