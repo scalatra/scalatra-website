@@ -104,12 +104,7 @@ data and do data-related work.
 
 This tutorial will start by generating a fresh project, talk you through
 the project setup, and then show you several different ways of using 
-commands in Scalatra. There are a few different git tags available:
-
-* [Params binding](https://github.com/scalatra/scalatra-databinding-example/tree/paramsonly-binding) shows the use of incoming HTTP params
-with Command objects.
-
-* [JSON commands](https://github.com/scalatra/scalatra-databinding-example/tree/json-binding) shows the use of JSON with Command objects.
+commands in Scalatra. 
 
 ### Generating the project
 
