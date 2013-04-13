@@ -95,11 +95,12 @@ data and do data-related work.
 
 ### Downloading the sample project
 
-Before you start, you may wish to download the completed, runnable Todolist
-project. This may help you cross-check your own code if you run into any
-problems. It's available here:
-
-[https://github.com/scalatra/scalatra-databinding-example/](https://github.com/scalatra/scalatra-databinding-example/)
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  See
+  <a href="{{site.examples}}formats/scalatra-commands">scalatra-commands</a>
+  for a minimal and standalone project containing the example in this guide.
+</div>
 
 This tutorial will start by generating a fresh project, talk you through
 the project setup, and then show you several different ways of using 
