@@ -263,7 +263,7 @@ will store all of the Todo-related commands so they're in one place.
 To start with, you'll need to add command support to your application.
 
 ```scala
-"org.scalatra" %% "scalatra-data-binding" % "{{ site.scalatra_version }}",
+"org.scalatra" %% "scalatra-commands" % "{{ site.scalatra_version }}",
 ```
 
 `TodoCommands.scala` can look like this:
