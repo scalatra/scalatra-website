@@ -9,15 +9,14 @@ title: Standalone deployment | Deployment | Scalatra
 
 ### Launching Scalatra as a servlet
 
-ScalatraServlet is an HttpServlet, we just need some glue code to launch an
-embedded Jetty server with this Servlet.
+We need some glue code to launch an embedded Jetty server with the ScalatraListener.
 
 ```scala
 package com.example  // remember this package in the sbt project definition
 import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
 import org.eclipse.jetty.webapp.WebAppContext
-import org.scalatra.TemplateExample // this is the example Scalatra servlet
+import org.scalatra.servlet.ScalatraListener
 
 object JettyLauncher { // this is my entry object as specified in sbt project definition
   def main(args: Array[String]) {
@@ -27,7 +26,7 @@ object JettyLauncher { // this is my entry object as specified in sbt project de
     val context = new WebAppContext()
     context setContextPath "/"
     context.setResourceBase("src/main/webapp")
-    context.addServlet(classOf[TemplateExample], "/*")
+    context.addEventListener(new ScalatraListener)
     context.addServlet(classOf[DefaultServlet], "/")
 
     server.setHandler(context)
@@ -36,6 +35,33 @@ object JettyLauncher { // this is my entry object as specified in sbt project de
     server.join
   }
 }
+```
+
+Be sure to define the appropriate [ScalatraBootstrap](configuration.html):
+
+```scala
+import org.scalatra.LifeCycle
+import javax.servlet.ServletContext
+import org.scalatra.TemplateExample // this is the example Scalatra servlet
+
+class ScalatraBootstrap extends LifeCycle {
+  override def init(context: ServletContext) {
+    context mount (new TemplateExample, "/*")
+  }
+}
+```
+
+The ScalatraBootstrap can be in [the usual place](../../getting-started/project-structure.html),
+but if you would like to specify a specific package and class, you can do so
+with an init parameter:
+
+```scala
+    ...
+    context setContextPath "/"
+    context.setResourceBase("src/main/webapp")
+    context.setInitParameter(ScalatraListener.LifeCycleKey, "org.yourdomain.project.ScalatraBootstrap")
+    context.addEventListener(new ScalatraListener)
+    ...
 ```
 
 With the [sbt-assembly](https://github.com/sbt/sbt-assembly) plugin you can make a launchable jar.
