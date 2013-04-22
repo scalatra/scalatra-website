@@ -35,23 +35,6 @@ initial servlet `ChatController`.
 You'll need to do a few things to a default Scalatra project in order
 to get it ready for use with Atmosphere.
 
-First, open up your `web.xml` file. You'll see it's got a listener set:
-
-```xml
-<listener>
-  <listener-class>org.scalatra.servlet.ScalatraListener</listener-class>
-</listener>
-```
-
-You'll need to change the default listener so it uses an 
-Atmosphere-aware one:
-
-```xml
-<listener>
-  <listener-class>org.scalatra.atmosphere.ScalatraAtmosphereListener</listener-class>
-</listener>  
-```
-
 #### Dependencies
 
 The following dependencies will be needed to make the sample application
@@ -89,6 +72,10 @@ import org.json4s._
 import JsonDSL._
 import java.util.Date
 import java.text.SimpleDateFormat
+
+
+import scala.concurrent._
+import ExecutionContext.Implicits.global
 ```
 
 #### Writing the ChatController
