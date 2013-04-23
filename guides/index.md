@@ -35,7 +35,7 @@ title: Scalatra guides | Scalatra
 [wro4j](resources/wro4j.html)
 
 <h4>Formats</h4>
-[JSON](formats/json.html), [Commands](formats/commands.html), XML, forms
+[File Upload](formats/upload.html), [JSON](formats/json.html), [Commands](formats/commands.html), XML, forms
 
 <h4>Persistence</h4>
 [Slick](persistence/slick.html), [Squeryl](persistence/squeryl.html), MongoDB
