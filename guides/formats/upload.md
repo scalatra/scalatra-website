@@ -12,22 +12,24 @@ title: File upload | Formats | Scalatra guides
 
 File upload support is included within Scalatra by default by leveraging
 the Servlet 3.0 API's built-in support for `multipart/form-data` requests.
+For a working example, see
+[FileUploadExample.scala](https://github.com/scalatra/scalatra/blob/develop/example/src/main/scala/org/scalatra/FileUploadExample.scala).
 
-First, extend your application with `FileUploadSupport`:
+To enable file upload support, extend your application with `FileUploadSupport`
+and set the upload configuration with a call to `configureMultipartHandling`:
 
 ```scala
 import org.scalatra.ScalatraServlet
-import org.scalatra.servlet.FileUploadSupport
-import javax.servlet.annotation.MultipartConfig
+import org.scalatra.servlet.{FileUploadSupport, MultipartConfig, SizeConstraintExceededException}
 
-@MultipartConfig(maxFileSize=3*1024*1024)
 class MyApp extends ScalatraServlet with FileUploadSupport {
+  configureMultipartHandling(MultipartConfig(maxFileSize = Some(3*1024*1024)))
   // ...
 }
 ```
 
-If you prefer using your `web.xml` over the `@MultipartConfig` annotation, you can also
-place `<multipart-config>` to your `<servlet>`:
+If you prefer using your `web.xml` over `MultipartConfig`, you can also place
+`<multipart-config>` in your `<servlet>`:
 
 ```xml
 <servlet>
@@ -40,13 +42,30 @@ place `<multipart-config>` to your `<servlet>`:
 </servlet>
 ```
 
-See
+See the
 [javax.servlet.annotation.MultipartConfig Javadoc](http://docs.oracle.com/javaee/6/api/javax/servlet/annotation/MultipartConfig.html)
 for more details on configurable attributes.
 
 <span class="badge badge-warning"><i class="icon-flag icon-white"></i></span>
-Note for Jetty users: `@MultipartConfig` and the `<multipart-config>` tag in `web.xml`
+Note for Jetty users: `MultipartConfig` and the `<multipart-config>` tag in `web.xml`
 do not work correctly in Jetty prior to version 8.1.3.
+
+If you are [embedding Jetty](../deployment/standalone.html), you must either mount the servlet in your
+[ScalatraBootstrap](../deployment/configuration.html), or you must configure it via the ServletHolder:
+
+```scala
+  import org.scalatra.servlet.MultipartConfig
+  // ...
+  val holder = context.addServlet(classOf[YourScalatraServlet], "/*")
+  holder.getRegistration.setMultipartConfig(
+    MultipartConfig(
+      maxFileSize = Some(3*1024*1024),
+      fileSizeThreshold = Some(1*1024*1024)
+    ).toMultipartConfigElement
+  )
+  // ...
+}
+```
 
 Be sure that your form is of type `multipart/form-data`:
 
