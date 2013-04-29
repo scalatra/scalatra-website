@@ -77,7 +77,7 @@ If you hit your local server on [http://localhost:8080](http://localhost:8080), 
 List(Flower(yellow-tulip,Yellow Tulip), Flower(red-rose,Red Rose), Flower(black-rose, Black Rose))
 ```
 
-### Defaulting to json output
+### Defaulting to JSON output
 
 What's going on here? Scalatra has converted the `FlowerData.all` value to a string and rendered its Scala source representation as the response. This is the default behaviour, but in fact we don't want things to work this way - we want to use JSON as our data interchange format.
 
@@ -112,6 +112,12 @@ Now we can add a bit of magic to the FlowersController. Putting this line of cod
   // Sets up automatic case class to JSON output serialization, required by
   // the JValueResult trait.
   protected implicit val jsonFormats: Formats = DefaultFormats
+```
+
+To serialize fractional numbers as `BigDecimal` instead of `Double`, use `DefaultFormats.withBigDecimal`:
+
+```scala
+  protected implicit val jsonFormats: Formats = DefaultFormats.withBigDecimal
 ```
 
 Just like its Sinatra forebear, Scalatra has a rich set of constructs for running things before and after requests to your controllers. A `before` filter runs before all requests. Add a `before` filter to set all output for this controller to set the content type for all action results to JSON:
@@ -153,7 +159,7 @@ post("/create") {
 }
 ```
 
-### Manipulating the json 
+### Manipulating the JSON 
 
 You can transform the JSON AST before when it's being received by overriding the method `transformRequestBody`
 
