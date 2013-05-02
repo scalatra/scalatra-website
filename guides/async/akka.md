@@ -19,7 +19,17 @@ folded directly into Scalatra core, and the scalatra-akka dependency is no
 longer needed. To get access to Akka, all you need to do is mix FutureSupport
 into your servlets.
 
-### Setting up  Akka
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  If you're using Scala 2.9.x, you'll need 
+  <a href="https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/akka-examples/project/build.scala#L24">the Akka resolver</a> 
+  in your sbt configuration, otherwise you'll get a missing dependency. Add 
+  <pre>resolvers += "Akka Repo" at "http://repo.akka.io/repository",</pre>
+  and you'll be all set.
+</div>
+
+
+### Setting up your Scalatra app with Akka
 
 When you're using Akka, you'll want to start your `Actor`s and `ActorSystem`
 from inside the `ScalatraBootstrap` class. You can then pass those into the
@@ -94,15 +104,6 @@ As a more concrete example, here's how you'd make an asynchronous HTTP
 request from inside one of your actions, using the
 [Dispatch](http://dispatch.databinder.net/Dispatch.html) http client and an
 Akka `ActorSystem`.
-
-<div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-  If you're using Scala 2.9.x, you'll need 
-  <a href="https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/akka-examples/project/build.scala#L24">the Akka resolver</a> 
-  in your sbt configuration, otherwise you'll get a missing dependency. Add 
-  <pre>resolvers += "Akka Repo" at "http://repo.akka.io/repository",</pre>
-  and you'll be all set.
-</div>
 
 ```scala
 package com.example.app
