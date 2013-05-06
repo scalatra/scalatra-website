@@ -96,4 +96,4 @@ class MongoController(mongoColl: MongoCollection) extends ScalatraCasbahExampleS
 }
 ```
 
-Once you've got the `MongoCollection` available inside your controller, you can proceed to the [Casbah Tutorial](http://mongodb.github.io/casbah/tutorial.html).
+Once you've got the `MongoCollection` available inside your controller, you can use Mongo and Scalatra together seamlessly. If you would like to learn more about Casbah, proceed to the [Casbah Tutorial](http://mongodb.github.io/casbah/tutorial.html).
