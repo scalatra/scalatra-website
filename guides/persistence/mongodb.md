@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: MongoDB | Models | Scalatra guides
+title: MongoDb | Persistence | Scalatra guides
 ---
 
 <div class="page-header">

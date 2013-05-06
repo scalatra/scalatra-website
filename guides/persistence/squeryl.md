@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Squeryl | Models | Scalatra guides
+title: Squeryl | Persistence | Scalatra guides
 ---
 
 <div class="page-header">

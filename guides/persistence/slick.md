@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Slick | Models | Scalatra guides
+title: Slick | Persistence | Scalatra guides
 ---
 
 <div class="page-header">
