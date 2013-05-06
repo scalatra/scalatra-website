@@ -41,7 +41,8 @@ class ScalatraBootstrap extends LifeCycle {
   override def init(context: ServletContext) {
 
      // As you can see, there's not much to do in order to get MongoDb working with Scalatra.
-     // We're connecting with default settings - localhost on port 27017 - by calling MongoClient() with no arguments.
+     // We're connecting with default settings - localhost on port 27017 - 
+     // by calling MongoClient() with no arguments.
     val mongoClient =  MongoClient()
     val mongoColl = mongoClient("casbah_test")("test_data")
 
