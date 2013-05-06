@@ -7,7 +7,7 @@ title: MongoDb | Persistence | Scalatra guides
   <h1>MongoDB</h1>
 </div>
 
-MongoDB is an open-source document database, and one of the most widely deployed NoSQL databases. It is extremely easy to use with Scalatra. 
+[MongoDb](http://mongodb.org) is an open-source document database, and one of the most widely deployed NoSQL databases. It is extremely easy to use with Scalatra. 
 
 There are multiple Scala clients for MongoDb, and they come with varying levels of complexity. Here are some of them, as listed in MongoDb's [Scala Language Center](http://docs.mongodb.org/ecosystem/drivers/scala/).
 

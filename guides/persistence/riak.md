@@ -7,7 +7,7 @@ title: Riak | Persistence | Scalatra guides
   <h1>Riak</h1>
 </div>
 
-Riak is an open source, distributed database.  
+[Riak](http://riak.basho.org) is an open source, distributed database.  
 
 There are multiple clients for Riak, with varying levels of complexity, Scala integration, and maturity.
 
