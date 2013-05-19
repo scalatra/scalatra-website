@@ -17,7 +17,7 @@ This guide will show you how.
 
 ### Integrating a persistence library
 
-Although the details depend on your chosen library, the basic steps for getting your chosen persistence library working with Scalatra are pretty similar. 
+Although the details depend on the library, the general steps for getting your chosen persistence library working with Scalatra are pretty similar across libraries. 
 
 1. Add a reference to your library in `project/build.scala`
 1. Start a connection pool at application start
