@@ -45,7 +45,7 @@ stylesheets.
 
 #### Your own servlet container
 
-Another option is to run your own servlet container - there are certainly
+Now that you've got a WAR file, you can run it in a servlet container - there are certainly
 [lots to choose from](http://en.wikipedia.org/wiki/Web_container).
 
 Let's try [Tomcat](http://tomcat.apache.org), with a local installation.
