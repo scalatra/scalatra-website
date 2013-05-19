@@ -28,7 +28,19 @@ Assuming you've got Riak installed already, getting it working with Scalatra is 
 
 We'll use Basho's officially-supported riak-java-client library.
 
-First, we'll make a `RiakInit` trait which we can use to initialize a Riak bucket at appliation start:
+### Reference riak-client from your build file
+
+First, add the library to `project/build.scala`:
+
+```scala
+libraryDependencies ++= Seq(
+        "com.basho.riak" % "riak-client" % "1.1.0",
+        "org.scalatra" %% "scalatra" % ScalatraVersion,
+```
+
+### Start a connection pool at application start
+
+Next, we'll make a `RiakInit` trait which we can use to initialize a Riak bucket when our application starts:
 
 ```scala
 package org.scalatra.example
