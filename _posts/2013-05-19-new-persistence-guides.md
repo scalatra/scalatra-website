@@ -19,6 +19,7 @@ get started with whichever one you choose - so the introduction to
 persistence guide gives an overview of the steps for 
 [writing your own](/2.2/guides/persistence/introduction.html).
 
-If anybody would like to contribute a guide for a specific persistence library which
-we don't have docs for, pull requests on [the docs](https://github.com/scalatra/scalatra-website)
+If anybody would like to contribute a guide for a specific persistence 
+library which we don't have docs for, pull requests on 
+[the docs](https://github.com/scalatra/scalatra-website)
 are very welcome.
