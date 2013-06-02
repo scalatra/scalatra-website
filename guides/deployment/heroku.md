@@ -65,6 +65,11 @@ Tell sbt how to use the plugin by adding this line to `project/build.scala`:
 seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*)
 ```
 
+You can stick that into the Project settings as an extra `seq`, i.e.
+
+```scala
+Project(..., settings = blah ++ blah ++ seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*), ...)
+
 ### Tell Heroku to use the generated start script
 
 Create a file named `Procfile` in the root of your application.
