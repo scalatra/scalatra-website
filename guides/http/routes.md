@@ -84,6 +84,10 @@ get("""^\/f(.*)/b(.*)""".r) {
 }
 ```
 
+It's likely that you'll want to anchor your regex (e.g. `^/this/that`) to make
+sure that the matched URL pattern starts at the beginning of the incoming path.
+There could be cases where you wouldn't want this, but they're hard to imagine.
+
 ### Rails-like pattern matching
 
 By default, route patterns parsing is based on Sinatra.  Rails has a similar,
