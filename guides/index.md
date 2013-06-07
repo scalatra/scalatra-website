@@ -38,7 +38,7 @@ title: Scalatra guides | Scalatra
 [File Upload](formats/upload.html), [JSON](formats/json.html), [Commands](formats/commands.html), XML, forms
 
 <h4>Persistence</h4>
-[Slick](persistence/slick.html), [Squeryl](persistence/squeryl.html), MongoDB
+[Introduction](persistence/introduction.html), [MongoDB](persistence/mongodb.html), [Riak](persistence/riak.html),[Slick](persistence/slick.html), [Squeryl](persistence/squeryl.html)
 
 <h4>Web services</h4>
 [CORS](web-services/cors.html), OpenID, OAuth, HTTP Client
