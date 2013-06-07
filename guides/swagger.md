@@ -341,6 +341,14 @@ We'll need to add some information to the method in order to tell Swagger what t
   }
 ```
 
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  Make sure you initialize the val for your apiOperation before attempting to
+  use it in as part of a route definition! Otherwise you'll get a 503 error
+  when attempting to hit your route.
+</div>
+
+
 Let's go through the annotations in detail.
 
 The `summary` and `notes` should be human-readable messages that you intend to be read by developers of API clients. The summary is a short description, while the notes should offer a longer description and include any noteworthy features which somebody might otherwise miss.
