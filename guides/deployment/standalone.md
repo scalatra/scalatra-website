@@ -64,6 +64,20 @@ with an init parameter:
     ...
 ```
 
+You'll also need to ensure that the `jetty-webapp` library dependency in `project/build.scala`
+contains a `compile` directive. Assuming your jetty-webapp declaration looks something
+like this:
+
+```scala
+"org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
+```
+
+change `container` to `container;compile`:
+
+```scala
+"org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container;compile",
+```
+
 With the [sbt-assembly](https://github.com/sbt/sbt-assembly) plugin you can make a launchable jar.
 Now save this alongside your Scalatra project as JettyLauncher.scala and run
 <code>sbt clean assembly</code>. You'll have the ultimate executable jar file
