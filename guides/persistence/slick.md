@@ -23,7 +23,7 @@ title: Slick | Persistence | Scalatra guides
 The sample project contains a minimal setup. For this guide the following files are important:
 
   * `project/build.scala`: we configure the SBT build and the dependencies here.
-  * `src/main/scala/slicksupport/slick.scala`: the scalatra application and the support trait.
+  * `src/main/scala/slicksupport/slick.scala`: the scalatra application.
   * `src/main/resources/c3p0.properties`: the connection pool is configured here.
 
 ```
@@ -40,7 +40,7 @@ The sample project contains a minimal setup. For this guide the following files 
         ├── scala
         │   ├── slicksupport
         │   │   └── slick.scala      // main code goes here
-        │   └── Scalatra.scala
+        │   └── ScalatraBootstrap.scala
         └── webapp
             └── WEB-INF
                 └── web.xml
@@ -84,12 +84,12 @@ SBT is all set up. Lets proceed to the code.
 
 ## Slick Setup
 
-We put the database initialization code into `ScalatraBootstrap`. This is the class which gets executed when the web application is started. We do the following steps here:
-The following listing shows `SlickSupport` from `src/main/scala/slicksupport/slick.scala`. This trait adds the following features:
+We put the database initialization code into `ScalatraBootstrap`. This is the class which gets executed when the web application is started. We do the following here:
 
   * Setup a connection pool when the Scalatra application starts. The configuration is load from `src/main/resources/c3p0.properties`. c3p0 loads the .properties file by searching the classpath.
   * Stop the connection pool when the Scalatra application shuts down.
-  * Provides a `scala.slick.session.Database` instance in `db` which is a wrapper around the connection pool's `DataSource` and serves as source for database sessions.
+  * Provide a `scala.slick.session.Database` instance in `db` which is a wrapper around the connection pool's `DataSource` and serves as source for database sessions.
+  * Create and mount the application.
 
 ```scala
 import com.mchange.v2.c3p0.ComboPooledDataSource
