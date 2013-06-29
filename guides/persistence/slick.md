@@ -52,13 +52,13 @@ The sample project contains a minimal setup. For this guide the following files 
 Let us start with the SBT setup by editing `project/build.scala`. Slick targets Scala 2.10, so the SBT build needs to use it:
 
 ```scala
-scalaVersion := "2.10.0"
+scalaVersion := "2.10.1"
 ```
 
-Also you need to use an appropriate Scalatra version, for example `2.2-RC3` which supports Scala 2.10:
+Also you need to use an appropriate Scalatra version, for example `2.2.1` which supports Scala 2.10:
 
 ```scala
-libraryDependencies += "org.scalatra" %% "scalatra" % "2.2.0-RC3"
+libraryDependencies += "org.scalatra" %% "scalatra" % "2.2.1"
 ```
 
 For Slick we need to add the `Sonatype releases` repository and dependencies to Slick itself. For this guide we choose the [H2 Database](http://www.h2database.com/html/main.html), so we need to add a dependency to it too.
@@ -68,7 +68,7 @@ resolvers += "Sonatype Releases"  at "http://oss.sonatype.org/content/repositori
 
 
 libraryDependencies ++= Seq(
-  "com.typesafe" % "slick_2.10" % "1.0.0-RC1",
+  "com.typesafe.slick" %% "slick" % "1.0.1",
   "com.h2database" % "h2" % "1.3.166"
 )
 ```
@@ -84,44 +84,45 @@ SBT is all set up. Lets proceed to the code.
 
 ## Slick Setup
 
+We put the database initialization code into `ScalatraBootstrap`. This is the class which gets executed when the web application is started. We do the following steps here:
 The following listing shows `SlickSupport` from `src/main/scala/slicksupport/slick.scala`. This trait adds the following features:
 
-  * Setup a connection pool when the Scalatra application starts. The configuration is load from `src/main/resources/c3p0.properties`
+  * Setup a connection pool when the Scalatra application starts. The configuration is load from `src/main/resources/c3p0.properties`. c3p0 loads the .properties file by searching the classpath.
   * Stop the connection pool when the Scalatra application shuts down.
   * Provides a `scala.slick.session.Database` instance in `db` which is a wrapper around the connection pool's `DataSource` and serves as source for database sessions.
 
 ```scala
-import org.scalatra.ScalatraServlet
-import org.slf4j.LoggerFactory
-
 import com.mchange.v2.c3p0.ComboPooledDataSource
-import java.util.Properties
+import org.slf4j.LoggerFactory
+import scala.slick.session.Database
+import slicksupport._
+import org.scalatra._
+import javax.servlet.ServletContext
 
-import scala.slick.driver.H2Driver.simple._
-import Database.threadLocalSession
-
-trait SlickSupport extends ScalatraServlet {
+/**
+ * This is the ScalatraBootstrap bootstrap file. You can use it to mount servlets or
+ * filters. It's also a good place to put initialization code which needs to
+ * run at application start (e.g. database configurations), and init params.
+ */
+class ScalatraBootstrap extends LifeCycle {
 
   val logger = LoggerFactory.getLogger(getClass)
 
-  val cpds = {
-    val props = new Properties
-    props.load(getClass.getResourceAsStream("/c3p0.properties"))
-    val cpds = new ComboPooledDataSource
-    cpds.setProperties(props)
-    logger.info("Created c3p0 connection pool")
-    cpds
+  val cpds = new ComboPooledDataSource
+  logger.info("Created c3p0 connection pool")
+
+  override def init(context: ServletContext) {
+    val db = Database.forDataSource(cpds)  // create a Database which uses the DataSource
+    context.mount(SlickApp(db), "/*")      // mount the application and provide the Database
   }
 
-  def closeDbConnection() {
+  private def closeDbConnection() {
     logger.info("Closing c3po connection pool")
     cpds.close
   }
 
-  val db = Database.forDataSource(cpds)
-
-  override def destroy() {
-    super.destroy()
+  override def destroy(context: ServletContext) {
+    super.destroy(context)
     closeDbConnection
   }
 }
@@ -180,10 +181,12 @@ Now we can create some routes:
   * `GET /db/load-data` loads sample data into the tables
   * `GET /coffees` queries the database
 
-Note that we wrap code which uses the database in a session with `db withSession { .. }`. The value `db` is the one from the `SlickSupport` trait which the applications mixes in.
+We put the routes in a trait which we later add to the application. Note that we wrap code which uses the database in a session with `db withSession { .. }`. The value `db` is later provided by the application.
 
 ```scala
-class SlickRoutes extends ScalatraServlet with SlickSupport {
+trait SlickRoutes extends ScalatraServlet {
+
+  val db: Database
 
   get("/db/create-tables") {
     db withSession {
@@ -222,10 +225,18 @@ class SlickRoutes extends ScalatraServlet with SlickSupport {
         s <- c.supplier
       } yield (c.name.asColumnOf[String], s.name.asColumnOf[String])
 
+      contentType = "text/html"
       q3.list.map { case (s1, s2) => "  " + s1 + " supplied by " + s2 } mkString "<br />"
     }
   }
+
 }
+```
+
+Finally let's create the application:
+
+```scala
+case class SlickApp(db: Database) extends ScalatraServlet with SlickRoutes
 ```
 
 Congratulations, you have now a basic Slick integration working! Feel free to do your own modifications.
