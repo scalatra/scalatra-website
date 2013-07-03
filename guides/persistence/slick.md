@@ -64,7 +64,7 @@ libraryDependencies += "org.scalatra" %% "scalatra" % "2.2.1"
 For Slick we need to add the `Sonatype releases` repository and dependencies to Slick itself. For this guide we choose the [H2 Database](http://www.h2database.com/html/main.html), so we need to add a dependency to it too.
 
 ```scala
-resolvers += "Sonatype Releases"  at "http://oss.sonatype.org/content/repositories/releases")
+resolvers += "Sonatype Releases"  at "http://oss.sonatype.org/content/repositories/releases"
 
 
 libraryDependencies ++= Seq(
