@@ -69,6 +69,7 @@ You can stick that into the Project settings as an extra `seq`, i.e.
 
 ```scala
 Project(..., settings = blah ++ blah ++ seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*), ...)
+```
 
 ### Tell Heroku to use the generated start script
 
