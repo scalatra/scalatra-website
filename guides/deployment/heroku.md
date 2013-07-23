@@ -59,16 +59,32 @@ Tell sbt where to find the plugin by adding this line to `project/plugins.sbt` (
 addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "{{ site.start_script_plugin_version }}")
 ```
 
-Tell sbt how to use the plugin by adding this line to `project/build.scala`:
+Now you've got the Typesafe start script available.  Stick that into the 
+Project settings, in `project/build.scala`. A default Scalatra project template
+usually has something like this in it:
 
 ```scala
-seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*)
+lazy val project = Project (
+    "heroku-example",
+    file("."),
+    settings = ++ Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+      organization := Organization,
+      name := Name,
+      // more stuff here
 ```
 
-You can stick that into the Project settings as an extra `seq`, i.e.
+You'll want to add a `Seq` of settings pulled from the Typesafe startscript plugin.
+
+Add it into the project settings:
 
 ```scala
-Project(..., settings = blah ++ blah ++ seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*), ...)
+  lazy val project = Project (
+    "heroku-example",
+    file("."),
+    settings = seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*) ++ Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
+      organization := Organization,
+      name := Name,
+      // more stuff here
 ```
 
 ### Tell Heroku to use the generated start script
