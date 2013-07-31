@@ -21,6 +21,9 @@ redirect statement.
 </div>
 
 
+In Scalatra 2.0.x, you used to need to extend the `UrlSupport` trait, but
+that's now been moved into `ScalatraBase`, so all you need is:
+
 ```scala
 class MyApp extends ScalatraServlet {
 
