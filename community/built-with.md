@@ -36,6 +36,12 @@ Scalatra is used in a number of systems that help power [The Guardian](http:///w
 [IGN](http://www.ign.com) is an American entertainment website that focuses on video games, films, music and other media. Scalatra is used as part of its back-end
 services.
 
+### Learndot
+
+[Learndot](http://www.learndot.com/) uses Scalatra and Jetty to serve a RESTful
+API and [Objectify](https://github.com/learndot/Objectify.scala) to help
+organize routes and services.
+
 ### Janrain
 
 [Janrain](http://janrain.com) offers software as a service solutions for 
@@ -52,7 +58,14 @@ commercial businesses and websites to connect their sites to the social web.
 
 [Fink](https://github.com/dozed/fink) is a Scalatra based CMS.
 
+### Objectify
+
+[Objectify](https://github.com/learndot/Objectify.scala) is a light-weight web
+framework that helps you structure an application by providing policy
+management and dependency injection. 
+
 ### Scalatra toys
 
 [scalatra-toys](https://github.com/m20o/scalatra-toys) adds parameter binding
 and command validation support to Scalatra 2.0.x.
+
