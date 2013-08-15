@@ -41,13 +41,13 @@ You only need to tell Scalatra where to find the jrebel jar.
 To do so, edit your shell resource file (usually `~/.bash_profile` on Mac, and `~/.bashrc` on Linux), and add the following line:
 
 ```bash
-export SCALATRA_JREBEL="/path/to/jrebel/jrebel.jar"
+export SCALATRA_JREBEL=/path/to/jrebel/jrebel.jar
 ```
 
 For example, if you unzipped your JRebel download in your home directory, you whould use:
 
 ```bash
-export SCALATRA_JREBEL="~/jrebel/jrebel.jar"
+export SCALATRA_JREBEL=~/jrebel/jrebel.jar
 ```
 
 Now reload your shell:
