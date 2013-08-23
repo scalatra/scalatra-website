@@ -43,6 +43,7 @@ and then you can use it in your view, to let the user know what happened.
 `home.ssp` might look like this:
 
 ```scala
+<%@ import val flash:org.scalatra.FlashMap %>
 <html>
   <body>
     <p>Here is the flash: <%= flash.get("notice") %></p>
