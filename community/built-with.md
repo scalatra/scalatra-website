@@ -51,6 +51,12 @@ organize routes and services.
 
 [LinkedIn Signal](http://sna-projects.com/blog/2010/10/linkedin-signal-a-look-under-the-hood/) is using it in their backend.
 
+
+### NetFlix
+
+[NetFlix](http://netflix.com/) uses Scalatra for internal APIs. 
+
+
 ## Open source projects
 
 ### Fink
