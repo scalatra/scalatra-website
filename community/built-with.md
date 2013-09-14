@@ -36,21 +36,26 @@ Scalatra is used in a number of systems that help power [The Guardian](http:///w
 [IGN](http://www.ign.com) is an American entertainment website that focuses on video games, films, music and other media. Scalatra is used as part of its back-end
 services.
 
+### Janrain
+
+[Janrain](http://janrain.com) offers software as a service solutions for 
+commercial businesses and websites to connect their sites to the social web. 
+
 ### Learndot
 
 [Learndot](http://www.learndot.com/) uses Scalatra and Jetty to serve a RESTful
 API and [Objectify](https://github.com/learndot/Objectify.scala) to help
 organize routes and services.
 
-### Janrain
-
-[Janrain](http://janrain.com) offers software as a service solutions for 
-commercial businesses and websites to connect their sites to the social web. 
-
-
 ### LinkedIn Signal
 
 [LinkedIn Signal](http://sna-projects.com/blog/2010/10/linkedin-signal-a-look-under-the-hood/) is using it in their backend.
+
+
+### NetFlix
+
+[NetFlix](http://netflix.com/) uses Scalatra for internal APIs. 
+
 
 ## Open source projects
 
