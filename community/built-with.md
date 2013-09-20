@@ -63,6 +63,11 @@ organize routes and services.
 
 [Fink](https://github.com/dozed/fink) is a Scalatra based CMS.
 
+### Newsrdr
+
+[Newsrdr](http://newsrdr.us) [[source]](https://github.com/tmiw/newsrdr) is a
+replacement for Google Reader built on Scalatra.
+
 ### Objectify
 
 [Objectify](https://github.com/learndot/Objectify.scala) is a light-weight web
