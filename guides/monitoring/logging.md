@@ -27,7 +27,7 @@ class YourServlet extends ScalatraServlet {
 
   val logger =  LoggerFactory.getLogger(getClass)
 
-  def get("/") {
+  get("/") {
     logger.info("foo")
     // whatever else you want to put in the body of the action
   }
