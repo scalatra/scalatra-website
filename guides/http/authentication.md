@@ -238,15 +238,10 @@ As with most things in Scalatra, it's up to you.
 
 ## Cookie example
 
-Still to do, but will be drawn from
-[Cookie-based auth gist](http://gist.github.com/660701) and
-[this example](https://github.com/scalatra/oauth2-server/blob/master/src/main/scala/org/scalatra/oauth2/auth/AuthenticationSupport.scala#L249-L260).
-
-----
-
-Until we get this guide finished properly, you may wish to look at our sample
+We still need to write this up and finish the guide, but there's now working
+example code for a
 [UserPasswordStrategy and RememberMe strategy](https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/http/scentry-auth-demo) 
-app.
+with fallback.
 
 If you're trying to secure an API rather than a user's browser session,
 Jos Dirksen's [tutorial](http://www.smartjava.org/content/tutorial-getting-started-scala-and-scalatra-part-iii) on the subject may help.
