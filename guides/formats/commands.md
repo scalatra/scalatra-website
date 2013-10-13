@@ -808,3 +808,39 @@ and carry them around between projects.
 
 
 
+
+
+<!-- 
+
+from casualjim:
+
+Here's the rundown of changes between what's documented above, and the new
+version commands.
+
+<casualjim> https://gist.github.com/casualjim/7a558cf9bb6e440bf308
+<casualjim> lets start with by default we have 4 kinds of executors
+<casualjim> the executors are what used to be the command handler
+<casualjim> and by default it works with a closure: Command => Result, Command => Model => Result, Command => Future[Result], Command => Model => Future[Result]
+<casualjim> the Command => Model step is handled by an implicit conversion
+<casualjim> in the example gist I've defined it in the companion object of the command
+<casualjim> it being the implicit conversion
+<casualjim> https://gist.github.com/casualjim/7a558cf9bb6e440bf308#file-command-scala-L2-L14
+<casualjim> that is the setup required
+<casualjim> now to actually use a command:
+<casualjim> you still do commandOrElse like it used to be before
+<casualjim> but now you can use the method execute (aliased to >>) and provide a function with one of these 4 signatures:
+<casualjim> Command => Result, CommandModel => Result, Command => Future[Result], CommandModel => FutureResult
+<casualjim> you see that here
+<casualjim> https://gist.github.com/casualjim/7a558cf9bb6e440bf308#file-example-scala-L4
+<casualjim> so because of the implicit conversion defined earlier
+<casualjim> https://gist.github.com/casualjim/7a558cf9bb6e440bf308#file-command-scala-L4
+<casualjim> from the command Subscribe to the model Subscription
+<casualjim> the method that handles the command when it's valid can have this signature
+<casualjim> https://gist.github.com/casualjim/7a558cf9bb6e440bf308#file-example-scala-L13
+<casualjim> so there is no more pattern match and if the types don't work out it fails compilation instead of failing at runtime
+<casualjim> please let me know should you have more questions
+<casualjim> at Reverb we have a a few extra executors to work with disjunctions and monad transformers but the idea is the same
+<casualjim> the executors provide the machinery previously provided by the CommandHandler
+<casualjim> in that they only execute the provided function if the command is valid
+
+  -->
