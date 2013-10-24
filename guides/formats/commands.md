@@ -185,7 +185,7 @@ object TodoData {
   */
   def add(todo: Todo): List[Todo] = {
     all ::= todo
-    all = all.sort((e1, e2) => (e1.id < e2.id))
+    all = all.sortBy(_.id)
     all
   }
 
