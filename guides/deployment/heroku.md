@@ -58,7 +58,10 @@ Tell sbt where to find the plugin by adding this line to `project/plugins.sbt` (
 ```scala
 addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "{{ site.start_script_plugin_version }}")
 ```
-
+For sbt version 0.13.0 add following instead:
+```scala
+addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "{{start_script_plugin_version_for_sbt_0_13_0}}")
+```
 Now you've got the Typesafe start script available.  Stick that into the 
 Project settings, in `project/build.scala`. A default Scalatra project template
 usually has something like this in it:
@@ -86,7 +89,10 @@ Add it into the project settings:
       name := Name,
       // more stuff here
 ```
-
+For sbt 0.13.0 this `Seq` is:
+```scala
+seq(com.typesafe.sbt.SbtStartScript.startScriptForClassesSettings: _*)
+```
 ### Tell Heroku to use the generated start script
 
 Create a file named `Procfile` in the root of your application.
@@ -126,6 +132,10 @@ object JettyLauncher {
 }
 ```
 
+And don't forget to set your servlet in mapping:
+```scala
+context.addServlet(classOf[com.example.app.MyScalatraServlet], "/*")
+```
 ## 5. Deploy
 
 If you haven't set up your project as a Git repo, do so.
