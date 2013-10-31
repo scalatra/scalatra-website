@@ -14,6 +14,7 @@ json4s_version: 3.2.4
 swagger_version: 1.2.0
 logback_version: 1.0.11
 start_script_plugin_version: 0.5.3
+start_script_plugin_version_for_sbt_0_13_0: 0.10.0
 akka_version: 2.1.2
 
 source:      .
