@@ -3,7 +3,7 @@
 This is the home of the [Scalatra](http://github.com/scalatra/scalatra/)
 website which generates the site at http://scalatra.org/2.2/.
 
-To build it, you'll need to have Ruby installed.
+To build it, you'll need to have Ruby and bundler installed.
 
 Then you'll need [Jekyll](https://github.com/mojombo/jekyll) and a 
 few other things installed on your system. `cd` into the root directory
@@ -26,4 +26,4 @@ jekyll --server --auto
 
 This will start an embedded webserver and automatically regenerate the website
 as you make changes to it. You can then view the site at 
-[http://localhost:4000](http://localhost:4000).
+[http://localhost:4000/2.2/](http://localhost:4000/2.2/).
