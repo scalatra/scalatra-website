@@ -73,7 +73,7 @@ the `ActorSystem` resources when your Scalatra application is destroyed.
 Scalatra's Akka support provides a mechanism for adding [Akka][akka]
 futures to your routes. Akka support is only available in Scalatra 2.1 and up.
 
-The generic case looks like this:
+The generic case looks like this (but it won't compile):
 
 ```scala
 import _root_.akka.dispatch._
@@ -81,7 +81,7 @@ import org.scalatra.FutureSupport
 
 class MyAppServlet extends ScalatraServlet with FutureSupport {
   get("/"){
-    new AsyncResult { def is = 
+    new AsyncResult { val is = 
       Future {
         // Add async logic here
         <html><body>Hello Akka</body></html>
@@ -108,20 +108,15 @@ Akka `ActorSystem`.
 ```scala
 package com.example.app
 
-import _root_.akka.actor.ActorSystem
-import _root_.akka.dispatch.{Future, ExecutionContext}
-import _root_.akka.dispatch.{Promise => AkkaPromise}
-
-
-import org.scalatra.FutureSupport
-
+import scala.concurrent.{ExecutionContext, Future, Promise}
+import akka.actor.ActorSystem
 import dispatch._
-import org.scalatra._
+import org.scalatra.{ScalatraServlet, FutureSupport, AsyncResult}
 
 object DispatchAkka {
 
   def retrievePage()(implicit ctx: ExecutionContext): Future[String] = {
-    val prom = AkkaPromise[String]()
+    val prom = Promise[String]()
     dispatch.Http(url("http://slashdot.org/") OK as.String) onComplete {
       case r => prom.complete(r)
     }
@@ -134,7 +129,8 @@ class PageRetriever(system: ActorSystem) extends ScalatraServlet with FutureSupp
   protected implicit def executor: ExecutionContext = system.dispatcher
 
   get("/") {
-    new AsyncResult { def is = 
+    contentType = "text/html"
+    new AsyncResult { val is = 
       DispatchAkka.retrievePage()
     }
   }
@@ -167,21 +163,20 @@ Here's some example code:
 ```scala
 package com.example.app
 
-import akka.actor.{ActorRef, Actor, Props, ActorSystem}
-import akka.dispatch.ExecutionContext
+import scala.concurrent.ExecutionContext
+import akka.actor.{ActorRef, Actor, ActorSystem}
 import akka.util.Timeout
-import org.scalatra.FutureSupport
-import org.scalatra.{Accepted, ScalatraServlet}
+import org.scalatra.{Accepted, AsyncResult, FutureSupport, ScalatraServlet}
 
 class MyActorApp(system:ActorSystem, myActor:ActorRef) extends ScalatraServlet with FutureSupport {
 
   protected implicit def executor: ExecutionContext = system.dispatcher
 
   import _root_.akka.pattern.ask
-  implicit val timeout = Timeout(10)
+  implicit val defaultTimeout = Timeout(10)
 
   get("/async") {
-    new AsyncResult { def is = myActor ? "Do stuff and give me an answer" }
+    new AsyncResult { val is = myActor ? "Do stuff and give me an answer" }
   }
 
   get("/fire-forget") {
@@ -195,7 +190,6 @@ class MyActor extends Actor {
     case "Do stuff and give me an answer" => sender ! "The answer is 42"
     case "Hey, you know what?" => println("Yeah I know... oh boy do I know")
   }
-
 }
 ```
 
