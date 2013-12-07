@@ -25,8 +25,7 @@ a "butt-simple" connection pooling library.
 
 ```scala
 "org.squeryl" %% "squeryl" % "0.9.5-6", 
-"mysql" % "mysql-connector-java" % "5.1.22",      // for MySQL, or use
-"postgresql" % "postgresql" % "9.1-901-1.jdbc4",  // for Postgres
+"com.h2database" % "h2" % "1.3.166",
 "c3p0" % "c3p0" % "0.9.1.2"
 ```
 
@@ -42,7 +41,7 @@ pretty closely:
 package org.scalatra.example.data
 
 import com.mchange.v2.c3p0.ComboPooledDataSource
-import org.squeryl.adapters.MySQLAdapter
+import org.squeryl.adapters.{H2Adapter, MySQLAdapter}
 import org.squeryl.Session
 import org.squeryl.SessionFactory
 import org.slf4j.LoggerFactory
@@ -52,12 +51,12 @@ trait DatabaseInit {
 
   val databaseUsername = "root"
   val databasePassword = ""
-  val databaseConnection = "jdbc:mysql://localhost:3306/squeryltryout"
+  val databaseConnection = "jdbc:h2:mem:squeryltryout"
 
   var cpds = new ComboPooledDataSource
 
   def configureDb() {
-    cpds.setDriverClass("com.mysql.jdbc.Driver")
+    cpds.setDriverClass("org.h2.Driver")
     cpds.setJdbcUrl(databaseConnection)
     cpds.setUser(databaseUsername)
     cpds.setPassword(databasePassword)
@@ -70,7 +69,7 @@ trait DatabaseInit {
 
     def connection = {
       logger.info("Creating connection with c3po connection pool")
-      Session.create(cpds.getConnection, new MySQLAdapter)
+      Session.create(cpds.getConnection, new H2Adapter)
     }
   }
 
@@ -82,7 +81,7 @@ trait DatabaseInit {
 ```
 
 You'll likely want to load up your database creds by reading a config file,
-but that's up to you. The `configureDb()` method will create a connection pool when it's called, and in this case it'll use the `MySQLAdapter`. 
+but that's up to you. The `configureDb()` method will create a connection pool when it's called, and in this case it'll use an in-memory H2 database with the `H2Adapter`, so that we don't have any dependencies on an external database server. Replace the connection string, driver, and adapter in this file if you're using MySQL, PostgreSQL, or something else. Info is available on the 
 
 Inside the `configureDb` method, Squeryl's `SessionFactory` gets wired together 
 with C3P0's `ComboPooledDataSource`.
