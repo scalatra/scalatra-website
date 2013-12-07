@@ -151,13 +151,12 @@ get("/") {
 Returning a raw string is not something you'll do particularly often -
 usually you will want to return formatted HTML that is the product of a
 templating system, or an output format like JSON.
-See the [views](../guides/views) section of our [guides](../guides) for more info.
+See the *views* section of our [guides](../guides) for more info.
 
 ## Automatic code reloading
 
 Restarting an application manually after every code change is both slow and
-painful.
-It can easily be avoided by using a tool for automatic code reloading.
+painful. It can easily be avoided by using a tool for automatic code reloading.
 
 sbt will allow you to [signal a restart of the application when it detects
 code changes](https://github.com/harrah/xsbt/wiki/Triggered-Execution).
