@@ -137,6 +137,15 @@ look like:
 <p>Bar is <%= bar %></p>
 ```
 
+The view can also receive parameters from the `templateAttributes` helper. This enables you to globally pass parameters from a `before` handler or inside of your route action if you have multiple steps for creating the parameters. An example would look like:
+
+```scala
+before(){
+  if(isAuthenticated) {
+    templateAttributes("user") = Some(user)
+  }
+}
+```
 
 #### Layouts
 
