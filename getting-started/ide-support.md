@@ -59,6 +59,26 @@ $ ./sbt
 Be sure to re-run `./sbt gen-idea` every time you add or update a dependency in
 `project/build.scala`.
 
+### Debugging in IntelliJ Idea
+
+Start SBT like this:
+
+```
+./sbt -jvm-debug 5005
+```
+
+After that, go to `Run` -> `Edit configurations` in IntelliJ. Click the `+`
+button, select `Remote` to make a new remote debugging configuration, and 
+call it `Scalatra Debug`. In IntelliJ 13, the default run conf should work 
+(it looks like this):
+
+```
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
+```
+
+Now just select `Run` -> `Debug 'Scalatra Debug'`. Setting breakpoints and
+stepping through code should work. 
+
 ## ENSIME (for Emacs)
 
 Users of the one true editor, rejoice! There is excellent support for Scala in Emacs.
