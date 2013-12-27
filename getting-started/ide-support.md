@@ -22,7 +22,7 @@ This is totally optional, so if you don't like IDEs, feel free to skip this sect
 adding this line to your `project/plugins.sbt` file:
 
 ```scala
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.1.1")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.4.0")
 ```
 
 This sbt plugin generates Eclipse classpath and configuration files to ensure the
@@ -45,7 +45,7 @@ The community edition is fine.
 this line to your `project/plugins.sbt` file:
 
 ```scala
-addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.2.0")
+addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2")
 ```
 
 This sbt plugin generates IntelliJ classpath and configuration files to ensure the
@@ -91,7 +91,7 @@ adding features like refactoring and error highlighting.
 Add this line to your `project/build.scala` file:
 
 ```scala
-addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "0.1.0")
+addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "0.1.2")
 ```
 
 Now from sbt you can run:
