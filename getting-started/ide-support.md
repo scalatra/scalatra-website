@@ -32,9 +32,27 @@ project will work as expected in the IDE.
 $ ./sbt
 > eclipse
 ```
-
 Be sure to re-run `./sbt eclipse` every time you add or update a dependency in
 `project/build.scala`.
+
+### Debugging in Eclipse
+
+Go to `Run` -> `Debug configurations` in Eclipse. Select 
+`Remote Java Application`, click the `new configuration`  button, 
+select `Remote` to make a new remote debugging configuration, and 
+call it `Scalatra Debug`. Change the `Port` setting to `5005`.
+
+Start SBT like this:
+
+```
+./sbt -jvm-debug 5005
+```
+
+Back in Eclipse, go to `Run` -> `Debug Configurations`, select the 
+`Scalatra Debug` configuration you just made, and press the `Debug`
+button on the bottom right. Eclipse will attach itself to SBT's remote
+debugger and your breakpoints will start working. 
+
 
 ## IntelliJ IDEA
 
