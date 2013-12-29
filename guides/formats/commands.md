@@ -274,8 +274,13 @@ import org.scalatra.example.commands.models._
 import org.scalatra.commands._
 
 
-abstract class TodosCommand[S](implicit mf: Manifest[S]) extends ModelCommand[S]
-  with ParamsOnlyCommand
+abstract class TodosCommand[S] extends ParamsOnlyCommand
+
+object CreateTodoCommand {
+  // Putting the implicit conversion in the companion object of the create todos command ensures it's the default fallback
+  // for implicit resolution.
+  implicit def createTodoCommandAsTodo(cmd: CreateTodoCommand): Todo = Todo(~cmd.name.value)
+}
 
 /** A command to validate and create Todo objects. */
 class CreateTodoCommand extends TodosCommand[Todo] { 
@@ -418,14 +423,6 @@ import org.scalatra.example.commands.commandsupport._
 
 // our logger object
 import org.scalatra.example.commands.utils.Logging
-```
-
-This import gives `TodoData` access to Scalatra's commands. 
-
-Next, let's make `TodoData` inherit from `Logging` and `CommandHandler`:
-
-```scala
-object TodoData extends Logging with CommandHandler {
 ```
 
 Now to get things compiling again. Add these imports:
