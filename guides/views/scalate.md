@@ -274,7 +274,7 @@ exceptions.  This page renders the template source with the error highlighted.
 To disable this behavior, override `isScalateErrorPageEnabled`:
 
 ```scala
-override def isScalatePageEnabled = false
+override def isScalateErrorPageEnabled = false
 ```
 
 ### Further reading
