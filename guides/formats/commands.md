@@ -26,8 +26,7 @@ object might look like this:
 
 ```scala
   post("/todos") {
-    val cmd = command[CreateTodoCommand]
-    TodoData.execute(cmd).fold(
+    (command[CreateTodoCommand] >> (TodoData.create(_))).fold(
       errors => halt(400, errors),
       todo => redirect("/")
     )
@@ -38,6 +37,11 @@ You define the command separately, tell it which case class type it
 operates upon, and set up validations inside the command:
 
 ```scala
+object CreateTodoCommand {
+  // Putting the implicit conversion in the companion object of the create todos command ensures it's the default fallback
+  // for implicit resolution.
+  implicit def createTodoCommandAsTodo(cmd: CreateTodoCommand): Todo = Todo(~cmd.name.value)
+}
 class CreateTodoCommand extends TodosCommand[Todo] { 
 
   val name: Field[String] = asType[String]("name").notBlank.minLength(3) 
@@ -45,18 +49,10 @@ class CreateTodoCommand extends TodosCommand[Todo] {
 }
 ```
 
-Several things happen when `execute` is called. First, validations
-are run, and then the command receiver's `handle` method does some work.
-
-Our `handle` method for creating a new Todo object might trigger a persistence 
-function, like this:
-
-```scala
-  protected def handle: Handler  = {
-    case c: CreateTodoCommand => 
-      add(newTodo(~c.name.value))
-  }
-```
+Several things happen when `execute` (`>>`) is called. First, validations
+are run, and then the command is either converted implicitly to the parameter the
+function accepts or just passed in as a command into that function. 
+The result of that function is a ModelValidation.
 
 The `CreateTodoCommand` can automatically read incoming POST params or JSON, 
 populate itself with whatever info it read, run validations to ensure that 
@@ -278,8 +274,13 @@ import org.scalatra.example.commands.models._
 import org.scalatra.commands._
 
 
-abstract class TodosCommand[S](implicit mf: Manifest[S]) extends ModelCommand[S]
-  with ParamsOnlyCommand
+abstract class TodosCommand[S] extends ParamsOnlyCommand
+
+object CreateTodoCommand {
+  // Putting the implicit conversion in the companion object of the create todos command ensures it's the default fallback
+  // for implicit resolution.
+  implicit def createTodoCommandAsTodo(cmd: CreateTodoCommand): Todo = Todo(~cmd.name.value)
+}
 
 /** A command to validate and create Todo objects. */
 class CreateTodoCommand extends TodosCommand[Todo] { 
@@ -366,8 +367,7 @@ Fill in the action for `post("/todos")` like this:
 
 ```scala
   post("/todos") {
-    val cmd = command[CreateTodoCommand]
-    TodoData.execute(cmd).fold(
+    (command[CreateTodoCommand] >> (TodoData.add(_))).fold(
       errors => halt(400, errors),
       todo => redirect("/")
     )
@@ -425,14 +425,6 @@ import org.scalatra.example.commands.commandsupport._
 import org.scalatra.example.commands.utils.Logging
 ```
 
-This import gives `TodoData` access to Scalatra's commands. 
-
-Next, let's make `TodoData` inherit from `Logging` and `CommandHandler`:
-
-```scala
-object TodoData extends Logging with CommandHandler {
-```
-
 Now to get things compiling again. Add these imports:
 
 ```scala
@@ -443,39 +435,17 @@ import org.scalatra.validation._
 These imports give you access to exception handling and validation code,
 which we'll use in a moment.
 
-Then add a `handle` method:
-
-```scala
-  protected def handle: Handler  = {
-    case c: CreateTodoCommand => 
-      add(newTodo(c.name.value getOrElse ""))
-  }
-```
-
-Writing a `handle` function is something you'll do very often when using
-Scalatra command objects. Remember when we said
-in our quick theoretical discussion above, that the simplest Command
-object has a single method, `execute`? Scalatra follows this pattern,
-but `execute` on a Scalatra command does a bit more than in the classical
-GoF version.
-
 In Scalatra, when you call `execute` on your Command, you're telling it to
 do two things:
 
 * run validations on all fields defined in your command
-* call the `handle` method to do whatever work you actually want to do
-
-This is the reason that we've mixed `CommandHandler` into `TodoData`:
-it gives `TodoData` the ability to handle commands, as long as we give it
-a `handle` method. In our case, the `handle` method uses pattern matching
-to see what command is being executed, and (in this case) adds a new Todo
-object with the value of the command's `name` field.
+* it passes itself into the function passed to execute
 
 One more thing and it'll compile. Change the `add` method so that it returns a
 `ModelValidation[Todo]`, and add some error handling:
 
 ```scala
-  private def add(todo: Todo): ModelValidation[Todo] = {
+  def add(todo: Todo): ModelValidation[Todo] = {
     allCatch.withApply(errorFail) {
       all ::= todo
       all = all.sort((e1, e2) => (e1.id < e2.id))
@@ -548,7 +518,7 @@ What happens in the failure cases? This is determined by the remainder
 of the `TodoData.execute` method call:
 
 ```scala
-  TodoData.execute(cmd).fold(
+  (cmd >> TodoData.add(_)).fold(
     errors => halt(400, errors),
     todo => redirect("/")
   )
