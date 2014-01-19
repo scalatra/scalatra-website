@@ -79,3 +79,8 @@ management and dependency injection.
 [scalatra-toys](https://github.com/m20o/scalatra-toys) adds parameter binding
 and command validation support to Scalatra 2.0.x.
 
+### Skinny Framework
+
+[Skinny Framework](https://skinny-framework.org) is built on Scalatra,
+inspired by Ruby on Rails, and is optimized for sustainable productivity
+for ordinary Servlet-based app development.
