@@ -164,11 +164,11 @@ post("/create") {
 You can transform the JSON AST before when it's being received by overriding the method `transformRequestBody`
 
 ```scala
-protected override transformRequestBody(body: JValue): JValue = body.camelizeKeys
+protected override def transformRequestBody(body: JValue): JValue = body.camelizeKeys
 ```
 
 Likewise you can also transform the JSON AST right before sending it by overriding the method `transformResponseBody`
 
 ```scala
-protected override transformResponseBody(body: JValue): JValue = body.underscoreKeys
+protected override def transformResponseBody(body: JValue): JValue = body.underscoreKeys
 ```
