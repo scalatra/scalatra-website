@@ -64,7 +64,7 @@ For sbt version 0.13.0 add following instead:
 ```scala
 addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "{{ site.start_script_plugin_version_for_sbt_0_13_0 }}")
 ```
-Now you've got the Typesafe start script available.  Stick that into the 
+Now you've got the Typesafe start script available.  Stick that into the
 Project settings, in `project/build.scala`. A default Scalatra project template
 usually has something like this in it:
 
@@ -123,10 +123,10 @@ object JettyLauncher {
 
     val server = new Server(port)
     val context = new WebAppContext()
-    context setContextPath "/"
+    context.setContextPath "/"
     context.setResourceBase("src/main/webapp")
-    context.addServlet(classOf[com.example.app.MyScalatraServlet], "/*")
-    context.addServlet(classOf[DefaultServlet], "/")
+
+    context.setEventListeners(Array(new ScalatraListener))
 
     server.setHandler(context)
 
@@ -176,7 +176,7 @@ After a couple minutes of streaming output, the last few lines will look like th
 -----> Compiled slug size: 43.4MB
 -----> Launching... done, v5
        http://polar-atoll-9149.herokuapp.com deployed to Heroku
-              
+
 To git@heroku.com:polar-atoll-9149.git
 * [new branch]      master -> master
 ```
