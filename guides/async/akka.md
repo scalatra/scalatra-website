@@ -45,7 +45,7 @@ import javax.servlet.ServletContext
 class ScalatraBootstrap extends LifeCycle {
 
   // Get a handle to an ActorSystem and a reference to one of your actors
-  val system = new ActorSystem()
+  val system = ActorSystem()
   val myActor = system.actorOf(Props[MyActor])
 
   // In the init method, mount your servlets with references to the system
