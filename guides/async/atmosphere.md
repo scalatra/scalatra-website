@@ -41,10 +41,16 @@ The following dependencies will be needed to make the sample application
 work.
 
 ```scala
-  "org.scalatra" %% "scalatra-atmosphere" % "{{ site.scalatra_version }}",
-  "org.scalatra" %% "scalatra-json" % "{{ site.scalatra_version }}",
-  "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
-  "org.eclipse.jetty" % "jetty-websocket" % "{{ site.jetty_version }}" % "container",
+  "org.json4s"                  %% "json4s-jackson"      % "{{ site.json4s_version }}",
+  "org.scalatra"                %% "scalatra"            % "{{ site.scalatra_version }}",
+  "org.scalatra"                %% "scalatra-scalate"    % "{{ site.scalatra_version }}",
+  "org.scalatra"                %% "scalatra-specs2"     % "{{ site.scalatra_version }}"  % "test",
+  "org.scalatra"                %% "scalatra-atmosphere" % "{{ site.scalatra_version }}",
+  "ch.qos.logback"              %  "logback-classic"     % "1.1.1"          % "runtime",
+  "org.eclipse.jetty"           %  "jetty-plus"          % "{{ site.jetty_version }}"     % "container;provided",
+  "org.eclipse.jetty"           %  "jetty-webapp"        % "{{ site.jetty_version }}"     % "container",
+  "org.eclipse.jetty.websocket" %  "websocket-server"    % "{{ site.jetty_version }}"     % "container;provided",
+  "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "container;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
 ```
 
 Scalatra's Atmosphere integration depends on Akka.
