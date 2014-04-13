@@ -116,11 +116,7 @@ import org.scalatra.{ScalatraServlet, FutureSupport, AsyncResult}
 object DispatchAkka {
 
   def retrievePage()(implicit ctx: ExecutionContext): Future[String] = {
-    val prom = Promise[String]()
-    dispatch.Http(url("http://slashdot.org/") OK as.String) onComplete {
-      case r => prom.complete(r)
-    }
-    prom.future
+    dispatch.Http(url("http://slashdot.org/") OK as.String)
   }
 }
 
