@@ -14,14 +14,17 @@ JRebel is generally able to eliminate the need for the following slow "app resta
 > container:reload /
 ```
 
-While JRebel is not open source, it is free for Scala users.
-Since it's only used during development, and doesn't change your deployed app in any way, there's no reason not to use it.
+While JRebel is not open source, it does reload your code faster than the `~;copy-resources;aux-compile` way of doing things using `sbt`.
+
+It's only used during development, and doesn't change your deployed app in any way. 
+
+JRebel used to be free for Scala developers, but that changed recently, and now there's a cost associated with usage for Scala. There are trial plans and free non-commercial licenses available if you just want to try it out. 
 
 ----
 
-## 1. Get your free JRebel license
+## 1. Get a JRebel license
 
-Sign up for the [free Scala plan](https://my.jrebel.com/plans/). You will need to create an account.
+Sign up for a [usage plan](https://my.jrebel.com/). You will need to create an account.
 
 ## 2. Download JRebel
 
@@ -31,13 +34,16 @@ Next, unzip the downloaded file.
 ## 3. Activate
 
 Follow the [instructions on the JRebel website](http://zeroturnaround.com/software/jrebel/download/prev-releases/) to activate your downloaded JRebel.
+
 You can use the default settings for all the configurations.
+
 You don't need to integrate with your IDE, since we're using sbt to do the servlet deployment.
 
 ## 4. Tell Scalatra where JRebel is
 
 Fortunately, the Scalatra giter8 project is already set up to use JRebel.
 You only need to tell Scalatra where to find the jrebel jar.
+
 To do so, edit your shell resource file (usually `~/.bash_profile` on Mac, and `~/.bashrc` on Linux), and add the following line:
 
 ```bash
