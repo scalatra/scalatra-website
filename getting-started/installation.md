@@ -55,7 +55,7 @@ updating Scala code.
 It's the recommended way to generate Scalatra project skeletons.
 
 <h4>Install conscript</h4>
-  <pre>curl https://raw.github.com/n8han/conscript/master/setup.sh | sh</pre>
+  <pre>curl https://raw.githubusercontent.com/n8han/conscript/master/setup.sh | sh</pre>
 
   <p>
     This will create a `bin` folder in your home directory.
