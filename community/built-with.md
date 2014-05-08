@@ -25,7 +25,7 @@ The [BBC](http://www.bbc.co.uk)'s Linked Data Team has built a Scalatra REST API
 
 ### ChronoTrack
 
-[ChronoTrack](http://www.chronotrack.com) is using Scalatra for their public and private API services as scale.  ChronoTrack's web and mobile applications consume internal and external APIs.
+[ChronoTrack](http://www.chronotrack.com) is using Scalatra for their public and private API services.  ChronoTrack's web and mobile applications consume internal and external APIs built with scalatra.
 
 ### Gov.uk
 
