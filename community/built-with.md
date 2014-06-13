@@ -23,6 +23,10 @@ The [BBC](http://www.bbc.co.uk)'s Linked Data Team has built a Scalatra REST API
 
 [ChaCha](http://www.chacha.com/) is using it in multiple internal applications.
 
+### ChronoTrack
+
+[ChronoTrack](http://www.chronotrack.com) is using Scalatra for their public and private API services.  ChronoTrack's web and mobile applications consume internal and external APIs built with Scalatra.
+
 ### Gov.uk
 
 [The British government](http://www.gov.uk) [is using Scalatra](http://radar.oreilly.com/2012/01/with-govuk-british-government.html) as a router to distribute requests to other back-end apps on its new flagship website.
