@@ -52,7 +52,7 @@ with `ScalateSupport`, like this:
 
 ```scala
 class YourServlet extends ScalatraServlet with ScalateSupport {
-  def get("/") {
+  get("/") {
     // render your views in the action (see below)
   }
 }
@@ -69,7 +69,7 @@ corresponding helper which can be used to find the template file.
 Basic usage:
 
 ```scala
-def get("/") {
+get("/") {
   contentType="text/html"
 
   ssp("/index")
@@ -88,7 +88,7 @@ template. You need to give the full path to the template, starting from the  WEB
 directory:
 
 ```scala
-def get("/") {
+get("/") {
   contentType="text/html"
 
   layoutTemplate("/WEB-INF/templates/views/index.ssp")
@@ -120,7 +120,7 @@ View parameters are passed to your views using a Seq(String, Any) after
 the path to the template file. The simplest example might look like this:
 
 ```scala
-def get("/") {
+get("/") {
   contentType="text/html"
 
   ssp("/index", "foo" -> "uno", "bar" -> "dos")
@@ -181,7 +181,7 @@ Scalate to identify the layout file, which wraps a standard layout around the
 output for the current action.
 
 ```scala
-def get("/") {
+get("/") {
   contentType="text/html"
 
   jade("/index", "layout" -> "WEB-INF/layouts/app.jade", "foo" -> "uno", "bar" -> "dos")
@@ -194,7 +194,7 @@ To disable a layout for certain templates, Scalate accepts an empty `layout`
 parameter:
 
 ```scala
-def get("/") {
+get("/") {
   // This template will render without a layout.
   jade("/index", "layout" -> "", "foo" -> "uno", "bar" -> "dos")
 }
