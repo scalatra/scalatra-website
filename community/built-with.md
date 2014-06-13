@@ -56,6 +56,10 @@ organize routes and services.
 
 [NetFlix](http://netflix.com/) uses Scalatra for internal APIs. 
 
+### TrademarkNow
+
+[TrademarkNow](https://www.trademarknow.com) uses Scalatra for its API systems. 
+
 
 ## Open source projects
 
