@@ -60,10 +60,10 @@ From the [Specs2 QuickStart][Quickstart]:
 ```scala
 import org.scalatra.test.specs2._
 
-class HelloWorldServletSpec extends ScalatraSpec { def is =
-  "GET / on HelloWorldServlet"                            ^
-    "returns status 200"                                  ! getRoot200^
-                                                          end
+class HelloWorldServletSpec extends ScalatraSpec { def is = s2"""
+  GET / on HelloWorldServlet
+    returns status 200           $getRoot200
+"""
 
   addServlet(classOf[HelloWorldServlet], "/*")
 
