@@ -18,6 +18,7 @@ It can run on Windows, Mac OS X, Linux, or BSD.
 
 Scalatra is web micro-framework written in Scala, so you'll need to have a
 Java Development Kit (JDK) installed.
+
 Many systems come with a JDK pre-loaded.
 
 Run `java -version` and `javac -version` in a terminal to find if yours
@@ -25,23 +26,25 @@ does. The output should look something like this:
 
 ```bash
 $ java -version
-java version "1.6.0_24"
-OpenJDK Runtime Environment (IcedTea6 1.11.1) (6b24-1.11.1-3)
-OpenJDK 64-Bit Server VM (build 20.0-b12, mixed mode)
+java version "1.7.0_10"
+OpenJDK Runtime Environment (IcedTea6 1.11.1) build 1.7.0_10-b18)
+Java HotSpot(TM) 64-Bit Server VM (build 23.6-b094, mixed mode)
 ```
 
 ```bash
 $ javac -version
-javac 1.6.0_24
+javac 1.7.0_10
 ```
 
-You need version 1.6 or higher.
+You need Java 7, which will show up as version 1.7. 
+
+Java 8 support in Scala is classed as experimental in Scala 2.11.x. If you
+aren't sure what this means, use Java 7.
 
 If you don't yet have Java installed, you can find out how to install
 it for your system
 <a href="http://docs.oracle.com/javase/7/docs/webnotes/install/index.html">
-over at the Java 7 install page</a>.
-Make sure you're using OpenJDK or Sun's JDK.
+over at the Java 7 install page</a>. Make sure you're using OpenJDK or Sun's JDK.
 Some Linux distros pre-install `gcj`, which won't work.
 
 ## 2. Install giter8
