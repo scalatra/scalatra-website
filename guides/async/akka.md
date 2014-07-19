@@ -9,25 +9,19 @@ title: Akka | Async | Scalatra guides
 
 ### AkkaSupport
 
-Akka is a toolkit and runtime for building highly concurrent, distributed, and
+[Akka](http://akka.io) is a toolkit and runtime for building highly concurrent, distributed, and
 fault tolerant event-driven applications on the JVM. Scalatra allows you to easily
 mix it into your application. 
 
-In versions of Scalatra before 2.2.0, Akka was an optional dependency, 
-contained in a scalatra-akka jar. In Scalatra 2.2.0, Akka has been 
-folded directly into Scalatra core, and the scalatra-akka dependency is no
-longer needed. To get access to Akka, all you need to do is mix FutureSupport
-into your servlets.
+#### Dependencies
 
-<div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-  If you're using Scala 2.9.x, you'll need 
-  <a href="https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/akka-examples/project/build.scala#L24">the Akka resolver</a> 
-  in your sbt configuration, otherwise you'll get a missing dependency. Add 
-  <pre>resolvers += "Akka Repo" at "http://repo.akka.io/repository",</pre>
-  and you'll be all set.
-</div>
+The following dependencies will be needed to make the sample application
+work.
 
+```scala
+"com.typesafe.akka" %% "akka-actor" % "2.3.4",
+"net.databinder.dispatch" %% "dispatch-core" % "0.11.1",
+```
 
 ### Setting up your Scalatra app with Akka
 
@@ -36,7 +30,7 @@ from inside the `ScalatraBootstrap` class. You can then pass those into the
 constructors of your servlets as necessary:
 
 ```scala
-import _root_.akka.actor.{ActorSystem, Props}
+import _root_.akka.actor.{Props, ActorSystem}
 import com.example.app._
 import org.scalatra._
 import javax.servlet.ServletContext
@@ -44,18 +38,14 @@ import javax.servlet.ServletContext
 
 class ScalatraBootstrap extends LifeCycle {
 
-  // Get a handle to an ActorSystem and a reference to one of your actors
   val system = ActorSystem()
   val myActor = system.actorOf(Props[MyActor])
 
-  // In the init method, mount your servlets with references to the system
-  // and/or ActorRefs, as necessary.
   override def init(context: ServletContext) {
     context.mount(new PageRetriever(system), "/*")
     context.mount(new MyActorApp(system, myActor), "/actors/*")
   }
 
-  // Make sure you shut down
   override def destroy(context:ServletContext) {
     system.shutdown()
   }
@@ -68,10 +58,10 @@ a full application shutdown, it might be a reload - so you'll need to release
 the `ActorSystem` resources when your Scalatra application is destroyed.
 
 
-### Akka Futures
+### Using Scala Futures
 
-Scalatra's Akka support provides a mechanism for adding [Akka][akka]
-futures to your routes. Akka support is only available in Scalatra 2.1 and up.
+Scalatra's `FutureSupport` trait provides a mechanism for adding [Futures](http://docs.scala-lang.org/overviews/core/futures.html)
+to your routes. At the point where you 
 
 The generic case looks like this (but it won't compile):
 
@@ -108,37 +98,47 @@ Akka `ActorSystem`.
 ```scala
 package com.example.app
 
-import scala.concurrent.{ExecutionContext, Future, Promise}
 import akka.actor.ActorSystem
 import dispatch._
-import org.scalatra.{ScalatraServlet, FutureSupport, AsyncResult}
+import org.scalatra._
 
-object DispatchAkka {
+import scala.concurrent.{ExecutionContext, Future, Promise}
+import scala.util.{Failure, Success, Try}
 
-  def retrievePage()(implicit ctx: ExecutionContext): Future[String] = {
-    dispatch.Http(url("http://slashdot.org/") OK as.String)
-  }
-}
-
-class PageRetriever(system: ActorSystem) extends ScalatraServlet with FutureSupport {
+class FutureController(system: ActorSystem) extends ScalatraServlet with FutureSupport {
 
   protected implicit def executor: ExecutionContext = system.dispatcher
 
   get("/") {
-    contentType = "text/html"
-    new AsyncResult { val is = 
-      DispatchAkka.retrievePage()
+    new AsyncResult { val is =
+      HttpClient.retrievePage()
     }
   }
 
 }
+
+object HttpClient {
+
+  def retrievePage()(implicit ctx: ExecutionContext): Future[String] = {
+    val prom = Promise[String]()
+    dispatch.Http(url("http://slashdot.org/") OK as.String) onComplete {
+      case Success(content) => prom.complete(Try(content))
+      case Failure(exception) => println(exception)
+    }
+    prom.future
+  }
+}
 ```
 
-This example code will run in Scalatra 2.2.x with Scala 2.9.2. In this
-combination, Scalatra uses Akka 2.0.5. 
+`AsyncResult` isn't strictly necessary. It's a way to ensure that if you close your
+Future over mutable state (such as a `request` object or a `var`) that the state is
+captured at the point you hand off to the Future. 
 
-When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and class names have changed. Consult the
-[Akka upgrade guide](http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.0.x-2.1.x.html) to see the differences between the two Akka versions.
+If you attempt to use mutable
+state inside your Future without AsyncResult (e.g. calling `request.headers` or something), 
+you'll get an exception. If you use AsyncResult, it'll work. So, you're trading a bit
+of boilerplate code for a bit of safety. If you can remember not to close over mutable
+state, don't bother with `AsyncResult`.
 
 
 ### Actor example
@@ -150,35 +150,39 @@ When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
-When you use Scalatra with Akka, you most likely want to return a result of some sort so you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future.
+When you use Scalatra with Akka, you most likely want to return a result of some sort. So you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future. Typically, this involves Akka's [ask pattern](http://doc.akka.io/docs/akka/2.3.4/scala/actors.html#Ask__Send-And-Receive-Future).
 
-When the request you get just needs to trigger something on an Actor (fire and forget) then you don't need a Future and probably you want to reply with the Accepted status or something like it.
+When the request you get just needs to trigger something on an Actor using the fire-and-forget [tell pattern](http://doc.akka.io/docs/akka/2.3.4/scala/actors.html#Tell__Fire-forget), then you don't need a Future. In this case, you probably you want to reply with the Accepted status or something like it. 
 
 Here's some example code:
 
 ```scala
 package com.example.app
 
-import scala.concurrent.ExecutionContext
-import akka.actor.{ActorRef, Actor, ActorSystem}
+import akka.actor.{Actor, ActorRef, ActorSystem}
+import akka.pattern.ask
 import akka.util.Timeout
-import org.scalatra.{Accepted, AsyncResult, FutureSupport, ScalatraServlet}
+import org.scalatra.{Accepted, FutureSupport, ScalatraServlet}
+
+import scala.concurrent.ExecutionContext
+import scala.concurrent.duration._
 
 class MyActorApp(system:ActorSystem, myActor:ActorRef) extends ScalatraServlet with FutureSupport {
 
+  implicit val timeout = new Timeout(2 seconds)
   protected implicit def executor: ExecutionContext = system.dispatcher
 
-  import _root_.akka.pattern.ask
-  implicit val defaultTimeout = Timeout(10)
-
-  get("/async") {
-    new AsyncResult { val is = myActor ? "Do stuff and give me an answer" }
+  // You'll see the output from this in the browser.
+  get("/ask") {
+    myActor ? "Do stuff and give me an answer"
   }
 
-  get("/fire-forget") {
+  // You'll see the output from this in your terminal.
+  get("/tell") {
     myActor ! "Hey, you know what?"
     Accepted()
   }
+
 }
 
 class MyActor extends Actor {
@@ -186,7 +190,9 @@ class MyActor extends Actor {
     case "Do stuff and give me an answer" => sender ! "The answer is 42"
     case "Hey, you know what?" => println("Yeah I know... oh boy do I know")
   }
+
 }
 ```
 
-[akka]: http://akka.io/
+Once again, if we wanted to ensure that it was safe to close over mutable state, we could
+have used `AsyncResult` with out Actors. 
