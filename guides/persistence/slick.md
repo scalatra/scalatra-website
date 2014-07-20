@@ -52,13 +52,13 @@ The sample project contains a minimal setup. For this guide the following files 
 Let us start with the SBT setup by editing `project/build.scala`. Slick targets Scala 2.10, so the SBT build needs to use it:
 
 ```scala
-scalaVersion := "2.10.1"
+scalaVersion := "2.10.4"
 ```
 
-Also you need to use an appropriate Scalatra version, for example `2.2.1` which supports Scala 2.10:
+Also you need to use an appropriate Scalatra version, for example `2.3.0` which supports Scala 2.10:
 
 ```scala
-libraryDependencies += "org.scalatra" %% "scalatra" % "2.2.1"
+libraryDependencies += "org.scalatra" %% "scalatra" % "2.3.0"
 ```
 
 For Slick we need to add the `Sonatype releases` repository and dependencies to Slick itself. For this guide we choose the [H2 Database](http://www.h2database.com/html/main.html), so we need to add a dependency to it too.
@@ -72,6 +72,12 @@ libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.3.166"
 )
 ```
+
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  This guide currently targets Slick 1.x, which works with Scala 2.10 only. We need to upgrade our examples to use Slick 2.1.x, 
+  which works with Scala 2.10 and 2.11. Stay tuned. 
+</div>
 
 Since we want to use connection pooling, we also need to add [c3p0](http://www.mchange.com/projects/c3p0/):
 
