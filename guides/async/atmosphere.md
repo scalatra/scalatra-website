@@ -376,3 +376,13 @@ You can define your own wire formats by extending the
 [WireFormat](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/wire_format.scala)
 trait. To create a new wire format, extend WireFormat and implement its methods
 in your subclass. 
+
+## Building an embedded Scalatra + Atmosphere application
+
+If you need to build your Atmosphere application to run embedded within Jetty, there's a
+full code example showing you how, [in the Scalatra Website Examples](https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/async/scalatra-atmosphere-embedded) repo on Github.
+
+Once you check out the code, you can build an embedded Atmosphere-enabled app which runs under Jetty, by
+calling the `stage` task once you're in SBT. This will package a start script
+for you - it can be run by calling `target/start` from the top-level project
+directory. It depends on the [sbt-start-script](https://github.com/sbt/sbt-start-script) plugin.
