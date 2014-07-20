@@ -10,6 +10,7 @@ title: Deploying to CloudBees | Deployment | Scalatra
 [CloudBees](http://www.cloudbees.com/) is a hosted platform for JVM apps that puts
 everything from source control to continuous integration to production deployment under
 one roof.
+
 Its free plan is more than sufficient for a simple Scalatra app.
 
 ---
@@ -89,5 +90,4 @@ Application scalatra-documenter/scalatra-test deployed: http://scalatra-test.sca
 ## 6. Visit your website
 
 The output from the deploy phase shows the URL to visit.
-In our case it's [http://scalatra-test.scalatra-documenter.cloudbees.net](http://scalatra-test.scalatra-documenter.cloudbees.net).
 
