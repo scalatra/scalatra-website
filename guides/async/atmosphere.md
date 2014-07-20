@@ -195,10 +195,10 @@ Besides the basic connectivity provided by the Atmosphere connector,
 you'll need to provide your own application-specific logic, also in
 JavaScript. Here's an `application.js` file for our chat application:
 
-[https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/application.js](https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/application.js)
+[https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/application.js](https://github.com/scalatra/scalatra-website-examples/blob/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/js/application.js)
 
 Drop that code into `webapp/js/atmosphere.js`, and put the
-[Atmosphere JavaScript client](https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/jquery-atmosphere.js)
+[Atmosphere JavaScript client](https://github.com/scalatra/scalatra-website-examples/blob/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/js/jquery-atmosphere.js)
 alongside it, and you've got a working client implementation. 
 
 A few key points in `application.js`. 
@@ -217,7 +217,7 @@ what each of these mean.
 Lastly, there's a simple key-press detection which sends a chat 
 message to the server whenever the `enter` key is pressed.
 
-With all of this in place, you can add a few [Scalate views](https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/WEB-INF) 
+With all of this in place, you can add a few [Scalate views](https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/WEB-INF) 
 to your chat application and it's all done. The example application has
 a default layout and action which will serve up a browser-based chat
 client.
