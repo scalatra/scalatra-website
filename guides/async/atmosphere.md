@@ -188,7 +188,7 @@ it's hosted in and figure out which of the available transport types will work, 
 possible clients.
 
 You're strongly advised to read Atmosphere's 
-[extensive documentation](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-API)
+[extensive documentation](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-atmosphere.js-API)
 in order to understand your connection options. 
 
 Besides the basic connectivity provided by the Atmosphere connector, 
