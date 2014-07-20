@@ -12,13 +12,6 @@ everything from source control to continuous integration to production deploymen
 one roof.
 Its free plan is more than sufficient for a simple Scalatra app.
 
-<div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-  See
-  <a href="{{site.examples}}deployment/scalatra-cloudbees">scalatra-cloudbees</a>
-  for a minimal and standalone project containing the example in this guide.
-</div>
-
 ---
 
 ## 1. [Register](https://www.cloudbees.com/signup) for an account.
