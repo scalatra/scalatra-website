@@ -58,21 +58,18 @@ work.
 Your imports should look like this:
 
 ```scala
-// Default imports from a stock Scalatra g8 code generator:
-import org.scalatra._
-import scalate.ScalateSupport
+package org.scalatra.example.atmosphere
 
-// Project-specific imports
+import java.util.Date
+
+import org.json4s.JsonDSL._
+import org.json4s._
+import org.scalatra._
 import org.scalatra.atmosphere._
 import org.scalatra.json.{JValueResult, JacksonJsonSupport}
-import org.json4s._
-import JsonDSL._
-import java.util.Date
-import java.text.SimpleDateFormat
+import org.scalatra.scalate.ScalateSupport
 
-
-import scala.concurrent._
-import ExecutionContext.Implicits.global
+import scala.concurrent.ExecutionContext.Implicits.global
 ```
 
 #### Writing the ChatController
