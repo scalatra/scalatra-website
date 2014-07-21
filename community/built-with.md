@@ -51,6 +51,10 @@ organize routes and services.
 
 [LinkedIn Signal](http://sna-projects.com/blog/2010/10/linkedin-signal-a-look-under-the-hood/) is using it in their backend.
 
+### McLaren Applied Technologies
+
+[McLaren Applied Technologies](http://www.mclaren.com/appliedtechnologies/), the technology arm of the McLaren Formula 1 and automotive firm, is a heavy user of Scala. They use Scalatra for their timeseries data store. 
+
 
 ### NetFlix
 
