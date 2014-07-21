@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Scalatra 2.3.0 Released"
+title: "Scalatra 2.3.0 released"
 author: Dave Hrycyszyn
 twitter: futurechimp
 ---
