@@ -20,8 +20,8 @@ This is totally optional, so if you don't like IDEs, feel free to skip this sect
 ## IntelliJ IDEA
 
 - Download [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html). The community edition is fine.
-- Install the [Scala plugin](http://confluence.jetbrains.net/display/SCA/Scala+Plugin+for+IntelliJ+IDEA) from JetBrains.
-- Once the Scala plugin is installed, you can simply open any Scalatra project.
+- Install the [Scala plugin](http://confluence.jetbrains.net/display/SCA/Scala+Plugin+for+IntelliJ+IDEA) from JetBrains. You can do this most easily by clicking the "Browse repositories" button in the plugins manager. The plugin is called "Scala".
+- Once the Scala plugin is installed, you can open any Scalatra project and get very good syntax highlighting and refactoring support. 
 
 
 ### Debugging in IntelliJ Idea
