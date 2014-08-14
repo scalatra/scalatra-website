@@ -49,26 +49,24 @@ The sample project contains a minimal setup. For this guide the following files 
 
 ## SBT Configuration
 
-Let us start with the SBT setup by editing `project/build.scala`. Slick targets Scala 2.10, so the SBT build needs to use it:
+Let us start with the SBT setup by editing `project/build.scala`. Slick officially supports Scala 2.10-2.11, so let's use Scala 2.11:
 
 ```scala
-scalaVersion := "2.10.1"
+scalaVersion := "2.11.0"
 ```
 
-Also you need to use an appropriate Scalatra version, for example `2.2.1` which supports Scala 2.10:
+Also you need to use an appropriate Scalatra version, for example `2.3.0` which supports Scala 2.11:
 
 ```scala
-libraryDependencies += "org.scalatra" %% "scalatra" % "2.2.1"
+libraryDependencies += "org.scalatra" %% "scalatra" % "2.3.0"
 ```
 
-For Slick we need to add the `Sonatype releases` repository and dependencies to Slick itself. For this guide we choose the [H2 Database](http://www.h2database.com/html/main.html), so we need to add a dependency to it too.
+For this guide we choose the [H2 Database](http://www.h2database.com/html/main.html), so we need to add a dependency to it too.
 
 ```scala
-resolvers += "Sonatype Releases"  at "http://oss.sonatype.org/content/repositories/releases"
-
 
 libraryDependencies ++= Seq(
-  "com.typesafe.slick" %% "slick" % "1.0.1",
+  "com.typesafe.slick" %% "slick" % "2.1.0",
   "com.h2database" % "h2" % "1.3.166"
 )
 ```
@@ -92,12 +90,13 @@ We put the database initialization code into `ScalatraBootstrap`. This is the cl
   * Create and mount the application.
 
 ```scala
-import com.mchange.v2.c3p0.ComboPooledDataSource
-import org.slf4j.LoggerFactory
-import scala.slick.session.Database
-import slicksupport._
+import app._
 import org.scalatra._
 import javax.servlet.ServletContext
+
+import com.mchange.v2.c3p0.ComboPooledDataSource
+import org.slf4j.LoggerFactory
+import scala.slick.jdbc.JdbcBackend.Database
 
 /**
  * This is the ScalatraBootstrap bootstrap file. You can use it to mount servlets or
@@ -147,30 +146,37 @@ Now we are ready to start with the sample application. The code serves only as a
 We create two tables, one for suppliers and another one for coffees:
 
 ```scala
-// Definition of the SUPPLIERS table
-object Suppliers extends Table[(Int, String, String, String, String, String)]("SUPPLIERS") {
-  def id = column[Int]("SUP_ID", O.PrimaryKey) // This is the primary key column
-  def name = column[String]("SUP_NAME")
-  def street = column[String]("STREET")
-  def city = column[String]("CITY")
-  def state = column[String]("STATE")
-  def zip = column[String]("ZIP")
+import scala.slick.driver.H2Driver.simple._
 
-  // Every table needs a * projection with the same type as the table's type parameter
-  def * = id ~ name ~ street ~ city ~ state ~ zip
-}
+object Tables {
+  // Definition of the SUPPLIERS table
+  class Suppliers(tag: Tag) extends Table[(Int, String, String, String, String, String)](tag, "SUPPLIERS") {
+    def id      = column[Int]("SUP_ID", O.PrimaryKey) // This is the primary key column
+    def name    = column[String]("SUP_NAME")
+    def street  = column[String]("STREET")
+    def city    = column[String]("CITY")
+    def state   = column[String]("STATE")
+    def zip     = column[String]("ZIP")
 
-// Definition of the COFFEES table
-object Coffees extends Table[(String, Int, Double, Int, Int)]("COFFEES") {
-  def name = column[String]("COF_NAME", O.PrimaryKey)
-  def supID = column[Int]("SUP_ID")
-  def price = column[Double]("PRICE")
-  def sales = column[Int]("SALES")
-  def total = column[Int]("TOTAL")
-  def * = name ~ supID ~ price ~ sales ~ total
+    // Every table needs a * projection with the same type as the table's type parameter
+    def * = (id, name, street, city, state, zip)
 
-  // A reified foreign key relation that can be navigated to create a join
-  def supplier = foreignKey("SUP_FK", supID, Suppliers)(_.id)
+  }
+  val suppliers = TableQuery[Suppliers]
+
+  // Definition of the COFFEES table
+  class Coffees(tag: Tag) extends Table[(String, Int, Double, Int, Int)](tag, "COFFEES") {
+    def name  = column[String]("COF_NAME", O.PrimaryKey)
+    def supID = column[Int]("SUP_ID")
+    def price = column[Double]("PRICE")
+    def sales = column[Int]("SALES")
+    def total = column[Int]("TOTAL")
+    def *     = (name, supID, price, sales, total)
+
+    // A reified foreign key relation that can be navigated to create a join
+    def supplier = foreignKey("SUP_FK", supID, suppliers)(_.id)
+  }
+  val coffees = TableQuery[Coffees]
 }
 ```
 
@@ -181,28 +187,34 @@ Now we can create some routes:
   * `GET /db/load-data` loads sample data into the tables
   * `GET /coffees` queries the database
 
-We put the routes in a trait which we later add to the application. Note that we wrap code which uses the database in a session with `db withSession { .. }`. The value `db` is later provided by the application.
+We put the routes in a trait which we later add to the application. Note that we wrap code which uses the database in a session with `db withDynSession { .. }`. The value `db` is later provided by the application.
 
 ```scala
+import org.scalatra._
+
+import Tables._
+import scala.slick.driver.H2Driver.simple._
+import scala.slick.jdbc.JdbcBackend.Database.dynamicSession
+
 trait SlickRoutes extends ScalatraServlet {
 
   val db: Database
 
   get("/db/create-tables") {
-    db withSession {
-      (Suppliers.ddl ++ Coffees.ddl).create
+    db withDynSession {
+      (suppliers.ddl ++ coffees.ddl).create
     }
   }
 
   get("/db/load-data") {
-    db withSession {
+    db withDynSession {
       // Insert some suppliers
-      Suppliers.insert(101, "Acme, Inc.", "99 Market Street", "Groundsville", "CA", "95199")
-      Suppliers.insert(49, "Superior Coffee", "1 Party Place", "Mendocino", "CA", "95460")
-      Suppliers.insert(150, "The High Ground", "100 Coffee Lane", "Meadows", "CA", "93966")
+      suppliers.insert(101, "Acme, Inc.", "99 Market Street", "Groundsville", "CA", "95199")
+      suppliers.insert(49, "Superior Coffee", "1 Party Place", "Mendocino", "CA", "95460")
+      suppliers.insert(150, "The High Ground", "100 Coffee Lane", "Meadows", "CA", "93966")
 
       // Insert some coffees (using JDBC's batch insert feature, if supported by the DB)
-      Coffees.insertAll(
+      coffees.insertAll(
         ("Colombian", 101, 7.99, 0, 0),
         ("French_Roast", 49, 8.99, 0, 0),
         ("Espresso", 150, 9.99, 0, 0),
@@ -213,15 +225,15 @@ trait SlickRoutes extends ScalatraServlet {
   }
 
   get("/db/drop-tables") {
-    db withSession {
-      (Suppliers.ddl ++ Coffees.ddl).drop
+    db withDynSession {
+      (suppliers.ddl ++ coffees.ddl).drop
     }
   }
 
   get("/coffees") {
-    db withSession {
+    db withDynSession {
       val q3 = for {
-        c <- Coffees
+        c <- coffees
         s <- c.supplier
       } yield (c.name.asColumnOf[String], s.name.asColumnOf[String])
 
