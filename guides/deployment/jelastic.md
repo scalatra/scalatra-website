@@ -56,7 +56,7 @@ $ chmod u+x sbt
 Add the following line to `project/plugins.sbt`:
 
 ```scala
-addSbtPlugin("com.github.casualjim" % "sbt-jelastic-deploy" % "0.1.2")
+addSbtPlugin("com.github.casualjim" % "sbt-jelastic-deploy" % "0.1.4")
 ```
 
 - Configure the Jelastic deployment plugin

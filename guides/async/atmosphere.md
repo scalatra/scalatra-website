@@ -53,35 +53,23 @@ work.
   "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "container;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
 ```
 
-Scalatra's Atmosphere integration depends on Akka.
-
-You'll need to add the TypeSafe sbt resolver in order to get the
-Akka 2.0.x dependency, so make sure you've got this in `project/build.scala`:
-
-```scala
-resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
-```
-
 #### Imports
 
 Your imports should look like this:
 
 ```scala
-// Default imports from a stock Scalatra g8 code generator:
-import org.scalatra._
-import scalate.ScalateSupport
+package org.scalatra.example.atmosphere
 
-// Project-specific imports
+import java.util.Date
+
+import org.json4s.JsonDSL._
+import org.json4s._
+import org.scalatra._
 import org.scalatra.atmosphere._
 import org.scalatra.json.{JValueResult, JacksonJsonSupport}
-import org.json4s._
-import JsonDSL._
-import java.util.Date
-import java.text.SimpleDateFormat
+import org.scalatra.scalate.ScalateSupport
 
-
-import scala.concurrent._
-import ExecutionContext.Implicits.global
+import scala.concurrent.ExecutionContext.Implicits.global
 ```
 
 #### Writing the ChatController
@@ -200,17 +188,17 @@ it's hosted in and figure out which of the available transport types will work, 
 possible clients.
 
 You're strongly advised to read Atmosphere's 
-[extensive documentation](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-API)
+[extensive documentation](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-atmosphere.js-API)
 in order to understand your connection options. 
 
 Besides the basic connectivity provided by the Atmosphere connector, 
 you'll need to provide your own application-specific logic, also in
 JavaScript. Here's an `application.js` file for our chat application:
 
-[https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/application.js](https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/application.js)
+[https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/application.js](https://github.com/scalatra/scalatra-website-examples/blob/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/js/application.js)
 
 Drop that code into `webapp/js/atmosphere.js`, and put the
-[Atmosphere JavaScript client](https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/jquery-atmosphere.js)
+[Atmosphere JavaScript client](https://github.com/scalatra/scalatra-website-examples/blob/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/js/jquery-atmosphere.js)
 alongside it, and you've got a working client implementation. 
 
 A few key points in `application.js`. 
@@ -229,7 +217,7 @@ what each of these mean.
 Lastly, there's a simple key-press detection which sends a chat 
 message to the server whenever the `enter` key is pressed.
 
-With all of this in place, you can add a few [Scalate views](https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/WEB-INF) 
+With all of this in place, you can add a few [Scalate views](https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/WEB-INF) 
 to your chat application and it's all done. The example application has
 a default layout and action which will serve up a browser-based chat
 client.
@@ -376,3 +364,13 @@ You can define your own wire formats by extending the
 [WireFormat](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/wire_format.scala)
 trait. To create a new wire format, extend WireFormat and implement its methods
 in your subclass. 
+
+## Building an embedded Scalatra + Atmosphere application
+
+If you need to build your Atmosphere application to run embedded within Jetty, there's a
+full code example showing you how, [in the Scalatra Website Examples](https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/async/scalatra-atmosphere-embedded) repo on Github.
+
+Once you check out the code, you can build an embedded Atmosphere-enabled app which runs under Jetty, by
+calling the `stage` task once you're in SBT. This will package a start script
+for you - it can be run by calling `target/start` from the top-level project
+directory. It depends on the [sbt-start-script](https://github.com/sbt/sbt-start-script) plugin.

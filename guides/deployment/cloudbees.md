@@ -10,14 +10,8 @@ title: Deploying to CloudBees | Deployment | Scalatra
 [CloudBees](http://www.cloudbees.com/) is a hosted platform for JVM apps that puts
 everything from source control to continuous integration to production deployment under
 one roof.
-Its free plan is more than sufficient for a simple Scalatra app.
 
-<div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-  See
-  <a href="{{site.examples}}deployment/scalatra-cloudbees">scalatra-cloudbees</a>
-  for a minimal and standalone project containing the example in this guide.
-</div>
+Its free plan is more than sufficient for a simple Scalatra app.
 
 ---
 
@@ -46,7 +40,7 @@ Enter your CloudBees account password:
 Check out the the [installation]({{site.baseurl}}getting-started/installation.html) and [first project]({{site.baseurl}}getting-started/first-project.html) guides if this isn't familiar.
 
 ```sh
-$ g8 scalatra/scalatra-sbt -b develop
+$ g8 scalatra/scalatra-sbt
 $ cd [app root]
 $ chmod u+x sbt
 ```
@@ -96,5 +90,4 @@ Application scalatra-documenter/scalatra-test deployed: http://scalatra-test.sca
 ## 6. Visit your website
 
 The output from the deploy phase shows the URL to visit.
-In our case it's [http://scalatra-test.scalatra-documenter.cloudbees.net](http://scalatra-test.scalatra-documenter.cloudbees.net).
 

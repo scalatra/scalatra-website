@@ -27,10 +27,6 @@ The [BBC](http://www.bbc.co.uk)'s Linked Data Team has built a Scalatra REST API
 
 [ChronoTrack](http://www.chronotrack.com) is using Scalatra for their public and private API services.  ChronoTrack's web and mobile applications consume internal and external APIs built with Scalatra.
 
-### Gov.uk
-
-[The British government](http://www.gov.uk) [is using Scalatra](http://radar.oreilly.com/2012/01/with-govuk-british-government.html) as a router to distribute requests to other back-end apps on its new flagship website.
-
 ### The Guardian
 
 Scalatra is used in a number of systems that help power [The Guardian](http:///www.guardian.co.uk/), for instance the [music artist pages](http://www.guardian.co.uk/info/developer-blog/2011/jun/23/internet).
@@ -54,6 +50,10 @@ organize routes and services.
 ### LinkedIn Signal
 
 [LinkedIn Signal](http://sna-projects.com/blog/2010/10/linkedin-signal-a-look-under-the-hood/) is using it in their backend.
+
+### McLaren Applied Technologies
+
+[McLaren Applied Technologies](http://www.mclaren.com/appliedtechnologies/), the technology arm of the McLaren Formula 1 and automotive firm, is a heavy user of Scala. They use Scalatra for their timeseries data store. 
 
 
 ### NetFlix

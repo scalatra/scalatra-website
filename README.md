@@ -26,4 +26,4 @@ jekyll --server --auto
 
 This will start an embedded webserver and automatically regenerate the website
 as you make changes to it. You can then view the site at 
-[http://localhost:4000/2.2/](http://localhost:4000/2.2/).
+[http://localhost:4000/2.3/](http://localhost:4000/2.3/).

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Scalatra 2.2.2 and 2.3.0M1 Released"
+title: "Scalatra 2.2.2 and 2.3.0M1 released"
 author: Dave Hrycyszyn
 twitter: futurechimp
 ---

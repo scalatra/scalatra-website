@@ -29,6 +29,19 @@ MongoDb requires very little setup. Assuming you've got Mongo installed already,
 
 We'll use the officially-supported Casbah library, but any of the others should work in basically the same way.
 
+### Dependencies
+
+To make the following example codes work, add the following dependencies to your
+`project/build.scala`:
+
+```
+"org.mongodb" %% "casbah" % "2.7.2",
+"org.json4s" %% "json4s-jackson" % "3.2.10",
+"org.json4s" %% "json4s-mongo" % "3.2.10",
+```
+
+### Setup in ScalatraBootstrap
+
 First, make sure you start a connection to MongoDb when your application initializes. You do this by putting a bit of code in your `init` method in `src/main/scala/ScalatraBootstrap`:
 
 ```scala

@@ -7,15 +7,15 @@ title: Twirl | Views | Scalatra guides
   <h1>Twirl</h1>
 </div>
 
-*Twirl* is the name [Mathias](https://twitter.com/sirthias)
-created for the
-[Play 2 templating language](http://www.playframework.org/documentation/2.0/ScalaTemplates).
+*Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.0/ScalaTemplates).
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-  See
+  Please note that the example for this guide needs to be updated to work with
+  Scalatra 2.3.x / Scala 2.11.x.
+  <!-- See
   <a href="{{site.examples}}views/scalatra-twirl">scalatra-twirl</a>
-  for a minimal and standalone project containing the example in this guide.
+  for a minimal and standalone project containing the example in this guide. -->
 </div>
 
 ---

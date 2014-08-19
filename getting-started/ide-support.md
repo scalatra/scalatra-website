@@ -12,9 +12,38 @@ Because Scalatra is a pure-Scala no-magic framework, Scala IDEs such as
 [IntelliJ](http://confluence.jetbrains.net/display/SCA/Scala+Plugin+for+IntelliJ+IDEA),
 and [ENSIME](https://github.com/aemoncannon/ensime) (for Emacs)
 "understand" Scalatra and can assist your development.
+
 This is totally optional, so if you don't like IDEs, feel free to skip this section.
 
 ---
+
+## IntelliJ IDEA
+
+- Download [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html). The community edition is fine.
+- Install the [Scala plugin](http://confluence.jetbrains.net/display/SCA/Scala+Plugin+for+IntelliJ+IDEA) from JetBrains. You can do this most easily by clicking the "Browse repositories" button in the plugins manager. The plugin is called "Scala".
+- Once the Scala plugin is installed, you can open any Scalatra project and get very good syntax highlighting and refactoring support. 
+
+
+### Debugging in IntelliJ Idea
+
+Start SBT like this:
+
+```
+./sbt -jvm-debug 5005
+```
+
+After that, go to `Run` -> `Edit configurations` in IntelliJ. Click the `+`
+button, select `Remote` to make a new remote debugging configuration, and 
+call it `Scalatra Debug`. In IntelliJ 13, the default run conf should work 
+(it looks like this):
+
+```
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
+```
+
+Now just select `Run` -> `Debug 'Scalatra Debug'`. Setting breakpoints and
+stepping through code should work. 
+
 
 ## Eclipse (*aka* Scala IDE)
 - Download [Eclipse Classic](http://www.eclipse.org/downloads/packages/eclipse-classic-421/junosr1) and then add the [Scala plugin](http://scala-ide.org/).
@@ -52,48 +81,6 @@ Press the `Debug` button on the bottom right. Eclipse will attach itself to
 SBT's remote debugger and your breakpoints will start working. 
 
 
-## IntelliJ IDEA
-
-- Download [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html).
-The community edition is fine.
-- Install the [Scala plugin](http://confluence.jetbrains.net/display/SCA/Scala+Plugin+for+IntelliJ+IDEA) from JetBrains.
-- Now install the [sbt-idea](https://github.com/mpeltonen/sbt-idea) plugin by adding
-this line to your `project/plugins.sbt` file:
-
-```scala
-addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2")
-```
-
-This sbt plugin generates IntelliJ classpath and configuration files to ensure the
-project will work as expected in the IDE.
-
-```
-$ ./sbt
-> gen-idea
-```
-
-Be sure to re-run `./sbt gen-idea` every time you add or update a dependency in
-`project/build.scala`.
-
-### Debugging in IntelliJ Idea
-
-Start SBT like this:
-
-```
-./sbt -jvm-debug 5005
-```
-
-After that, go to `Run` -> `Edit configurations` in IntelliJ. Click the `+`
-button, select `Remote` to make a new remote debugging configuration, and 
-call it `Scalatra Debug`. In IntelliJ 13, the default run conf should work 
-(it looks like this):
-
-```
--agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
-```
-
-Now just select `Run` -> `Debug 'Scalatra Debug'`. Setting breakpoints and
-stepping through code should work. 
 
 ## ENSIME (for Emacs)
 
