@@ -173,7 +173,7 @@ route matches.
  * Meaningful error pages are enabled (e.g. on 404s, 500s).
  * The [Scalate console][console] is enabled.
 
-[console]: http://scalate.fusesource.org/documentation/console.html
+[console]: http://scalate.github.io/scalate/documentation/console.html
 
 ##### Container init params
 

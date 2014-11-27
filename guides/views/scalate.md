@@ -22,7 +22,7 @@ Scalatra uses an extremely powerful templating engine, [Scalate][scalate].
 It supports multiple template styles. We think it's one of the best
 template engines going - it's extremely fast, flexible, and feature-rich.
 
-[scalate]: http://scalate.fusesource.org/documentation/user-guide.html
+[scalate]: http://scalate.github.io/scalate/documentation/user-guide.html
 
 Some of Scalate's all-star features include:
 
@@ -38,10 +38,10 @@ Scalate includes support for multiple templateing styles, including
 Mustache, templates are strongly typed, so your compiler can save
 you time by telling you when you make a mistake in your views.
 
-[ssp]: http://scalate.fusesource.org/documentation/ssp-reference.html
-[scaml]: http://scalate.fusesource.org/documentation/scaml-reference.html
-[mustache]: http://scalate.fusesource.org/documentation/mustache.html
-[jade]: http://scalate.fusesource.org/documentation/jade.html
+[ssp]: http://scalate.github.io/scalate/documentation/ssp-reference.html
+[scaml]: http://scalate.github.io/scalate/documentation/scaml-reference.html
+[mustache]: http://scalate.github.io/scalate/documentation/mustache.html
+[jade]: http://scalate.github.io/scalate/documentation/jade.html
 
 All you need to get started is `Scalate`, which is included in Scalatra.
 By default, Scalatra looks for views in the `views` directory in your application root.
@@ -283,4 +283,4 @@ For more information on Scalate, please refer to the [Scalate User's guide][sug]
 It has advice about layouts, partials, how to DRY up layout code, making Scalate
 work with your IDE or text editor, and an extensive set of examples.
 
-[sug]: http://scalate.fusesource.org/documentation/user-guide.html
+[sug]: http://scalate.github.io/scalate/documentation/user-guide.html

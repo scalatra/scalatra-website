@@ -749,7 +749,7 @@ extension method technique to add in our new validation code.
 Let's add to our abstract `TodosCommand` class:
 
 ```scala
-abstract class TodosCommand[S](implicit mf: Manifest[S]) extends ModelCommand[S] with JsonCommand {
+abstract class TodosCommand[S] extends JsonCommand {
   
   /**
    * Extending the [org.scalatra.commands.FieldDescriptor] class with our [TodosStringValidations]

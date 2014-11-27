@@ -29,21 +29,21 @@ The sample project contains a minimal setup. For this guide the following files 
 ```
 .
 ├── project
-│   ├── build.properties
-│   ├── build.scala                  // sbt build configuration
-│   └── plugins.sbt
+│   ├── build.properties
+│   ├── build.scala                  // sbt build configuration
+│   └── plugins.sbt
 └── src
-    └── main
-        ├── resources
-        │   ├── c3p0.properties      // connection pool configuration
-        │   └── logback.xml
-        ├── scala
-        │   ├── slicksupport
-        │   │   └── slick.scala      // main code goes here
-        │   └── ScalatraBootstrap.scala
-        └── webapp
-            └── WEB-INF
-                └── web.xml
+    └── main
+        ├── resources
+        │   ├── c3p0.properties      // connection pool configuration
+        │   └── logback.xml
+        ├── scala
+        │   ├── slicksupport
+        │   │   └── slick.scala      // main code goes here
+        │   └── ScalatraBootstrap.scala
+        └── webapp
+            └── WEB-INF
+                └── web.xml
 
 ```
 
