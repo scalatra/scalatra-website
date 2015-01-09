@@ -89,9 +89,8 @@ $ ./sbt
 ```
 
 sbt will also take care of downloading an entire Scalatra development
-environment if you don't have one yet.
-That means sbt may spend some time downloading Scalatra and its libraries
-on first run.
+environment if you don't have one yet. That means sbt may spend some 
+time downloading Scalatra and its libraries on first run.
 
 ## Hello world
 
