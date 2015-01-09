@@ -24,7 +24,7 @@ in sync with your API.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/swagger-example">swagger-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/swagger-example">swagger-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
