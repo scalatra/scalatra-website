@@ -92,6 +92,15 @@ sbt will also take care of downloading an entire Scalatra development
 environment if you don't have one yet. That means sbt may spend some 
 time downloading Scalatra and its libraries on first run.
 
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  Although most people use sbt to build their Scalatra projects, it's also
+  possible to build using other systems, such as Maven. A user-contributed
+  Maven prototype <a href="https://github.com/fancellu/scalatra-maven-prototype">is available</a>.
+  For most new users, though, sbt will be the easiest way to get started.
+</div>
+
+
 ## Hello world
 
 Now that Scalatra is installed, how about making your first application?
