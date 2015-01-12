@@ -411,7 +411,7 @@ Now let's see what we've gained.
 
 Adding Swagger support to our application, and the Swagger annotations to our FlowersController, means we've got some new functionality available. Check the following URL in your browser:
 
-[http://localhost:8080/api-docs/resources.json](http://localhost:8080/api-docs/resources.json)
+[http://localhost:8080/api-docs](http://localhost:8080/api-docs)
 
 You should see an auto-generated Swagger description of available APIs (in this case, there's only one, but there could be multiple APIs defined by our application and they'd all be noted here):
 
@@ -423,7 +423,7 @@ You should see an auto-generated Swagger description of available APIs (in this 
 
 If you browse to [http://petstore.swagger.wordnik.com/](http://petstore.swagger.wordnik.com/), you'll see the default Swagger demo application - a Pet Store - and you'll be able to browse its documentation. One thing which may not be immediately obvious is that you can use this app to browse our local Flower Shop as well.
 
-The Pet Store documentation is showing because http://petstore.swagger.wordnik.com/api/resources.json is entered into the URL field by default.
+The Pet Store documentation is showing because http://petstore.swagger.wordnik.com/api/api-docs is entered into the URL field by default.
 
 Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs` - into the URL field, then press the "Explore" button. You'll be rewarded with a fully Swaggerized view of your API documentation. Try clicking on the "GET /flowers" route to expand the operations underneath it, and then entering the word "rose" into the input box for the "name" parameter. You'll be rewarded with JSON output for the search method we defined earlier.
 
