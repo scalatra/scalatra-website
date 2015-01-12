@@ -173,7 +173,7 @@ route matches.
  * Meaningful error pages are enabled (e.g. on 404s, 500s).
  * The [Scalate console][console] is enabled.
 
-[console]: http://scalate.fusesource.org/documentation/console.html
+[console]: http://scalate.github.io/scalate/documentation/console.html
 
 ##### Container init params
 
@@ -334,6 +334,12 @@ Scala's standard XML tools.
 ### Changing the port in development
 
 Add `port in container.Configuration := 8081` to `project/build.scala` if you would
-like your Scalatra app to run something other than the default port (8080).
+like your Scalatra app to run on something other than the default port (8080). 
+
+_You may need to add the following imports if you get errors upon adding the configuration above:_ 
+```scala
+import com.earldouglas.xsbtwebplugin.PluginKeys._
+import com.earldouglas.xsbtwebplugin.WebPlugin._
+```
 
 
