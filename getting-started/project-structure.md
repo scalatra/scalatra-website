@@ -211,7 +211,7 @@ The default dependencies are:
   <dd>This is the core Scalatra module, and is required to run the framework.</dd>
   <dt>scalatra-scalate</dt>
   <dd>
-    This integrates with <a href="http://scalate.fusesource.org">Scalate</a>,
+    This integrates with <a href="http://scalate.github.io/scalate">Scalate</a>,
     a template engine supporting multiple template formats. Scalate is optional, but
     highly recommended for any app requiring templating.
   </dd>

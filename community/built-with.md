@@ -92,3 +92,8 @@ and command validation support to Scalatra 2.0.x.
 [Skinny Framework](http://skinny-framework.org) is built on Scalatra,
 inspired by Ruby on Rails, and is optimized for sustainable productivity
 for ordinary Servlet-based app development.
+
+### Sygments
+
+[Sygments](https://github.com/ScalaWilliam/Sygments) is syntax highlighting
+for Scala based on Pygments.
