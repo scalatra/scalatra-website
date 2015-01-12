@@ -1,7 +1,7 @@
 # Scalatra project
 
 This is the home of the [Scalatra](http://github.com/scalatra/scalatra/)
-website which generates the site at http://scalatra.org/2.2/.
+website which generates the site at [scalatra.org](http://scalatra.org).
 
 To build it, you'll need to have Ruby and bundler installed.
 
