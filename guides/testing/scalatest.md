@@ -53,9 +53,23 @@ class HelloWorldServletTests extends ScalatraSuite with FunSuiteLike {
       status should equal (200)
       body should include ("hi!")
     }
+
+    get("/path/to/something", ("param1" -> "value"), ("param2" -> "value2")) {
+      status should equal (200)
+      body should include ("hi!")
+    }
+
+    get("/path/to/something",
+        Map("param1" -> "value", "param2" -> "value2"),
+        Map("Header1" -> "header_value", "Header2" -> "header_value2")) {
+      status should equal (200)
+      body should include ("hi!")
+    }
   }
 }
 ```
+
+You can see all the available http different methods in the [API docs](/2.3/api/#org.scalatra.test.Client)
 
 The addServlet method is used here with `classOf[HelloWorldServlet]` to mount
 the HelloWorld servlet into the ScalaTest test.
