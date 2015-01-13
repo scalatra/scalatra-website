@@ -26,6 +26,8 @@ Convenience traits are provided for many `Suite` implementations:
 * `ScalatraJUnitSuite` (JUnit 4)
 * `ScalatraTestNGSuite`
 
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+Notice that all the above traits are based on `ScalatraSuite` which mixes in `BeforeAndAfterAll`. It overrides both `beforeAll()` and `afterAll()` so it can start/stop the embedded HTTP server. Because of that, if your test classes also need to override `beforeAll` and/or `afterAll` just remember to call `super.beforeAll()` and/or `super.afterAll()`.
 
 #### Dependency
 
