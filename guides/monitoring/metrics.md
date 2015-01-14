@@ -16,13 +16,13 @@ Scalatra supports metrics via the [metrics](https://dropwizard.github.io/metrics
 
 ### Setup
 
-In order to make use of this functionality, add scalatra-metrics to your build.sbt
+In order to make use of this functionality, add `scalatra-metrics` to your `build.sbt`:
 
 ```
 "org.scalatra" %% "scalatra-metrics" % "2.4.0-SNAPSHOT"
 ```
 
-and mix in the MetricsBootstrap trait into ScalatraBootstrap
+and mix in the MetricsBootstrap trait into ScalatraBootstrap:
 
 ```scala
 class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
@@ -34,7 +34,7 @@ class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
 ```
 
 Mixing in MetricsBootstrap will provide a default instance of both a MetricRegistry and a HealthCheckRegistry to
-your application. You can also choose to override one or both if the defaults don't suit your purpose;
+your application. You can also choose to override one or both if the defaults don't suit your purpose.
 
 ```scala
 class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
@@ -68,8 +68,7 @@ Details for what each servlet does are provided in the
 
 ### Metrics Filter
 
-A convenience method is also provided to mount a servlet filter to aggregate response code counts and timings. The
-parameter passed will specify where to apply the filter. To apply it globally, use ```/*```
+A convenience method is also provided to mount a servlet filter to aggregate response code counts and timings. The parameter passed will specify where to apply the filter. To apply it globally, use ```/*```
 
 ```scala
 class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
@@ -81,7 +80,7 @@ class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
 ```
 
 <div class="alert alert-error">
-  In it's current state, this filter does not handle AsyncContext correctly and will be inaccurate if you are using futures.
+  In its current state, this filter does not handle AsyncContext correctly and will be inaccurate if you are using Futures.
 </div>
 
 ### Measuring
@@ -133,6 +132,4 @@ class TestServlet extends ScalatraServlet with HealthChecksSupport {
 
 ### Advanced
 
-In addition to the provided convenience methods, the full metrics-core, metrics-servlet, metrics-servlets, and
-metrics-scala libraries are available for import. The default registries are exposed as implicit vals, and so
-can be accessed directly if needed.
+In addition to the provided convenience methods, the full `metrics-core`, `metrics-servlet`, `metrics-servlets`, and `metrics-scala` libraries are available for import. The default registries are exposed as `implicit val`s, and so can be accessed directly if needed.
