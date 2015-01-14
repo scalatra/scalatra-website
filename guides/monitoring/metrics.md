@@ -33,8 +33,7 @@ class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
 }
 ```
 
-Mixing in MetricsBootstrap will provide a default instance of both a MetricRegistry and a HealthCheckRegistry to
-your application. You can also choose to override one or both if the defaults don't suit your purpose.
+Mixing in MetricsBootstrap will provide a default instance of both a MetricRegistry and a HealthCheckRegistry to your application. You can also choose to override one or both if the defaults don't suit your purpose.
 
 ```scala
 class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
@@ -85,7 +84,7 @@ class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
 
 ### Measuring
 
-In order to record metrics in your servlets, mix in the ```MetricsSupport``` trait and call the provided methods;
+In order to record metrics in your servlets, mix in the ```MetricsSupport``` trait and call the provided methods:
 
 ```scala
 class TestServlet extends ScalatraServlet with MetricsSupport {
@@ -114,7 +113,7 @@ class TestServlet extends ScalatraServlet with MetricsSupport {
 ### Health Checks
 
 In order to make use of health checks, mix in the ```HealthChecksSupport``` trait and define your health
-checks;
+checks:
 
 ```scala
 class TestServlet extends ScalatraServlet with HealthChecksSupport {
