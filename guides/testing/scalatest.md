@@ -26,6 +26,8 @@ Convenience traits are provided for many `Suite` implementations:
 * `ScalatraJUnitSuite` (JUnit 4)
 * `ScalatraTestNGSuite`
 
+<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+Notice that all the above traits are based on `ScalatraSuite` which mixes in `BeforeAndAfterAll`. It overrides both `beforeAll()` and `afterAll()` so it can start/stop the embedded HTTP server. Because of that, if your test classes also need to override `beforeAll` and/or `afterAll` just remember to call `super.beforeAll()` and/or `super.afterAll()`.
 
 #### Dependency
 
@@ -51,9 +53,23 @@ class HelloWorldServletTests extends ScalatraSuite with FunSuiteLike {
       status should equal (200)
       body should include ("hi!")
     }
+
+    get("/path/to/something", ("param1" -> "value"), ("param2" -> "value2")) {
+      status should equal (200)
+      body should include ("hi!")
+    }
+
+    get("/path/to/something",
+        Map("param1" -> "value", "param2" -> "value2"),
+        Map("Header1" -> "header_value", "Header2" -> "header_value2")) {
+      status should equal (200)
+      body should include ("hi!")
+    }
   }
 }
 ```
+
+You can see all the available http different methods in the [API docs](/2.3/api/#org.scalatra.test.Client)
 
 The addServlet method is used here with `classOf[HelloWorldServlet]` to mount
 the HelloWorld servlet into the ScalaTest test.
