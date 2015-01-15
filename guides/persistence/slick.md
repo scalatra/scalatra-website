@@ -127,7 +127,7 @@ class ScalatraBootstrap extends LifeCycle {
 }
 ```
 
-The connection pool configuration `src/main/resource/c3p0.properties` looks like this:
+The connection pool configuration `src/main/resources/c3p0.properties` looks like this:
 
 ```ini
 c3p0.driverClass=org.h2.Driver
