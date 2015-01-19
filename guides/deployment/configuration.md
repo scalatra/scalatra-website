@@ -46,14 +46,6 @@ The XML which allows you to do this is as follows:
     <listener>
       <listener-class>org.scalatra.servlet.ScalatraListener</listener-class>
     </listener>
-
-    <servlet-mapping>
-      <servlet-name>default</servlet-name>
-      <url-pattern>/img/*</url-pattern>
-      <url-pattern>/css/*</url-pattern>
-      <url-pattern>/js/*</url-pattern>
-      <url-pattern>/assets/*</url-pattern>
-    </servlet-mapping>
 </web-app>
 ```
 
@@ -68,7 +60,7 @@ configuration to the underlying servlet container.
 
 This closes the XML portion of our broadcast.
 
-Note that there is also a file called `Scalatra.scala` in your `src/main/scala`
+Note that there is also a file called `ScalatraBootstrap.scala` in your `src/main/scala`
 directory. This is the Scalatra bootstrap config file, and it's where you should
 do most of your app configuration work.
 
