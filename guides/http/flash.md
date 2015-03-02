@@ -34,7 +34,7 @@ class FooServlet extends ScalatraServlet with FlashMapSupport {
   }
 
   get("/home") {
-    ssp("/home")
+    ssp("/home", "flash" -> flash)
   }
 }
 ```
