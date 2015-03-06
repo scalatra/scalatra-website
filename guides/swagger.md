@@ -10,23 +10,21 @@ title: Swagger | Scalatra guides
 ### What is Swagger?
 
 [Swagger](http://swagger.wordnik.com) is a specification which allows you to quickly define the functionality of a REST API using JSON documents. But it's more than
-just a spec. It provides automatic generation of interactive API docs,
-client-side code generation in multiple languages, and server-side code generation
+just a spec. It provides automatic generation of interactive API docs, client-side code generation in multiple languages, and server-side code generation
 in Java and Scala.
 
 It's not easy to describe, but it is easy to understand once you see it.  Take a look at the Swagger demo app now:
 
 [http://petstore.swagger.wordnik.com](http://petstore.swagger.wordnik.com)
 
-Swagger support is one of the most exciting new features in Scalatra 2.2. This
-guide will walk you through the process of taking a simple Scalatra application
+This guide will walk you through the process of taking a simple Scalatra application
 and adding Swagger to it, so that your runnable documentation automatically stays
 in sync with your API.
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/swagger-example">swagger-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/swagger-example">swagger-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -104,7 +102,7 @@ Don't forget to add the JSON libraries to your `project/build.scala` file to mak
   "org.json4s"   %% "json4s-native" % "{{ site.json4s_version }}",
 ```
 
-#### Namespacing the controller
+#### Setting up a resource path for /flowers
 
 Every Scalatra application has a file called `ScalatraBootstrap.scala`, located in the `src/main/scala` directory. This file allows you to mount your controllers at whatever url paths you want.
 
@@ -129,8 +127,7 @@ Hit the url [http://localhost:8080/flowers](http://localhost:8080/flowers) in yo
 [{"slug":"yellow-tulip","name":"Yellow Tulip"},{"slug":"red-rose","name":"Red Rose"},{"slug":"black-rose","name":"Black Rose"}]
 ```
 
-Our application can also take any incoming `?name=foo` parameter off the query string, and make it available to this action as the variable `name`, then filter the FlowerData
-list for matching results. If you point your browser at
+Our application can also take any incoming `?name=foo` parameter off the query string, and make it available to this action as the variable `name`, then filter the FlowerData list for matching results. If you point your browser at
 [http://localhost:8080/flowers?name=rose](http://localhost:8080/flowers?name=rose),
 you'll see only the roses.
 
@@ -146,7 +143,8 @@ Now let's add some Swagger to this simple application.
 
 ### Swagger: a quick introduction
 
-Making an API's methods, parameters, and responses visible, in an engaging, easy to understand way, can transform the process of building REST APIs.
+Making an API's methods, parameters, and responses visible, in an engaging, 
+easy to understand way, can transform the process of building REST APIs.
 
 Scalatra's Swagger support allows you to auto-generate runnable documentation
 for a REST API - the API's name, what resources it offers, available methods
@@ -233,14 +231,21 @@ controller to our application. Drop this code into a new file next to your
 ```scala
 package org.scalatra.example.swagger
 
-import org.scalatra.swagger.{NativeSwaggerBase, Swagger}
-
 import org.scalatra.ScalatraServlet
+import org.scalatra.swagger.{ApiInfo, NativeSwaggerBase, Swagger}
 
 
-class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with NativeSwaggerBase 
+class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with NativeSwaggerBase
 
-class FlowersSwagger extends Swagger("1.0", "1")
+object FlowersApiInfo extends ApiInfo(
+    "The Flowershop API",
+    "Docs for the Flowers API",
+    "http://scalatra.org",
+    "apiteam@scalatra.org",
+    "MIT",
+    "http://opensource.org/licenses/MIT")
+
+class FlowersSwagger extends Swagger(Swagger.SpecVersion, "1.0.0", FlowersApiInfo)
 ```
 
 This controller will automatically produce Swagger-compliant JSON specs for
@@ -267,16 +272,28 @@ class ScalatraBootstrap extends LifeCycle {
 Change the class body to look like this:
 
 ```scala
+import org.scalatra.example.swagger._
+import org.scalatra.LifeCycle
+import javax.servlet.ServletContext
+
 class ScalatraBootstrap extends LifeCycle {
 
   implicit val swagger = new FlowersSwagger
 
   override def init(context: ServletContext) {
-    context mount(new FlowersController, "/flowers/*")
-    context mount (new ResourcesApp, "/api-docs/*")
+    context.mount(new FlowersController, "/flowers", "flowers")
+    context.mount (new ResourcesApp, "/api-docs")
   }
 }
 ```
+
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  Note that the `context.mount(new FlowersController, "/flowers", "flowers")` has a second
+  parameter: in Scalatra 2.3.x, Swagger requires a name parameter to be present so that it
+  can generate its documentation properly. The name should always be the same as the
+  controller's mount path, minus the leading "/".
+</div>
 
 #### Adding SwaggerSupport to the FlowersController
 
@@ -296,8 +313,7 @@ what our API is called, and what it does. You can do this by adding the followin
 code to the body of the `FlowersController` class:
 
 ```scala
-  override protected val applicationName = Some("flowers")
-  protected val applicationDescription = "The flowershop API. It exposes operations for browsing and searching lists of flowers, and retrieving single flowers."
+protected val applicationDescription = "The flowershop API. It exposes operations for browsing and searching lists of flowers, and retrieving single flowers."
 ```
 
 That's pretty much it for Swagger setup. Now we can start documenting our API's methods.
@@ -324,7 +340,7 @@ Right now, it looks like this:
 We'll need to add some information to the method in order to tell Swagger what this method does, what parameters it can take, and what it responds with.
 
 ```scala
-  val getFlowers = 
+  val getFlowers =
     (apiOperation[List[Flower]]("getFlowers")
       summary "Show all flowers"
       notes "Shows all the flowers in the flower shop. You can search it too."
@@ -395,7 +411,7 @@ Now let's see what we've gained.
 
 Adding Swagger support to our application, and the Swagger annotations to our FlowersController, means we've got some new functionality available. Check the following URL in your browser:
 
-[http://localhost:8080/api-docs/resources.json](http://localhost:8080/api-docs/resources.json)
+[http://localhost:8080/api-docs](http://localhost:8080/api-docs)
 
 You should see an auto-generated Swagger description of available APIs (in this case, there's only one, but there could be multiple APIs defined by our application and they'd all be noted here):
 
@@ -407,9 +423,16 @@ You should see an auto-generated Swagger description of available APIs (in this 
 
 If you browse to [http://petstore.swagger.wordnik.com/](http://petstore.swagger.wordnik.com/), you'll see the default Swagger demo application - a Pet Store - and you'll be able to browse its documentation. One thing which may not be immediately obvious is that you can use this app to browse our local Flower Shop as well.
 
-The Pet Store documentation is showing because http://petstore.swagger.wordnik.com/api/resources.json is entered into the URL field by default.
+The Pet Store documentation is showing because http://petstore.swagger.wordnik.com/api/api-docs is entered into the URL field by default.
 
-Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs/resources.json` - into the URL field, delete the "special-key" key, then press the "Explore" button. You'll be rewarded with a fully Swaggerized view of your API documentation. Try clicking on the "GET /flowers" route to expand the operations underneath it, and then entering the word "rose" into the input box for the "name" parameter. You'll be rewarded with JSON output for the search method we defined earlier.
+Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs` - into the URL field, then press the "Explore" button. You'll be rewarded with a fully Swaggerized view of your API documentation. Try clicking on the "GET /flowers" route to expand the operations underneath it, and then entering the word "rose" into the input box for the "name" parameter. You'll be rewarded with JSON output for the search method we defined earlier.
+
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  It's very important to get the api-docs path correct when you browse your docs in swagger-ui. Be careful: there's no trailing slash on `http://localhost:8080/api-docs`, 
+  and the docs won't work if you accidentally add one. 
+</div>
+
 
 Also note that the swagger-ui responds to input validation: you can't try out the `/flowers/{slug}` route without entering a slug, because we've marked that as a required parameter in our Swagger annotations. Note that when you enter a slug such as "yellow-tulip", the `"{slug}"` endpoint annotation on this route causes the swagger-ui to fire the request as `/flowers/yellow-tulip`.
 

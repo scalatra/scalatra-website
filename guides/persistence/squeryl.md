@@ -24,7 +24,7 @@ a "butt-simple" connection pooling library.
 ## Dependencies
 
 ```scala
-"org.squeryl" %% "squeryl" % "0.9.5-6", 
+"org.squeryl" %% "squeryl" % "0.9.5-7", 
 "com.h2database" % "h2" % "1.3.166",
 "c3p0" % "c3p0" % "0.9.1.2"
 ```

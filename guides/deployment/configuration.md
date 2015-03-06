@@ -46,14 +46,6 @@ The XML which allows you to do this is as follows:
     <listener>
       <listener-class>org.scalatra.servlet.ScalatraListener</listener-class>
     </listener>
-
-    <servlet-mapping>
-      <servlet-name>default</servlet-name>
-      <url-pattern>/img/*</url-pattern>
-      <url-pattern>/css/*</url-pattern>
-      <url-pattern>/js/*</url-pattern>
-      <url-pattern>/assets/*</url-pattern>
-    </servlet-mapping>
 </web-app>
 ```
 
@@ -68,7 +60,7 @@ configuration to the underlying servlet container.
 
 This closes the XML portion of our broadcast.
 
-Note that there is also a file called `Scalatra.scala` in your `src/main/scala`
+Note that there is also a file called `ScalatraBootstrap.scala` in your `src/main/scala`
 directory. This is the Scalatra bootstrap config file, and it's where you should
 do most of your app configuration work.
 
@@ -173,7 +165,7 @@ route matches.
  * Meaningful error pages are enabled (e.g. on 404s, 500s).
  * The [Scalate console][console] is enabled.
 
-[console]: http://scalate.fusesource.org/documentation/console.html
+[console]: http://scalate.github.io/scalate/documentation/console.html
 
 ##### Container init params
 
@@ -334,6 +326,12 @@ Scala's standard XML tools.
 ### Changing the port in development
 
 Add `port in container.Configuration := 8081` to `project/build.scala` if you would
-like your Scalatra app to run something other than the default port (8080).
+like your Scalatra app to run on something other than the default port (8080). 
+
+_You may need to add the following imports if you get errors upon adding the configuration above:_ 
+```scala
+import com.earldouglas.xsbtwebplugin.PluginKeys._
+import com.earldouglas.xsbtwebplugin.WebPlugin._
+```
 
 
