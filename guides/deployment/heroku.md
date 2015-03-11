@@ -105,6 +105,20 @@ And don't forget to set your servlet mapping (you probably already have somethin
 context.mount(new MyScalatraServlet, "/*")
 ```
 
+### Tell Heroku how to run your app
+
+Heroku will detect the `target/universal/stage/bin/<app-name>` script generated
+by sbt-native-packager, so it will know how to run your app by default.
+
+However, you may want to customize how your app starts.  In that case, create
+a `Procfile` with contents such as:
+
+```
+web: target/universal/stage/bin/<app-name> -Dhttp.port=$PORT -Dother.prop=someValue
+```
+
+And replace `<app-name>` with the name of your app defined in `build.scala`.
+
 ## 5. Deploy
 
 If you haven't set up your project as a Git repo, do so.
