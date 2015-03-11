@@ -105,7 +105,7 @@ And don't forget to set your servlet mapping (you probably already have somethin
 context.mount(new MyScalatraServlet, "/*")
 ```
 
-### Tell Heroku how to run your app
+### Tell Heroku how to run your app (optional)
 
 Heroku will detect the `target/universal/stage/bin/<app-name>` script generated
 by sbt-native-packager, so it will know how to run your app by default.
