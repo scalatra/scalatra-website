@@ -38,77 +38,39 @@ $ g8 scalatra/scalatra-sbt -b develop
 Open `project/build.scala` in the root of your project. You will find two lines like these:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "container",
-"org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+"org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "container",
+"org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "container",
 ```
 
 Those are basically right, but we need to add `compile` scope because Heroku is not a servlet host. It can only run your app via an embedded Jetty server you provide. So replace the two lines above with these two:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "compile;container",
-"org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+"org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "compile;container",
+"org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "compile;container",
 ```
 
-### Escape sbt
+### Add the sbt Native Packager plugin
 
-You don't want to use sbt to run your app in production. We'll install an sbt plugin that will create a start script during compilation. Heroku will use that start script.
-
-Tell sbt where to find the plugin by adding this line to `project/plugins.sbt` (you may need to create the file first):
+You don't want to use sbt to run your app in production. We'll install an sbt plugin that will create a start script during compilation. Heroku will use that start script. Tell sbt where to find the plugin by adding this line to `project/plugins.sbt` (you may need to create the file first):
 
 ```scala
-addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "{{ site.start_script_plugin_version }}")
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.0.0-RC1")
 ```
 
-For sbt version 0.13.0 add following instead:
+Then enable the plugin by calling the `enablePlugins` method on the `Project`
+object in your `build.scala`:
 
 ```scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "{{ site.start_script_plugin_version_for_sbt_0_13_0 }}")
-```
-Now you've got the Typesafe start script available.  Stick that into the
-Project settings, in `project/build.scala`. A default Scalatra project template
-usually has something like this in it:
-
-```scala
+import com.typesafe.sbt.packager.archetypes.JavaAppPackaging
+// ...
 lazy val project = Project (
-    "heroku-example",
-    file("."),
-    settings = ++ Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
-      organization := Organization,
-      name := Name,
-      // more stuff here
-```
-
-You'll want to add a `Seq` of settings pulled from the Typesafe startscript plugin.
-
-Add it into the project settings:
-
-```scala
-  lazy val project = Project (
-    "heroku-example",
-    file("."),
-    settings = seq(com.typesafe.startscript.StartScriptPlugin.startScriptForClassesSettings: _*) ++ Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
-      organization := Organization,
-      name := Name,
-      // more stuff here
-```
-
-For sbt 0.13.0 this `Seq` is:
-
-```scala
-seq(com.typesafe.sbt.SbtStartScript.startScriptForClassesSettings: _*)
-```
-### Tell Heroku to use the generated start script
-
-Create a file named `Procfile` in the root of your application.
-Add this line:
-
-```
-web: target/start
+  // ...
+).enablePlugins(JavaAppPackaging)
 ```
 
 ### Create a `main` method
 
-Since Heroku launches your app as a vanilla Java/Scala project, you need to create a `main` method that launches the servlet.
+Since Heroku launches your app without a container, you need to create a `main` method that launches the servlet.
 
 Create `src/main/scala/JettyLauncher.scala` with this code:
 
@@ -137,10 +99,10 @@ object JettyLauncher {
 }
 ```
 
-And don't forget to set your servlet in mapping:
+And don't forget to set your servlet mapping (you probably already have something like this in `ScalatraBootstrap`):
 
 ```scala
-context.addServlet(classOf[com.example.app.MyScalatraServlet], "/*")
+context.mount(new MyScalatraServlet, "/*")
 ```
 
 ## 5. Deploy
@@ -165,7 +127,7 @@ Create your Heroku endpoint and deploy to it.
 
 ```bash
 $ cd [app root]
-$ heroku create --stack cedar
+$ heroku create
 $ git push heroku master
 ```
 
@@ -183,13 +145,3 @@ To git@heroku.com:polar-atoll-9149.git
 ```
 
 Open your browser to to the URL provided right before `deployed to Heroku` in the output.
-
-## 6. Limitations
-No app host is perfect. You should be aware of two limitations as you develop on Heroku:
-
-- Heroku ["slugs"](https://devcenter.heroku.com/articles/slug-compiler) (deployed apps with their dependencies) are limited to 300MB.
-If your project has a large number of dependencies, you may exceed this limit.
-- At present, Heroku [does not support WebSockets](https://devcenter.heroku.com/articles/http-routing#websockets).
-
-[Jelastic](jelastic.html) is another app host that does not have these limitations.
-However, Jelastic does not have Heroku's special access to AWS products.
