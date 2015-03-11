@@ -144,4 +144,10 @@ To git@heroku.com:polar-atoll-9149.git
 * [new branch]      master -> master
 ```
 
-Open your browser to to the URL provided right before `deployed to Heroku` in the output.
+Open your browser to to the URL provided right before `deployed to Heroku` in the output. Or just run:
+
+```bash
+$ heroku open
+```
+
+For more information on using Scala with Heroku see the [Heroku DevCenter](https://devcenter.heroku.com/articles/scala-support).
