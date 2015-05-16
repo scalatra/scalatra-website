@@ -155,7 +155,7 @@ You can then extract a case class from this json AST.
 case class Person(id: Int, name: String)
 
 post("/create") {
-  parsedBody.extract[Person]
+  request.body.extract[Person]
 }
 ```
 
