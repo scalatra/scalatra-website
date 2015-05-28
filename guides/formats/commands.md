@@ -565,7 +565,7 @@ by putting the following code in the class body:
 
 ```scala
 // add json format handling so the command can do automatic conversions.
-protected implicit val jsonFormats = DefaultFormats
+protected implicit lazy val jsonFormats = DefaultFormats
 ```
 
 If you want to, you can set the default format of all actions in your controller
@@ -598,7 +598,7 @@ CreateTodoCommand class:
 
 ```scala
 // add json format handling so the command can do automatic conversions.
-protected implicit val jsonFormats = DefaultFormats
+protected implicit lazy val jsonFormats = DefaultFormats
 ```
 
 Take a look at the output of [http://localhost:8081/todos](http://localhost:8081/todos)

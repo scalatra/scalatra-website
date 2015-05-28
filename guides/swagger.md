@@ -48,7 +48,7 @@ import org.scalatra.json._
 class FlowersController extends ScalatraServlet with NativeJsonSupport {
 
   // Sets up automatic case class to JSON output serialization
-  protected implicit val jsonFormats: Formats = DefaultFormats
+  protected implicit lazy val jsonFormats: Formats = DefaultFormats
 
   // Before every action runs, set the content type to be in JSON format.
   before() {

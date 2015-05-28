@@ -111,14 +111,16 @@ Now we can add a bit of magic to the FlowersController. Putting this line of cod
 ```scala
   // Sets up automatic case class to JSON output serialization, required by
   // the JValueResult trait.
-  protected implicit val jsonFormats: Formats = DefaultFormats
+  protected implicit lazy val jsonFormats: Formats = DefaultFormats
 ```
 
 To serialize fractional numbers as `BigDecimal` instead of `Double`, use `DefaultFormats.withBigDecimal`:
 
 ```scala
-  protected implicit val jsonFormats: Formats = DefaultFormats.withBigDecimal
+  protected implicit lazy val jsonFormats: Formats = DefaultFormats.withBigDecimal
 ```
+
+<span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> That `lazy` on the `protected implicit lazy val` is necessary, not optional, when using `JacksonJsonSupport`.
 
 Just like its Sinatra forebear, Scalatra has a rich set of constructs for running things before and after requests to your controllers. A `before` filter runs before all requests. Add a `before` filter to set all output for this controller to set the content type for all action results to JSON:
 
