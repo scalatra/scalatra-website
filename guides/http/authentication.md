@@ -245,5 +245,3 @@ with fallback.
 
 If you're trying to secure an API rather than a user's browser session,
 Jos Dirksen's [tutorial](http://www.smartjava.org/content/tutorial-getting-started-scala-and-scalatra-part-iii) on the subject may help.
-
-{% include _under_construction.html %}
