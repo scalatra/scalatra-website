@@ -240,7 +240,7 @@ As with most things in Scalatra, it's up to you.
 
 We still need to write this up and finish the guide, but there's now working
 example code for a
-[UserPasswordStrategy and RememberMe strategy](https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/http/scentry-auth-demo) 
+[UserPasswordStrategy and RememberMe strategy](https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/http/scentry-auth-demo) 
 with fallback.
 
 If you're trying to secure an API rather than a user's browser session,
