@@ -24,12 +24,16 @@ and ask you some questions about your application:
 
 ```
 $ g8 scalatra/scalatra-sbt 
-organization [com.example]:
-package [com.example.app]:
-name [My Scalatra Web App]:
-servlet_name [MyScalatraServlet]:
-scala_version [2.9.2]:
-version [0.1.0-SNAPSHOT]:
+organization [com.example]: 
+name [My Scalatra Web App]: 
+version [0.1.0-SNAPSHOT]: 
+servlet_name [MyScalatraServlet]: 
+package [com.example.app]: 
+scala_version [2.11.6]: 
+sbt_version [0.13.8]: 
+scalatra_version [2.4.0]: 
+
+Template applied in ./my-scalatra-web-app
 ```
 
 <dl class="dl-horizontal">
@@ -55,24 +59,34 @@ version [0.1.0-SNAPSHOT]:
     g8 will generate a project into a folder of that name, and the artifacts
     you publish will be based on that name.
   </dd>
-  <dt>servlet_name</dt>
-  <dd>
-    The name of your servlet class.
-    This might be something like <code>BlogServlet</code> or just <code>Blog</code>.
-  </dd>
   <dt>version</dt>
-  <dt>scala_version</dt>
-  <dd>
-    The Scala version to use.
-    The bottom of the <a href="http://www.scalatra.org/2.2/">homepage</a> lists which Scala versions are compatible with the latest Scalatra releases.
-    When in doubt, use the default.
-  </dd>
   <dd>
     Your project's version.
     This is entirely up to you, but we like
     <a href="http://semver.org">semantic versioning</a>.
   </dd>
+  <dt>servlet_name</dt>
+  <dd>
+    The name of your servlet class.
+    This might be something like <code>BlogServlet</code> or just <code>Blog</code>.
+  </dd>
+  <dt>scala_version</dt>
+  <dd>
+    The Scala version to use.
+    The bottom of the <a href="http://www.scalatra.org/">homepage</a> lists which Scala versions are compatible with the latest Scalatra releases.
+    When in doubt, use the default.
+  </dd>
+  <dt>sbt_version</dt>
+  <dd>
+    The SBT version.
+  </dd>
+  <dt>scalatra_version</dt>
+  <dd>
+    The Scalatra version to use.
+    See the <a href="http://www.scalatra.org/">homepage</a> for a list. You can choose a stable version or if you want to try out new features go with a RC or SNAPSHOT.
+  </dd>
 </dl>
+
 
 ## Building
 
@@ -167,7 +181,7 @@ Restarting an application manually after every code change is both slow and
 painful. It can easily be avoided by using a tool for automatic code reloading.
 
 sbt will allow you to [signal a restart of the application when it detects
-code changes](https://github.com/harrah/xsbt/wiki/Triggered-Execution).
+code changes](http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html).
 The syntax for restarting involves adding `~` in front of the command you
 want to re-execute.
 To recompile and reload your application automatically, run the following:
