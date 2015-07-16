@@ -18,7 +18,7 @@ package com.example.app
 
 import org.scalatra._
 
-class FlowersController extends ScalatraServlet {
+class FlowersController extends ScalatraServlet with ApiFormats {
 
 }
 ```
@@ -36,6 +36,8 @@ class ScalatraBootstrap extends LifeCycle {
   }
 }
 ```
+
+Mixing in `ApiFormats` gives us access to the `formats` content type extension map, as used in the `contentType` example below.
 
 ### The data infrastructure
 
