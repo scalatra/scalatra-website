@@ -174,8 +174,7 @@ To recompile and reload your application automatically, run the following:
 
 ```bash
 $ ./sbt
-> container:start
-> ~ ;copy-resources;aux-compile
+> ~container:start
 ```
 
 Now that you've got a (rather simplistic) running application, you may want
