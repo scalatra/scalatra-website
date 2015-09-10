@@ -79,7 +79,7 @@ libraryDependencies ++= Seq(
 Since we want to use connection pooling, we also need to add [c3p0](http://www.mchange.com/projects/c3p0/):
 
 ```scala
-libraryDependencies += "c3p0" % "c3p0" % "0.9.2"
+libraryDependencies += "com.mchange" % "c3p0" % "0.9.2"
 ```
 
 SBT is all set up. Lets proceed to the code.
