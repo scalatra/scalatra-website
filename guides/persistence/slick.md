@@ -71,7 +71,7 @@ For this guide we choose the [H2 Database](http://www.h2database.com/html/main.h
 ```scala
 
 libraryDependencies ++= Seq(
-  "com.typesafe.slick" %% "slick" % "3.0.0-RC1",
+  "com.typesafe.slick" %% "slick" % "3.0.2",
   "com.h2database" % "h2" % "1.4.181"
 )
 ```
@@ -79,7 +79,7 @@ libraryDependencies ++= Seq(
 Since we want to use connection pooling, we also need to add [c3p0](http://www.mchange.com/projects/c3p0/):
 
 ```scala
-libraryDependencies += "com.mchange" % "c3p0" % "0.9.2"
+libraryDependencies += "com.mchange" % "c3p0" % "0.9.5.1"
 ```
 
 SBT is all set up. Lets proceed to the code.
@@ -194,7 +194,7 @@ object Tables {
 Slick offers a query language to express database queries and Database I/O Actions (DBIOAction) which are basically composable database operations. A single Action can for example represent one or more queries. They can be composed using the `DBIO.seq` method
 
 ```scala
-// Query, implicit inner join coffes and suppliers, return their names
+// Query, implicit inner join coffees and suppliers, return their names
 val findCoffeesWithSuppliers = {
   for {
     c <- coffees
