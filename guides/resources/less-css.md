@@ -119,7 +119,7 @@ class LessCssApp extends ScalatraServlet {
         <link rel="stylesheet" type="text/css" href="compiled/styles.css" />
       </head>
       <body>
-        <h1>This is <a href="http://scalatra.org/2.2/guides/resources/less-css.html">resources/less-css</a>!</h1>
+        <h1>This is <a href="http://scalatra.org/2.4/guides/resources/less-css.html">resources/less-css</a>!</h1>
       </body>
     </html>
   }
