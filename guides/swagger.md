@@ -9,13 +9,13 @@ title: Swagger | Scalatra guides
 
 ### What is Swagger?
 
-[Swagger](http://swagger.wordnik.com) is a specification which allows you to quickly define the functionality of a REST API using JSON documents. But it's more than
+[Swagger](http://swagger.io) is a specification which allows you to quickly define the functionality of a REST API using JSON documents. But it's more than
 just a spec. It provides automatic generation of interactive API docs, client-side code generation in multiple languages, and server-side code generation
 in Java and Scala.
 
 It's not easy to describe, but it is easy to understand once you see it.  Take a look at the Swagger demo app now:
 
-[http://petstore.swagger.wordnik.com](http://petstore.swagger.wordnik.com)
+[http://petstore.swagger.io](http://petstore.swagger.io)
 
 This guide will walk you through the process of taking a simple Scalatra application
 and adding Swagger to it, so that your runnable documentation automatically stays
@@ -48,7 +48,7 @@ import org.scalatra.json._
 class FlowersController extends ScalatraServlet with NativeJsonSupport {
 
   // Sets up automatic case class to JSON output serialization
-  protected implicit val jsonFormats: Formats = DefaultFormats
+  protected implicit lazy val jsonFormats: Formats = DefaultFormats
 
   // Before every action runs, set the content type to be in JSON format.
   before() {
@@ -181,8 +181,8 @@ swagger-ui client at them, and start viewing the runnable documentation.
 You also get the ability to generate client and server code
 in multiple languages, using the [swagger-codegen][codegen] project.
 
-[ui]:https://github.com/wordnik/swagger-ui
-[codegen]:https://github.com/wordnik/swagger-codegen
+[ui]:https://github.com/swagger-api/swagger-ui
+[codegen]:https://github.com/swagger-api/swagger-codegen
 
 Client code can be generated for Flash, Java, JavaScript, Objective-C, PHP, Python, Python3, Ruby, or Scala.
 
@@ -192,7 +192,7 @@ route definitions to see what operations are available for each resource. You
 can use the web interface to send live test queries to the API, and view the
 API's response to each query.
 
-[petstore]: http://petstore.swagger.wordnik.com
+[petstore]: http://petstore.swagger.io
 
 Click on the "raw" link next to each API description, and you'll see the
 Swagger spec file for the API.
@@ -421,9 +421,9 @@ You should see an auto-generated Swagger description of available APIs (in this 
 
 #### Browsing your API using swagger-ui
 
-If you browse to [http://petstore.swagger.wordnik.com/](http://petstore.swagger.wordnik.com/), you'll see the default Swagger demo application - a Pet Store - and you'll be able to browse its documentation. One thing which may not be immediately obvious is that you can use this app to browse our local Flower Shop as well.
+If you browse to [http://petstore.swagger.io/](http://petstore.swagger.io), you'll see the default Swagger demo application - a Pet Store - and you'll be able to browse its documentation. One thing which may not be immediately obvious is that you can use this app to browse our local Flower Shop as well.
 
-The Pet Store documentation is showing because http://petstore.swagger.wordnik.com/api/api-docs is entered into the URL field by default.
+The Pet Store documentation is showing because http://petstore.swagger.io/api/api-docs is entered into the URL field by default.
 
 Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs` - into the URL field, then press the "Explore" button. You'll be rewarded with a fully Swaggerized view of your API documentation. Try clicking on the "GET /flowers" route to expand the operations underneath it, and then entering the word "rose" into the input box for the "name" parameter. You'll be rewarded with JSON output for the search method we defined earlier.
 
@@ -436,11 +436,11 @@ Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs` - 
 
 Also note that the swagger-ui responds to input validation: you can't try out the `/flowers/{slug}` route without entering a slug, because we've marked that as a required parameter in our Swagger annotations. Note that when you enter a slug such as "yellow-tulip", the `"{slug}"` endpoint annotation on this route causes the swagger-ui to fire the request as `/flowers/yellow-tulip`.
 
-If you want to host your own customized version of the docs, you can of course just download the [swagger-ui](https://github.com/wordnik/swagger-ui) code from Github and drop it onto any HTTP server.
+If you want to host your own customized version of the docs, you can of course just download the [swagger-ui](https://github.com/swagger-api/swagger-ui) code from Github and drop it onto any HTTP server.
 
 ### A note on cross-origin security
 
-Interestingly, you are able to use the remotely-hosted documentation browser at http://petstore.swagger.wordnik.com to browse an application on http://localhost. Why is this possible? Shouldn't JavaScript security restrictions have come into play here?
+Interestingly, you are able to use the remotely-hosted documentation browser at http://petstore.swagger.io to browse an application on http://localhost. Why is this possible? Shouldn't JavaScript security restrictions have come into play here?
 
 The reason it works is that Scalatra has Cross-Origin Resource Sharing (CORS) support mixed into its SwaggerSupport trait, allowing cross-origin JavaScript requests by default for all requesting domains. This makes it easy to serve JS API clients - but if you want, you can lock down requests to specific domains using Scalatra's CorsSupport trait. See the Scalatra [Helpers](../guides/web-services/cors.html) documentation for more.
 

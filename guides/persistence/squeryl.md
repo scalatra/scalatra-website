@@ -17,7 +17,7 @@ a "butt-simple" connection pooling library.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/persistence/scalatra-squeryl">scalatra-squeryl</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/persistence/scalatra-squeryl">scalatra-squeryl</a>
   for an example project which expands on the concepts explained in this guide.
 </div>
 

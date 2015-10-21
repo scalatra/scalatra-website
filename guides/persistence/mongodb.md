@@ -23,7 +23,7 @@ MongoDb requires very little setup. Assuming you've got Mongo installed already,
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/persistence/scalatra-casbah-example">scalatra-casbah-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/persistence/scalatra-casbah-example">scalatra-casbah-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -83,7 +83,7 @@ class MongoController(mongoColl: MongoCollection) extends ScalatraCasbahExampleS
    * Insert a new object into the database. You can use the following from your console to try it out:
    * curl -i -H "Accept: application/json" -X POST -d "key=super&value=duper" http://localhost:8080/insert
    */
-  post("/") {
+  post("/insert") {
     val key = params("key")
     val value = params("value")
     val newObj = MongoDBObject(key -> value)
