@@ -43,10 +43,8 @@ production systems. You can see the ones we know about on our
     </p>
   </div>
   <div class="span4">
-    <h2>IRC</h2>
-    <p>Because some issues are best discussed in real time, we are also on
-    <a href="http://webchat.freenode.net/?channels=#scalatra">#scalatra</a> on the Freenode IRC network.</p>
-    <p>Or access gitter channel here: <a href="https://gitter.im/scalatra/scalatra"><img src="https://badges.gitter.im/Join%20Chat.svg"></a></p>
+    <h2>Gitter</h2>
+    <p>Because some issues are best discussed in real time, we are also on the Scalatra Gitter channel: <a href="https://gitter.im/scalatra/scalatra"><img src="https://badges.gitter.im/Join%20Chat.svg"></a></p>
   </div>
   <div class="span4">
     <h2>YourKit</h2>
