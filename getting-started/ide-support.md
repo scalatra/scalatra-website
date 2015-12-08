@@ -26,15 +26,20 @@ This is totally optional, so if you don't like IDEs, feel free to skip this sect
 
 ### Debugging in IntelliJ Idea
 
-Start SBT like this:
+Configure your container to listen for debuggers on port 5005 by adding the following lines to the `build.scala` file.
 
 ```
-./sbt -jvm-debug 5005
+javaOptions ++= Seq(
+  "-Xdebug",
+  "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
+),
 ```
+
+Start SBT and the container as usual (`./sbt` then `container:start`).
 
 After that, go to `Run` -> `Edit configurations` in IntelliJ. Click the `+`
 button, select `Remote` to make a new remote debugging configuration, and 
-call it `Scalatra Debug`. In IntelliJ 13, the default run conf should work 
+call it `Scalatra Debug`. In IntelliJ 15, the default run conf should work 
 (it looks like this):
 
 ```
@@ -66,11 +71,16 @@ Be sure to re-run `./sbt eclipse` every time you add or update a dependency in
 
 ### Debugging in Eclipse
 
-Start SBT like this:
+Configure your container to listen for debuggers on port 8000 by adding the following lines to the `build.scala` file.
 
 ```
-./sbt -jvm-debug 8000
+javaOptions ++= Seq(
+  "-Xdebug",
+  "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000"
+),
 ```
+
+Start SBT and the container as usual (`./sbt` then `container:start`).
 
 Go to `Run` -> `Debug configurations` in Eclipse. Select 
 `Remote Java Application`, click the `new configuration`  button, 
