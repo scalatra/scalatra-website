@@ -22,7 +22,7 @@ $ cd scalatra
 $ sbt
 # Now you're in the sbt (s)hell!
 > project scalatra-example
-> container:start
+> jetty:start
 ```
 
 Then point your browser at [http://localhost:8080/atmosphere](http://localhost:8080/atmosphere)

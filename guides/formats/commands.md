@@ -130,7 +130,7 @@ chmod +x sbt
 Now you're in the sbt shell, start the server and enable recompilation:
 
 ```
-~container:start
+~jetty:start
 ```
 
 ### Setting up a model and fake datastore

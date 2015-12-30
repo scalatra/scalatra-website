@@ -133,7 +133,7 @@ above example, your text should be pink:
 ```sh
 $ cd scalatra-less-css
 $ ./sbt
-> container:start
+> jetty:start
 > browse
 ```
 
