@@ -23,7 +23,7 @@ jekyll --server --auto
 
 This will start an embedded webserver and automatically regenerate the website
 as you make changes to it. You can then view the site at 
-[http://localhost:4000/2.3/](http://localhost:4000/2.3/).
+[http://localhost:4000/2.4/](http://localhost:4000/2.4/).
 
 ## Building on a mac
 
@@ -55,7 +55,7 @@ bundle exec jekyll --serve
 
 This will start an embedded webserver and automatically regenerate the website
 as you make changes to it. You can then view the site at
-[http://localhost:4000/2.3/](http://localhost:4000/2.3/).
+[http://localhost:4000/2.4/](http://localhost:4000/2.4/).
 
 Note: on recent LLVM-favoring versions of Mac, you will need to install
 [gcc](https://github.com/kennethreitz/osx-gcc-installer).
