@@ -129,7 +129,7 @@ above example, an annoying popup should launch on page load.
 ```sh
 $ cd scalatra-coffeescript
 $ ./sbt
-> container:start
+> jetty:start
 > browse
 ```
 

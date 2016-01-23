@@ -11,10 +11,10 @@ title: JRebel integration | Scalatra
 JRebel is generally able to eliminate the need for the following slow "app restart" in sbt following a code change:
 
 ```
-> container:reload /
+> ~jetty:start
 ```
 
-While JRebel is not open source, it does reload your code faster than the `~;copy-resources;aux-compile` way of doing things using `sbt`.
+While JRebel is not open source, it does reload your code faster than stopping and restarting Jetty each time.
 
 It's only used during development, and doesn't change your deployed app in any way. 
 
@@ -125,4 +125,4 @@ If JRebel is doing is correctly installed you will see a notice from JRebel that
 
 ## 6. Limitations
 
-JRebel is nearly always able to eliminate the need to explicitly reload your container after a code change. However, if you change any of your routes patterns, there is nothing JRebel can do, you will have to run `container:reload /`.
+JRebel is nearly always able to eliminate the need to explicitly reload your container after a code change. However, if you change any of your routes patterns, there is nothing JRebel can do, you will have to restart the Jetty with `jetty:start`.
