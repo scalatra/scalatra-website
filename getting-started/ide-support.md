@@ -35,7 +35,7 @@ javaOptions ++= Seq(
 ),
 ```
 
-Start SBT and the container as usual (`./sbt` then `container:start`).
+Start SBT and the container as usual (`./sbt` then `jetty:start`).
 
 After that, go to `Run` -> `Edit configurations` in IntelliJ. Click the `+`
 button, select `Remote` to make a new remote debugging configuration, and 
@@ -80,7 +80,7 @@ javaOptions ++= Seq(
 ),
 ```
 
-Start SBT and the container as usual (`./sbt` then `container:start`).
+Start SBT and the container as usual (`./sbt` then `jetty:start`).
 
 Go to `Run` -> `Debug configurations` in Eclipse. Select 
 `Remote Java Application`, click the `new configuration`  button, 
