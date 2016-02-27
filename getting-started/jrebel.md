@@ -96,7 +96,7 @@ Starting sbt: invoke with -help for other options
 You will start the servlet container slightly differently now that you're using sbt.
 
 ```
-> container:start
+> jetty:start
 > ~ copy-resources
 ```
 
