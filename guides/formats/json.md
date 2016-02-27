@@ -83,9 +83,9 @@ What's going on here? Scalatra has converted the `FlowerData.all` value to a str
 
 Let's get that working.
 
-In order to use Scalatra's JSON features, we'll need to add a couple of library dependencies so that our application can access some new code. 
+In order to use Scalatra's JSON features, we'll need to add a couple of library dependencies so that our application can access some new code.
 
-The first thing you'll need is Scalatra's JSON handling library. The second thing you'll need is [json4s](http://json4s.org/), which is a unified wrapper around the various Scala JSON libraries. We'll use the json4s-jackson variant, which uses the [jackson](http://jackson.codehaus.org/) library as the basis of its json support. 
+The first thing you'll need is Scalatra's JSON handling library. The second thing you'll need is [json4s](http://json4s.org/), which is a unified wrapper around the various Scala JSON libraries. We'll use the json4s-jackson variant, which uses the [jackson](http://jackson.codehaus.org/) library as the basis of its json support.
 
 In the root of your generated project, you'll find a file called `project/build.scala`. Open that up, and add the following two lines to the `libraryDependencies` sequence, after the other scalatra-related lines:
 
@@ -94,7 +94,7 @@ In the root of your generated project, you'll find a file called `project/build.
   "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
 ```
 
-Restart sbt to download the new jars. 
+Restart sbt to download the new jars.
 
 Add the following imports to the top of your FlowersController file, in order to make the new JSON libraries available:
 
@@ -149,7 +149,7 @@ The `JsonJacksonSupport` trait which we mixed into the controller, combined with
 
 Inbound JSON works in a similar way.
 
-When a json request comes, which is identified by the Content-Type header or format param then scalatra will try to read the json body into an AST. 
+When a json request comes, which is identified by the Content-Type header or format param then scalatra will try to read the json body into an AST.
 
 You can then extract a case class from this json AST.
 
@@ -157,11 +157,11 @@ You can then extract a case class from this json AST.
 case class Person(id: Int, name: String)
 
 post("/create") {
-  request.body.extract[Person]
+  parsedBody.extract[Person]
 }
 ```
 
-### Manipulating the JSON 
+### Manipulating the JSON
 
 You can transform the JSON AST before when it's being received by overriding the method `transformRequestBody`
 

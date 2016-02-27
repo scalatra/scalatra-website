@@ -29,8 +29,8 @@ name [My Scalatra Web App]:
 version [0.1.0-SNAPSHOT]: 
 servlet_name [MyScalatraServlet]: 
 package [com.example.app]: 
-scala_version [2.11.6]: 
-sbt_version [0.13.8]: 
+scala_version [2.11.7]: 
+sbt_version [0.13.9]: 
 scalatra_version [2.4.0]: 
 
 Template applied in ./my-scalatra-web-app
@@ -127,9 +127,8 @@ you named your servlet when you generated your project with g8:
 package com.example.app
 
 import org.scalatra._
-import scalate.ScalateSupport
 
-class MyServlet extends ScalatraServlet with ScalateSupport {
+class MyServlet extends ScalatraServlet with MyScalatraWebAppStack {
 
   get("/") {
     <html>
@@ -139,6 +138,7 @@ class MyServlet extends ScalatraServlet with ScalateSupport {
       </body>
     </html>
   }
+
 }
 ```
 
@@ -188,7 +188,7 @@ To recompile and reload your application automatically, run the following:
 
 ```bash
 $ ./sbt
-> ~jetty:start
+> ~;jetty:stop;jetty:start
 ```
 
 Now that you've got a (rather simplistic) running application, you may want
