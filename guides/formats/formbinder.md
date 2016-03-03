@@ -21,12 +21,12 @@ val mappings = tmapping(
   "id" -> long(),
   "body" -> (expandJson() >-: tmapping(
     "email" -> (required() >+: text(email())),
-	  "price" -> (omitLeft("$") >-: float()),
-	  "count" -> number().verifying(min(3), max(10))
+    "price" -> (omitLeft("$") >-: float()),
+    "count" -> number().verifying(min(3), max(10))
   ).label("xx").verifying { case (label, (email, price, count), messages) =>
-	  if (price * count > 1000) {
-	    Seq(s"$label: $price * $count = ${price * count}, too much!")
-	  } else Nil
+    if (price * count > 1000) {
+      Seq(s"$label: $price * $count = ${price * count}, too much!")
+    } else Nil
   })
 )
 
