@@ -52,13 +52,13 @@ Some Linux distros pre-install `gcj`, which won't work.
 Once you're sure you've got Java installed, you will need to download a few
 other utilities.
 
-[Conscript](https://github.com/n8han/conscript) is a tool for installing and
+[Conscript](https://github.com/foundweekends/conscript) is a tool for installing and
 updating Scala code.
-[giter8](https://github.com/n8han/giter8/), which depends on conscript, allows you to check out project templates directly from Github.
+[giter8](https://github.com/foundweekends/giter8/), which depends on conscript, allows you to check out project templates directly from Github.
 It's the recommended way to generate Scalatra project skeletons.
 
 <h4>Install conscript</h4>
-  <pre>curl https://raw.githubusercontent.com/n8han/conscript/master/setup.sh | sh</pre>
+  <pre>curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh</pre>
 
   <p>
     This will create a `bin` folder in your home directory.
@@ -74,7 +74,7 @@ source ~/.bashrc       # (Linux)
 </pre>
 
 <h4>Install giter8</h4>
-  <pre>cs n8han/giter8</pre>
+  <pre>cs foundweekends/giter8</pre>
 
   <p>Depending on your connection speed, this can take a bit of time, as
   `conscript` downloads quite a few Scala dependencies.</p>
