@@ -49,6 +49,9 @@ preflight requests can be cached by the client. Default value is 0 seconds.
 `context.initParameters("org.scalatra.cors.allowCredentials") = true` - By default, cookies are not
 included in CORS requests. Set this to `true` to allow cookies.
 
+`context.initParameters("org.scalatra.cors.enable") = false` - If CorsSupport needs to be disabled, set to false.
+Default: CorsSupport is enabled.
+
 If you're not familiar with CORS, you may want to find out a bit more about
 [preflightMaxAge][preflight] and [allowCredentials][allowCredentials] or
 [read the whole spec][corsSpec] at the W3C. A good tutorial is also available
