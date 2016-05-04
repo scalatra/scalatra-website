@@ -137,7 +137,7 @@ Now mix `JacksonJsonSupport` into your servlet so your controller declaration lo
 class FlowersController extends ScalatraServlet with JacksonJsonSupport {
 ```
 
-Your code should compile again at this point. Refresh your browser at [http://localhost:8080/flowers](http://localhost:8080/flowers), and suddenly the output of your `/` action has changed to JSON:
+Your code should compile again at this point. Refresh your browser at [http://localhost:8080](http://localhost:8080), and suddenly the output of your `/` action has changed to JSON:
 
 ```json
 [{"slug":"yellow-tulip","name":"Yellow Tulip"},{"slug":"red-rose","name":"Red Rose"},{"slug":"black-rose","name":"Black Rose"}]
