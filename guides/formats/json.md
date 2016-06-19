@@ -90,7 +90,7 @@ The first thing you'll need is Scalatra's JSON handling library. The second thin
 In the root of your generated project, you'll find a file called `project/build.scala`. Open that up, and add the following two lines to the `libraryDependencies` sequence, after the other scalatra-related lines:
 
 ```scala
-  "org.scalatra" %% "scalatra-json" % "{{ site.scalatra_version }}",
+  "org.scalatra" %% "scalatra-json" % ScalatraVersion,
   "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
 ```
 
