@@ -29,9 +29,9 @@ class YourServlet extends ScalatraBase with CorsSupport {
 You can configure your application to be more restrictive by using the following init
 params.
 
-`context.initParameters("org.scalatra.cors.allowedOrigins") = "http://example.com:8080 http://foo.example.com"`
+`context.initParameters("org.scalatra.cors.allowedOrigins") = "http://example.com:8080,http://foo.example.com"`
 - List the hosts and ports which will be allowed to make cross-origin requests,
-separated by spaces (* by default).
+separated by commas (* by default).
 
 
 `context.initParameters("org.scalatra.cors.allowedMethods") = "GET"` - List what HTTP methods will be
