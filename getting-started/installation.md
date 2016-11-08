@@ -79,6 +79,13 @@ source ~/.bashrc       # (Linux)
   <p>Depending on your connection speed, this can take a bit of time, as
   `conscript` downloads quite a few Scala dependencies.</p>
 
+Alternatively, you can install `giter8` on a Mac via
+[homebrew](http://brew.sh/):
+
+```bash
+brew install giter8
+```
+
 ---
 
 With installation out of the way, head over to the "[first project](first-project.html)"
