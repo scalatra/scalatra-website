@@ -32,15 +32,13 @@ $ javac -version
 javac 1.7.0_10
 ```
 
-You need Java 7, which will show up as version 1.7.
-
-Java 8 support in Scala is classed as experimental in Scala 2.11.x. If you
-aren't sure what this means, use Java 7.
+You need Java 7, which will show up as version 1.7, or Java 8, which will show up as 1.8.
 
 If you don't yet have Java installed, you can find out how to install
 it for your system
-<a href="http://docs.oracle.com/javase/7/docs/webnotes/install/index.html">
-over at the Java 7 install page</a>. Make sure you're using OpenJDK or Sun's JDK.
+<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html">
+over at the Java 8 install page</a>. Make sure you're using OpenJDK or Sun's JDK.
+
 Some Linux distros pre-install `gcj`, which won't work.
 
 ## 2. Install giter8
