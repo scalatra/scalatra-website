@@ -3,10 +3,6 @@ layout: guide
 title: Actions
 ---
 
-<div class="page-header">
-  <h1>Actions</h1>
-</div>
-
 As explained in the [routes guide](routes.html), an action is the code that handles
 a route.
 
