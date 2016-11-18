@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "Scalatra"
+title = "Scalatra Docs"
 theme = "hugo-material-docs"
 metadataformat = "yaml"
 canonifyurls = true
@@ -11,7 +11,7 @@ googleAnalytics = ""
 
 [params]
 	# General information
-	author = "Scalatra Team"
+	# author = "Scalatra Team"
 	description = "Documentation and how-to guides for the Scalatra microframework."
 	copyright = "Scalatra Team"
 
@@ -19,7 +19,7 @@ googleAnalytics = ""
 	# provider = "GitHub"
 	# repo_url = "https://github.com/scalatra/scalatra"
 
-	version = "1.0.0"
+	# version = "2.5.0"
 	logo = "images/logo.png"
 	favicon = ""
 
