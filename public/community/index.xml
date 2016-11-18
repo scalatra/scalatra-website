@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Communities on Scalatra</title>
-    <link>https://scalatra.github.io/community.html</link>
-    <description>Recent content in Communities on Scalatra</description>
+    <title>Community-rsses on Scalatra</title>
+    <link>/community.xml</link>
+    <description>Recent content in Community-rsses on Scalatra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://scalatra.github.io/community.xml" rel="self" type="application/rss+xml" />
+    <copyright>Scalatra Team</copyright>
+    <atom:link href="/community.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Built with Scalatra | Scalatra</title>
-      <link>https://scalatra.github.io/community/built-with.html</link>
+      <link>/community/built-with.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://scalatra.github.io/community/built-with.html</guid>
+      <guid>/community/built-with.html</guid>
       <description>
 
 &lt;div class=&#34;page-header&#34;&gt;
@@ -112,16 +113,12 @@ for Scala based on Pygments.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Community | Scalatra</title>
-      <link>https://scalatra.github.io/community.html</link>
+      <title>The Scalatra Community</title>
+      <link>/community.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://scalatra.github.io/community.html</guid>
-      <description>&lt;div class=&#34;page-header&#34;&gt;
-&lt;h1&gt;The Scalatra community&lt;/h1&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Quite a few big organizations have incorporated Scalatra as part of their
+      <guid>/community.html</guid>
+      <description>&lt;p&gt;Quite a few big organizations have incorporated Scalatra as part of their
 production systems. You can see the ones we know about on our
 &lt;a href=&#34;built-with.html&#34;&gt;Built with Scalatra&lt;/a&gt; page.&lt;/p&gt;
 
@@ -129,7 +126,7 @@ production systems. You can see the ones we know about on our
   &lt;div class=&#34;span4&#34;&gt;
     &lt;h2&gt;Twitter&lt;/h2&gt;
     &lt;p&gt;
-      &lt;img src=&#34;https://scalatra.github.io/img/glyphicons/glyphicons_392_twitter.png&#34;/&gt;
+      &lt;img src=&#34;/images/glyphicons/glyphicons_392_twitter.png&#34;/&gt;
       You can stay up to date on releases, new developments, and project news by following
       &lt;a href=&#34;http://twitter.com/#!/scalatra&#34;&gt;@scalatra&lt;/a&gt; on Twitter
     &lt;/p&gt;
@@ -141,7 +138,7 @@ production systems. You can see the ones we know about on our
   &lt;div class=&#34;span4&#34;&gt;
     &lt;h2&gt;Github&lt;/h2&gt;
     &lt;p&gt;
-      &lt;img src=&#34;../assets/img/glyphicons/glyphicons_381_github.png&#34;/&gt;
+      &lt;img src=&#34;/images/glyphicons/glyphicons_381_github.png&#34;/&gt;
       Development takes place through our &lt;a href=&#34;http://github.com/scalatra/scalatra&#34;&gt;GitHub&lt;/a&gt; project.
       Come here for &lt;a href=&#34;http://github.com/scalatra/scalatra/issues&#34;&gt;issue tracking&lt;/a&gt;, code reviews, and patches.
     &lt;/p&gt;
@@ -149,7 +146,7 @@ production systems. You can see the ones we know about on our
   &lt;div class=&#34;span4&#34;&gt;
     &lt;h2&gt;Google group&lt;/h2&gt;
     &lt;p&gt;
-      &lt;img src=&#34;../assets/img/glyphicons/glyphicons_362_google+_alt.png&#34;/&gt;
+      &lt;img src=&#34;/images/glyphicons/glyphicons_362_google+_alt.png&#34;/&gt;
       The &lt;a href=&#34;http://groups.google.com/group/scalatra-user&#34;&gt;scalatra-user&lt;/a&gt; Google Group
       is the preferred channel for Scalatra discussion so future users can learn from the archive.
       Support requests, suggestions, project announcements, and all other commentary related to Scalatra are welcome here.
