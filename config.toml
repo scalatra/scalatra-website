@@ -1,6 +1,6 @@
 baseurl = "/"
 languageCode = "en-us"
-title = "Scalatra Docs"
+title = "Scalatra"
 theme = "hugo-material-docs"
 metadataformat = "yaml"
 canonifyurls = true
