@@ -1,12 +1,7 @@
 ---
 layout: guide
-title: File upload | Formats | Scalatra guides
+title: File upload
 ---
-
-<div class="page-header">
-  <h1>File upload</h1>
-</div>
-
 
 ## Uploading files
 

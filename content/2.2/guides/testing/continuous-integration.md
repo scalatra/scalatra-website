@@ -1,15 +1,9 @@
 ---
 layout: guide
-title: Continuous integration | Deployment | Scalatra guides
+title: Continuous integration
 ---
 
-<div class="page-header">
-  <h1>Continuous integration</h1>
-</div>
-
-Continuous integration is the practice of having a build server regularly compile
-and test the latest code base.
-Using continuous integration has many advantages:
+Continuous integration is the practice of having a build server regularly compile and test the latest code base. Using continuous integration has many advantages:
 
 - Developers can be alerted by the build server when a recent commit will not compile
 ("breaks the build") or fails tests.

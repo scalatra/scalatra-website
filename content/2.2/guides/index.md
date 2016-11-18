@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Scalatra guides | Scalatra
+title: Scalatra 2.2 Guides
 ---
 
 <div class="page-header">
@@ -27,7 +27,7 @@ title: Scalatra guides | Scalatra
 [Akka](async/akka.html), [Atmosphere](async/atmosphere.html)
 
 <h4>Views</h4>
-[Inline HTML](views/inline-html.html), [Scalate](views/scalate.html), 
+[Inline HTML](views/inline-html.html), [Scalate](views/scalate.html),
 [Twirl](views/twirl.html), Twitter Bootstrap, Dust
 
 <h4>Resources</h4>
@@ -47,7 +47,7 @@ title: Scalatra guides | Scalatra
 [i18n](internationalization.html)
 
 <h4>Testing</h4>
-[ScalaTest](testing/scalatest.html), [Specs2](testing/specs2.html), 
+[ScalaTest](testing/scalatest.html), [Specs2](testing/specs2.html),
 [continuous integration](testing/continuous-integration.html),
 ScalaCheck, Selenium, Jasmine
 
@@ -62,9 +62,9 @@ ScalaCheck, Selenium, Jasmine
 [Logging](monitoring/logging.html), metrics
 
 <h4>Deployment</h4>
-[configuration](deployment/configuration.html), 
-[servlet container](deployment/servlet-container.html), 
-[standalone](deployment/standalone.html), 
+[configuration](deployment/configuration.html),
+[servlet container](deployment/servlet-container.html),
+[standalone](deployment/standalone.html),
 [Heroku](deployment/heroku.html), [Jelastic](deployment/jelastic.html),
-[CloudBees](deployment/cloudbees.html), 
+[CloudBees](deployment/cloudbees.html),
 [Google App Engine](deployment/google-app-engine.html)

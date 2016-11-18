@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Gzip | HTTP | Scalatra
+title: Gzip Support
 ---
-
-<div class="page-header">
-  <h1>Gzip</h1>
-</div>
 
 Bandwidth can be wasted when using verbose plaintext formats such as XML, leading
 to a poor user experience for your apps.

@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Routes | HTTP | Scalatra guides
+title: Routes
 ---
-
-<div class="page-header">
-  <h1>Routes</h1>
-</div>
 
 All web applications need a way to match up the incoming HTTP request with some code to execute on the server. In Scalatra, this is done using _routes_ and _actions_.
 
@@ -264,10 +260,10 @@ get("/articles-by/:author/:page") {
 #### GET and POST params, and where's my JSON?
 
 Both GET and POST params end up in the `params` bag - you shouldn't need to read
-anything off the `request.body`. 
+anything off the `request.body`.
 
-If you put data directly into the POST body of your request, e.g. 
-`'{"some":"object"}'` by itself as a JSON hash, then the JSON itself 
+If you put data directly into the POST body of your request, e.g.
+`'{"some":"object"}'` by itself as a JSON hash, then the JSON itself
 becomes an empty key in the `params` Map.
 
 ### Filters

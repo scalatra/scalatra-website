@@ -1,10 +1,7 @@
 ---
 layout: guide
-title: Metrics | Monitoring | Scalatra guides
+title: Metrics
 ---
 
-<div class="page-header">
-  <h1>Metrics</h1>
-</div>
 
 {% include _under_construction.html %}

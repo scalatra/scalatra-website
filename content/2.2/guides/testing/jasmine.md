@@ -1,10 +1,7 @@
 ---
 layout: guide
-title: Jasmine | Views | Scalatra guides
+title: Jasmine
 ---
 
-<div class="page-header">
-  <h1>Jasmine</h1>
-</div>
 
 {% include _under_construction.html %}

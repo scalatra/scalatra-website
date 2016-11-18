@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Squeryl | Persistence | Scalatra guides
+title: Squeryl
 ---
-
-<div class="page-header">
-  <h1>Squeryl</h1>
-</div>
 
 [Squeryl](http://squeryl.org/) is a Scala object-relational mapper and
 domain-specific language for talking to databases in a succinct and
@@ -24,7 +20,7 @@ a "butt-simple" connection pooling library.
 ## Dependencies
 
 ```scala
-"org.squeryl" %% "squeryl" % "0.9.5-6", 
+"org.squeryl" %% "squeryl" % "0.9.5-6",
 "com.h2database" % "h2" % "1.3.166",
 "c3p0" % "c3p0" % "0.9.1.2"
 ```
@@ -33,7 +29,7 @@ a "butt-simple" connection pooling library.
 
 Setting up C3P0 connection pool in Scalatra is just a matter of making
 a trait which does your database initialization. The initialization
-code itself can follow the 
+code itself can follow the
 [C3P0 init example](http://www.mchange.com/projects/c3p0/#quickstart)
 pretty closely:
 
@@ -81,9 +77,9 @@ trait DatabaseInit {
 ```
 
 You'll likely want to load up your database creds by reading a config file,
-but that's up to you. The `configureDb()` method will create a connection pool when it's called, and in this case it'll use an in-memory H2 database with the `H2Adapter`, so that we don't have any dependencies on an external database server. Replace the connection string, driver, and adapter in this file if you're using MySQL, PostgreSQL, or something else. Info is available on the 
+but that's up to you. The `configureDb()` method will create a connection pool when it's called, and in this case it'll use an in-memory H2 database with the `H2Adapter`, so that we don't have any dependencies on an external database server. Replace the connection string, driver, and adapter in this file if you're using MySQL, PostgreSQL, or something else. Info is available on the
 
-Inside the `configureDb` method, Squeryl's `SessionFactory` gets wired together 
+Inside the `configureDb` method, Squeryl's `SessionFactory` gets wired together
 with C3P0's `ComboPooledDataSource`.
 
 ## Initialize the session pool
@@ -93,7 +89,7 @@ place to do this initialization work is in your application's ScalatraBootstrap
 init method.
 
 Open up `src/main/scala/ScalatraBootstrap.scala`, and import your `DatabaseInit`
-trait. In the case of this example, we'll need 
+trait. In the case of this example, we'll need
 `import com.futurechimps.squeryli.data.DatabaseInit`.
 
 Then mix the `DatabaseInit` trait into `ScalatraBootstrap`, so it looks like this:
@@ -110,7 +106,7 @@ class ScalatraBootstrap extends LifeCycle with DatabaseInit {
     configureDb()
     context mount (new ArticlesController, "/*")
   }
-  
+
   override def destroy(context:ServletContext) {
     closeDbConnection()
   }
@@ -119,7 +115,7 @@ class ScalatraBootstrap extends LifeCycle with DatabaseInit {
 
 The `configureDb` method is called when your application starts, and during the
 `destroy` phase of your application, the database connections are closed down
-again. 
+again.
 
 ## Setting up database session support
 
@@ -144,10 +140,10 @@ trait DatabaseSessionSupport { this: ScalatraBase =>
   import DatabaseSessionSupport._
 
   def dbSession = request.get(key).orNull.asInstanceOf[Session]
-  
-  before() { 
-    request(key) = SessionFactory.newSession 
-    dbSession.bindToCurrentThread 
+
+  before() {
+    request(key) = SessionFactory.newSession
+    dbSession.bindToCurrentThread
   }
 
   after() {

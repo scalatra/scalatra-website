@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: LESS CSS | Resources | Scalatra guides
+title: LESS CSS
 ---
-
-<div class="page-header">
-  <h1>LESS CSS</h1>
-</div>
 
 [LESS](http://lesscss.org/) is an extension to CSS that adds DRY features such as
 variables, mixins, operations, and functions.

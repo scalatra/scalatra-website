@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: JRebel integration | Scalatra
+title: JRebel integration 
 ---
-
-<div class="page-header">
-  <h1>JRebel integration (optional)</h1>
-</div>
 
 [JRebel](http://zeroturnaround.com/software/jrebel/) is a JVM plugin that makes developing web apps much faster.
 JRebel is generally able to eliminate the need for the following slow "app restart" in sbt following a code change:
@@ -16,9 +12,9 @@ JRebel is generally able to eliminate the need for the following slow "app resta
 
 While JRebel is not open source, it does reload your code faster than the `~;copy-resources;aux-compile` way of doing things using `sbt`.
 
-It's only used during development, and doesn't change your deployed app in any way. 
+It's only used during development, and doesn't change your deployed app in any way.
 
-JRebel used to be free for Scala developers, but that changed recently, and now there's a cost associated with usage for Scala. There are trial plans and free non-commercial licenses available if you just want to try it out. 
+JRebel used to be free for Scala developers, but that changed recently, and now there's a cost associated with usage for Scala. There are trial plans and free non-commercial licenses available if you just want to try it out.
 
 ----
 
@@ -70,27 +66,27 @@ When you run sbt as normal, you will see a long message from JRebel, indicating 
 Here's an abbreviated version of what you will see:
 
 ```
-$ ./sbt 
+$ ./sbt
 Detected sbt version 0.12.1
 Starting sbt: invoke with -help for other options
-[2012-12-08 18:14:30] 
+[2012-12-08 18:14:30]
 [2012-12-08 18:14:30] #############################################################
-[2012-12-08 18:14:30] 
+[2012-12-08 18:14:30]
 [2012-12-08 18:14:30]  JRebel 5.1.1 (201211271929)
 [2012-12-08 18:14:30]  (c) Copyright ZeroTurnaround OU, Estonia, Tartu.
-[2012-12-08 18:14:30] 
+[2012-12-08 18:14:30]
 [2012-12-08 18:14:30]  This product is licensed to John Doe
-[2012-12-08 18:14:30]  for use with Scala classes only 
-[2012-12-08 18:14:30] 
+[2012-12-08 18:14:30]  for use with Scala classes only
+[2012-12-08 18:14:30]
 [2012-12-08 18:14:30]  License acquired through myJRebel server.
-[2012-12-08 18:14:30] 
+[2012-12-08 18:14:30]
 [2012-12-08 18:14:30]  You are subscribed for the plan "JRebel Scala Plan",
 [2012-12-08 18:14:30]  subscription ends on 2013-10-06,
 [2012-12-08 18:14:30]  next license check with the server is required by 2013-01-07.
-[2012-12-08 18:14:30] 
+[2012-12-08 18:14:30]
 [2012-12-08 18:14:30] #############################################################
-[2012-12-08 18:14:30] 
-> 
+[2012-12-08 18:14:30]
+>
 ```
 
 You will start the servlet container slightly differently now that you're using sbt.

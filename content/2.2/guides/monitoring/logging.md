@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Logging | Monitoring | Scalatra guides
+title: Loggings
 ---
-
-<div class="page-header">
-  <h1>Logging</h1>
-</div>
 
 By default, Scalatra uses [Logback][logback] for logging.
 
@@ -46,4 +42,3 @@ The Scala wrappers use by-name parameters for the log message, and
 check to see that the logging level is enabled.  This is a performance
 win for complex log messages involving expensive `toString`s or many
 concatenations.
-

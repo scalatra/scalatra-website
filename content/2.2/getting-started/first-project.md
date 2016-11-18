@@ -1,29 +1,20 @@
 ---
 layout: guide
-title: First steps | Scalatra
+title: First steps
 ---
-
-<div class="page-header">
-  <h1>
-    First project
-    <small>with Scalatra</small>
-  </h1>
-</div>
-
-## Generate a Scalatra project
 
 Now that [installation](installation.html) is out of the way, you can
 generate a project:
 
 ```bash
-g8 scalatra/scalatra-sbt 
+g8 scalatra/scalatra-sbt
 ```
 
 This will check out a pre-built application skeleton for you (from [GitHub](https://github.com/scalatra/scalatra-sbt.g8)),
 and ask you some questions about your application:
 
 ```
-$ g8 scalatra/scalatra-sbt 
+$ g8 scalatra/scalatra-sbt
 organization [com.example]:
 package [com.example.app]:
 name [My Scalatra Web App]:

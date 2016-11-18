@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Google App Engine | Deployment | Scalatra
+title: Google App Engine
 ---
-
-<div class="page-header">
-  <h1>Google App Engine</h1>
-</div>
 
 Scalatra doesn't work on [Google App Engine](https://developers.google.com/appengine/)
 (GAE).

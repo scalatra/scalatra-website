@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Project structure | Scalatra
+title: Project structure
 ---
-
-<div class="page-header">
-  <h1>Project structure</h1>
-</div>
 
 ## Paths
 
@@ -38,7 +34,7 @@ what you get when you generate a new project using giter8:
              |_ yourdomain
                 |_ projectname
                    |_ MyScalatraServletSpec.scala
-              
+
 
 
 The basic structure should be reasonably familiar to anybody who's seen a
@@ -250,7 +246,7 @@ The Scalatra components in your project should all have the same version number
 ({{ site.scalatra_version }} in the above example).
 Although it's theoretically possible to mix and match differently-versioned components
 in your projects, it's not recommended, because we compile, test and release Scalatra
-dependencies together based on their version number. 
+dependencies together based on their version number.
 
 ---
 

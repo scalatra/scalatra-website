@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Deploying to CloudBees | Deployment | Scalatra
+title: Deploying to CloudBees
 ---
-
-<div class="page-header">
-  <h1>Deploying to CloudBees</h1>
-</div>
 
 [CloudBees](http://www.cloudbees.com/) is a hosted platform for JVM apps that puts
 everything from source control to continuous integration to production deployment under
@@ -37,7 +33,7 @@ Installing plugin: org.cloudbees.sdk.plugins:ant-plugin:1.1
 
 You have not created a CloudBees configuration profile, let's create one now...
 Enter your CloudBees account email address: you@you.com
-Enter your CloudBees account password: 
+Enter your CloudBees account password:
 ```
 
 ## 3. Set up a project.
@@ -63,7 +59,7 @@ $ ./sbt
 [success] Total time: 4 s, completed Dec 19, 2012 8:55:03 PM
 ```
 
-## 4. Create your app on CloudBees 
+## 4. Create your app on CloudBees
 
 - Log into your account, and click on the Apps tab.
 The first time you do that you'll have to subscribe for that service.
@@ -97,4 +93,3 @@ Application scalatra-documenter/scalatra-test deployed: http://scalatra-test.sca
 
 The output from the deploy phase shows the URL to visit.
 In our case it's [http://scalatra-test.scalatra-documenter.cloudbees.net](http://scalatra-test.scalatra-documenter.cloudbees.net).
-

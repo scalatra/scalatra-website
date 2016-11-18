@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: IDE Support | Scalatra
+title: IDE Support
 ---
-
-<div class="page-header">
-  <h1>IDE Support (optional)</h1>
-</div>
 
 Because Scalatra is a pure-Scala no-magic framework, Scala IDEs such as
 [Eclipse](http://scala-ide.org/),
@@ -43,13 +39,13 @@ Start SBT like this:
 ./sbt -jvm-debug 8000
 ```
 
-Go to `Run` -> `Debug configurations` in Eclipse. Select 
-`Remote Java Application`, click the `new configuration`  button, 
-select `Remote` to make a new remote debugging configuration, and 
+Go to `Run` -> `Debug configurations` in Eclipse. Select
+`Remote Java Application`, click the `new configuration`  button,
+select `Remote` to make a new remote debugging configuration, and
 call it `Scalatra Debug`.
 
-Press the `Debug` button on the bottom right. Eclipse will attach itself to 
-SBT's remote debugger and your breakpoints will start working. 
+Press the `Debug` button on the bottom right. Eclipse will attach itself to
+SBT's remote debugger and your breakpoints will start working.
 
 
 ## IntelliJ IDEA
@@ -84,8 +80,8 @@ Start SBT like this:
 ```
 
 After that, go to `Run` -> `Edit configurations` in IntelliJ. Click the `+`
-button, select `Remote` to make a new remote debugging configuration, and 
-call it `Scalatra Debug`. In IntelliJ 13, the default run conf should work 
+button, select `Remote` to make a new remote debugging configuration, and
+call it `Scalatra Debug`. In IntelliJ 13, the default run conf should work
 (it looks like this):
 
 ```
@@ -93,7 +89,7 @@ call it `Scalatra Debug`. In IntelliJ 13, the default run conf should work
 ```
 
 Now just select `Run` -> `Debug 'Scalatra Debug'`. Setting breakpoints and
-stepping through code should work. 
+stepping through code should work.
 
 ## ENSIME (for Emacs)
 
@@ -119,6 +115,3 @@ $ ./sbt
 
 That will generate a classpath file that will tell ENSIME where to look for your
 class files and their dependencies.
-
-
-

@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Installation | Scalatra
+title: Installation
 ---
-
-<div class="page-header">
-  <h1>Installation</h1>
-</div>
 
 Getting started with a new web framework can be a bit scary.
 Luckily, Scalatra is easy to install, as it has relatively few dependencies.
@@ -36,7 +32,7 @@ $ javac -version
 javac 1.7.0_10
 ```
 
-You need Java 7, which will show up as version 1.7. 
+You need Java 7, which will show up as version 1.7.
 
 Java 8 support in Scala is classed as experimental in Scala 2.11.x. If you
 aren't sure what this means, use Java 7.

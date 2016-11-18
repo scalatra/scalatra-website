@@ -1,15 +1,11 @@
 ---
 layout: guide
-title: Specs2 | Testing | Scalatra guides
+title: Specs2
 ---
 
-<div class="page-header">
-  <h1>Specs2</h1>
-</div>
-
-[Specs2](http://etorreborre.github.com/specs2/) is a library for writing 
-executable software specifications. With specs2 you can write software 
-specifications for one class (unit specifications) or a full system 
+[Specs2](http://etorreborre.github.com/specs2/) is a library for writing
+executable software specifications. With specs2 you can write software
+specifications for one class (unit specifications) or a full system
 (acceptance specifications).
 
 #### Dependency
@@ -112,4 +108,3 @@ class FileUploadSpec extends MutableScalatraSpec {
 ```
 
 {% include _under_construction.html %}
-

@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: wro4j | Resources | Scalatra guides
+title: wro4j 
 ---
-
-<div class="page-header">
-  <h1>wro4j</h1>
-</div>
 
 The [Web Resource Optimizer for Java (wro4j)][wro4j] is a Free and Open Source Java
 project which brings together almost all the modern web tools for

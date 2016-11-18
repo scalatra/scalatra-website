@@ -1,12 +1,7 @@
 ---
 layout: guide
-title: Sessions | HTTP | Scalatra guides
+title: Session Handling
 ---
-
-<div class="page-header">
-  <h1>Sessions</h1>
-</div>
-
 
 ### Session handling
 

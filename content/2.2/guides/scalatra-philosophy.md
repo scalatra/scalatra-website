@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Scalatra's philosophy | Scalatra
+title: Scalatra's philosophy
 ---
-
-<div class="page-header">
-  <h1>Scalatra's philosophy</h1>
-</div>
 
 <h4>1. Start small, build upwards</h4>
 
@@ -13,12 +9,12 @@ Start with a small core, and have lots of easy integrations for common tasks.
 
 <h4>2. Freedom</h4>
 
-Allow the user freedom to choose whatever structure and libraries make the most sense for the application being built. 
+Allow the user freedom to choose whatever structure and libraries make the most sense for the application being built.
 
 <h4>3. Solid, but not stolid </h4>
 
-Use solid base components. For instance, servlets aren't cool, but they are 
-extremely stable and have a huge community behind them. At the same time, work 
+Use solid base components. For instance, servlets aren't cool, but they are
+extremely stable and have a huge community behind them. At the same time, work
 to advance the state of web application development by using new techniques
 and approaches.
 

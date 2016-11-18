@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Swagger | Scalatra guides
+title: Swagger
 ---
-
-<div class="page-header">
-  <h1>Swagger Support</h1>
-</div>
 
 ### What is Swagger?
 
@@ -238,7 +234,7 @@ import org.scalatra.swagger.{NativeSwaggerBase, Swagger}
 import org.scalatra.ScalatraServlet
 
 
-class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with NativeSwaggerBase 
+class ResourcesApp(implicit val swagger: Swagger) extends ScalatraServlet with NativeSwaggerBase
 
 class FlowersSwagger extends Swagger("1.0", "1")
 ```
@@ -324,7 +320,7 @@ Right now, it looks like this:
 We'll need to add some information to the method in order to tell Swagger what this method does, what parameters it can take, and what it responds with.
 
 ```scala
-  val getFlowers = 
+  val getFlowers =
     (apiOperation[List[Flower]]("getFlowers")
       summary "Show all flowers"
       notes "Shows all the flowers in the flower shop. You can search it too."
@@ -372,7 +368,7 @@ We can do the same to our `get(/:slug)` route. Change it from this:
 to this:
 
 ```scala
-  val findBySlug = 
+  val findBySlug =
     (apiOperation[Flower]("findBySlug")
       summary "Find by slug"
       parameters (
@@ -420,5 +416,3 @@ If you want to host your own customized version of the docs, you can of course j
 Interestingly, you are able to use the remotely-hosted documentation browser at http://petstore.swagger.wordnik.com to browse an application on http://localhost. Why is this possible? Shouldn't JavaScript security restrictions have come into play here?
 
 The reason it works is that Scalatra has Cross-Origin Resource Sharing (CORS) support mixed into its SwaggerSupport trait, allowing cross-origin JavaScript requests by default for all requesting domains. This makes it easy to serve JS API clients - but if you want, you can lock down requests to specific domains using Scalatra's CorsSupport trait. See the Scalatra [Helpers](../guides/web-services/cors.html) documentation for more.
-
-

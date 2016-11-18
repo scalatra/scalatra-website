@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Deploying to Heroku | Deployment | Scalatra
+title: Deploying to Heroku
 ---
-
-<div class="page-header">
-  <h1>Deploying to Heroku</h1>
-</div>
 
 [Heroku](http://www.heroku.com/) is a cloud application platform that makes it easy to deploy and scale applications. With the right project setup, deploying your application becomes as easy as `git push`.
 

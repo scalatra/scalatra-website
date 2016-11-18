@@ -1,13 +1,9 @@
 ---
 layout: guide
-title: MongoDb | Persistence | Scalatra guides
+title: MongoDb
 ---
 
-<div class="page-header">
-  <h1>MongoDB</h1>
-</div>
-
-[MongoDb](http://mongodb.org) is an open-source document database, and one of the most widely deployed NoSQL databases. It is extremely easy to use with Scalatra. 
+[MongoDb](http://mongodb.org) is an open-source document database, and one of the most widely deployed NoSQL databases. It is extremely easy to use with Scalatra.
 
 There are multiple Scala clients for MongoDb, and they come with varying levels of complexity. Here are some of them, as listed in MongoDb's [Scala Language Center](http://docs.mongodb.org/ecosystem/drivers/scala/).
 
@@ -18,7 +14,7 @@ There are multiple Scala clients for MongoDb, and they come with varying levels 
 
 ## Getting going with Casbah
 
-MongoDb requires very little setup. Assuming you've got Mongo installed already, getting it working with Scalatra is as follows. 
+MongoDb requires very little setup. Assuming you've got Mongo installed already, getting it working with Scalatra is as follows.
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
@@ -41,7 +37,7 @@ class ScalatraBootstrap extends LifeCycle {
   override def init(context: ServletContext) {
 
      // As you can see, there's not much to do in order to get MongoDb working with Scalatra.
-     // We're connecting with default settings - localhost on port 27017 - 
+     // We're connecting with default settings - localhost on port 27017 -
      // by calling MongoClient() with no arguments.
     val mongoClient =  MongoClient()
     val mongoColl = mongoClient("casbah_test")("test_data")
@@ -93,10 +89,10 @@ class MongoController(mongoColl: MongoCollection) extends ScalatraCasbahExampleS
     val q = MongoDBObject(params("key") -> params("value"))
     for ( x <- mongoColl.findOne(q) ) yield x
   }
-  
+
 }
 ```
 
-Once you've got the `MongoCollection` available inside your controller, you can use Mongo and Scalatra together seamlessly. If you would like to learn more about Casbah, proceed to the [Casbah Tutorial](http://mongodb.github.io/casbah/tutorial.html). 
+Once you've got the `MongoCollection` available inside your controller, you can use Mongo and Scalatra together seamlessly. If you would like to learn more about Casbah, proceed to the [Casbah Tutorial](http://mongodb.github.io/casbah/tutorial.html).
 
-Alternately, you can apply the same basic techniques in order to get started with any of the Scala MongoDb libraries. Each library has its strengths and weaknesses, and the choice of which one to use will come down largely to your programming style. 
+Alternately, you can apply the same basic techniques in order to get started with any of the Scala MongoDb libraries. Each library has its strengths and weaknesses, and the choice of which one to use will come down largely to your programming style.

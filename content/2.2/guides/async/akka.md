@@ -1,29 +1,25 @@
 ---
 layout: guide
-title: Akka | Async | Scalatra guides
+title: Akka and Async
 ---
-
-<div class="page-header">
-  <h1>Akka</h1>
-</div>
 
 ### AkkaSupport
 
 Akka is a toolkit and runtime for building highly concurrent, distributed, and
 fault tolerant event-driven applications on the JVM. Scalatra allows you to easily
-mix it into your application. 
+mix it into your application.
 
-In versions of Scalatra before 2.2.0, Akka was an optional dependency, 
-contained in a scalatra-akka jar. In Scalatra 2.2.0, Akka has been 
+In versions of Scalatra before 2.2.0, Akka was an optional dependency,
+contained in a scalatra-akka jar. In Scalatra 2.2.0, Akka has been
 folded directly into Scalatra core, and the scalatra-akka dependency is no
 longer needed. To get access to Akka, all you need to do is mix FutureSupport
 into your servlets.
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-  If you're using Scala 2.9.x, you'll need 
-  <a href="https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/akka-examples/project/build.scala#L24">the Akka resolver</a> 
-  in your sbt configuration, otherwise you'll get a missing dependency. Add 
+  If you're using Scala 2.9.x, you'll need
+  <a href="https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/akka-examples/project/build.scala#L24">the Akka resolver</a>
+  in your sbt configuration, otherwise you'll get a missing dependency. Add
   <pre>resolvers += "Akka Repo" at "http://repo.akka.io/repository",</pre>
   and you'll be all set.
 </div>
@@ -81,7 +77,7 @@ import org.scalatra.FutureSupport
 
 class MyAppServlet extends ScalatraServlet with FutureSupport {
   get("/"){
-    new AsyncResult { val is = 
+    new AsyncResult { val is =
       Future {
         // Add async logic here
         <html><body>Hello Akka</body></html>
@@ -126,7 +122,7 @@ class PageRetriever(system: ActorSystem) extends ScalatraServlet with FutureSupp
 
   get("/") {
     contentType = "text/html"
-    new AsyncResult { val is = 
+    new AsyncResult { val is =
       DispatchAkka.retrievePage()
     }
   }
@@ -135,7 +131,7 @@ class PageRetriever(system: ActorSystem) extends ScalatraServlet with FutureSupp
 ```
 
 This example code will run in Scalatra 2.2.x with Scala 2.9.2. In this
-combination, Scalatra uses Akka 2.0.5. 
+combination, Scalatra uses Akka 2.0.5.
 
 When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and class names have changed. Consult the
 [Akka upgrade guide](http://doc.akka.io/docs/akka/snapshot/project/migration-guide-2.0.x-2.1.x.html) to see the differences between the two Akka versions.
