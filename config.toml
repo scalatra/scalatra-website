@@ -34,8 +34,8 @@ googleAnalytics = ""
 	highlight_css  = "/stylesheets/highlight/highlight.css"
 
 	[params.palette]
-    	primary = "red"
-    	accent  = "teal"
+    	primary = "teal"
+    	accent  = "red"
 
     [params.font]
     	text = "Ubuntu"
