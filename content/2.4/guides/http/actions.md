@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Actions | HTTP | Scalatra guides
+title: Actions
 ---
 
 <div class="page-header">
