@@ -31,7 +31,7 @@ googleAnalytics = ""
 	custom_js  = []
 
 	# Syntax highlighting theme
-	highlight_css  = ""
+	highlight_css  = "/stylesheets/highlight/highlight.css"
 
 	[params.palette]
     	primary = "red"
