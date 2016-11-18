@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Twirl | Views | Scalatra guides
+title: Twirl
 ---
-
-<div class="page-header">
-  <h1>Twirl</h1>
-</div>
 
 *Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.0/ScalaTemplates).
 
@@ -120,7 +116,7 @@ Since it's an external project, we encourage you to also consult the
 [official documentation](http://www.playframework.org/documentation/2.0/ScalaTemplates).
 
 The [sbt plugin's README](https://github.com/spray/twirl/blob/master/README.rst)
-also has a useful syntax summary. 
+also has a useful syntax summary.
 
 ## Rendering oddities
 
@@ -134,7 +130,7 @@ Consider this template:
 Twirl makes some special decisions in rendering certain types, including:
 
 <ul>
-  
+
   <li>
     Collections like
     <ul>
@@ -167,4 +163,3 @@ It will render as:
 <a href="twirl-screenshot-conversions.png">
    <img width="500" src="twirl-screenshot-conversions.png" />
 </a>
-

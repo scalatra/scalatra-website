@@ -3,10 +3,6 @@ layout: guide
 title: Deploying to servlet containers | Deployment | Scalatra
 ---
 
-<div class="page-header">
-  <h1>Deploying to servlet containers</h1>
-</div>
-
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   If you're coming from a non-Java background, you may find the subject of
@@ -115,5 +111,3 @@ Request body params dont get parsed in 'put(/:resource)' api when deploying scal
 </div>
 
 Your app should now be running at [http://localhost:8080/](http://localhost:8080/)
-
-

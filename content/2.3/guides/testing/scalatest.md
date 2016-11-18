@@ -1,15 +1,11 @@
 ---
 layout: guide
-title: ScalaTest | Testing | Scalatra guides
+title: ScalaTest
 ---
 
-<div class="page-header">
-  <h1>ScalaTest</h1>
-</div>
-
-[ScalaTest](http://scalatest.org/) supports three main styles of testing out of 
+[ScalaTest](http://scalatest.org/) supports three main styles of testing out of
 the box: test-driven development (TDD), behavior-driven development (BDD), and
-acceptance testing. ScalaTest also supports writing JUnit and TestNG tests in 
+acceptance testing. ScalaTest also supports writing JUnit and TestNG tests in
 Scala.
 
 Scalatra has an integration to make the use of ScalaTest more convenient.

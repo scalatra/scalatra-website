@@ -1,23 +1,19 @@
 ---
 layout: guide
-title: Introduction | Persistence | Scalatra guides
+title: Introduction to Persistence
 ---
-
-<div class="page-header">
-  <h1>Persistence in Scalatra</h1>
-</div>
 
 Scalatra's philosophy is to keep things simple and solid. At its heart, Scalatra is basically a domain-specific language (DSL) for easily making HTTP requests, and a way of extending the core HTTP router with whatever libraries you want. We think we've got a great DSL for HTTP - the Sinatra style strikes us as perhaps the simplest, most natural way to express HTTP routes.
 
 Data is different. Every application has its own needs for persistence, and there's certainly no one-size-fits-all answer to the question of how to store data. Some applications may work well with a NoSQL key-value data store; others may require a relational database with full ACID compliance. There's also the question of ORMs vs bare-metal access to data - again, opinions and programming styles vary widely.
 
-In light of this, Scalatra has no built-in integrations with specific persistence frameworks. Instead, we've made it easy for you to write your own integrations, by exposing hooks for running code at application startup and shutdown. You can hook Scalatra up to your chosen persistence framework with only a small amount of work. 
+In light of this, Scalatra has no built-in integrations with specific persistence frameworks. Instead, we've made it easy for you to write your own integrations, by exposing hooks for running code at application startup and shutdown. You can hook Scalatra up to your chosen persistence framework with only a small amount of work.
 
 This guide will show you how.
 
 ### Integrating a persistence library
 
-Although the details depend on the library, the general steps for getting your chosen persistence library working with Scalatra are pretty similar across libraries. 
+Although the details depend on the library, the general steps for getting your chosen persistence library working with Scalatra are pretty similar across libraries.
 
 1. Add a reference to your library in `project/build.scala`
 1. Start a connection pool at application start
@@ -123,10 +119,10 @@ trait DatabaseSessionSupport { this: ScalatraBase =>
   import DatabaseSessionSupport._
 
   def dbSession = request.get(key).orNull.asInstanceOf[Session]
-  
-  before() { 
-    request(key) = SessionFactory.newSession 
-    dbSession.bindToCurrentThread 
+
+  before() {
+    request(key) = SessionFactory.newSession
+    dbSession.bindToCurrentThread
   }
 
   after() {
@@ -137,16 +133,16 @@ trait DatabaseSessionSupport { this: ScalatraBase =>
 }
 ```
 
-Obviously this one is pretty specific to Squeryl, but the basic idea is to use Scalatra's `before()` and `after()` filters to open a database connection on each request, and close it after the request finishes. This is a very common pattern, and is used even in the case of persistence frameworks which don't use connection pooling. 
+Obviously this one is pretty specific to Squeryl, but the basic idea is to use Scalatra's `before()` and `after()` filters to open a database connection on each request, and close it after the request finishes. This is a very common pattern, and is used even in the case of persistence frameworks which don't use connection pooling.
 
 This trait can now be mixed into any controller to give you a `dbSession` which you can use to do persistence tasks. In the case of Squeryl, you then define an Object which acts as a combination of a schema and a data access object - other frameworks do things differently, but the basic idea is the same. You need your application to be able to get a handle on its datastore connection so that it can shoot data at your datastore, retrieve it, and clean up after itself after every request.
 
 ### Write your application!
 
-Once you've got a handle on your datastore, you're off to the races. 
+Once you've got a handle on your datastore, you're off to the races.
 
 There are dozens of persistence libraries which you can use with Scalatra - we make no assumptions about which one you'll want to use, because we think that's up to you.
 
 ### Help us out by writing a guide
 
-If you've integrated Scalatra with a persistence framework which doesn't yet have a guide written up, please consider helping us out by writing one. 
+If you've integrated Scalatra with a persistence framework which doesn't yet have a guide written up, please consider helping us out by writing one.

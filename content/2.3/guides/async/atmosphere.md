@@ -1,17 +1,13 @@
 ---
 layout: guide
-title: Atmosphere | Async | Scalatra guides
+title: Atmosphere
 ---
 
-<div class="page-header">
-  <h1>Atmosphere</h1>
-</div>
-
-Scalatra has a built-in integration with 
+Scalatra has a built-in integration with
 [Atmosphere](https://github.com/Atmosphere/atmosphere), the asynchronous
 websocket/comet framework. Atmosphere allows you to keep a persistent
-connection alive between the server and the user's browser (or other 
-user-agents). You can push new information to your user at any time, 
+connection alive between the server and the user's browser (or other
+user-agents). You can push new information to your user at any time,
 without a page refresh.
 
 It's carefree server push for the JVM.
@@ -74,13 +70,13 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 #### Writing the ChatController
 
-The basic setup of an Atmosphere-enabled servlet and route looks like 
+The basic setup of an Atmosphere-enabled servlet and route looks like
 this:
 
 ```scala
-class ChatController extends ScalatraServlet 
-  with ScalateSupport with JValueResult 
-  with JacksonJsonSupport with SessionSupport 
+class ChatController extends ScalatraServlet
+  with ScalateSupport with JValueResult
+  with JacksonJsonSupport with SessionSupport
   with AtmosphereSupport {
 
   atmosphere("/the-chat") {
@@ -98,19 +94,19 @@ class ChatController extends ScalatraServlet
 ```
 
 The AtmosphereSupport trait adds a new kind of route matcher to your
-controller, sitting alongside the regular HTTP `get`, `put`, 
+controller, sitting alongside the regular HTTP `get`, `put`,
 `post`, `delete` and friends: you've now got an `atmosphere` route type,
-which can be used to bind persistent socket connections to your 
-application. 
+which can be used to bind persistent socket connections to your
+application.
 
 Inside the `atmosphere` route, you instantiate a `new AtmosphereClient`
-and define a `receive` method, which listens for events. 
+and define a `receive` method, which listens for events.
 
 One AtmosphereClient is instantiated per connected user. It's worth
-taking a look at the 
+taking a look at the
 [ScalaDocs](http://scalatra.org/2.2/api/#org.scalatra.atmosphere.AtmosphereClient) and [source](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/AtmosphereClient.scala) for AtmosphereClient to see what it can do.
 
-As you can see, there are quite a few kinds of events which Scalatra's 
+As you can see, there are quite a few kinds of events which Scalatra's
 atmosphere integration can deal with:
 
  * `Connected`
@@ -119,27 +115,27 @@ atmosphere integration can deal with:
  * `TextMessage`
  * `JsonMessage`
 
-Scala pattern matching is used to detect which type of event has 
-occurred, and the function for each case can be set to do something 
-about the event. For instance, you might want to broadcast a message 
+Scala pattern matching is used to detect which type of event has
+occurred, and the function for each case can be set to do something
+about the event. For instance, you might want to broadcast a message
 to all connected clients when a new client connects:
 
 ```scala
-  case Connected => 
+  case Connected =>
 ```
 
 You can notify clients with an implementation like this:
 
 ```scala
-  case Connected => 
+  case Connected =>
     println("Client %s is connected" format uuid)
     broadcast(("author" -> "Someone") ~ ("message" -> "joined the room") ~ ("time" -> (new Date().getTime.toString )), Everyone)
 ```
 
 The `uuid` in that code comes from the AtmosphereClient instance - each
-connected user gets its own client with a unique identifier, and 
-Scalatra keeps a list of atmosphere clients which are connected to 
-a given `atmosphere` route. 
+connected user gets its own client with a unique identifier, and
+Scalatra keeps a list of atmosphere clients which are connected to
+a given `atmosphere` route.
 
 Let's see sample code for all of the Atmosphere event types:
 
@@ -183,15 +179,15 @@ That's pretty much it on the server side.
 Browser clients can connect to the `atmosphere` route using a JavaScript
 client.
 
-Atmosphere has its own connection library, which will assess the browser client 
-it's hosted in and figure out which of the available transport types will work, falling back as necessary to maintain connectivity in a wide range of 
+Atmosphere has its own connection library, which will assess the browser client
+it's hosted in and figure out which of the available transport types will work, falling back as necessary to maintain connectivity in a wide range of
 possible clients.
 
-You're strongly advised to read Atmosphere's 
+You're strongly advised to read Atmosphere's
 [extensive documentation](https://github.com/Atmosphere/atmosphere/wiki/jQuery.atmosphere.js-atmosphere.js-API)
-in order to understand your connection options. 
+in order to understand your connection options.
 
-Besides the basic connectivity provided by the Atmosphere connector, 
+Besides the basic connectivity provided by the Atmosphere connector,
 you'll need to provide your own application-specific logic, also in
 JavaScript. Here's an `application.js` file for our chat application:
 
@@ -199,9 +195,9 @@ JavaScript. Here's an `application.js` file for our chat application:
 
 Drop that code into `webapp/js/atmosphere.js`, and put the
 [Atmosphere JavaScript client](https://github.com/scalatra/scalatra-website-examples/blob/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/js/jquery-atmosphere.js)
-alongside it, and you've got a working client implementation. 
+alongside it, and you've got a working client implementation.
 
-A few key points in `application.js`. 
+A few key points in `application.js`.
 
 The first part of the code demonstrates the detection of available
 capabilities in the user's browser. It loops through an array of
@@ -209,15 +205,15 @@ available transports and checks each one to see if it's supported,
 then outputs what it finds into the page.
 
 The code then makes an initial request to our `atmosphere` route at
-`atmosphere("/the-chat")`, and sets up callbacks for `onOpen`, 
-`onLocalMessage`, `onTransportFailure`, `onReconnect`, `onMessage`, 
+`atmosphere("/the-chat")`, and sets up callbacks for `onOpen`,
+`onLocalMessage`, `onTransportFailure`, `onReconnect`, `onMessage`,
 `onClose`, and `onError` events. Check the Atmosphere docs to see
-what each of these mean. 
+what each of these mean.
 
-Lastly, there's a simple key-press detection which sends a chat 
+Lastly, there's a simple key-press detection which sends a chat
 message to the server whenever the `enter` key is pressed.
 
-With all of this in place, you can add a few [Scalate views](https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/WEB-INF) 
+With all of this in place, you can add a few [Scalate views](https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/WEB-INF)
 to your chat application and it's all done. The example application has
 a default layout and action which will serve up a browser-based chat
 client.
@@ -225,18 +221,18 @@ client.
 You should be able to connect to it from any browser which supports
 JavaScript. Try opening several different browsers (e.g. Firefox and
 Chrome) and signing in as different users, then chat to each other by
-going to [http://localhost:8080/](http://localhost:8080/) and hitting 
-the running application. You can also open multiple tabs in the 
+going to [http://localhost:8080/](http://localhost:8080/) and hitting
+the running application. You can also open multiple tabs in the
 same browser to see Atmosphere detect multiple local instances and use
-its `onLocalMessage` handler. 
+its `onLocalMessage` handler.
 
 ### Segmenting message delivery
 
 You can easily decide which connected clients you'd like to send a given
-message to. 
+message to.
 
 By default, the AtmosphereClient's `broadcast` method mimics standard
-chat server functionality - calling `broadcast(message)` sends the 
+chat server functionality - calling `broadcast(message)` sends the
 supplied message to all connected users except the current one.
 
 The `send(message)` method does exactly the opposite: it sends the
@@ -318,35 +314,35 @@ atmosphere("/the-chat") {
 
 ### Broadcasting server-side events
 
-Atmosphere event sources don't necessarily need to be other Atmosphere 
-connections. 
+Atmosphere event sources don't necessarily need to be other Atmosphere
+connections.
 
 You could, for instance, use an AMQP message queue to
 broadcast events to connected browser clients whenever your application receives
 a given message type. You could broadcast messages to all connected clients, or
-to a selected group of clients, when a database record was updated, or when a 
+to a selected group of clients, when a database record was updated, or when a
 user's friend logged in.
 
 Each Scalatra servlet that registers an Atmosphere route gets access to an
 AtmosphereClient object, which can act as a broadcaster.
 
-So if you have a servlet that has 3 Atmosphere routes, and it's mounted 
-at `/real-time-buzz`, you can send messages to all connected clients 
+So if you have a servlet that has 3 Atmosphere routes, and it's mounted
+at `/real-time-buzz`, you can send messages to all connected clients
 with `AtmosphereClient.broadcast("/real-time-buzz/fizz", message)`, where
 `atmosphere("/fizz")` is one of the available routes.
 
 Alternately, you can send to all the connected clients of all 3 endpoints in the
 `/real-time-buzz` servlet `AtmosphereClient.broadcast("/real-time-buzz", message)`.
 
-Lastly, you can send a message to all connected clients in all Atmosphere servlets 
+Lastly, you can send a message to all connected clients in all Atmosphere servlets
 with `AtmosphereClient.broadcastAll(message)`.
 
 ### Pattern matching on Atmosphere messages
 
 It's possible (and in fact encouraged) to do sophisticated pattern matching
-on Atmosphere message types in order to simplify your application code. 
+on Atmosphere message types in order to simplify your application code.
 
-This gives you a very flat and extensible way of dealing with many messages 
+This gives you a very flat and extensible way of dealing with many messages
 without having to serialize them into actual model classes.
 
 ```scala
@@ -360,10 +356,10 @@ Data travelling between the browser and the websocket server needs to be in a
 defined transport format, called a wire format, before it reaches the Atmosphere
 client.
 
-You can define your own wire formats by extending the 
+You can define your own wire formats by extending the
 [WireFormat](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/wire_format.scala)
 trait. To create a new wire format, extend WireFormat and implement its methods
-in your subclass. 
+in your subclass.
 
 ## Building an embedded Scalatra + Atmosphere application
 

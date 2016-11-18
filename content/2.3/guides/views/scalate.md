@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Scalate | Views | Scalatra guides
+title: Scalate
 ---
-
-<div class="page-header">
-  <h1>Views</h1>
-</div>
 
 If you're using Scalatra to build a web application (as opposed to an API), chances are you'll
 want to render HTML layouts, page content, and re-usable fragments or partials. Like many other
@@ -163,7 +159,7 @@ view for the current action into the template at the point you specify. If you'r
   </html>
 ```
 
-The specific view for your action will be rendered at the 
+The specific view for your action will be rendered at the
 `<%= unescape(body) %>` statement.
 
 #### Default layouts

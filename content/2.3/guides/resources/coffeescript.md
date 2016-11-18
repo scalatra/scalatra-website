@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: CoffeeScript | Resources | Scalatra guides
+title: CoffeeScript
 ---
-
-<div class="page-header">
-  <h1>CoffeScript</h1>
-</div>
 
 [CoffeeScript](http://coffeescript.org/) is a seriously awesome client-side scripting
 language that fixes the many warts of Javascript.

@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Reverse routes | HTTP | Scalatra
+title: Reverse Routes
 ---
-
-<div class="page-header">
-  <h1>Reverse routes</h1>
-</div>
 
 ### URL support and reverse routes
 
@@ -22,7 +18,7 @@ redirect statement.
 
 
 In Scalatra 2.0.x, you used to need to extend the `UrlSupport` trait, but
-that's now been moved into `ScalatraBase`, so all you need is: 
+that's now been moved into `ScalatraBase`, so all you need is:
 
 ```scala
 class MyApp extends ScalatraServlet {

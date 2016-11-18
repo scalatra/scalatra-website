@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Helpers | Scalatra guides
+title: Helpers
 ---
-
-<div class="page-header">
-<h1>Helpers</h1>
-</div>
 
 Scalatra has a wide range of helpers to take care of common web development
 tasks. Some are built-in, and you can download a wide range of external helpers
@@ -126,4 +122,3 @@ GitHub. Scalatra source code is meant to be simple and readable; don't be scared
 to take a look at it if you need to understand how something works.
 
 [scalatracore]: https://github.com/scalatra/scalatra/tree/develop/core/src/main/scala/org/scalatra
-

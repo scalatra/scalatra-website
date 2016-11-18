@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Standalone deployment | Deployment | Scalatra
+title: Standalone deployment
 ---
-
-<div class="page-header">
-  <h1>Standalone deployment</h1>
-</div>
 
 ### Launching Scalatra as a servlet
 

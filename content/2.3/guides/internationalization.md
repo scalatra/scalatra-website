@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Internationalization | Scalatra
+title: Internationalization
 ---
-
-<div class="page-header">
-  <h1>Internationalization</h1>
-</div>
 
 This guide still needs to be written.
 

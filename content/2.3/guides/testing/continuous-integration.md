@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Continuous integration | Deployment | Scalatra guides
+title: Continuous integration
 ---
-
-<div class="page-header">
-  <h1>Continuous integration</h1>
-</div>
 
 Continuous integration is the practice of having a build server regularly compile
 and test the latest code base.

@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Requests and responses | HTTP | Scalatra
+title: Requests and responses
 ---
-
-<div class="page-header">
-  <h1>Requests and responses</h1>
-</div>
 
 ## Request
 
@@ -30,7 +26,7 @@ request attributes.
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   The
   <a href="{{site.examples}}http/scalatra-http-demo">scalatra-http-demo</a>
-  is a good place to start if you need to see basic requests and response, cookies, 
+  is a good place to start if you need to see basic requests and response, cookies,
   and dealing with form input.
 </div>
 
@@ -48,4 +44,3 @@ return `Unit()` to prevent a conflict with multiple writes.
 The servlet context is available through the `servletContext` variable.  The
 servlet context implicitly implements `scala.collection.mutable.Map` backed
 by servlet context attributes.
-

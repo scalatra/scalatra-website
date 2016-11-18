@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Swagger | Scalatra guides
+title: Swagger
 ---
-
-<div class="page-header">
-  <h1>Swagger Support</h1>
-</div>
 
 ### What is Swagger?
 
@@ -143,7 +139,7 @@ Now let's add some Swagger to this simple application.
 
 ### Swagger: a quick introduction
 
-Making an API's methods, parameters, and responses visible, in an engaging, 
+Making an API's methods, parameters, and responses visible, in an engaging,
 easy to understand way, can transform the process of building REST APIs.
 
 Scalatra's Swagger support allows you to auto-generate runnable documentation
@@ -388,7 +384,7 @@ We can do the same to our `get(/:slug)` route. Change it from this:
 to this:
 
 ```scala
-  val findBySlug = 
+  val findBySlug =
     (apiOperation[Flower]("findBySlug")
       summary "Find by slug"
       parameters (
@@ -429,8 +425,8 @@ Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs` - 
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
-  It's very important to get the api-docs path correct when you browse your docs in swagger-ui. Be careful: there's no trailing slash on `http://localhost:8080/api-docs`, 
-  and the docs won't work if you accidentally add one. 
+  It's very important to get the api-docs path correct when you browse your docs in swagger-ui. Be careful: there's no trailing slash on `http://localhost:8080/api-docs`,
+  and the docs won't work if you accidentally add one.
 </div>
 
 
@@ -443,5 +439,3 @@ If you want to host your own customized version of the docs, you can of course j
 Interestingly, you are able to use the remotely-hosted documentation browser at http://petstore.swagger.wordnik.com to browse an application on http://localhost. Why is this possible? Shouldn't JavaScript security restrictions have come into play here?
 
 The reason it works is that Scalatra has Cross-Origin Resource Sharing (CORS) support mixed into its SwaggerSupport trait, allowing cross-origin JavaScript requests by default for all requesting domains. This makes it easy to serve JS API clients - but if you want, you can lock down requests to specific domains using Scalatra's CorsSupport trait. See the Scalatra [Helpers](../guides/web-services/cors.html) documentation for more.
-
-
