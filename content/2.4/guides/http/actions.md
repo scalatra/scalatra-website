@@ -12,7 +12,7 @@ When an incoming request matches a route, that route's action is executed.
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
   The
   <a href="{{site.examples}}http/scalatra-http-demo">scalatra-http-demo</a>
-  is a good place to start if you need to see basic requests and response, cookies, 
+  is a good place to start if you need to see basic requests and response, cookies,
   and dealing with form input.
 </div>
 
@@ -24,7 +24,7 @@ is then rendered to the response according to the following rules.
 <dl class="dl-horizontal">
   <dt>ActionResult</dt>
   <dd>Sets status, body and headers. After importing
-    <code>org.scalatra.ActionResult._</code>, you can return 200 OK, 404 Not Found
+    <code>org.scalatra.ActionResult._ </code>, you can return 200 OK, 404 Not Found
     and other responses by referencing them by their descriptions. See the <span class="badge badge-info"> <i class="icon-bookmark icon-white"></i>ActionResult example</span> code (below) for an example.
   </dd>
 </dl>
