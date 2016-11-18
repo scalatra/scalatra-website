@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: CORS | Web Services | Scalatra guides
+title: CORS
 ---
-
-<div class="page-header">
-  <h1>CORS</h1>
-</div>
 
 ### Cross origin resource sharing
 

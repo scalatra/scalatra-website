@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Metrics | Monitoring | Scalatra guides
+title: Metrics
 ---
-
-<div class="page-header">
-  <h1>Metrics</h1>
-</div>
 
 <div class="alert alert-info">
   <img src="/images/glyphicons/glyphicons_023_cogwheels.png">This functionality is available starting in Scalatra 2.4.

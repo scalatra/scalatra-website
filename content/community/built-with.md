@@ -1,11 +1,7 @@
 ---
 layout: default
-title: Built with Scalatra | Scalatra
+title: Built with Scalatra
 ---
-
-<div class="page-header">
-  <h1>Built with Scalatra</h1>
-</div>
 
 ## Big organizations
 
@@ -38,8 +34,8 @@ services.
 
 ### Janrain
 
-[Janrain](http://janrain.com) offers software as a service solutions for 
-commercial businesses and websites to connect their sites to the social web. 
+[Janrain](http://janrain.com) offers software as a service solutions for
+commercial businesses and websites to connect their sites to the social web.
 
 ### Learndot
 
@@ -53,16 +49,16 @@ organize routes and services.
 
 ### McLaren Applied Technologies
 
-[McLaren Applied Technologies](http://www.mclaren.com/appliedtechnologies/), the technology arm of the McLaren Formula 1 and automotive firm, is a heavy user of Scala. They use Scalatra for their timeseries data store. 
+[McLaren Applied Technologies](http://www.mclaren.com/appliedtechnologies/), the technology arm of the McLaren Formula 1 and automotive firm, is a heavy user of Scala. They use Scalatra for their timeseries data store.
 
 
 ### NetFlix
 
-[NetFlix](http://netflix.com/) uses Scalatra for internal APIs. 
+[NetFlix](http://netflix.com/) uses Scalatra for internal APIs.
 
 ### TrademarkNow
 
-[TrademarkNow](https://www.trademarknow.com) uses Scalatra for its API systems. 
+[TrademarkNow](https://www.trademarknow.com) uses Scalatra for its API systems.
 
 
 ## Open source projects
@@ -80,7 +76,7 @@ replacement for Google Reader built on Scalatra.
 
 [Objectify](https://github.com/learndot/Objectify.scala) is a light-weight web
 framework that helps you structure an application by providing policy
-management and dependency injection. 
+management and dependency injection.
 
 ### Scalatra toys
 

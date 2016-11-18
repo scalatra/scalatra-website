@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Configuration | Deployment | Scalatra
+title: Configuration
 ---
-
-<div class="page-header">
-  <h1>Configuration</h1>
-</div>
 
 As you develop, test, and get ready for final deployment,
 you'll need to configure things about your app: its environment, its settings,
@@ -130,7 +126,7 @@ override def init(context: ServletContext) {
 }
 ```
 
-Each init param can be set in one of two ways. 
+Each init param can be set in one of two ways.
 
 The first form looks like this:
 
@@ -149,7 +145,7 @@ The two forms are equivalent.
 `context.setInitParameter(org.scalatra.EnvironmentKey, "production")` or
 `context.initParameters("org.scalatra.environment") = "production"`
 
-This init param sets the application environment. 
+This init param sets the application environment.
 
 <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
 The default is `development`.
@@ -172,26 +168,26 @@ route matches.
 `context.setInitParameter(ScalatraBase.HostNameKey, "myapp.local")` or
 `context.initParameters("org.scalatra.HostName") = "myapp.local"`
 
-`context.setInitParameter(ScalatraBase.PortKey, 443)` or 
+`context.setInitParameter(ScalatraBase.PortKey, 443)` or
 `context.initParameters("org.scalatra.Port") = 443`
 
 `context.setInitParameter(ScalatraBase.ForceHttpsKey, "true")` or
 `context.initParameters("org.scalatra.ForceHttps") = "true"`
 
 By default, the values for hostname, port, and SSL settings are inherited from
-the servlet container's settings. You can set these init params if you want to 
+the servlet container's settings. You can set these init params if you want to
 override the domain or port your website is hosted on, or force the use of https.
 
-So if Jetty is running at http://localhost:8080 on your machine you may want 
+So if Jetty is running at http://localhost:8080 on your machine you may want
 to expose it as: https://myapp.local:443 (with an appropriate entry in
 `/etc/hosts`).
 
 ##### Cross Origin Resource Sharing init params
 
-These keys and their purposes are documented in the 
-[CORS guide](../web-services/cors.html), but for completeness, here they are. 
+These keys and their purposes are documented in the
+[CORS guide](../web-services/cors.html), but for completeness, here they are.
 
-The CORS guide uses the alternate forms of these keys, so check in that guide 
+The CORS guide uses the alternate forms of these keys, so check in that guide
 if you'd like to see the alternate form.
 
 `context.setInitParameter(CorsSupport.AllowedOriginsKey, "www.other.com,www.foo.com")`
@@ -205,7 +201,7 @@ if you'd like to see the alternate form.
 `context.setAttribute(AsyncSupport.ExecutionContextKey, executionContext)` or
 `context.initParameters("org.scalatra.ExecutionContext") = executionContext`
 
-This key sets the `ExecutionContext` which Scalatra should use when creating an 
+This key sets the `ExecutionContext` which Scalatra should use when creating an
 Akka `Future`.
 
 #### Running code at application start
@@ -304,7 +300,7 @@ You can set the application's environment in the following ways:
 command line: `java -Dorg.scalatra.environment=development`
 
 When you deploy your application to a production environment, you'll typically
-want to change its environment to "production". 
+want to change its environment to "production".
 
 There are a few ways you can accomplish this.
 
@@ -316,9 +312,9 @@ file based on an environment variable that's present on production machines.
 #### Massaging your WAR file
 
 If you're using Scalatra 2.0.x or just happen to like XML configuration, you can
-use a post-hook in the xsbt-web-plugin to 
+use a post-hook in the xsbt-web-plugin to
 [massage the contents of your WAR file](https://github.com/JamesEarlDouglas/xsbt-web-plugin/wiki/Massage-WAR)
-during packaging. 
+during packaging.
 
 Load the Web.xml file and replace the value for `org.scalatra.environment` using
 Scala's standard XML tools.
@@ -328,12 +324,10 @@ Scala's standard XML tools.
 Add `containerPort in Jetty := 8081` to `project/build.scala` if you would
 like your Scalatra app to run on something other than the default port (8080).
 
-_You may need to add the following imports if you get errors upon adding the configuration above:_ 
+_You may need to add the following imports if you get errors upon adding the configuration above:_
 
 ```scala
 import com.earldouglas.xwp.JettyPlugin
 import com.earldouglas.xwp.JettyPlugin.autoImport._
 import com.earldouglas.xwp.ContainerPlugin.autoImport._
 ```
-
-

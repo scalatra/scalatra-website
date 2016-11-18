@@ -1,12 +1,7 @@
 ---
 layout: guide
-title: Slick | Persistence | Scalatra guides
+title: Slick
 ---
-
-<div class="page-header">
-  <h1>Slick</h1>
-</div>
-
 
 [Slick](http://slick.typesafe.com/) is a database library for relational databases. In the following guide we will see how to integrate it in a Scalatra application.
 

@@ -3,8 +3,7 @@ layout: guide
 title: Actions
 ---
 
-As explained in the [routes guide](routes.html), an action is the code that handles
-a route.
+As explained in the [routes guide](routes.html), an action is the code that handles a route.
 
 When an incoming request matches a route, that route's action is executed.
 

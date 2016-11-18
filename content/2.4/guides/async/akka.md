@@ -1,17 +1,13 @@
 ---
 layout: guide
-title: Akka | Async | Scalatra guides
+title: Akka | Async
 ---
-
-<div class="page-header">
-  <h1>Akka</h1>
-</div>
 
 ### AkkaSupport
 
 [Akka](http://akka.io) is a toolkit and runtime for building highly concurrent, distributed, and
 fault tolerant event-driven applications on the JVM. Scalatra allows you to easily
-mix it into your application. 
+mix it into your application.
 
 #### Dependencies
 
@@ -61,7 +57,7 @@ the `ActorSystem` resources when your Scalatra application is destroyed.
 ### Using Scala Futures
 
 Scalatra's `FutureSupport` trait provides a mechanism for adding [Futures](http://docs.scala-lang.org/overviews/core/futures.html)
-to your routes. At the point where you 
+to your routes. At the point where you
 
 The generic case looks like this (but it won't compile):
 
@@ -71,7 +67,7 @@ import org.scalatra.FutureSupport
 
 class MyAppServlet extends ScalatraServlet with FutureSupport {
   get("/"){
-    new AsyncResult { val is = 
+    new AsyncResult { val is =
       Future {
         // Add async logic here
         <html><body>Hello Akka</body></html>
@@ -132,10 +128,10 @@ object HttpClient {
 
 `AsyncResult` isn't strictly necessary. It's a way to ensure that if you close your
 Future over mutable state (such as a `request` object or a `var`) that the state is
-captured at the point you hand off to the Future. 
+captured at the point you hand off to the Future.
 
 If you attempt to use mutable
-state inside your Future without AsyncResult (e.g. calling `request.headers` or something), 
+state inside your Future without AsyncResult (e.g. calling `request.headers` or something),
 you'll get an exception. If you use AsyncResult, it'll work. So, you're trading a bit
 of boilerplate code for a bit of safety. If you can remember not to close over mutable
 state, don't bother with `AsyncResult`.
@@ -152,7 +148,7 @@ state, don't bother with `AsyncResult`.
 
 When you use Scalatra with Akka, you most likely want to return a result of some sort. So you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future. Typically, this involves Akka's [ask pattern](http://doc.akka.io/docs/akka/2.3.4/scala/actors.html#Ask__Send-And-Receive-Future).
 
-When the request you get just needs to trigger something on an Actor using the fire-and-forget [tell pattern](http://doc.akka.io/docs/akka/2.3.4/scala/actors.html#Tell__Fire-forget), then you don't need a Future. In this case, you probably you want to reply with the Accepted status or something like it. 
+When the request you get just needs to trigger something on an Actor using the fire-and-forget [tell pattern](http://doc.akka.io/docs/akka/2.3.4/scala/actors.html#Tell__Fire-forget), then you don't need a Future. In this case, you probably you want to reply with the Accepted status or something like it.
 
 Here's some example code:
 
@@ -195,4 +191,4 @@ class MyActor extends Actor {
 ```
 
 Once again, if we wanted to ensure that it was safe to close over mutable state, we could
-have used `AsyncResult` with out Actors. 
+have used `AsyncResult` with out Actors.

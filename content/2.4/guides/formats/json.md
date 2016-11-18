@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Handling JSON | Formats | Scalatra guides
+title: Handling JSON
 ---
-
-<div class="page-header">
-  <h1>Handling JSON</h1>
-</div>
 
 Scalatra makes JSON handling quick and easy. By adding a few library imports and several lines of code, you can get automatic JSON serialization and deserialization for any Scala case class.
 

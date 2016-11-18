@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: IDE Support | Scalatra
+title: IDE Support
 ---
-
-<div class="page-header">
-  <h1>IDE Support (optional)</h1>
-</div>
 
 Because Scalatra is a pure-Scala no-magic framework, Scala IDEs such as
 [Eclipse](http://scala-ide.org/),
@@ -21,7 +17,7 @@ This is totally optional, so if you don't like IDEs, feel free to skip this sect
 
 - Download [IntelliJ IDEA](http://www.jetbrains.com/idea/download/index.html). The community edition is fine.
 - Install the [Scala plugin](http://confluence.jetbrains.net/display/SCA/Scala+Plugin+for+IntelliJ+IDEA) from JetBrains. You can do this most easily by clicking the "Browse repositories" button in the plugins manager. The plugin is called "Scala".
-- Once the Scala plugin is installed, you can open any Scalatra project and get very good syntax highlighting and refactoring support. 
+- Once the Scala plugin is installed, you can open any Scalatra project and get very good syntax highlighting and refactoring support.
 
 
 ### Debugging in IntelliJ Idea
@@ -38,8 +34,8 @@ javaOptions ++= Seq(
 Start SBT and the container as usual (`./sbt` then `jetty:start`).
 
 After that, go to `Run` -> `Edit configurations` in IntelliJ. Click the `+`
-button, select `Remote` to make a new remote debugging configuration, and 
-call it `Scalatra Debug`. In IntelliJ 15, the default run conf should work 
+button, select `Remote` to make a new remote debugging configuration, and
+call it `Scalatra Debug`. In IntelliJ 15, the default run conf should work
 (it looks like this):
 
 ```
@@ -47,7 +43,7 @@ call it `Scalatra Debug`. In IntelliJ 15, the default run conf should work
 ```
 
 Now just select `Run` -> `Debug 'Scalatra Debug'`. Setting breakpoints and
-stepping through code should work. 
+stepping through code should work.
 
 
 ## Eclipse (*aka* Scala IDE)
@@ -82,13 +78,13 @@ javaOptions ++= Seq(
 
 Start SBT and the container as usual (`./sbt` then `jetty:start`).
 
-Go to `Run` -> `Debug configurations` in Eclipse. Select 
-`Remote Java Application`, click the `new configuration`  button, 
-select `Remote` to make a new remote debugging configuration, and 
+Go to `Run` -> `Debug configurations` in Eclipse. Select
+`Remote Java Application`, click the `new configuration`  button,
+select `Remote` to make a new remote debugging configuration, and
 call it `Scalatra Debug`.
 
-Press the `Debug` button on the bottom right. Eclipse will attach itself to 
-SBT's remote debugger and your breakpoints will start working. 
+Press the `Debug` button on the bottom right. Eclipse will attach itself to
+SBT's remote debugger and your breakpoints will start working.
 
 
 
@@ -116,6 +112,3 @@ $ ./sbt
 
 That will generate a classpath file that will tell ENSIME where to look for your
 class files and their dependencies.
-
-
-

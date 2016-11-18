@@ -3,10 +3,6 @@ layout: guide
 title: Scalatra's philosophy
 ---
 
-<div class="page-header">
-  <h1>Scalatra's philosophy</h1>
-</div>
-
 <h4>1. Start small, build upwards</h4>
 
 Start with a small core, and have lots of easy integrations for common tasks.

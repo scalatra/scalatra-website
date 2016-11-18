@@ -1,13 +1,7 @@
 ---
 layout: guide
-title: Inline HTML | Views | Scalatra guides
+title: Inline HTML
 ---
-
-<div class="page-header">
-  <h1>Inline HTML</h1>
-</div>
-
-## Inline HTML
 
 The simplest method of rendering a view is by using inline HTML.
 
@@ -33,4 +27,3 @@ be useful if your templating needs are quite simple (or you're just cranking out
 
 Normally you'll want more structure than inline HTML can provide, so that you can separate
 your views from your controller actions and routing.
-

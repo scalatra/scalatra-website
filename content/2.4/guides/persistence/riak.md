@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Riak | Persistence | Scalatra guides
+title: Riak
 ---
-
-<div class="page-header">
-  <h1>Riak</h1>
-</div>
 
 [Riak](http://riak.basho.org) is an open source, distributed database.  
 
@@ -17,7 +13,7 @@ There are multiple clients for Riak, with varying levels of complexity, Scala in
 
 ## Getting going with Basho's riak-java-client
 
-Assuming you've got Riak installed already, getting it working with Scalatra is as follows. 
+Assuming you've got Riak installed already, getting it working with Scalatra is as follows.
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
@@ -111,7 +107,7 @@ trait RiakSupport {
 }
 ```
 
-The `RiakSupport` trait can now be mixed into any of your Scalatra controllers, like this: 
+The `RiakSupport` trait can now be mixed into any of your Scalatra controllers, like this:
 
 ```scala
 package org.scalatra.example
@@ -120,7 +116,7 @@ import org.scalatra._
 
 /**
  * This controller uses the Basho-supported riak-java-client, and the binary connection
- * defined in ScalatraBootstrap. 
+ * defined in ScalatraBootstrap.
  * */
 class SimpleRiakController extends RiakExampleStack with RiakSupport {
 
@@ -140,22 +136,20 @@ class SimpleRiakController extends RiakExampleStack with RiakSupport {
     val myData = myBucket.fetch(key).execute
     myData.getValue
   }
-  
+
 }
 ```
 
-This client is very Java-esque (e.g. `myData.getValue`), but the Java client is the one that's officially supported by Basho, the makers of Riak. 
+This client is very Java-esque (e.g. `myData.getValue`), but the Java client is the one that's officially supported by Basho, the makers of Riak.
 
-You may want to either write a wrapper for it, or overlook that. 
+You may want to either write a wrapper for it, or overlook that.
 
 ## Scala clients
 
-You've got multiple Scala alternatives, as well. The process of integrating the [Scalapenos riak-scala-client](http://riak.scalapenos.com/documentation.html) or Stackmob's [Scaliak](https://github.com/stackmob/scaliak) will be very similar to the Java client example provided here. 
+You've got multiple Scala alternatives, as well. The process of integrating the [Scalapenos riak-scala-client](http://riak.scalapenos.com/documentation.html) or Stackmob's [Scaliak](https://github.com/stackmob/scaliak) will be very similar to the Java client example provided here.
 
 Both riak-scala-client and Scaliak allow you to define serializers. This means you can easily model your domain objects in Scala, and persist them to Riak in a somewhat more natural way. The Scala clients also allows for a more idiomatic approach to error handling. The trade-off is that they are relatively new projects.
 
 ### Notes on riak-scala-client
 
 In the case of riak-scala-client, it's worth noting: if your application already uses an Akka `ActorSystem`, you can initialize riak-scala-client with it during application startup. `ActorSystem` instantiation is a heavyweight operation and should only happen once during application initialization; see the [Akka Guide](../../async/akka.html) to see how it's done. If you don't need your own `ActorSystem` for any other purpose, you can simply use the default one which riak-scala-client will provide.
-
-

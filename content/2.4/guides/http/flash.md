@@ -3,10 +3,6 @@ layout: guide
 title: Flash | HTTP | Scalatra guides
 ---
 
-<div class="page-header">
-  <h1>Flash</h1>
-</div>
-
 Flash support, allowing you to store information across requests and expire
 it immediately after a redirect, is included within Scalatra by default.
 

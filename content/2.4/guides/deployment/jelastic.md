@@ -1,11 +1,7 @@
 ---
 layout: guide
-title: Deploying to Jelastic | Deployment | Scalatra
+title: Deploying to Jelastic
 ---
-
-<div class="page-header">
-  <h1>Deploying to Jelastic</h1>
-</div>
 
 [Jelastic](http://jelastic.com/) is a cloud application platform designed specifically
 for servlets like Scalatra apps.
@@ -101,7 +97,7 @@ With the project set up, your first deploy, and all future deploys, are insanely
 ```sh
 $ cd [app root]
 $ ./sbt
-> deploy 
+> deploy
 ```
 
 If all has gone well you'll a ton of output.
@@ -119,7 +115,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 [info] Upload of http://6e49611e3c2db05e830d2d4c9381469a.app.j.layershift.co.uk/xssu/rest/download/RDYYHFdvUVcIBl5JYldpTUAXDBQFHkQWCEE%2BGSgndlVHHkZZDwQBQmNTTEBI with size 22548400 succeeded.
 [info] File registration for developer 25320 success
 [info] Deploy success
-[info] Stopping tomcat: 
+[info] Stopping tomcat:
 [info] Waiting for processes to exit..
 [info] Waiting for processes to exit..
 [info] Waiting for processes to exit..
@@ -131,7 +127,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 [info] HTTP request sent, awaiting response... 200 OK
 [info] Length: 22547738 (22M) [application/octet-stream]
 [info] Saving to: `/opt/tomcat//webapps/ROOT.war'
-[info] 
+[info]
 [info]      0K .......... .......... .......... .......... ..........  0% 41.6M 1s
 [info]     50K .......... .......... .......... .......... ..........  0% 38.8M 1s
 [info]    100K .......... .......... .......... .......... ..........  0% 60.6M 0s
@@ -139,9 +135,9 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 [info]  21900K .......... .......... .......... .......... .......... 99%  145M 0s
 [info]  21950K .......... .......... .......... .......... .......... 99%  148M 0s
 [info]  22000K .......... .........                                  100% 91.6M=0.3s
-[info] 
+[info]
 [info] 2012-12-16 22:44:52 (69.8 MB/s) - `/opt/tomcat//webapps/ROOT.war' saved [22547738/22547738]
-[info] 
+[info]
 [info] Starting tomcat: [  OK  ]
 [info] Logged out of jelastic.
 [success] Total time: 210 s, completed Dec 16, 2012 2:45:04 PM

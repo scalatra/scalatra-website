@@ -1,3 +1,9 @@
+---
+layout: guide
+title: ScalatraTest
+---
+
+
 #### Dependency
 
 ```scala
@@ -23,4 +29,3 @@ Call this in the constructor of your servlet:
 ```scala
 servletContextHandler.setInitParameter("db.username", "ross")
 ```
-

@@ -1,14 +1,7 @@
 ---
 layout: guide
-title: First steps | Scalatra
+title: First steps
 ---
-
-<div class="page-header">
-  <h1>
-    First project
-    <small>with Scalatra</small>
-  </h1>
-</div>
 
 ## Generate a Scalatra project
 
@@ -16,22 +9,22 @@ Now that [installation](installation.html) is out of the way, you can
 generate a project:
 
 ```bash
-g8 scalatra/scalatra-sbt 
+g8 scalatra/scalatra-sbt
 ```
 
 This will check out a pre-built application skeleton for you (from [GitHub](https://github.com/scalatra/scalatra-sbt.g8)),
 and ask you some questions about your application:
 
 ```
-$ g8 scalatra/scalatra-sbt 
-organization [com.example]: 
-name [My Scalatra Web App]: 
-version [0.1.0-SNAPSHOT]: 
-servlet_name [MyScalatraServlet]: 
-package [com.example.app]: 
-scala_version [2.11.7]: 
-sbt_version [0.13.9]: 
-scalatra_version [2.4.0]: 
+$ g8 scalatra/scalatra-sbt
+organization [com.example]:
+name [My Scalatra Web App]:
+version [0.1.0-SNAPSHOT]:
+servlet_name [MyScalatraServlet]:
+package [com.example.app]:
+scala_version [2.11.7]:
+sbt_version [0.13.9]:
+scalatra_version [2.4.0]:
 
 Template applied in ./my-scalatra-web-app
 ```
@@ -103,7 +96,7 @@ $ ./sbt
 ```
 
 sbt will also take care of downloading an entire Scalatra development
-environment if you don't have one yet. That means sbt may spend some 
+environment if you don't have one yet. That means sbt may spend some
 time downloading Scalatra and its libraries on first run.
 
 <div class="alert alert-info">
