@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Communities on Scalatra</title>
+    <link>https://scalatra.github.io/community.html</link>
+    <description>Recent content in Communities on Scalatra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://scalatra.github.io/community.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Built with Scalatra | Scalatra</title>
+      <link>https://scalatra.github.io/community/built-with.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://scalatra.github.io/community/built-with.html</guid>
+      <description>
+
+&lt;div class=&#34;page-header&#34;&gt;
+  &lt;h1&gt;Built with Scalatra&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;big-organizations&#34;&gt;Big organizations&lt;/h2&gt;
+
+&lt;p&gt;The following companies, public-sector organizations, and governments are using Scalatra:&lt;/p&gt;
+
+&lt;h3 id=&#34;bbc-future-media&#34;&gt;BBC Future Media&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;http://www.bbc.co.uk&#34;&gt;BBC&lt;/a&gt;&amp;rsquo;s Linked Data Team has built a Scalatra REST API for use on the BBC&amp;rsquo;s dynamic web development platform.&lt;/p&gt;
+
+&lt;h3 id=&#34;box-com&#34;&gt;Box.com&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://box.com&#34;&gt;Box&lt;/a&gt; (formerly Box.net) is an online file sharing and Cloud content management service for enterprise companies.&lt;/p&gt;
+
+&lt;h3 id=&#34;chacha&#34;&gt;Chacha&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.chacha.com/&#34;&gt;ChaCha&lt;/a&gt; is using it in multiple internal applications.&lt;/p&gt;
+
+&lt;h3 id=&#34;chronotrack&#34;&gt;ChronoTrack&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.chronotrack.com&#34;&gt;ChronoTrack&lt;/a&gt; is using Scalatra for their public and private API services.  ChronoTrack&amp;rsquo;s web and mobile applications consume internal and external APIs built with Scalatra.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-guardian&#34;&gt;The Guardian&lt;/h3&gt;
+
+&lt;p&gt;Scalatra is used in a number of systems that help power &lt;a href=&#34;http:///www.guardian.co.uk/&#34;&gt;The Guardian&lt;/a&gt;, for instance the &lt;a href=&#34;http://www.guardian.co.uk/info/developer-blog/2011/jun/23/internet&#34;&gt;music artist pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;ign&#34;&gt;IGN&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.ign.com&#34;&gt;IGN&lt;/a&gt; is an American entertainment website that focuses on video games, films, music and other media. Scalatra is used as part of its back-end
+services.&lt;/p&gt;
+
+&lt;h3 id=&#34;janrain&#34;&gt;Janrain&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://janrain.com&#34;&gt;Janrain&lt;/a&gt; offers software as a service solutions for
+commercial businesses and websites to connect their sites to the social web.&lt;/p&gt;
+
+&lt;h3 id=&#34;learndot&#34;&gt;Learndot&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.learndot.com/&#34;&gt;Learndot&lt;/a&gt; uses Scalatra and Jetty to serve a RESTful
+API and &lt;a href=&#34;https://github.com/learndot/Objectify.scala&#34;&gt;Objectify&lt;/a&gt; to help
+organize routes and services.&lt;/p&gt;
+
+&lt;h3 id=&#34;linkedin-signal&#34;&gt;LinkedIn Signal&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://sna-projects.com/blog/2010/10/linkedin-signal-a-look-under-the-hood/&#34;&gt;LinkedIn Signal&lt;/a&gt; is using it in their backend.&lt;/p&gt;
+
+&lt;h3 id=&#34;mclaren-applied-technologies&#34;&gt;McLaren Applied Technologies&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.mclaren.com/appliedtechnologies/&#34;&gt;McLaren Applied Technologies&lt;/a&gt;, the technology arm of the McLaren Formula 1 and automotive firm, is a heavy user of Scala. They use Scalatra for their timeseries data store.&lt;/p&gt;
+
+&lt;h3 id=&#34;netflix&#34;&gt;NetFlix&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://netflix.com/&#34;&gt;NetFlix&lt;/a&gt; uses Scalatra for internal APIs.&lt;/p&gt;
+
+&lt;h3 id=&#34;trademarknow&#34;&gt;TrademarkNow&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.trademarknow.com&#34;&gt;TrademarkNow&lt;/a&gt; uses Scalatra for its API systems.&lt;/p&gt;
+
+&lt;h2 id=&#34;open-source-projects&#34;&gt;Open source projects&lt;/h2&gt;
+
+&lt;h3 id=&#34;fink&#34;&gt;Fink&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/dozed/fink&#34;&gt;Fink&lt;/a&gt; is a Scalatra based CMS.&lt;/p&gt;
+
+&lt;h3 id=&#34;newsrdr&#34;&gt;Newsrdr&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://newsrdr.us&#34;&gt;Newsrdr&lt;/a&gt; &lt;a href=&#34;https://github.com/tmiw/newsrdr&#34;&gt;[source]&lt;/a&gt; is a
+replacement for Google Reader built on Scalatra.&lt;/p&gt;
+
+&lt;h3 id=&#34;objectify&#34;&gt;Objectify&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/learndot/Objectify.scala&#34;&gt;Objectify&lt;/a&gt; is a light-weight web
+framework that helps you structure an application by providing policy
+management and dependency injection.&lt;/p&gt;
+
+&lt;h3 id=&#34;scalatra-toys&#34;&gt;Scalatra toys&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/m20o/scalatra-toys&#34;&gt;scalatra-toys&lt;/a&gt; adds parameter binding
+and command validation support to Scalatra 2.0.x.&lt;/p&gt;
+
+&lt;h3 id=&#34;skinny-framework&#34;&gt;Skinny Framework&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://skinny-framework.org&#34;&gt;Skinny Framework&lt;/a&gt; is built on Scalatra,
+inspired by Ruby on Rails, and is optimized for sustainable productivity
+for ordinary Servlet-based app development.&lt;/p&gt;
+
+&lt;h3 id=&#34;sygments&#34;&gt;Sygments&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/ScalaWilliam/Sygments&#34;&gt;Sygments&lt;/a&gt; is syntax highlighting
+for Scala based on Pygments.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Community | Scalatra</title>
+      <link>https://scalatra.github.io/community.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://scalatra.github.io/community.html</guid>
+      <description>&lt;div class=&#34;page-header&#34;&gt;
+&lt;h1&gt;The Scalatra community&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Quite a few big organizations have incorporated Scalatra as part of their
+production systems. You can see the ones we know about on our
+&lt;a href=&#34;built-with.html&#34;&gt;Built with Scalatra&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;div class=&#34;row&#34;&gt;
+  &lt;div class=&#34;span4&#34;&gt;
+    &lt;h2&gt;Twitter&lt;/h2&gt;
+    &lt;p&gt;
+      &lt;img src=&#34;https://scalatra.github.io/img/glyphicons/glyphicons_392_twitter.png&#34;/&gt;
+      You can stay up to date on releases, new developments, and project news by following
+      &lt;a href=&#34;http://twitter.com/#!/scalatra&#34;&gt;@scalatra&lt;/a&gt; on Twitter
+    &lt;/p&gt;
+    &lt;a href=&#34;https://twitter.com/scalatra&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34; data-lang=&#34;en&#34;&gt;Follow @scalatra&lt;/a&gt;
+    &lt;script&gt;
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=&#34;//platform.twitter.com/widgets.js&#34;;fjs.parentNode.insertBefore(js,fjs);}}(document,&#34;script&#34;,&#34;twitter-wjs&#34;);
+    &lt;/script&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;span4&#34;&gt;
+    &lt;h2&gt;Github&lt;/h2&gt;
+    &lt;p&gt;
+      &lt;img src=&#34;../assets/img/glyphicons/glyphicons_381_github.png&#34;/&gt;
+      Development takes place through our &lt;a href=&#34;http://github.com/scalatra/scalatra&#34;&gt;GitHub&lt;/a&gt; project.
+      Come here for &lt;a href=&#34;http://github.com/scalatra/scalatra/issues&#34;&gt;issue tracking&lt;/a&gt;, code reviews, and patches.
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;span4&#34;&gt;
+    &lt;h2&gt;Google group&lt;/h2&gt;
+    &lt;p&gt;
+      &lt;img src=&#34;../assets/img/glyphicons/glyphicons_362_google+_alt.png&#34;/&gt;
+      The &lt;a href=&#34;http://groups.google.com/group/scalatra-user&#34;&gt;scalatra-user&lt;/a&gt; Google Group
+      is the preferred channel for Scalatra discussion so future users can learn from the archive.
+      Support requests, suggestions, project announcements, and all other commentary related to Scalatra are welcome here.
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;span4&#34;&gt;
+    &lt;h2&gt;Gitter&lt;/h2&gt;
+    &lt;p&gt;Because some issues are best discussed in real time, we are also on the Scalatra Gitter channel: &lt;a href=&#34;https://gitter.im/scalatra/scalatra&#34;&gt;&lt;img src=&#34;https://badges.gitter.im/Join%20Chat.svg&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;span4&#34;&gt;
+    &lt;h2&gt;YourKit&lt;/h2&gt;
+    &lt;p&gt;
+      YourKit has kindly supported the Scalatra developers with free licenses for
+      its full-featured Java Profiler.
+      Take a look at YourKit&#39;s leading software products:
+      &lt;a href=&#34;http://www.yourkit.com/java/profiler/index.jsp&#34;&gt;
+        YourKit Java Profiler
+      &lt;/a&gt; and
+      &lt;a href=&#34;http://www.yourkit.com/.net/profiler/index.jsp&#34;&gt;
+        YourKit .NET Profiler
+      &lt;/a&gt;.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
