@@ -1,11 +1,7 @@
 ---
 layout: default
-title: Community | Scalatra
+title: The Scalatra Community
 ---
-
-<div class="page-header">
-<h1>The Scalatra community</h1>
-</div>
 
 Quite a few big organizations have incorporated Scalatra as part of their
 production systems. You can see the ones we know about on our
