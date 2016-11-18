@@ -16,7 +16,7 @@ production systems. You can see the ones we know about on our
   <div class="span4">
     <h2>Twitter</h2>
     <p>
-      <img src="../assets/img/glyphicons/glyphicons_392_twitter.png"/>
+      <img src="/images/glyphicons/glyphicons_392_twitter.png"/>
       You can stay up to date on releases, new developments, and project news by following
       <a href="http://twitter.com/#!/scalatra">@scalatra</a> on Twitter
     </p>
@@ -28,7 +28,7 @@ production systems. You can see the ones we know about on our
   <div class="span4">
     <h2>Github</h2>
     <p>
-      <img src="../assets/img/glyphicons/glyphicons_381_github.png"/>
+      <img src="/images/glyphicons/glyphicons_381_github.png"/>
       Development takes place through our <a href="http://github.com/scalatra/scalatra">GitHub</a> project.
       Come here for <a href="http://github.com/scalatra/scalatra/issues">issue tracking</a>, code reviews, and patches.
     </p>
@@ -36,7 +36,7 @@ production systems. You can see the ones we know about on our
   <div class="span4">
     <h2>Google group</h2>
     <p>
-      <img src="../assets/img/glyphicons/glyphicons_362_google+_alt.png"/>
+      <img src="/images/glyphicons/glyphicons_362_google+_alt.png"/>
       The <a href="http://groups.google.com/group/scalatra-user">scalatra-user</a> Google Group
       is the preferred channel for Scalatra discussion so future users can learn from the archive.
       Support requests, suggestions, project announcements, and all other commentary related to Scalatra are welcome here.

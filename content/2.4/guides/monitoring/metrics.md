@@ -8,7 +8,7 @@ title: Metrics | Monitoring | Scalatra guides
 </div>
 
 <div class="alert alert-info">
-  <img src="../../assets/img/glyphicons/glyphicons_023_cogwheels.png">This functionality is available starting in Scalatra 2.4.
+  <img src="/images/glyphicons/glyphicons_023_cogwheels.png">This functionality is available starting in Scalatra 2.4.
 </div>
 
 Scalatra supports metrics via the [metrics](https://dropwizard.github.io/metrics/3.1.0/) and
