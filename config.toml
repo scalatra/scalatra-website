@@ -1,4 +1,4 @@
-baseurl = "https://scalatra.github.io/"
+baseurl = "/"
 languageCode = "en-us"
 title = "Scalatra"
 theme = "hugo-material-docs"
@@ -16,8 +16,8 @@ googleAnalytics = ""
 	copyright = "Scalatra Team"
 
 	# Repository
-	provider = "GitHub"
-	repo_url = "https://github.com/scalatra/scalatra"
+	# provider = "GitHub"
+	# repo_url = "https://github.com/scalatra/scalatra"
 
 	version = "1.0.0"
 	logo = "images/logo.png"
@@ -43,9 +43,9 @@ googleAnalytics = ""
 
 
 [social]
-	twitter = ""
+	twitter = "scalatra"
 	github  = "scalatra/scalatra"
-	email   = "hello@email.com"
+	email   = ""
 
 
 [[menu.main]]
