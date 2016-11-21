@@ -5,7 +5,9 @@ author: Dave Hrycyszyn
 twitter: futurechimp
 ---
 
-The Scalatra team is pleased to announce the release version 2.5.0 of the framework. Noteworthy upgrades include Scala 2.12 and Swagger 2 support.
+The Scalatra team is pleased to announce the release of version 2.5.0 of the framework. Noteworthy upgrades include Scala 2.12 and Swagger 2 support.
+
+Updated documentation for 2.5.0 will be available shortly.
 
 Here's the full list of changes:
 
