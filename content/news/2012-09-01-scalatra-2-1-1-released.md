@@ -10,4 +10,7 @@ aliases:
 Scalatra 2.1.1 has been released. This is a maintenance release to fix a
 regression with the InputStream on the RenderPipeline.
 
+<!--more-->
+
+
 Fixes: [GH #215](https://github.com/scalatra/scalatra/issues/215)

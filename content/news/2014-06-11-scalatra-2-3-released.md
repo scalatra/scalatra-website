@@ -9,6 +9,8 @@ aliases:
 
 The Scalatra team is pleased to announce the release of Scalatra 2.3.0.
 
+<!--more-->
+
 ### Core
 
 * Breaking: Scalatra 2.3.x drops support for Scala 2.9.

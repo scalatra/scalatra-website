@@ -9,6 +9,9 @@ aliases:
 
 Work continues on the Scalatra 2.2 development branch. [Swagger](http://swagger.wordnik.com) support in 2.2-SNAPSHOT has now solidified quite well, as has automatic JSON handling using [json4s](http://json4s.org). We're getting ready for the 2.2 release, hopefully in the next few weeks, at which point documentation for these features will be added to our [Scalatra Guides](http://scalatra.org/guides) - but in the meantime, anyone who want to get a sneak preview of Scalatra's new Swagger and JSON capabilities can look here:
 
+<!--more-->
+
+
 * 2.2.x [Swagger Guide](https://github.com/scalatra/scalatra-website/blob/2.2/guides/swagger.md)
 * 2.2.x [Json Guide](https://github.com/scalatra/scalatra-website/blob/2.2/guides/json.md)
 

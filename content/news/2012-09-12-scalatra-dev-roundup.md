@@ -11,6 +11,9 @@ Scalatra development has been proceeding at a rapid pace in recent months,
 although we've been doing a pretty poor job of making that visible to the
 outside world. Let's try and fix that.
 
+<!--more-->
+
+
 As you may have noticed, we released the 2.1.x series of Scalatra, and
 to celebrate that release we also built out an improved website with better
 instructions for [getting started](http://scalatra.org/2.2/getting-started/) and performing [common development tasks](http://scalatra.org/2.2/guides/).

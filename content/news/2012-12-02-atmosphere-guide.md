@@ -12,6 +12,9 @@ Big Documentation Push of 2012. This time we've got a full guide to
 Scalatra's new [Atmosphere](http://scalatra.org/2.2/guides/atmosphere.html)
 support.
 
+<!--more-->
+
+
 The [Atmosphere](https://github.com/Atmosphere/atmosphere) integration is an
 exciting addition to the upcoming Scalatra 2.2 release. It provides server-push
 capabilities for persistently connected clients, and takes care of the low-level

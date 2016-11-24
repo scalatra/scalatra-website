@@ -11,6 +11,8 @@ Updated documentation for 2.5.0 will be available shortly.
 
 Here's the full list of changes:
 
+<!--more-->
+
 ## Scalatra Core
 
 * #572 Fix error handling with Future and errorHandler by @ElPicador

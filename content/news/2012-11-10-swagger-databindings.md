@@ -13,6 +13,9 @@ This week saw publication of a long
 [Swagger tutorial](http://www.infoq.com/articles/swagger-scalatra) on
 [InfoQ](http://www.infoq.com).
 
+<!--more-->
+
+
 We've also published a pre-release
 Scalatra Guide on the new
 [databinder commands](http://scalatra.org/2.2/guides/databinders.html) in 2.2.

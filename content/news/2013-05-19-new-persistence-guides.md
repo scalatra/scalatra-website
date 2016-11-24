@@ -10,6 +10,9 @@ aliases:
 We've added a few more Scalatra Guides dealing with persistence over the
 past few weeks.
 
+<!--more-->
+
+
 There's one on [MongoDb](/2.2/guides/persistence/mongodb.html),
 and one on [Riak](/2.2/guides/persistence/riak.html).
 

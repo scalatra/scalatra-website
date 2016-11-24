@@ -9,6 +9,9 @@ aliases:
 
 Scalatra 2.2.1, a bug-fix and maintenance release, is now out. The following changes have been made:
 
+<!--more-->
+
+
 ## Core
 
 * An action result with an int body renders the int as body not status

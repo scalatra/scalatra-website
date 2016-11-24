@@ -12,6 +12,9 @@ Manning Publications, has been steadily ticking along over the summer.
 A new chapter, on RESTful application development using Scalatra's routing
 DSL, is now available.
 
+<!--more-->
+
+
 This chapter gives you an overview of both how to tie URLs to your Scalatra
 routes, and also *why* you'd want to structure your application routes to
 use HTTP to its best advantage, using RESTful conventions.

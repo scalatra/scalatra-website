@@ -9,6 +9,9 @@ aliases:
 
 The Scalatra team is pleased to announce the release of Scalatra 2.4.0 with many improvements and bugfixes as listed below.
 
+<!--more-->
+
+
 ## Scalatra Core
 
 * Removes the DefaultValue type class

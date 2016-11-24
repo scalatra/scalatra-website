@@ -7,6 +7,13 @@ aliases:
     - /2012/08/12/scalatra-2-1-released.html
 ---
 
+The Scalatra team is pleased to announce the release of Scalatra 2.1.
+
+Here's a list of what's in the new release:
+
+<!--more-->
+
+
 scalatra-scalate
 
   * Request-scoped templateAttributes map lets you set common render context variables prior to the layout call. GH-134

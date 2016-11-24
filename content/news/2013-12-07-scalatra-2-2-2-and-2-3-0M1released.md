@@ -14,6 +14,8 @@ It is a drop-in replacement of 2.2.1, and we recommend that all users upgrade.
 
 We are also releasing Scalatra 2.3.0 Milestone 1, on the way to a full release of the Scalatra 2.3.x. This will have mostly minor breaking changes, lots of additional fixes, and some new features (most notably to keep up with new features in asynchronous library support and Swagger development).
 
+<!--more-->
+
 One big thing to start thinking about if you're not already: Scalatra 2.3.x will drop support for Scala 2.9.
 
 Here's a detailed list of what's in each of the releases.

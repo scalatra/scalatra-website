@@ -12,6 +12,8 @@ Congratulations are in order to the
 [GitBucket](https://github.com/takezoe/gitbucket), a free software clone of
 [GitHub](https://github.com).
 
+<!--more-->
+
 GitBucket uses Scalatra, the [Slick](http://slick.typesafe.com/) database
 query and access library and the pure-Java
 [JGit](https://github.com/eclipse/jgit) implementation of git to provide the
