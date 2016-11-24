@@ -1,4 +1,5 @@
 ---
+type: guide
 layout: guide
 title: Scalatra 2.2 Guides
 ---
