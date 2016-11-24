@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/resources/coffeescript.html
+layout: oldguide
 title: CoffeeScript
 ---
 

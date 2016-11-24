@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/http/authentication.html
+layout: oldguide
 title: Authentication
 ---
 

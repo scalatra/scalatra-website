@@ -1,6 +1,8 @@
 ---
+aliases:
+  - /2.2/guides/index.html
 type: guide
-layout: guide
+layout: oldguide
 title: Scalatra 2.2 Guides
 ---
 

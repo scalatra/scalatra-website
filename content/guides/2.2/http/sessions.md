@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/http/sessions.html
+layout: oldguide
 title: Session Handling
 ---
 

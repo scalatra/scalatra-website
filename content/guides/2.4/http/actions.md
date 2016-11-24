@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/http/actions.html
+layout: oldguide
 title: Actions
 ---
 

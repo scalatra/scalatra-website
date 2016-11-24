@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/swagger.html
+layout: oldguide
 title: Swagger
 ---
 

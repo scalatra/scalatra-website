@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.3/guides/deployment/configuration.html
+layout: oldguide
 title: Configuration
 ---
 

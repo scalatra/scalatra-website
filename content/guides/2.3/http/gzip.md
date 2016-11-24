@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.3/guides/http/gzip.html
+layout: oldguide
 title: Gzip
 ---
 

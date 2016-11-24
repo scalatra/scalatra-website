@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/monitoring/metrics.html
+layout: oldguide
 title: Metrics
 ---
 

@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/resources/less-css.html
+layout: oldguide
 title: LESS CSS
 ---
 

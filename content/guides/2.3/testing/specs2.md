@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.3/guides/testing/specs2.html
+layout: oldguide
 title: Specs2
 ---
 

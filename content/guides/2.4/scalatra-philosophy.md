@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/scalatra-philosophy.html
+layout: oldguide
 title: Scalatra's philosophy
 ---
 

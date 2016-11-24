@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/testing/scalatratest.html
+layout: oldguide
 title: ScalatraTest
 ---
 

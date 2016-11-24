@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.3/guides/formats/commands.html
+layout: oldguide
 title: Commands
 ---
 

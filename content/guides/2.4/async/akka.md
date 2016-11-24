@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/async/akka.html
+layout: oldguide
 title: Akka | Async
 ---
 

@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/async/atmosphere.html
+layout: oldguide
 title: Atmosphere
 ---
 

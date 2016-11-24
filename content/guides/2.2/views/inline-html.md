@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/views/inline-html.html
+layout: oldguide
 title: Inline HTML
 ---
 

@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/persistence/mongodb.html
+layout: oldguide
 title: MongoDb
 ---
 

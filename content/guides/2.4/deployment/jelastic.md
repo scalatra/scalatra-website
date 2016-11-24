@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/deployment/jelastic.html
+layout: oldguide
 title: Deploying to Jelastic
 ---
 

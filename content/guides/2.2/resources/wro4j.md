@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/resources/wro4j.html
+layout: oldguide
 title: wro4j 
 ---
 

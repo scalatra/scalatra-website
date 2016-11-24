@@ -1,4 +1,6 @@
 ---
+aliases:
+  - /2.4/guides/index.html
 title: Scalatra guides
 ---
 

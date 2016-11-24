@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/http/gzip.html
+layout: oldguide
 title: Gzip Support
 ---
 

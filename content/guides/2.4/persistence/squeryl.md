@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.4/guides/persistence/squeryl.html
+layout: oldguide
 title: Squeryl
 ---
 

@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/deployment/google-app-engine.html
+layout: oldguide
 title: Google App Engine
 ---
 

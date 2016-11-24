@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.3/guides/testing/scalatest.html
+layout: oldguide
 title: ScalaTest
 ---
 

@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/deployment/servlet-container.html
+layout: oldguide
 title: Deploying to servlet containers
 ---
 

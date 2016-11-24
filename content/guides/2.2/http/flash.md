@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/http/flash.html
+layout: oldguide
 title: Flash Support
 ---
 

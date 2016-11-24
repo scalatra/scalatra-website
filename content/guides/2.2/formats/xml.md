@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/formats/xml.html
+layout: oldguide
 title: XML Handling
 ---
 

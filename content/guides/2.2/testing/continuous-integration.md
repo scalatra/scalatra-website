@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/testing/continuous-integration.html
+layout: oldguide
 title: Continuous integration
 ---
 

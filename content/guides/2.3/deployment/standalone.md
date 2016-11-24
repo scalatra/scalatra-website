@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.3/guides/deployment/standalone.html
+layout: oldguide
 title: Standalone deployment
 ---
 

@@ -1,4 +1,6 @@
 ---
+aliases:
+  - /2.2/guides/faq.html
 title: FAQ | Scalatra guides
 ---
 

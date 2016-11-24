@@ -1,5 +1,7 @@
 ---
-layout: guide
+aliases:
+  - /2.2/guides/http/requests-and-responses.html
+layout: oldguide
 title: Requests and responses
 ---
 
