@@ -9,6 +9,11 @@ uglyurls = true
 # Enable Google Analytics by entering your tracking id
 googleAnalytics = ""
 
+[permalinks]
+  news = "/:year/:month/:day/:filename.html"
+
+
+
 [params]
 	# General information
 	# author = "Scalatra Team"
