@@ -16,7 +16,7 @@ Now that [installation](installation.html) is out of the way, you can
 generate a project:
 
 ```bash
-g8 scalatra/scalatra-sbt 
+g8 scalatra/scalatra-sbt
 ```
 
 This will check out a pre-built application skeleton for you (from [GitHub](https://github.com/scalatra/scalatra-sbt.g8)),
@@ -103,7 +103,7 @@ $ ./sbt
 ```
 
 sbt will also take care of downloading an entire Scalatra development
-environment if you don't have one yet. That means sbt may spend some 
+environment if you don't have one yet. That means sbt may spend some
 time downloading Scalatra and its libraries on first run.
 
 <div class="alert alert-info">
