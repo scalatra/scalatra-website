@@ -23,15 +23,15 @@ This will check out a pre-built application skeleton for you (from [GitHub](http
 and ask you some questions about your application:
 
 ```
-$ g8 scalatra/scalatra-sbt 
-organization [com.example]: 
-name [My Scalatra Web App]: 
-version [0.1.0-SNAPSHOT]: 
-servlet_name [MyScalatraServlet]: 
-package [com.example.app]: 
-scala_version [2.11.7]: 
-sbt_version [0.13.9]: 
-scalatra_version [2.4.0]: 
+$ g8 scalatra/scalatra-sbt
+organization [com.example]:
+name [My Scalatra Web App]:
+version [0.1.0-SNAPSHOT]:
+servlet_name [MyScalatraServlet]:
+package [com.example.app]:
+scala_version [2.11.7]:
+sbt_version [0.13.9]:
+scalatra_version [2.5.0]: 
 
 Template applied in ./my-scalatra-web-app
 ```
