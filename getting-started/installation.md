@@ -26,25 +26,23 @@ does. The output should look something like this:
 
 ```bash
 $ java -version
-java version "1.7.0_10"
-OpenJDK Runtime Environment (IcedTea6 1.11.1) build 1.7.0_10-b18)
-Java HotSpot(TM) 64-Bit Server VM (build 23.6-b094, mixed mode)
+java version "1.8.0_11"
+Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
 ```
 
 ```bash
 $ javac -version
-javac 1.7.0_10
+javac 1.8.0_11
 ```
 
-You need Java 7, which will show up as version 1.7. 
-
-Java 8 support in Scala is classed as experimental in Scala 2.11.x. If you
-aren't sure what this means, use Java 7.
+You need Java 8, which will show up as version 1.8. Java 7 is no longer supported in Scalatra 2.5.
 
 If you don't yet have Java installed, you can find out how to install
 it for your system
-<a href="http://docs.oracle.com/javase/7/docs/webnotes/install/index.html">
-over at the Java 7 install page</a>. Make sure you're using OpenJDK or Sun's JDK.
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">
+over at the Java 8 install page</a>. Make sure you're using OpenJDK or Sun's JDK.
+
 Some Linux distros pre-install `gcj`, which won't work.
 
 ## 2. Install giter8
