@@ -39,11 +39,13 @@ The following dependencies will be needed to make the sample application
 work.
 
 ```scala
-  "org.scalatra" %% "scalatra-atmosphere" % "{{ site.scalatra_version }}",
-  "org.scalatra" %% "scalatra-json" % "{{ site.scalatra_version }}",
-  "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
-  "org.eclipse.jetty" % "jetty-websocket" % "{{ site.jetty_version }}" % "container",
+"org.scalatra" %% "scalatra-atmosphere" % "{{ site.scalatra_version }}",
+"org.scalatra" %% "scalatra-json" % "{{ site.scalatra_version }}",
+"org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
+"org.eclipse.jetty" % "jetty-websocket" % "{{< jetty >}}" % "container",
 ```
+
+{{ .Site.Params.highlist_css }}
 
 Scalatra's Atmosphere integration depends on Akka.
 
