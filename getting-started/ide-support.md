@@ -32,7 +32,7 @@ Configure your container to listen for debuggers on port 5005 by adding the foll
 javaOptions ++= Seq(
   "-Xdebug",
   "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
-),
+)
 ```
 
 Start SBT and the container as usual (`./sbt` then `jetty:start`).
@@ -77,7 +77,7 @@ Configure your container to listen for debuggers on port 8000 by adding the foll
 javaOptions ++= Seq(
   "-Xdebug",
   "-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000"
-),
+)
 ```
 
 Start SBT and the container as usual (`./sbt` then `jetty:start`).
