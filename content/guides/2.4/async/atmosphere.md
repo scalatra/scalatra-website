@@ -39,15 +39,15 @@ The following dependencies will be needed to make the sample application
 work.
 
 ```scala
-  "org.json4s"                  %% "json4s-jackson"      % "{{ site.json4s_version }}",
-  "org.scalatra"                %% "scalatra"            % "{{ site.scalatra_version }}",
-  "org.scalatra"                %% "scalatra-scalate"    % "{{ site.scalatra_version }}",
-  "org.scalatra"                %% "scalatra-specs2"     % "{{ site.scalatra_version }}"  % "test",
-  "org.scalatra"                %% "scalatra-atmosphere" % "{{ site.scalatra_version }}",
+  "org.json4s"                  %% "json4s-jackson"      % "{{< 2-4-json4s_version >}}",
+  "org.scalatra"                %% "scalatra"            % "{{< 2-4-scalatra_version >}}",
+  "org.scalatra"                %% "scalatra-scalate"    % "{{< 2-4-scalatra_version >}}",
+  "org.scalatra"                %% "scalatra-specs2"     % "{{< 2-4-scalatra_version >}}"  % "test",
+  "org.scalatra"                %% "scalatra-atmosphere" % "{{< 2-4-scalatra_version >}}",
   "ch.qos.logback"              %  "logback-classic"     % "1.1.1"          % "runtime",
-  "org.eclipse.jetty"           %  "jetty-plus"          % "{{ site.jetty_version }}"     % "container;provided",
-  "org.eclipse.jetty"           %  "jetty-webapp"        % "{{ site.jetty_version }}"     % "container",
-  "org.eclipse.jetty.websocket" %  "websocket-server"    % "{{ site.jetty_version }}"     % "container;provided",
+  "org.eclipse.jetty"           %  "jetty-plus"          % "{{< 2-4-jetty_version >}}"     % "container;provided",
+  "org.eclipse.jetty"           %  "jetty-webapp"        % "{{< 2-4-jetty_version >}}"     % "container",
+  "org.eclipse.jetty.websocket" %  "websocket-server"    % "{{< 2-4-jetty_version >}}"     % "container;provided",
   "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "container;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
 ```
 

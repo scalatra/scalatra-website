@@ -28,7 +28,7 @@ Convenience traits are provided for many `Suite` implementations:
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-scalatest" % "{{ site.scalatra_version }}" % "test"
+"org.scalatra" %% "scalatra-scalatest" % "{{< 2-2-scalatra_version >}}" % "test"
 ```
 
 #### Example

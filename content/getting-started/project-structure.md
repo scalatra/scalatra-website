@@ -148,7 +148,7 @@ object MyExampleBuild extends Build {
   val Name = "An Example Application"
   val Version = "0.1.0-SNAPSHOT"
   val ScalaVersion = "2.10.1"
-  val ScalatraVersion = "{{ site.scalatra_version }}"
+  val ScalatraVersion = "{{< 2-5-scalatra_version >}}"
 
   lazy val project = Project (
     "scalatra-buildfile-example",
@@ -164,9 +164,9 @@ object MyExampleBuild extends Build {
         "org.scalatra" %% "scalatra" % ScalatraVersion,
         "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
         "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
-        "ch.qos.logback" % "logback-classic" % "{{ site.logback_version }}" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "container",
-        "org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+        "ch.qos.logback" % "logback-classic" % "{{< 2-5-logback_version >}}" % "runtime",
+        "org.eclipse.jetty" % "jetty-webapp" % "{{ < 2-5-jetty_version >}}" % "container",
+        "org.eclipse.jetty.orbit" % "javax.servlet" % "{{< 2-5-servlet_version >}}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
       ),
       scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
         Seq(
@@ -243,7 +243,7 @@ The default dependencies are:
 </dl>
 
 The Scalatra components in your project should all have the same version number
-({{ site.scalatra_version }} in the above example).
+({{< 2-5-scalatra_version >}} in the above example).
 Although it's theoretically possible to mix and match differently-versioned components
 in your projects, it's not recommended, because we compile, test and release Scalatra
 dependencies together based on their version number.

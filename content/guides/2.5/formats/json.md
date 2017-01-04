@@ -87,7 +87,7 @@ In the root of your generated project, you'll find a file called `project/build.
 
 ```scala
   "org.scalatra" %% "scalatra-json" % ScalatraVersion,
-  "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
+  "org.json4s"   %% "json4s-jackson" % "{{< 2-5-json4s_version >}}",
 ```
 
 Restart sbt to download the new jars.

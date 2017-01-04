@@ -257,7 +257,7 @@ will store all of the Todo-related commands so they're in one place.
 To start with, you'll need to add command support to your application.
 
 ```scala
-"org.scalatra" %% "scalatra-commands" % "{{ site.scalatra_version }}",
+"org.scalatra" %% "scalatra-commands" % "{{< 2-3-scalatra_version >}}",
 ```
 
 `TodoCommands.scala` can look like this:
@@ -539,8 +539,8 @@ Here's how it works.
 Add the following to project/build.scala:
 
 ```scala
-  "org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
-  "org.scalatra" %% "scalatra-json" % "{{ site.scalatra_version }}",
+  "org.json4s"   %% "json4s-jackson" % "{{< 2-3-json4s_version >}}",
+  "org.scalatra" %% "scalatra-json" % "{{< 2-3-scalatra_version >}}",
 ```
 
 This adds dependencies on Scalatra's JSON-handling libraries.

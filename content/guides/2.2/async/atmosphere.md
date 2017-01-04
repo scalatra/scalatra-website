@@ -12,8 +12,6 @@ connection alive between the server and the user's browser (or other
 user-agents). You can push new information to your user at any time,
 without a page refresh.
 
-It's carefree server push for the JVM.
-
 ---
 
 ### Atmosphere example app
@@ -39,10 +37,10 @@ The following dependencies will be needed to make the sample application
 work.
 
 ```scala
-"org.scalatra" %% "scalatra-atmosphere" % "{{ site.scalatra_version }}",
-"org.scalatra" %% "scalatra-json" % "{{ site.scalatra_version }}",
-"org.json4s"   %% "json4s-jackson" % "{{ site.json4s_version }}",
-"org.eclipse.jetty" % "jetty-websocket" % "{{< jetty >}}" % "container",
+"org.scalatra" %% "scalatra-atmosphere" % "{{< 2-2-scalatra_version >}}",
+"org.scalatra" %% "scalatra-json" % "{{< 2-2-scalatra_version >}}",
+"org.json4s"   %% "json4s-jackson" % "{{< 2-2-json4s_version >}}",
+"org.eclipse.jetty" % "jetty-websocket" % "{{< 2-2-jetty-version >}}" % "container",
 ```
 
 {{ .Site.Params.highlist_css }}

@@ -13,7 +13,7 @@ specifications for one class (unit specifications) or a full system
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-specs2" % "{{ site.scalatra_version }}" % "test"
+"org.scalatra" %% "scalatra-specs2" % "{{< 2-4-scalatra_version >}}" % "test"
 ```
 
 #### Examples

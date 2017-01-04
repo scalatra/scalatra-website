@@ -36,15 +36,15 @@ $ g8 scalatra/scalatra-sbt -b develop
 Open `project/build.scala` in the root of your project. You will find two lines like these:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "container",
-"org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+"org.eclipse.jetty" % "jetty-webapp" % "{{< 2-2-jetty_version >}}" % "container",
+"org.eclipse.jetty.orbit" % "javax.servlet" % "{{< 2-2-servlet_version >}}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 ```
 
 Those are basically right, but we need to add `compile` scope because Heroku is not a servlet host. It can only run your app via an embedded Jetty server you provide. So replace the two lines above with these two:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "{{ site.jetty_version }}" % "compile;container",
-"org.eclipse.jetty.orbit" % "javax.servlet" % "{{ site.servlet_version }}" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
+"org.eclipse.jetty" % "jetty-webapp" % "{{< 2-2-jetty_version >}}" % "compile;container",
+"org.eclipse.jetty.orbit" % "javax.servlet" % "{{< 2-2-servlet_version >}}" % "compile;container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
 ```
 
 ### Escape sbt
@@ -54,13 +54,13 @@ You don't want to use sbt to run your app in production. We'll install an sbt pl
 Tell sbt where to find the plugin by adding this line to `project/plugins.sbt` (you may need to create the file first):
 
 ```scala
-addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "{{ site.start_script_plugin_version }}")
+addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "{{< 2-2-start_script_plugin_version >}}")
 ```
 
 For sbt version 0.13.0 add following instead:
 
 ```scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "{{ site.start_script_plugin_version_for_sbt_0_13_0 }}")
+addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "{{< 2-2-start_script_plugin_version_for_sbt_0_13_0 >}}")
 ```
 Now you've got the Typesafe start script available.  Stick that into the
 Project settings, in `project/build.scala`. A default Scalatra project template

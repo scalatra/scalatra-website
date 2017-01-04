@@ -8,7 +8,7 @@ title: ScalatraTest
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-test" % "{{ site.scalatra_version }}" % "test"
+"org.scalatra" %% "scalatra-test" % "{{< 2-2-scalatra_version >}}" % "test"
 ```
 
 #### Usage guide

@@ -52,7 +52,7 @@ for an example.
 
 ```scala
 // Put this in project/build.scala:
-"org.scalatra" %% "scalatra-auth" % "{{ site.scalatra_version }}"
+"org.scalatra" %% "scalatra-auth" % "{{< 2-3-scalatra_version >}}"
 ```
 
 You'll need the scalatra-auth dependency in your `project/build.scala` for all subsequent

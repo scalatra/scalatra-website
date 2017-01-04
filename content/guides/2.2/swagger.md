@@ -98,8 +98,8 @@ object FlowerData {
 Don't forget to add the JSON libraries to your `project/build.scala` file to make this work:
 
 ```scala
-  "org.scalatra" %% "scalatra-json" % "{{ site.scalatra_version }}",
-  "org.json4s"   %% "json4s-native" % "{{ site.json4s_version }}",
+  "org.scalatra" %% "scalatra-json" % "{{< 2-2-scalatra_version >}}",
+  "org.json4s"   %% "json4s-native" % "{{< 2-2-json4s_version >}}",
 ```
 
 #### Namespacing the controller
@@ -210,7 +210,7 @@ First, add the Swagger dependency to your `project/build.scala` file, then resta
 app to grab the new jars:
 
 ```scala
-"org.scalatra" %% "scalatra-swagger"  % "{{ site.scalatra_version }}",
+"org.scalatra" %% "scalatra-swagger"  % "{{< 2-2-scalatra_version >}}",
 ```
 
 You'll now need to import Scalatra's Swagger support into your `FlowersController`:

@@ -30,7 +30,7 @@ Notice that all the above traits are based on `ScalatraSuite` which mixes in `Be
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-scalatest" % "{{ site.scalatra_version }}" % "test"
+"org.scalatra" %% "scalatra-scalatest" % "{{< 2-3-scalatra_version >}}" % "test"
 ```
 
 #### Example
