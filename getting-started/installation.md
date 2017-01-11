@@ -36,10 +36,7 @@ $ javac -version
 javac 1.7.0_10
 ```
 
-You need Java 7, which will show up as version 1.7. 
-
-Java 8 support in Scala is classed as experimental in Scala 2.11.x. If you
-aren't sure what this means, use Java 7.
+You need Java 7 or higher, which will show up as e.g. version 1.7.
 
 If you don't yet have Java installed, you can find out how to install
 it for your system
