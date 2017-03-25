@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/http/reverse-routes.html
-layout: oldguide
 title: Reverse Routes
 ---
 

@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/persistence/slick.html
-layout: oldguide
 title: Slick
 ---
 

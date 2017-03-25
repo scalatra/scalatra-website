@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.2/guides/deployment/cloudbees.html
-layout: oldguide
 title: Deploying to CloudBees
 ---
 

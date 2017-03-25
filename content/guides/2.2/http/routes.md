@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.2/guides/http/routes.html
-layout: oldguide
 title: Routes
 ---
 

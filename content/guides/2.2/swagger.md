@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.2/guides/swagger.html
-layout: oldguide
 title: Swagger
 ---
 

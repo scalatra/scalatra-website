@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.2/guides/formats/json.html
-layout: oldguide
 title: Handling JSON
 ---
 

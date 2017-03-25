@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.2/guides/testing/specs2.html
-layout: oldguide
 title: Specs2
 ---
 

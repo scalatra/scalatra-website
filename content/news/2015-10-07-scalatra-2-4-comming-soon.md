@@ -9,11 +9,11 @@ aliases:
 
 The Scalatra team is pleased to announce the release of Scalatra 2.4.0.RC3.
 
+<!--more-->
+
 2.4.0 release has many improvements and bugfixes as listed below.
 
 If this version looks fine, we'd like to release 2.4.0 soon. Please try it out within days!
-
-<!--more-->
 
 ## Scalatra Core
 

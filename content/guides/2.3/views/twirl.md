@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/views/twirl.html
-layout: oldguide
 title: Twirl
 ---
 

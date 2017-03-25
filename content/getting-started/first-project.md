@@ -1,5 +1,4 @@
 ---
-layout: guide
 title: First steps
 ---
 
@@ -24,7 +23,7 @@ servlet_name [MyScalatraServlet]:
 package [com.example.app]:
 scala_version [2.11.7]:
 sbt_version [0.13.9]:
-scalatra_version [2.4.0]:
+scalatra_version [2.5.0]: 
 
 Template applied in ./my-scalatra-web-app
 ```

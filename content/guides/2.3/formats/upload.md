@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/formats/upload.html
-layout: oldguide
 title: File upload
 ---
 

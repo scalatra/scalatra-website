@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.2/guides/deployment/heroku.html
-layout: oldguide
 title: Deploying to Heroku
 ---
 

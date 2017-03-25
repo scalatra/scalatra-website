@@ -9,10 +9,9 @@ aliases:
 
 The Scalatra team is pleased to announce the release of Scalatra 2.1.
 
-Here's a list of what's in the new release:
-
 <!--more-->
 
+Here's a list of what's in the new release:
 
 scalatra-scalate
 

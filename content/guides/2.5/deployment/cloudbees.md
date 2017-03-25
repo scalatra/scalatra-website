@@ -1,5 +1,4 @@
 ---
-layout: guide
 title: Deploying to CloudBees
 ---
 

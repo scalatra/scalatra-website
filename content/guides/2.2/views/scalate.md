@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.2/guides/views/scalate.html
-layout: oldguide
 title: Scalate
 ---
 

@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/persistence/introduction.html
-layout: oldguide
 title: Introduction to Persistence
 ---
 

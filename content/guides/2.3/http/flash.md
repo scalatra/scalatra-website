@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/http/flash.html
-layout: oldguide
 title: Flash
 ---
 

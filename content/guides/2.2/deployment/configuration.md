@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.2/guides/deployment/configuration.html
-layout: oldguide
 title: Configuration | Deployment
 ---
 

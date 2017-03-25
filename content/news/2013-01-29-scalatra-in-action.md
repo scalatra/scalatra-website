@@ -9,10 +9,9 @@ aliases:
 
 The Scalatra team is pleased to announce the immediate availability of the e-book version of *[Scalatra in Action](http://www.manning.com/carrero2/)*, published by Manning Publications.
 
-It's currently being written the Scalatra team. Here's a description:
-
 <!--more-->
 
+It's currently being written the Scalatra team. Here's a description:
 
 <blockquote>Scalatra is a lightweight Scala-driven web framework similar to the popular Ruby-based Sinatra. It's perfect for writing high-performance stateless applications and RESTful APIs. Scalatra is a simple HTTP DSL that allows you to start with a tiny amount of code and then add the exact libraries you want as your application grows. As a result, it's an amazingly-fast way to spin up a Scala-based web app, without the overhead of Lift or Play, and to build an HTTP API for a mobile, Backbone.js, or AngularJS app. Since it uses Scala and the functional programming model, it's also perfect for running realtime applications on multi-core servers.</blockquote>
 

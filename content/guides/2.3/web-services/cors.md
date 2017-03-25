@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/web-services/cors.html
-layout: oldguide
 title: CORS
 ---
 

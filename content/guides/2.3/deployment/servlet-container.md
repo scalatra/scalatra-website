@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/deployment/servlet-container.html
-layout: oldguide
 title: Deploying to servlet containers | Deployment | Scalatra
 ---
 

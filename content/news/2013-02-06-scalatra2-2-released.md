@@ -9,10 +9,9 @@ aliases:
 
 The Scalatra team is excited to finally be able to say: we've just released Scalatra 2.2.0, 2.1.2 and 2.0.5.
 
-Let's talk about the old branches first.
-
 <!--more-->
 
+Let's talk about the old branches first.
 
 We've published 2.0.5 for Scala 2.10 so you can safely upgrade on servlet 2.5 containers. This gives anyone stuck deploying on older servlet containers a path to Scala 2.10.
 

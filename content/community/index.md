@@ -1,5 +1,4 @@
 ---
-layout: default
 title: The Scalatra Community
 ---
 

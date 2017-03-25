@@ -1,5 +1,4 @@
 ---
-layout: guide
 title: Installation
 ---
 
@@ -22,22 +21,21 @@ does. The output should look something like this:
 
 ```bash
 $ java -version
-java version "1.7.0_10"
-OpenJDK Runtime Environment (IcedTea6 1.11.1) build 1.7.0_10-b18)
-Java HotSpot(TM) 64-Bit Server VM (build 23.6-b094, mixed mode)
+java version "1.8.0_11"
+Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
 ```
 
 ```bash
 $ javac -version
-javac 1.7.0_10
+javac 1.8.0_11
 ```
 
-You need Java 7, which will show up as version 1.7, or Java 8, which will show up as 1.8.
+You need Java 8, which will show up as version 1.8. Java 7 is no longer supported in Scalatra 2.5.
 
 If you don't yet have Java installed, you can find out how to install
 it for your system
-<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html">
-over at the Java 8 install page</a>. Make sure you're using OpenJDK or Sun's JDK.
+[over at the Java 8 install page](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Make sure you're using OpenJDK or Sun's JDK.
 
 Some Linux distros pre-install `gcj`, which won't work.
 
@@ -51,27 +49,31 @@ updating Scala code.
 [giter8](https://github.com/foundweekends/giter8/), which depends on conscript, allows you to check out project templates directly from Github.
 It's the recommended way to generate Scalatra project skeletons.
 
-<h4>Install conscript</h4>
-  <pre>curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh</pre>
+### Install conscript
 
-  <p>
-    This will create a `bin` folder in your home directory.
-    Make sure it's in your `PATH` by adding the following to your shell's
-    profile (often `~/.bash_profile` on Mac and `~/.bashrc` on Linux):
-  </p>
+```bash
+curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh
+```
 
-<pre>
+This will create a `bin` folder in your home directory.
+Make sure it's in your `PATH` by adding the following to your shell's
+profile (often `~/.bash_profile` on Mac and `~/.bashrc` on Linux):
+
+```bash
 PATH=$PATH:~/bin
 export PATH
 source ~/.bash_profile # (Mac)
 source ~/.bashrc       # (Linux)
-</pre>
+```
 
-<h4>Install giter8</h4>
-  <pre>cs foundweekends/giter8</pre>
+### Install giter8</h4>
 
-  <p>Depending on your connection speed, this can take a bit of time, as
-  `conscript` downloads quite a few Scala dependencies.</p>
+```bash
+cs foundweekends/giter8
+```
+
+Depending on your connection speed, this can take a bit of time, as
+`conscript` downloads quite a few Scala dependencies.
 
 Alternatively, you can install `giter8` on a Mac via
 [homebrew](http://brew.sh/):

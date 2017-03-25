@@ -1,5 +1,4 @@
 ---
-layout: guide
 title: Authentication | HTTP | Scalatra
 ---
 

@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/http/sessions.html
-layout: oldguide
 title: Sessions
 ---
 

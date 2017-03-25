@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/testing/scalatratest.html
-layout: oldguide
 title: ScalatraTest
 ---
 

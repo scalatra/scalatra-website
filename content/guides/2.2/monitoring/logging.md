@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.2/guides/monitoring/logging.html
-layout: oldguide
 title: Loggings
 ---
 

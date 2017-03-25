@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/internationalization.html
-layout: oldguide
 title: Internationalization
 ---
 

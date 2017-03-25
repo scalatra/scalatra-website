@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.3/guides/deployment/google-app-engine.html
-layout: oldguide
 title: Google App Engine
 ---
 
