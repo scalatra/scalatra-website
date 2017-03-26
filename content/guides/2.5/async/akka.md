@@ -14,8 +14,8 @@ The following dependencies will be needed to make the sample application
 work.
 
 ```scala
-"com.typesafe.akka" %% "akka-actor" % "2.3.4",
-"net.databinder.dispatch" %% "dispatch-core" % "0.11.1",
+"com.typesafe.akka" %% "akka-actor" % "{{< 2-5-akka_version >}}",
+"net.databinder.dispatch" %% "dispatch-core" % "0.12.0",
 ```
 
 ### Setting up your Scalatra app with Akka

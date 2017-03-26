@@ -16,7 +16,7 @@ The following dependencies will be needed to make the sample application
 work.
 
 ```scala
-"com.typesafe.akka" %% "akka-actor" % "2.3.4",
+"com.typesafe.akka" %% "akka-actor" % "{{< 2-3-akka_version >}}",
 "net.databinder.dispatch" %% "dispatch-core" % "0.11.1",
 ```
 

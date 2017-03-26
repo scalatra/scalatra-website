@@ -16,8 +16,8 @@ Scalatra supports metrics via the [metrics](https://dropwizard.github.io/metrics
 
 In order to make use of this functionality, add `scalatra-metrics` to your `build.sbt`:
 
-```
-"org.scalatra" %% "scalatra-metrics" % "2.4.0-SNAPSHOT"
+```scala
+"org.scalatra" %% "scalatra-metrics" % "{{< 2-4-scalatra_version >}}"
 ```
 
 and mix in the MetricsBootstrap trait into ScalatraBootstrap:

@@ -43,11 +43,11 @@ work.
   "org.scalatra"                %% "scalatra-scalate"    % "{{< 2-3-scalatra_version >}}",
   "org.scalatra"                %% "scalatra-specs2"     % "{{< 2-3-scalatra_version >}}"  % "test",
   "org.scalatra"                %% "scalatra-atmosphere" % "{{< 2-3-scalatra_version >}}",
-  "ch.qos.logback"              %  "logback-classic"     % "1.1.1"          % "runtime",
+  "ch.qos.logback"              %  "logback-classic"     % "{{< 2-3-logback_version >}}"   % "runtime",
   "org.eclipse.jetty"           %  "jetty-plus"          % "{{< 2-3-jetty_version >}}"     % "container;provided",
   "org.eclipse.jetty"           %  "jetty-webapp"        % "{{< 2-3-jetty_version >}}"     % "container",
   "org.eclipse.jetty.websocket" %  "websocket-server"    % "{{< 2-3-jetty_version >}}"     % "container;provided",
-  "javax.servlet"               %  "javax.servlet-api"   % "3.1.0"          % "container;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
+  "javax.servlet"               %  "javax.servlet-api"   % "{{< 2-3-servlet_version >}}"   % "container;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
 ```
 
 #### Imports
