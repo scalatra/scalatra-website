@@ -15,7 +15,7 @@ and adding Swagger to it, so that your runnable documentation automatically stay
 in sync with your API.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/swagger-example">swagger-example</a>
   for a minimal and standalone project containing the example in this guide.
@@ -281,7 +281,7 @@ class ScalatraBootstrap extends LifeCycle {
 ```
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   Note that the `context.mount(new FlowersController, "/flowers", "flowers")` has a second
   parameter: in Scalatra 2.3.x, Swagger requires a name parameter to be present so that it
   can generate its documentation properly. The name should always be the same as the
@@ -348,7 +348,7 @@ We'll need to add some information to the method in order to tell Swagger what t
 ```
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   Make sure you initialize the val for your apiOperation before attempting to
   use it in as part of a route definition! Otherwise you'll get a 503 error
   when attempting to hit your route.
@@ -421,7 +421,7 @@ The Pet Store documentation is showing because http://petstore.swagger.io/api/ap
 Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs` - into the URL field, then press the "Explore" button. You'll be rewarded with a fully Swaggerized view of your API documentation. Try clicking on the "GET /flowers" route to expand the operations underneath it, and then entering the word "rose" into the input box for the "name" parameter. You'll be rewarded with JSON output for the search method we defined earlier.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   It's very important to get the api-docs path correct when you browse your docs in swagger-ui. Be careful: there's no trailing slash on `http://localhost:8080/api-docs`,
   and the docs won't work if you accidentally add one.
 </div>

@@ -79,7 +79,7 @@ class MyAppServlet extends ScalatraServlet with FutureSupport {
 ### Async request example
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="{{site.examples}}async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.
@@ -139,7 +139,7 @@ state, don't bother with `AsyncResult`.
 ### Actor example
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="{{site.examples}}async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.

@@ -31,7 +31,7 @@ covering common development tasks.
 [File Upload](formats/upload.html), [JSON](formats/json.html), [Commands](formats/commands.html), XML, forms
 
 ### Persistence
-[Introduction](persistence/introduction.html), [MongoDB](persistence/mongodb.html), [Riak](persistence/riak.html),[Slick](persistence/slick.html), [Squeryl](persistence/squeryl.html)
+[Introduction](persistence/introduction.html), [MongoDB](persistence/mongodb.html), [Riak](persistence/riak.html), [Slick](persistence/slick.html), [Squeryl](persistence/squeryl.html)
 
 ### Web services
 [CORS](web-services/cors.html), OpenID, OAuth, HTTP Client

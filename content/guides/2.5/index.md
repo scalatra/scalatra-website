@@ -2,7 +2,7 @@
 title: Scalatra guides
 ---
 
-We've documented most aspects of working with Scalatra in a series of guides covering common development tasks. 
+We've documented most aspects of working with Scalatra in a series of guides covering common development tasks.
 
 ### HTTP
 
@@ -23,7 +23,7 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 [File Upload](formats/upload.html), [JSON](formats/json.html), [Commands](formats/commands.html)
 
 ### Persistence
-[Introduction](persistence/introduction.html), [MongoDB](persistence/mongodb.html), [Riak](persistence/riak.html),[Slick](persistence/slick.html), [Squeryl](persistence/squeryl.html)
+[Introduction](persistence/introduction.html), [MongoDB](persistence/mongodb.html), [Riak](persistence/riak.html), [Slick](persistence/slick.html), [Squeryl](persistence/squeryl.html)
 
 ### Internationalization
 [i18n](internationalization.html)

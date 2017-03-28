@@ -40,7 +40,7 @@ See the
 [javax.servlet.annotation.MultipartConfig Javadoc](http://docs.oracle.com/javaee/6/api/javax/servlet/annotation/MultipartConfig.html)
 for more details on configurable attributes.
 
-<span class="badge badge-warning"><i class="icon-flag icon-white"></i></span>
+<span class="badge badge-warning"><i class="glyphicon glyphicon-flag"></i></span>
 Note for Jetty users: `MultipartConfig` and the `<multipart-config>` tag in `web.xml`
 do not work correctly in Jetty prior to version 8.1.3.
 

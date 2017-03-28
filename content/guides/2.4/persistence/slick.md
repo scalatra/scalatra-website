@@ -1,19 +1,18 @@
 ---
 aliases:
   - /2.4/guides/persistence/slick.html
-layout: oldguide
 title: Slick
 ---
 
 [Slick](http://slick.typesafe.com/) is a database library for relational databases. In the following guide we will see how to integrate it in a Scalatra application.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   This guide uses Scalatra 2.4.0.M2 (Milestone) Slick 3.0.0-RC1 (Release Candidate). You may want to check for a newer version.
 </div>
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/persistence/scalatra-slick">scalatra-slick</a>
   for a minimal and standalone project containing the example in this guide.

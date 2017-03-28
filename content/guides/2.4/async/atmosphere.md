@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.4/guides/async/atmosphere.html
-layout: oldguide
 title: Atmosphere
 ---
 
@@ -19,7 +18,7 @@ It's carefree server push for the JVM.
 ### Atmosphere example app
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/async/scalatra-atmosphere-example">scalatra-atmosphere-example</a>
   for a minimal and standalone project containing the example in this guide.

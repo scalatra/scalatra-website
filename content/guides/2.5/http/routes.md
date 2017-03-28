@@ -192,7 +192,7 @@ class MyFilter extends ScalatraFilter with MethodOverride {
 ### Route order
 
 The first matching route is invoked. Routes are matched from the *bottom up*, i.e. from the bottom of the Scala class defining your servlet to the top.
-<span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span> This is the opposite of Sinatra.
+<span class="label label-warning"><i class="glyphicon glyphicon-warning-sign"></i> Watch out!</span> This is the opposite of Sinatra.
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
@@ -221,7 +221,7 @@ As an example, let's hit a URL with a GET like this:
 /articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo
 ```
 
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 Look closely: there are two "foo" keys in there.
 
 Assuming there's a matching route at `/articles/:id`, we get the following

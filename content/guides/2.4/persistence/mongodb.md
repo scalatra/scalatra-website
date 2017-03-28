@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.4/guides/persistence/mongodb.html
-layout: oldguide
 title: MongoDb
 ---
 
@@ -19,7 +18,7 @@ There are multiple Scala clients for MongoDb, and they come with varying levels 
 MongoDb requires very little setup. Assuming you've got Mongo installed already, getting it working with Scalatra is as follows.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/persistence/scalatra-casbah-example">scalatra-casbah-example</a>
   for a minimal and standalone project containing the example in this guide.

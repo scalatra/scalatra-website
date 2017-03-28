@@ -1,7 +1,7 @@
 baseurl = "/"
 languageCode = "en-us"
 title = "Scalatra"
-theme = "hugo-material-docs"
+theme = "bootie-docs"
 metadataformat = "yaml"
 canonifyurls = true
 uglyurls = true
@@ -17,26 +17,27 @@ googleAnalytics = ""
 	# author = "Scalatra Team"
 	description = "Documentation and how-to guides for the Scalatra microframework."
 	copyright = "Scalatra Team"
+    highlightStyle = "github"
 
 	# Repository
 	# provider = "GitHub"
 	# repo_url = "https://github.com/scalatra/scalatra"
 
 	# version = "2.5.0"
-	logo = "images/logo.png"
-	favicon = ""
+	#logo = "images/logo.png"
+	#favicon = ""
 
 
-	permalink = "#"
+	#permalink = "#"
 
 	# Custom assets
-	custom_css = []
-	custom_js  = []
+	#custom_css = []
+	#custom_js  = []
 
 	# Syntax highlighting theme
-	highlight_css  = "/stylesheets/highlight/highlight.css"
+	#highlight_css  = "/stylesheets/highlight/highlight.css"
 
-  examples_base_url = "https://github.com/scalatra/scalatra-website-examples/tree/master/"
+  #examples_base_url = "https://github.com/scalatra/scalatra-website-examples/tree/master/"
 
 # [params.two_two]
 #   jetty_version =  "8.1.10.v20130312"

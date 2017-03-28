@@ -1,153 +1,229 @@
+{{ $baseUrl := .Site.BaseURL }}
+{{ partial "header.html" . }}
 
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-		<!-- BASICS -->
-        <meta charset="utf-8">
-		    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>The Scalatra micro-framework</title>
-        <meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="/stylesheets/isotope.css" media="screen" />
-		<link rel="stylesheet" href="/javascripts/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="/stylesheets/bootstrap.css">
-		<link rel="stylesheet" href="/stylesheets/bootstrap-theme.css">
-        <link rel="stylesheet" href="/stylesheets/style.css">
-		<!-- skin -->
-		<link rel="stylesheet" href="/stylesheets/default.css">
-        <!-- =======================================================
-            Theme Name: Amoeba
-            Theme URL: https://bootstrapmade.com/free-one-page-bootstrap-template-amoeba/
-            Author: BootstrapMade
-            Author URL: https://bootstrapmade.com
-        ======================================================= -->
-    </head>
+<main role="main">
 
-    <body>
-		<section id="header" class="appear"></section>
-		<div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);" data-300="line-height:60px; height:60px; background-color:rgba(0,0,0,1);">
-			 <div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="fa fa-bars color-white"></span>
-					</button>
-					<h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">			Scalatra
-					</a></h1>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-						<li class="active"><a href="/getting-started/">Getting started</a></li>
-						<li><a href="/guides/">Documentation</a></li>
-            <li><a href="/news.html">News</a></li>
-						<li><a href="/community/">Community</a></li>
-					</ul>
-				</div><!--/.navbar-collapse -->
-			</div>
-		</div>
+<div class="row jumbotron">
+	<div class="col-md-4">
+    <img src="images/logo-x.png" class="img-rounded">
+  </div>
+  <div class="col-md-6">
+    <p>Scalatra is a simple, accessible and free web micro-framework.</p>
+    <p> It combines the power of the JVM with the beauty and brevity of Scala,
+        helping you quickly build high-performance web sites and APIs.</p>
+  </div>
+</div>
 
-		<section class="featured">
-			<div class="container">
-				<div class="row mar-bot40">
-					<div class="col-md-6 col-md-offset-3">
+<div class="row">
+  <div class="col-md-3">
+    <h2>Ready</h2>
+    <p><img src="{{ $baseUrl }}/images/glyphicons/glyphicons_339_rabbit.png"> Get
+      set up in <a href="getting-started/installation.html">2 easy steps</a>
+      with our quick installation guide. There's a good chance that you already
+      have most of the software you need.</p>
+    <p><a href="getting-started" class="btn btn-primary">Get started »</a></p>
+  </div>
+  <div class="col-md-3">
+    <h2>Steady</h2>
+    <p><img src="{{ $baseUrl }}/images/glyphicons/glyphicons_064_lightbulb.png"> We've
+      documented the main aspects of Scalatra development in a handy set of
+      <a href="guides">reference guides</a>, to help you become productive
+      quickly.</p>
+    <p><a href="guides" class="btn btn-primary">View the guides »</a></p>
+  </div>
+  <div class="col-md-3">
+    <h2>Code</h2>
+    <p><img src="{{ $baseUrl }}/images/glyphicons/glyphicons_043_group.png"> We have a
+      very active community, and an enthusiastic group of
+      developers working on the next version.</p>
+    <p><a href="community" class="btn btn-primary">Get involved »</a></p>
+  </div>
+  <div class="col-md-3">
+    <h3>Project news</h3>
+    <ul>
+			{{ range first 5 (where (where .Site.Pages.ByDate.Reverse "Section" "news") ".Title" "!=" "News") }}
+			<li>
+			  <a href="{{ .Permalink }}">{{ .Title }}</a><br>
+				<span class="doc-entry-meta in-list">
+					(<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time>)
+				</span>
+			</li>
+			{{ end }}
+    </ul>
+  </div>
+</div>
 
-						<div class="align-center">
-<!--							<i class="fa fa-flask fa-5x mar-bot20"></i> -->
-              <img src="/images/logo.png"/>
-							<h2 class="slogan">:^)</h2>
-							<p>Scalatra is a simple, accessible and free http micro-framework.
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+<div class="row">
+  <div class="col-md-7">
+    <h3>Why would you want to use Scalatra?</h3>
+    <ul>
+    <li>It&#39;s been proven in production - the <a href="http://bbc.co.uk">BBC</a>, the <a href="http://www.guardian.co.uk">Guardian newspaper</a>, <a href="http://box.com">Box.com</a>, <a href="http://www.netflix.com">Netflix</a>, and <a href="http://www.mclaren.com/appliedtechnologies/">McLaren</a> all rely on it.</li>
+    <li>It can help you quickly build high-performance, scalable HTTP APIs for web
+    and mobile applications.</li>
+    <li>It&#39;s a perfect server-side counterpart to in-browser client development
+    frameworks such as <a href="http://backbonejs.org/">backbone.js</a>,
+    <a href="http://emberjs.com">ember.js</a> or <a href="http://angularjs.org">angular.js</a>.</li>
+    <li>It&#39;s a simple, fun, and practical way to learn
+    <a href="http://www.scala-lang.org">Scala</a>, a new programming language with advanced
+    features.</li>
+    <li>It will help you use all available cores of that new 16-core server. It
+    also gives you easy access to Scala&#39;s new concurrency-management constructs:
+    <a href="http://akka.io">Akka Actors</a>.</li>
+    </ul>
+  </div>
+    <div class="col-md-5 well">
+      <h4>We've got a book!</h4>
+      <div class="row">
+        <div class="col-md-5">
+          <a href="http://www.manning.com/carrero2/">
+            <img src="{{ $baseUrl }}/images/book-cover.png">
+          </a>
+        </div>
+        <div class="col-md-7">
+          <p>Order <a href="http://www.manning.com/carrero2/">Scalatra in Action</a> as part of the Manning Early Access Program (MEAP).</p>
+          <p>Written by members of the Scalatra team, the book walks you through the entire framework, from first steps to servlet deployment. </p>
+        </div>
+      </div>
+    </div>
 
-		<!-- services -->
-		<section id="section-services" class="section pad-bot30 bg-white">
-		<div class="container">
+</div>
 
-			<div class="row mar-bot40">
-				<div class="col-lg-4" >
-					<div class="align-center">
-						<i class="fa fa-flask fa-5x mar-bot20"></i>
-						<h4 class="text-bold">Ready</h4>
-						<p>Get set up in <a href="/getting-started/installation.html">2 easy steps</a> with our quick installation guide. There's a good chance that you already have most of the software you need.
-						</p>
-					</div>
-				</div>
+<h3>Start small</h3>
 
-				<div class="col-lg-4" >
-					<div class="align-center">
-						<i class="fa fa-terminal fa-5x mar-bot20"></i>
-						<h4 class="text-bold">Steady</h4>
-						<p>We've documented the main aspects of Scalatra development in a handy set of <a href="/guides/2.5/">reference guides</a>, to help you become productive quickly.
-						</p>
-					</div>
-				</div>
+<p>You will need to <a href="getting-started/installation.html">install a few things</a>
+before you can get started, but first, here&#39;s a Scalatra app:</p>
 
-				<div class="col-lg-4" >
-					<div class="align-center">
-						<i class="fa fa-bolt fa-5x mar-bot20"></i>
-						<h4 class="text-bold">Code</h4>
-						<p>We have a very active community, and an enthusiastic group of developers <a href="/philosophy.html">working</a> on the next version.
-						</p>
-					</div>
-				</div>
+<div class="highlight"><pre><code class="scala"><span class="k">package</span> <span class="nn">com.example.app</span>
+<span class="k">import</span> <span class="nn">org.scalatra._</span>
 
-			</div>
+<span class="k">class</span> <span class="nc">HelloWorldApp</span> <span class="k">extends</span> <span class="nc">ScalatraFilter</span> <span class="o">{</span>
+  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">,</span> <span class="o">{</span><span class="n">params</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">)}&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
 
-		</div>
-		</section>
+<p>Notice a few things about it:</p>
 
+<ul>
+<li>It&#39;s small - a full web application in 7 lines of code.</li>
+<li>It uses a <a href="http://sinatrarb.com">Sinatra</a>-style DSL.</li>
+<li>It defines a single method, an HTTP GET to the path &quot;/&quot;.</li>
+<li>It renders a response, in this case the text <em>Hello world!</em></li>
+</ul>
 
+<p>This is the essence of Scalatra - a simple, easy to understand way to make
+web systems, which embraces HTTP&#39;s stateless nature. You can build anything
+you want with Scalatra, but one of the things it&#39;s been most successful at
+is the construction of RESTful APIs.</p>
 
-	<section id="footer" class="section footer">
-		<div class="container">
-			<div class="row animated opacity mar-bot20" data-andown="fadeIn" data-animation="animation">
-				<div class="col-sm-12 align-center">
-                    <ul class="social-network social-circle">
-                        <li><a href="https://github.com/scalatra/scalatra" class="icoGithub" title="Github"><i class="fa fa-github"></i></a></li>
-                        <li><a href="https://gitter.im/scalatra/scalatra" class="icoGitter" title="Gitter"><i class="fa fa-comments"></i></a></li>
-                        <li><a href="https://twitter.com/scalatra" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="https://groups.google.com/forum/#!forum/scalatra-user" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-				</div>
-			</div>
+<h3 id="toc_25">Scale up and customize</h3>
 
-			<div class="row align-center copyright">
-					<div class="col-sm-12"><p>Copyright &copy; Scalatra Team</p>
-                        <div class="credits">
-                            <!--
-                                All the links in the footer should remain intact.
-                                You can delete the links only if you purchased the pro version.
-                                Licensing information: https://bootstrapmade.com/license/
-                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Amoeba
-                            -->
-                            <a href="https://bootstrapmade.com/">Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                        </div>
-                    </div>
-			</div>
-		</div>
+<p>Scalatra is a micro-framework, so you start small and build upwards.</p>
 
-	</section>
-	<a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+<p>You can easily add exactly the libraries you want - for data models, templating,
+unit and integration testing, async request handling, or server-push.</p>
 
-	<script src="/javascripts/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-	<script src="/javascripts/jquery.js"></script>
-	<script src="/javascripts/jquery.easing.1.3.js"></script>
-  <script src="/javascripts/bootstrap.min.js"></script>
-	<script src="https://maps.google.com/maps/api/js?sensor=true"></script>
-	<script src="/javascripts/jquery.isotope.min.js"></script>
-	<script src="/javascripts/jquery.nicescroll.min.js"></script>
-	<script src="/javascripts/fancybox/jquery.fancybox.pack.js"></script>
-	<script src="/javascripts/skrollr.min.js"></script>
-	<script src="/javascripts/jquery.scrollTo-1.4.3.1-min.js"></script>
-	<script src="/javascripts/jquery.localscroll-1.2.7-min.js"></script>
-	<script src="/javascripts/stellar.js"></script>
-	<script src="/javascripts/jquery.appear.js"></script>
-  <script src="/javascripts/main.js"></script>
-	</body>
-</html>
+<p>We can&#39;t predict what you&#39;ll want to build, or how you&#39;ll want to build it.
+Instead of prescribing a set of libraries for you to use, and building the
+framework around that, we let <em>you</em> choose.</p>
+
+<h3>Versions</h3>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Scalatra Version</th>
+      <th>Status</th>
+      <th>Source</th>
+      <th>Scala versions</th>
+      <th>Servlet</th>
+      <th>Netty</th>
+    </tr>
+  </thead>
+  <tbody>
+		<tr>
+      <td>2.5.0</td>
+      <td>Stable</td>
+      <td><a href="https://github.com/scalatra/scalatra/tree/v2.5.0">2.5.0</td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.11.x</li>
+          <li>2.12.x</li>
+        </ul>
+      </td>
+      <td>3.1</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>2.4.1</td>
+      <td>Stable</td>
+      <td><a href="https://github.com/scalatra/scalatra/tree/v2.4.1">2.4.1</td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.10.x</li>
+          <li>2.11.x</li>
+        </ul>
+      </td>
+      <td>3.1</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>2.3.1</td>
+      <td>Stable</td>
+      <td><a href="https://github.com/scalatra/scalatra/tree/v2.3.1">2.3.1</td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.10.x</li>
+          <li>2.11.x</li>
+        </ul>
+      </td>
+      <td>3.1</td>
+      <td>N/A</td>
+    </tr>
+		<tr>
+      <td>2.5.1-SNAPSHOT</td>
+      <td>Development</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/2.5.x">2.5.x</td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.10.x</li>
+          <li>2.11.x</li>
+        </ul>
+      </td>
+      <td>3.1</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>2.4.3-SNAPSHOT</td>
+      <td>Development</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/2.4.x">2.4.x</td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.10.x</li>
+          <li>2.11.x</li>
+        </ul>
+      </td>
+      <td>3.1</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>2.3.2-SNAPSHOT</td>
+      <td>Development</td>
+      <td><a href="http://github.com/scalatra/scalatra/tree/2.3.x">2.3.x</td>
+      <td>
+        <ul class="scala-versions">
+          <li>2.10.x</li>
+          <li>2.11.x</li>
+        </ul>
+      </td>
+      <td>3.1</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+
+</main>
+
+{{ partial "footer.html" . }}

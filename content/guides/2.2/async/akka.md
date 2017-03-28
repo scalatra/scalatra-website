@@ -17,7 +17,7 @@ longer needed. To get access to Akka, all you need to do is mix FutureSupport
 into your servlets.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   If you're using Scala 2.9.x, you'll need
   <a href="https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/akka-examples/project/build.scala#L24">the Akka resolver</a>
   in your sbt configuration, otherwise you'll get a missing dependency. Add
@@ -91,7 +91,7 @@ class MyAppServlet extends ScalatraServlet with FutureSupport {
 ### Async request example
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="{{site.examples}}async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.
@@ -141,7 +141,7 @@ When using Akka with Scala 2.10, you get Akka 2.1.x, and some of the imports and
 ### Actor example
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="{{site.examples}}async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.

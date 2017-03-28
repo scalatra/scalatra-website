@@ -87,7 +87,7 @@ data and do data-related work.
 ### Downloading the sample project
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="{{site.examples}}formats/scalatra-commands">scalatra-commands</a>
   for a minimal and standalone project containing the example in this guide.

@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.4/guides/modules.html
-layout: oldguide
 title: Helpers
 ---
 

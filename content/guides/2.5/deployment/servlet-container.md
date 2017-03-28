@@ -3,7 +3,7 @@ title: Deploying to servlet containers
 ---
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   If you're coming from a non-Java background, you may find the subject of
   servlet containers and JVM deployments to be unnecessarily frightening. Don't
   despair. Despite all the mystery which surrounds them, servlet deployments are
@@ -46,7 +46,7 @@ Now that you've got a WAR file, you can run it in a servlet container - there ar
 Let's try [Tomcat](http://tomcat.apache.org), with a local installation.
 
 <div class="alert alert-info">
-<p><span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<p><span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 What follows is <strong>not</strong> a best-practice guide for configuring Tomcat.
 It's aimed at people who are new to servlet containers, and want to see their
 application working. Servlet container configuration can be as potentially complex
@@ -82,7 +82,7 @@ Browse to [http://localhost:8080/yourapp/](http://localhost:8080/yourapp/)
 It's alive! Or it should be.
 
 <div class="alert alert-info">
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 Keep in mind that we've assumed your application has a route defined at the
 path "/".
 </div>
@@ -105,7 +105,7 @@ ROOT application to another spot, and put your app at the ROOT.
     $ mv /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/ROOT.war
 
 <div class="alert alert-warning">
-<span class="badge badge-warning"><i class="icon-flag icon-white"></i></span>  Tomcat paths are case-sensitive. Make sure you copy your app to `ROOT.war`.<br /><br />
+<span class="badge badge-warning"><i class="glyphicon glyphicon-flag"></i></span>  Tomcat paths are case-sensitive. Make sure you copy your app to `ROOT.war`.<br /><br />
 Request body params dont get parsed in 'put(/:resource)' api when deploying scalatra app as a WAR in Tomcat 7. To make your PUT work, set the connector attribute 'parseBodyMethods' to 'POST,PUT' in server.xml of tomcat. The same goes for PATCH.
 </div>
 

@@ -21,7 +21,7 @@ and adding Swagger to it, so that your runnable documentation automatically stay
 in sync with your API.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/swagger-example">swagger-example</a>
   for a minimal and standalone project containing the example in this guide.
@@ -336,7 +336,7 @@ We'll need to add some information to the method in order to tell Swagger what t
 ```
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   Make sure you initialize the val for your apiOperation before attempting to
   use it in as part of a route definition! Otherwise you'll get a 503 error
   when attempting to hit your route.

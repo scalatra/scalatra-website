@@ -54,7 +54,7 @@ The XML which allows you to do this is as follows:
 </web-app>
 ```
 
-<span class="badge badge-success"><i class="icon-thumbs-up icon-white"></i></span>
+<span class="badge badge-success"><i class="glyphicon glyphicon-thumbs-up"></i></span>
 If you started your project in an older version of Scalatra, and want to start
 using the new ScalatraBootstrap configuration style, drop that XML into your
 web.xml and you're all set.
@@ -93,7 +93,7 @@ If you've got more than one servlet or filter in your application, you'll
 need to mount them.
 
 <div class="alert alert-info">
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 If you're coming from a dynamic language, such as PHP, Ruby, Python, or Perl,
 you may be shocked to find that servlet-based applications, including Scalatra,
 are unable to dynamically require and use controller classes. You'll need to
@@ -156,7 +156,7 @@ The two forms are equivalent.
 
 This init param sets the application environment.
 
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 The default is `development`.
 
 If the environment starts with "dev", then `isDevelopmentMode` returns true.
@@ -245,7 +245,7 @@ class ScalatraBootstrap extends LifeCycle with DatabaseInit {
 ### Configuring your app using web.xml
 
 <div class="alert alert-info">
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 If you're an old Java hand, you'll be quite comfortable mounting servlets
 through the <code>web.xml</code> file in traditional servlet style, so you
 may not want to use the Scalatra bootstrap file. If you want, you can use

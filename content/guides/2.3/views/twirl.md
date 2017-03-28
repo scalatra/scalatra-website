@@ -7,7 +7,7 @@ title: Twirl
 *Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.0/ScalaTemplates).
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   Please note that the example for this guide needs to be updated to work with
   Scalatra 2.3.x / Scala 2.11.x.
   <!-- See

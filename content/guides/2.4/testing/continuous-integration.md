@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.4/guides/testing/continuous-integration.html
-layout: oldguide
 title: Continuous integration
 ---
 

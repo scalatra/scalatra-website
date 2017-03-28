@@ -24,7 +24,7 @@ The `request` also implements a `scala.collection.mutable.Map` backed by the
 request attributes.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   The
   <a href="{{site.examples}}http/scalatra-http-demo">scalatra-http-demo</a>
   is a good place to start if you need to see basic requests and response, cookies,
@@ -35,7 +35,7 @@ request attributes.
 
 The response is available through the `response` variable.
 
-<span class="badge badge-warning"><i class="icon-warning-sign icon-white"></i></span>
+<span class="badge badge-warning"><i class="glyphicon glyphicon-warning-sign"></i></span>
 If you override the Scalatra handling and write directly to
 the response object (e.g. `response.getOutputStream`), then your action should
 return `Unit()` to prevent a conflict with multiple writes.

@@ -184,7 +184,7 @@ object MyExampleBuild extends Build {
 ```
 
 <div class="alert alert-info">
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 If you want to add any additional libraries to your project, add them to the
 <code>libraryDependencies</code> section.
 Doing that and running <code>./sbt</code> again will download the dependency jar

@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.4/guides/views/scalate.html
-layout: oldguide
 title: Scalate
 ---
 
@@ -75,7 +74,7 @@ get("/") {
 ```
 
 <div class="alert alert-info">
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 When using the scalate helper methods, it is not required to having a leading
 `/`, so `ssp("index")` would work just as well as `ssp("/index")`.
 </div>
@@ -93,7 +92,7 @@ get("/") {
 }
 ```
 
-<span class="label label-warning"><i class="icon-warning-sign icon-white"></i> Watch out!</span>
+<span class="label label-warning"><i class="glyphicon glyphicon-warning-sign"></i> Watch out!</span>
 When using `layoutTemplate`, you *must* prefix your view paths with a relative
 `/` character. So, `layoutTemplate("/WEB-INF/templates/views/foo.ssp")` is good,
 `layoutTemplate("WEB-INF/templates/views/foo.ssp)` will fail.
@@ -101,7 +100,7 @@ When using `layoutTemplate`, you *must* prefix your view paths with a relative
 #### Passing parameters to views
 
 <div class="alert alert-info">
-<span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+<span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 If you're coming from a dynamic language, pay attention to this next bit,
   because it may surprise you: you need to explicitly declare variables inside
   your views.

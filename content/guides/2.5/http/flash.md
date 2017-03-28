@@ -6,7 +6,7 @@ Flash support, allowing you to store information across requests and expire
 it immediately after a redirect, is included within Scalatra by default.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   The
   <a href="{{site.examples}}http/scalatra-http-demo">scalatra-http-demo</a>
   has a working example of flash support.

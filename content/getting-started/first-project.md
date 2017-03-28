@@ -99,7 +99,7 @@ environment if you don't have one yet. That means sbt may spend some
 time downloading Scalatra and its libraries on first run.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   Although most people use sbt to build their Scalatra projects, it's also
   possible to build using other systems, such as Maven. A user-contributed
   Maven prototype <a href="https://github.com/fancellu/scalatra-maven-prototype">is available</a>.
@@ -145,7 +145,7 @@ $ ./sbt
 The application starts on [http://localhost:8080](http://localhost:8080).
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   As you can see, Scalatra doesn't force you to setup much infrastructure: a
   request to a URL evaluates some Scala code and returns some text in
   response.

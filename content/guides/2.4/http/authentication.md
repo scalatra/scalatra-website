@@ -1,7 +1,6 @@
 ---
 aliases:
   - /2.4/guides/http/authentication.html
-layout: oldguide
 title: Authentication | HTTP | Scalatra
 ---
 
@@ -63,7 +62,7 @@ examples. `scalatra-auth` handles both cookie-based auth and HTTP basic auth.
 First things first. Let's try the simplest possible example: HTTP basic auth.
 
 <div class="alert alert-info">
-  <span class="badge badge-info"><i class="icon-flag icon-white"></i></span>
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
   <a href="{{site.examples}}http/authentication-demo">authentication-demo</a>
   for a minimal and standalone project containing the example in this guide.
