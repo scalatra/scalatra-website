@@ -1,0 +1,23 @@
+{{ partial "header.html" . }}
+
+<div class="row">
+  <div class="col-sm-12 doc-main">
+    <main role="main">
+      <article>
+        <h1 class="doc-entry-title">News</h1>
+        {{ range .Data.Pages }}
+        <section>
+          <h2>
+            <span>{{ .Title }}{{ if .Draft }} #Draft{{ end }}</span>
+            <span class="doc-entry-meta in-list">(<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time>)</span>
+          </h2>
+          <p>{{ printf "%s" .Summary | markdownify }}</p>
+          <p><a href="{{ .RelPermalink }}">Read more...</a></p>
+        </section>
+        {{ end }}
+      </article>
+    </main>
+  </div>
+</div>
+
+{{ partial "footer.html" . }}
