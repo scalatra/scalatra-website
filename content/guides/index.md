@@ -15,6 +15,7 @@ title: Documentation
 ### Scalatra 2.3.x
 
 - [Guides](/guides/2.3/)
+- [Scaladoc](/apidocs/2.3/)
 
 ### Scalatra 2.2.x
 
