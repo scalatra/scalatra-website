@@ -6,6 +6,7 @@
 	<main role="main">
 	  <article>
 		<a id="title"></a>
+    <span class="doc-entry-meta in-list"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
 		<h1 class="doc-entry-title">{{ .Title }}</h1>
 		<section>
 		  {{ .Content }}
@@ -20,9 +21,7 @@
           {{ range first 8 (where (where .Site.Pages.ByDate.Reverse "Section" "news") ".Title" "!=" "News") }}
           <h5>
             <a href="{{ .Permalink }}">{{ .Title }}</a><br>
-            <span class="doc-entry-meta in-list">
-    					(<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time>)
-    				</span>
+            <span class="doc-entry-meta in-list"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
           </h5>
           <p>{{ printf "%s" .Summary | markdownify }}</p>
           {{ end }}

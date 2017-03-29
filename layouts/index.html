@@ -44,9 +44,7 @@
 			{{ range first 5 (where (where .Site.Pages.ByDate.Reverse "Section" "news") ".Title" "!=" "News") }}
 			<li>
 			  <a href="{{ .Permalink }}">{{ .Title }}</a><br>
-				<span class="doc-entry-meta in-list">
-					(<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time>)
-				</span>
+				<span class="doc-entry-meta in-list"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
 			</li>
 			{{ end }}
     </ul>
