@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/deployment/jelastic.html
 title: Deploying to Jelastic
+layout: guides-2.4
 ---
 
 [Jelastic](http://jelastic.com/) is a cloud application platform designed specifically

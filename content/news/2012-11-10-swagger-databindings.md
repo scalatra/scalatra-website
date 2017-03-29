@@ -1,5 +1,6 @@
 ---
 title: New databindings guide
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2012-11-10

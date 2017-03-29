@@ -1,5 +1,6 @@
 ---
 title: Atmosphere guide now available
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2012-12-02

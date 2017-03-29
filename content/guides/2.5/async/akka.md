@@ -1,5 +1,6 @@
 ---
-title: Akka | Async
+title: Akka
+layout: guides-2.5
 ---
 
 ### AkkaSupport

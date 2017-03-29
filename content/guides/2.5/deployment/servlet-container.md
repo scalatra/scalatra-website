@@ -1,5 +1,6 @@
 ---
 title: Deploying to servlet containers
+layout: guides-2.5
 ---
 
 <div class="alert alert-info">

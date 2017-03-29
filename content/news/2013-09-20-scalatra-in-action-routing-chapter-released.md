@@ -1,5 +1,6 @@
 ---
 title: "Scalatra in Action: Routing chapter available"
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2013-09-20

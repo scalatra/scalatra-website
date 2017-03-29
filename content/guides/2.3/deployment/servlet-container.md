@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/deployment/servlet-container.html
 title: Deploying to servlet containers | Deployment | Scalatra
+layout: guides-2.3
 ---
 
 <div class="alert alert-info">

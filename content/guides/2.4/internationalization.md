@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/internationalization.html
 title: Internationalization
+layout: guides-2.4
 ---
 
 This guide still needs to be written.

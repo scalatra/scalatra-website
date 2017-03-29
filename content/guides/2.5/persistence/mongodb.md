@@ -1,5 +1,6 @@
 ---
 title: MongoDb
+layout: guides-2.5
 ---
 
 [MongoDb](http://mongodb.org) is an open-source document database, and one of the most widely deployed NoSQL databases. It is extremely easy to use with Scalatra.

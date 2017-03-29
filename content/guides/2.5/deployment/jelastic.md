@@ -1,5 +1,6 @@
 ---
 title: Deploying to Jelastic
+layout: guides-2.5
 ---
 
 [Jelastic](http://jelastic.com/) is a cloud application platform designed specifically

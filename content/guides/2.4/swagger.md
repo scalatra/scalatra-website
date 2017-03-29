@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/swagger.html
 title: Swagger
+layout: guides-2.4
 ---
 
 [Swagger](http://swagger.io) is a specification which allows you to quickly define the functionality of a REST API using JSON documents. But it's more than

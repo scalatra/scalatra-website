@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/persistence/riak.html
 title: Riak
+layout: guides-2.3
 ---
 
 [Riak](http://riak.basho.org) is an open source, distributed database.  

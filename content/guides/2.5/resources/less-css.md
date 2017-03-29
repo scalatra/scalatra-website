@@ -1,5 +1,6 @@
 ---
 title: LESS CSS
+layout: guides-2.5
 ---
 
 [LESS](http://lesscss.org/) is an extension to CSS that adds DRY features such as

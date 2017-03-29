@@ -1,5 +1,6 @@
 ---
 title: Scalatra Roundup - Databinders, and More Docs
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2012-11-04

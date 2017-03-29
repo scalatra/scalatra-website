@@ -1,8 +1,9 @@
 ---
+aliases:
+  - /2.5/guides/scalatra-philosophy.html
 title: Scalatra's philosophy
+layout: guides-2.5
 ---
-
-Scalatra development is guided by a simple set of principles.
 
 ### 1. Start small, build upwards
 
@@ -13,6 +14,7 @@ Start with a small core, and have lots of easy integrations for common tasks.
 Allow the user freedom to choose whatever structure and libraries make the most sense for the application being built.
 
 ### 3. Solid, but not stolid
+
 
 Use solid base components. For instance, servlets aren't cool, but they are
 extremely stable and have a huge community behind them. At the same time, work

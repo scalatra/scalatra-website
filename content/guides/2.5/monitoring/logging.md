@@ -1,5 +1,6 @@
 ---
 title: Logging
+layout: guides-2.5
 ---
 
 By default, Scalatra uses [Logback][logback] for logging.

@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/async/atmosphere.html
 title: Atmosphere
+layout: guides-2.3
 ---
 
 Scalatra has a built-in integration with

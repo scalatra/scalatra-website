@@ -1,5 +1,6 @@
 ---
 title: Configuration
+layout: guides-2.5
 ---
 
 As you develop, test, and get ready for final deployment,

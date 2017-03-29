@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/deployment/servlet-container.html
 title: Deploying to servlet containers
+layout: guides-2.4
 ---
 
 <div class="alert alert-info">

@@ -1,5 +1,6 @@
 ---
 title: "New persistence guides"
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2013-05-19

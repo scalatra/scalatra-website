@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/deployment/configuration.html
 title: Configuration
+layout: guides-2.3
 ---
 
 As you develop, test, and get ready for final deployment,

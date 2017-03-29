@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/http/flash.html
 title: Flash | HTTP | Scalatra guides
+layout: guides-2.4
 ---
 
 Flash support, allowing you to store information across requests and expire

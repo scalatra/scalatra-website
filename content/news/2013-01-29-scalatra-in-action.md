@@ -1,5 +1,6 @@
 ---
 title: "Book: Scalatra in Action"
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2012-12-19

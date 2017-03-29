@@ -1,5 +1,6 @@
 ---
 title: CORS
+layout: guides-2.5
 ---
 
 ### Cross origin resource sharing

@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/persistence/mongodb.html
 title: MongoDb Persistence
+layout: guides-2.3
 ---
 
 [MongoDb](http://mongodb.org) is an open-source document database, and one of the most widely deployed NoSQL databases. It is extremely easy to use with Scalatra.

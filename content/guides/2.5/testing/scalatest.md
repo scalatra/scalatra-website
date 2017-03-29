@@ -1,5 +1,6 @@
 ---
 title: ScalaTest
+layout: guides-2.5
 ---
 
 [ScalaTest](http://scalatest.org/) supports three main styles of testing out of

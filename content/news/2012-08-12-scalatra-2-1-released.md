@@ -1,5 +1,6 @@
 ---
 title: Scalatra 2.1 released
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2012-08-12

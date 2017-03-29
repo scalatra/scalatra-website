@@ -1,5 +1,6 @@
 ---
 title: Atmosphere
+layout: guides-2.5
 ---
 
 Scalatra has a built-in integration with

@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/http/flash.html
 title: Flash
+layout: guides-2.3
 ---
 
 Flash support, allowing you to store information across requests and expire

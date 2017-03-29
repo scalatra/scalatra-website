@@ -1,5 +1,6 @@
 ---
 title: Atmosphere Hits Develop Branch
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2012-09-13

@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/monitoring/metrics.html
 title: Metrics
+layout: guides-2.4
 ---
 
 <div class="alert alert-info">

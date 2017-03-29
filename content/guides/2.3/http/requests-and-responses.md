@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/http/requests-and-responses.html
 title: Requests and responses
+layout: guides-2.3
 ---
 
 ## Request

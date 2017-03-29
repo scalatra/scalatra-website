@@ -1,5 +1,6 @@
 ---
-title: Authentication | HTTP | Scalatra
+title: Authentication
+layout: guides-2.5
 ---
 
 *Scentry* is Scalatra's optional authentication system. It is a port of Ruby's

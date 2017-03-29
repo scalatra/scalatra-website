@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/testing/specs2.html
 title: Specs2
+layout: guides-2.4
 ---
 
 [Specs2](http://etorreborre.github.com/specs2/) is a library for writing

@@ -1,5 +1,6 @@
 ---
-title: FAQ | Scalatra guides
+title: FAQ
+layout: guides-2.5
 ---
 
 --- name:headExtra pipeline:jade

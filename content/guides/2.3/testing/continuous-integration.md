@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/testing/continuous-integration.html
 title: Continuous integration
+layout: guides-2.3
 ---
 
 Continuous integration is the practice of having a build server regularly compile

@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/formats/json.html
 title: Handling JSON
+layout: guides-2.3
 ---
 
 Scalatra makes JSON handling quick and easy. By adding a few library imports and several lines of code, you can get automatic JSON serialization and deserialization for any Scala case class.

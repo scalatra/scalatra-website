@@ -1,5 +1,6 @@
 ---
 title: Introduction
+layout: guides-2.5
 ---
 
 Scalatra's philosophy is to keep things simple and solid. At its heart, Scalatra is basically a domain-specific language (DSL) for easily making HTTP requests, and a way of extending the core HTTP router with whatever libraries you want. We think we've got a great DSL for HTTP - the Sinatra style strikes us as perhaps the simplest, most natural way to express HTTP routes.

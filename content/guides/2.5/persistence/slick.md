@@ -1,5 +1,6 @@
 ---
 title: Slick
+layout: guides-2.5
 ---
 
 [Slick](http://slick.typesafe.com/) is a database library for relational databases. In the following guide we will see how to integrate it in a Scalatra application.

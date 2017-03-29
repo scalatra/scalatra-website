@@ -1,5 +1,6 @@
->---
+---
 title: Squeryl
+layout: guides-2.5
 ---
 
 [Squeryl](http://squeryl.org/) is a Scala object-relational mapper and

@@ -1,5 +1,6 @@
 ---
 title: "Scalatra 2.2.1 released"
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2013-04-10
