@@ -1,5 +1,6 @@
 ---
 title: Requests and responses
+layout: guides-2.5
 ---
 
 ## Request

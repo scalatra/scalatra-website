@@ -1,5 +1,6 @@
 ---
 title: ScalatraTest
+layout: guides-2.5
 ---
 
 

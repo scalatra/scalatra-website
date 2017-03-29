@@ -1,5 +1,6 @@
 ---
 title: Sessions
+layout: guides-2.5
 ---
 
 ### Session handling

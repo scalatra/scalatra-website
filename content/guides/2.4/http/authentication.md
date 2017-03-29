@@ -1,7 +1,8 @@
 ---
 aliases:
   - /2.4/guides/http/authentication.html
-title: Authentication | HTTP | Scalatra
+title: Authentication
+layout: guides-2.4
 ---
 
 *Scentry* is Scalatra's optional authentication system. It is a port of Ruby's

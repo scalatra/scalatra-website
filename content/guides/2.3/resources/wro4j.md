@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/resources/wro4j.html
 title: wro4j
+layout: guides-2.3
 ---
 
 The [Web Resource Optimizer for Java (wro4j)][wro4j] is a Free and Open Source Java

@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/views/twirl.html
 title: Twirl
+layout: guides-2.3
 ---
 
 *Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.0/ScalaTemplates).

@@ -1,5 +1,6 @@
 ---
 title: CoffeeScript
+layout: guides-2.5
 ---
 
 [CoffeeScript](http://coffeescript.org/) is a seriously awesome client-side scripting

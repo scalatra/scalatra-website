@@ -1,5 +1,6 @@
 ---
 title: Riak
+layout: guides-2.5
 ---
 
 [Riak](http://riak.basho.org) is an open source, distributed database.  

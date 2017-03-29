@@ -1,5 +1,6 @@
 ---
 title: Commands
+layout: guides-2.5
 ---
 
 Scalatra includes a very sophisticated set of validation commands.

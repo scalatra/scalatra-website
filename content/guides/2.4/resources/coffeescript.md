@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/resources/coffeescript.html
 title: CoffeeScript
+layout: guides-2.4
 ---
 
 [CoffeeScript](http://coffeescript.org/) is a seriously awesome client-side scripting

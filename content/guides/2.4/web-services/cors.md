@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/web-services/cors.html
 title: CORS
+layout: guides-2.4
 ---
 
 ### Cross origin resource sharing

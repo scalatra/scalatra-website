@@ -1,5 +1,6 @@
 ---
 title: Flash | HTTP | Scalatra guides
+layout: guides-2.5
 ---
 
 Flash support, allowing you to store information across requests and expire

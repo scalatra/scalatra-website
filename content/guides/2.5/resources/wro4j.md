@@ -1,5 +1,6 @@
 ---
 title: wro4j
+layout: guides-2.5
 ---
 
 The [Web Resource Optimizer for Java (wro4j)][wro4j] is a Free and Open Source Java

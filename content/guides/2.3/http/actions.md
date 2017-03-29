@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/http/actions.html
 title: Actions
+layout: guides-2.3
 ---
 
 As explained in the [routes guide](routes.html), an action is the code that handles

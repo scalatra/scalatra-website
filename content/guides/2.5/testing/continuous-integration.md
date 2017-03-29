@@ -1,5 +1,6 @@
 ---
 title: Continuous integration
+layout: guides-2.5
 ---
 
 Continuous integration is the practice of having a build server regularly compile

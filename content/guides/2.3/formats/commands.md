@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/formats/commands.html
 title: Commands
+layout: guides-2.3
 ---
 
 Scalatra includes a very sophisticated set of validation commands.

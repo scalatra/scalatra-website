@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/deployment/standalone.html
 title: Standalone deployment
+layout: guides-2.4
 ---
 
 ### Launching Scalatra as a servlet

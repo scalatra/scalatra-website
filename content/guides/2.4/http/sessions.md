@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/http/sessions.html
 title: Sessions
+layout: guides-2.4
 ---
 
 ### Session handling

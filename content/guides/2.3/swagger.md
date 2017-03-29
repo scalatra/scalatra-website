@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/swagger.html
 title: Swagger
+layout: guides-2.3
 ---
 
 ### What is Swagger?

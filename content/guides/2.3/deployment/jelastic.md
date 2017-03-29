@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/deployment/jelastic.html
 title: Deploying to Jelastic
+layout: guides-2.3
 ---
 
 <div class="page-header">

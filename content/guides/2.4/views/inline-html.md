@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/views/inline-html.html
 title: Inline HTML
+layout: guides-2.4
 ---
 
 The simplest method of rendering a view is by using inline HTML.

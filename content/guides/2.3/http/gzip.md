@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/http/gzip.html
 title: Gzip
+layout: guides-2.3
 ---
 
 Bandwidth can be wasted when using verbose plaintext formats such as XML, leading

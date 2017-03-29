@@ -1,7 +1,8 @@
 ---
 aliases:
   - /2.4/guides/faq.html
-title: FAQ | Scalatra guides
+title: FAQ
+layout: guides-2.4
 ---
 
 --- name:headExtra pipeline:jade

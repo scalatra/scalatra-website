@@ -2,6 +2,7 @@
 aliases:
   - /2.3/guides/resources/less-css.html
 title: LESS CSS
+layout: guides-2.3
 ---
 
 [LESS](http://lesscss.org/) is an extension to CSS that adds DRY features such as

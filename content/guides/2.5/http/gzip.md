@@ -1,5 +1,6 @@
 ---
 title: Gzip
+layout: guides-2.5
 ---
 
 Bandwidth can be wasted when using verbose plaintext formats such as XML, leading

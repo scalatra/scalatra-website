@@ -1,5 +1,6 @@
 ---
 title: Deploying to CloudBees
+layout: guides-2.5
 ---
 
 [CloudBees](http://www.cloudbees.com/) is a hosted platform for JVM apps that puts

@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/http/routes.html
 title: Routes
+layout: guides-2.4
 ---
 
 All web applications need a way to match up the incoming HTTP request with some code to execute on the server. In Scalatra, this is done using _routes_ and _actions_.

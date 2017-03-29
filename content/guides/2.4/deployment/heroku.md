@@ -2,6 +2,7 @@
 aliases:
   - /2.4/guides/deployment/heroku.html
 title: Deploying to Heroku
+layout: guides-2.4
 ---
 
 [Heroku](http://www.heroku.com/) is a cloud application platform that makes it easy to deploy and scale applications. With the right project setup, deploying your application becomes as easy as `git push`.

@@ -1,5 +1,6 @@
 ---
 title: Helpers
+layout: guides-2.5
 ---
 
 Scalatra has a wide range of helpers to take care of common web development
