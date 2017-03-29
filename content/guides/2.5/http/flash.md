@@ -1,5 +1,5 @@
 ---
-title: Flash | HTTP | Scalatra guides
+title: Flash
 layout: guides-2.5
 ---
 

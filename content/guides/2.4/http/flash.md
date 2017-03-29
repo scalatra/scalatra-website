@@ -1,7 +1,7 @@
 ---
 aliases:
   - /2.4/guides/http/flash.html
-title: Flash | HTTP | Scalatra guides
+title: Flash
 layout: guides-2.4
 ---
 
