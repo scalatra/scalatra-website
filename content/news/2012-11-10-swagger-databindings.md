@@ -19,7 +19,7 @@ This week saw publication of a long
 
 We've also published a pre-release
 Scalatra Guide on the new
-[databinder commands](http://scalatra.org/2.2/guides/databinders.html) in 2.2.
+[databinder commands](/guides/2.2/formats/commands.html) in 2.2.
 If you want to try it out, make sure you do:
 
 `g8 scalatra/scalatra-sbt.g8 --branch develop`
