@@ -1,5 +1,6 @@
 ---
 title: "GitBucket, a large FOSS codebase in Scalatra"
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2013-09-16

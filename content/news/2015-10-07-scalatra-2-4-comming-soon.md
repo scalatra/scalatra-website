@@ -1,5 +1,6 @@
 ---
 title: "Scalatra 2.4.0 will be out soon"
+layout: news
 author: Kazuhiro Sera
 twitter: seratch
 date: 2015-10-07

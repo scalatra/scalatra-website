@@ -1,5 +1,6 @@
 ---
 title: Scalatypes Podcast
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2012-12-07

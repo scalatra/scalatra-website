@@ -1,5 +1,6 @@
 ---
 title: "Scalatra 2.4.0 is out"
+layout: news
 author: Kaz Sera
 twitter: seratch
 date: 2015-12-20

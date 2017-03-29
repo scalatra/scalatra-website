@@ -1,5 +1,6 @@
 ---
 title: "Scalatra 2.5.0 is out"
+layout: news
 author: Dave Hrycyszyn
 twitter: futurechimp
 date: 2016-11-21
