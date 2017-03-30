@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/deployment/google-app-engine.html
 title: Google App Engine
+layout: guides-2.2
 ---
 
 Scalatra doesn't work on [Google App Engine](https://developers.google.com/appengine/)

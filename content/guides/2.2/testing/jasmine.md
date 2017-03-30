@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/testing/jasmine.html
 title: Jasmine
+layout: guides-2.2
 ---
 
 

@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/views/twirl.html
 title: Twirl
+layout: guides-2.2
 ---
 
 *Twirl* is the name [Mathias](https://twitter.com/sirthias)

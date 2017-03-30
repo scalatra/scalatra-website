@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/testing/scalatratest.html
 title: ScalatraTest
+layout: guides-2.2
 ---
 
 #### Dependency

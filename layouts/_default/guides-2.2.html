@@ -1,0 +1,122 @@
+{{ $baseUrl := .Site.BaseURL }}
+{{ partial "header.html" . }}
+
+<div class="row">
+  <div class="col-sm-9 doc-main">
+	<main role="main">
+	  <article>
+		<a id="title"></a>
+		<h1 class="doc-entry-title">{{ .Title }}</h1>
+		<section>
+		  {{ .Content }}
+		</section>
+	  </article>
+	</main>
+  </div> <!-- /.doc-main -->
+  <div class="col-sm-3 doc-sidebar">
+	<div id="sidebar">
+	  <div class="sidebar-module">
+  		<div class="sidebar-toc">
+        <h4 class="sidebar-heading">Scalatra 2.2 Guides</h4>
+        <h5 class="sidebar-heading">Outlook</h5>
+  		  <ul>
+          <li><a href="{{ $baseUrl }}/guides/2.2/scalatra-philosophy.html">Scalatra's philosophy</a></li>
+        </ul>
+  		  <h5 class="sidebar-heading">Development</h5>
+  		  <ul>
+    			<li><strong>HTTP</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/http/routes.html">Routes</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/http/actions.html">Actions</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/http/reverse-routes.html">Reverse Routes</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/http/requests-and-responses.html">Requests &amp; Responses</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/http/gzip.html">GZip</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/http/flash.html">Flash</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/http/authentication.html">Authentication</a></li>
+            </ul>
+          </li>
+    			<li><strong>Async</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/async/akka.html">Akka</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/async/atmosphere.html">Atmosphere</a></li>
+            </ul>
+          </li>
+    			<li><strong>Views</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/views/inline-html.html">Inline HTML</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/views/scalate.html">Scalate</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/views/twirl.html">Twirl</a></li>
+            </ul>
+          </li>
+    			<li><strong>Resources</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/resources/coffeescript.html">CoffeeScript</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/resources/less-css.html">LESS CSS</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/resources/wro4j.html">wro4j</a></li>
+            </ul>
+          </li>
+    			<li><strong>Formats</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/formats/upload.html">File Upload</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/formats/json.html">JSON</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/formats/commands.html">Commands</a></li>
+            </ul>
+          </li>
+    			<li><strong>Persistence</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/persistence/introduction.html">Introduction</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/persistence/mongodb.html">MongoDB</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/persistence/riak.html">Riak</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/persistence/slick.html">Slick</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/persistence/squeryl.html">Squeryl</a></li>
+            </ul>
+          </li>
+          <li><strong>Web Services</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/web-services/cors.html">CORS</a></li>
+            </ul>
+          </li>
+    			<li><strong>Internationalization</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/internationalization.html">i18n</a></li>
+            </ul>
+          </li>
+    			<li><strong>Testing</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/testing/scalatest.html">ScalaTest</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/testing/specs2.html">Specs2</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/testing/continuous-integration.html">Continuous Integration</a></li>
+            </ul>
+          </li>
+    			<li><strong>API Design &amp; Documentation</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/swagger.html">Swagger</a></li>
+            </ul>
+          </li>
+        </ul>
+        <h5 class="sidebar-heading">After development</h5>
+        <ul>
+          <li><strong>Monitoring</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/monitoring/logging.html">Logging</a></li>
+            </ul>
+          </li>
+          <li><strong>Deployment</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/2.2/deployment/configuration.html">Configuration</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/deployment/servlet-container.html">Servlet Container</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/deployment/standalone.html">Standalone</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/deployment/heroku.html">Heroku</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/deployment/jelastic.html">Jelastic</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/deployment/cloudbees.html">CloudBees</a></li>
+              <li><a href="{{ $baseUrl }}/guides/2.2/deployment/google-app-engine.html">Google App Engine</a></li>
+            </ul>
+          </li>
+  		  </ul>
+  		</div>
+	  </div>
+	</div>
+  </div><!-- /.doc-sidebar -->
+</div> <!-- /.row -->
+
+{{ partial "footer.html" . }}

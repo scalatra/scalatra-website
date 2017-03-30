@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/modules.html
 title: Helpers
+layout: guides-2.2
 ---
 
 Scalatra has a wide range of helpers to take care of common web development

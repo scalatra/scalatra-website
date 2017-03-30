@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/testing/scalatest.html
 title: ScalaTest
+layout: guides-2.2
 ---
 
 [ScalaTest](http://scalatest.org/) supports three main styles of testing out of

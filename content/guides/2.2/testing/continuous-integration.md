@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/testing/continuous-integration.html
 title: Continuous integration
+layout: guides-2.2
 ---
 
 Continuous integration is the practice of having a build server regularly compile and test the latest code base. Using continuous integration has many advantages:

@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/async/akka.html
 title: Akka and Async
+layout: guides-2.2
 ---
 
 ### AkkaSupport

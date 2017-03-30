@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/http/reverse-routes.html
 title: Reverse routes
+layout: guides-2.2
 ---
 
 ### URL support and reverse routes

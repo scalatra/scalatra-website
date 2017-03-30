@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/faq.html
 title: FAQ
+layout: guides-2.2
 ---
 
 --- name:headExtra pipeline:jade

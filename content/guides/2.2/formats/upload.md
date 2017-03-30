@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/formats/upload.html
 title: File upload
+layout: guides-2.2
 ---
 
 ## Uploading files

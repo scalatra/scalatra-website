@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/persistence/squeryl.html
 title: Squeryl
+layout: guides-2.2
 ---
 
 [Squeryl](http://squeryl.org/) is a Scala object-relational mapper and

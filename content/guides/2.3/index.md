@@ -1,7 +1,7 @@
 ---
 aliases:
   - /2.3/guides/index.html
-title: Scalatra guides | Scalatra
+title: Scalatra 2.3 Guides
 ---
 
 ## Outlook

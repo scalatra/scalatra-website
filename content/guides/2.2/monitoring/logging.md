@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/monitoring/logging.html
 title: Loggings
+layout: guides-2.2
 ---
 
 By default, Scalatra uses [Logback][logback] for logging.

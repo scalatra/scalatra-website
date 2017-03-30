@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/deployment/cloudbees.html
 title: Deploying to CloudBees
+layout: guides-2.2
 ---
 
 [CloudBees](http://www.cloudbees.com/) is a hosted platform for JVM apps that puts

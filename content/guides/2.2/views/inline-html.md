@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/views/inline-html.html
 title: Inline HTML
+layout: guides-2.2
 ---
 
 ## Inline HTML

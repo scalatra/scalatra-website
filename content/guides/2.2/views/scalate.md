@@ -2,6 +2,7 @@
 aliases:
   - /2.2/guides/views/scalate.html
 title: Scalate
+layout: guides-2.2
 ---
 
 If you're using Scalatra to build a web application (as opposed to an API), chances are you'll

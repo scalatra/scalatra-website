@@ -64,7 +64,7 @@ covering common development tasks.
 ### Testing
 - [ScalaTest](testing/scalatest.html)
 - [Specs2](testing/specs2.html),
-- [Ccontinuous Integration](testing/continuous-integration.html),
+- [Continuous Integration](testing/continuous-integration.html),
 - ScalaCheck
 - Selenium
 - Jasmine
