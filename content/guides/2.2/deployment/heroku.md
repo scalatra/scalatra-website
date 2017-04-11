@@ -141,6 +141,12 @@ And don't forget to set your servlet in mapping:
 context.addServlet(classOf[com.example.app.MyScalatraServlet], "/*")
 ```
 
+If you have a custom bootstrap class location:
+
+```scala
+context.setInitParameter(ScalatraListener.LifeCycleKey, "org.yourdomain.project.MyScalatraBootstrap")
+```
+
 ## 5. Deploy
 
 If you haven't set up your project as a Git repo, do so.
