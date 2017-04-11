@@ -105,6 +105,12 @@ And don't forget to set your servlet mapping (you probably already have somethin
 context.mount(new MyScalatraServlet, "/*")
 ```
 
+If you have a custom boostrap class location:
+
+```scala
+context.setInitParameter(ScalatraListener.LifeCycleKey, "com.example.app.MyScalatraBootstrap")
+```
+
 ### Tell Heroku how to run your app (optional)
 
 Heroku will detect the `target/universal/stage/bin/<app-name>` script generated
