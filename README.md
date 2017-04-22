@@ -1,15 +1,13 @@
-# Scalatra project
+Scalatra Website
+================
 
-This is the home of the [Scalatra](http://github.com/scalatra/scalatra/)
-website which generates the site at http://scalatra.org.
+This is the code for [https://scalatra.org](https://scalatra.org), including all the news, guides, and getting started content.
 
-To build it, you'll need to have [Jekyll](https://github.com/mojombo/jekyll)
-installed on your system.  See the Jekyll docs for installation instructions.
+To build it:
 
-Once Jekyll's installed, you can do this to generate the documentation:
+* check it out locally
+* install [Hugo](https://gohugo.io)
+* type `hugo serve` from the root directory of the repo
 
- cd scalatra-website
- jekyll --server --auto
+Hugo will fire up, and you'll be able to edit the site's contents at http://localhost:1313/
 
-This will start an embedded webserver and automatically regenerate the website
-as you make changes to it. You can then view the site at http://localhost:4000.

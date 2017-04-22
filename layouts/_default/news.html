@@ -1,0 +1,33 @@
+{{ $baseUrl := .Site.BaseURL }}
+{{ partial "header.html" . }}
+
+<div class="row">
+  <div class="col-sm-9 doc-main">
+	<main role="main">
+	  <article>
+		<a id="title"></a>
+    <span class="doc-entry-meta in-list"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
+		<h1 class="doc-entry-title">{{ .Title }}</h1>
+		<section>
+		  {{ .Content }}
+		</section>
+	  </article>
+	</main>
+  </div> <!-- /.doc-main -->
+  <div class="col-sm-3 doc-sidebar">
+	  <div class="sidebar-module">
+  		<div class="sidebar-toc">
+        <h4 class="sidebar-heading">Past news items</h4>
+          {{ range first 8 (where (where .Site.Pages.ByDate.Reverse "Section" "news") ".Title" "!=" "News") }}
+          <h5>
+            <a href="{{ .Permalink }}">{{ .Title }}</a><br>
+            <span class="doc-entry-meta in-list"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time></span>
+          </h5>
+          <p>{{ printf "%s" .Summary | markdownify }}</p>
+          {{ end }}
+  		</div>
+  	</div>
+  </div><!-- /.doc-sidebar -->
+</div> <!-- /.row -->
+
+{{ partial "footer.html" . }}

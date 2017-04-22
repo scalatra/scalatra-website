@@ -1,0 +1,126 @@
+baseurl = ""
+languageCode = "en-us"
+title = "Scalatra"
+theme = "bootie-docs"
+metadataformat = "yaml"
+canonifyurls = true
+uglyurls = true
+
+# Enable Google Analytics by entering your tracking id
+googleAnalytics = ""
+
+[permalinks]
+  news = "/:year/:month/:day/:filename.html"
+
+[params]
+	# General information
+	# author = "Scalatra Team"
+	description = "Documentation and how-to guides for the Scalatra microframework."
+	copyright = "Scalatra Team"
+    highlightStyle = "github"
+
+	# Repository
+	# provider = "GitHub"
+	# repo_url = "https://github.com/scalatra/scalatra"
+
+	# version = "2.5.0"
+	#logo = "images/logo.png"
+	#favicon = ""
+
+
+	#permalink = "#"
+
+	# Custom assets
+	#custom_css = []
+	#custom_js  = []
+
+	# Syntax highlighting theme
+	#highlight_css  = "/stylesheets/highlight/highlight.css"
+
+  #examples_base_url = "https://github.com/scalatra/scalatra-website-examples/tree/master/"
+
+# [params.two_two]
+#   jetty_version =  "8.1.10.v20130312"
+#   scalatra_version = "2.2.2"
+#   servlet_version =  "3.0.0.v201112011016"
+#   json4s_version = "3.2.6"
+#   swagger_version = "1.2.0"
+#   logback_version = "1.0.13"
+#   start_script_plugin_version = "0.5.3"
+#   start_script_plugin_version_for_sbt_0_13_0 = "0.10.0"
+#   akka_version = "2.2.3"
+#   example_github = "{{Params.examples_base_url}}2.2/"
+#
+# [params.2_3]
+#   jetty_version =  "9.1.3.v20140225"
+#   scalatra_version = "2.3.0"
+#   servlet_version =  "3.1.0"
+#   json4s_version = "3.2.9"
+#   swagger_version = "1.2.0"
+#   logback_version = "1.1.1"
+#   start_script_plugin_version = "0.5.3"
+#   start_script_plugin_version_for_sbt_0_13_0 = "0.10.0"
+#   akka_version = "2.3.4"
+#
+# [params.2_4]
+#   jetty_version =  "9.2.10.v20150310"
+#   scalatra_version = "2.4.1"
+#   servlet_version =  "3.1.0"
+#   json4s_version = "3.3.0"
+#   swagger_version = "1.2.0"
+#   logback_version = "1.1.3"
+#   start_script_plugin_version = "0.5.3"
+#   start_script_plugin_version_for_sbt_0_13_0 = "0.10.0"
+#   akka_version = "2.3.9"
+#
+# [params.2_5]
+#   jetty_version =  "9.2.10.v20150310"
+#   scalatra_version = "2.4.1"
+#   servlet_version =  "3.1.0"
+#   json4s_version = "3.3.0"
+#   swagger_version = "1.2.0"
+#   logback_version = "1.1.3"
+#   start_script_plugin_version = "0.5.3"
+#   start_script_plugin_version_for_sbt_0_13_0 = "0.10.0"
+#   akka_version = "2.3.9"
+
+[params.palette]
+	primary = "teal"
+	accent  = "red"
+
+[params.font]
+	text = "Ubuntu"
+	code = "Ubuntu Mono"
+
+
+[social]
+	twitter = "scalatra"
+	github  = "scalatra/scalatra"
+	email   = ""
+
+
+[[menu.main]]
+	name   = "Getting started"
+	url    = "/getting-started/"
+	weight = 10
+
+[[menu.main]]
+	name   = "Documentation"
+	url    = "/guides/"
+	weight = 20
+
+[[menu.main]]
+	name   = "News"
+	url    = "/news.html"
+	weight = 10
+
+[[menu.main]]
+	name   = "Community"
+	url    = "/community/"
+	weight = 30
+
+[blackfriday]
+	smartypants	= true
+	fractions = true
+	smartDashes = true
+	plainIDAnchors = true

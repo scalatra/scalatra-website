@@ -1,0 +1,8 @@
+.jumbotron h1 {
+  text-align: center;
+}
+
+.navbar-brand img {
+  position: relative;
+  top: -4px;
+}
