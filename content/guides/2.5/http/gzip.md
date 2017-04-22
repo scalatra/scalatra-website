@@ -7,7 +7,7 @@ Bandwidth can be wasted when using verbose plaintext formats such as XML, leadin
 to a poor user experience for your apps.
 Fortunately, many clients can accept compressed content and Scalatra lets you
 compress server responses without any change to your business logic.
-Just mix in `GZipSupport`.
+Just mix in `ContentEncodingSupport`.
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
@@ -24,13 +24,13 @@ This servlet will reply with compressed content if and only if the client provid
 an `Accept-Header` indicating it understands gzip.
 
 ```scala
-class GZipApp extends ScalatraServlet with GZipSupport {
+class GZipApp extends ScalatraServlet with ContentEncodingSupport {
 
   get("/") {
     <html>
       <body>
         <h1>This is
-          <a href="http://scalatra.org/2.2/guides/http/gzip.html">
+          <a href="http://scalatra.org/guides/2.5/http/gzip.html">
             http/gzip
           </a>!
         </h1>
@@ -38,4 +38,10 @@ class GZipApp extends ScalatraServlet with GZipSupport {
     </html>
   }
 }
+```
+
+You can get gzip file using the `curl` command as follows.
+
+```bash
+$  curl -H "Accept-Encoding:gzip,deflate" -o gzip_example.html.gz http://localhost:8080
 ```
