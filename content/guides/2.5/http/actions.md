@@ -10,7 +10,7 @@ When an incoming request matches a route, that route's action is executed.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   The
-  <a href="{{site.examples}}http/scalatra-http-demo">scalatra-http-demo</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/http/scalatra-http-demo">scalatra-http-demo</a>
   is a good place to start if you need to see basic requests and response, cookies,
   and dealing with form input.
 </div>
