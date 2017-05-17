@@ -65,7 +65,7 @@ First things first. Let's try the simplest possible example: HTTP basic auth.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="{{site.examples}}http/authentication-demo">authentication-demo</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/http/authentication-demo">authentication-demo</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 

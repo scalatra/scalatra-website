@@ -106,7 +106,7 @@ and define a `receive` method, which listens for events.
 
 One AtmosphereClient is instantiated per connected user. It's worth
 taking a look at the
-[ScalaDocs](http://scalatra.org/2.2/api/#org.scalatra.atmosphere.AtmosphereClient) and [source](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/AtmosphereClient.scala) for AtmosphereClient to see what it can do.
+[ScalaDocs](http://scalatra.org/apidocs/2.3/org/scalatra/atmosphere/AtmosphereClient.html) and [source](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/AtmosphereClient.scala) for AtmosphereClient to see what it can do.
 
 As you can see, there are quite a few kinds of events which Scalatra's
 atmosphere integration can deal with:
@@ -193,7 +193,7 @@ Besides the basic connectivity provided by the Atmosphere connector,
 you'll need to provide your own application-specific logic, also in
 JavaScript. Here's an `application.js` file for our chat application:
 
-[https://github.com/scalatra/scalatra-website-examples/blob/master/2.2/async/scalatra-atmosphere-example/src/main/webapp/js/application.js](https://github.com/scalatra/scalatra-website-examples/blob/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/js/application.js)
+[https://github.com/scalatra/scalatra-website-examples/blob/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/js/application.js](https://github.com/scalatra/scalatra-website-examples/blob/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/js/application.js)
 
 Drop that code into `webapp/js/atmosphere.js`, and put the
 [Atmosphere JavaScript client](https://github.com/scalatra/scalatra-website-examples/blob/master/2.3/async/scalatra-atmosphere-example/src/main/webapp/js/jquery-atmosphere.js)

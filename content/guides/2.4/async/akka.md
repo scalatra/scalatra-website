@@ -84,7 +84,7 @@ class MyAppServlet extends ScalatraServlet with FutureSupport {
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="{{site.examples}}async/akka-examples">akka-examples</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
@@ -144,7 +144,7 @@ state, don't bother with `AsyncResult`.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="{{site.examples}}async/akka-examples">akka-examples</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 

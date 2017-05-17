@@ -10,7 +10,7 @@ layout: guides-2.4
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 See
-<a href="{{site.examples}}deployment/scalatra-heroku">scalatra-heroku</a>
+<a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/deployment/scalatra-heroku">scalatra-heroku</a>
 for a minimal and standalone project containing the example in this guide.
 </div>
 

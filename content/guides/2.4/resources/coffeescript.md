@@ -12,7 +12,7 @@ language that fixes the many warts of Javascript.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="{{site.examples}}resources/scalatra-coffeescript">scalatra-coffeescript</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.4/resources/scalatra-coffeescript">scalatra-coffeescript</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
