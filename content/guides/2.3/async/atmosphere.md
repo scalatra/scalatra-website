@@ -21,7 +21,7 @@ It's carefree server push for the JVM.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/async/scalatra-atmosphere-example">scalatra-atmosphere-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/async/scalatra-atmosphere-example">scalatra-atmosphere-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 

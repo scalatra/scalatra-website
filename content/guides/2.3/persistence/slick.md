@@ -10,7 +10,7 @@ layout: guides-2.3
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.2/persistence/scalatra-slick">scalatra-slick</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/persistence/scalatra-slick">scalatra-slick</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
