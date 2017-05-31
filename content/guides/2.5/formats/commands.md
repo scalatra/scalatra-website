@@ -336,7 +336,6 @@ new capability.
 
 ```scala
   post("/todos") {
-    val todo = new Todo(-1, params("name"))
     TodoData.add(TodoData.newTodo(params("name")))
     redirect("/")
   }
