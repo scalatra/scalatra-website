@@ -323,8 +323,8 @@ be `notBlank` (i.e. it can't be an empty string or a null value), and
 it must have a `minLength(3)` (i.e. it must have a minimum length of
 3 characters).
 
-A full list of available validations is available in the
-[Validators API docs](http://scalatra.org/2.2/api/#org.scalatra.validation.Validators$).
+A full list of available validations is available in the 
+[Validators API docs](http://scalatra.org/apidocs/2.5/org/scalatra/validation/Validators$).
 
 That's it for the command setup. Now that we've got a command which can
 create Todos, let's use it in a controller action to create a Todo object.
@@ -336,7 +336,6 @@ new capability.
 
 ```scala
   post("/todos") {
-    val todo = new Todo(-1, params("name"))
     TodoData.add(TodoData.newTodo(params("name")))
     redirect("/")
   }
@@ -646,12 +645,12 @@ Git example. Take a look at that code if you're having any problems.
 
 ### Writing your own validations.
 
-Scalatra gives you a fairly comprehensive list of
-[pre-built validations](http://scalatra.org/2.2/api/#org.scalatra.validation.Validators$),
-but you can also write your own custom validators fairly easily.
+Scalatra gives you a fairly comprehensive list of 
+[pre-built validations](http://scalatra.org/apidocs/2.5/org/scalatra/validation/Validators$),
+but you can also write your own custom validators fairly easily. 
 
-A Scalatra [Command](http://scalatra.org/2.2/api/#org.scalatra.commands.Command) is partly composed of [Field](http://scalatra.org/2.2/api/#org.scalatra.commands.Field) objects, each of which has a
-[FieldDescriptor](http://scalatra.org/2.2/api/#org.scalatra.commands.FieldDescriptor) which acts as a kind of builder for the Field.
+A Scalatra [Command](http://scalatra.org/apidocs/2.5/org/scalatra/commands/Command) is partly composed of [Field](http://scalatra.org/apidocs/2.5/org/scalatra/commands/Field) objects, each of which has a 
+[FieldDescriptor](http://scalatra.org/apidocs/2.5/org/scalatra/commands/FieldDescriptor) which acts as a kind of builder for the Field.
 
 In order to write a validator, we need to do two things.
 
