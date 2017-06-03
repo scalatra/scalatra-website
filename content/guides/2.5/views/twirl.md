@@ -3,7 +3,7 @@ title: Twirl
 layout: guides-2.5
 ---
 
-*Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.0/ScalaTemplates).
+*Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.5.x/ScalaTemplates).
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
@@ -48,15 +48,15 @@ Scalate's Scaml or Jade languages for HTML/XML templates.
 
 ### Installation ###
 
-- Add the [Twirl plugin](https://github.com/spray/twirl) to `project/plugins.sbt`:
+- Add the [Twirl plugin](https://github.com/playframework/twirl) to `project/plugins.sbt`:
 
 ```scala
-addSbtPlugin("io.spray" % "sbt-twirl" % "0.6.1")
+addSbtPlugin("com.typesafe.sbt" % "sbt-twirl" % "1.3.0")
 ```
 - Enable the plugin in `build.sbt`:
 
 ```scala
-seq(Twirl.settings: _*)
+enablePlugins(SbtTwirl)
 ```
 
 ### Usage ###
@@ -113,10 +113,7 @@ Your result?
 ## Full usage guide
 We have only provided a taste of what Twirl can do.
 Since it's an external project, we encourage you to also consult the
-[official documentation](http://www.playframework.org/documentation/2.0/ScalaTemplates).
-
-The [sbt plugin's README](https://github.com/spray/twirl/blob/master/README.rst)
-also has a useful syntax summary.
+[official documentation](http://www.playframework.org/documentation/2.5.x/ScalaTemplates).
 
 ## Rendering oddities
 
