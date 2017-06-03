@@ -21,9 +21,9 @@ name [My Scalatra Web App]:
 version [0.1.0-SNAPSHOT]:
 servlet_name [MyScalatraServlet]:
 package [com.example.app]:
-scala_version [2.11.7]:
-sbt_version [0.13.9]:
-scalatra_version [2.5.0]: 
+scala_version [2.12.1]:
+sbt_version [0.13.13]:
+scalatra_version [2.5.1]: 
 
 Template applied in ./my-scalatra-web-app
 ```
