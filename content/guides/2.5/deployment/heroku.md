@@ -21,7 +21,7 @@ for a minimal and standalone project containing the example in this guide.
 ## 3. Set up a project.
 
 Create a Scalatra project from the usual Scalatra giter8 template.
-Check out the the [installation]({{site.baseurl}}getting-started/installation.html) and [first project]({{site.baseurl}}getting-started/first-project.html) guides if this isn't familiar.
+Check out the [installation]({{site.baseurl}}getting-started/installation.html) and [first project]({{site.baseurl}}getting-started/first-project.html) guides if this isn't familiar.
 
 ```bash
 $ g8 scalatra/scalatra-sbt -b develop
