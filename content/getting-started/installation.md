@@ -54,7 +54,7 @@ $ brew install sbt
 $ sbt
 ...
 ...
-> sbt-version
+> sbtVersion
 [info] 0.13.15
 ```
 
