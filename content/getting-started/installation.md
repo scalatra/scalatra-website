@@ -41,7 +41,7 @@ or [the OpenJDK installation page](http://openjdk.java.net/install/index.html).
 
 Once you're sure you've got Java installed, you will need to install the _sbt_.
 
-[sbt (simple build tool)](http://www.scala-sbt.org) is a build tool for Scala, Java, and more.
+[sbt](http://www.scala-sbt.org) is a build tool for Scala, Java, and more.
 It can create a new project from the template repository.
 
 In order to create a new project of Scalatra from the template, _sbt 0.13.13_ or later needs to be installed.
