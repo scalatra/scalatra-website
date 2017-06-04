@@ -104,7 +104,7 @@ Generate a new project. We'll use `org.scalatra.example.commands` domain as
 a namespace, you can change to your own domain throughout the codebase.
 
 ```bash
-g8 scalatra/scalatra-sbt.g8
+$ sbt new scalatra/scalatra-sbt.g8
 organization [com.example]: org.scalatra
 package [com.example.myapp]: org.scalatra.example.commands
 name [My Scalatra Web App]: TodoList
@@ -118,9 +118,8 @@ Template applied in ./todolist
 Start the application:
 
 ```
-cd todolist
-chmod +x sbt
-./sbt
+$ cd todolist
+$ sbt
 ```
 
 Now you're in the sbt shell, start the server and enable recompilation:

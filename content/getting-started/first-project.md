@@ -70,7 +70,7 @@ Template applied in ./my-scalatra-web-app
   </dd>
   <dt>sbt_version</dt>
   <dd>
-    The SBT version.
+    The sbt version.
   </dd>
   <dt>scalatra_version</dt>
   <dd>
@@ -84,14 +84,14 @@ Template applied in ./my-scalatra-web-app
 
 Scala is a compiled language, so you need to build your Scalatra project.
 
-Enter your application's top-level directory, set `sbt` to executable,
-and start the build system with `./sbt`.
+Enter your application's top-level directory, just execute `sbt` to start building
+your Scalatra project.
+
 For example:
 
 ```bash
 $ cd /your/project/directory
-$ chmod u+x sbt
-$ ./sbt
+$ sbt
 ```
 
 sbt will also take care of downloading an entire Scalatra development
@@ -113,7 +113,7 @@ Now that Scalatra is installed, how about making your first application?
 Source files go into `src/main/scala/com/example/app`
 (substitute your package for `com/example/app`).
 Open `src/main/scala/com/example/app/MyScalatraServlet.scala`, or whatever
-you named your servlet when you generated your project with g8:
+you named your servlet when you generated your project with Scalatra template:
 
 ```scala
 package com.example.app
@@ -138,7 +138,7 @@ If you haven't already done so, from your project root, you can run the
 project:
 
 ```bash
-$ ./sbt
+$ sbt
 > jetty:start
 ```
 
@@ -165,7 +165,7 @@ get("/") {
 Returning a raw string is not something you'll do particularly often -
 usually you will want to return formatted HTML that is the product of a
 templating system, or an output format like JSON.
-See the *views* section of our [guides](../guides) for more info.
+See the *views* section of our [guides](../../guides/) for more info.
 
 ## Automatic code reloading
 
@@ -179,13 +179,13 @@ want to re-execute.
 To recompile and reload your application automatically, run the following:
 
 ```bash
-$ ./sbt
+$ sbt
 > ~;jetty:stop;jetty:start
 ```
 
 Now that you've got a (rather simplistic) running application, you may want
 to [understand more](project-structure.html) about the project setup, or
-dive straight into our [guides](../guides), which show you how to perform
+dive straight into our [guides](../../guides), which show you how to perform
 common development tasks.
 
 Many of the Scalatra guides have companion code projects, so you can learn

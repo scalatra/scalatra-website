@@ -38,16 +38,15 @@ Enter your CloudBees account password:
 Check out the the [installation]({{site.baseurl}}getting-started/installation.html) and [first project]({{site.baseurl}}getting-started/first-project.html) guides if this isn't familiar.
 
 ```sh
-$ g8 scalatra/scalatra-sbt
+$ sbt new scalatra/scalatra-sbt.g8
 $ cd [app root]
-$ chmod u+x sbt
 ```
 
 - Now create the war file:
 
 ```sh
 $ cd [app root]
-$ ./sbt
+$ sbt
 > package-war
 [info] Compiling 2 Scala sources to /Users/yuvi/Desktop/my-scalatra-web-app/target/scala-2.9.2/classes...
 [info] Packaging /Users/yuvi/Desktop/my-scalatra-web-app/target/scala-2.9.2/my-scalatra-web-app_2.9.2-0.1.0-SNAPSHOT.war ...
@@ -74,7 +73,7 @@ We won't go into it here, but you can learn more on your own.
 
 ```sh
 $ cd [app root]
-$ ./sbt
+$ sbt
 $ bees app:deploy ./target/scala-2.9.2/my-scalatra-web-app_2.9.2-0.1.0-SNAPSHOT.war -a USERNAME/APPNAME -t jboss71
 Deploying application scalatra-documenter/scalatra-test (environment: ): ./target/scala-2.9.2/my-scalatra-web-app_2.9.2-0.1.0-SNAPSHOT.war
 ........................uploaded 25%

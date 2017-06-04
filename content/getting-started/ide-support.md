@@ -58,10 +58,10 @@ This sbt plugin generates Eclipse classpath and configuration files to ensure th
 project will work as expected in the IDE.
 
 ```
-$ ./sbt
+$ sbt
 > eclipse
 ```
-Be sure to re-run `./sbt eclipse` every time you add or update a dependency in
+Be sure to re-run `sbt eclipse` every time you add or update a dependency in
 `project/build.scala`.
 
 ### Debugging in Eclipse
@@ -75,7 +75,7 @@ javaOptions ++= Seq(
 ),
 ```
 
-Start SBT and the container as usual (`./sbt` then `jetty:start`).
+Start sbt and the container as usual (`sbt` then `jetty:start`).
 
 Go to `Run` -> `Debug configurations` in Eclipse. Select
 `Remote Java Application`, click the `new configuration`  button,
@@ -105,7 +105,7 @@ addSbtPlugin("org.ensime" % "ensime-sbt-cmd" % "0.1.2")
 Now from sbt you can run:
 
 ```
-$ ./sbt
+$ sbt
 > ensime-generate
 ```
 
