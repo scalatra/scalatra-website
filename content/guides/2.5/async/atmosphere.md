@@ -25,7 +25,7 @@ It's carefree server push for the JVM.
 
 #### Generating the app
 
-Generate a project using `g8 scalatra/scalatra-sbt`, and call your
+Generate a project using `sbt new scalatra/scalatra-sbt.g8`, and call your
 initial servlet `ChatController`.
 
 You'll need to do a few things to a default Scalatra project in order

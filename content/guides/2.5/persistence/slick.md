@@ -22,7 +22,7 @@ layout: guides-2.5
 
 The sample project contains a minimal setup. For this guide the following files are important:
 
-  * `project/build.scala`: we configure the SBT build and the dependencies here.
+  * `project/build.scala`: we configure the sbt build and the dependencies here.
   * `src/main/scala/slickexample/slick.scala`: the scalatra application.
   * `src/main/resources/c3p0.properties`: the connection pool is configured here.
 

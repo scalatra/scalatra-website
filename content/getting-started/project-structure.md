@@ -125,7 +125,7 @@ in the same WAR.
 
 ## Scalatra's sbt dependencies
 
-Scalatra uses Scala's [Simple Build Tool][sbt-site], or sbt, as a build system.
+Scalatra uses [sbt][sbt-site], or sbt, as a build system.
 
 [sbt-site]: http://www.scala-sbt.org/
 

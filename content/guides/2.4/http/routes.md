@@ -112,7 +112,7 @@ Simply use a Scalatra project, like one created by our
 
 ```
 $ cd [project root]
-$ ./sbt
+$ sbt
 > console
 
 scala> import org.scalatra.SinatraPathPatternParser
