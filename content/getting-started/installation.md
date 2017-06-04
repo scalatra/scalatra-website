@@ -21,65 +21,41 @@ does. The output should look something like this:
 
 ```bash
 $ java -version
-java version "1.8.0_11"
-Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
-Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+java version "1.8.0_131"
+Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)
 ```
 
 ```bash
 $ javac -version
-javac 1.8.0_11
+javac 1.8.0_131
 ```
 
-You need Java 8, which will show up as version 1.8. Java 7 is no longer supported in Scalatra 2.5.
+You need Java 8 (Oracle's JDK or OpenJDK), which will show up as version 1.8. Java 7 is no longer supported in Scalatra 2.5.
 
-If you don't yet have Java installed, you can find out how to install
-it for your system
-[over at the Java 8 install page](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Make sure you're using OpenJDK or Sun's JDK.
+If you don't yet have Java installed, you can find out how to install it for your system over at
+[the Oracle's Java 8 download page](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+or [the OpenJDK installation page](http://openjdk.java.net/install/index.html).
 
-Some Linux distros pre-install `gcj`, which won't work.
+## 2. Install sbt
 
-## 2. Install giter8
+Once you're sure you've got Java installed, you will need to install the _sbt_.
 
-Once you're sure you've got Java installed, you will need to download a few
-other utilities.
+[sbt (simple build tool)](http://www.scala-sbt.org) is a build tool for Scala, Java, and more.
+It can create a new project from the template repository.
 
-[Conscript](https://github.com/foundweekends/conscript) is a tool for installing and
-updating Scala code.
-[giter8](https://github.com/foundweekends/giter8/), which depends on conscript, allows you to check out project templates directly from Github.
-It's the recommended way to generate Scalatra project skeletons.
+In order to create a new project of Scalatra from the template, _sbt 0.13.13_ or later needs to be installed.
+To install sbt, refer to [the setup page of sbt](http://www.scala-sbt.org/0.13/docs/Setup.html).
 
-### Install conscript
+For example, if it is macOS, you can install it by brew command as follows.
 
-```bash
-curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh
-```
-
-This will create a `bin` folder in your home directory.
-Make sure it's in your `PATH` by adding the following to your shell's
-profile (often `~/.bash_profile` on Mac and `~/.bashrc` on Linux):
-
-```bash
-PATH=$PATH:~/bin
-export PATH
-source ~/.bash_profile # (Mac)
-source ~/.bashrc       # (Linux)
-```
-
-### Install giter8</h4>
-
-```bash
-cs foundweekends/giter8
-```
-
-Depending on your connection speed, this can take a bit of time, as
-`conscript` downloads quite a few Scala dependencies.
-
-Alternatively, you can install `giter8` on a Mac via
-[homebrew](http://brew.sh/):
-
-```bash
-brew install giter8
+```Bash
+$ brew install sbt
+$ sbt
+...
+...
+> sbt-version
+[info] 0.13.15
 ```
 
 ---

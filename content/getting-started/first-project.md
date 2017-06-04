@@ -8,7 +8,7 @@ Now that [installation](installation.html) is out of the way, you can
 generate a project:
 
 ```bash
-g8 scalatra/scalatra-sbt
+$ sbt new scalatra/scalatra-sbt.g8
 ```
 
 This will check out a pre-built application skeleton for you (from [GitHub](https://github.com/scalatra/scalatra-sbt.g8)),
