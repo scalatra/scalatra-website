@@ -5,11 +5,12 @@ title: Project structure
 ## Paths
 
 The recommended way of structuring a Scalatra project is as follows. It's
-what you get when you generate a new project using giter8:
+what you get when you generate a new project using `sbt new`:
+
+    build.sbt               <= dependencies and project config are set in here
 
     project
     |_build.properties      <= specifies what version of sbt to use
-    |_build.scala           <= dependencies and project config are set in here
     |_plugins.sbt           <= sbt plugins can be added here
 
     src
@@ -23,9 +24,9 @@ what you get when you generate a new project using giter8:
     |  |_ webapp
     |     |_ WEB-INF
     |        |_ views
-    |        |  |_ hello-scalate.scaml
+    |        |  |_ hello-scalate.jade
     |        |_ layouts
-    |        |  |_ default.scaml
+    |        |  |_ default.jade
     |        |_ web.xml
     |_ test
        |_ scala
@@ -40,7 +41,7 @@ The basic structure should be reasonably familiar to anybody who's seen a
 Rails, Sinatra, or Padrino application. Your views go in the views folder,
 layouts (which wrap views) go in the layouts folder.
 
-The Scalatra giter8 project puts your Scala application code into a series of
+The Scalatra template project puts your Scala application code into a series of
 namespaced directories: in the example above, `org.yourdomain.projectname`.
 This is entirely optional. The [Scala style guide](http://docs.scala-lang.org/style/)
 suggests doing it this way, but the language doesn't do anything to enforce it.
@@ -61,7 +62,6 @@ An example structure may help in understanding this.
        |  |_ Web.scala
        |_ webapp
           |_ WEB-INF
-          |  |_ secret.txt
           |  |_ views
           |  |  |_ default.jade
           |  |
@@ -129,58 +129,56 @@ Scalatra uses [sbt][sbt-site], or sbt, as a build system.
 
 [sbt-site]: http://www.scala-sbt.org/
 
-The `project/build.scala` file defines the libraries which your application will depend on,
+The `build.sbt` file defines the libraries which your application will depend on,
 so that `sbt` can download them for you and build your Scalatra project.
 
-Here's an example Scalatra `project/build.scala` file:
+Here's an example Scalatra `build.sbt` file:
 
 ```scala
-import sbt._
-import Keys._
 import org.scalatra.sbt._
 import org.scalatra.sbt.PluginKeys._
-import com.mojolly.scalate.ScalatePlugin._
 import ScalateKeys._
 
-object MyExampleBuild extends Build {
-  val Organization = "com.example"
-  val Name = "An Example Application"
-  val Version = "0.1.0-SNAPSHOT"
-  val ScalaVersion = "2.10.1"
-  val ScalatraVersion = "{{< 2-5-scalatra_version >}}"
+val ScalatraVersion = "2.5.1"
 
-  lazy val project = Project (
-    "scalatra-buildfile-example",
-    file("."),
-    settings = Defaults.defaultSettings ++ ScalatraPlugin.scalatraWithJRebel ++ scalateSettings ++ Seq(
-      organization := Organization,
-      name := Name,
-      version := Version,
-      scalaVersion := ScalaVersion,
-      resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
-      resolvers += "Akka Repo" at "http://repo.akka.io/repository",
-      libraryDependencies ++= Seq(
-        "org.scalatra" %% "scalatra" % ScalatraVersion,
-        "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
-        "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
-        "ch.qos.logback" % "logback-classic" % "{{< 2-5-logback_version >}}" % "runtime",
-        "org.eclipse.jetty" % "jetty-webapp" % "{{ < 2-5-jetty_version >}}" % "container",
-        "org.eclipse.jetty.orbit" % "javax.servlet" % "{{< 2-5-servlet_version >}}" % "container;provided;test" artifacts (Artifact("javax.servlet", "jar", "jar"))
-      ),
-      scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>
-        Seq(
-          TemplateConfig(
-            base / "webapp" / "WEB-INF" / "templates",
-            Seq.empty,  /* default imports should be added here */
-            Seq.empty,  /* add extra bindings here */
-            Some("templates")
-          )
-        )
-      }
+ScalatraPlugin.scalatraSettings
+
+scalateSettings
+
+organization := "com.example"
+
+name := "My Scalatra Web App"
+
+version := "0.1.0-SNAPSHOT"
+
+scalaVersion := "2.12.1"
+
+resolvers += Classpaths.typesafeReleases
+
+libraryDependencies ++= Seq(
+  "org.scalatra" %% "scalatra" % ScalatraVersion,
+  "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
+  "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
+  "ch.qos.logback" % "logback-classic" % "1.1.5" % "runtime",
+  "org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container",
+  "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided"
+)
+
+scalateTemplateConfig in Compile := {
+  val base = (sourceDirectory in Compile).value
+  Seq(
+    TemplateConfig(
+      base / "webapp" / "WEB-INF" / "templates",
+      Seq.empty,  /* default imports should be added here */
+      Seq(
+        Binding("context", "_root_.org.scalatra.scalate.ScalatraRenderContext", importMembers = true, isImplicit = true)
+      ),  /* add extra bindings here */
+      Some("templates")
     )
   )
 }
 
+enablePlugins(JettyPlugin)
 ```
 
 <div class="alert alert-info">
@@ -242,7 +240,7 @@ The default dependencies are:
 </dl>
 
 The Scalatra components in your project should all have the same version number
-({{< 2-5-scalatra_version >}} in the above example).
+(2.5.1 in the above example).
 Although it's theoretically possible to mix and match differently-versioned components
 in your projects, it's not recommended, because we compile, test and release Scalatra
 dependencies together based on their version number.
