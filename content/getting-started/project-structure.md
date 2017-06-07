@@ -139,7 +139,7 @@ import org.scalatra.sbt._
 import org.scalatra.sbt.PluginKeys._
 import ScalateKeys._
 
-val ScalatraVersion = "2.5.1"
+val ScalatraVersion = "{{< 2-5-scalatra_version >}}"
 
 ScalatraPlugin.scalatraSettings
 
@@ -159,9 +159,9 @@ libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra" % ScalatraVersion,
   "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
   "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
-  "ch.qos.logback" % "logback-classic" % "1.1.5" % "runtime",
-  "org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container",
-  "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided"
+  "ch.qos.logback" % "logback-classic" % "{{< 2-5-logback_version >}}" % "runtime",
+  "org.eclipse.jetty" % "jetty-webapp" % "{{< 2-5-jetty_version >}}" % "container",
+  "javax.servlet" % "javax.servlet-api" % "{{< 2-5-servlet_version >}}" % "provided"
 )
 
 scalateTemplateConfig in Compile := {
@@ -240,7 +240,7 @@ The default dependencies are:
 </dl>
 
 The Scalatra components in your project should all have the same version number
-(2.5.1 in the above example).
+({{< 2-5-scalatra_version >}} in the above example).
 Although it's theoretically possible to mix and match differently-versioned components
 in your projects, it's not recommended, because we compile, test and release Scalatra
 dependencies together based on their version number.
