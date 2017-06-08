@@ -290,14 +290,8 @@ support.
 
 The next thing is the `abstract class TodosCommand`. This sets up an
 abstract base class for all of our commands to inherit from, so we don't
-need to keep on repeating the `extends ModelCommand[T]` in every
-command we make. It inherits from two other classes, both of which are
-built into Scalatra: `ModelCommand[S]` and `ParamsOnlyCommand`.
-
-`ModelCommand[S]` is a very small subclass of Scalatra's base
-`Command` object. It's just a Command which takes a single type parameter,
-and it's abstract. It gives the Command object the ability to know which
-case class type it's operating upon.
+need to keep on repeating the `extends ParamsOnlyCommand` in every
+command we make. 
 
 `ParamsOnlyCommand` is basically a Command with type conversion enabled.
 It allows population of a command's fields from incoming params.
