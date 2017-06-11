@@ -5,15 +5,6 @@ layout: guides-2.5
 
 *Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.5.x/ScalaTemplates).
 
-<div class="alert alert-info">
-  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
-  Please note that the example for this guide needs to be updated to work with
-  Scalatra 2.3.x / Scala 2.11.x.
-  <!-- See
-  <a href="{{site.examples}}views/scalatra-twirl">scalatra-twirl</a>
-  for a minimal and standalone project containing the example in this guide. -->
-</div>
-
 ---
 
 ## Evaluating Twirl
@@ -51,7 +42,7 @@ Scalate's Scaml or Jade languages for HTML/XML templates.
 - Add the [Twirl plugin](https://github.com/playframework/twirl) to `project/plugins.sbt`:
 
 ```scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-twirl" % "1.3.0")
+addSbtPlugin("com.typesafe.sbt" % "sbt-twirl" % "1.3.2")
 ```
 - Enable the plugin in `build.sbt`:
 
@@ -79,6 +70,14 @@ com.example.html.myTwirlTemplate.render(param1, param2, ...)
 
 ## A basic example ##
 
+<div class="alert alert-info">
+  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
+  See
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/views/scalatra-twirl">twirl-example</a>
+  for a minimal and standalone project containing the examples in this guide.
+</div>
+
+
 Create `src/main/twirl/org/scalatra/example/hello.scala.html` with:
 
 ```html
@@ -91,17 +90,17 @@ Create `src/main/twirl/org/scalatra/example/hello.scala.html` with:
 </html>
 ```
 
-Now render it in `src/main/scala/org/scalatra/example/TwirlApp.scala` with:
+Now render it in `src/main/scala/org/scalatra/example/ScalatraTwirlServlet.scala` with:
 
 ```scala
 package org.scalatra.example
 
 import org.scalatra._
 
-class TwirlApp extends ScalatraServlet {
+class ScalatraTwirlServlet extends ScalatraServlet {
 
   get("/") {
-    html.helloTwirl.render(new java.util.Date)
+    org.scalatra.example.html.hello.render(new java.util.Date)
   }
 }
 ```
