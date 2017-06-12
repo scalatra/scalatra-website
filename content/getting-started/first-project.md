@@ -185,7 +185,7 @@ $ sbt
 
 Now that you've got a (rather simplistic) running application, you may want
 to [understand more](project-structure.html) about the project setup, or
-dive straight into our [guides](../../guides), which show you how to perform
+dive straight into our [guides](../../guides/), which show you how to perform
 common development tasks.
 
 Many of the Scalatra guides have companion code projects, so you can learn
