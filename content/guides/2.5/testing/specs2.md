@@ -106,5 +106,3 @@ class FileUploadSpec extends MutableScalatraSpec {
   }
 }
 ```
-
-{% include _under_construction.html %}
