@@ -28,7 +28,7 @@ Next, unzip the downloaded file.
 
 ## 3. Activate
 
-Follow the [instructions on the JRebel website](http://zeroturnaround.com/software/jrebel/download/prev-releases/) to activate your downloaded JRebel.
+Follow the [instructions on the JRebel website](http://manuals.zeroturnaround.com/jrebel/standalone/activate.html) to activate your downloaded JRebel.
 
 You can use the default settings for all the configurations.
 
