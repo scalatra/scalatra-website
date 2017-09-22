@@ -1,8 +1,8 @@
 ---
 aliases:
-  - /2.5/guides/scalatra-philosophy.html
+  - /2.6/guides/scalatra-philosophy.html
 title: Scalatra's philosophy
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 ### 1. Start small, build upwards
