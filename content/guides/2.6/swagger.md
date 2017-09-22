@@ -1,6 +1,6 @@
 ---
 title: Swagger
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 [Swagger](http://swagger.io) is a specification which allows you to quickly define the functionality of a REST API using JSON documents. But it's more than
@@ -18,7 +18,7 @@ in sync with your API.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.3/swagger-example">swagger-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/swagger-example">swagger-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -92,8 +92,8 @@ object FlowerData {
 Don't forget to add the JSON libraries to your `project/build.scala` file to make this work:
 
 ```scala
-  "org.scalatra" %% "scalatra-json" % "{{< 2-5-scalatra_version >}}",
-  "org.json4s"   %% "json4s-native" % "{{< 2-5-json4s_version >}}",
+  "org.scalatra" %% "scalatra-json" % "{{< 2-6-scalatra_version >}}",
+  "org.json4s"   %% "json4s-native" % "{{< 2-6-json4s_version >}}",
 ```
 
 #### Setting up a resource path for /flowers
@@ -204,7 +204,7 @@ First, add the Swagger dependency to your `project/build.scala` file, then resta
 app to grab the new jars:
 
 ```scala
-"org.scalatra" %% "scalatra-swagger"  % "{{< 2-5-scalatra_version >}}",
+"org.scalatra" %% "scalatra-swagger"  % "{{< 2-6-scalatra_version >}}",
 ```
 
 You'll now need to import Scalatra's Swagger support into your `FlowersController`:
