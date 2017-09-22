@@ -30,11 +30,6 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 - [Scalate](views/scalate.html)
 - [Twirl](views/twirl.html)
 
-### Resources
-- [CoffeeScript](resources/coffeescript.html)
-- [LESS CSS](resources/less-css.html)
-- [wro4j](resources/wro4j.html)
-
 ### Formats
 - [File Upload](formats/upload.html)
 - [JSON](formats/json.html)
