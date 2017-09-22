@@ -1,6 +1,6 @@
 ---
 title: Authentication
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 *Scentry* is Scalatra's optional authentication system. It is a port of Ruby's
@@ -50,7 +50,7 @@ for an example.
 
 ```scala
 // Put this in project/build.scala:
-"org.scalatra" %% "scalatra-auth" % "{{< 2-5-scalatra_version >}}"
+"org.scalatra" %% "scalatra-auth" % "{{< 2-6-scalatra_version >}}"
 ```
 
 You'll need the scalatra-auth dependency in your `project/build.scala` for all subsequent
@@ -63,7 +63,7 @@ First things first. Let's try the simplest possible example: HTTP basic auth.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/http/authentication-demo">authentication-demo</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/http/authentication-demo">authentication-demo</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -236,7 +236,7 @@ As with most things in Scalatra, it's up to you.
 
 We still need to write this up and finish the guide, but there's now working
 example code for a
-[UserPasswordStrategy and RememberMe strategy](https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/http/scentry-auth-demo)
+[UserPasswordStrategy and RememberMe strategy](https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/http/scentry-auth-demo)
 with fallback.
 
 If you're trying to secure an API rather than a user's browser session,
