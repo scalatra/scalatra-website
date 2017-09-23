@@ -104,7 +104,7 @@ Generate a new project. We'll use `org.scalatra.example.commands` domain as
 a namespace, you can change to your own domain throughout the codebase.
 
 ```bash
-$ sbt new scalatra/scalatra-sbt.g8
+$ sbt new scalatra/sbt-scalatra.g8
 organization [com.example]: org.scalatra
 package [com.example.myapp]: org.scalatra.example.commands
 name [My Scalatra Web App]: TodoList

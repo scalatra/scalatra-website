@@ -36,7 +36,7 @@ Enter your CloudBees account password:
 Check out the [installation]({{site.baseurl}}getting-started/installation.html) and [first project]({{site.baseurl}}getting-started/first-project.html) guides if this isn't familiar.
 
 ```sh
-$ sbt new scalatra/scalatra-sbt.g8
+$ sbt new scalatra/sbt-scalatra.g8
 $ cd [app root]
 ```
 
