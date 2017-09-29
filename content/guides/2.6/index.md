@@ -63,5 +63,4 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 - [Servlet container](deployment/servlet-container.html)
 - [Standalone](deployment/standalone.html)
 - [Heroku](deployment/heroku.html)
-- [CloudBees](deployment/cloudbees.html)
 - [Google App Engine](deployment/google-app-engine.html)
