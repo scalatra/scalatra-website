@@ -33,7 +33,6 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 ### Formats
 - [File Upload](formats/upload.html)
 - [JSON](formats/json.html)
-- [Commands](formats/commands.html)
 
 ### Persistence
 - [Introduction](persistence/introduction.html)
