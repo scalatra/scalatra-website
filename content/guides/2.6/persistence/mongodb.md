@@ -1,6 +1,6 @@
 ---
 title: MongoDb
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 [MongoDb](http://mongodb.org) is an open-source document database, and one of the most widely deployed NoSQL databases. It is extremely easy to use with Scalatra.
@@ -19,7 +19,7 @@ MongoDb requires very little setup. Assuming you've got Mongo installed already,
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/persistence/scalatra-casbah-example">scalatra-casbah-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/persistence/scalatra-casbah-example">scalatra-casbah-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -28,12 +28,12 @@ We'll use the officially-supported Casbah library, but any of the others should 
 ### Dependencies
 
 To make the following example codes work, add the following dependencies to your
-`project/build.scala`:
+`build.sbt`:
 
 ```
-"org.mongodb" %% "casbah" % "2.7.2",
-"org.json4s" %% "json4s-jackson" % "3.2.10",
-"org.json4s" %% "json4s-mongo" % "3.2.10",
+"org.mongodb" %% "casbah" % "3.1.1",
+"org.json4s" %% "json4s-jackson" % "3.5.2",
+"org.json4s" %% "json4s-mongo" % "3.5.2",
 ```
 
 ### Setup in ScalatraBootstrap

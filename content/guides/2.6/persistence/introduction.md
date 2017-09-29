@@ -1,6 +1,6 @@
 ---
 title: Introduction
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 Scalatra's philosophy is to keep things simple and solid. At its heart, Scalatra is basically a domain-specific language (DSL) for easily making HTTP requests, and a way of extending the core HTTP router with whatever libraries you want. We think we've got a great DSL for HTTP - the Sinatra style strikes us as perhaps the simplest, most natural way to express HTTP routes.
@@ -15,7 +15,7 @@ This guide will show you how.
 
 Although the details depend on the library, the general steps for getting your chosen persistence library working with Scalatra are pretty similar across libraries.
 
-1. Add a reference to your library in `project/build.scala`
+1. Add a reference to your library in `build.sbt`
 1. Start a connection pool at application start
 1. Clean up the connection pool when your application stops
 1. Provide a way for your controllers to access the connection pool
@@ -27,7 +27,7 @@ Let's see it in action.
 
 ### Reference the persistence library in your build file
 
-Not too much to do here. Open up `project/build.scala` and add a reference to your chosen persistence library in the `libraryDependencies` section.
+Not too much to do here. Open up `build.sbt` and add a reference to your chosen persistence library in the `libraryDependencies` section.
 
 ### Start a connection pool at application start
 

@@ -1,6 +1,6 @@
 ---
 title: Slick
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 [Slick](http://slick.lightbend.com) is a database library for relational databases. In the following guide we will see how to integrate it in a Scalatra application.
@@ -13,7 +13,7 @@ layout: guides-2.5
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/persistence/scalatra-slick">scalatra-slick</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/persistence/scalatra-slick">scalatra-slick</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -49,16 +49,16 @@ The sample project contains a minimal setup. For this guide the following files 
 
 ## SBT Configuration
 
-Let us start with the SBT setup by editing `build.sbt`. Slick 3.x.x officially supports Scala 2.11-2.12, so let's use Scala 2.11:
+Let us start with the SBT setup by editing `build.sbt`. Slick 3.x.x officially supports Scala 2.11-2.12, so let's use Scala 2.12:
 
 ```scala
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.3"
 ```
 
-Also you need to use an appropriate Scalatra version, for example `2.5.x` which supports Scala 2.11 and 2.12:
+Also you need to use an appropriate Scalatra version, for example `2.6.x` which supports Scala 2.11 and 2.12:
 
 ```scala
-libraryDependencies += "org.scalatra" %% "scalatra" % "2.5.+"
+libraryDependencies += "org.scalatra" %% "scalatra" % "2.6.+"
 ```
 
 For this guide we choose the [H2 Database](http://www.h2database.com/html/main.html), so we need to add a dependency to it too.

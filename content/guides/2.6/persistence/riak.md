@@ -1,6 +1,6 @@
 ---
 title: Riak
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 [Riak](http://riak.basho.org) is an open source, distributed database.  
@@ -18,7 +18,7 @@ Assuming you've got Riak installed already, getting it working with Scalatra is 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/persistence/riak-example">riak-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/persistence/riak-example">riak-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -26,11 +26,11 @@ We'll use Basho's officially-supported riak-java-client library.
 
 ### Reference riak-client from your build file
 
-First, add the library to `project/build.scala`:
+First, add the library to `build.sbt`:
 
 ```scala
 libraryDependencies ++= Seq(
-        "com.basho.riak" % "riak-client" % "1.1.0",
+        "com.basho.riak" % "riak-client" % "1.1.4",
         "org.scalatra" %% "scalatra" % ScalatraVersion,
 ```
 

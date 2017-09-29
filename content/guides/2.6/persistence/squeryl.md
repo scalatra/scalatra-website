@@ -1,6 +1,6 @@
 ---
 title: Squeryl
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 [Squeryl](http://squeryl.org/) is a Scala object-relational mapper and
@@ -13,16 +13,16 @@ a "butt-simple" connection pooling library.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/persistence/scalatra-squeryl">scalatra-squeryl</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/persistence/scalatra-squeryl">scalatra-squeryl</a>
   for an example project which expands on the concepts explained in this guide.
 </div>
 
 ## Dependencies
 
 ```scala
-"org.squeryl" %% "squeryl" % "0.9.5-7",
-"com.h2database" % "h2" % "1.3.166",
-"c3p0" % "c3p0" % "0.9.1.2"
+"org.squeryl" %% "squeryl" % "0.9.9",
+"com.h2database" % "h2" % "1.4.196",
+"c3p0" % "c3p0" % "0.9.5.2"
 ```
 
 ## Set up a C3P0 connection pool
