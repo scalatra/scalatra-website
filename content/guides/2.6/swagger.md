@@ -149,42 +149,36 @@ and their parameters, and return values.
 Before we see the auto-generation of Swagger spec files, though, it makes sense
 to understand what's being generated.
 
-If you want to, you can write a Swagger JSON description file by hand. A
-Swagger resource description for our FlowersController might look like this:
+If you want to, you can write a Swagger JSON file by hand. A Swagger API 
+description for our FlowersController might look like this:
 
 ```json
-{"basePath":"http://localhost:8080","swaggerVersion":"1.0","apiVersion":"1","apis":[{"path":"/api-docs/flowers.{format}","description":"The flowershop API. It exposes operations for browing and searching lists of flowers"}]}
+{"swagger":"2.0","info":{"title":"The Flowershop API","version":"1","description":"Docs for the Flowers API","termsOfService":"http://scalatra.org","contact":{"name":"apiteam@scalatra.org"},"license":{"name":"MIT","url":"http://opensource.org/licenses/MIT"}},"paths":{"/flowers/":{"get":{"operationId":"getFlowers","summary":"Show all flowers","tags":["Flowers"],"deprecated":false,"parameters":[{"name":"name","description":"A name to search for","required":false,"in":"query","type":"string"}],"responses":{"200":{"description":"OK","schema":{"type":"array","items":{"$ref":"#/definitions/Flower"}}}}}},"/flowers/{slug}":{"get":{"operationId":"findBySlug","summary":"Find by a flower by its slug","tags":["Flowers"],"deprecated":false,"parameters":[{"name":"slug","description":"Slug of flower that needs to be fetched","required":true,"in":"path","type":"string"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/Flower"}},"404":{"description":"Slug Not Found"}}}}},"definitions":{"Flower":{"type":"object","properties":{"slug":{"type":"string"},"name":{"type":"string"}},"required":["slug","name"]}},"securityDefinitions":{}}
 ```
 
-This file describes what APIs we're offering. Each API has its own JSON descriptor file which details what resources it offers, the paths to those resources, required and optional parameters, and other information.
+This file describes what APIs we're offering and details of each API such as the 
+paths of those APIs, required and optional parameters, and other information.
 
-The descriptor for our `flower` resource might look something like this. We'll
-see how to automate this in a moment:
-
-```json
-{"resourcePath":"/","listingPath":"/api-docs/flowers","description":"The flowershop API. It exposes operations for browing and searching lists of flowers","apis":[{"path":"/","description":"","secured":true,"operations":[{"httpMethod":"GET","responseClass":"List[Flower]","summary":"Show all flowers","notes":"Shows all the flowers in the flower shop. You can search it too.","deprecated":false,"nickname":"getFlowers","parameters":[{"name":"name","description":"A name to search for","required":false,"paramType":"query","allowMultiple":false,"dataType":"string"}],"errorResponses":[]}]},{"path":"/{slug}","description":"","secured":true,"operations":[{"httpMethod":"GET","responseClass":"Flower","summary":"Find by slug","notes":"Returns the flower for the provided slug, if a matching flower exists.","deprecated":false,"nickname":"findBySlug","parameters":[{"name":"slug","description":"Slug of flower that needs to be fetched","required":true,"paramType":"path","allowMultiple":false,"dataType":"string"}],"errorResponses":[]}]}],"models":{"Flower":{"id":"Flower","description":"Flower","properties":{"name":{"description":null,"enum":[],"required":true,"type":"string"},"slug":{"description":null,"enum":[],"required":true,"type":"string"}}}},"basePath":"http://localhost:8080","swaggerVersion":"1.0","apiVersion":"1"}
-```
-
-These JSON files can then be offered to a standard HTML/CSS/JavaScript client,
+This JSON file can then be offered to a standard HTML/CSS/JavaScript client,
 called the [swagger-ui][ui], to make it easy for people to browse the docs. If
 you write them by hand, you can simply put them on any HTTP server, point the
 swagger-ui client at them, and start viewing the runnable documentation.
 
 #### Generating API clients
 
-You also get the ability to generate client and server code
-in multiple languages, using the [swagger-codegen][codegen] project.
+You also get the ability to generate client and server code in multiple 
+languages, using the [swagger-codegen][codegen] project.
 
 [ui]:https://github.com/swagger-api/swagger-ui
 [codegen]:https://github.com/swagger-api/swagger-codegen
 
-Client code can be generated for Flash, Java, JavaScript, Objective-C, PHP, Python, Python3, Ruby, or Scala.
+Client code can be generated for Flash, Java, JavaScript, Objective-C, PHP, 
+Python, Python3, Ruby, or Scala.
 
-You may want to
-take a moment to view the [Swagger Pet Store][petstore] example. Click on the
-route definitions to see what operations are available for each resource. You
-can use the web interface to send live test queries to the API, and view the
-API's response to each query.
+You may want to take a moment to view the [Swagger Pet Store][petstore] example. 
+Click on the route definitions to see what operations are available for each 
+resource. You can use the web interface to send live test queries to the API, 
+and view the API's response to each query.
 
 [petstore]: http://petstore.swagger.io
 
@@ -360,7 +354,7 @@ Let's go through the annotations in detail.
 
 The `summary` and `notes` should be human-readable messages that you intend to be read by developers of API clients. The summary is a short description, while the notes should offer a longer description and include any noteworthy features which somebody might otherwise miss.
 
-The `nickname` is intended as a machine-readable key which can be used by client code to identify this API action - it'll be used, for instance, by swagger-ui to generate JavaScript method names. You can call it whatever you want, but make sure you don't include any spaces in it, or client code generation will probably fail - so "getFlowers" or "get_flowers" is fine, "get flowers" isn't.
+The `operationId` is intended as a machine-readable key which can be used by client code to identify this API action - it'll be used, for instance, by swagger-ui to generate JavaScript method names. You can call it whatever you want, but make sure you don't include any spaces in it, or client code generation will probably fail - so "getFlowers" or "get_flowers" is fine, "get flowers" isn't.
 
 The `responseClass` is essentially a type annotation, so that clients know what data types to expect back. In this case, clients should expect a List of Flower objects.
 
@@ -405,21 +399,21 @@ Now let's see what we've gained.
 
 Adding Swagger support to our application, and the Swagger annotations to our FlowersController, means we've got some new functionality available. Check the following URL in your browser:
 
-[http://localhost:8080/api-docs](http://localhost:8080/api-docs)
+[http://localhost:8080/api-docs/swagger.json](http://localhost:8080/api-docs/swagger.json)
 
-You should see an auto-generated Swagger description of available APIs (in this case, there's only one, but there could be multiple APIs defined by our application and they'd all be noted here):
+You should see an auto-generated Swagger API document (in this case, there's only one, but there could be multiple APIs defined by our application and they'd all be noted here):
 
 ```json
-{"basePath":"http://localhost:8080","swaggerVersion":"1.0","apiVersion":"1","apis":[{"path":"/api-docs/flowers.{format}","description":"The flowershop API. It exposes operations for browing and searching lists of flowers"}]}
+{"swagger":"2.0","info":{"title":"The Flowershop API","version":"1","description":"Docs for the Flowers API","termsOfService":"http://scalatra.org","contact":{"name":"apiteam@scalatra.org"},"license":{"name":"MIT","url":"http://opensource.org/licenses/MIT"}},"paths":{"/flowers/":{"get":{"operationId":"getFlowers","summary":"Show all flowers","tags":["Flowers"],"deprecated":false,"parameters":[{"name":"name","description":"A name to search for","required":false,"in":"query","type":"string"}],"responses":{"200":{"description":"OK","schema":{"type":"array","items":{"$ref":"#/definitions/Flower"}}}}}},"/flowers/{slug}":{"get":{"operationId":"findBySlug","summary":"Find by a flower by its slug","tags":["Flowers"],"deprecated":false,"parameters":[{"name":"slug","description":"Slug of flower that needs to be fetched","required":true,"in":"path","type":"string"}],"responses":{"200":{"description":"OK","schema":{"$ref":"#/definitions/Flower"}},"404":{"description":"Slug Not Found"}}}}},"definitions":{"Flower":{"type":"object","properties":{"slug":{"type":"string"},"name":{"type":"string"}},"required":["slug","name"]}},"securityDefinitions":{}}
 ```
 
 #### Browsing your API using swagger-ui
 
 If you browse to [http://petstore.swagger.io/](http://petstore.swagger.io), you'll see the default Swagger demo application - a Pet Store - and you'll be able to browse its documentation. One thing which may not be immediately obvious is that you can use this app to browse our local Flower Shop as well.
 
-The Pet Store documentation is showing because http://petstore.swagger.io/api/api-docs is entered into the URL field by default.
+The Pet Store documentation is showing because http://petstore.swagger.io/v2/swagger.json is entered into the URL field by default.
 
-Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs` - into the URL field, then press the "Explore" button. You'll be rewarded with a fully Swaggerized view of your API documentation. Try clicking on the "GET /flowers" route to expand the operations underneath it, and then entering the word "rose" into the input box for the "name" parameter. You'll be rewarded with JSON output for the search method we defined earlier.
+Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs/swagger.json` - into the URL field, then press the "Explore" button. You'll be rewarded with a fully Swaggerized view of your API documentation. Try clicking on the "GET /flowers" route to expand the operations underneath it, and then entering the word "rose" into the input box for the "name" parameter. You'll be rewarded with JSON output for the search method we defined earlier.
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
