@@ -1,6 +1,6 @@
 ---
 title: Deploying to Heroku
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 [Heroku](http://www.heroku.com/) is a cloud application platform that makes it easy to deploy and scale applications. With the right project setup, deploying your application becomes as easy as `git push`.
@@ -8,7 +8,7 @@ layout: guides-2.5
 <div class="alert alert-info">
 <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 See
-<a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/deployment/scalatra-heroku">scalatra-heroku</a>
+<a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/deployment/scalatra-heroku">scalatra-heroku</a>
 for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -24,25 +24,23 @@ Create a Scalatra project from the usual Scalatra giter8 template.
 Check out the [installation]({{site.baseurl}}getting-started/installation.html) and [first project]({{site.baseurl}}getting-started/first-project.html) guides if this isn't familiar.
 
 ```bash
-$ g8 scalatra/scalatra-sbt -b develop
+$ sbt new scalatra/scalatra.g8
 ```
 
 ## 4. Tweak the app for Heroku
 
 ### Make Jetty embeddable
 
-Open `project/build.scala` in the root of your project. You will find two lines like these:
+Open `build.sbt` in the root of your project. You will find a line like this:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "container",
-"org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "container",
+"org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container",
 ```
 
-Those are basically right, but we need to add `compile` scope because Heroku is not a servlet host. It can only run your app via an embedded Jetty server you provide. So replace the two lines above with these two:
+Those are basically right, but we need to add `compile` scope because Heroku is not a servlet host. It can only run your app via an embedded Jetty server you provide. So replace the line above with this one:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "9.1.5.v20140505" % "compile;container",
-"org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % "compile;container",
+"org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "compile;container",
 ```
 
 ### Add the sbt Native Packager plugin
@@ -50,18 +48,13 @@ Those are basically right, but we need to add `compile` scope because Heroku is 
 You don't want to use sbt to run your app in production. We'll install an sbt plugin that will create a start script during compilation. Heroku will use that start script. Tell sbt where to find the plugin by adding this line to `project/plugins.sbt` (you may need to create the file first):
 
 ```scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.0.0-RC1")
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.2.2")
 ```
 
-Then enable the plugin by calling the `enablePlugins` method on the `Project`
-object in your `build.scala`:
+Then enable the plugin by calling the `enablePlugins` method in your `build.sbt`:
 
 ```scala
-import com.typesafe.sbt.packager.archetypes.JavaAppPackaging
-// ...
-lazy val project = Project (
-// ...
-).enablePlugins(JavaAppPackaging)
+enablePlugins(JavaAppPackaging)
 ```
 
 ### Create a `main` method

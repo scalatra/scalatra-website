@@ -1,6 +1,6 @@
 ---
 title: Deploying to servlet containers
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 <div class="alert alert-info">
@@ -59,10 +59,9 @@ to the public internet.</p>
 <p>Having said all that, the basic case is extremely easy, as you'll see in a moment.</p>
 </div>
 
-First download and extract tomcat:
+First [download tomcat](http://tomcat.apache.org/download-80.cgi) and extract it:
 
-    $ wget http://mirror.lividpenguin.com/pub/apache/tomcat/tomcat-7/v7.0.29/bin/apache-tomcat-7.0.29.tar.gz
-    $ mv apache-tomcat-7.0.29.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
+    $ mv apache-tomcat-8.5.20.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
     $ tar -xvzf ~/Desktop/tomcat.tar.gz
 
 Ok, Tomcat is now installed.
@@ -76,7 +75,7 @@ Now deploy your application. Dropping a war file into Tomcat's `webapp` folder
 causes it to be extracted, or "exploded". Tomcat will initialize your application
 on the first request.
 
-    $ mv /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/yourapp.war
+    $ mv /path/to/your/project/target/scala-2.12/yourproject_2.12-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/yourapp.war
 
 Browse to [http://localhost:8080/yourapp/](http://localhost:8080/yourapp/)
 
@@ -103,7 +102,7 @@ If that's the case, it's time for a bit of a trick. You can move Tomcat's
 ROOT application to another spot, and put your app at the ROOT.
 
     $ mv ~/Desktop/tomcat/webapps/ROOT ~/Desktop/tomcat/webapps/ORIGINAL_ROOT
-    $ mv /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/ROOT.war
+    $ mv /path/to/your/project/target/scala-2.12/yourproject_2.12-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/ROOT.war
 
 <div class="alert alert-warning">
 <span class="badge badge-warning"><i class="glyphicon glyphicon-flag"></i></span>  Tomcat paths are case-sensitive. Make sure you copy your app to `ROOT.war`.<br /><br />

@@ -1,6 +1,6 @@
 ---
 title: Standalone deployment
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 ### Launching Scalatra as a servlet
@@ -60,18 +60,18 @@ with an init parameter:
     ...
 ```
 
-You'll also need to ensure that the `jetty-webapp` library dependency in `project/build.scala`
+You'll also need to ensure that the `jetty-webapp` library dependency in `build.sbt`
 contains a `compile` directive. Assuming your jetty-webapp declaration looks something
 like this:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container",
+"org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container",
 ```
 
 change `container` to `container;compile`:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "8.1.8.v20121106" % "container;compile",
+"org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container;compile",
 ```
 
 With the [sbt-assembly](https://github.com/sbt/sbt-assembly) plugin you can make a launchable jar.

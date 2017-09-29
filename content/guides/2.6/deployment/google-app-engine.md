@@ -1,6 +1,6 @@
 ---
 title: Google App Engine
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 Scalatra doesn't work on [Google App Engine](https://developers.google.com/appengine/)
