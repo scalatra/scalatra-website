@@ -1,6 +1,6 @@
 ---
 title: Atmosphere
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 Scalatra has a built-in integration with
@@ -19,14 +19,14 @@ It's carefree server push for the JVM.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/async/scalatra-atmosphere-example">scalatra-atmosphere-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/async/scalatra-atmosphere-example">scalatra-atmosphere-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
 #### Generating the app
 
-Generate a project using `sbt new scalatra/scalatra-sbt.g8`, and call your
-initial servlet `ChatController`.
+Generate a project using `sbt new scalatra/scalatra.g8`, and call your initial 
+servlet `ChatController`.
 
 You'll need to do a few things to a default Scalatra project in order
 to get it ready for use with Atmosphere.
@@ -37,16 +37,16 @@ The following dependencies will be needed to make the sample application
 work.
 
 ```scala
-  "org.json4s"                  %% "json4s-jackson"      % "{{< 2-5-json4s_version >}}",
-  "org.scalatra"                %% "scalatra"            % "{{< 2-5-scalatra_version >}}",
-  "org.scalatra"                %% "scalatra-scalate"    % "{{< 2-5-scalatra_version >}}",
-  "org.scalatra"                %% "scalatra-specs2"     % "{{< 2-5-scalatra_version >}}"  % "test",
-  "org.scalatra"                %% "scalatra-atmosphere" % "{{< 2-5-scalatra_version >}}",
-  "ch.qos.logback"              %  "logback-classic"     % "{{< 2-5-logback_version >}}"   % "runtime",
-  "org.eclipse.jetty"           %  "jetty-plus"          % "{{< 2-5-jetty_version >}}"     % "container;provided",
-  "org.eclipse.jetty"           %  "jetty-webapp"        % "{{< 2-5-jetty_version >}}"     % "container",
-  "org.eclipse.jetty.websocket" %  "websocket-server"    % "{{< 2-5-jetty_version >}}"     % "container;provided",
-  "javax.servlet"               %  "javax.servlet-api"   % "{{< 2-5-servlet_version >}}"   % "container;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
+  "org.json4s"                  %% "json4s-jackson"      % "{{< 2-6-json4s_version >}}",
+  "org.scalatra"                %% "scalatra"            % "{{< 2-6-scalatra_version >}}",
+  "org.scalatra"                %% "scalatra-scalate"    % "{{< 2-6-scalatra_version >}}",
+  "org.scalatra"                %% "scalatra-specs2"     % "{{< 2-6-scalatra_version >}}"  % "test",
+  "org.scalatra"                %% "scalatra-atmosphere" % "{{< 2-6-scalatra_version >}}",
+  "ch.qos.logback"              %  "logback-classic"     % "{{< 2-6-logback_version >}}"   % "runtime",
+  "org.eclipse.jetty"           %  "jetty-plus"          % "{{< 2-6-jetty_version >}}"     % "container;provided",
+  "org.eclipse.jetty"           %  "jetty-webapp"        % "{{< 2-6-jetty_version >}}"     % "container",
+  "org.eclipse.jetty.websocket" %  "websocket-server"    % "{{< 2-6-jetty_version >}}"     % "container;provided",
+  "javax.servlet"               %  "javax.servlet-api"   % "{{< 2-6-servlet_version >}}"   % "container;provided;test" artifacts Artifact("javax.servlet-api", "jar", "jar")
 ```
 
 #### Imports
@@ -104,7 +104,7 @@ and define a `receive` method, which listens for events.
 
 One AtmosphereClient is instantiated per connected user. It's worth
 taking a look at the
-[ScalaDocs](http://scalatra.org/2.2/api/#org.scalatra.atmosphere.AtmosphereClient) and [source](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/AtmosphereClient.scala) for AtmosphereClient to see what it can do.
+[ScalaDocs](http://scalatra.org/2.6/api/#org.scalatra.atmosphere.AtmosphereClient) and [source](https://github.com/scalatra/scalatra/blob/develop/atmosphere/src/main/scala/org/scalatra/atmosphere/AtmosphereClient.scala) for AtmosphereClient to see what it can do.
 
 As you can see, there are quite a few kinds of events which Scalatra's
 atmosphere integration can deal with:
@@ -191,10 +191,10 @@ Besides the basic connectivity provided by the Atmosphere connector,
 you'll need to provide your own application-specific logic, also in
 JavaScript. Here's an `application.js` file for our chat application:
 
-[https://github.com/scalatra/scalatra-website-examples/blob/master/2.5/async/scalatra-atmosphere-example/src/main/webapp/js/application.js](https://github.com/scalatra/scalatra-website-examples/blob/master/2.5/async/scalatra-atmosphere-example/src/main/webapp/js/application.js)
+[https://github.com/scalatra/scalatra-website-examples/blob/master/2.6/async/scalatra-atmosphere-example/src/main/webapp/js/application.js](https://github.com/scalatra/scalatra-website-examples/blob/master/2.6/async/scalatra-atmosphere-example/src/main/webapp/js/application.js)
 
 Drop that code into `webapp/js/atmosphere.js`, and put the
-[Atmosphere JavaScript client](https://github.com/scalatra/scalatra-website-examples/blob/master/2.5/async/scalatra-atmosphere-example/src/main/webapp/js/jquery-atmosphere.js)
+[Atmosphere JavaScript client](https://github.com/scalatra/scalatra-website-examples/blob/master/2.6/async/scalatra-atmosphere-example/src/main/webapp/js/jquery-atmosphere.js)
 alongside it, and you've got a working client implementation.
 
 A few key points in `application.js`.
@@ -213,7 +213,7 @@ what each of these mean.
 Lastly, there's a simple key-press detection which sends a chat
 message to the server whenever the `enter` key is pressed.
 
-With all of this in place, you can add a few [Scalate views](https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/async/scalatra-atmosphere-example/src/main/webapp/WEB-INF)
+With all of this in place, you can add a few [Scalate views](https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/async/scalatra-atmosphere-example/src/main/webapp/WEB-INF)
 to your chat application and it's all done. The example application has
 a default layout and action which will serve up a browser-based chat
 client.
@@ -364,9 +364,9 @@ in your subclass.
 ## Building an embedded Scalatra + Atmosphere application
 
 If you need to build your Atmosphere application to run embedded within Jetty, there's a
-full code example showing you how, [in the Scalatra Website Examples](https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/async/scalatra-atmosphere-embedded) repo on Github.
+full code example showing you how, [in the Scalatra Website Examples](https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/async/scalatra-atmosphere-embedded) repo on Github.
 
 Once you check out the code, you can build an embedded Atmosphere-enabled app which runs under Jetty, by
 calling the `stage` task once you're in SBT. This will package a start script
 for you - it can be run by calling `target/start` from the top-level project
-directory. It depends on the [sbt-start-script](https://github.com/sbt/sbt-start-script) plugin.
+directory. It depends on the [sbt-native-packager](https://github.com/sbt/sbt-native-packager) plugin.

@@ -1,22 +1,21 @@
 ---
 title: Akka
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 ### AkkaSupport
 
-[Akka](http://akka.io) is a toolkit and runtime for building highly concurrent, distributed, and
-fault tolerant event-driven applications on the JVM. Scalatra allows you to easily
-mix it into your application.
+[Akka](http://akka.io) is a toolkit and runtime for building highly concurrent, 
+distributed, and fault tolerant event-driven applications on the JVM. Scalatra 
+allows you to easily mix it into your application.
 
 #### Dependencies
 
-The following dependencies will be needed to make the sample application
-work.
+The following dependencies will be needed to make the sample application work.
 
 ```scala
-"com.typesafe.akka" %% "akka-actor" % "{{< 2-5-akka_version >}}",
-"net.databinder.dispatch" %% "dispatch-core" % "0.12.0",
+"com.typesafe.akka" %% "akka-actor" % "{{< 2-6-akka_version >}}",
+"net.databinder.dispatch" %% "dispatch-core" % "0.13.1",
 ```
 
 ### Setting up your Scalatra app with Akka
@@ -43,7 +42,7 @@ class ScalatraBootstrap extends LifeCycle {
   }
 
   override def destroy(context:ServletContext) {
-    system.shutdown()
+    system.terminate()
   }
 }
 ```
@@ -82,7 +81,7 @@ class MyAppServlet extends ScalatraServlet with FutureSupport {
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/async/akka-examples">akka-examples</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
@@ -142,13 +141,13 @@ state, don't bother with `AsyncResult`.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/async/akka-examples">akka-examples</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
-When you use Scalatra with Akka, you most likely want to return a result of some sort. So you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future. Typically, this involves Akka's [ask pattern](http://doc.akka.io/docs/akka/2.3.4/scala/actors.html#Ask__Send-And-Receive-Future).
+When you use Scalatra with Akka, you most likely want to return a result of some sort. So you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future. Typically, this involves Akka's [ask pattern](https://doc.akka.io/docs/akka/current/scala/actors.html#ask-send-and-receive-future).
 
-When the request you get just needs to trigger something on an Actor using the fire-and-forget [tell pattern](http://doc.akka.io/docs/akka/2.3.4/scala/actors.html#Tell__Fire-forget), then you don't need a Future. In this case, you probably you want to reply with the Accepted status or something like it.
+When the request you get just needs to trigger something on an Actor using the fire-and-forget [tell pattern](https://doc.akka.io/docs/akka/current/scala/actors.html#tell-fire-forget, then you don't need a Future. In this case, you probably you want to reply with the Accepted status or something like it.
 
 Here's some example code:
 
