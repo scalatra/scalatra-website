@@ -1,13 +1,13 @@
 ---
 title: Metrics
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 <div class="alert alert-info">
   <img src="/images/glyphicons/glyphicons_023_cogwheels.png">This functionality is available starting in Scalatra 2.4.
 </div>
 
-Scalatra supports metrics via the [metrics](https://dropwizard.github.io/metrics/3.1.0/) and
+Scalatra supports metrics via the [metrics](http://metrics.dropwizard.io/) and
 [metrics-scala](https://github.com/erikvanoosten/metrics-scala) projects.
 
 ### Setup
@@ -15,7 +15,7 @@ Scalatra supports metrics via the [metrics](https://dropwizard.github.io/metrics
 In order to make use of this functionality, add `scalatra-metrics` to your `build.sbt`:
 
 ```scala
-"org.scalatra" %% "scalatra-metrics" % "{{< 2-5-scalatra_version >}}"
+"org.scalatra" %% "scalatra-metrics" % "{{< 2-6-scalatra_version >}}"
 ```
 
 and mix in the MetricsBootstrap trait into ScalatraBootstrap:

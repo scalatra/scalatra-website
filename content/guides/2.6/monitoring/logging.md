@@ -1,6 +1,6 @@
 ---
 title: Logging
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 By default, Scalatra uses [Logback][logback] for logging.
@@ -11,7 +11,7 @@ You can easily add logging facilities to your project, if you've got the
 logging dependency in your `project/build.scala` file:
 
 ```scala
-"ch.qos.logback" % "logback-classic" % "{{< 2-5-logback_version >}}" % "runtime"
+"ch.qos.logback" % "logback-classic" % "{{< 2-6-logback_version >}}" % "runtime"
 ```
 
 In your servlet or filter class:
