@@ -1,6 +1,6 @@
 ---
 title: ScalaTest
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 [ScalaTest](http://scalatest.org/) supports three main styles of testing out of
@@ -26,7 +26,7 @@ Convenience traits are provided for many `Suite` implementations:
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-scalatest" % "{{< 2-5-scalatra_version >}}" % "test"
+"org.scalatra" %% "scalatra-scalatest" % "{{< 2-6-scalatra_version >}}" % "test"
 ```
 
 #### Example

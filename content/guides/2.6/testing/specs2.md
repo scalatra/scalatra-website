@@ -1,6 +1,6 @@
 ---
 title: Specs2
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 [Specs2](http://etorreborre.github.com/specs2/) is a library for writing
@@ -11,7 +11,7 @@ specifications for one class (unit specifications) or a full system
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-specs2" % "{{< 2-5-scalatra_version >}}" % "test"
+"org.scalatra" %% "scalatra-specs2" % "{{< 2-6-scalatra_version >}}" % "test"
 ```
 
 #### Examples

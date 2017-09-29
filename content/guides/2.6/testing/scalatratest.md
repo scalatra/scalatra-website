@@ -1,13 +1,13 @@
 ---
 title: ScalatraTest
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-test" % "{{< 2-5-scalatra_version >}}" % "test"
+"org.scalatra" %% "scalatra-test" % "{{< 2-6-scalatra_version >}}" % "test"
 ```
 
 #### Usage guide
