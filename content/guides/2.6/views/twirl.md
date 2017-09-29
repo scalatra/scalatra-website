@@ -1,9 +1,9 @@
 ---
 title: Twirl
-layout: guides-2.5
+layout: guides-2.6
 ---
 
-*Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.5.x/ScalaTemplates).
+*Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.6.x/ScalaTemplates).
 
 ---
 
@@ -42,7 +42,7 @@ Scalate's Scaml or Jade languages for HTML/XML templates.
 - Add the [Twirl plugin](https://github.com/playframework/twirl) to `project/plugins.sbt`:
 
 ```scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-twirl" % "1.3.2")
+addSbtPlugin("com.typesafe.sbt" % "sbt-twirl" % "1.3.7")
 ```
 - Enable the plugin in `build.sbt`:
 
@@ -73,7 +73,7 @@ com.example.html.myTwirlTemplate.render(param1, param2, ...)
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.5/views/scalatra-twirl">twirl-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/views/scalatra-twirl">twirl-example</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
@@ -112,7 +112,7 @@ Your result?
 ## Full usage guide
 We have only provided a taste of what Twirl can do.
 Since it's an external project, we encourage you to also consult the
-[official documentation](http://www.playframework.org/documentation/2.5.x/ScalaTemplates).
+[official documentation](http://www.playframework.org/documentation/2.6.x/ScalaTemplates).
 
 ## Rendering oddities
 

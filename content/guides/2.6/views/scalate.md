@@ -1,6 +1,6 @@
 ---
 title: Scalate
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 If you're using Scalatra to build a web application (as opposed to an API), chances are you'll
