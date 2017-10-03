@@ -18,11 +18,56 @@ Open `build.sbt` in the root of your project, and add the following line to the 
   "org.scalatra" %% "scalatra-forms" % ScalatraVersion,
 ```
 
-Let's assume a HTML form like this:
+Assuming a HTML form like this:
 
 <img src="form.png" style="width: 100%; border: 1px solid silver;">
 
-At first, make a case class to be mapped parameters sent from this form:
+You can write this form using view helpers in Twirl template as follows:
+
+```html
+@()(implicit request: javax.servlet.http.HttpServletRequest)
+@import org.scalatra.forms.views._
+...
+<form action="/" method="POST" class="form-horizontal">
+  <div class="form-group @if(error("text").nonEmpty){has-error}">
+    <label class="col-sm-2 control-label" for="text">Text (*):</label>
+    <div class="col-sm-10">
+      @Html(text("text", "class" -> "form-control"))
+      <span class="error">@error("text")</span>
+    </div>
+  </div>
+  <div class="form-group @if(error("email").nonEmpty){has-error}">
+    <label class="col-sm-2 control-label" for="email">Email:</label>
+    <div class="col-sm-10">
+      @Html(text("email", "class" -> "form-control"))
+      <span class="error">@error("email")</span>
+    </div>
+  </div>
+  <div class="form-group @if(errors("number").nonEmpty){has-error}">
+    <label class="col-sm-2 control-label" for="number">Number:</label>
+    <div class="col-sm-10">
+      @Html(text("number", "class" -> "form-control"))
+      <span class="error">@error("number")</span>
+    </div>
+  </div>
+  <div class="form-group @if(errors("checkbox").nonEmpty){has-error}">
+    <label class="col-sm-2 control-label">Checkbox:</label>
+    <div class="col-sm-10">
+      <div class="checkbox">
+        <label>@Html(checkbox("checkbox", "checkboxA")) Checkbox A</label>
+      </div>
+      <div class="checkbox">
+        <label>@Html(checkbox("checkbox", "checkboxB")) Checkbox B</label>
+      </div>
+      <span class="error">@error("checkbox")</span>
+    </div>
+  </div>
+  <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+...
+```
+
+Let's see how to implement server side validation. At first, make a case class to be mapped parameters sent from this form:
 
 ```scala
 case class ValidationForm(
@@ -33,7 +78,7 @@ case class ValidationForm(
 )
 ```
 
-Next, define a form as follows:
+Next, define a form:
 
 ```scala
 import org.scalatra.forms._
