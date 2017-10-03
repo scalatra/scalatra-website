@@ -83,7 +83,7 @@ In order to use Scalatra's JSON features, we'll need to add a couple of library 
 
 The first thing you'll need is Scalatra's JSON handling library. The second thing you'll need is [json4s](http://json4s.org/), which is a unified wrapper around the various Scala JSON libraries. We'll use the json4s-jackson variant, which uses the [jackson](http://jackson.codehaus.org/) library as the basis of its json support.
 
-In the root of your generated project, you'll find a file called `project/build.scala`. Open that up, and add the following two lines to the `libraryDependencies` sequence, after the other scalatra-related lines:
+In the root of your generated project, you'll find a file called `build.sbt`. Open that up, and add the following two lines to the `libraryDependencies` sequence, after the other scalatra-related lines:
 
 ```scala
   "org.scalatra" %% "scalatra-json" % ScalatraVersion,
