@@ -1,6 +1,6 @@
 ---
 title: Handling JSON
-layout: guides-2.5
+layout: guides-2.6
 ---
 
 Scalatra makes JSON handling quick and easy. By adding a few library imports and several lines of code, you can get automatic JSON serialization and deserialization for any Scala case class.
@@ -87,7 +87,7 @@ In the root of your generated project, you'll find a file called `project/build.
 
 ```scala
   "org.scalatra" %% "scalatra-json" % ScalatraVersion,
-  "org.json4s"   %% "json4s-jackson" % "{{< 2-5-json4s_version >}}",
+  "org.json4s"   %% "json4s-jackson" % "{{< 2-6-json4s_version >}}",
 ```
 
 Restart sbt to download the new jars.
