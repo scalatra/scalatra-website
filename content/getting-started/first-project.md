@@ -8,22 +8,22 @@ Now that [installation](installation.html) is out of the way, you can
 generate a project:
 
 ```bash
-$ sbt new scalatra/scalatra-sbt.g8
+$ sbt new scalatra/scalatra.g8
 ```
 
-This will check out a pre-built application skeleton for you (from [GitHub](https://github.com/scalatra/scalatra-sbt.g8)),
+This will check out a pre-built application skeleton for you (from [GitHub](https://github.com/scalatra/scalatra.g8)),
 and ask you some questions about your application:
 
 ```
-$ g8 scalatra/scalatra-sbt
+$ sbt new scalatra/scalatra.g8
 organization [com.example]:
 name [My Scalatra Web App]:
 version [0.1.0-SNAPSHOT]:
 servlet_name [MyScalatraServlet]:
 package [com.example.app]:
-scala_version [2.12.1]:
-sbt_version [0.13.13]:
-scalatra_version [2.5.1]: 
+scala_version [2.12.3]:
+sbt_version [1.0.2]:
+scalatra_version [2.5.1]:
 
 Template applied in ./my-scalatra-web-app
 ```
