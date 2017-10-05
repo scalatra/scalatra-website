@@ -47,7 +47,7 @@ class ScalatraBootstrap extends LifeCycle {
 }
 ```
 
-The ScalatraBootstrap can be in [the usual place](../../getting-started/project-structure.html),
+The ScalatraBootstrap can be in [the usual place](../../../getting-started/project-structure.html),
 but if you would like to specify a specific package and class, you can do so
 with an init parameter:
 
