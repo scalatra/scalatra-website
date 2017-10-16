@@ -3,39 +3,8 @@ title: Google App Engine
 layout: guides-2.5
 ---
 
-Scalatra doesn't work on [Google App Engine](https://developers.google.com/appengine/)
-(GAE).
+Scalatra can run on [Google App Engine Flexible Environment](https://cloud.google.com/appengine/docs/flexible/java/). You can use the provided [Java 8 / Jetty 9 runtime](https://cloud.google.com/appengine/docs/flexible/java/dev-jetty9), the provided [Java 8 runtime](https://cloud.google.com/appengine/docs/flexible/java/dev-java-only) (which would require you to write the server setup code yourself), or any external Docker image capable of running Java web applications.
 
-*Why not?!*
+Scalatra can run on [Google App Engine Standard Java 8 runtime](https://cloud.google.com/appengine/docs/standard/java/runtime-java8) with some [limitations](https://cloud.google.com/appengine/docs/standard/java/how-requests-are-handled), most notably no support for streaming responses and no support for Servlet 3+ async processing.
 
-----
-
-## Short answer ##
-Scalatra runs on the Java platform (JRE). GAE doesn't support the JRE.
-
-## Long answer ##
-GAE only supports a non-standard subset of the JRE, requiring that apps be specifically
-designed for it.
-Here are a few of the limitations:
-
-- [No support](https://developers.google.com/appengine/docs/features#Roadmap_Features) for Servlet 3.0
-- [Essential request headers](https://developers.google.com/appengine/docs/java/runtime#Request_Headers) are removed.
-- [Essential response headers](https://developers.google.com/appengine/docs/java/runtime#Responses) are removed.
-- Streaming responses are [unsupported](https://developers.google.com/appengine/docs/java/runtime#Responses).
-- GAE is so aggressive about terminating slow responders that the app can be left in
-an [inconsistent state](https://developers.google.com/appengine/docs/java/runtime#The_Request_Timer) according to the rules of the JVM.
-- Apps [cannot make client requests](https://developers.google.com/appengine/docs/java/runtime#The_Sandbox) without using GAE's fetch service.
-- [Not all](https://developers.google.com/appengine/docs/java/jrewhitelist) JRE classes are supported.
-- Logging is possible [only through `java.util.logging`](https://developers.google.com/appengine/docs/java/runtime#Logging).
-
-## Future ##
-It's really the Servlet 3.0 that is absolutely essential for Scalatra.
-Once that is implemented, if there is sufficient demand, it may be possible to support
-GAE without forking the Scalatra codebase.
-
-## Pretty please? ##
-
-Scalatra 2.0.x was based on Servlet 2.5, and may work on GAE with the above
-caveats.  This is unsupported by the Scalatra team, as we believe you will get
-a better Scalatra experience with the [other Platform as a Service
-options](index.html).
+The old [Java 7 runtime](https://cloud.google.com/appengine/docs/standard/java/runtime) only supports Servlet API 2.5 and imposes even more restrictions, making it practically unusable with Scalatra.
