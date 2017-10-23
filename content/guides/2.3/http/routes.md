@@ -270,7 +270,7 @@ becomes an empty key in the `params` Map.
 
 ### Filters
 
-Scalatra offers a way for you too hook into the request chain of your
+Scalatra offers a way for you to hook into the request chain of your
 application via `before` and `after` filters, which both accept a
 block to yield. Filters optionally take a URL pattern to match to the request.
 
