@@ -7,34 +7,38 @@ title: Project structure
 The recommended way of structuring a Scalatra project is as follows. It's
 what you get when you generate a new project using `sbt new`:
 
-    build.sbt               <= dependencies and project config are set in here
+```
+build.sbt               <= dependencies and project config are set in here
 
-    project
-    |_build.properties      <= specifies what version of sbt to use
-    |_plugins.sbt           <= sbt plugins can be added here
+project
+|_build.properties      <= specifies what version of sbt to use
+|_plugins.sbt           <= sbt plugins can be added here
 
-    src
-    |_ main
-    |  |_ scala
-    |  |  |   |_ScalatraBootstrap.scala     <= mount servlets in here
-    |  |  |_org
-    |  |      |_ yourdomain
-    |  |         |_ projectname
-    |  |            |_ MyScalatraServlet.scala
-    |  |_ webapp
-    |     |_ WEB-INF
-    |        |_ views
-    |        |  |_ hello-scalate.jade
-    |        |_ layouts
-    |        |  |_ default.jade
-    |        |_ web.xml
-    |_ test
-       |_ scala
-          |_ org
-             |_ yourdomain
-                |_ projectname
-                   |_ MyScalatraServletSpec.scala
-
+src
+|_ main
+|  |_ resources
+|     |_ logback.xml
+|  |_ scala
+|  |  |   |_ScalatraBootstrap.scala     <= mount servlets in here
+|  |  |_org
+|  |      |_ yourdomain
+|  |         |_ projectname
+|  |            |_ MyScalatraServlet.scala
+|  |_ twirl
+|  |  |_layouts
+|  |    |_default.scala.html
+|  |  |_views
+|  |    |_hello.scala.html
+|  |_ webapp
+|     |_ WEB-INF
+|        |_ web.xml
+|_ test
+   |_ scala
+      |_ org
+         |_ yourdomain
+            |_ projectname
+               |_ MyScalatraServletTests.scala
+```
 
 
 The basic structure should be reasonably familiar to anybody who's seen a
@@ -62,12 +66,6 @@ An example structure may help in understanding this.
        |  |_ Web.scala
        |_ webapp
           |_ WEB-INF
-          |  |_ views
-          |  |  |_ default.jade
-          |  |
-          |  |_ layouts
-          |  |  |_ default.jade
-          |  |
           |  |_ web.xml
           |- stylesheets
           |  |_ default.css
@@ -86,7 +84,7 @@ There are two base classes you can inherit from in order to make a
 Scalatra application: `ScalatraServlet` and `ScalatraFilter`.
 
 ```scala
-class YourServlet extends ScalatraServlet with ScalateSupport {
+class YourServlet extends ScalatraServlet {
   // your class here
 }
 
@@ -95,7 +93,7 @@ class YourServlet extends ScalatraServlet with ScalateSupport {
 vs.
 
 ```scala
-class YourFilter extends ScalatraFilter with ScalateSupport {
+class YourFilter extends ScalatraFilter {
   // your class here
 }
 
@@ -135,15 +133,7 @@ so that `sbt` can download them for you and build your Scalatra project.
 Here's an example Scalatra `build.sbt` file:
 
 ```scala
-import org.scalatra.sbt._
-import org.scalatra.sbt.PluginKeys._
-import ScalateKeys._
-
 val ScalatraVersion = "{{< 2-5-scalatra_version >}}"
-
-ScalatraPlugin.scalatraSettings
-
-scalateSettings
 
 organization := "com.example"
 
@@ -151,34 +141,20 @@ name := "My Scalatra Web App"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.3"
 
 resolvers += Classpaths.typesafeReleases
 
 libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra" % ScalatraVersion,
-  "org.scalatra" %% "scalatra-scalate" % ScalatraVersion,
-  "org.scalatra" %% "scalatra-specs2" % ScalatraVersion % "test",
+  "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
   "ch.qos.logback" % "logback-classic" % "{{< 2-5-logback_version >}}" % "runtime",
   "org.eclipse.jetty" % "jetty-webapp" % "{{< 2-5-jetty_version >}}" % "container",
   "javax.servlet" % "javax.servlet-api" % "{{< 2-5-servlet_version >}}" % "provided"
 )
 
-scalateTemplateConfig in Compile := {
-  val base = (sourceDirectory in Compile).value
-  Seq(
-    TemplateConfig(
-      base / "webapp" / "WEB-INF" / "templates",
-      Seq.empty,  /* default imports should be added here */
-      Seq(
-        Binding("context", "_root_.org.scalatra.scalate.ScalatraRenderContext", importMembers = true, isImplicit = true)
-      ),  /* add extra bindings here */
-      Some("templates")
-    )
-  )
-}
-
-enablePlugins(JettyPlugin)
+enablePlugins(SbtTwirl)
+enablePlugins(ScalatraPlugin)
 ```
 
 <div class="alert alert-info">
@@ -202,15 +178,9 @@ The default dependencies are:
 <dl class="dl-horizontal">
   <dt>scalatra</dt>
   <dd>This is the core Scalatra module, and is required to run the framework.</dd>
-  <dt>scalatra-scalate</dt>
+  <dt>scalatra-scalatest</dt>
   <dd>
-    This integrates with <a href="http://scalate.github.io/scalate">Scalate</a>,
-    a template engine supporting multiple template formats. Scalate is optional, but
-    highly recommended for any app requiring templating.
-  </dd>
-  <dt>scalatra-specs2</dt>
-  <dd>
-    This integrates the <a href="https://github.com/etorreborre/specs2">Specs2</a>
+    This integrates the <a href="https://github.com/scalatest/scalatest">scalatest</a>
     testing libraries.
     It is placed in the <code>test</code> scope, so it's not deployed with your app
     in production.
