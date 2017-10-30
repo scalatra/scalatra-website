@@ -14,7 +14,7 @@ Scalatra can render views in two main ways.
 
 ## Introducing Scalate
 
-Scalatra uses an extremely powerful templating engine, [Scalate][scalate].
+Scalatra can work with an extremely powerful templating engine, [Scalate][scalate].
 It supports multiple template styles. We think it's one of the best
 template engines going - it's extremely fast, flexible, and feature-rich.
 
@@ -39,7 +39,12 @@ you time by telling you when you make a mistake in your views.
 [mustache]: http://scalate.github.io/scalate/documentation/mustache.html
 [jade]: http://scalate.github.io/scalate/documentation/jade.html
 
-All you need to get started is `Scalate`, which is included in Scalatra.
+To get started with `Scalate`, add `scalatra-scalate` dependency in your build.sbt.
+
+```
+"org.scalatra" %% "scalatra-scalate" % ScalatraVersion
+```
+
 By default, Scalatra looks for views in the `views` directory in your application root.
 
 There are two ways to use Scalate. You can use the ScalateSupport helpers,
