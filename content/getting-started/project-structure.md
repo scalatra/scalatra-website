@@ -161,7 +161,7 @@ enablePlugins(ScalatraPlugin)
 <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
 If you want to add any additional libraries to your project, add them to the
 <code>libraryDependencies</code> section.
-Doing that and running <code>./sbt</code> again will download the dependency jar
+Doing that and running <code>sbt</code> again will download the dependency jar
 libraries and make them available to your application.
 If you don't know what the dependency details are, you can find out on
 <a href="http://search.maven.org">http://search.maven.org</a>.
