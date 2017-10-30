@@ -139,7 +139,7 @@ Your code should compile again at this point. Refresh your browser at [http://lo
 [{"slug":"yellow-tulip","name":"Yellow Tulip"},{"slug":"red-rose","name":"Red Rose"},{"slug":"black-rose","name":"Black Rose"}]
 ```
 
-The `JsonJacksonSupport` trait which we mixed into the controller, combined with the `implicit val jsonFormats`, are now turning all Scalatra action result values into JSON.
+The `JacksonJsonSupport` trait which we mixed into the controller, combined with the `implicit val jsonFormats`, are now turning all Scalatra action result values into JSON.
 
 ### Receiving JSON
 
