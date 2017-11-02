@@ -23,7 +23,7 @@ servlet_name [MyScalatraServlet]:
 package [com.example.app]:
 scala_version [2.12.3]:
 sbt_version [1.0.2]:
-scalatra_version [2.5.1]:
+scalatra_version [2.5.3]:
 
 Template applied in ./my-scalatra-web-app
 ```
@@ -120,15 +120,10 @@ package com.example.app
 
 import org.scalatra._
 
-class MyServlet extends ScalatraServlet with MyScalatraWebAppStack {
+class MyScalatraServlet extends ScalatraServlet {
 
   get("/") {
-    <html>
-      <body>
-        <h1>Hello, world!</h1>
-        Say <a href="hello-scalate">hello to Scalate</a>.
-      </body>
-    </html>
+    views.html.hello()
   }
 
 }
