@@ -123,7 +123,7 @@ scala> pattern("/y/x") // doesn't match
 res1: Option[MultiParams] = None
 
 scala> pattern("/foo/x") // matches
-res2: Option[MultiParams] = Some(Map(bar -> ListBuffer(x)))
+res2: Option[MultiParams] = Some(Map(bar -> Vector(x)))
 ```
 
 Alternatively, you may use the `RailsPathPatternParser` in place of the
