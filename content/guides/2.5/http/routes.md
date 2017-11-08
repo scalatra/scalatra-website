@@ -106,7 +106,7 @@ class RailsLikeRouting extends ScalatraFilter {
 
 If you want to experiment with path patterns, it's very easy in the [REPL][repl].
 Simply use a Scalatra project, like one created by our
-[giter8 template]({{site.baseurl}}getting-started/first-project.html).
+[giter8 template](../../../getting-started/first-project.html).
 
 ```
 $ cd [project root]
@@ -123,7 +123,7 @@ scala> pattern("/y/x") // doesn't match
 res1: Option[MultiParams] = None
 
 scala> pattern("/foo/x") // matches
-res2: Option[MultiParams] = Some(Map(bar -> ListBuffer(x)))
+res2: Option[MultiParams] = Some(Map(bar -> Vector(x)))
 ```
 
 Alternatively, you may use the `RailsPathPatternParser` in place of the
