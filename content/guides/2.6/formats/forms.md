@@ -108,7 +108,7 @@ post("/") {
 
 As you can see, `errors` is `Seq[(String, String)]`. The first element of tuple in this sequence is a request parameter name, and the second parameter is an error message.
 
-### Form defintiion
+### Form definition
 
 Form consists combination of `ValueType` and `Constraint`. scalatra-forms has some `ValueType` and `Constraint` in default. You can define your forms using them. Of course, you can define your own rules or constraints if you need.
 
