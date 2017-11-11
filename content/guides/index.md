@@ -5,7 +5,7 @@ title: Documentation
 ### Scalatra 2.6.x
 
 - [Guides](/guides/2.6/)
-- [Scaladoc](/apidocs/2.6/)
+- [Scaladoc](http://javadoc.io/doc/org.scalatra/scalatra-unidoc_2.12/2.6.0)
 
 ### Scalatra 2.5.x
 
