@@ -7,7 +7,7 @@ layout: guides-2.6
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
-  This guide uses Scalatra 2.5.1, Slick 3.2.0. You may want to check for a newer version.
+  This guide uses Scalatra 2.6.1, Slick 3.2.0. You may want to check for a newer version.
 </div>
 
 <div class="alert alert-info">
