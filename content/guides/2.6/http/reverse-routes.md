@@ -82,3 +82,8 @@ right in your templates:
 ```scala
 url(viewUser, "id" -> 1)
 ```
+
+Note that there is potential for method names to collide if you have 
+reverse-routes with the same variable names in different servlets. This could 
+result in generation of incorrect urls. Ensure reverse-route variable names 
+are unique across all your servlets to prevent this.
