@@ -287,7 +287,7 @@ class ScalatraBootstrap extends LifeCycle {
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
-  Note that the `context.mount(new FlowersController, "/flowers", "flowers")` has a second
+  Note that the <code>context.mount(new FlowersController, "/flowers", "flowers")</code> has a second
   parameter: in Scalatra 2.3.x, Swagger requires a name parameter to be present so that it
   can generate its documentation properly. The name should always be the same as the
   controller's mount path, minus the leading "/".
@@ -427,7 +427,7 @@ Paste your Swagger resource descriptor URL - `http://localhost:8080/api-docs` - 
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
-  It's very important to get the api-docs path correct when you browse your docs in swagger-ui. Be careful: there's no trailing slash on `http://localhost:8080/api-docs`,
+  It's very important to get the api-docs path correct when you browse your docs in swagger-ui. Be careful: there's no trailing slash on <code>http://localhost:8080/api-docs</code>,
   and the docs won't work if you accidentally add one.
 </div>
 
