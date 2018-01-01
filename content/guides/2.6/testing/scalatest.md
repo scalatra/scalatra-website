@@ -8,37 +8,44 @@ the box: test-driven development (TDD), behavior-driven development (BDD), and
 acceptance testing. ScalaTest also supports writing JUnit and TestNG tests in
 Scala.
 
-Scalatra has an integration to make the use of ScalaTest more convenient.
-
-Convenience traits are provided for many `Suite` implementations:
-
-* `ScalatraSpec`
-* `ScalatraFlatSpec`
-* `ScalatraFreeSpec`
-* `ScalatraWordSpec`
-* `ScalatraFunSuite`
-* `ScalatraFeatureSpec`
-* `ScalatraJUnit3Suite`
-* `ScalatraJUnitSuite` (JUnit 4)
-* `ScalatraTestNGSuite`
-
-
 #### Dependency
 
 ```scala
 "org.scalatra" %% "scalatra-scalatest" % "{{< 2-6-scalatra_version >}}" % "test"
 ```
 
+#### Selecting a testing style
+
+A trait of Scalatra integration is prepared according to the testing style of ScalaTest.
+You can select a trait according to the testing style you want to use.
+
+|ScalaTest testing style|trait|
+|---|---|
+|`FunSpec`|`ScalatraSpec`|
+|`FlatSpec`|`ScalatraFlatSpec`|
+|`FreeSpec`|`ScalatraFreeSpec`|
+|`WordSpec`|`ScalatraWordSpec`|
+|`FunSuite`|`ScalatraFunSuite`|
+|`FeatureSpec`|`ScalatraFeatureSpec`|
+|`JUnit3Suite`|`ScalatraJUnit3Suite`|
+|`JUnitSuite` (JUnit 4)|`ScalatraJUnitSuite`|
+|`TestNGSuite`|`ScalatraTestNGSuite`|
+
+At this time, traits for PropSpec and RefSpec are not prepared.
+
 #### Example
 
-Extend `ScalatraSuite` with your preferred `org.scalatest.Suite` implementation.
-You get `ShouldMatchers` and `MustMatchers` for free.
+When creating a test class, extend Scalatra's trait according to
+[the testing style of ScalaTest](http://www.scalatest.org/user_guide/selecting_a_style).
+At this time, ScalaTest's [`Matcher`](http://www.scalatest.org/user_guide/using_matchers)
+trait is already in effect, so you do not need to mix-in.
+
+The following code shows an example of code when FunSuite is selected as the testing style.
 
 ```scala
 import org.scalatra.test.scalatest._
-import org.scalatest.FunSuiteLike
 
-class HelloWorldServletTests extends ScalatraSuite with FunSuiteLike {
+class HelloWorldServletTests extends ScalatraFunSuite {
   // `HelloWorldServlet` is your app which extends ScalatraServlet
   addServlet(classOf[HelloWorldServlet], "/*")
 
@@ -49,14 +56,4 @@ class HelloWorldServletTests extends ScalatraSuite with FunSuiteLike {
     }
   }
 }
-```
-
-The addServlet method is used here with `classOf[HelloWorldServlet]` to mount
-the HelloWorld servlet into the ScalaTest test.
-
-If you've got a servlet which takes constructor params, you'll need to mount the servlet in your test with a different `addServlet` method overload, e.g.:
-
-```scala
-  implicit val myImplicitHere = new ImplicitConstructorParam
-  addServlet(new HelloWorldServlet, "/*")
 ```
