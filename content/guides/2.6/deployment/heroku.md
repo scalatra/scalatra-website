@@ -16,7 +16,7 @@ for a minimal and standalone project containing the example in this guide.
 
 ## 1. Sign up for a free a [free account](https://api.heroku.com/signup).
 
-## 2. Install the [Heroku Toolbelt](https://toolbelt.herokuapp.com/).
+## 2. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
 ## 3. Set up a project.
 
@@ -34,13 +34,13 @@ $ sbt new scalatra/scalatra.g8
 Open `build.sbt` in the root of your project. You will find a line like this:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container",
+"org.eclipse.jetty" % "jetty-webapp" % "9.4.8.v20171121" % "container",
 ```
 
 Those are basically right, but we need to add `compile` scope because Heroku is not a servlet host. It can only run your app via an embedded Jetty server you provide. So replace the line above with this one:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "compile;container",
+"org.eclipse.jetty" % "jetty-webapp" % "9.4.8.v20171121" % "compile;container",
 ```
 
 ### Add the sbt Native Packager plugin
@@ -48,7 +48,7 @@ Those are basically right, but we need to add `compile` scope because Heroku is 
 You don't want to use sbt to run your app in production. We'll install an sbt plugin that will create a start script during compilation. Heroku will use that start script. Tell sbt where to find the plugin by adding this line to `project/plugins.sbt` (you may need to create the file first):
 
 ```scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.2.2")
+addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.3.2")
 ```
 
 Then enable the plugin by calling the `enablePlugins` method in your `build.sbt`:
@@ -112,7 +112,7 @@ a `Procfile` with contents such as:
 web: target/universal/stage/bin/<app-name> -Dhttp.port=$PORT -Dother.prop=someValue
 ```
 
-And replace `<app-name>` with the name of your app defined in `build.scala`.
+And replace `<app-name>` with the name of your app defined in `build.sbt`.
 
 ## 5. Deploy
 
