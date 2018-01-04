@@ -14,18 +14,25 @@ specifications for one class (unit specifications) or a full system
 "org.scalatra" %% "scalatra-specs2" % "{{< 2-6-scalatra_version >}}" % "test"
 ```
 
-#### Examples
+#### Selecting a testing style 
 
-Specs2 supports two basic styles: *unit* and *acceptance*.
-Both are supported by Scalatra.
+A trait of Scalatra integration is prepared according to the testing style of Specs2.
+You can select a trait according to the testing style you want to use.
+
+|Specs2 testing style|trait|
+|---|---|
+|`MutableScalatraSpec`|`org.specs2.mutable.Specification` (Unit specification)|
+|`ScalatraSpec`|`org.specs2.Specification` (Acceptance specification)|
+
+#### Examples
 
 ##### Unit testing
 
-From the [Specs2 QuickStart][Quickstart]:
+From the [Specs2 Structure](https://etorreborre.github.io/specs2/guide/SPECS2-4.0.0/org.specs2.guide.Structure.html):
 
-> unit specifications where the specification text is interleaved with the
-> specification code. It is generally used to specify a single class.
-
+> you can create a “Unit” specification where the code is interleaved with the text.
+> The name “unit” comes from the fact that Unit specifications have a structure which
+> is close to unit tests in “classical” frameworks such as JUnit
 
 ```scala
 import org.scalatra.test.specs2._
@@ -33,8 +40,8 @@ import org.scalatra.test.specs2._
 class HelloWorldMutableServletSpec extends MutableScalatraSpec {
   addServlet(classOf[HelloWorldServlet], "/*")
 
-  "GET / on HelloWorldServlet" should {
-    "return status 200" in {
+  "GET / on HelloWorldServlet" >> {
+    "must return status 200" >> {
       get("/") {
         status must_== 200
       }
@@ -45,64 +52,25 @@ class HelloWorldMutableServletSpec extends MutableScalatraSpec {
 
 ##### Acceptance testing
 
-From the [Specs2 QuickStart][Quickstart]:
+From the [Specs2 Structure](https://etorreborre.github.io/specs2/guide/SPECS2-4.0.0/org.specs2.guide.Structure.html):
 
-> acceptance specifications where all the specification text stands as one and
-> the implementation code is elsewhere.  It is generally used for acceptance or
-> integration scenarios
-
-[Quickstart]: http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
+> you can create an “Acceptance” specification where all the informal text
+> is written in one place and the code is written somewhere else. The name
+> “acceptance” comes from the fact that it might be easier for a non-developer
+> to just read some text to validate your specification
 
 ```scala
 import org.scalatra.test.specs2._
 
 class HelloWorldServletSpec extends ScalatraSpec { def is = s2"""
   GET / on HelloWorldServlet
-    returns status 200           $getRoot200
+    must return status 200           $getRoot200
 """
 
   addServlet(classOf[HelloWorldServlet], "/*")
 
   def getRoot200 = get("/") {
     status must_== 200
-  }
-}
-```
-
-The `addServlet` method is used here with `classOf[HelloWorldServlet]` to mount
-the HelloWorld servlet into the Specs2 test.
-
-If you've got a servlet which takes constructor params, you'll need to mount the
-servlet in your test with a different `addServlet` method overload, e.g.:
-
-```scala
-  implicit val myImplicitHere = new ImplicitConstructorParam
-  addServlet(new HelloWorldServlet, "/*")
-```
-
-#### Testing file uploads
-
-Convenience methods exist for testing file uploads.
-
-```scala
-class FileUploadSpec extends MutableScalatraSpec {
-  addServlet(classOf[FileUploadServlet], "/*")
-
-  "POST /files" should {
-    "return status 200" in {
-      // You can also pass headers after the files Map
-      post("/files", Map("private" -> "true"), Map("kitten" -> new File("kitten.png"))) {
-        status must_== 200
-      }
-    }
-  }
-
-  "PUT /files/:id" should {
-    "return status 200" in {
-      put("/files/10", Map("private" -> "false"), Map("kitten" -> new File("kitten.png"))) {
-        status must_== 200
-      }
-    }
   }
 }
 ```
