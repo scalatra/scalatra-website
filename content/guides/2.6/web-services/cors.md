@@ -5,24 +5,11 @@ layout: guides-2.6
 
 ### Cross origin resource sharing
 
-Scalatra allows you to mix the `CorsSupport` trait into your servlets if you need to do
-[cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
-
-Adding `CorsSupport` allows all requests from anywhere, by default. You'll need to add an `options` route to your servlet, though, so that your servlet will respond to the preflight request:
-
-```scala
-import org.scalatra.CorsSupport
-
-class YourServlet extends ScalatraBase with CorsSupport {
-
-  options("/*"){
-    response.setHeader(
-      "Access-Control-Allow-Headers", request.getHeader("Access-Control-Request-Headers"));
-  }
-
-}
-```
-
+Scalatra has CORS support enabled by default. CORS is a security feature from browsers. If a page in a browser wants to 
+do a request to another domain, it will first send an OPTIONS request (called a pre-flight) and depending on the response headers the browser
+will block or execute the actual request. See the [wikipedia page on cross-origin resource sharing](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) 
+for more information.
+ 
 You can configure your application to be more restrictive by using the following init params.
 
 ```scala
@@ -48,6 +35,35 @@ context.initParameters("org.scalatra.cors.allowCredentials") = true
 // If CorsSupport needs to be disabled, set to false. Default: CorsSupport is enabled.
 context.initParameters("org.scalatra.cors.enable") = false
 ```
+
+### Special care when allowedOrigins = "*" (which is the default!)
+If your init param **org.scalatra.cors.allowedOrigins** is equal to "*", which is the default, then you must set 
+**org.scalatra.cors.allowCredentials** to false. Otherwise the browser will block the request because
+it could leak credentials to any domain. 
+
+Recommended configuration:
+
+```scala
+// Optional because * is the default
+context.initParameters("org.scalatra.cors.allowedOrigins") = "*"
+// Disables cookies, but required because browsers will not allow passing credentials to wildcard domains  
+context.initParameters("org.scalatra.cors.allowCredentials") = false
+```
+
+If you need allowedCredentials to be true, then you have to implement an options route and set the allowed domain:
+
+```scala
+import org.scalatra.CorsSupport
+
+class YourServlet extends ScalatraBase with CorsSupport {
+
+  options("/*"){
+    response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"))
+  }
+
+}
+```
+
 
 If you're not familiar with CORS, you may want to find out a bit more about
 [preflightMaxAge][preflight] and [allowCredentials][allowCredentials] or
