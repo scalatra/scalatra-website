@@ -87,7 +87,7 @@ class MyAppServlet extends ScalatraServlet with FutureSupport {
 
 As a more concrete example, here's how you'd make an asynchronous HTTP
 request from inside one of your actions, using the
-[Dispatch](http://dispatch.databinder.net/Dispatch.html) http client and an
+[Dispatch](https://dispatchhttp.org/Dispatch.html) http client and an
 Akka `ActorSystem`.
 
 ```scala
