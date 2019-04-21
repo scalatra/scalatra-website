@@ -76,7 +76,7 @@ The route matcher may also be a regular expression.  Capture groups are
 accessible through the `captures` key.
 
 ```scala
-get("""^\/f(.*)/b(.*)""".r) {
+get("""^/f(.*)/b(.*)""".r) {
   // Matches "GET /foo/bar"
   multiParams("captures") // == Seq("oo", "ar")
 }
