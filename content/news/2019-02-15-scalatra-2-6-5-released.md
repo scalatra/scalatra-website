@@ -1,8 +1,8 @@
 ---
 title: "Scalatra 2.6.5 is out"
 layout: news
-author: Naoki Takezoe
-twitter: takezoen
+author: Magnolia.K
+twitter: magnolia_k_
 date: 2019-02-15
 ---
 
