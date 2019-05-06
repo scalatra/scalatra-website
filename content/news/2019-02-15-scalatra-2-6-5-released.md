@@ -10,7 +10,7 @@ The Scalatra team is pleased to announce the release of version 2.6.5 of the fra
 
 <!--more-->
 
-Here's the full list of changes from version 2.6.4:
+Here's the full list of changes for version 2.6.5:
 
 ### Modules
 
