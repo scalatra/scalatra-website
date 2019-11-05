@@ -100,7 +100,7 @@ If you would like to move the `ScalatraBootstrap.scala` out of the default packa
 </web-app>
 ```
 
-Now your bootstrap class file can be located in the `com.example.app` package and be named `MyScalatraBootstrap.scala`.
+Now your bootstrap class file can be located in the `org.yourdomain.project` package and be named `MyScalatraBootstrap.scala`.
 
 #### Mounting multiple servlets (or filters)
 
