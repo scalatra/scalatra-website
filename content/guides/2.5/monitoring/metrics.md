@@ -43,9 +43,11 @@ class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
 
 ### Metrics Servlets
 
-Convenience methods are provided to mount the metrics servlets at a specified path from the init method.
+ Convenience methods to mount the metrics servlets at a specified path from the init method are provided in ```MetricsSupportExtensions```.
 
 ```scala
+import org.scalatra.metrics.MetricsSupportExtensions._
+
 class ScalatraBootstrap extends LifeCycle with MetricsBootstrap {
   override def init(context: ServletContext) =
   {
