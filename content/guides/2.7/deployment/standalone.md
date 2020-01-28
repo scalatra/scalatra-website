@@ -74,6 +74,8 @@ change `container` to `container;compile`:
 "org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container;compile",
 ```
 
+Note: If sbt complains that `configuration 'container'` doesn't exist, add and enable the `sbt-scalatra` to your project.   
+
 With the [sbt-assembly](https://github.com/sbt/sbt-assembly) plugin you can make a launchable jar.
 Now save this alongside your Scalatra project as JettyLauncher.scala and run
 <code>sbt clean assembly</code>. You'll have the ultimate executable jar file
