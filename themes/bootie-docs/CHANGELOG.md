@@ -1,3 +1,33 @@
+## 1.5.1 (2018/3/28)
+
+Fix:
+
+- Add `img` property "max-width" in CSS (#34)
+  - Fix #33 by Dmitry Verkhoturov (@paskal)
+
+## 1.5.0 (2017/7/30)
+
+Change:
+
+- Upgrade dependent components (#32):
+  - bootstrap.css to v3.3.7 (was v3.3.6)
+  - jQuery to v3.2.1 (was v1.12.3)
+  - highlight.js to v9.12.0 (was v9.3.0)
+
+## 1.4.0 (2017/7/20)
+
+Change:
+
+- Move repository location from [@key-amb's](https://github.com/key-amb/) to
+  [@progrhyme's](https://github.com/progrhyme/) (#31)
+
+## 1.3.2 (2017/5/21)
+
+Improve:
+
+- Add media query for sidebar so that it don't overlay screen in narrow browsers
+  (#29) @jodumont
+
 ## 1.3.1 (2017/3/5)
 
 Enhance:

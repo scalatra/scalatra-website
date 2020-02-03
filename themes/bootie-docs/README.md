@@ -3,9 +3,9 @@
 **Bootie Docs** is a simple [hugo](http://gohugo.io/) theme for documentation.  
 The name "bootie" comes from [Bootstrap](http://getbootstrap.com/) CSS.
 
-![Bootie Docs screenshot](https://raw.githubusercontent.com/key-amb/hugo-theme-bootie-docs/master/images/tn.png)
+![Bootie Docs screenshot](https://raw.githubusercontent.com/progrhyme/hugo-theme-bootie-docs/master/images/tn.png)
 
-You can see demo and full documentation at http://key-amb.github.io/bootie-docs-demo/ .
+You can see demo and full documentation at http://progrhyme.github.io/bootie-docs-demo/ .
 
 ## CONTENTS
 
@@ -51,7 +51,7 @@ NOTE:
 ## OPTIONS
 
 All other options and usages for _Bootie Docs_ are described at the documentation site --
-http://key-amb.github.io/bootie-docs-demo/ .
+http://progrhyme.github.io/bootie-docs-demo/ .
 
 ## LIMITATION
 
@@ -62,9 +62,9 @@ feeds, pagination of posts and so on.
 
 **Bootie Docs** includes following libraries:
 
-* [Bootstrap](http://getbootstrap.com/) v3.3.6 ... Well-known CSS framework.
-* [jQuery](https://jquery.com/) v1.12.3 ... Requried by _Bootstrap_.
-* [highlight.js](https://highlightjs.org/) v9.3.0 ... For syntax highlighting.
+* [Bootstrap](http://getbootstrap.com/) v3.3.7 ... Well-known CSS framework.
+* [jQuery](https://jquery.com/) v3.2.1 ... Requried by _Bootstrap_.
+* [highlight.js](https://highlightjs.org/) v9.12.0 ... For syntax highlighting.
 
 ## LICENSE
 
