@@ -9,7 +9,7 @@ it immediately after a redirect, is included within Scalatra by default.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   The
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/http/scalatra-http-demo">scalatra-http-demo</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{<2-7-scalatra_short_version>}}/http/scalatra-http-demo">scalatra-http-demo</a>
   has a working example of flash support.
 </div>
 

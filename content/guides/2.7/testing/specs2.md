@@ -11,7 +11,7 @@ specifications for one class (unit specifications) or a full system
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-specs2" % "{{< 2-6-scalatra_version >}}" % "test"
+"org.scalatra" %% "scalatra-specs2" % "{{< 2-7-scalatra_version >}}" % "test"
 ```
 
 #### Selecting a testing style 

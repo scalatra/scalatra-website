@@ -7,13 +7,13 @@ layout: guides-2.7
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
-  This guide uses Scalatra 2.6.1, Slick 3.2.0. You may want to check for a newer version.
+  This guide uses Scalatra {{<2-7-scalatra_version>}}, Slick 3.3.2. You may want to check for a newer version.
 </div>
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/persistence/scalatra-slick">scalatra-slick</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{<2-7-scalatra_short_version>}}/persistence/scalatra-slick">scalatra-slick</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -49,16 +49,16 @@ The sample project contains a minimal setup. For this guide the following files 
 
 ## SBT Configuration
 
-Let us start with the SBT setup by editing `build.sbt`. Slick 3.x.x officially supports Scala 2.11-2.12, so let's use Scala 2.12:
+Let us start with the SBT setup by editing `build.sbt`. Slick 3.3.2 officially supports Scala 2.11-2.13, so let's use Scala 2.13:
 
 ```scala
-scalaVersion := "2.12.3"
+scalaVersion := "2.13.0"
 ```
 
-Also you need to use an appropriate Scalatra version, for example `2.6.x` which supports Scala 2.11 and 2.12:
+Also you need to use an appropriate Scalatra version, for example `2.7.x` which supports Scala 2.11, 2.12 and 2.13:
 
 ```scala
-libraryDependencies += "org.scalatra" %% "scalatra" % "2.6.+"
+libraryDependencies += "org.scalatra" %% "scalatra" % "2.7.+"
 ```
 
 For this guide we choose the [H2 Database](http://www.h2database.com/html/main.html), so we need to add a dependency to it too.
@@ -66,7 +66,7 @@ For this guide we choose the [H2 Database](http://www.h2database.com/html/main.h
 ```scala
 
 libraryDependencies ++= Seq(
-  "com.typesafe.slick" %% "slick" % "3.2.0",
+  "com.typesafe.slick" %% "slick" % "3.3.2",
   "com.h2database" % "h2" % "1.4.196"
 )
 ```

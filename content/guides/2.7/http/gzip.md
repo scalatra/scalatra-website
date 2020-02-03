@@ -12,7 +12,7 @@ Just mix in `ContentEncodingSupport`.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/http/scalatra-gzip">scalatra-gzip</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{<2-7-scalatra_short_version>}}/http/scalatra-gzip">scalatra-gzip</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 
@@ -30,7 +30,7 @@ class GZipApp extends ScalatraServlet with ContentEncodingSupport {
     <html>
       <body>
         <h1>This is
-          <a href="http://scalatra.org/guides/2.6/http/gzip.html">
+          <a href="http://scalatra.org/guides/{{<2-7-scalatra_short_version>}}/http/gzip.html">
             http/gzip
           </a>!
         </h1>

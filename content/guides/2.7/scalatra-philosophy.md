@@ -1,6 +1,6 @@
 ---
 aliases:
-  - /2.6/guides/scalatra-philosophy.html
+  - /2.7/guides/scalatra-philosophy.html
 title: Scalatra's philosophy
 layout: guides-2.7
 ---

@@ -7,7 +7,7 @@ Since Scalatra 2.6, scalatra-forms which provides form validation is available. 
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
-  You can see a full code example at the <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/formats/scalatra-forms">scalatra-forms</a> project in the examples repository.
+  You can see a full code example at the <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{<2-7-scalatra_short_version>}}/formats/scalatra-forms">scalatra-forms</a> project in the examples repository.
 </div>
 
 ### Basic usage

@@ -18,7 +18,7 @@ Assuming you've got Riak installed already, getting it working with Scalatra is 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/persistence/riak-example">riak-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{<2-7-scalatra_short_version>}}/persistence/riak-example">riak-example</a>
   for a minimal and standalone project containing the example in this guide.
 </div>
 

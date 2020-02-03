@@ -14,7 +14,7 @@ allows you to easily mix it into your application.
 The following dependencies will be needed to make the sample application work.
 
 ```scala
-"com.typesafe.akka" %% "akka-actor" % "{{< 2-6-akka_version >}}",
+"com.typesafe.akka" %% "akka-actor" % "{{< 2-7-akka_version >}}",
 "net.databinder.dispatch" %% "dispatch-core" % "0.13.1",
 ```
 
@@ -81,7 +81,7 @@ class MyAppServlet extends ScalatraServlet with FutureSupport {
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/async/akka-examples">akka-examples</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{< 2-7-scalatra_short_version >}}/async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
@@ -141,7 +141,7 @@ state, don't bother with `AsyncResult`.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/async/akka-examples">akka-examples</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{< 2-7-scalatra_short_version >}}/async/akka-examples">akka-examples</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 

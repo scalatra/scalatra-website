@@ -11,7 +11,7 @@ Scala.
 #### Dependency
 
 ```scala
-"org.scalatra" %% "scalatra-scalatest" % "{{< 2-6-scalatra_version >}}" % "test"
+"org.scalatra" %% "scalatra-scalatest" % "{{< 2-7-scalatra_version >}}" % "test"
 ```
 
 #### Selecting a testing style

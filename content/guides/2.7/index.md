@@ -1,5 +1,5 @@
 ---
-title: Scalatra 2.6 Guides
+title: Scalatra 2.7 Guides
 ---
 
 ## Outlook

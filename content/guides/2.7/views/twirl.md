@@ -73,7 +73,7 @@ com.example.html.myTwirlTemplate.render(param1, param2, ...)
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/2.6/views/scalatra-twirl">twirl-example</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{<2-7-scalatra_short_version>}}/views/scalatra-twirl">twirl-example</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
