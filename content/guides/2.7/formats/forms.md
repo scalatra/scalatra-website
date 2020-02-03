@@ -15,7 +15,7 @@ Since Scalatra 2.6, scalatra-forms which provides form validation is available. 
 Open `build.sbt` in the root of your project, and add the following line to the `libraryDependencies` sequence:
 
 ```scala
-  "org.scalatra" %% "scalatra-forms" % ScalatraVersion,
+  "org.scalatra" %% "scalatra-forms" % "{{<2-7-scalatra_version>}}",
 ```
 
 Assuming a HTML form like this:

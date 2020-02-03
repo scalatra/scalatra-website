@@ -32,8 +32,8 @@ To make the following example codes work, add the following dependencies to your
 
 ```
 "org.mongodb" %% "casbah" % "3.1.1",
-"org.json4s" %% "json4s-jackson" % "3.5.2",
-"org.json4s" %% "json4s-mongo" % "3.5.2",
+"org.json4s" %% "json4s-jackson" % "{{< 2-7-json4s_version >}}",
+"org.json4s" %% "json4s-mongo" % "{{< 2-7-json4s_version >}}",
 ```
 
 ### Setup in ScalatraBootstrap

@@ -31,7 +31,7 @@ First, add the library to `build.sbt`:
 ```scala
 libraryDependencies ++= Seq(
         "com.basho.riak" % "riak-client" % "1.1.4",
-        "org.scalatra" %% "scalatra" % ScalatraVersion,
+        "org.scalatra" %% "scalatra" % "{{<2-7-scalatra_version>}}",
 ```
 
 ### Start a connection pool at application start

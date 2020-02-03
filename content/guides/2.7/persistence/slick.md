@@ -58,7 +58,7 @@ scalaVersion := "2.13.0"
 Also you need to use an appropriate Scalatra version, for example `2.7.x` which supports Scala 2.11, 2.12 and 2.13:
 
 ```scala
-libraryDependencies += "org.scalatra" %% "scalatra" % "2.7.+"
+libraryDependencies += "org.scalatra" %% "scalatra" % "{{<2-7-scalatra_version>}}"
 ```
 
 For this guide we choose the [H2 Database](http://www.h2database.com/html/main.html), so we need to add a dependency to it too.

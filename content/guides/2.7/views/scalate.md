@@ -42,7 +42,7 @@ you time by telling you when you make a mistake in your views.
 To get started with `Scalate`, add `scalatra-scalate` dependency in your build.sbt.
 
 ```
-"org.scalatra" %% "scalatra-scalate" % ScalatraVersion
+"org.scalatra" %% "scalatra-scalate" % "{{<2-7-scalatra_version>}}"
 ```
 
 By default, Scalatra looks for views in the `views` directory in your application root.
