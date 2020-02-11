@@ -19,7 +19,7 @@ The docs need to be updated when a new version of Scalatra is released. The foll
 1. Merge into master, then publish the website
 
 ### Update 2.7 docs
-Create the file `layouts/_default/guides-2.7.html`. Update it as needed.
-In each *.md file, update the `layout: guides-2.6` line to `layout: guides-2.7`.
-Add shortcodes for 2.7.
-Update all references of 2.6 to {{< 2-7-scalatra_short_version >}} 
+1. Create the file `layouts/_default/guides-2.7.html`. Update it as needed.
+1. In each *.md file, update the `layout: guides-2.6` line to `layout: guides-2.7`.
+1. Add shortcodes for 2.7.
+1. Update all references of 2.6 to {{< 2-7-scalatra_short_version >}} 
