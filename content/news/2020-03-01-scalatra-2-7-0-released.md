@@ -17,35 +17,35 @@ Here's the list of major changes for version 2.7.0:
 * Scala 2.13 support
 * Update dependent libraries
 * #748 Drop scalatra-spring and scalatra-commands and all deprecated code in Scalatra 2.6
-* #839 Removed dependency on mime-util
 * #950 Use xenial and openjdk on TravisCI
 
-### scalatra-core
+### Scalatra Core
 
 * #812 Throw original IOException from HttpServeltRequest
+* #839 Removed dependency on mime-util
 * #865 UriDecoder: Don't create set everytime
 * #879 Deprecated RicherString#isBlank
 * #983 Excluded '#' and '&' from path separator
 * Remove Map inheritance from some core classes
 
-### scalatra-twirl
+### Scalatra Twirl
 
 * #767 Twirl specific view helpers for scalatra-forms
 
-### scalatra-scalate
+### Scalatra Scalate
 
 * #766 Scalate specific view helpers for scalatra-forms
 
-### scalatra-forms
+### Scalatra Forms
 
 * #856 Update return type of the form validation from Any to generic type
 
-### scalatra-json
+### Scalatra Json
 
 * #826 deprecate JsonValueReader
 * #827 deterred the premature JSON parse 
 
-### scalatra-swagger
+### Scalatra Swagger
 
 * #748 Merge scalatra-swagger-ext with scalatra-swagger
 * #748 Drop Swagger 1.x support
@@ -56,11 +56,11 @@ Here's the list of major changes for version 2.7.0:
 * #974 Support basic auth for Swagger rendering
 * #980 Add a default HTTP 200 response ONLY if there's no other 2xx responses
 
-### scalatra-cache
+### Scalatra Cache
 
 * #748 Merge scalatra-cache-guava into scalatra-cache
 
-### scalatra-test
+### Scalatra Test
 
 * #837 Fix hard coded resource base path
 
