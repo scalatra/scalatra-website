@@ -147,7 +147,7 @@ override def init(context: ServletContext) {
   context mount (new ArticlesServlet, "/articles/*")
 
   // Let's set the environment
-  context.initParameters("org.scalatra.environment") = "production"
+  context.setInitParameter("org.scalatra.environment", "production")
 
 }
 ```
@@ -169,7 +169,7 @@ The two forms are equivalent.
 ##### Environment init param
 
 `context.setInitParameter(org.scalatra.EnvironmentKey, "production")` or
-`context.initParameters("org.scalatra.environment") = "production"`
+`context.setInitParameter("org.scalatra.environment", "production")`
 
 This init param sets the application environment.
 
@@ -192,13 +192,13 @@ route matches.
 ##### Container init params
 
 `context.setInitParameter(ScalatraBase.HostNameKey, "myapp.local")` or
-`context.initParameters("org.scalatra.HostName") = "myapp.local"`
+`context.setInitParameter("org.scalatra.HostName", "myapp.local")`
 
 `context.setInitParameter(ScalatraBase.PortKey, 443)` or
-`context.initParameters("org.scalatra.Port") = 443`
+`context.setInitParameter("org.scalatra.Port", 443)`
 
 `context.setInitParameter(ScalatraBase.ForceHttpsKey, "true")` or
-`context.initParameters("org.scalatra.ForceHttps") = "true"`
+`context.setInitParameter("org.scalatra.ForceHttps", "true")`
 
 By default, the values for hostname, port, and SSL settings are inherited from
 the servlet container's settings. You can set these init params if you want to
@@ -225,7 +225,7 @@ if you'd like to see the alternate form.
 ##### Async init params
 
 `context.setAttribute(AsyncSupport.ExecutionContextKey, executionContext)` or
-`context.initParameters("org.scalatra.ExecutionContext") = executionContext`
+`context.setInitParameter("org.scalatra.ExecutionContext", executionContext)`
 
 This key sets the `ExecutionContext` which Scalatra should use when creating an
 Akka `Future`.

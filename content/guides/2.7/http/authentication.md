@@ -38,7 +38,7 @@ Alternately, you can register a strategy using init params in
 `ScalatraBootstrap` or your application's `web.xml` file, using
 `scentry.strategies` as the key and the class name of your strategy as a value:
 
-`context.initParameters("scentry.strategies") = "UserPasswordStrategy"`
+`context.setInitParameter("scentry.strategies", "UserPasswordStrategy")`
 
 To write a Scentry Strategy, you'll need to implement the methods in
 [ScentryStrategy](https://github.com/scalatra/scalatra/blob/develop/auth/src/main/scala/org/scalatra/auth/ScentryStrategy.scala).
