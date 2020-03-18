@@ -180,8 +180,8 @@ route matches.
 `context.setInitParameter(ScalatraBase.HostNameKey, "myapp.local")` or
 `context.setInitParameter("org.scalatra.HostName", "myapp.local")`
 
-`context.setInitParameter(ScalatraBase.PortKey, 443)` or
-`context.setInitParameter("org.scalatra.Port", 443)`
+`context.setInitParameter(ScalatraBase.PortKey, "443")` or
+`context.setInitParameter("org.scalatra.Port", "443")`
 
 `context.setInitParameter(ScalatraBase.ForceHttpsKey, "true")` or
 `context.setInitParameter("org.scalatra.ForceHttps", "true")`
@@ -206,12 +206,11 @@ if you'd like to see the alternate form.
 `context.setInitParameter(CorsSupport.AllowedMethodsKey, "GET,PUT")`
 `context.setInitParameter(CorsSupport.AllowedHeadersKey, "Content-Type")`
 `context.setInitParameter(CorsSupport.AllowCredentialsKey, "true")`
-`context.setInitParameter(CorsSupport.PreflightMaxAgeKey, 1800)`
+`context.setInitParameter(CorsSupport.PreflightMaxAgeKey, "1800")`
 
 ##### Async init params
 
-`context.setAttribute(AsyncSupport.ExecutionContextKey, executionContext)` or
-`context.setInitParameter("org.scalatra.ExecutionContext", executionContext)`
+`context.setAttribute(AsyncSupport.ExecutionContextKey, executionContext)`
 
 This key sets the `ExecutionContext` which Scalatra should use when creating an
 Akka `Future`.
