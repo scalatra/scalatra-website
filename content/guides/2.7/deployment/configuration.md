@@ -152,20 +152,6 @@ override def init(context: ServletContext) {
 }
 ```
 
-Each init param can be set in one of two ways.
-
-The first form looks like this:
-
-`context.setInitParameter(org.scalatra.EnvironmentKey, "production")`
-
-The second form has a bit of syntactic sugar on it, so it looks a little
-less Java:
-
-`context.initParameters("org.scalatra.environment") = "production"`
-
-The two forms are equivalent.
-
-
 ##### Environment init param
 
 `context.setInitParameter(org.scalatra.EnvironmentKey, "production")` or
