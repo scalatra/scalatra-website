@@ -175,7 +175,7 @@ To recompile and reload your application automatically, run the following:
 
 ```bash
 $ sbt
-> ~;jetty:stop;jetty:start
+> ~jetty:start
 ```
 
 Now that you've got a (rather simplistic) running application, you may want
