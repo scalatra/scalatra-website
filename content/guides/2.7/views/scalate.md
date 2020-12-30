@@ -3,6 +3,9 @@ title: Scalate
 layout: guides-2.7
 ---
 
+Note: **Scalate relies deeply on the internal structure of the Scala compiler, so updates are less frequent. Scalatra's maintainer plans to drop support for Scalate in a future version. Please use Twirl as the template engine.**
+
+---
 If you're using Scalatra to build a web application (as opposed to an API), chances are you'll
 want to render HTML layouts, page content, and re-usable fragments or partials. Like many other
 frameworks, we refer to HTML templates as "views".
@@ -18,7 +21,7 @@ Scalatra can work with an extremely powerful templating engine, [Scalate][scalat
 It supports multiple template styles. We think it's one of the best
 template engines going - it's extremely fast, flexible, and feature-rich.
 
-[scalate]: http://scalate.github.io/scalate/documentation/user-guide.html
+[scalate]: https://scalate.github.io/scalate/documentation/user-guide.html
 
 Some of Scalate's all-star features include:
 
@@ -34,10 +37,10 @@ Scalate includes support for multiple templateing styles, including
 Mustache, templates are strongly typed, so your compiler can save
 you time by telling you when you make a mistake in your views.
 
-[ssp]: http://scalate.github.io/scalate/documentation/ssp-reference.html
-[scaml]: http://scalate.github.io/scalate/documentation/scaml-reference.html
-[mustache]: http://scalate.github.io/scalate/documentation/mustache.html
-[jade]: http://scalate.github.io/scalate/documentation/jade.html
+[ssp]: https://scalate.github.io/scalate/documentation/ssp-reference.html
+[scaml]: https://scalate.github.io/scalate/documentation/scaml-reference.html
+[mustache]: https://scalate.github.io/scalate/documentation/mustache.html
+[jade]: https://scalate.github.io/scalate/documentation/jade.html
 
 To get started with `Scalate`, add `scalatra-scalate` dependency in your build.sbt.
 
@@ -284,4 +287,4 @@ For more information on Scalate, please refer to the [Scalate User's guide][sug]
 It has advice about layouts, partials, how to DRY up layout code, making Scalate
 work with your IDE or text editor, and an extensive set of examples.
 
-[sug]: http://scalate.github.io/scalate/documentation/user-guide.html
+[sug]: https://scalate.github.io/scalate/documentation/user-guide.html

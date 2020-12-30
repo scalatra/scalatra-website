@@ -31,21 +31,21 @@ $ javac -version
 javac 1.8.0_131
 ```
 
-You need Java 8 (Oracle's JDK or OpenJDK), which will show up as version 1.8. Java 7 is no longer supported in Scalatra 2.5.
+You need Java 8 or above (Oracle's JDK, OpenJDK, AdoptOpenJDK and various other distributions exist), which will show up as version 1.8. Java 7 is no longer supported in Scalatra 2.5.
 
 If you don't yet have Java installed, you can find out how to install it for your system over at
-[the Oracle's Java 8 download page](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-or [the OpenJDK installation page](http://openjdk.java.net/install/index.html).
+[the Oracle's Java 8 download page](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
+or [the OpenJDK installation page](http://openjdk.java.net/install/index.html) or [AdoptOpenJDK download page](https://adoptopenjdk.net/).
 
 ## 2. Install sbt
 
 Once you're sure you've got Java installed, you will need to install the _sbt_.
 
-[sbt](http://www.scala-sbt.org) is a build tool for Scala, Java, and more.
+[sbt](https://www.scala-sbt.org/) is a build tool for Scala, Java, and more.
 It can create a new project from the template repository.
 
 In order to create a new project of Scalatra from the template, _sbt 0.13.13_ or later needs to be installed.
-To install sbt, refer to [the setup page of sbt](http://www.scala-sbt.org/0.13/docs/Setup.html).
+To install sbt, refer to [the Installing sbt page](https://www.scala-sbt.org/1.x/docs/Setup.html).
 
 For example, if it is macOS, you can install it by brew command as follows.
 
@@ -55,7 +55,7 @@ $ sbt
 ...
 ...
 > sbtVersion
-[info] 0.13.15
+[info] 1.4.6
 ```
 
 ---

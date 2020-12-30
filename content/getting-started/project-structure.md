@@ -47,7 +47,7 @@ layouts (which wrap views) go in the layouts folder.
 
 The Scalatra template project puts your Scala application code into a series of
 namespaced directories: in the example above, `org.yourdomain.projectname`.
-This is entirely optional. The [Scala style guide](http://docs.scala-lang.org/style/)
+This is entirely optional. The [Scala style guide](https://docs.scala-lang.org/style/)
 suggests doing it this way, but the language doesn't do anything to enforce it.
 If you want to, you can put all of your Scala code in the same directory for easier
 navigation.
@@ -125,7 +125,7 @@ in the same WAR.
 
 Scalatra uses [sbt][sbt-site], or sbt, as a build system.
 
-[sbt-site]: http://www.scala-sbt.org/
+[sbt-site]: https://www.scala-sbt.org/
 
 The `build.sbt` file defines the libraries which your application will depend on,
 so that `sbt` can download them for you and build your Scalatra project.
@@ -133,7 +133,7 @@ so that `sbt` can download them for you and build your Scalatra project.
 Here's an example Scalatra `build.sbt` file:
 
 ```scala
-val ScalatraVersion = "{{< 2-5-scalatra_version >}}"
+val ScalatraVersion = "{{< 2-7-scalatra_version >}}"
 
 organization := "com.example"
 
@@ -141,20 +141,20 @@ name := "My Scalatra Web App"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.12.3"
+scalaVersion := "2.13.4"
 
 resolvers += Classpaths.typesafeReleases
 
 libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra" % ScalatraVersion,
   "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
-  "ch.qos.logback" % "logback-classic" % "{{< 2-5-logback_version >}}" % "runtime",
-  "org.eclipse.jetty" % "jetty-webapp" % "{{< 2-5-jetty_version >}}" % "container",
-  "javax.servlet" % "javax.servlet-api" % "{{< 2-5-servlet_version >}}" % "provided"
+  "ch.qos.logback" % "logback-classic" % "{{< 2-7-logback_version >}}" % "runtime",
+  "org.eclipse.jetty" % "jetty-webapp" % "{{< 2-7-jetty_version >}}" % "container",
+  "javax.servlet" % "javax.servlet-api" % "{{< 2-7-servlet_version >}}" % "provided"
 )
 
 enablePlugins(SbtTwirl)
-enablePlugins(ScalatraPlugin)
+enablePlugins(JettyPlugin)
 ```
 
 <div class="alert alert-info">
@@ -164,14 +164,8 @@ If you want to add any additional libraries to your project, add them to the
 Doing that and running <code>sbt</code> again will download the dependency jar
 libraries and make them available to your application.
 If you don't know what the dependency details are, you can find out on
-<a href="http://search.maven.org">http://search.maven.org</a>.
+<a href="https://search.maven.org">https://search.maven.org</a>.
 </div>
-
-If you're using [IDE plugins](ide-support.html) like
-[sbt-eclipse](https://github.com/typesafehub/sbteclipse) or
-[sbt-idea](https://github.com/mpeltonen/sbt-idea) to make sbt dependencies
-available to your IDE, make sure you re-run `sbt-eclipse` or `sbt-idea` from
-within sbt whenever you add or update a dependency in `project/build.scala`.
 
 The default dependencies are:
 
@@ -198,7 +192,7 @@ The default dependencies are:
   <dd>
     This is the embedded servlet container used by the web plugin.
     Your application should be portable to any servlet container supporting at least
-    the 2.5 specification.
+    the 2.7 specification.
   </dd>
   <dt>javax.servlet</dt>
   <dd>
@@ -208,16 +202,3 @@ The default dependencies are:
     Your servlet container will provide this at deployment time.
   </dd>
 </dl>
-
-The Scalatra components in your project should all have the same version number
-({{< 2-5-scalatra_version >}} in the above example).
-Although it's theoretically possible to mix and match differently-versioned components
-in your projects, it's not recommended, because we compile, test and release Scalatra
-dependencies together based on their version number.
-
----
-
-Now that you understand the basics of building Scalatra apps, we recommend you
-consider [using JRebel](jrebel.html), which will make your webapp restart much more
-quickly after a code change during development.
-You may also want to [set up your IDE](ide-support.html).
