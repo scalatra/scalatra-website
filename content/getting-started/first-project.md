@@ -21,9 +21,9 @@ name [My Scalatra Web App]:
 version [0.1.0-SNAPSHOT]:
 servlet_name [MyScalatraServlet]:
 package [com.example.app]:
-scala_version [2.12.3]:
-sbt_version [1.0.2]:
-scalatra_version [2.5.3]:
+scala_version [2.13.4]:
+sbt_version [1.4.5]:
+scalatra_version [2.7.0]:
 
 Template applied in ./my-scalatra-web-app
 ```
@@ -75,7 +75,7 @@ Template applied in ./my-scalatra-web-app
   <dt>scalatra_version</dt>
   <dd>
     The Scalatra version to use.
-    See the <a href="http://scalatra.org/">homepage</a> for a list. You can choose a stable version or if you want to try out new features go with a RC or SNAPSHOT.
+    See the <a href="https://scalatra.org/">homepage</a> for a list. You can choose a stable version or if you want to try out new features go with a RC or SNAPSHOT.
   </dd>
 </dl>
 
@@ -97,15 +97,6 @@ $ sbt
 sbt will also take care of downloading an entire Scalatra development
 environment if you don't have one yet. That means sbt may spend some
 time downloading Scalatra and its libraries on first run.
-
-<div class="alert alert-info">
-  <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
-  Although most people use sbt to build their Scalatra projects, it's also
-  possible to build using other systems, such as Maven. A user-contributed
-  Maven prototype <a href="https://github.com/fancellu/scalatra-maven-prototype">is available</a>.
-  For most new users, though, sbt will be the easiest way to get started.
-</div>
-
 
 ## Hello world
 
@@ -168,7 +159,7 @@ Restarting an application manually after every code change is both slow and
 painful. It can easily be avoided by using a tool for automatic code reloading.
 
 sbt will allow you to [signal a restart of the application when it detects
-code changes](http://www.scala-sbt.org/0.13/docs/Triggered-Execution.html).
+code changes](https://www.scala-sbt.org/1.x/docs/Triggered-Execution.html).
 The syntax for restarting involves adding `~` in front of the command you
 want to re-execute.
 To recompile and reload your application automatically, run the following:
