@@ -3,6 +3,14 @@ title: Atmosphere
 layout: guides-2.7
 ---
 
+Note: **Atmosphere is too complex for the purpose of simply supporting WebSockets, and it is slow to keep up with recent updates to Servlet Container (e.g. Jetty).
+
+Continued support for Atmosphere in Scalatra will be a stumbling block for updates to Scalatra.
+
+Therefore, Atmosphere will no longer be supported in future versions.
+
+It has not yet been determined whether another WebSocket support will be introduced in Scalatra, but the above points should be taken into account when deciding whether to implement WebSockets in Scalatra.**
+
 Scalatra has a built-in integration with
 [Atmosphere](https://github.com/Atmosphere/atmosphere), the asynchronous
 websocket/comet framework. Atmosphere allows you to keep a persistent
