@@ -23,11 +23,9 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 
 ### Async
 - [Akka](async/akka.html)
-- [Atmosphere](async/atmosphere.html)
 
 ### Views
 - [Inline HTML](views/inline-html.html)
-- [Scalate](views/scalate.html)
 - [Twirl](views/twirl.html)
 
 ### Formats
