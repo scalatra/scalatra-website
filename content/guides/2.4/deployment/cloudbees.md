@@ -16,7 +16,7 @@ Its free plan is more than sufficient for a simple Scalatra app.
 ## 1. [Register](https://www.cloudbees.com/signup) for an account.
 
 ## 2. Install the CloudBees SDK.
-If you're a Mac [Homebrew](http://mxcl.github.com/homebrew/) user, it's as easy as `brew install bees`.
+If you're a Mac [Homebrew](https://brew.sh/) user, it's as easy as `brew install bees`.
 If you're not, check the [CloudBees installation instructions](https://developer.cloudbees.com/bin/view/RUN/BeesSDK).
 
 After installing, run the `bees` command to provoke a login:
