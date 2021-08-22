@@ -5,7 +5,7 @@ title: Specs2
 layout: guides-2.3
 ---
 
-[Specs2](http://etorreborre.github.com/specs2/) is a library for writing
+[Specs2](https://etorreborre.github.io/specs2/) is a library for writing
 executable software specifications. With specs2 you can write software
 specifications for one class (unit specifications) or a full system
 (acceptance specifications).
@@ -53,7 +53,7 @@ From the [Specs2 QuickStart][Quickstart]:
 > the implementation code is elsewhere.  It is generally used for acceptance or
 > integration scenarios
 
-[Quickstart]: http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
+[Quickstart]: https://etorreborre.github.io/specs2/website/SPECS2-4.12.0/quickstart.html
 
 ```scala
 import org.scalatra.test.specs2._
