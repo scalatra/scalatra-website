@@ -110,19 +110,19 @@ class ScalatraBootstrap extends LifeCycle {
   val cpds = new ComboPooledDataSource
   logger.info("Created c3p0 connection pool")
 
-  override def init(context: ServletContext) {
+  override def init(context: ServletContext) = {
     val db = Database.forDataSource(cpds, None)   // create the Database object
     context.mount(new SlickApp(db), "/*")   // create and mount the Scalatra application
   }
 
-  private def closeDbConnection() {
+  private def closeDbConnection() = {
     logger.info("Closing c3po connection pool")
     cpds.close
   }
 
-  override def destroy(context: ServletContext) {
+  override def destroy(context: ServletContext) = {
     super.destroy(context)
-    closeDbConnection
+    closeDbConnection()
   }
 }
 ```
@@ -263,7 +263,6 @@ trait SlickRoutes extends ScalatraBase with FutureSupport {
   }
 
 }
-
 ```
 
 

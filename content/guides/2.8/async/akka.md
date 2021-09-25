@@ -34,14 +34,14 @@ import javax.servlet.ServletContext
 class ScalatraBootstrap extends LifeCycle {
 
   val system = ActorSystem()
-  val myActor = system.actorOf(Props[MyActor])
+  val myActor = system.actorOf(Props.apply[MyActor]())
 
-  override def init(context: ServletContext) {
+  override def init(context: ServletContext) = {
     context.mount(new PageRetriever(system), "/*")
     context.mount(new MyActorApp(system, myActor), "/actors/*")
   }
 
-  override def destroy(context:ServletContext) {
+  override def destroy(context:ServletContext) = {
     system.terminate()
   }
 }
@@ -182,7 +182,7 @@ class MyActorApp(system:ActorSystem, myActor:ActorRef) extends ScalatraServlet w
 
 class MyActor extends Actor {
   def receive = {
-    case "Do stuff and give me an answer" => sender ! "The answer is 42"
+    case "Do stuff and give me an answer" => sender() ! "The answer is 42"
     case "Hey, you know what?" => println("Yeah I know... oh boy do I know")
   }
 

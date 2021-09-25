@@ -15,7 +15,7 @@ import org.eclipse.jetty.webapp.WebAppContext
 import org.scalatra.servlet.ScalatraListener
 
 object JettyLauncher { // this is my entry object as specified in sbt project definition
-  def main(args: Array[String]) {
+  def main(args: Array[String]) = {
     val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
 
     val server = new Server(port)
@@ -41,7 +41,7 @@ import javax.servlet.ServletContext
 import org.scalatra.TemplateExample // this is the example Scalatra servlet
 
 class ScalatraBootstrap extends LifeCycle {
-  override def init(context: ServletContext) {
+  override def init(context: ServletContext) = {
     context mount (new TemplateExample, "/*")
   }
 }

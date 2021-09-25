@@ -123,7 +123,7 @@ filters (or both) into your application, and define URL path patterns that
 they'll respond to.
 
 ```scala
-override def init(context: ServletContext) {
+override def init(context: ServletContext) = {
 
   // mount a first servlet like this:
   context mount (new ArticlesServlet, "/articles/*")
@@ -141,7 +141,7 @@ can set the `org.scalatra.environment` init parameter to set the application
 environment:
 
 ```scala
-override def init(context: ServletContext) {
+override def init(context: ServletContext) = {
 
   // mount a first servlet like this:
   context mount (new ArticlesServlet, "/articles/*")
@@ -232,7 +232,7 @@ import com.yourdomain.yourapp.DatabaseInit
 // Mixing in the trait:
 class ScalatraBootstrap extends LifeCycle with DatabaseInit {
 
-  override def init(context: ServletContext) {
+  override def init(context: ServletContext) = {
 
     // call a method that comes from inside our DatabaseInit trait:
     configureDb()

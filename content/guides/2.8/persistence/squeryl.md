@@ -51,7 +51,7 @@ trait DatabaseInit {
 
   var cpds = new ComboPooledDataSource
 
-  def configureDb() {
+  def configureDb() = {
     cpds.setDriverClass("org.h2.Driver")
     cpds.setJdbcUrl(databaseConnection)
     cpds.setUser(databaseUsername)
@@ -69,7 +69,7 @@ trait DatabaseInit {
     }
   }
 
-  def closeDbConnection() {
+  def closeDbConnection() = {
     logger.info("Closing c3po connection pool")
     cpds.close()
   }
@@ -102,12 +102,12 @@ import org.scalatra.example.data.DatabaseInit
 
 class ScalatraBootstrap extends LifeCycle with DatabaseInit {
 
-  override def init(context: ServletContext) {
+  override def init(context: ServletContext) = {
     configureDb()
     context mount (new ArticlesController, "/*")
   }
 
-  override def destroy(context:ServletContext) {
+  override def destroy(context:ServletContext) = {
     closeDbConnection()
   }
 }
