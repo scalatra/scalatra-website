@@ -3,7 +3,7 @@ title: Specs2
 layout: guides-2.7
 ---
 
-[Specs2](http://etorreborre.github.com/specs2/) is a library for writing
+[Specs2](https://etorreborre.github.io/specs2/) is a library for writing
 executable software specifications. With specs2 you can write software
 specifications for one class (unit specifications) or a full system
 (acceptance specifications).
