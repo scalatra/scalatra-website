@@ -193,7 +193,7 @@ The user hasn't yet authenticated, so the `unauthenticated` method of Scentry's
 BasicAuthStrategy is run. It presents a basic auth challenge to the user:
 
 ```scala
- override def unauthenticated() {
+ override def unauthenticated() = {
     app.response.setHeader("WWW-Authenticate", challenge)
     app.halt(401, "Unauthenticated")
   }
