@@ -10,7 +10,7 @@ The Scalatra team is pleased to announce the release of version 2.8.1 of the fra
 
 <!--more-->
 
-Here's the list of major changes for version 2.8.0:
+Here's the list of major changes for version 2.8.1:
 
 * Update dependent libraries
 * Deprecate scalatra-atmosphere and scalatra-scalate
