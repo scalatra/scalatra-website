@@ -35,7 +35,6 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 
 ### Persistence
 - [Introduction](persistence/introduction.html)
-- [MongoDB](persistence/mongodb.html)
 - [Slick](persistence/slick.html)
 - [Squeryl](persistence/squeryl.html)
 
