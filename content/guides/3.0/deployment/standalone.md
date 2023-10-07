@@ -65,13 +65,13 @@ contains a `compile` directive. Assuming your jetty-webapp declaration looks som
 like this:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container",
+"org.eclipse.jetty" % "jetty-webapp" % "{{<3-0-jetty_version>}}" % "container",
 ```
 
 change `container` to `container;compile`:
 
 ```scala
-"org.eclipse.jetty" % "jetty-webapp" % "9.2.15.v20160210" % "container;compile",
+"org.eclipse.jetty" % "jetty-webapp" % "{{<3-0-jetty_version>}}" % "container;compile",
 ```
 
 Note: If sbt complains that `configuration 'container'` doesn't exist, add and enable the `sbt-scalatra` to your project.   
