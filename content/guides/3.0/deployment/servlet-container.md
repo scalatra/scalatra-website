@@ -30,9 +30,10 @@ From the command line, execute the following:
 Now you're in the sbt console. Package your application by typing `package`:
 
     > package
-    [info] Compiling 6 Scala sources to /path/to/your/project/target/scala-2.9.1/classes...
-    [info] Packaging /path/to/your/project/target/scala-2.9.1/yourproject_2.9.1-0.1.0-SNAPSHOT.war ...
-    [info] Done packaging.
+    [info] compiling 4 Scala sources to /private/tmp/yourproject/target/scala-2.13/classes ...
+    [warn] 1 deprecation (since 2.13.0); re-run with -deprecation for details
+    [warn] one warning found
+    [success] Total time: 2 s, completed Oct 7, 2023, 10:46:07 PM    
 
 This will generate a WAR file for you, and tell you where it went. A WAR file
 is basically a zip file which contains your entire application, including all
@@ -59,9 +60,9 @@ to the public internet.</p>
 <p>Having said all that, the basic case is extremely easy, as you'll see in a moment.</p>
 </div>
 
-First [download tomcat](http://tomcat.apache.org/download-80.cgi) and extract it:
+First [download tomcat](https://tomcat.apache.org/download-90.cgi) and extract it:
 
-    $ mv apache-tomcat-8.5.20.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
+    $ mv apache-tomcat-9.0.80.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
     $ tar -xvzf ~/Desktop/tomcat.tar.gz
 
 Ok, Tomcat is now installed.
