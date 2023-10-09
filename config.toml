@@ -1,4 +1,4 @@
-baseurl = ""
+baseUrl = "https://scalatra.org"
 languageCode = "en-us"
 title = "Scalatra"
 theme = "bootie-docs"
