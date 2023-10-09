@@ -8,7 +8,7 @@ By default, Scalatra uses [Logback][logback] for logging.
 [logback]:http://logback.qos.ch
 
 You can easily add logging facilities to your project, if you've got the
-logging dependency in your `project/build.scala` file:
+logging dependency in your `build.sbt` file:
 
 ```scala
 "ch.qos.logback" % "logback-classic" % "{{< 3-0-logback_version >}}" % "runtime"

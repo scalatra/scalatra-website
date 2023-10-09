@@ -34,7 +34,7 @@ Adding the `FlashMapSupport` trait like this gives you the ability to access fla
 (see the [flash](http/flash.html) guide for more on trait).
 
 Some helpers are built directly into Scalatra. Other helpers need to be added
-as dependencies in the `project/build.scala` file and mixed into your servlet. See the
+as dependencies in the `build.sbt` file and mixed into your servlet. See the
 [understanding Scalatra projects](../getting-started/understanding-scalatra.html)
 for more information on adding a new external dependency.
 
@@ -100,18 +100,18 @@ class FooServlet extends MyStack {
 
 External helpers may be written by you and packaged for inclusion in your
 application, or they may be written by other people. For external helpers,
-you'll need to add a dependency line into your project's `project/build.scala` file.
+you'll need to add a dependency line into your project's `build.sbt` file.
 
 ## Built-in helpers
 
 All of the built-in helpers can simply be mixed into your servlet without
-adding any additional dependencies to `project/build.scala`. Some of the built-in helpers
+adding any additional dependencies to `build.sbt`. Some of the built-in helpers
 (such as the `request`, `response`, and `session` helpers) are available to every
 Scalatra application because they're part of `ScalatraBase`, which everything
 else inherits from.
 
 Other built-in helpers (such as `FlashMapSupport`) don't require any additional
-`project/build.scala` lines, but are still optional. You'll need to mix them into your
+`build.sbt` lines, but are still optional. You'll need to mix them into your
 servlet before they'll become available.
 
 Much of Scalatra is actually implemented as traits. To see all of the built-in

@@ -326,7 +326,7 @@ Scala's standard XML tools.
 
 ### Changing the port in development
 
-Add `Jetty / containerPort := 8081` to `project/build.scala` if you would
+Add `Jetty / containerPort := 8081` to `build.sbt` if you would
 like your Scalatra app to run on something other than the default port (8080).
 
 _You may need to add the following imports if you get errors upon adding the configuration above:_

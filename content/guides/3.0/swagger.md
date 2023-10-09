@@ -89,7 +89,7 @@ object FlowerData {
 ```
 #### Dependencies
 
-Don't forget to add the JSON libraries to your `project/build.scala` file to make this work:
+Don't forget to add the JSON libraries to your `build.sbt` file to make this work:
 
 ```scala
   "org.scalatra" %% "scalatra-json" % "{{< 2-8-scalatra_version >}}",
@@ -194,7 +194,7 @@ for free.
 
 #### Dependencies
 
-First, add the Swagger dependency to your `project/build.scala` file, then restart your
+First, add the Swagger dependency to your `build.sbt` file, then restart your
 app to grab the new jars:
 
 ```scala
