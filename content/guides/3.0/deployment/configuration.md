@@ -66,13 +66,12 @@ make a new project using the giter8 template, looks something like this:
 
 ```scala
 import org.scalatra.LifeCycle
-import javax.servlet.ServletContext
+import jakarta.servlet.ServletContext
 import org.yourdomain.projectname._
 
 class ScalatraBootstrap extends LifeCycle {
 
-  override def init(context: ServletContext) {
-
+  override def init(context: ServletContext) = {
     // mount servlets like this:
     context mount (new ArticlesServlet, "/articles/*")
   }
@@ -212,7 +211,7 @@ if you'd like to see the alternate form.
 `context.setAttribute(AsyncSupport.ExecutionContextKey, executionContext)`
 
 This key sets the `ExecutionContext` which Scalatra should use when creating an
-Akka `Future`.
+`Future`.
 
 #### Running code at application start
 
@@ -223,7 +222,7 @@ the `init` method:
 
 ```scala
 import org.scalatra.LifeCycle
-import javax.servlet.ServletContext
+import jakarta.servlet.ServletContext
 
 // Import the trait:
 import com.yourdomain.yourapp.DatabaseInit
@@ -327,7 +326,7 @@ Scala's standard XML tools.
 
 ### Changing the port in development
 
-Add `containerPort in Jetty := 8081` to `project/build.scala` if you would
+Add `Jetty / containerPort := 8081` to `project/build.scala` if you would
 like your Scalatra app to run on something other than the default port (8080).
 
 _You may need to add the following imports if you get errors upon adding the configuration above:_

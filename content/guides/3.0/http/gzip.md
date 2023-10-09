@@ -43,5 +43,5 @@ class GZipApp extends ScalatraServlet with ContentEncodingSupport {
 You can get gzip file using the `curl` command as follows.
 
 ```bash
-$  curl -H "Accept-Encoding:gzip,deflate" -o gzip_example.html.gz http://localhost:8080
+$ curl -H "Accept-Encoding:gzip,deflate" -o gzip_example.html.gz http://localhost:8080
 ```

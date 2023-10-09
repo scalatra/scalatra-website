@@ -70,15 +70,15 @@ For this guide we choose the [H2 Database](http://www.h2database.com/html/main.h
 ```scala
 
 libraryDependencies ++= Seq(
-  "com.typesafe.slick" %% "slick" % "3.3.2",
-  "com.h2database" % "h2" % "1.4.196"
+  "com.typesafe.slick" %% "slick" % "3.5.0-M4",
+  "com.h2database" % "h2" % "1.4.200"
 )
 ```
 
 Since we want to use connection pooling, we also need to add [c3p0](http://www.mchange.com/projects/c3p0/):
 
 ```scala
-libraryDependencies += "com.mchange" % "c3p0" % "0.9.5.2"
+libraryDependencies += "com.mchange" % "c3p0" % "0.9.5.5"
 ```
 
 sbt is all set up. Lets proceed to the code.
@@ -232,7 +232,7 @@ Now we can create some routes:
   * `GET /db/drop-db` drops the tables
   * `GET /coffees` queries the database
 
-We put the routes in a `SlickRoutes` trait which we later add to the application. A DBIO Action is run through the Database object's `run` method. The operations are run asynchronously and a Future is returned. Since we are returning the Future directly from the routes, we teach Scalatra how to handle a Future as result by mixing in the FutureSupport trait. When a Future is returned, the HTTP request is put to asynchronous mode and parked until the result is available. For more details about handling asynchronous operations, see the async guides ([Akka](../guides/async/akka.html), [Atmosphere](../guides/async/akka.html)). The value `db` is later provided by the Scalatra application.
+We put the routes in a `SlickRoutes` trait which we later add to the application. A DBIO Action is run through the Database object's `run` method. The operations are run asynchronously and a Future is returned. Since we are returning the Future directly from the routes, we teach Scalatra how to handle a Future as result by mixing in the FutureSupport trait. When a Future is returned, the HTTP request is put to asynchronous mode and parked until the result is available. For more details about handling asynchronous operations, see the async guides ([Pekko](../guides/async/pekko.html). The value `db` is later provided by the Scalatra application.
 
 
 ```scala

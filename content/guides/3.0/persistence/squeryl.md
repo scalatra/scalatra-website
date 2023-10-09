@@ -20,9 +20,9 @@ a "butt-simple" connection pooling library.
 ## Dependencies
 
 ```scala
-"org.squeryl" %% "squeryl" % "0.9.9",
-"com.h2database" % "h2" % "1.4.196",
-"c3p0" % "c3p0" % "0.9.5.2"
+"org.squeryl" %% "squeryl" % "0.10.0",
+"com.h2database" % "h2" % "1.4.200",
+"c3p0" % "c3p0" % "0.9.5.5"
 ```
 
 ## Set up a C3P0 connection pool
@@ -96,7 +96,7 @@ Then mix the `DatabaseInit` trait into `ScalatraBootstrap`, so it looks like thi
 
 ```scala
 import org.scalatra.LifeCycle
-import javax.servlet.ServletContext
+import jakarta.servlet.ServletContext
 import org.scalatra.example.ArticlesController
 import org.scalatra.example.data.DatabaseInit
 

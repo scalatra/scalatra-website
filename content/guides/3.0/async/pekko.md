@@ -1,11 +1,11 @@
 ---
-title: Akka
+title: Apache Pekko
 layout: guides-3.0
 ---
 
-### AkkaSupport
+### Pekko integration
 
-[Akka](http://akka.io) is a toolkit and runtime for building highly concurrent, 
+[Apache Pekko](https://pekko.apache.org/) is a toolkit and runtime for building highly concurrent, 
 distributed, and fault tolerant event-driven applications on the JVM. Scalatra 
 allows you to easily mix it into your application.
 
@@ -14,21 +14,21 @@ allows you to easily mix it into your application.
 The following dependencies will be needed to make the sample application work.
 
 ```scala
-"com.typesafe.akka" %% "akka-actor" % "{{< 3-0-akka_version >}}",
+"org.apache.pekko" %% "pekko-actor" % "{{< 3-0-pekko_version >}}" cross(CrossVersion.for3Use2_13),
 "net.databinder.dispatch" %% "dispatch-core" % "0.13.1",
 ```
 
-### Setting up your Scalatra app with Akka
+### Setting up your Scalatra app with Pekko
 
-When you're using Akka, you'll want to start your `Actor`s and `ActorSystem`
+When you're using Pekko, you'll want to start your `Actor`s and `ActorSystem`
 from inside the `ScalatraBootstrap` class. You can then pass those into the
 constructors of your servlets as necessary:
 
 ```scala
-import _root_.akka.actor.{Props, ActorSystem}
+import org.apache.pekko.actor.{Props, ActorSystem}
 import com.example.app._
 import org.scalatra._
-import javax.servlet.ServletContext
+import jakarta.servlet.ServletContext
 
 
 class ScalatraBootstrap extends LifeCycle {
@@ -61,7 +61,7 @@ to your routes. At the point where you
 The generic case looks like this (but it won't compile):
 
 ```scala
-import _root_.akka.dispatch._
+import org.apache.pekko.dispatch._
 import org.scalatra.FutureSupport
 
 class MyAppServlet extends ScalatraServlet with FutureSupport {
@@ -69,7 +69,7 @@ class MyAppServlet extends ScalatraServlet with FutureSupport {
     new AsyncResult { val is =
       Future {
         // Add async logic here
-        <html><body>Hello Akka</body></html>
+        <html><body>Hello Pekko</body></html>
       }
     }
   }
@@ -81,19 +81,19 @@ class MyAppServlet extends ScalatraServlet with FutureSupport {
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{< 3-0-scalatra_short_version >}}/async/akka-examples">akka-examples</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{< 3-0-scalatra_short_version >}}/async/pekko-examples">pekko-examples</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
 As a more concrete example, here's how you'd make an asynchronous HTTP
 request from inside one of your actions, using the
 [Dispatch](https://dispatchhttp.org/Dispatch.html) http client and an
-Akka `ActorSystem`.
+Pekko `ActorSystem`.
 
 ```scala
 package com.example.app
 
-import akka.actor.ActorSystem
+import org.apache.pekko.actor.ActorSystem
 import dispatch._
 import org.scalatra._
 
@@ -141,11 +141,11 @@ state, don't bother with `AsyncResult`.
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
   See
-  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{< 3-0-scalatra_short_version >}}/async/akka-examples">akka-examples</a>
+  <a href="https://github.com/scalatra/scalatra-website-examples/tree/master/{{< 3-0-scalatra_short_version >}}/async/pekko-examples">pekko-examples</a>
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
-When you use Scalatra with Akka, you most likely want to return a result of some sort. So you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future. Typically, this involves Akka's [ask pattern](https://doc.akka.io/docs/akka/current/scala/actors.html#ask-send-and-receive-future).
+When you use Scalatra with Pekko, you most likely want to return a result of some sort. So you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future. Typically, this involves Pekko's [ask pattern](https://doc.akka.io/docs/akka/current/scala/actors.html#ask-send-and-receive-future).
 
 When the request you get just needs to trigger something on an Actor using the fire-and-forget [tell pattern](https://doc.akka.io/docs/akka/current/scala/actors.html#tell-fire-forget, then you don't need a Future. In this case, you probably you want to reply with the Accepted status or something like it.
 
@@ -154,9 +154,9 @@ Here's some example code:
 ```scala
 package com.example.app
 
-import akka.actor.{Actor, ActorRef, ActorSystem}
-import akka.pattern.ask
-import akka.util.Timeout
+import org.apache.pekko.actor.{Actor, ActorRef, ActorSystem}
+import org.apache.pekko.pattern.ask
+import org.apache.pekko.util.Timeout
 import org.scalatra.{Accepted, FutureSupport, ScalatraServlet}
 
 import scala.concurrent.ExecutionContext

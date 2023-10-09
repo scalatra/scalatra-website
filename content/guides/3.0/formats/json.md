@@ -24,10 +24,10 @@ This assumes that your ScalatraBootstrap file, in `src/main/scala/ScalatraBootst
 ```scala
 import com.example.app._
 import org.scalatra._
-import javax.servlet.ServletContext
+import jakarta.servlet.ServletContext
 
 class ScalatraBootstrap extends LifeCycle {
-  override def init(context: ServletContext) {
+  override def init(context: ServletContext) = {
     context.mount(new FlowersController, "/*")
   }
 }

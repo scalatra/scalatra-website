@@ -22,7 +22,7 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 - [CORS](web-services/cors.html)
 
 ### Async
-- [Akka](async/akka.html)
+- [Pekko](async/pekko.html)
 
 ### Views
 - [Inline HTML](views/inline-html.html)

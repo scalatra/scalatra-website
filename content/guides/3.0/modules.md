@@ -23,15 +23,15 @@ class FooController extends ScalatraServlet {
 To add a helper, you can mix in a trait:
 
 ```scala
-class FooController extends ScalatraServlet with ScalateSupport {
+class FooController extends ScalatraServlet with FlashMapSupport {
 
-  // now your class has access to Scalate helpers. Easy, yes?
+  // now your class has access to flash map. Easy, yes?
 
 }
 ```
 
-Adding the `ScalateSupport` trait like this gives you the ability to do templating
-(see the [views](views.html) guide for more on that).
+Adding the `FlashMapSupport` trait like this gives you the ability to access flash map
+(see the [flash](http/flash.html) guide for more on trait).
 
 Some helpers are built directly into Scalatra. Other helpers need to be added
 as dependencies in the `project/build.scala` file and mixed into your servlet. See the
@@ -63,8 +63,7 @@ messy:
 
 ```scala
 class FooServlet extends ScalatraServlet
-      with ScalateSupport with FlashMapSupport
-      with AkkaSupport with KitchenSinkSupport {
+      with FlashMapSupport with CacheSupport with KitchenSinkSupport {
 
   get("/") {
     // do something
@@ -78,8 +77,7 @@ application:
 
 ```scala
 trait MyStack extends ScalatraServlet
-      with ScalateSupport with FlashMapSupport
-      with AkkaSupport with KitchenSinkSupport {
+      with FlashMapSupport with CacheSupport with KitchenSinkSupport {
 
   // the trait body can be empty, it's just being used
   // to collect all the other traits so you can extend your servlet.

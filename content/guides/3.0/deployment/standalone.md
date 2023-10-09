@@ -37,7 +37,7 @@ Be sure to define the appropriate [ScalatraBootstrap](configuration.html):
 
 ```scala
 import org.scalatra.LifeCycle
-import javax.servlet.ServletContext
+import jakarta.servlet.ServletContext
 import org.scalatra.TemplateExample // this is the example Scalatra servlet
 
 class ScalatraBootstrap extends LifeCycle {

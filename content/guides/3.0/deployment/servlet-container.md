@@ -25,15 +25,19 @@ about 5 minutes from now.
 
 From the command line, execute the following:
 
-    $ sbt
+```
+$ sbt
+```
 
 Now you're in the sbt console. Package your application by typing `package`:
 
-    > package
-    [info] compiling 4 Scala sources to /private/tmp/yourproject/target/scala-2.13/classes ...
-    [warn] 1 deprecation (since 2.13.0); re-run with -deprecation for details
-    [warn] one warning found
-    [success] Total time: 2 s, completed Oct 7, 2023, 10:46:07 PM    
+```
+> package
+[info] compiling 4 Scala sources to /private/tmp/yourproject/target/scala-2.13/classes ...
+[warn] 1 deprecation (since 2.13.0); re-run with -deprecation for details
+[warn] one warning found
+[success] Total time: 2 s, completed Oct 7, 2023, 10:46:07 PM    
+```
 
 This will generate a WAR file for you, and tell you where it went. A WAR file
 is basically a zip file which contains your entire application, including all
@@ -62,8 +66,10 @@ to the public internet.</p>
 
 First [download tomcat](https://tomcat.apache.org/download-90.cgi) and extract it:
 
-    $ mv apache-tomcat-9.0.80.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
-    $ tar -xvzf ~/Desktop/tomcat.tar.gz
+```
+$ mv apache-tomcat-9.0.80.tar.gz ~/Desktop/tomcat.tar.gz # or wherever you want it.
+$ tar -xvzf ~/Desktop/tomcat.tar.gz
+```
 
 Ok, Tomcat is now installed.
 
@@ -76,7 +82,9 @@ Now deploy your application. Dropping a war file into Tomcat's `webapp` folder
 causes it to be extracted, or "exploded". Tomcat will initialize your application
 on the first request.
 
-    $ mv /path/to/your/project/target/scala-2.13/yourproject_2.13-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/yourapp.war
+```
+$ mv /path/to/your/project/target/scala-2.13/yourproject_2.13-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/yourapp.war
+```
 
 Browse to [http://localhost:8080/yourapp/](http://localhost:8080/yourapp/)
 
@@ -91,8 +99,10 @@ path "/".
 Paths inside the servlet container will be root-relative, so if you've
 got your servlets mounted like this in your Scalatra bootstrap file:
 
-    // mount servlets like this:
-    context mount (new ArticlesServlet, "/articles/*")
+```scala
+// mount servlets like this:
+context.mount(new ArticlesServlet, "/articles/*")
+```
 
 you would need to go to [http://localhost:8080/yourapp/articles/](http://localhost:8080/yourapp/articles/)
 
@@ -102,8 +112,10 @@ but the stylesheets and internal links may not be working correctly.
 If that's the case, it's time for a bit of a trick. You can move Tomcat's
 ROOT application to another spot, and put your app at the ROOT.
 
-    $ mv ~/Desktop/tomcat/webapps/ROOT ~/Desktop/tomcat/webapps/ORIGINAL_ROOT
-    $ mv /path/to/your/project/target/scala-2.13/yourproject_2.13-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/ROOT.war
+```
+$ mv ~/Desktop/tomcat/webapps/ROOT ~/Desktop/tomcat/webapps/ORIGINAL_ROOT
+$ mv /path/to/your/project/target/scala-2.13/yourproject_2.13-0.1.0-SNAPSHOT.war ~/Desktop/tomcat/webapps/ROOT.war
+```
 
 <div class="alert alert-warning">
 <span class="badge badge-warning"><i class="glyphicon glyphicon-flag"></i></span>  Tomcat paths are case-sensitive. Make sure you copy your app to `ROOT.war`.<br /><br />

@@ -29,7 +29,7 @@ Assuming a HTML form like this:
 You can write this form using view helpers in Twirl template as follows:
 
 ```html
-@()(implicit request: javax.servlet.http.HttpServletRequest)
+@()(implicit request: jakarta.servlet.http.HttpServletRequest)
 @import org.scalatra.forms.views._
 ...
 <form action="/" method="POST" class="form-horizontal">
