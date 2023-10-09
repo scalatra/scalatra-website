@@ -73,7 +73,7 @@ class ScalatraBootstrap extends LifeCycle {
 
   override def init(context: ServletContext) = {
     // mount servlets like this:
-    context mount (new ArticlesServlet, "/articles/*")
+    context.mount(new ArticlesServlet, "/articles/*")
   }
 }
 ```
@@ -124,10 +124,10 @@ they'll respond to.
 override def init(context: ServletContext) = {
 
   // mount a first servlet like this:
-  context mount (new ArticlesServlet, "/articles/*")
+  context.mount(new ArticlesServlet, "/articles/*")
 
   // mount a second servlet like this:
-  context mount (new CommentsServlet, "/comments/*")
+  context.mount(new CommentsServlet, "/comments/*")
 
 }
 ```
@@ -142,7 +142,7 @@ environment:
 override def init(context: ServletContext) = {
 
   // mount a first servlet like this:
-  context mount (new ArticlesServlet, "/articles/*")
+  context.mount(new ArticlesServlet, "/articles/*")
 
   // Let's set the environment
   context.setInitParameter("org.scalatra.environment", "production")
@@ -236,8 +236,8 @@ class ScalatraBootstrap extends LifeCycle with DatabaseInit {
     configureDb()
 
     // Mount our servlets as normal:
-    context mount (new Articles, "/articles/*")
-    context mount (new Users, "/users/*")
+    context.mount(new Articles, "/articles/*")
+    context.mount(new Users, "/users/*")
   }
 }
 ```
