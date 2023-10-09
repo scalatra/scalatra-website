@@ -31,12 +31,10 @@ class YourServlet extends ScalatraServlet {
 ```
 
 This will get you basic logging support. There are some additional logging
-libraries you might want to investigate: [scala-logging][scala-logging] and
-[grizzled-slf4j][grizzled-slf4j],
+libraries you might want to investigate like [scala-logging][scala-logging],
 which act as Scala wrappers around slf4j.
 
 [scala-logging]:https://github.com/lightbend-labs/scala-logging
-[grizzled-slf4j]:http://software.clapper.org/grizzled-slf4j/
 
 The Scala wrappers use by-name parameters for the log message, and
 check to see that the logging level is enabled.  This is a performance
