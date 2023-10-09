@@ -15,7 +15,7 @@ The following dependencies will be needed to make the sample application work.
 
 ```scala
 "org.apache.pekko" %% "pekko-actor" % "{{< 3-0-pekko_version >}}" cross(CrossVersion.for3Use2_13),
-"net.databinder.dispatch" %% "dispatch-core" % "0.13.1",
+"com.softwaremill.sttp.client3" %% "core" % "3.9.0",
 ```
 
 ### Setting up your Scalatra app with Pekko
@@ -94,7 +94,8 @@ Pekko `ActorSystem`.
 package com.example.app
 
 import org.apache.pekko.actor.ActorSystem
-import dispatch._
+import sttp.client3._
+
 import org.scalatra._
 
 import scala.concurrent.{ExecutionContext, Future, Promise}
@@ -115,12 +116,12 @@ class FutureController(system: ActorSystem) extends ScalatraServlet with FutureS
 object HttpClient {
 
   def retrievePage()(implicit ctx: ExecutionContext): Future[String] = {
-    val prom = Promise[String]()
-    dispatch.Http(url("http://slashdot.org/") OK as.String) onComplete {
-      case Success(content) => prom.complete(Try(content))
-      case Failure(exception) => println(exception)
+    Future {
+      val backend = HttpClientSyncBackend()
+      val request = basicRequest.get(uri"https://scalatra.org/").response(asStringAlways)
+      val response = request.send(backend)
+      response.body
     }
-    prom.future
   }
 }
 ```
