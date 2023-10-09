@@ -35,7 +35,7 @@ libraries you might want to investigate: [scala-logging][scala-logging] and
 [grizzled-slf4j][grizzled-slf4j],
 which act as Scala wrappers around slf4j.
 
-[scala-logging]:https://github.com/typesafehub/scala-logging
+[scala-logging]:https://github.com/lightbend-labs/scala-logging
 [grizzled-slf4j]:http://software.clapper.org/grizzled-slf4j/
 
 The Scala wrappers use by-name parameters for the log message, and
