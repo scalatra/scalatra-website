@@ -42,7 +42,7 @@ Scalate's Scaml or Jade languages for HTML/XML templates.
 - Add the [Twirl plugin](https://github.com/playframework/twirl) to `project/plugins.sbt`:
 
 ```scala
-addSbtPlugin("com.typesafe.sbt" % "sbt-twirl" % "1.6.1")
+addSbtPlugin("com.typesafe.play" % "sbt-twirl" % "1.6.1")
 ```
 - Enable the plugin in `build.sbt`:
 
