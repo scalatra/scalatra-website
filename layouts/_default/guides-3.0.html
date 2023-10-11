@@ -1,0 +1,106 @@
+{{ $baseUrl := .Site.BaseURL }}
+{{ partial "header.html" . }}
+
+<div class="row">
+  <div class="col-sm-9 doc-main">
+	<main role="main">
+	  <article>
+		<a id="title"></a>
+		<h1 class="doc-entry-title">{{ .Title }}</h1>
+		<section>
+		  {{ .Content }}
+		</section>
+	  </article>
+	</main>
+  </div> <!-- /.doc-main -->
+  <div class="col-sm-3 doc-sidebar">
+	<div id="sidebar">
+	  <div class="sidebar-module">
+  		<div class="sidebar-toc">
+        <h4 class="sidebar-heading">Scalatra 3.0 Guides</h4>
+        <h5 class="sidebar-heading">Outlook</h5>
+  		  <ul>
+          <li><a href="{{ $baseUrl }}/guides/3.0/scalatra-philosophy.html">Scalatra's philosophy</a></li>
+        </ul>
+  		  <h5 class="sidebar-heading">Development</h5>
+  		  <ul>
+    			<li><strong>HTTP</strong>
+            <ul>
+                <li><a href="{{ $baseUrl }}/guides/3.0/http/routes.html">Routes</a></li>
+                <li><a href="{{ $baseUrl }}/guides/3.0/http/actions.html">Actions</a></li>
+                <li><a href="{{ $baseUrl }}/guides/3.0/http/reverse-routes.html">Reverse
+                    Routes</a></li>
+                <li><a href="{{ $baseUrl }}/guides/3.0/http/requests-and-responses.html">Requests
+                    &amp; Responses</a></li>
+                <li><a href="{{ $baseUrl }}/guides/3.0/http/gzip.html">GZip</a></li>
+                <li><a href="{{ $baseUrl }}/guides/3.0/http/flash.html">Flash</a></li>
+                <li><a href="{{ $baseUrl }}/guides/3.0/http/authentication.html">Authentication</a>
+                </li>
+                <li><a href="{{ $baseUrl }}/guides/3.0/web-services/cors.html">CORS</a>
+                </li>
+            </ul>
+          </li>
+    			<li><strong>Async</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/3.0/async/pekko.html">Pekko</a></li>
+            </ul>
+          </li>
+    			<li><strong>Views</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/3.0/views/inline-html.html">Inline HTML</a></li>
+              <li><a href="{{ $baseUrl }}/guides/3.0/views/twirl.html">Twirl</a></li>
+            </ul>
+          </li>
+    			<li><strong>Formats</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/3.0/formats/upload.html">File Upload</a></li>
+              <li><a href="{{ $baseUrl }}/guides/3.0/formats/json.html">JSON</a></li>
+              <li><a href="{{ $baseUrl }}/guides/3.0/formats/forms.html">Forms</a></li>
+            </ul>
+          </li>
+    			<li><strong>Persistence</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/3.0/persistence/slick.html">Slick</a></li>
+              <li><a href="{{ $baseUrl }}/guides/3.0/persistence/squeryl.html">Squeryl</a></li>
+            </ul>
+          </li>
+    			<li><strong>Internationalization</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/3.0/internationalization.html">i18n</a></li>
+            </ul>
+          </li>
+    			<li><strong>Testing</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/3.0/testing/scalatest.html">ScalaTest</a></li>
+              <li><a href="{{ $baseUrl }}/guides/3.0/testing/specs2.html">Specs2</a></li>
+            </ul>
+          </li>
+    			<li><strong>API Design &amp; Documentation</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/3.0/swagger.html">Swagger</a></li>
+            </ul>
+          </li>
+        </ul>
+        <h5 class="sidebar-heading">After Development</h5>
+        <ul>
+          <li><strong>Monitoring</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/3.0/monitoring/logging.html">Logging</a></li>
+              <li><a href="{{ $baseUrl }}/guides/3.0/monitoring/metrics.html">Metrics</a></li>
+            </ul>
+          </li>
+          <li><strong>Deployment</strong>
+            <ul>
+              <li><a href="{{ $baseUrl }}/guides/3.0/deployment/configuration.html">Configuration</a></li>
+              <li><a href="{{ $baseUrl }}/guides/3.0/deployment/servlet-container.html">Servlet Container</a></li>
+              <li><a href="{{ $baseUrl }}/guides/3.0/deployment/standalone.html">Standalone</a></li>
+            </ul>
+          </li>
+  		  </ul>
+  		</div>
+	  </div>
+	</div>
+  </div><!-- /.doc-sidebar -->
+</div> <!-- /.row -->
+
+{{ partial "footer.html" . }}
