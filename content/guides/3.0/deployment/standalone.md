@@ -85,6 +85,4 @@ in the target soon. Try
 java -jar **-assembly-**.jar
 ```
 
-and see it will launch the embedded Jetty at port 8080 with the example
-Scalatra project running. On an OS X 10.6 machine with JVM 1.6, this setup
-costs ~38MB memory.
+and see it will launch the embedded Jetty at port 8080 with the example Scalatra project running.
