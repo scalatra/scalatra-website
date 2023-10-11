@@ -49,26 +49,9 @@ The sample project contains a minimal setup. For this guide the following files 
 
 ## SBT Configuration
 
-Let us start with the SBT setup by editing `build.sbt`. Slick 3.3.2 officially supports Scala 2.11-2.13, so let's use Scala 2.13:
+Let us start with the SBT setup by editing `build.sbt`. Slick doesn't officially support Scala 3 yet, but Slick 3.5.0-M4 supports Scala 3. In addition, we choose the [H2 Database](http://www.h2database.com/html/main.html) for this guide, so we need to add a dependency to it too.
 
 ```scala
-scalaVersion := "2.13.0"
-```
-
-Also you need to use an appropriate Scalatra version, for example `2.7.x` which supports Scala 2.11, 2.12 and 2.13:
-
-```scala
-// for javax
-libraryDependencies += "org.scalatra" %% "scalatra-javax" % "{{<3-0-scalatra_version>}}"
-
-// for jakarta
-libraryDependencies += "org.scalatra" %% "scalatra-jakarta" % "{{<3-0-scalatra_version>}}"
-```
-
-For this guide we choose the [H2 Database](http://www.h2database.com/html/main.html), so we need to add a dependency to it too.
-
-```scala
-
 libraryDependencies ++= Seq(
   "com.typesafe.slick" %% "slick" % "3.5.0-M4",
   "com.h2database" % "h2" % "1.4.200"
@@ -98,7 +81,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource
 import org.slf4j.LoggerFactory
 import slickexample._
 import org.scalatra._
-import javax.servlet.ServletContext
+import jakarta.servlet.ServletContext
 
 import slick.jdbc.H2Profile.api._
 
