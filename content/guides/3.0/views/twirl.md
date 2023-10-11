@@ -3,14 +3,16 @@ title: Twirl
 layout: guides-3.0
 ---
 
-*Twirl* is the [Play 2 templating language](https://www.playframework.com/documentation/2.8.x/ScalaTemplates).
+*Twirl* is the [Play 2 templating language](https://www.playframework.com/documentation/2.9.x/ScalaTemplates).
 
 ---
 
 ## Evaluating Twirl
 
-While the Scalatra developer generally prefer [Scalate](https://scalate.github.io/scalate/documentation/index.html) for server-side
-templating, Twirl provides an interesting alternative.
+Scalatra had historically supported [Scalate](https://scalate.github.io/scalate/documentation/index.html) for server-side templating.
+However, Scalate integration has been dropped since Scalatra 3.0.
+
+Instead, let's see how to integrate Twirl which is a type-safe template engine originally developped for Play2 here.
 
 ### Advantages of Twirl
 
