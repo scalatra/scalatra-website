@@ -3,7 +3,6 @@ title: Scalatra 3.0 Guides
 ---
 
 ## Outlook
-
 - [Scalatra's philosophy](scalatra-philosophy.html)
 
 ## Development
@@ -11,7 +10,6 @@ title: Scalatra 3.0 Guides
 We've documented most aspects of working with Scalatra in a series of guides covering common development tasks.
 
 ### HTTP
-
 - [Routes](http/routes.html)
 - [Actions](http/actions.html)
 - [Reverse Routes](http/reverse-routes.html)
@@ -34,7 +32,6 @@ We've documented most aspects of working with Scalatra in a series of guides cov
 - [Forms](formats/forms.html)
 
 ### Persistence
-- [Introduction](persistence/introduction.html)
 - [Slick](persistence/slick.html)
 - [Squeryl](persistence/squeryl.html)
 
