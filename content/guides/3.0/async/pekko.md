@@ -146,9 +146,9 @@ state, don't bother with `AsyncResult`.
   for a minimal and standalone project containing the examples in this guide.
 </div>
 
-When you use Scalatra with Pekko, you most likely want to return a result of some sort. So you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future. Typically, this involves Pekko's [ask pattern](https://doc.akka.io/docs/akka/current/scala/actors.html#ask-send-and-receive-future).
+When you use Scalatra with Pekko, you most likely want to return a result of some sort. So you're probably going to send a message to an Actor which will reply to you. The method you use for that returns a Future. Typically, this involves Pekko's [ask pattern](https://pekko.apache.org/docs/pekko/current//actors.html#ask-send-and-receive-future).
 
-When the request you get just needs to trigger something on an Actor using the fire-and-forget [tell pattern](https://doc.akka.io/docs/akka/current/scala/actors.html#tell-fire-forget, then you don't need a Future. In this case, you probably you want to reply with the Accepted status or something like it.
+When the request you get just needs to trigger something on an Actor using the fire-and-forget [tell pattern](https://pekko.apache.org/docs/pekko/current//actors.html#tell-fire-forget), then you don't need a Future. In this case, you probably you want to reply with the Accepted status or something like it.
 
 Here's some example code:
 
