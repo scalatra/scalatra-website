@@ -41,9 +41,9 @@ Alternately, you can register a strategy using init params in
 `context.setInitParameter("scentry.strategies", "UserPasswordStrategy")`
 
 To write a Scentry Strategy, you'll need to implement the methods in
-[ScentryStrategy](https://github.com/scalatra/scalatra/blob/develop/auth/src/main/scala/org/scalatra/auth/ScentryStrategy.scala).
+[ScentryStrategy](https://github.com/scalatra/scalatra/blob/v3.0.0/auth/src/main/scala/org/scalatra/auth/ScentryStrategy.scala).
 
-See Scalatra's built-in [BasicAuthStrategy](https://github.com/scalatra/scalatra/blob/develop/auth/src/main/scala/org/scalatra/auth/strategy/BasicAuthStrategy.scala)
+See Scalatra's built-in [BasicAuthStrategy](https://github.com/scalatra/scalatra/blob/v3.0.0/auth/src/main/scala/org/scalatra/auth/strategy/BasicAuthStrategy.scala)
 for an example.
 
 ## Dependency

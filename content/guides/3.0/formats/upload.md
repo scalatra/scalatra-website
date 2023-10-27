@@ -8,7 +8,7 @@ layout: guides-3.0
 File upload support is included within Scalatra by default by leveraging
 the Servlet 3.0 API's built-in support for `multipart/form-data` requests.
 For a working example, see
-[FileUploadExample.scala](https://github.com/scalatra/scalatra/blob/develop/example/src/main/scala/org/scalatra/FileUploadExample.scala).
+[FileUploadExample.scala](https://github.com/scalatra/scalatra-website-examples/blob/master/3.0/http/scalatra-http-demo/src/main/scala/org/scalatra/example/FileUploadExample.scala).
 
 To enable file upload support, extend your application with `FileUploadSupport`
 and set the upload configuration with a call to `configureMultipartHandling`:

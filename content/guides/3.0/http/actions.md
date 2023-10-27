@@ -72,4 +72,4 @@ all of them and find out what response codes they produce, the easiest way is
 to look at the [ActionResult source code][actionresult-source].
 
 
-[actionresult-source]:https://github.com/scalatra/scalatra/blob/develop/core/src/main/scala/org/scalatra/ActionResult.scala
+[actionresult-source]:https://github.com/scalatra/scalatra/blob/v3.0.0/core/src/main/scala/org/scalatra/ActionResult.scala
