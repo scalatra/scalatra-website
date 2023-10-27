@@ -3,7 +3,7 @@ title: Squeryl
 layout: guides-2.8
 ---
 
-[Squeryl](http://squeryl.org/) is a Scala object-relational mapper and
+[Squeryl](https://www.squeryl.org/) is a Scala object-relational mapper and
 domain-specific language for talking to databases in a succinct and
 typesafe way.
 
@@ -169,4 +169,4 @@ class ArticlesController extends ScalatraServlet with DatabaseSessionSupport
 Any controller with this trait can now use Squeryl models.
 
 For full documentation of Squeryl, see the project website at
-[squeryl.org](http://squeryl.org).
+[squeryl.org](https://www.squeryl.org).
