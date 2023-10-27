@@ -21,9 +21,9 @@ name [My Scalatra Web App]:
 version [0.1.0-SNAPSHOT]:
 servlet_name [MyScalatraServlet]:
 package [com.example.app]:
-scala_version [2.13.4]:
-sbt_version [1.4.5]:
-scalatra_version [2.7.0]:
+scala_version [2.13.12]:
+sbt_version [1.9.7]:
+scalatra_version [3.0.0]:
 
 Template applied in ./my-scalatra-web-app
 ```
@@ -33,13 +33,13 @@ Template applied in ./my-scalatra-web-app
   <dd>
     Used for publishing.
     Should be the reverse of a domain name you control.
-    If you don't own a domain, <code>com.github.username</code> is a popular choice.
+    If you don't own a domain, <code>io.github.username</code> is a popular choice.
   </dd>
   <dt>package</dt>
   <dd>
     All Scala code belongs in a package.
     The
-    <a href="http://docs.scala-lang.org/style/naming-conventions.html#packages">
+    <a href="https://docs.scala-lang.org/style/naming-conventions.html#packages">
       Scala Style Guide
     </a> recommends that your packages start with your organization.
     This convention is used across multiple JVM languages and gives your
@@ -55,7 +55,7 @@ Template applied in ./my-scalatra-web-app
   <dd>
     Your project's version.
     This is entirely up to you, but we like
-    <a href="http://semver.org">semantic versioning</a>.
+    <a href="https://semver.org">semantic versioning</a>.
   </dd>
   <dt>servlet_name</dt>
   <dd>
@@ -65,7 +65,7 @@ Template applied in ./my-scalatra-web-app
   <dt>scala_version</dt>
   <dd>
     The Scala version to use.
-    The bottom of the <a href="http://scalatra.org/">homepage</a> lists which Scala versions are compatible with the latest Scalatra releases.
+    The bottom of the <a href="https://scalatra.org/">homepage</a> lists which Scala versions are compatible with the latest Scalatra releases.
     When in doubt, use the default.
   </dd>
   <dt>sbt_version</dt>
@@ -125,7 +125,7 @@ project:
 
 ```bash
 $ sbt
-> jetty:start
+> Jetty/start
 ```
 
 The application starts on [http://localhost:8080](http://localhost:8080).
@@ -166,7 +166,7 @@ To recompile and reload your application automatically, run the following:
 
 ```bash
 $ sbt
-> ~jetty:start
+> ~Jetty/start
 ```
 
 Now that you've got a (rather simplistic) running application, you may want
