@@ -131,7 +131,7 @@ res2: Option[MultiParams] = Some(Map(bar -> ListBuffer(x)))
 Alternatively, you may use the `RailsPathPatternParser` in place of the
 `SinatraPathPatternParser`.
 
-[repl]: http://www.scala-lang.org/node/2097
+[repl]: https://docs.scala-lang.org/overviews/repl/overview.html
 
 ### Conditions
 
