@@ -119,4 +119,4 @@ helpers, you can just [browse the Scalatra core source][scalatracore] on
 GitHub. Scalatra source code is meant to be simple and readable; don't be scared
 to take a look at it if you need to understand how something works.
 
-[scalatracore]: https://github.com/scalatra/scalatra/tree/develop/core/src/main/scala/org/scalatra
+[scalatracore]: https://github.com/scalatra/scalatra/tree/v3.0.0/core/src/main/scala/org/scalatra
