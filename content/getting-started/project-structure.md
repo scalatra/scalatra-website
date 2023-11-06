@@ -133,7 +133,7 @@ so that `sbt` can download them for you and build your Scalatra project.
 Here's an example Scalatra `build.sbt` file:
 
 ```scala
-val ScalatraVersion = "{{< 2-7-scalatra_version >}}"
+val ScalatraVersion = "{{< 3-0-scalatra_version >}}"
 
 organization := "com.example"
 
@@ -141,16 +141,14 @@ name := "My Scalatra Web App"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.13.4"
-
-resolvers += Classpaths.typesafeReleases
+scalaVersion := "2.13.12"
 
 libraryDependencies ++= Seq(
-  "org.scalatra" %% "scalatra" % ScalatraVersion,
-  "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
-  "ch.qos.logback" % "logback-classic" % "{{< 2-7-logback_version >}}" % "runtime",
-  "org.eclipse.jetty" % "jetty-webapp" % "{{< 2-7-jetty_version >}}" % "container",
-  "javax.servlet" % "javax.servlet-api" % "{{< 2-7-servlet_version >}}" % "provided"
+  "org.scalatra" %% "scalatra-jakarta" % ScalatraVersion,
+  "org.scalatra" %% "scalatra-scalatest-jakarta" % ScalatraVersion % "test",
+  "ch.qos.logback" % "logback-classic" % "{{< 3-0-logback_version >}}" % "runtime",
+  "org.eclipse.jetty" % "jetty-webapp" % "{{< 3-0-jetty_version >}}" % "container",
+  "jakarta.servlet" % "jakarta.servlet-api" % "{{< 3-0-servlet_version >}}" % "provided"
 )
 
 enablePlugins(SbtTwirl)
@@ -192,7 +190,7 @@ The default dependencies are:
   <dd>
     This is the embedded servlet container used by the web plugin.
     Your application should be portable to any servlet container supporting at least
-    the 2.7 specification.
+    the 3.0 specification.
   </dd>
   <dt>javax.servlet</dt>
   <dd>
