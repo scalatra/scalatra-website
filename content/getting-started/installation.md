@@ -21,21 +21,21 @@ does. The output should look something like this:
 
 ```bash
 $ java -version
-java version "1.8.0_131"
-Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
-Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)
+openjdk version "11.0.20.1" 2023-08-24 LTS
+OpenJDK Runtime Environment Zulu11.66+19-CA (build 11.0.20.1+1-LTS)
+OpenJDK 64-Bit Server VM Zulu11.66+19-CA (build 11.0.20.1+1-LTS, mixed mode)
 ```
 
 ```bash
 $ javac -version
-javac 1.8.0_131
+javac 11.0.20.1
 ```
 
-You need Java 8 or above (Oracle's JDK, OpenJDK, AdoptOpenJDK and various other distributions exist), which will show up as version 1.8. Java 7 is no longer supported in Scalatra 2.5.
+You need Java 11 or above (Oracle's JDK, OpenJDK, AdoptOpenJDK and various other distributions exist), which will show up as version 11. Java 8 is no longer supported in Scalatra 3.0.
 
 If you don't yet have Java installed, you can find out how to install it for your system over at
-[the Oracle's Java 8 download page](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
-or [the OpenJDK installation page](http://openjdk.java.net/install/index.html) or [AdoptOpenJDK download page](https://adoptopenjdk.net/).
+[the Oracle's Java download page](https://www.oracle.com/java/technologies/downloads/)
+or [the OpenJDK installation page](http://openjdk.java.net/install/index.html) or [AdoptOpenJDK download page](https://adoptium.net/).
 
 ## 2. Install sbt
 
@@ -55,7 +55,7 @@ $ sbt
 ...
 ...
 > sbtVersion
-[info] 1.4.6
+[info] 1.9.7
 ```
 
 ---
