@@ -14,7 +14,7 @@ allows you to easily mix it into your application.
 The following dependencies will be needed to make the sample application work.
 
 ```scala
-"org.apache.pekko" %% "pekko-actor" % "{{< 3-0-pekko_version >}}" cross(CrossVersion.for3Use2_13),
+"org.apache.pekko" %% "pekko-actor" % "{{< 3-0-pekko_version >}}",
 "com.softwaremill.sttp.client3" %% "core" % "3.9.0",
 ```
 
