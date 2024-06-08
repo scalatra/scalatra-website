@@ -1,5 +1,5 @@
 ---
-title: Scalatra 3.0 Guides
+title: Scalatra 3.0 / 3.1 Guides
 ---
 
 ## Outlook
@@ -8,18 +8,18 @@ title: Scalatra 3.0 Guides
 ## Supported Versions
 
 
-Scalatra 3.0 supports Scala 2.12, 2.13 and 3.
+Scalatra 3.0 / 3.1 supports Scala 2.12, 2.13 and 3.
 
-Also, Scalatra 3.0 supports both Servlet 4.0.1 (javax) and 5.0.0 (jakarta). Note that the artifact names have suffix depending on Servlet version as follows:
+Also, Scalatra 3.0/3.1 supports Servlet 4.0.1 but Scalatra 3.0 supports 5.0.0 while Scalatra 3.1 supports 6.0.0. Note that the artifact names have suffix depending on Servlet version as follows:
 
 ```scala
-// for javax
+// for javax (Servlet 4.0.1)
 "org.scalatra" %% "scalatra-javax" % "{{< 3-0-scalatra_version >}}",
 "org.scalatra" %% "scalatra-json-javax" % "{{< 3-0-scalatra_version >}}",
 "org.scalatra" %% "scalatra-forms-javax" % "{{< 3-0-scalatra_version >}}",
 ...
 
-// for jakarta
+// for jakarta (Servlet 5.0.0/6.0.0)
 "org.scalatra" %% "scalatra-jakarta" % "{{< 3-0-scalatra_version >}}",
 "org.scalatra" %% "scalatra-json-jakarta" % "{{< 3-0-scalatra_version >}}",
 "org.scalatra" %% "scalatra-forms-jakarta" % "{{< 3-0-scalatra_version >}}",
