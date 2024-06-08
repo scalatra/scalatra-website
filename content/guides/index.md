@@ -2,7 +2,7 @@
 title: Documentation
 ---
 
-### Scalatra 3.0.x
+### Scalatra 3.0.x / 3.1.x
 
 - [Guides](/guides/3.0/)
 - [Scaladoc](http://javadoc.io/doc/org.scalatra/scalatra-unidoc_2.13/3.0.0)
