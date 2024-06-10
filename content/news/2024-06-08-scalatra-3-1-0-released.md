@@ -12,7 +12,7 @@ The Scalatra team is pleased to announce the release of version 3.1.0 of the fra
 
 Scalatra 3.1 is compatible with Scalatra 3.0 but supports Servlet 6.0.0 and Jetty 12.0.9.
 
-You need to specify the suffix of artifacts depending on which version you use ervlet 4.0.1 (javax) or 6.0.0 (jakarta):
+You need to specify the suffix of artifacts depending on which version you use Servlet 4.0.1 (javax) or 6.0.0 (jakarta):
 
 ```scala
 // for javax
