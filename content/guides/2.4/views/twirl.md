@@ -5,7 +5,7 @@ title: Twirl
 layout: guides-2.4
 ---
 
-*Twirl* is the [Play 2 templating language](http://www.playframework.org/documentation/2.0/ScalaTemplates).
+*Twirl* is the [Play 2 templating language](https://www.playframework.com/documentation/2.0/ScalaTemplates).
 
 <div class="alert alert-info">
   <span class="badge badge-info"><i class="glyphicon glyphicon-flag"></i></span>
@@ -115,7 +115,7 @@ Your result?
 ## Full usage guide
 We have only provided a taste of what Twirl can do.
 Since it's an external project, we encourage you to also consult the
-[official documentation](http://www.playframework.org/documentation/2.0/ScalaTemplates).
+[official documentation](https://www.playframework.com/documentation/2.0/ScalaTemplates).
 
 The [sbt plugin's README](https://github.com/spray/twirl/blob/master/README.rst)
 also has a useful syntax summary.
