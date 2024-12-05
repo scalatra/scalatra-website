@@ -112,7 +112,7 @@ Your result?
 ## Full usage guide
 We have only provided a taste of what Twirl can do.
 Since it's an external project, we encourage you to also consult the
-[official documentation](http://www.playframework.org/documentation/2.6.x/ScalaTemplates).
+[official documentation](https://www.playframework.com/documentation/2.6.x/ScalaTemplates).
 
 ## Rendering oddities
 
