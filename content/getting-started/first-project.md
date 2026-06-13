@@ -21,9 +21,12 @@ name [My Scalatra Web App]:
 version [0.1.0-SNAPSHOT]:
 servlet_name [MyScalatraServlet]:
 package [com.example.app]:
-scala_version [2.13.12]:
-sbt_version [1.9.7]:
-scalatra_version [3.0.0]:
+scala_version [3.3.7]:
+sbt_version [1.12.1]:
+scalatra_version [3.1.2]:
+twirl_version [2.0.9]:
+sbt_war [5.0.0-M7]:
+jetty_version [12.0.28]:
 
 Template applied in ./my-scalatra-web-app
 ```
@@ -125,7 +128,7 @@ project:
 
 ```bash
 $ sbt
-> Jetty/start
+> warStart
 ```
 
 The application starts on [http://localhost:8080](http://localhost:8080).
@@ -166,7 +169,7 @@ To recompile and reload your application automatically, run the following:
 
 ```bash
 $ sbt
-> ~Jetty/start
+> ~warStart
 ```
 
 Now that you've got a (rather simplistic) running application, you may want
