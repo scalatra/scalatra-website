@@ -1,6 +1,6 @@
 ---
 title: Configuration
-layout: guides-3.0
+layout: guides-3
 ---
 
 As you develop, test, and get ready for final deployment,

@@ -1,6 +1,6 @@
 ---
 title: Metrics
-layout: guides-3.0
+layout: guides-3
 ---
 
 <div class="alert alert-info">

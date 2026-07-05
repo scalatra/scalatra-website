@@ -1,6 +1,6 @@
 ---
 title: File uploads
-layout: guides-3.0
+layout: guides-3
 ---
 
 ## Uploading files

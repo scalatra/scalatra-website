@@ -1,6 +1,6 @@
 ---
 title: Apache Pekko
-layout: guides-3.0
+layout: guides-3
 ---
 
 ### Pekko integration

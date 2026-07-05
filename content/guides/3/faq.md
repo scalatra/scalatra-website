@@ -1,6 +1,6 @@
 ---
 title: FAQ
-layout: guides-3.0
+layout: guides-3
 ---
 
 --- name:headExtra pipeline:jade

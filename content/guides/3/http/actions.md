@@ -1,6 +1,6 @@
 ---
 title: Actions
-layout: guides-3.0
+layout: guides-3
 ---
 
 As explained in the [routes guide](routes.html), an action is the code that handles a route.

@@ -1,6 +1,6 @@
 ---
 title: Twirl
-layout: guides-3.0
+layout: guides-3
 ---
 
 *Twirl* is the [Play 2 templating language](https://www.playframework.com/documentation/2.9.x/ScalaTemplates).

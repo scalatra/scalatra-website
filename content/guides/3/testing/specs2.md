@@ -1,6 +1,6 @@
 ---
 title: Specs2
-layout: guides-3.0
+layout: guides-3
 ---
 
 [Specs2](https://etorreborre.github.io/specs2/) is a library for writing
