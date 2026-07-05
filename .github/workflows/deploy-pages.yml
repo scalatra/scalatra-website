@@ -33,6 +33,10 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      # TODO: Delete this step when we assign scalatra.org to this repository
+      - name: Override baseUrl for GitHub Pages
+        run: sed -i.bak 's|^baseUrl = ".*"|baseUrl = "https://scalatra.github.io/scalatra-website/"|' config.toml && rm config.toml.bak
+
       - name: Build website
         run: hugo
 
