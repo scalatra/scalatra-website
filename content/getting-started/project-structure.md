@@ -133,7 +133,7 @@ so that `sbt` can download them for you and build your Scalatra project.
 Here's an example Scalatra `build.sbt` file:
 
 ```scala
-val ScalatraVersion = "{{< 3-0-scalatra_version >}}"
+val ScalatraVersion = "{{< 3-scalatra_version >}}"
 
 organization := "com.example"
 
@@ -146,9 +146,9 @@ scalaVersion := "2.13.12"
 libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra-jakarta" % ScalatraVersion,
   "org.scalatra" %% "scalatra-scalatest-jakarta" % ScalatraVersion % "test",
-  "ch.qos.logback" % "logback-classic" % "{{< 3-0-logback_version >}}" % "runtime",
-  "org.eclipse.jetty" % "jetty-webapp" % "{{< 3-0-jetty_version >}}" % "container",
-  "jakarta.servlet" % "jakarta.servlet-api" % "{{< 3-0-servlet_version >}}" % "provided"
+  "ch.qos.logback" % "logback-classic" % "{{< 3-logback_version >}}" % "runtime",
+  "org.eclipse.jetty" % "jetty-webapp" % "{{< 3-jetty_version >}}" % "container",
+  "jakarta.servlet" % "jakarta.servlet-api" % "{{< 3-servlet_version >}}" % "provided"
 )
 
 enablePlugins(SbtTwirl)
