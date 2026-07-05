@@ -1,6 +1,6 @@
 ---
 title: Swagger
-layout: guides-3.0
+layout: guides-3
 ---
 
 [Swagger](http://swagger.io) is a specification which allows you to quickly define the functionality of a REST API using JSON documents. But it's more than

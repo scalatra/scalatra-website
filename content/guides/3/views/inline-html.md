@@ -1,6 +1,6 @@
 ---
 title: Inline HTML
-layout: guides-3.0
+layout: guides-3
 ---
 
 The simplest method of rendering a view is by using inline HTML.

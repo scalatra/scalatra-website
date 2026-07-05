@@ -1,6 +1,6 @@
 ---
 title: Forms
-layout: guides-3.0
+layout: guides-3
 ---
 
 Since Scalatra 2.6, scalatra-forms which provides form validation is available. You can validate input parameters using forms and convert them to any Scala object such as case class.

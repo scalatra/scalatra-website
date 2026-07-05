@@ -1,6 +1,6 @@
 ---
 title: Flash
-layout: guides-3.0
+layout: guides-3
 ---
 
 Flash support, allowing you to store information across requests and expire

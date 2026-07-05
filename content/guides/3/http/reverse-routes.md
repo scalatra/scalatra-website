@@ -1,6 +1,6 @@
 ---
 title: Reverse routes
-layout: guides-3.0
+layout: guides-3
 ---
 
 ### URL support and reverse routes

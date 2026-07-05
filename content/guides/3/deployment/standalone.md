@@ -1,6 +1,6 @@
 ---
 title: Standalone deployment
-layout: guides-3.0
+layout: guides-3
 ---
 
 ### Launching Scalatra as a servlet
